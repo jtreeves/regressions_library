@@ -13,7 +13,7 @@ def addition_all(first_matrix, second_matrix):
     result = []
     for m in range(len(first_matrix)):
         for n in range(len(first_matrix[0])):
-            result[m][n] = first_matrix[m][n] + second_matrix[m][n]
+            result.append(first_matrix[m][n] + second_matrix[m][n])
     return result
 
 A = [
