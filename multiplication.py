@@ -1,5 +1,3 @@
-import numpy as np
-
 A = [
     [5,8],
     [2,3]
