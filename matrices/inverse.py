@@ -1,0 +1,2 @@
+def inverse(matrix):
+    pass
