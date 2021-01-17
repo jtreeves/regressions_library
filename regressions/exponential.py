@@ -1,5 +1,4 @@
 from math import log, exp
-
 from matrices.multiplication import multiplication, multiplication_vector
 from matrices.transpose import transpose
 from matrices.inverse import inverse
