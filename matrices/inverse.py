@@ -11,10 +11,7 @@ def inverse(matrix):
     return result
 
 def inverse_3d(matrix):
-    print(matrix)
     determinant_reciprocal = 1 / determinant_3d(matrix)
-    print(determinant_reciprocal)
     transform = transpose_3d(cofactors(minors(matrix)))
-    print(transform)
     result = scalar_3d(transform, determinant_reciprocal)
     return result
