@@ -1,11 +1,12 @@
+from math import log
 from matrices.multiplication import multiplication, multiplication_vector
 from matrices.transpose import transpose
 from matrices.inverse import inverse
 
-def exponential(data):
+def logarithmic(data):
     independent_matrix = [
-        [data[0][0], 1],
-        [data[1][0], 1]
+        [log(data[0][0]), 1],
+        [log(data[1][0]), 1]
     ]
     dependent_matrix = [
         [data[0][1]],
