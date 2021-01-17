@@ -18,13 +18,3 @@ def inverse_3d(matrix):
     print(transform)
     result = scalar_3d(transform, determinant_reciprocal)
     return result
-
-A = [
-    [3, 0, 2],
-    [2, 0, -2],
-    [0, 1, 1]
-]
-
-inv_A = inverse_3d(A)
-
-print(inv_A) # => [[0.2, 0.2, 0], [-0.2, 0.3, 1], [0.2, -0.3, 0]]
