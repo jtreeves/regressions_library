@@ -16,5 +16,13 @@ def logarithmic(data):
     product = multiplication(transposition, independent_matrix)
     inversion = inverse(product)
     second_product = multiplication(inversion, transposition)
-    result = multiplication_vector(second_product, dependent_matrix)
+    solution = multiplication_vector(second_product, dependent_matrix)
+    result = [
+        [solution[1][0]],
+        [solution[0][0]]
+    ]
     return result
+
+logarithmic_set = [[1, 5], [9, 20]]
+logarithmic_solution = logarithmic(logarithmic_set)
+print(logarithmic_solution) # => [[5.0], [6.8268]]
