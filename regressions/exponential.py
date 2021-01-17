@@ -23,7 +23,3 @@ def exponential(data):
         [exp(solution[0][0])]
     ]
     return result
-
-exponential_set = [[1, 6], [2, 12]]
-exponential_solution = exponential(exponential_set)
-print(exponential_solution) # => [[3.0], [2.0]]
