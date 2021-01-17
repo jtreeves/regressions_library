@@ -1,10 +1,5 @@
 from matrix import columns
-
-def dot_product(vector_one, vector_two):
-    result = 0
-    for i in range(len(vector_one)):
-        result += vector_one[i] * vector_two[i]
-    return result
+from dot_product import dot_product
 
 def multiplication(matrix_one, matrix_two):
     r1c1 = dot_product(matrix_one[0], columns(matrix_two)[0])
