@@ -1,4 +1,4 @@
-from .columns import columns
+from .columns import columns, columns_vector
 from .dot_product import dot_product
 
 def multiplication(matrix_one, matrix_two):
@@ -9,5 +9,14 @@ def multiplication(matrix_one, matrix_two):
     result = [
         [r1c1, r1c2],
         [r2c1, r2c2]
+    ]
+    return result
+
+def multiplication_vector(matrix, vector):
+    r1c1 = dot_product(matrix[0], columns_vector(vector))
+    r2c1 = dot_product(matrix[1], columns_vector(vector))
+    result = [
+        [r1c1],
+        [r2c1]
     ]
     return result
