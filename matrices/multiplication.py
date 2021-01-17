@@ -1,5 +1,5 @@
-from columns import columns
-from dot_product import dot_product
+from .columns import columns
+from .dot_product import dot_product
 
 def multiplication(matrix_one, matrix_two):
     r1c1 = dot_product(matrix_one[0], columns(matrix_two)[0])

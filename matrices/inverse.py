@@ -1,5 +1,5 @@
-from scalar import scalar
-from determinant import determinant
+from .scalar import scalar
+from .determinant import determinant
 
 def inverse(matrix):
     determinant_reciprocal = 1 / determinant(matrix)

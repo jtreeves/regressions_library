@@ -1,11 +1,11 @@
-from addition import addition
-from multiplication import multiplication
-from scalar import scalar
-from transpose import transpose
-from determinant import determinant
-from dot_product import dot_product
-from columns import columns
-from inverse import inverse
+from .addition import addition
+from .multiplication import multiplication
+from .scalar import scalar
+from .transpose import transpose
+from .determinant import determinant
+from .dot_product import dot_product
+from .columns import columns
+from .inverse import inverse
 
 first_input_matrix = [
     [5, 8],
