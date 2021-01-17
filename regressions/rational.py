@@ -21,7 +21,3 @@ def rational(data):
         [solution[0][0]]
     ]
     return result
-
-rational_set = [[2, 2], [3, 1]]
-rational_solution = rational(rational_set)
-print(rational_solution) # => [[2.0], [-3.0]]
