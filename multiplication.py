@@ -19,19 +19,19 @@ def multiplication(matrix_one, matrix_two):
     r2c1 = dot_product(matrix_one[1], columns(matrix_two)[0])
     r2c2 = dot_product(matrix_one[1], columns(matrix_two)[1])
     result = [
-        [r1c1,r1c2],
-        [r2c1,r2c2]
+        [r1c1, r1c2],
+        [r2c1, r2c2]
     ]
     return result
 
 A = [
-    [5,8],
-    [2,3]
+    [5, 8],
+    [2, 3]
 ]
 
 B = [
-    [4,1],
-    [7,3]
+    [4, 1],
+    [7, 3]
 ]
 
 C = multiplication(A, B)

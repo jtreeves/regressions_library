@@ -4,19 +4,19 @@ def addition(first_matrix, second_matrix):
     r2c1 = first_matrix[1][0] + second_matrix[1][0]
     r2c2 = first_matrix[1][1] + second_matrix[1][1]
     result = [
-        [r1c1,r1c2],
-        [r2c1,r2c2]
+        [r1c1, r1c2],
+        [r2c1, r2c2]
     ]
     return result
 
 A = [
-    [5,8],
-    [2,3]
+    [5, 8],
+    [2, 3]
 ]
 
 B = [
-    [4,1],
-    [7,3]
+    [4, 1],
+    [7, 3]
 ]
 
 C = addition(A,B)
