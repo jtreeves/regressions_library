@@ -17,6 +17,3 @@ def linear(data):
     second_product = multiplication(inversion, transposition)
     result = multiplication_vector(second_product, dependent_matrix)
     return result
-
-solution = linear([[2, 5], [7, 6]])
-print(solution)
