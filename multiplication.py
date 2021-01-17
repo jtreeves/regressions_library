@@ -10,7 +10,6 @@ def dot_product(vector_one, vector_two):
     result = 0
     for i in range(len(vector_one)):
         result += vector_one[i] * vector_two[i]
-        print(f'result: {result}')
     return result
 
 def multiplication(matrix_one, matrix_two):
@@ -35,7 +34,5 @@ B = [
 ]
 
 C = multiplication(A, B)
-columns_B = columns(B)
 
 print(C) # => [[76, 29], [29, 11]]
-print(columns_B) # => [[4, 7], [1, 3]]
