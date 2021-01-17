@@ -1,4 +1,4 @@
-from matrix import columns
+from columns import columns
 from dot_product import dot_product
 
 def multiplication(matrix_one, matrix_two):

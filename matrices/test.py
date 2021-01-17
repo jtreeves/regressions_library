@@ -4,7 +4,7 @@ from scalar import scalar
 from transpose import transpose
 from determinant import determinant
 from dot_product import dot_product
-from matrix import columns
+from columns import columns
 
 first_input_matrix = [
     [5, 8],
