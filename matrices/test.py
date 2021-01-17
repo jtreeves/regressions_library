@@ -1,4 +1,4 @@
-from .addition import addition, addition_all
+from .addition import addition
 from .multiplication import multiplication
 from .scalar import scalar
 from .transpose import transpose
@@ -42,7 +42,7 @@ second_2x3 = [
 scalar_number = -7
 
 addition_output_matrix = addition(first_input_matrix, second_input_matrix)
-result_2x3 = addition_all(first_2x3, second_2x3)
+result_2x3 = addition(first_2x3, second_2x3)
 multiplication_output_matrix = multiplication(first_input_matrix, second_input_matrix)
 scalar_output_matrix = scalar(first_input_matrix, scalar_number)
 transpose_output_matrix = transpose(first_input_matrix)
