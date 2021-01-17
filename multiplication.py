@@ -10,9 +10,11 @@ rows_and_columns = {
 }
 
 def dot_product(vector_one, vector_two):
-    for term in array_one:
-        product = array_one[0]*array_two[0] + array_one[1]*array_two[1]
-        return product
+    result = 0
+    for i in vector_one:
+        for j in vector_two:
+            result += i * j
+    return result
 
 def multiplication(matrix_one, matrix_two):
     r1c1 = dot_product(rows_and_columns['first_matrix_first_row'], rows_and_columns['second_matrix_first_column'])
