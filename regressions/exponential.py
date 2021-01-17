@@ -20,7 +20,10 @@ def exponential(data):
     solution = multiplication_vector(second_product, dependent_matrix)
     result = [
         [exp(solution[1][0])],
-        [solution[0][0]]
+        [exp(solution[0][0])]
     ]
     return result
 
+exponential_set = [[1, 6], [2, 12]]
+exponential_solution = exponential(exponential_set)
+print(exponential_solution) # => [[3.0], [2.0]]
