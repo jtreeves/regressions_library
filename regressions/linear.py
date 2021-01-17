@@ -15,16 +15,13 @@ dependent_matrix = [
 ]
 
 transposition = transpose(independent_matrix)
-
 product = multiplication(transposition, independent_matrix)
-
 inversion = inverse(product)
-
 second_product = multiplication(inversion, transposition)
-
 solution = multiplication_vector(second_product, dependent_matrix)
 
 print(f'Independent: {independent_matrix}')
+print(f'Dependent: {dependent_matrix}')
 print(f'Transpose: {transposition}')
 print(f'Product of Independent and Transpose: {product}')
 print(f'Inverse of Product of Independent and Transpose: {inversion}')
