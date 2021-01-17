@@ -1,13 +1,10 @@
-rows_and_columns = {
-    'first_matrix_first_row': A[0],
-    'first_matrix_second_row': A[1],
-    'second_matrix_first_row': B[0],
-    'second_matrix_second_row': B[1],
-    'first_matrix_first_column': [A[0][0],A[1][0]],
-    'first_matrix_second_column': [A[0][1],A[1][1]],
-    'second_matrix_first_column': [B[0][0],B[1][0]],
-    'second_matrix_second_column': [B[1][0],B[1][1]]
-}
+def columns(matrix):
+    column_one = []
+    column_two = []
+    for row in matrix:
+        column_one.append(row[0])
+        column_two.append(row[1])
+    return [column_one, column_two]
 
 def dot_product(vector_one, vector_two):
     result = 0
@@ -17,10 +14,10 @@ def dot_product(vector_one, vector_two):
     return result
 
 def multiplication(matrix_one, matrix_two):
-    r1c1 = dot_product(rows_and_columns['first_matrix_first_row'], rows_and_columns['second_matrix_first_column'])
-    r1c2 = dot_product(rows_and_columns['first_matrix_first_row'], rows_and_columns['second_matrix_second_column'])
-    r2c1 = dot_product(rows_and_columns['first_matrix_second_row'], rows_and_columns['second_matrix_first_column'])
-    r2c2 = dot_product(rows_and_columns['first_matrix_second_row'], rows_and_columns['second_matrix_second_column'])
+    r1c1 = dot_product(matrix_one[0], columns(matrix_two)[0])
+    r1c2 = dot_product(matrix_one[0], columns(matrix_two)[1])
+    r2c1 = dot_product(matrix_one[1], columns(matrix_two)[0])
+    r2c2 = dot_product(matrix_one[1], columns(matrix_two)[1])
     result = [
         [r1c1,r1c2],
         [r2c1,r2c2]
