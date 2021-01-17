@@ -16,16 +16,3 @@ def addition_all(first_matrix, second_matrix):
         for n in range(len(first_matrix[0])):
             result[m].append(first_matrix[m][n] + second_matrix[m][n])
     return result
-
-A = [
-    [2, 6, -9],
-    [4, 5, 1]
-]
-
-B = [
-    [7, 1, 3],
-    [-8, 2, 5]
-]
-
-C = addition_all(A, B)
-print(C) # => [[9, 7, -6], [-4, 7, 6]]
