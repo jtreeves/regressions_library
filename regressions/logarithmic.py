@@ -22,7 +22,3 @@ def logarithmic(data):
         [solution[0][0]]
     ]
     return result
-
-logarithmic_set = [[1, 5], [9, 20]]
-logarithmic_solution = logarithmic(logarithmic_set)
-print(logarithmic_solution) # => [[5.0], [6.8268]]
