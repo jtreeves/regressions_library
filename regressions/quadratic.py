@@ -19,3 +19,7 @@ def quadratic(data):
     second_product = multiplication_3d(inversion, transposition)
     result = multiplication_vector_3d(second_product, dependent_matrix)
     return result
+
+data_set_3d = [[1, 4], [2, 9], [3, 16]]
+solution = quadratic(data_set_3d)
+print(solution)
