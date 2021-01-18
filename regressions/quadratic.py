@@ -12,10 +12,5 @@ def quadratic(data):
     product = multiplication(transposition, independent_matrix)
     inversion = inverse(product)
     second_product = multiplication(inversion, transposition)
-    solution = multiplication_vector(second_product, dependent_matrix)
-    result = [
-        [solution[2][0]],
-        [solution[1][0]],
-        [solution[0][0]]
-    ]
+    result = multiplication_vector(second_product, dependent_matrix)
     return result
