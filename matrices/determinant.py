@@ -8,3 +8,7 @@ def determinant_3d(matrix):
     left_determinant = determinant([[matrix[1][0], matrix[1][1]], [matrix[2][0], matrix[2][1]]])
     result = matrix[0][0] * right_determinant - matrix[0][1] * spread_determinant + matrix[0][2] * left_determinant
     return result
+
+def determinant_all(matrix):
+    result = []
+    return result
