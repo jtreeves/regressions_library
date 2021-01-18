@@ -4,7 +4,7 @@ from .scalar import scalar
 from .transpose import transpose
 from .determinant import determinant, determinant_3d
 from .dot_product import dot_product
-from .columns import columns
+from .columns import columns, columns_all
 from .inverse import inverse, inverse_3d
 
 first_input_matrix = [
@@ -41,6 +41,8 @@ second_2x3 = [
 
 scalar_number = -7
 
+columns_all_first = columns_all(first_input_matrix)
+columns_first = columns(first_input_matrix)
 addition_output_matrix = addition(first_input_matrix, second_input_matrix)
 result_2x3 = addition(first_2x3, second_2x3)
 multiplication_output_matrix = multiplication(first_input_matrix, second_input_matrix)
@@ -53,6 +55,8 @@ inverse_output = inverse(first_input_matrix)
 determinant_output_3d = determinant_3d(first_3d_input_matrix)
 inverse_output_3d = inverse_3d(second_3d_input_matrix)
 
+print(f'Columns All: {columns_all_first}')
+print(f'Columns Reg: {columns_first}')
 print(f'Addition: {addition_output_matrix}') # => [[9, 9], [9, 6]]
 print(f'Non-Square Addition: {result_2x3}') # => [[9, 7, -6], [-4, 7, 6]]
 print(f'Multiplication: {multiplication_output_matrix}') # => [[76, 29], [29, 11]]
