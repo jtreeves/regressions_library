@@ -1,7 +1,7 @@
 from .addition import addition
 from .multiplication import multiplication, multiplication_vector
 from .scalar import scalar
-from .transpose import transpose
+from .transpose import transpose, transpose_all
 from .determinant import determinant, diminished
 from .dot_product import dot_product
 from .columns import columns
@@ -64,7 +64,7 @@ scalar_output_matrix = scalar(first_input_matrix, scalar_number)
 scalar_2x3 = scalar(first_2x3, scalar_number)
 transpose_output_matrix = transpose(first_input_matrix)
 transpose_3d = transpose(first_3d_input_matrix)
-transpose_2x3 = transpose(first_2x3)
+transpose_2x3 = transpose_all(first_2x3)
 determinant_output = determinant(first_input_matrix)
 dot_product_output = dot_product(first_input_matrix[0], columns(second_input_matrix)[0])
 inverse_output = inverse(first_input_matrix)
