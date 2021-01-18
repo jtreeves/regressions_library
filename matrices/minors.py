@@ -5,20 +5,25 @@ def diminished(matrix, row, column):
     print(f'row: {row}')
     print(f'column: {column}')
     result = []
-    length = len(matrix) - 1
-    for i in range(length):
-        print(f'i: {i}')
-        result.append([])
-        print(f'result initial: {result}')
-        for m in range(len(matrix)):
-            print(f'm before if: {m}')
-            for n in range(len(matrix[0])):
-                print(f'n before if: {n}')
-                if m != row and n!= column:
-                    print(f'm after if: {m}')
-                    print(f'n after if: {n}')
-                    result[i].append(matrix[m][n])
-                    print(f'result final: {result}')
+    storage = {}
+    # length = len(matrix) - 1
+    # for i in range(length):
+    #     print(f'i: {i}')
+    #     result.append([])
+    for m in range(len(matrix)):
+        print(f'm before if: {m}')
+        if m != row:
+            print(f'm after if: {m}')
+            storage[m] = []
+            print(f'storage initial: {storage}')
+        for n in range(len(matrix[0])):
+            print(f'n before if: {n}')
+            if n!= column:
+                print(f'n after if: {n}')
+                storage[m].append(matrix[m][n])
+                print(f'storage final: {storage}')
+    for key in storage:
+        result.append(storage[key])
     return result
 
 def minors(matrix):
