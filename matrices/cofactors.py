@@ -14,3 +14,14 @@ def cofactors(matrix):
         [r3c1, r3c2, r3c3]
     ]
     return result
+
+def cofactors_all(matrix):
+    result = []
+    for m in range(len(matrix)):
+        if m % 2 == 0:
+            # every other column is negative, starting with 2nd
+            pass
+        else:
+            # every other column is negative, starting with 1st
+            pass
+    return result
