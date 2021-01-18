@@ -1,4 +1,4 @@
-from .columns import columns, columns_vector, columns_3d
+from .columns import columns, columns_vector
 from .dot_product import dot_product
 
 def multiplication(matrix_one, matrix_two):
@@ -22,18 +22,18 @@ def multiplication_vector(matrix, vector):
     return result
 
 def multiplication_3d(matrix_one, matrix_two):
-    r1c1 = dot_product(matrix_one[0], columns_3d(matrix_two)[0])
-    r1c2 = dot_product(matrix_one[0], columns_3d(matrix_two)[1])
-    r1c3 = dot_product(matrix_one[0], columns_3d(matrix_two)[2])
-    r2c1 = dot_product(matrix_one[1], columns_3d(matrix_two)[0])
-    r2c2 = dot_product(matrix_one[1], columns_3d(matrix_two)[1])
-    r2c3 = dot_product(matrix_one[1], columns_3d(matrix_two)[2])
-    r2c1 = dot_product(matrix_one[1], columns_3d(matrix_two)[0])
-    r2c2 = dot_product(matrix_one[1], columns_3d(matrix_two)[1])
-    r2c3 = dot_product(matrix_one[1], columns_3d(matrix_two)[2])
-    r3c1 = dot_product(matrix_one[2], columns_3d(matrix_two)[0])
-    r3c2 = dot_product(matrix_one[2], columns_3d(matrix_two)[1])
-    r3c3 = dot_product(matrix_one[2], columns_3d(matrix_two)[2])
+    r1c1 = dot_product(matrix_one[0], columns(matrix_two)[0])
+    r1c2 = dot_product(matrix_one[0], columns(matrix_two)[1])
+    r1c3 = dot_product(matrix_one[0], columns(matrix_two)[2])
+    r2c1 = dot_product(matrix_one[1], columns(matrix_two)[0])
+    r2c2 = dot_product(matrix_one[1], columns(matrix_two)[1])
+    r2c3 = dot_product(matrix_one[1], columns(matrix_two)[2])
+    r2c1 = dot_product(matrix_one[1], columns(matrix_two)[0])
+    r2c2 = dot_product(matrix_one[1], columns(matrix_two)[1])
+    r2c3 = dot_product(matrix_one[1], columns(matrix_two)[2])
+    r3c1 = dot_product(matrix_one[2], columns(matrix_two)[0])
+    r3c2 = dot_product(matrix_one[2], columns(matrix_two)[1])
+    r3c3 = dot_product(matrix_one[2], columns(matrix_two)[2])
     result = [
         [r1c1, r1c2, r1c3],
         [r2c1, r2c2, r2c3],
