@@ -58,7 +58,7 @@ print(f"Linear Agnostic Error: {linear_solution_agnostic['error']}") # => 15.057
 # print(f'Quadratic Matrix 10: {quadratic_solution_10}') # => [[-0.0259], [4.5614], [-18.3907]]
 # print(f'Quadratic Equation 10: y = {quadratic_solution_10[0][0]}x^2 + {quadratic_solution_10[1][0]}x + {quadratic_solution_10[2][0]}') # => y = -0.0259x^2 + 4.5614x + -18.3907
 print(f"Quadratic Agnostic Constants: {quadratic_solution_agnostic['constants']}") # => [[−1.6515], [97.8879], [−43.4000]]
-print(f"Quadratic Agnostic Error: {quadratic_solution_agnostic['error']}") # => [[−1.6515], [97.8879], [−43.4000]]
+print(f"Quadratic Agnostic Error: {quadratic_solution_agnostic['error']}") # => 14.9511
 # print(f'Quadratic Equation Agnostic: y = {quadratic_solution_agnostic[0][0]}x^2 + {quadratic_solution_agnostic[1][0]}x + {quadratic_solution_agnostic[2][0]}') # => y = −1.6515x^2 + 97.8879x + −43.4000
 # print(f'Cubic Matrix: {cubic_solution}') # => [[3.0], [-2.0], [-5.0], [10.0]]
 # print(f'Cubic Equation: y = {cubic_solution[0][0]}x^3 + {cubic_solution[1][0]}x^2 + {cubic_solution[2][0]}x + {cubic_solution[3][0]}') # => y = 3.0x^3 + -2.0x^2 + -5.0x + 10.0
@@ -72,15 +72,15 @@ print(f"Cubic Agnostic Error: {cubic_solution_agnostic['error']}") # => 12.7299
 # print(f'Hyperbolic Matrix: {hyperbolic_solution}') # => [[6.0], [-1.0]]
 # print(f'Hyperbolic Equation: y = {hyperbolic_solution[0][0]}*(1/x) + {hyperbolic_solution[1][0]}') # => y = 6.0*(1/x) + -1.0
 print(f"Hyperbolic Agnostic Constants: {hyperbolic_solution_agnostic['constants']}") # => [[-766.8421], [656.0056]]
-print(f"Hyperbolic Agnostic Error: {hyperbolic_solution_agnostic['error']}") # => [[-766.8421], [656.0056]]
+print(f"Hyperbolic Agnostic Error: {hyperbolic_solution_agnostic['error']}") # => 20.2718
 # print(f'Hyperbolic Equation Agnostic: y = {hyperbolic_solution_agnostic[0][0]}*(1/x) + {hyperbolic_solution_agnostic[1][0]}') # => y = -766.8421*(1/x) + 656.0056
 # print(f'Exponential Matrix: {exponential_solution}') # => [[3.0], [2.0]]
 # print(f'Exponential Equation: y = {exponential_solution[0][0]}*{exponential_solution[1][0]}^x') # => y = 3.0*2.0^x
 print(f"Exponential Agnostic Constants: {exponential_solution_agnostic['constants']}") # => [[29.2304], [1.4898]]
-print(f"Exponential Agnostic Error: {exponential_solution_agnostic['error']}") # => [[29.2304], [1.4898]]
+print(f"Exponential Agnostic Error: {exponential_solution_agnostic['error']}") # => 1.8326
 # print(f'Exponential Equation Agnostic: y = {exponential_solution_agnostic[0][0]}*{exponential_solution_agnostic[1][0]}^x') # => y = 29.2304*1.4898^x
 # print(f'Logarithmic Matrix: {logarithmic_solution}') # => [[5.0], [6.8268]]
 # print(f'Logarithmic Equation: y = {logarithmic_solution[0][0]} + {logarithmic_solution[1][0]}*lnx') # => y = 5.0 + 6.8268*lnx
 print(f"Logarithmic Agnostic Constants: {logarithmic_solution_agnostic['constants']}") # => [[−58.7194], [324.4875]]
-print(f"Logarithmic Agnostic Error: {logarithmic_solution_agnostic['error']}") # => [[−58.7194], [324.4875]]
+print(f"Logarithmic Agnostic Error: {logarithmic_solution_agnostic['error']}") # => 16.0616
 # print(f'Logarithmic Equation Agnostic: y = {logarithmic_solution_agnostic[0][0]} + {logarithmic_solution_agnostic[1][0]}*lnx') # => y = −58.7194 + 324.4875*lnx
