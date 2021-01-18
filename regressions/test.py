@@ -25,4 +25,4 @@ print(f'Exponential Equation: y = {exponential_solution[0][0]}*{exponential_solu
 print(f'Logarithmic Matrix: {logarithmic_solution}') # => [[5.0], [6.8268]]
 print(f'Logarithmic Equation: y = {logarithmic_solution[0][0]} + {logarithmic_solution[1][0]}*lnx') # => y = 5.0 + 6.8268*lnx
 print(f'Rational Matrix: {rational_solution}') # => [[2.0], [-3.0]]
-print(f'Rational Equation: y = x / ({rational_solution[0][0]}x + {rational_solution[1][0]})') # => [[2.0], [-3.0]]
+print(f'Rational Equation: y = x / ({rational_solution[0][0]}x + {rational_solution[1][0]})') # => y = x / (2.0x + -3.0)

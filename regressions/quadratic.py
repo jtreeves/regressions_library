@@ -1,5 +1,5 @@
 from matrices.multiplication import multiplication_3d, multiplication_vector_3d
-from matrices.transpose import transpose_3d
+from matrices.transpose import transpose
 from matrices.inverse import inverse_3d
 
 def quadratic(data):
@@ -13,7 +13,7 @@ def quadratic(data):
         [data[1][1]],
         [data[2][1]]
     ]
-    transposition = transpose_3d(independent_matrix)
+    transposition = transpose(independent_matrix)
     product = multiplication_3d(transposition, independent_matrix)
     inversion = inverse_3d(product)
     second_product = multiplication_3d(inversion, transposition)
