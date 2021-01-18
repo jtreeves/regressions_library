@@ -1,6 +1,9 @@
 from .determinant import determinant
 
 def diminished(matrix, row, column):
+    print(f'matrix: {matrix}')
+    print(f'row: {row}')
+    print(f'column: {column}')
     result = []
     for m in range(len(matrix)):
         print(f'm: {m}')
