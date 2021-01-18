@@ -43,7 +43,7 @@ def multiplication_all(matrix_one, matrix_two):
     for m in range(len(matrix_one)):
         result.append([])
         for n in range(len(matrix_two[0])):
-            result[m].append(dot_product(matrix_one[n], matrix_two[m]))
+            result[m].append(dot_product(matrix_one[m], columns(matrix_two)[n]))
     return result
 
 def multiplication_vector_3d(matrix, vector):
