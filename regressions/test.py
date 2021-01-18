@@ -38,20 +38,21 @@ exponential_solution_agnostic = exponential(agnostic_set)
 logarithmic_solution = logarithmic(logarithmic_set)
 logarithmic_solution_agnostic = logarithmic(agnostic_set)
 
-print(f'Linear Matrix: {linear_solution}') # => [[0.2], [4.6]]
-print(f'Linear Equation: y = {linear_solution[0][0]}x + {linear_solution[1][0]}') # => y = 0.2x + 4.6
-print(f'Linear Matrix 3: {linear_solution_3}') # => [[2.0], [3.0]]
-print(f'Linear Equation 3: y = {linear_solution_3[0][0]}x + {linear_solution_3[1][0]}') # => y = 2.0x + 3.0
-print(f'Linear Matrix 10: {linear_solution_10}') # => [[1.2242], [-0.1333]]
-print(f'Linear Equation 10: y = {linear_solution_10[0][0]}x + {linear_solution_10[1][0]}') # => y = 1.2242x + -0.1333
-print(f'Linear Matrix Agnostic: {linear_solution_agnostic}') # => [[79.7212], [−7.0667]]
-print(f'Linear Equation Agnostic: y = {linear_solution_agnostic[0][0]}x + {linear_solution_agnostic[1][0]}') # => y = 79.7212x + −7.0667
+# print(f'Linear Matrix: {linear_solution}') # => [[0.2], [4.6]]
+# print(f'Linear Equation: y = {linear_solution[0][0]}x + {linear_solution[1][0]}') # => y = 0.2x + 4.6
+# print(f'Linear Matrix 3: {linear_solution_3}') # => [[2.0], [3.0]]
+# print(f'Linear Equation 3: y = {linear_solution_3[0][0]}x + {linear_solution_3[1][0]}') # => y = 2.0x + 3.0
+# print(f'Linear Matrix 10: {linear_solution_10}') # => [[1.2242], [-0.1333]]
+# print(f'Linear Equation 10: y = {linear_solution_10[0][0]}x + {linear_solution_10[1][0]}') # => y = 1.2242x + -0.1333
+print(f"Linear Matrix Agnostic: {linear_solution_agnostic['solution']}") # => [[79.7212], [−7.0667]]
+print(f"Linear Error Agnostic: {linear_solution_agnostic['weakness']}") # => [[79.7212], [−7.0667]]
+# print(f'Linear Equation Agnostic: y = {linear_solution_agnostic[0][0]}x + {linear_solution_agnostic[1][0]}') # => y = 79.7212x + −7.0667
 print(f'Quadratic Matrix: {quadratic_solution}') # => [[1.0], [2.0], [1.0]]
 print(f'Quadratic Equation: y = {quadratic_solution[0][0]}x^2 + {quadratic_solution[1][0]}x + {quadratic_solution[2][0]}') # => y = 1.0x^2 + 2.0x + 1.0
 print(f'Quadratic Matrix 5: {quadratic_solution_5}') # => [[−6.3571], [38.6429], [−30.8000]]
 print(f'Quadratic Equation 5: y = {quadratic_solution_5[0][0]}x^2 + {quadratic_solution_5[1][0]}x + {quadratic_solution_5[2][0]}') # => y = −6.3571x^2 + 38.6429x + −30.8000
-print(f'Quadratic Matrix 10: {quadratic_solution_10}') # => [[-18.3907], [4.5614], [-0.0259]] // BUT THESE ARE REVERSED
-print(f'Quadratic Equation 10: y = {quadratic_solution_10[0][0]}x^2 + {quadratic_solution_10[1][0]}x + {quadratic_solution_10[2][0]}') # => y = -18.3907x^2 + 4.5614x + -0.0259 // BUT THESE ARE REVERSED
+print(f'Quadratic Matrix 10: {quadratic_solution_10}') # => [[-0.0259], [4.5614], [-18.3907]]
+print(f'Quadratic Equation 10: y = {quadratic_solution_10[0][0]}x^2 + {quadratic_solution_10[1][0]}x + {quadratic_solution_10[2][0]}') # => y = -0.0259x^2 + 4.5614x + -18.3907
 print(f'Quadratic Matrix Agnostic: {quadratic_solution_agnostic}') # => [[−1.6515], [97.8879], [−43.4000]]
 print(f'Quadratic Equation Agnostic: y = {quadratic_solution_agnostic[0][0]}x^2 + {quadratic_solution_agnostic[1][0]}x + {quadratic_solution_agnostic[2][0]}') # => y = −1.6515x^2 + 97.8879x + −43.4000
 print(f'Cubic Matrix: {cubic_solution}') # => [[3.0], [-2.0], [-5.0], [10.0]]
