@@ -1,9 +1,12 @@
 from matrices.addition import addition
 from matrices.scalar import scalar
 from matrices.multiplication import multiplication
+from matrices.magnitude import magnitude
 
 def error(independent, dependent, solution):
     product = multiplication(independent, solution)
-    negation = scalar(product, -1)
-    result = addition(dependent, negation)
+    negation = scalar(dependent, -1)
+    array = addition(product, negation)
+    norm = magnitude(array)
+    result = norm**2
     return result
