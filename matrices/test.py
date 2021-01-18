@@ -2,12 +2,12 @@ from .addition import addition
 from .multiplication import multiplication, multiplication_vector
 from .scalar import scalar
 from .transpose import transpose
-from .determinant import determinant
+from .determinant import determinant, diminished
 from .dot_product import dot_product
 from .columns import columns
 from .inverse import inverse, inverse_3d
 from .cofactors import cofactors
-from .minors import minors, diminished
+from .minors import minors
 
 first_input_matrix = [
     [5, 8],
