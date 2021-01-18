@@ -4,7 +4,7 @@ from .scalar import scalar
 from .transpose import transpose
 from .determinant import determinant, diminished
 from .dot_product import dot_product
-from .columns import columns
+from .column import column
 from .inverse import inverse
 from .cofactors import cofactors
 from .minors import minors
@@ -54,7 +54,6 @@ second_vector = [
 
 scalar_number = -7
 
-columns_first = columns(first_input_matrix)
 addition_output_matrix = addition(first_input_matrix, second_input_matrix)
 result_2x3 = addition(first_2x3, second_2x3)
 multiplication_output_matrix = multiplication(first_input_matrix, second_input_matrix)
@@ -66,7 +65,7 @@ transpose_output_matrix = transpose(first_input_matrix)
 transpose_3d = transpose(first_3d_input_matrix)
 transpose_2x3 = transpose(first_2x3)
 determinant_output = determinant(first_input_matrix)
-dot_product_output = dot_product(first_input_matrix[0], columns(second_input_matrix)[0])
+dot_product_output = dot_product(first_input_matrix[0], transpose(second_input_matrix)[0])
 inverse_output = inverse(first_input_matrix)
 determinant_output_3d = determinant(first_3d_input_matrix)
 inverse_output_3d = inverse(second_3d_input_matrix)
@@ -74,7 +73,6 @@ cofactors_3d = cofactors(first_3d_input_matrix)
 diminished_matrix = diminished(first_3d_input_matrix, 1, 2)
 minors_3d = minors(first_3d_input_matrix)
 
-print(f'Columns: {columns_first}')
 print(f'Addition: {addition_output_matrix}') # => [[9, 9], [9, 6]]
 print(f'Non-Square Addition: {result_2x3}') # => [[9, 7, -6], [-4, 7, 6]]
 print(f'Multiplication: {multiplication_output_matrix}') # => [[76, 29], [29, 11]]
