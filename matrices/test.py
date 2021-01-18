@@ -1,6 +1,6 @@
 from .addition import addition
 from .multiplication import multiplication
-from .scalar import scalar
+from .scalar import scalar, scalar_all
 from .transpose import transpose
 from .determinant import determinant, determinant_3d
 from .dot_product import dot_product
@@ -45,6 +45,7 @@ addition_output_matrix = addition(first_input_matrix, second_input_matrix)
 result_2x3 = addition(first_2x3, second_2x3)
 multiplication_output_matrix = multiplication(first_input_matrix, second_input_matrix)
 scalar_output_matrix = scalar(first_input_matrix, scalar_number)
+scalar_2x3 = scalar_all(first_2x3, scalar_number)
 transpose_output_matrix = transpose(first_input_matrix)
 determinant_output = determinant(first_input_matrix)
 dot_product_output = dot_product(first_input_matrix[0], columns(second_input_matrix)[0])
@@ -56,6 +57,7 @@ print(f'Addition: {addition_output_matrix}') # => [[9, 9], [9, 6]]
 print(f'Non-Square Addition: {result_2x3}') # => [[9, 7, -6], [-4, 7, 6]]
 print(f'Multiplication: {multiplication_output_matrix}') # => [[76, 29], [29, 11]]
 print(f'Scalar: {scalar_output_matrix}') # => [[-35, -56], [-14, -21]]
+print(f'Non-Square Scalar: {scalar_2x3}') # => [[-14, -42, 63], [-28, -35, -7]]
 print(f'Transpose: {transpose_output_matrix}') # => [[5, 2], [8, 3]]
 print(f'Determinant: {determinant_output}') # => -1
 print(f'Dot Product: {dot_product_output}') # => 76
