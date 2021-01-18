@@ -1,7 +1,7 @@
 from .addition import addition
 from .multiplication import multiplication
 from .scalar import scalar
-from .transpose import transpose
+from .transpose import transpose, transpose_3d, transpose_all
 from .determinant import determinant, determinant_3d
 from .dot_product import dot_product
 from .columns import columns
@@ -48,6 +48,9 @@ multiplication_output_matrix = multiplication(first_input_matrix, second_input_m
 scalar_output_matrix = scalar(first_input_matrix, scalar_number)
 scalar_2x3 = scalar(first_2x3, scalar_number)
 transpose_output_matrix = transpose(first_input_matrix)
+transpose_all_output_matrix = transpose_all(first_input_matrix)
+transpose_3d_reg = transpose_3d(first_3d_input_matrix)
+transpose_3d_all = transpose_all(first_3d_input_matrix)
 determinant_output = determinant(first_input_matrix)
 dot_product_output = dot_product(first_input_matrix[0], columns(second_input_matrix)[0])
 inverse_output = inverse(first_input_matrix)
@@ -60,7 +63,10 @@ print(f'Non-Square Addition: {result_2x3}') # => [[9, 7, -6], [-4, 7, 6]]
 print(f'Multiplication: {multiplication_output_matrix}') # => [[76, 29], [29, 11]]
 print(f'Scalar: {scalar_output_matrix}') # => [[-35, -56], [-14, -21]]
 print(f'Non-Square Scalar: {scalar_2x3}') # => [[-14, -42, 63], [-28, -35, -7]]
-print(f'Transpose: {transpose_output_matrix}') # => [[5, 2], [8, 3]]
+print(f'Transpose Reg: {transpose_output_matrix}') # => [[5, 2], [8, 3]]
+print(f'Transpose All: {transpose_all_output_matrix}') # => [[5, 2], [8, 3]]
+print(f'Transpose 3-D Reg: {transpose_3d_reg}') # => [[6, 4, 2], [1, -2, 8], [1, 5, 7]]
+print(f'Transpose 3-D All: {transpose_3d_all}') # => [[6, 4, 2], [1, -2, 8], [1, 5, 7]]
 print(f'Determinant: {determinant_output}') # => -1
 print(f'Dot Product: {dot_product_output}') # => 76
 print(f'Inverse: {inverse_output}') # => [[-3, 8], [2, -5]]

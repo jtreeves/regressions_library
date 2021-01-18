@@ -25,3 +25,11 @@ def transpose_3d(matrix):
         [r3c1, r3c2, r3c3]
     ]
     return result
+
+def transpose_all(matrix):
+    result = []
+    for m in range(len(matrix)):
+        result.append([])
+        for n in range(len(matrix[0])):
+            result[m].append(matrix[n][m])
+    return result
