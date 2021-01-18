@@ -28,9 +28,6 @@ def multiplication_3d(matrix_one, matrix_two):
     r2c1 = dot_product(matrix_one[1], columns(matrix_two)[0])
     r2c2 = dot_product(matrix_one[1], columns(matrix_two)[1])
     r2c3 = dot_product(matrix_one[1], columns(matrix_two)[2])
-    r2c1 = dot_product(matrix_one[1], columns(matrix_two)[0])
-    r2c2 = dot_product(matrix_one[1], columns(matrix_two)[1])
-    r2c3 = dot_product(matrix_one[1], columns(matrix_two)[2])
     r3c1 = dot_product(matrix_one[2], columns(matrix_two)[0])
     r3c2 = dot_product(matrix_one[2], columns(matrix_two)[1])
     r3c3 = dot_product(matrix_one[2], columns(matrix_two)[2])
@@ -39,6 +36,14 @@ def multiplication_3d(matrix_one, matrix_two):
         [r2c1, r2c2, r2c3],
         [r3c1, r3c2, r3c3]
     ]
+    return result
+
+def multiplication_all(matrix_one, matrix_two):
+    result = []
+    for m in range(len(matrix_one)):
+        result.append([])
+        for n in range(len(matrix_two[0])):
+            result[m].append(dot_product(matrix_one[m], matrix_two[n]))
     return result
 
 def multiplication_vector_3d(matrix, vector):
