@@ -5,6 +5,7 @@ from .rational import rational
 from .hyperbolic import hyperbolic
 from .exponential import exponential
 from .logarithmic import logarithmic
+from .best import best
 
 linear_set = [[2, 5], [7, 6]]
 linear_set_3 = [[1, 5], [2, 7], [3, 9]]
@@ -39,6 +40,7 @@ exponential_solution = exponential(exponential_set)
 exponential_solution_agnostic = exponential(agnostic_set)
 logarithmic_solution = logarithmic(logarithmic_set)
 logarithmic_solution_agnostic = logarithmic(agnostic_set)
+best_solution_agnostic = best(agnostic_set)
 
 # print(f'Linear Matrix: {linear_solution}') # => [[0.2], [4.6]]
 # print(f'Linear Equation: y = {linear_solution[0][0]}x + {linear_solution[1][0]}') # => y = 0.2x + 4.6
@@ -84,3 +86,5 @@ print(f"Exponential Agnostic Error: {exponential_solution_agnostic['error']}") #
 print(f"Logarithmic Agnostic Constants: {logarithmic_solution_agnostic['constants']}") # => [[−58.7194], [324.4875]]
 print(f"Logarithmic Agnostic Error: {logarithmic_solution_agnostic['error']}") # => 16.0616
 # print(f'Logarithmic Equation Agnostic: y = {logarithmic_solution_agnostic[0][0]} + {logarithmic_solution_agnostic[1][0]}*lnx') # => y = −58.7194 + 324.4875*lnx
+print(f"Best Function: {best_solution_agnostic['function']}")
+print(f"Best Error: {best_solution_agnostic['error']}")
