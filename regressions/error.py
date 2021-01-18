@@ -8,5 +8,5 @@ def error(independent, dependent, solution):
     negation = scalar(dependent, -1)
     array = addition(product, negation)
     norm = magnitude(array)
-    result = norm**2
+    result = norm**(1/2)
     return result

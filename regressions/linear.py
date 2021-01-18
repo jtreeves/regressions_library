@@ -14,9 +14,9 @@ def linear(data):
     inversion = inverse(product)
     second_product = multiplication(inversion, transposition)
     solution = multiplication(second_product, dependent_matrix)
-    weakness = error(independent_matrix, dependent_matrix, solution)
+    inaccuracy = error(independent_matrix, dependent_matrix, solution)
     result = {
-        'solution': solution,
-        'weakness': weakness
+        'constants': solution,
+        'error': inaccuracy
     }
     return result
