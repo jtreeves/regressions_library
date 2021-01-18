@@ -5,17 +5,19 @@ def diminished(matrix, row, column):
     print(f'row: {row}')
     print(f'column: {column}')
     result = []
-    for m in range(len(matrix)):
-        print(f'm: {m}')
-        if m != row:
-            print(f'm after if: {m}')
-            result.append([])
-            print(f'result middle: {result}')
+    length = len(matrix) - 1
+    for i in range(length):
+        print(f'i: {i}')
+        result.append([])
+        print(f'result initial: {result}')
+        for m in range(len(matrix)):
+            print(f'm before if: {m}')
             for n in range(len(matrix[0])):
-                print(f'n: {n}')
-                if n != column:
+                print(f'n before if: {n}')
+                if m != row and n!= column:
+                    print(f'm after if: {m}')
                     print(f'n after if: {n}')
-                    result[m].append(matrix[m][n])
+                    result[i].append(matrix[m][n])
                     print(f'result final: {result}')
     return result
 
