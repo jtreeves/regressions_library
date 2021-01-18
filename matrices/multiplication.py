@@ -9,9 +9,3 @@ def multiplication(matrix_one, matrix_two):
         for n in range(len(matrix_two[0])):
             result[m].append(dot_product(matrix_one[m], transpose(matrix_two)[n]))
     return result
-
-def multiplication_vector(matrix, vector):
-    result = []
-    for m in range(len(matrix)):
-        result.append([dot_product(matrix[m], column(vector))])
-    return result

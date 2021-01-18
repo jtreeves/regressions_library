@@ -1,5 +1,5 @@
 from .addition import addition
-from .multiplication import multiplication, multiplication_vector
+from .multiplication import multiplication
 from .scalar import scalar
 from .transpose import transpose
 from .determinant import determinant, diminished
@@ -57,8 +57,8 @@ scalar_number = -7
 addition_output_matrix = addition(first_input_matrix, second_input_matrix)
 result_2x3 = addition(first_2x3, second_2x3)
 multiplication_output_matrix = multiplication(first_input_matrix, second_input_matrix)
-multiplication_2x2_vector = multiplication_vector(first_input_matrix, first_vector)
-multiplication_3x3_vector = multiplication_vector(first_3d_input_matrix, second_vector)
+multiplication_2x2_vector = multiplication(first_input_matrix, first_vector)
+multiplication_3x3_vector = multiplication(first_3d_input_matrix, second_vector)
 scalar_output_matrix = scalar(first_input_matrix, scalar_number)
 scalar_2x3 = scalar(first_2x3, scalar_number)
 transpose_output_matrix = transpose(first_input_matrix)
