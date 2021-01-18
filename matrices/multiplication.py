@@ -28,3 +28,9 @@ def multiplication_vector_3d(matrix, vector):
         [r3c1]
     ]
     return result
+
+def multiplication_vector_all(matrix, vector):
+    result = []
+    for row in matrix:
+        result.append([dot_product(matrix[row], columns_vector(vector))])
+    return result
