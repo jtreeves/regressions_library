@@ -7,7 +7,7 @@ from .dot_product import dot_product
 from .columns import columns
 from .inverse import inverse, inverse_3d
 from .cofactors import cofactors
-from .minors import minors, minors_all
+from .minors import minors, minors_all, diminished
 
 first_input_matrix = [
     [5, 8],
@@ -70,6 +70,7 @@ inverse_output = inverse(first_input_matrix)
 determinant_output_3d = determinant_3d(first_3d_input_matrix)
 inverse_output_3d = inverse_3d(second_3d_input_matrix)
 cofactors_3d = cofactors(first_3d_input_matrix)
+diminished_matrix = diminished(first_3d_input_matrix, 1, 2)
 minors_3d = minors(first_3d_input_matrix)
 minors_all_3d = minors_all(first_3d_input_matrix)
 
@@ -89,5 +90,6 @@ print(f'Inverse: {inverse_output}') # => [[-3, 8], [2, -5]]
 print(f'3-D Determinant: {determinant_output_3d}') # => -306
 print(f'3-D Inverse: {inverse_output_3d}') # => [[0.2, 0.2, 0], [-0.2, 0.3, 1], [0.2, -0.3, 0]]
 print(f'Cofactors 3-D: {cofactors_3d}') # => [[6, -1, 1], [-4, -2, -5], [2, -8, 7]]
+print(f'Diminished: {diminished_matrix}')
 print(f'Minors 3-D Reg: {minors_3d}') # => [[-54, 18, 36], [-1, 40, 46], [7, 26, -16]]
 print(f'Minors 3-D All: {minors_all_3d}') # => [[-54, 18, 36], [-1, 40, 46], [7, 26, -16]]
