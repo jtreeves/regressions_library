@@ -2,6 +2,7 @@ from .linear import linear
 from .quadratic import quadratic
 from .cubic import cubic
 from .rational import rational
+from .hyperbolic import hyperbolic
 from .exponential import exponential
 from .logarithmic import logarithmic
 
@@ -24,6 +25,7 @@ quadratic_solution_10 = quadratic(quadratic_set_10)
 cubic_solution = cubic(cubic_set)
 cubic_solution_10 = cubic(cubic_set_10)
 rational_solution = rational(rational_set)
+hyperbolic_solution = hyperbolic(rational_set)
 exponential_solution = exponential(exponential_set)
 logarithmic_solution = logarithmic(logarithmic_set)
 
@@ -43,6 +45,8 @@ print(f'Cubic Matrix 10: {cubic_solution_10}') # => [[1.2568], [-20.3811], [95.3
 print(f'Cubic Equation 10: y = {cubic_solution_10[0][0]}x^3 + {cubic_solution_10[1][0]}x^2 + {cubic_solution_10[2][0]}x + {cubic_solution_10[3][0]}') # => y = 1.2568x^3 + -20.3811x^2 + 95.3015x + -80.6667
 print(f'Rational Matrix: {rational_solution}') # => [[2.0], [-3.0]]
 print(f'Rational Equation: y = x / ({rational_solution[0][0]}x + {rational_solution[1][0]})') # => y = x / (2.0x + -3.0)
+print(f'Hyperbolic Matrix: {hyperbolic_solution}') # => [[2.0], [-3.0]]
+print(f'Hyperbolic Equation: y = x / ({hyperbolic_solution[0][0]}x + {hyperbolic_solution[1][0]})') # => y = 2.0*(1/x) + -3.0
 print(f'Exponential Matrix: {exponential_solution}') # => [[3.0], [2.0]]
 print(f'Exponential Equation: y = {exponential_solution[0][0]}*{exponential_solution[1][0]}^x') # => y = 3.0*2.0^x
 print(f'Logarithmic Matrix: {logarithmic_solution}') # => [[5.0], [6.8268]]
