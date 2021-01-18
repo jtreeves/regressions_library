@@ -22,17 +22,20 @@ def diminished(matrix, row, column):
         result.append(storage[key])
     return result
 
-def determinant_all(matrix):
-    result = 0
-    alternating = []
-    minors = []
-    leads = matrix[0]
-    for i in range(len(leads)):
-        minors.append(diminished(matrix, 0, i))
-        if i % 2 == 0:
-            alternating.append(leads[i])
-        else:
-            alternating.append(-1 * leads[i])
-    for j in range(len(alternating)):
-        result += alternating[j] * determinant(minors[j])
+def determinant_all(matrix, result = 0):
+    if len(matrix) == 1:
+        result += matrix[0][0]
+        return result
+    else:
+        alternating = []
+        minors = []
+        leads = matrix[0]
+        for i in range(len(leads)):
+            minors.append(diminished(matrix, 0, i))
+            if i % 2 == 0:
+                alternating.append(leads[i])
+            else:
+                alternating.append(-1 * leads[i])
+        for j in range(len(alternating)):
+            result += alternating[j] * determinant_all(minors[j])
     return result
