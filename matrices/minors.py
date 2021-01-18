@@ -10,12 +10,13 @@ def diminished(matrix, row, column):
         if m != row:
             print(f'm after if: {m}')
             result.append([])
+            print(f'result middle: {result}')
             for n in range(len(matrix[0])):
                 print(f'n: {n}')
                 if n != column:
                     print(f'n after if: {n}')
                     result[m].append(matrix[m][n])
-                    print(f'result: {result}')
+                    print(f'result final: {result}')
     return result
 
 def minors(matrix):
