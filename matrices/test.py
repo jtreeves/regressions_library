@@ -1,5 +1,5 @@
 from .addition import addition
-from .multiplication import multiplication
+from .multiplication import multiplication, multiplication_vector, multiplication_vector_3d, multiplication_vector_all
 from .scalar import scalar
 from .transpose import transpose
 from .determinant import determinant, determinant_3d
@@ -39,12 +39,27 @@ second_2x3 = [
     [-8, 2, 5]
 ]
 
+first_vector = [
+    [2],
+    [3]
+]
+
+second_vector = [
+    [2],
+    [3],
+    [5]
+]
+
 scalar_number = -7
 
 columns_first = columns(first_input_matrix)
 addition_output_matrix = addition(first_input_matrix, second_input_matrix)
 result_2x3 = addition(first_2x3, second_2x3)
 multiplication_output_matrix = multiplication(first_input_matrix, second_input_matrix)
+multiplication_2x2_vector = multiplication_vector(first_input_matrix, first_vector)
+multiplication_3x3_vector = multiplication_vector_3d(first_3d_input_matrix, second_vector)
+multiplication_2x2_vector_all = multiplication_vector_all(first_input_matrix, first_vector)
+multiplication_3x3_vector_all = multiplication_vector_all(first_3d_input_matrix, second_vector)
 scalar_output_matrix = scalar(first_input_matrix, scalar_number)
 scalar_2x3 = scalar(first_2x3, scalar_number)
 transpose_output_matrix = transpose(first_input_matrix)
@@ -59,6 +74,10 @@ print(f'Columns: {columns_first}')
 print(f'Addition: {addition_output_matrix}') # => [[9, 9], [9, 6]]
 print(f'Non-Square Addition: {result_2x3}') # => [[9, 7, -6], [-4, 7, 6]]
 print(f'Multiplication: {multiplication_output_matrix}') # => [[76, 29], [29, 11]]
+print(f'Multiplication 2x2 Reg: {multiplication_2x2_vector}')
+print(f'Multiplication 2x2 All: {multiplication_2x2_vector_all}')
+print(f'Multiplication 3x3 Reg: {multiplication_3x3_vector}')
+print(f'Multiplication 3x3 All: {multiplication_3x3_vector_all}')
 print(f'Scalar: {scalar_output_matrix}') # => [[-35, -56], [-14, -21]]
 print(f'Non-Square Scalar: {scalar_2x3}') # => [[-14, -42, 63], [-28, -35, -7]]
 print(f'Transpose Reg: {transpose_output_matrix}') # => [[5, 2], [8, 3]]
