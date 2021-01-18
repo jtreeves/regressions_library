@@ -1,14 +1,3 @@
-def determinant(matrix):
-    result = matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]
-    return result
-
-def determinant_3d(matrix):
-    right_determinant = determinant([[matrix[1][1], matrix[1][2]], [matrix[2][1], matrix[2][2]]])
-    spread_determinant = determinant([[matrix[1][0], matrix[1][2]], [matrix[2][0], matrix[2][2]]])
-    left_determinant = determinant([[matrix[1][0], matrix[1][1]], [matrix[2][0], matrix[2][1]]])
-    result = matrix[0][0] * right_determinant - matrix[0][1] * spread_determinant + matrix[0][2] * left_determinant
-    return result
-
 def diminished(matrix, row, column):
     result = []
     storage = {}
@@ -22,7 +11,7 @@ def diminished(matrix, row, column):
         result.append(storage[key])
     return result
 
-def determinant_all(matrix, result = 0):
+def determinant(matrix, result = 0):
     if len(matrix) == 1:
         result += matrix[0][0]
         return result
@@ -37,5 +26,5 @@ def determinant_all(matrix, result = 0):
             else:
                 alternating.append(-1 * leads[i])
         for j in range(len(alternating)):
-            result += alternating[j] * determinant_all(minors[j])
+            result += alternating[j] * determinant(minors[j])
     return result

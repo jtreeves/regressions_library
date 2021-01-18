@@ -2,7 +2,7 @@ from .addition import addition
 from .multiplication import multiplication, multiplication_vector
 from .scalar import scalar
 from .transpose import transpose
-from .determinant import determinant, determinant_3d, determinant_all
+from .determinant import determinant
 from .dot_product import dot_product
 from .columns import columns
 from .inverse import inverse, inverse_3d
@@ -65,11 +65,9 @@ scalar_2x3 = scalar(first_2x3, scalar_number)
 transpose_output_matrix = transpose(first_input_matrix)
 transpose_3d = transpose(first_3d_input_matrix)
 determinant_output = determinant(first_input_matrix)
-determinant_all_output = determinant_all(first_input_matrix)
 dot_product_output = dot_product(first_input_matrix[0], columns(second_input_matrix)[0])
 inverse_output = inverse(first_input_matrix)
-determinant_output_3d = determinant_3d(first_3d_input_matrix)
-determinant_all_output_3d = determinant_all(first_3d_input_matrix)
+determinant_output_3d = determinant(first_3d_input_matrix)
 inverse_output_3d = inverse_3d(second_3d_input_matrix)
 cofactors_3d = cofactors(first_3d_input_matrix)
 diminished_matrix = diminished(first_3d_input_matrix, 1, 2)
@@ -85,12 +83,10 @@ print(f'Scalar: {scalar_output_matrix}') # => [[-35, -56], [-14, -21]]
 print(f'Non-Square Scalar: {scalar_2x3}') # => [[-14, -42, 63], [-28, -35, -7]]
 print(f'Transpose Reg: {transpose_output_matrix}') # => [[5, 2], [8, 3]]
 print(f'Transpose 3-D Reg: {transpose_3d}') # => [[6, 4, 2], [1, -2, 8], [1, 5, 7]]
-print(f'Determinant Reg: {determinant_output}') # => -1
-print(f'Determinant All: {determinant_all_output}') # => -1
+print(f'Determinant 2x2: {determinant_output}') # => -1
 print(f'Dot Product: {dot_product_output}') # => 76
 print(f'Inverse: {inverse_output}') # => [[-3, 8], [2, -5]]
-print(f'3-D Determinant Reg: {determinant_output_3d}') # => -306
-print(f'3-D Determinant All: {determinant_all_output_3d}') # => -306
+print(f'Determinant 3x3: {determinant_output_3d}') # => -306
 print(f'3-D Inverse: {inverse_output_3d}') # => [[0.2, 0.2, 0], [-0.2, 0.3, 1], [0.2, -0.3, 0]]
 print(f'Cofactors 3-D: {cofactors_3d}') # => [[6, -1, 1], [-4, -2, -5], [2, -8, 7]]
 print(f'Diminished: {diminished_matrix}') # =>  [[6, 1], [2, 8]]
