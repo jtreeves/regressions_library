@@ -1,4 +1,5 @@
 from math import log, exp
+from .error import error
 from matrices.multiplication import multiplication
 from matrices.transpose import transpose
 from matrices.inverse import inverse
@@ -14,8 +15,13 @@ def exponential(data):
     inversion = inverse(product)
     second_product = multiplication(inversion, transposition)
     solution = multiplication(second_product, dependent_matrix)
-    result = [
+    constants = [
         [exp(solution[1][0])],
         [exp(solution[0][0])]
     ]
+    inaccuracy = error(independent_matrix, dependent_matrix, solution)
+    result = {
+        'constants': constants,
+        'error': inaccuracy
+    }
     return result

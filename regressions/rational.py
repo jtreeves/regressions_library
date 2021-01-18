@@ -1,3 +1,4 @@
+from .error import error
 from matrices.multiplication import multiplication
 from matrices.transpose import transpose
 from matrices.inverse import inverse
@@ -13,8 +14,13 @@ def rational(data):
     inversion = inverse(product)
     second_product = multiplication(inversion, transposition)
     solution = multiplication(second_product, dependent_matrix)
-    result = [
+    constants = [
         [solution[1][0]],
         [solution[0][0]]
     ]
+    inaccuracy = error(independent_matrix, dependent_matrix, solution)
+    result = {
+        'constants': constants,
+        'error': inaccuracy
+    }
     return result
