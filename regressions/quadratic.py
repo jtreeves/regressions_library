@@ -1,6 +1,6 @@
 from matrices.multiplication import multiplication, multiplication_vector
 from matrices.transpose import transpose
-from matrices.inverse import inverse_3d
+from matrices.inverse import inverse
 
 def quadratic(data):
     independent_matrix = [
@@ -15,7 +15,7 @@ def quadratic(data):
     ]
     transposition = transpose(independent_matrix)
     product = multiplication(transposition, independent_matrix)
-    inversion = inverse_3d(product)
+    inversion = inverse(product)
     second_product = multiplication(inversion, transposition)
     result = multiplication_vector(second_product, dependent_matrix)
     return result
