@@ -3,14 +3,11 @@ from matrices.transpose import transpose
 from matrices.inverse import inverse
 
 def rational(data):
-    independent_matrix = [
-        [1 / data[0][0], 1],
-        [1 / data[1][0], 1]
-    ]
-    dependent_matrix = [
-        [1 / data[0][1]],
-        [1 / data[1][1]]
-    ]
+    independent_matrix = []
+    dependent_matrix = []
+    for i in range(len(data)):
+        independent_matrix.append([1 / data[i][0], 1])
+        dependent_matrix.append([1 / data[i][1]])
     transposition = transpose(independent_matrix)
     product = multiplication(transposition, independent_matrix)
     inversion = inverse(product)
