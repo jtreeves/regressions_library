@@ -10,24 +10,36 @@ def determinant_3d(matrix):
     return result
 
 def determinant_all(matrix):
+    print(matrix)
     result = []
-    leads = []
-    return leads
+    alternating = []
+    leads = matrix[0]
+    print(leads)
+    for i in range(len(leads)):
+        if i % 2 == 0:
+            alternating.append(leads[i])
+        else:
+            alternating.append(-1 * leads[i])
+    print(alternating)
+    return alternating
 
-def cofactors(matrix):
+def diminished(matrix, row, column):
+    result = []
+    storage = {}
+    for m in range(len(matrix)):
+        if m != row:
+            storage[m] = []
+            for n in range(len(matrix[0])):
+                if n!= column:
+                    storage[m].append(matrix[m][n])
+    for key in storage:
+        result.append(storage[key])
+    return result
+
+def minors(matrix):
     result = []
     for m in range(len(matrix)):
         result.append([])
-        if m % 2 == 0:
-            for n in range(len(matrix[0])):
-                if n % 2 == 0:
-                    result[m].append(matrix[m][n])
-                else:
-                    result[m].append(-1 * matrix[m][n])
-        else:
-            for n in range(len(matrix[0])):
-                if n % 2 == 0:
-                    result[m].append(-1 * matrix[m][n])
-                else:
-                    result[m].append(matrix[m][n])
+        for n in range(len(matrix[0])):
+            result[m].append(determinant(diminished(matrix, m, n)))
     return result
