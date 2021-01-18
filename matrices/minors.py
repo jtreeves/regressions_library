@@ -1,27 +1,14 @@
 from .determinant import determinant
 
 def diminished(matrix, row, column):
-    print(f'matrix: {matrix}')
-    print(f'row: {row}')
-    print(f'column: {column}')
     result = []
     storage = {}
-    # length = len(matrix) - 1
-    # for i in range(length):
-    #     print(f'i: {i}')
-    #     result.append([])
     for m in range(len(matrix)):
-        print(f'm before if: {m}')
         if m != row:
-            print(f'm after if: {m}')
             storage[m] = []
-            print(f'storage initial: {storage}')
             for n in range(len(matrix[0])):
-                print(f'n before if: {n}')
                 if n!= column:
-                    print(f'n after if: {n}')
                     storage[m].append(matrix[m][n])
-                    print(f'storage final: {storage}')
     for key in storage:
         result.append(storage[key])
     return result
