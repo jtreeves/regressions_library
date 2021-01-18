@@ -8,10 +8,8 @@ def transpose(matrix):
 
 def transpose_all(matrix):
     result = []
-    rows = len(matrix[0])
-    columns = len(matrix)
-    for row in range(rows):
+    for m in range(len(matrix[0])):
         result.append([])
-        for column in range(columns):
-            result[row].append(matrix[column][row])
+        for n in range(len(matrix)):
+            result[m].append(matrix[n][m])
     return result
