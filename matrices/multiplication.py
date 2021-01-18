@@ -10,26 +10,6 @@ def multiplication(matrix_one, matrix_two):
     return result
 
 def multiplication_vector(matrix, vector):
-    r1c1 = dot_product(matrix[0], columns_vector(vector))
-    r2c1 = dot_product(matrix[1], columns_vector(vector))
-    result = [
-        [r1c1],
-        [r2c1]
-    ]
-    return result
-
-def multiplication_vector_3d(matrix, vector):
-    r1c1 = dot_product(matrix[0], columns_vector(vector))
-    r2c1 = dot_product(matrix[1], columns_vector(vector))
-    r3c1 = dot_product(matrix[2], columns_vector(vector))
-    result = [
-        [r1c1],
-        [r2c1],
-        [r3c1]
-    ]
-    return result
-
-def multiplication_vector_all(matrix, vector):
     result = []
     for m in range(len(matrix)):
         result.append([dot_product(matrix[m], columns_vector(vector))])

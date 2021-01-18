@@ -1,4 +1,4 @@
-from matrices.multiplication import multiplication, multiplication_vector_3d
+from matrices.multiplication import multiplication, multiplication_vector
 from matrices.transpose import transpose
 from matrices.inverse import inverse_3d
 
@@ -17,5 +17,5 @@ def cubic(data):
     product = multiplication(transposition, independent_matrix)
     inversion = inverse_3d(product)
     second_product = multiplication(inversion, transposition)
-    result = multiplication_vector_3d(second_product, dependent_matrix)
+    result = multiplication_vector(second_product, dependent_matrix)
     return result
