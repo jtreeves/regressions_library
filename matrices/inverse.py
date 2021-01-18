@@ -1,4 +1,4 @@
-from .scalar import scalar, scalar_3d
+from .scalar import scalar
 from .determinant import determinant, determinant_3d
 from .transpose import transpose_3d
 from .minors import minors
@@ -13,5 +13,5 @@ def inverse(matrix):
 def inverse_3d(matrix):
     determinant_reciprocal = 1 / determinant_3d(matrix)
     transform = transpose_3d(cofactors(minors(matrix)))
-    result = scalar_3d(transform, determinant_reciprocal)
+    result = scalar(transform, determinant_reciprocal)
     return result

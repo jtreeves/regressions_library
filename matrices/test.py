@@ -1,6 +1,6 @@
 from .addition import addition
 from .multiplication import multiplication
-from .scalar import scalar, scalar_all
+from .scalar import scalar
 from .transpose import transpose
 from .determinant import determinant, determinant_3d
 from .dot_product import dot_product
@@ -45,7 +45,7 @@ addition_output_matrix = addition(first_input_matrix, second_input_matrix)
 result_2x3 = addition(first_2x3, second_2x3)
 multiplication_output_matrix = multiplication(first_input_matrix, second_input_matrix)
 scalar_output_matrix = scalar(first_input_matrix, scalar_number)
-scalar_2x3 = scalar_all(first_2x3, scalar_number)
+scalar_2x3 = scalar(first_2x3, scalar_number)
 transpose_output_matrix = transpose(first_input_matrix)
 determinant_output = determinant(first_input_matrix)
 dot_product_output = dot_product(first_input_matrix[0], columns(second_input_matrix)[0])
