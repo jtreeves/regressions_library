@@ -1,5 +1,5 @@
 from math import log, exp
-from matrices.multiplication import multiplication, multiplication_vector
+from matrices.multiplication import multiplication
 from matrices.transpose import transpose
 from matrices.inverse import inverse
 
@@ -13,7 +13,7 @@ def exponential(data):
     product = multiplication(transposition, independent_matrix)
     inversion = inverse(product)
     second_product = multiplication(inversion, transposition)
-    solution = multiplication_vector(second_product, dependent_matrix)
+    solution = multiplication(second_product, dependent_matrix)
     result = [
         [exp(solution[1][0])],
         [exp(solution[0][0])]
