@@ -38,5 +38,5 @@ def determinant_all(matrix):
     print(alternating)
     print(minors)
     for j in range(len(alternating)):
-        result += leads[j] * determinant(minors[j])
+        result += alternating[j] * determinant(minors[j])
     return result
