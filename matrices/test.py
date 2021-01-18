@@ -1,7 +1,7 @@
 from .addition import addition
 from .multiplication import multiplication, multiplication_vector
 from .scalar import scalar
-from .transpose import transpose, transpose_all
+from .transpose import transpose
 from .determinant import determinant, diminished
 from .dot_product import dot_product
 from .columns import columns
@@ -63,10 +63,8 @@ multiplication_3x3_vector = multiplication_vector(first_3d_input_matrix, second_
 scalar_output_matrix = scalar(first_input_matrix, scalar_number)
 scalar_2x3 = scalar(first_2x3, scalar_number)
 transpose_output_matrix = transpose(first_input_matrix)
-transpose_all_output_matrix = transpose_all(first_input_matrix)
 transpose_3d = transpose(first_3d_input_matrix)
-transpose_all_3d = transpose_all(first_3d_input_matrix)
-transpose_2x3 = transpose_all(first_2x3)
+transpose_2x3 = transpose(first_2x3)
 determinant_output = determinant(first_input_matrix)
 dot_product_output = dot_product(first_input_matrix[0], columns(second_input_matrix)[0])
 inverse_output = inverse(first_input_matrix)
@@ -84,10 +82,8 @@ print(f'Multiplication Vector 2x2: {multiplication_2x2_vector}') # => [[34], [13
 print(f'Multiplication Vector 3x3: {multiplication_3x3_vector}') # => [[20], [27], [63]]
 print(f'Scalar: {scalar_output_matrix}') # => [[-35, -56], [-14, -21]]
 print(f'Non-Square Scalar: {scalar_2x3}') # => [[-14, -42, 63], [-28, -35, -7]]
-print(f'Transpose 2x2 Reg: {transpose_output_matrix}') # => [[5, 2], [8, 3]]
-print(f'Transpose 2x2 All: {transpose_all_output_matrix}') # => [[5, 2], [8, 3]]
-print(f'Transpose 3x3 Reg: {transpose_3d}') # => [[6, 4, 2], [1, -2, 8], [1, 5, 7]]
-print(f'Transpose 3x3 All: {transpose_all_3d}') # => [[6, 4, 2], [1, -2, 8], [1, 5, 7]]
+print(f'Transpose 2x2: {transpose_output_matrix}') # => [[5, 2], [8, 3]]
+print(f'Transpose 3x3: {transpose_3d}') # => [[6, 4, 2], [1, -2, 8], [1, 5, 7]]
 print(f'Transpose 2x3: {transpose_2x3}') # => [[2, 4], [6, 5], [-9, 1]]
 print(f'Determinant 2x2: {determinant_output}') # => -1
 print(f'Dot Product: {dot_product_output}') # => 76
