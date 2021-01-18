@@ -4,7 +4,3 @@ def magnitude(vector):
         summation += vector[i][0]**2
     result = summation**(1/2)
     return result
-
-u = [[3], [4]]
-norm = magnitude(u)
-print(norm)
