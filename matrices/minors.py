@@ -3,11 +3,16 @@ from .determinant import determinant
 def diminished(matrix, row, column):
     result = []
     for m in range(len(matrix)):
+        print(f'm: {m}')
         if m != row:
+            print(f'm after if: {m}')
             result.append([])
             for n in range(len(matrix[0])):
+                print(f'n: {n}')
                 if n != column:
+                    print(f'n after if: {n}')
                     result[m].append(matrix[m][n])
+                    print(f'result: {result}')
     return result
 
 def minors(matrix):
