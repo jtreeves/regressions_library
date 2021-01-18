@@ -1,3 +1,4 @@
+from .error import error
 from matrices.multiplication import multiplication
 from matrices.transpose import transpose
 from matrices.inverse import inverse
@@ -12,5 +13,10 @@ def linear(data):
     product = multiplication(transposition, independent_matrix)
     inversion = inverse(product)
     second_product = multiplication(inversion, transposition)
-    result = multiplication(second_product, dependent_matrix)
+    solution = multiplication(second_product, dependent_matrix)
+    error = error(independent_matrix, dependent_matrix, solution)
+    result = {
+        'solution': solution,
+        'error': error
+    }
     return result
