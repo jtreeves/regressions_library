@@ -31,6 +31,6 @@ def multiplication_vector_3d(matrix, vector):
 
 def multiplication_vector_all(matrix, vector):
     result = []
-    for row in matrix:
-        result.append([dot_product(matrix[row], columns_vector(vector))])
+    for m in range(len(matrix)):
+        result.append([dot_product(matrix[m], columns_vector(vector))])
     return result
