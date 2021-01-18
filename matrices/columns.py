@@ -7,7 +7,7 @@ def columns(matrix):
     return result
 
 def columns_vector(vector):
-    column_one = []
+    column = []
     for row in vector:
-        column_one.append(row[0])
-    return column_one
+        column.append(row[0])
+    return column
