@@ -46,7 +46,7 @@ print(f'Cubic Equation 10: y = {cubic_solution_10[0][0]}x^3 + {cubic_solution_10
 print(f'Rational Matrix: {rational_solution}') # => [[2.0], [-3.0]]
 print(f'Rational Equation: y = x / ({rational_solution[0][0]}x + {rational_solution[1][0]})') # => y = x / (2.0x + -3.0)
 print(f'Hyperbolic Matrix: {hyperbolic_solution}') # => [[2.0], [-3.0]]
-print(f'Hyperbolic Equation: y = x / ({hyperbolic_solution[0][0]}x + {hyperbolic_solution[1][0]})') # => y = 2.0*(1/x) + -3.0
+print(f'Hyperbolic Equation: y = {hyperbolic_solution[0][0]}*(1/x) + {hyperbolic_solution[1][0]}') # => y = 2.0*(1/x) + -3.0
 print(f'Exponential Matrix: {exponential_solution}') # => [[3.0], [2.0]]
 print(f'Exponential Equation: y = {exponential_solution[0][0]}*{exponential_solution[1][0]}^x') # => y = 3.0*2.0^x
 print(f'Logarithmic Matrix: {logarithmic_solution}') # => [[5.0], [6.8268]]
