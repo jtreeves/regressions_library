@@ -1,6 +1,3 @@
-from .minors import minors
-from .cofactors import cofactors
-
 def determinant(matrix):
     result = matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]
     return result
@@ -14,4 +11,23 @@ def determinant_3d(matrix):
 
 def determinant_all(matrix):
     result = []
+    leads = []
+    return leads
+
+def cofactors(matrix):
+    result = []
+    for m in range(len(matrix)):
+        result.append([])
+        if m % 2 == 0:
+            for n in range(len(matrix[0])):
+                if n % 2 == 0:
+                    result[m].append(matrix[m][n])
+                else:
+                    result[m].append(-1 * matrix[m][n])
+        else:
+            for n in range(len(matrix[0])):
+                if n % 2 == 0:
+                    result[m].append(-1 * matrix[m][n])
+                else:
+                    result[m].append(matrix[m][n])
     return result
