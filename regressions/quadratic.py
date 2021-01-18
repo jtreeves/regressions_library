@@ -3,16 +3,11 @@ from matrices.transpose import transpose
 from matrices.inverse import inverse
 
 def quadratic(data):
-    independent_matrix = [
-        [data[0][0]**2, data[0][0], 1],
-        [data[1][0]**2, data[1][0], 1],
-        [data[2][0]**2, data[2][0], 1]
-    ]
-    dependent_matrix = [
-        [data[0][1]],
-        [data[1][1]],
-        [data[2][1]]
-    ]
+    independent_matrix = []
+    dependent_matrix = []
+    for i in range(len(data)):
+        independent_matrix.append([data[i][0]**2, data[i][0], 1])
+        dependent_matrix.append([data[i][1]])
     transposition = transpose(independent_matrix)
     product = multiplication(transposition, independent_matrix)
     inversion = inverse(product)
