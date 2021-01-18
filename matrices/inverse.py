@@ -15,3 +15,9 @@ def inverse_3d(matrix):
     transform = transpose(cofactors(minors(matrix)))
     result = scalar(transform, determinant_reciprocal)
     return result
+
+def inverse_all(matrix):
+    determinant_reciprocal = 1 / determinant(matrix)
+    transform = transpose(cofactors(minors(matrix)))
+    result = scalar(transform, determinant_reciprocal)
+    return result
