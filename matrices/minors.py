@@ -16,12 +16,12 @@ def diminished(matrix, row, column):
             print(f'm after if: {m}')
             storage[m] = []
             print(f'storage initial: {storage}')
-        for n in range(len(matrix[0])):
-            print(f'n before if: {n}')
-            if n!= column:
-                print(f'n after if: {n}')
-                storage[m].append(matrix[m][n])
-                print(f'storage final: {storage}')
+            for n in range(len(matrix[0])):
+                print(f'n before if: {n}')
+                if n!= column:
+                    print(f'n after if: {n}')
+                    storage[m].append(matrix[m][n])
+                    print(f'storage final: {storage}')
     for key in storage:
         result.append(storage[key])
     return result
