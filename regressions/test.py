@@ -6,6 +6,7 @@ from .exponential import exponential
 from .logarithmic import logarithmic
 from .error import error
 from .best import best
+from .run_all import run_all
 
 linear_set = [[2, 5], [7, 6]]
 linear_set_3 = [[1, 5], [2, 7], [3, 9]]
@@ -21,6 +22,7 @@ exponential_set = [[1, 6], [2, 12]]
 logarithmic_set = [[1, 5], [9, 20]]
 agnostic_set = [[1, 3], [2, 147], [3, 286], [4, 352], [5, 423], [6, 510], [7, 591], [8, 451], [9, 689], [10, 862]]
 
+all_solutions = run_all(agnostic_set)
 linear_solution = linear(linear_set)
 linear_solution_3 = linear(linear_set_3)
 linear_solution_error = linear(linear_set_error)
@@ -40,6 +42,11 @@ exponential_solution_agnostic = exponential(agnostic_set)
 # logarithmic_solution = logarithmic(logarithmic_set)
 logarithmic_solution_agnostic = logarithmic(agnostic_set)
 best_solution_agnostic = best(agnostic_set)
+
+print(f"Linear Constants All: {all_solutions['options']['linear']['constants']}")
+print(f"Linear Error All: {all_solutions['options']['linear']['error']}")
+print(f"Best Choice Function All: {all_solutions['optimal']['function']}")
+print(f"Best Choice Error All: {all_solutions['optimal']['error']}")
 
 # print(f'Linear Matrix: {linear_solution}') # => [[0.2], [4.6]]
 # print(f'Linear Equation: y = {linear_solution[0][0]}x + {linear_solution[1][0]}') # => y = 0.2x + 4.6
