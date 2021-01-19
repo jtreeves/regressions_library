@@ -13,14 +13,10 @@ def best(data):
         'hyperbolic_error': hyperbolic(data)['error'],
         'exponential_error': exponential(data)['error'],
         'logarithmic_error': logarithmic(data)['error'],
-        'shortest': {
-            'function': 'linear_error',
-            'error': linear(data)['error']
-        }
     }
-    for evaluation in errors:
-        if errors[evaluation] < errors['shortest']['error']:
-            errors['shortest']['function'] = evaluation
-            errors['shortest']['error'] = errors[evaluation]
-    choice = errors['shortest']
+    minimum = min(errors, key=errors.get)
+    choice = {
+        'function': minimum,
+        'error': errors[minimum]
+    }
     return choice
