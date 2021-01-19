@@ -5,11 +5,8 @@ from matrices.magnitude import magnitude
 
 def error_new(data, equation):
     summation = 0
-    differences = []
     for i in range(len(data)):
-        differences.append(data[i][1] - equation(data[i][0]))
-    for j in range(len(differences)):
-        summation += differences[j]**2
+        summation += (data[i][1] - equation(data[i][0]))**2
     result = summation**(1/4)
     return result
 
