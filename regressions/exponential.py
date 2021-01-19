@@ -19,7 +19,8 @@ def exponential(data):
         [exp(solution[1][0])],
         [exp(solution[0][0])]
     ]
-    inaccuracy = error(independent_matrix, dependent_matrix, solution)
+    equation = lambda x: constants[0][0]*constants[1][0]**x
+    inaccuracy = error(data, equation)
     result = {
         'constants': constants,
         'error': inaccuracy

@@ -19,7 +19,8 @@ def logarithmic(data):
         [solution[1][0]],
         [solution[0][0]]
     ]
-    inaccuracy = error(independent_matrix, dependent_matrix, solution)
+    equation = lambda x: constants[0][0] + constants[1][0]*log(x)
+    inaccuracy = error(data, equation)
     result = {
         'constants': constants,
         'error': inaccuracy

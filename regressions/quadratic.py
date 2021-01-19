@@ -14,7 +14,8 @@ def quadratic(data):
     inversion = inverse(product)
     second_product = multiplication(inversion, transposition)
     solution = multiplication(second_product, dependent_matrix)
-    inaccuracy = error(independent_matrix, dependent_matrix, solution)
+    equation = lambda x: solution[0][0]*x**2 + solution[1][0]*x + solution[2][0]
+    inaccuracy = error(data, equation)
     result = {
         'constants': solution,
         'error': inaccuracy

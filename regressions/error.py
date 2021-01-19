@@ -1,8 +1,3 @@
-from matrices.addition import addition
-from matrices.scalar import scalar
-from matrices.multiplication import multiplication
-from matrices.magnitude import magnitude
-
 def error(data, equation):
     summation = 0
     for i in range(len(data)):

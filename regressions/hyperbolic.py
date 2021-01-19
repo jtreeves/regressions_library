@@ -14,7 +14,8 @@ def hyperbolic(data):
     inversion = inverse(product)
     second_product = multiplication(inversion, transposition)
     solution = multiplication(second_product, dependent_matrix)
-    inaccuracy = error(independent_matrix, dependent_matrix, solution)
+    equation = lambda x: solution[0][0]*(1/x) + solution[1][0]
+    inaccuracy = error(data, equation)
     result = {
         'constants': solution,
         'error': inaccuracy
