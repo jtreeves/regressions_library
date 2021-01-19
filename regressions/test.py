@@ -5,6 +5,7 @@ from .rational import rational
 from .hyperbolic import hyperbolic
 from .exponential import exponential
 from .logarithmic import logarithmic
+from .error import error_new
 from .best import best
 
 linear_set = [[2, 5], [7, 6]]
@@ -42,6 +43,11 @@ logarithmic_solution = logarithmic(logarithmic_set)
 logarithmic_solution_agnostic = logarithmic(agnostic_set)
 best_solution_agnostic = best(agnostic_set)
 
+def linear_equation(value):
+    return linear_solution_agnostic['constants'][0][0]*value + linear_solution_agnostic['constants'][1][0]
+
+linear_new_error = error_new(agnostic_set, linear_equation)
+
 # print(f'Linear Matrix: {linear_solution}') # => [[0.2], [4.6]]
 # print(f'Linear Equation: y = {linear_solution[0][0]}x + {linear_solution[1][0]}') # => y = 0.2x + 4.6
 # print(f'Linear Matrix 3: {linear_solution_3}') # => [[2.0], [3.0]]
@@ -50,6 +56,7 @@ best_solution_agnostic = best(agnostic_set)
 # print(f'Linear Equation 10: y = {linear_solution_10[0][0]}x + {linear_solution_10[1][0]}') # => y = 1.2242x + -0.1333
 print(f"Linear Agnostic Constants: {linear_solution_agnostic['constants']}") # => [[79.7212], [−7.0667]]
 print(f"Linear Agnostic Error: {linear_solution_agnostic['error']}") # => 15.0577
+print(f"Linear Agnostic New Error: {linear_new_error}") # => 15.0577
 # print(f"Linear 3 Constants: {linear_solution_error['constants']}") # => [[79.7212], [−7.0667]]
 # print(f"Linear 3 Error: {linear_solution_error['error']}") # => 1.5651
 # print(f'Linear Equation Agnostic: y = {linear_solution_agnostic[0][0]}x + {linear_solution_agnostic[1][0]}') # => y = 79.7212x + −7.0667
