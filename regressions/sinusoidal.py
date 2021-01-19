@@ -35,7 +35,7 @@ def sinusoidal(data):
     print(f'SINUSOIDAL Solution: {solution}')
     constant_b = (362880 * solution[0][0] / solution[8][0])**(1/8)
     constant_c = atan((-6720 * solution[1][0]) / ((constant_b**5) * solution[6][0]))
-    constant_a = (120 * solution[4][0]) / ((constant_b**5) * cos(constant_c))
+    constant_a = (-5040 * solution[2][0]) / ((constant_b**7) * cos(constant_c))
     constant_d = solution[9][0] - (constant_a * sin(constant_c))
     constants = [
         [constant_a],
