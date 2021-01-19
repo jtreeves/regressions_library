@@ -34,7 +34,7 @@ def sinusoidal(data):
     solution = multiplication(second_product, dependent_matrix)
     print(f'SINUSOIDAL Solution: {solution}')
     constant_b = (-12 * solution[4][0] / solution[2][0])**(1/2)
-    constant_c = atan2((-2 * solution[2][0]) / (constant_b * solution[1][0]))
+    constant_c = atan2((-2 * solution[2][0]), (constant_b * solution[1][0]))
     constant_a = solution[1][0] / (constant_b * cos(constant_c))
     constant_d = solution[0][0] - (constant_a * sin(constant_c))
     constants = [
