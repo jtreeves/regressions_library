@@ -14,12 +14,10 @@ def linear(data):
     inversion = inverse(product)
     second_product = multiplication(inversion, transposition)
     solution = multiplication(second_product, dependent_matrix)
-    def linear_equation(value):
-        return solution[0][0]*value + solution[1][0]
-    inaccuracy = error(data, linear_equation)
+    equation = lambda x: solution[0][0]*x + solution[1][0]
+    inaccuracy = error(data, equation)
     result = {
         'constants': solution,
-        'error': inaccuracy,
-        'equation': linear_equation
+        'error': inaccuracy
     }
     return result
