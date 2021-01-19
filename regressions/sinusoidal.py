@@ -4,7 +4,6 @@ from numpy.linalg import inv
 from .error import error
 from matrices.multiplication import multiplication
 from matrices.transpose import transpose
-# from matrices.inverse import inverse
 
 def sinusoidal(data):
     independent_matrix = []
@@ -23,20 +22,13 @@ def sinusoidal(data):
             1
         ])
         dependent_matrix.append([data[i][1]])
-        print(f'SINUSOIDAL Independent Matrix: {independent_matrix}')
-        print(f'SINUSOIDAL Dependent Matrix: {dependent_matrix}')
     transposition = transpose(independent_matrix)
-    print(f'SINUSOIDAL Transposition: {transposition}')
     product = multiplication(transposition, independent_matrix)
-    print(f'SINUSOIDAL Product: {product}')
     product_matrix = matrix(product, dtype='float')
     inversion = inv(product_matrix)
-    print(f'SINUSOIDAL Inversion: {inversion}')
     inversion_list = matrix.tolist(inversion)
     second_product = multiplication(inversion_list, transposition)
-    print(f'SINUSOIDAL Second Product: {second_product}')
     solution = multiplication(second_product, dependent_matrix)
-    print(f'SINUSOIDAL Solution: {solution}')
     constant_b = (
         ((362880 * solution[0][0] / solution[8][0])**(1/8)) + 
         (((362880 * solution[0][0]) / (120 * solution[4][0]))**(1/4)) + 
@@ -105,7 +97,6 @@ def sinusoidal(data):
         [constant_c],
         [constant_d]
     ]
-    print(f'SINUSOIDAL Constants: {constants}')
     equation = lambda x: constants[0][0] * sin(constants[1][0]*x + constants[2][0]) + constants[3][0]
     inaccuracy = error(data, equation)
     result = {
