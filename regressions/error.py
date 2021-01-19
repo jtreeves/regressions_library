@@ -10,7 +10,7 @@ def error_new(data, equation):
         differences.append(data[i][1] - equation(data[i][0]))
     for j in range(len(differences)):
         summation += differences[j]**2
-    result = summation**(1/2)
+    result = summation**(1/4)
     return result
 
 def error(independent, dependent, solution):
