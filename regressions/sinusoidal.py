@@ -47,7 +47,7 @@ def sinusoidal(data):
     equation = lambda x: constants[0][0] * sin(constants[1][0]*x + constants[2][0]) + constants[3][0]
     inaccuracy = error(data, equation)
     result = {
-        'constants': solution,
+        'constants': constants,
         'error': inaccuracy
     }
     return result

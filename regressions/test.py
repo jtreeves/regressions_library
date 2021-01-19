@@ -22,8 +22,8 @@ print(f"Exponential Error: {all_solutions['options']['exponential']['error']}") 
 print(f"Logarithmic Constants: {all_solutions['options']['logarithmic']['constants']}") # => [[−58.7194], [324.4875]]
 print(f"Logarithmic Error: {all_solutions['options']['logarithmic']['error']}") # => 16.0616
 
-print(f"Sinusoidal Constants: {all_solutions['options']['sinusoidal']['constants']}") # => [[9964.000054521777], [-27758.62987563369], [30908.45155497914], [-18419.33392729645], [6606.09877951361], [-1494.0753819970487], [214.5128404050165], [-18.941550110484073], [0.9366815605039633], [-0.01982197961624288]] // BUT THESE ARE THE POWER EXPANSIONS
-print(f"Sinusoidal Error: {all_solutions['options']['sinusoidal']['error']}") # => ???????????????
+print(f"Sinusoidal Constants: {all_solutions['options']['sinusoidal']['constants']}") # => [[29913.7759], [1.5941], [-2.1920], [34287.6855]]
+print(f"Sinusoidal Error: {all_solutions['options']['sinusoidal']['error']}") # => 360.0757
 
 print(f"Best Choice Function: {all_solutions['optimal']['function']}") # => cubic
 print(f"Best Choice Error: {all_solutions['optimal']['error']}") # => 12.7299
