@@ -9,16 +9,16 @@ def sinusoidal(data):
     dependent_matrix = []
     for i in range(len(data)):
         independent_matrix.append([
-            1,
-            data[i][0],
-            data[i][0]**2,
-            data[i][0]**3,
-            data[i][0]**4,
-            data[i][0]**5,
-            data[i][0]**6,
-            data[i][0]**7,
+            data[i][0]**9,
             data[i][0]**8,
-            data[i][0]**9
+            data[i][0]**7,
+            data[i][0]**6,
+            data[i][0]**5,
+            data[i][0]**4,
+            data[i][0]**3,
+            data[i][0]**2,
+            data[i][0],
+            1
         ])
         dependent_matrix.append([data[i][1]])
         print(f'SINUSOIDAL Independent Matrix: {independent_matrix}')
