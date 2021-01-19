@@ -7,8 +7,8 @@ cyclic_set = [[1, 33], [2, 27], [3, 45], [4, 56], [5, 69], [6, 84], [7, 88], [8,
 # all_solutions = run_all(agnostic_set)
 cyclic_solution = sinusoidal(cyclic_set)
 
-print(f"Sinusoidal Constants: {cyclic_solution['constants']}") # => [[28.2382], [0.5236], [-1.8948], [53.5833]] // VERSUS WHAT I GOT: [[1126.9119], [1.1709], [-2.1711], [1290.0787]]
-print(f"Sinusoidal Error: {cyclic_solution['error']}") # => NOT SURE WHAT I SHOULD HAVE EXPECTED, BUT I GOT: 69.6112
+print(f"Sinusoidal Constants: {cyclic_solution['constants']}") # => [[28.2382], [0.5236], [-1.8948], [53.5833]] // VERSUS WHAT I GOT: [[1126.9119], [1.1709], [-2.1711], [1290.0787]] // NEW VALUES: [[-22022.99146071105], [0.6013015109266755], [0.6276552476317352], [13293.135715281009]]
+print(f"Sinusoidal Error: {cyclic_solution['error']}") # => NOT SURE WHAT I SHOULD HAVE EXPECTED, BUT I GOT: 69.6112 // NEW ERROR: 258.3859834434484
 
 # print(f"Linear Constants: {all_solutions['options']['linear']['constants']}") # => [[79.7212], [−7.0667]]
 # print(f"Linear Error: {all_solutions['options']['linear']['error']}") # => 15.0577
