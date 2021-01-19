@@ -13,8 +13,10 @@ def hyperbolic(data):
         dependent_matrix.append([data[i][1]])
     transposition = transpose(independent_matrix)
     product = multiplication(transposition, independent_matrix)
-    inversion = inverse(product)
-    second_product = multiplication(inversion, transposition)
+    product_matrix = matrix(product, dtype='float')
+    inversion = inv(product_matrix)
+    inversion_list = matrix.tolist(inversion)
+    second_product = multiplication(inversion_list, transposition)
     solution = multiplication(second_product, dependent_matrix)
     equation = lambda x: solution[0][0]*(1/x) + solution[1][0]
     inaccuracy = error(data, equation)
