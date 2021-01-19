@@ -4,7 +4,7 @@ from numpy.linalg import inv
 from .error import error
 from matrices.multiplication import multiplication
 from matrices.transpose import transpose
-from matrices.inverse import inverse
+# from matrices.inverse import inverse
 
 def sinusoidal(data):
     independent_matrix = []
@@ -30,9 +30,9 @@ def sinusoidal(data):
     product = multiplication(transposition, independent_matrix)
     print(f'SINUSOIDAL Product: {product}')
     product_matrix = matrix(product)
-    inversion = inverse(product_matrix)
+    inversion = inv(product_matrix)
     print(f'SINUSOIDAL Inversion: {inversion}')
-    inversion_list = matrix.tolist(inversion)
+    inversion_list = matrix.tolist(inversion, dtype='float')
     second_product = multiplication(inversion_list, transposition)
     print(f'SINUSOIDAL Second Product: {second_product}')
     solution = multiplication(second_product, dependent_matrix)
