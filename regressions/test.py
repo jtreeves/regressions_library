@@ -22,5 +22,8 @@ print(f"Exponential Error: {all_solutions['options']['exponential']['error']}") 
 print(f"Logarithmic Constants: {all_solutions['options']['logarithmic']['constants']}") # => [[−58.7194], [324.4875]]
 print(f"Logarithmic Error: {all_solutions['options']['logarithmic']['error']}") # => 16.0616
 
+print(f"Sinusoidal Constants: {all_solutions['options']['sinusoidal']['constants']}") # => [[−58.7194], [324.4875]]
+print(f"Sinusoidal Error: {all_solutions['options']['sinusoidal']['error']}") # => 16.0616
+
 print(f"Best Choice Function: {all_solutions['optimal']['function']}") # => cubic
 print(f"Best Choice Error: {all_solutions['optimal']['error']}") # => 12.7299
