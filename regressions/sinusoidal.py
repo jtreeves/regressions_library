@@ -1,4 +1,4 @@
-from math import sin, cos, atan2
+from math import sin, cos, atan
 from .error import error
 from matrices.multiplication import multiplication
 from matrices.transpose import transpose
@@ -33,10 +33,10 @@ def sinusoidal(data):
     print(f'SINUSOIDAL Second Product: {second_product}')
     solution = multiplication(second_product, dependent_matrix)
     print(f'SINUSOIDAL Solution: {solution}')
-    constant_b = (120 * solution[5][0] / solution[1][0])**(1/4)
-    constant_c = atan2((-2 * solution[2][0]), (constant_b * solution[1][0]))
-    constant_a = solution[1][0] / (constant_b * cos(constant_c))
-    constant_d = solution[0][0] - (constant_a * sin(constant_c))
+    constant_b = (362880 * solution[0][0] / solution[8][0])**(1/8)
+    constant_c = atan((-6720 * solution[1][0]) / ((constant_b**5) * solution[6][0]))
+    constant_a = (120 * solution[4][0]) / ((constant_b**5) * cos(constant_c))
+    constant_d = solution[9][0] - (constant_a * sin(constant_c))
     constants = [
         [constant_a],
         [constant_b],
