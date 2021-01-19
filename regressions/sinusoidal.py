@@ -21,18 +21,18 @@ def sinusoidal(data):
             data[i][0]**9
         ])
         dependent_matrix.append([data[i][1]])
-        print(f'Independent Matrix: {independent_matrix}')
-        print(f'Dependent Matrix: {dependent_matrix}')
+        print(f'SINUSOIDAL Independent Matrix: {independent_matrix}')
+        print(f'SINUSOIDAL Dependent Matrix: {dependent_matrix}')
     transposition = transpose(independent_matrix)
-    print(f'Transposition: {transposition}')
+    print(f'SINUSOIDAL Transposition: {transposition}')
     product = multiplication(transposition, independent_matrix)
-    print(f'Product: {product}')
+    print(f'SINUSOIDAL Product: {product}')
     inversion = inverse(product)
-    print(f'Inversion: {inversion}')
+    print(f'SINUSOIDAL Inversion: {inversion}')
     second_product = multiplication(inversion, transposition)
-    print(f'Second Product: {second_product}')
+    print(f'SINUSOIDAL Second Product: {second_product}')
     solution = multiplication(second_product, dependent_matrix)
-    print(f'Solution: {solution}')
+    print(f'SINUSOIDAL Solution: {solution}')
     constant_b = (-12 * solution[4][0] / solution[2][0])**(1/2)
     constant_c = atan2((-2 * solution[2][0]) / (constant_b * solution[1][0]))
     constant_a = solution[1][0] / (constant_b * cos(constant_c))
@@ -43,7 +43,7 @@ def sinusoidal(data):
         [constant_c],
         [constant_d]
     ]
-    print(f'Constants: {constants}')
+    print(f'SINUSOIDAL Constants: {constants}')
     equation = lambda x: constants[0][0] * sin(constants[1][0]*x + constants[2][0]) + constants[3][0]
     inaccuracy = error(data, equation)
     result = {
