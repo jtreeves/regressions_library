@@ -7,12 +7,12 @@ from .logarithmic import logarithmic
 
 def best(data):
     errors = {
-        'linear_error': linear(data)['error'],
-        'quadratic_error': quadratic(data)['error'],
-        'cubic_error': cubic(data)['error'],
-        'hyperbolic_error': hyperbolic(data)['error'],
-        'exponential_error': exponential(data)['error'],
-        'logarithmic_error': logarithmic(data)['error'],
+        'linear': linear(data)['error'],
+        'quadratic': quadratic(data)['error'],
+        'cubic': cubic(data)['error'],
+        'hyperbolic': hyperbolic(data)['error'],
+        'exponential': exponential(data)['error'],
+        'logarithmic': logarithmic(data)['error'],
     }
     minimum = min(errors, key=errors.get)
     choice = {
