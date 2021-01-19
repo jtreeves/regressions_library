@@ -14,12 +14,10 @@ def cubic(data):
     inversion = inverse(product)
     second_product = multiplication(inversion, transposition)
     solution = multiplication(second_product, dependent_matrix)
-    def equation(x):
-        return solution[0][0]*x**3 + solution[1][0]*x**2 + solution[2][0]*x + solution[3][0]
+    equation = lambda x: solution[0][0]*x**3 + solution[1][0]*x**2 + solution[2][0]*x + solution[3][0]
     inaccuracy = error(data, equation)
     result = {
         'constants': solution,
-        'error': inaccuracy,
-        'equation': equation
+        'error': inaccuracy
     }
     return result

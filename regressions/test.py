@@ -33,7 +33,7 @@ linear_solution_agnostic = linear(agnostic_set)
 # quadratic_solution_agnostic = quadratic(agnostic_set)
 # cubic_solution = cubic(cubic_set)
 # cubic_solution_10 = cubic(cubic_set_10)
-# cubic_solution_agnostic = cubic(agnostic_set)
+cubic_solution_agnostic = cubic(agnostic_set)
 # rational_solution = rational(rational_set)
 # hyperbolic_solution = hyperbolic(rational_set)
 # hyperbolic_solution_agnostic = hyperbolic(agnostic_set)
@@ -73,8 +73,8 @@ print(f"Linear Agnostic Error: {linear_solution_agnostic['error']}") # => 15.057
 # print(f'Cubic Equation: y = {cubic_solution[0][0]}x^3 + {cubic_solution[1][0]}x^2 + {cubic_solution[2][0]}x + {cubic_solution[3][0]}') # => y = 3.0x^3 + -2.0x^2 + -5.0x + 10.0
 # print(f'Cubic Matrix 10: {cubic_solution_10}') # => [[1.2568], [-20.3811], [95.3015], [-80.6667]]
 # print(f'Cubic Equation 10: y = {cubic_solution_10[0][0]}x^3 + {cubic_solution_10[1][0]}x^2 + {cubic_solution_10[2][0]}x + {cubic_solution_10[3][0]}') # => y = 1.2568x^3 + -20.3811x^2 + 95.3015x + -80.6667
-# print(f"Cubic Agnostic Constants: {cubic_solution_agnostic['constants']}") # => [[2.7704], [−47.3631], [308.7150], [−281.1000]]
-# print(f"Cubic Agnostic Error: {cubic_solution_agnostic['error']}") # => 12.7299
+print(f"Cubic Agnostic Constants: {cubic_solution_agnostic['constants']}") # => [[2.7704], [−47.3631], [308.7150], [−281.1000]]
+print(f"Cubic Agnostic Error: {cubic_solution_agnostic['error']}") # => 12.7299
 # print(f'Cubic Equation Agnostic: y = {cubic_solution_agnostic[0][0]}x^3 + {cubic_solution_agnostic[1][0]}x^2 + {cubic_solution_agnostic[2][0]}x + {cubic_solution_agnostic[3][0]}') # => y = 2.7704x^3 + −47.3631x^2 + 308.7150x + −281.1000
 # print(f'Rational Matrix: {rational_solution}') # => [[2.0], [-3.0]]
 # print(f'Rational Equation: y = x / ({rational_solution[0][0]}x + {rational_solution[1][0]})') # => y = x / (2.0x + -3.0)
