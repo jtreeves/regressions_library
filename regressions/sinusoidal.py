@@ -42,7 +42,26 @@ def sinusoidal(data):
         (((720 * solution[3][0]) / (2 * solution[7][0]))**(1/4))
     ) / 6
     constant_c = (
-        atan((-6720 * solution[1][0]) / ((constant_b**5) * solution[6][0]))
+        atan((40320 * constant_b * solution[1][0]) / (362880 * solution[0][0])) +
+        atan((-720 * constant_b**3 * solution[3][0]) / (362880 * solution[0][0])) +
+        atan((24 * constant_b**5 * solution[5][0]) / (362880 * solution[0][0])) +
+        atan((-2 * constant_b**7 * solution[7][0]) / (362880 * solution[0][0])) +
+        atan((-40320 * solution[1][0]) / (5040 * constant_b * solution[2][0])) +
+        atan((40320 * solution[1][0]) / (120 * constant_b**3 * solution[4][0])) +
+        atan((-40320 * solution[1][0]) / (6 * constant_b**5 * solution[6][0])) +
+        atan((40320 * solution[1][0]) / (constant_b**7 * solution[8][0])) +
+        atan((720 * constant_b * solution[3][0]) / (5040 * solution[2][0])) +
+        atan((-24 * constant_b**3 * solution[5][0]) / (5040 * solution[2][0])) +
+        atan((2 * constant_b**5 * solution[7][0]) / (5040 * solution[2][0])) +
+        atan((-720 * solution[3][0]) / (120 * constant_b * solution[4][0])) +
+        atan((720 * solution[3][0]) / (6 * constant_b**3 * solution[6][0])) +
+        atan((-720 * solution[3][0]) / (constant_b**5 * solution[8][0])) +
+        atan((24 * constant_b * solution[5][0]) / (120 * solution[4][0])) +
+        atan((-2 * constant_b**3 * solution[7][0]) / (120 * solution[4][0])) +
+        atan((-24 * solution[5][0]) / (6 * constant_b * solution[6][0])) +
+        atan((24 * solution[5][0]) / (constant_b**3 * solution[8][0])) +
+        atan((2 * constant_b * solution[7][0]) / (6 * solution[6][0])) +
+        atan((-2 * solution[7][0]) / (constant_b * solution[8][0]))
     ) / 20
     constant_a = (
         (362880 * solution[0][0]) / ((constant_b**9) * cos(constant_c)) + 
