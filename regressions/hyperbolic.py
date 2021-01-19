@@ -1,3 +1,5 @@
+from numpy import matrix
+from numpy.linalg import inv
 from .error import error
 from matrices.multiplication import multiplication
 from matrices.transpose import transpose
