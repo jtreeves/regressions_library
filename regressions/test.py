@@ -31,8 +31,8 @@ print(f"Sinusoidal Error: {all_solutions['options']['sinusoidal']['error']}") # 
 print(f"Best Choice Function: {all_solutions['optimal']['function']}") # => cubic
 print(f"Best Choice Error: {all_solutions['optimal']['error']}") # => 21.05493315315674
 
-print(f"Sinusoidal Constants from Sinusoidal Set: {sinusoidal_solutions['options']['sinusoidal']['constants']}") # => [[-10637.7607716477], [1.041350832607493], [1.0384915217851285], [11620.027599096207]]
-print(f"Sinusoidal Error from Sinusoidal Set: {sinusoidal_solutions['options']['sinusoidal']['error']}") # => 242.7427759867437
+print(f"Sinusoidal Constants from Sinusoidal Set: {sinusoidal_solutions['options']['sinusoidal']['constants']}") # => [[576.5683893876746], [0.6418752091287842], [1.2166595719545568], [-589.9653924694346]]
+print(f"Sinusoidal Error from Sinusoidal Set: {sinusoidal_solutions['options']['sinusoidal']['error']}") # => 57.12687660827426
 
 # agnostic_set = [[1, 3], [2, 147], [3, 286], [4, 352], [5, 423], [6, 510], [7, 591], [8, 451], [9, 689], [10, 862]]
 # # cyclic_set = [[1, 33], [2, 27], [3, 45], [4, 56], [5, 69], [6, 84], [7, 88], [8, 75], [9, 57], [10, 42], [11, 39], [12, 28]]
