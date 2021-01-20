@@ -42,6 +42,7 @@ def sinusoidal(data):
     inversion_list = matrix.tolist(inversion)
     second_product = multiplication(inversion_list, transposition)
     solution = multiplication(second_product, dependent_matrix)
+    print(solution)
     constant_d = dependent_average
     constant_b = ((factorial(4)*solution[15][0])/(solution[19][0] - constant_d))**(1/4)
     constant_c = atan((-2 * solution[17][0]) / (constant_b * solution[18][0]))
