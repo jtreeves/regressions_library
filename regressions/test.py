@@ -25,14 +25,14 @@ print(f"Exponential Error: {all_solutions['options']['exponential']['error']}") 
 print(f"Logarithmic Constants: {all_solutions['options']['logarithmic']['constants']}") # => [[-154.60728466072027], [200.8272561968283]]
 print(f"Logarithmic Error: {all_solutions['options']['logarithmic']['error']}") # => 26.11858512913022
 
-print(f"Sinusoidal Constants: {all_solutions['options']['sinusoidal']['constants']}") # => [[-10637.7607716477], [1.041350832607493], [1.0384915217851285], [11620.027599096207]]
-print(f"Sinusoidal Error: {all_solutions['options']['sinusoidal']['error']}") # => 242.7427759867437
+print(f"Sinusoidal Constants: {all_solutions['options']['sinusoidal']['constants']}") # => [[-10637.7607716477], [1.041350832607493], [1.0384915217851285], [11620.027599096207]] // AFTER ASSUMING D WAS AVERAGE: [[2890.419345573162], [1.5332781974044583], [0.8563639472894197], [270.5]]
+print(f"Sinusoidal Error: {all_solutions['options']['sinusoidal']['error']}") # => 242.7427759867437 // AFTER ASSUMING D WAS AVEAGE: 95.84704471142422
 
 print(f"Best Choice Function: {all_solutions['optimal']['function']}") # => cubic
 print(f"Best Choice Error: {all_solutions['optimal']['error']}") # => 21.05493315315674
 
-print(f"Sinusoidal Constants from Sinusoidal Set: {sinusoidal_solutions['options']['sinusoidal']['constants']}") # => [[576.5683893876746], [0.6418752091287842], [1.2166595719545568], [-589.9653924694346]]
-print(f"Sinusoidal Error from Sinusoidal Set: {sinusoidal_solutions['options']['sinusoidal']['error']}") # => 57.12687660827426
+print(f"Sinusoidal Constants from Sinusoidal Set: {sinusoidal_solutions['options']['sinusoidal']['constants']}") # => [[576.5683893876746], [0.6418752091287842], [1.2166595719545568], [-589.9653924694346]] // AFTER ASSUMING D WAS AVERAGE: [[-88.2760618749577], [1.4280482601704372], [0.8824477899791447], [19.0]]
+print(f"Sinusoidal Error from Sinusoidal Set: {sinusoidal_solutions['options']['sinusoidal']['error']}") # => 57.12687660827426 // AFTER ASSUMING D WAS AVERAGE: 16.832572222493752
 
 # agnostic_set = [[1, 3], [2, 147], [3, 286], [4, 352], [5, 423], [6, 510], [7, 591], [8, 451], [9, 689], [10, 862]]
 # # cyclic_set = [[1, 33], [2, 27], [3, 45], [4, 56], [5, 69], [6, 84], [7, 88], [8, 75], [9, 57], [10, 42], [11, 39], [12, 28]]
