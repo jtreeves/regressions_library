@@ -1,4 +1,4 @@
-from math import sin, cos, atan
+from math import sin, cos, atan, factorial
 from numpy import matrix
 from numpy.linalg import inv
 from .error import error
@@ -39,7 +39,19 @@ def sinusoidal(data):
     inversion_list = matrix.tolist(inversion)
     second_product = multiplication(inversion_list, transposition)
     solution = multiplication(second_product, dependent_matrix)
-    constant_b = (120 * solution[14][0] / solution[18][0])**(1/4)
+    b_low_close = ((factorial(5)*solution[14][0])/(solution[18][0]))**(1/4)
+    b_high_close = ((factorial(19)*solution[0][0])/factorial(15)*(solution[4][0]))**(1/4)
+    b_med_close = ((factorial(11)*solution[8][0])/factorial(7)*(solution[12][0]))**(1/4)
+    b_far_spread = ((factorial(17)*solution[2][0])/(solution[18][0]))**(1/16)
+    b_medium_spread = ((factorial(11)*solution[8][0])/(factorial(3)*solution[16][0]))**(1/8)
+    b_alt_medium_spread = ((factorial(13)*solution[6][0])/(factorial(5)*solution[14][0]))**(1/8)
+    print(f'b_low_close: {b_low_close}')
+    print(f'b_high_close: {b_high_close}')
+    print(f'b_med_close: {b_med_close}')
+    print(f'b_far_spread: {b_far_spread}')
+    print(f'b_medium_spread: {b_medium_spread}')
+    print(f'b_alt_medium_spread: {b_alt_medium_spread}')
+    constant_b = b_alt_medium_spread
     constant_c = atan((-2 * solution[17][0]) / (constant_b * solution[18][0]))
     constant_a = solution[18][0] / (constant_b * cos(constant_c))
     constant_d = solution[19][0] - (constant_a * sin(constant_c))
