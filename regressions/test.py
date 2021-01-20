@@ -31,8 +31,8 @@ print(f"Sinusoidal Error: {all_solutions['options']['sinusoidal']['error']}") # 
 print(f"Best Choice Function: {all_solutions['optimal']['function']}") # => cubic
 print(f"Best Choice Error: {all_solutions['optimal']['error']}") # => 21.05493315315674
 
-print(f"Sinusoidal Constants from Sinusoidal Set: {sinusoidal_solutions['options']['sinusoidal']['constants']}") # => [[576.5683893876746], [0.6418752091287842], [1.2166595719545568], [-589.9653924694346]] // AFTER ASSUMING D WAS AVERAGE: [[-88.2760618749577], [1.4280482601704372], [0.8824477899791447], [19.0]]
-print(f"Sinusoidal Error from Sinusoidal Set: {sinusoidal_solutions['options']['sinusoidal']['error']}") # => 57.12687660827426 // AFTER ASSUMING D WAS AVERAGE: 16.832572222493752
+print(f"Sinusoidal Constants from Sinusoidal Set: {sinusoidal_solutions['options']['sinusoidal']['constants']}") # => [[576.5683893876746], [0.6418752091287842], [1.2166595719545568], [-589.9653924694346]] // AFTER ASSUMING D WAS AVERAGE: [[-88.2760618749577], [1.4280482601704372], [0.8824477899791447], [19.0]] // AFTER REWRITING USING SINE AND COSINE IN TANDEM: [[-3.6334195680199888], [-0.6192881686759142], [19.198056606464718]]
+print(f"Sinusoidal Error from Sinusoidal Set: {sinusoidal_solutions['options']['sinusoidal']['error']}") # => 57.12687660827426 // AFTER ASSUMING D WAS AVERAGE: 16.832572222493752 // AFTER REWRITING USING SINE AND COSINE IN TANDEM: 6.065001833377505
 # INITIAL TEN CONSTANTS BEFORE TRANSFORMATIONS: [[3.9456110527392134e-18], [-2.571283638527996e-16], [4.641802304634438e-15], [-1.2921257377700446e-14], [1.631538774836618e-12], [-7.854379028007896e-11], [8.022121627800763e-10], [5.456772735041203e-09], [-2.2904286524680063e-08], [-2.0347243563645367e-06], [-1.2726347621571082e-05], [0.0009372561400041723], [-0.00797329247173817], [-0.05207371730877952], [1.4447193616843905], [-11.813732517576398], [49.65024563694374], [-111.4037893730956], [128.33836324504045], [-49.17526541736879]]
 
 # agnostic_set = [[1, 3], [2, 147], [3, 286], [4, 352], [5, 423], [6, 510], [7, 591], [8, 451], [9, 689], [10, 862]]
