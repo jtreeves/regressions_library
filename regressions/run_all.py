@@ -4,7 +4,6 @@ from .cubic import cubic
 from .hyperbolic import hyperbolic
 from .exponential import exponential
 from .logarithmic import logarithmic
-from .sinusoidal import sinusoidal
 from .best import best
 
 def run_all(data):
@@ -14,8 +13,7 @@ def run_all(data):
         'cubic': cubic(data),
         'hyperbolic': hyperbolic(data),
         'exponential': exponential(data),
-        'logarithmic': logarithmic(data),
-        'sinusoidal': sinusoidal(data)
+        'logarithmic': logarithmic(data)
     }
     optimal = best(data)
     result = {

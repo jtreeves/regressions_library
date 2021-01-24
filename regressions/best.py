@@ -4,7 +4,6 @@ from .cubic import cubic
 from .hyperbolic import hyperbolic
 from .exponential import exponential
 from .logarithmic import logarithmic
-from .sinusoidal import sinusoidal
 
 def best(data):
     errors = {
@@ -13,8 +12,7 @@ def best(data):
         'cubic': cubic(data)['error'],
         'hyperbolic': hyperbolic(data)['error'],
         'exponential': exponential(data)['error'],
-        'logarithmic': logarithmic(data)['error'],
-        'sinusoidal': sinusoidal(data)['error']
+        'logarithmic': logarithmic(data)['error']
     }
     minimum = min(errors, key=errors.get)
     choice = {

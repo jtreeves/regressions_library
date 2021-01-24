@@ -5,6 +5,8 @@ from .error import error
 from matrices.multiplication import multiplication
 from matrices.transpose import transpose
 
+# REGRESSION MODEL DOES NOT PRODUCE USEFUL RESULTS
+# FUTURE VERSION SHOULD USE MACHINE LEARNING INSTEAD OF POWER EXPANSIONS
 def sinusoidal(data):
     independent_matrix = []
     dependent_matrix = []
