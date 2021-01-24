@@ -1,6 +1,6 @@
 # Regressions Library
 
-A collection of algorithms for fitting data to different functional models by using matrices. This [library](https://github.com/jtreeves/matrix_regression) will be made publically available after it is uploaded to Python's database of libraries. It contains all the code for determining regression equations, as well as the code for evaluating said regressions and presenting their results in a raw format.
+A collection of algorithms for fitting data to different functional models by using matrices. This [library](https://github.com/jtreeves/regressions_library) will be made publically available after it is uploaded to Python's database of libraries. It contains all the code for determining regression equations, as well as the code for evaluating said regressions and presenting their results in a raw format. The published version on PyPI is available [here](https://pypi.org/project/regressions/).
 
 **Contents**
 
