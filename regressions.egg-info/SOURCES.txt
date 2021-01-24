@@ -1,0 +1,11 @@
+LICENSE
+MANIFEST.in
+README.md
+setup.cfg
+setup.py
+regressions.egg-info/PKG-INFO
+regressions.egg-info/SOURCES.txt
+regressions.egg-info/dependency_links.txt
+regressions.egg-info/not-zip-safe
+regressions.egg-info/requires.txt
+regressions.egg-info/top_level.txt
