@@ -17,6 +17,5 @@ setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.9',
     ],
-    zip_safe=False,
     install_requires=['numpy']
 )
