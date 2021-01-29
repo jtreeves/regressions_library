@@ -1,16 +1,19 @@
 def sort(data):
-    pivot = data[0]
     pivots = []
     less = []
     more = []
-    for i in range(len(data)):
-        if data[i] < pivot:
-            less.append(data[i])
-        elif data[i] > pivot:
-            more.append(data[i])
-        else:
-            pivots.append(data[i])
-    less = sort(less)
-    more = sort(more)
-    result = less + pivots + more
-    return result
+    if len(data) <= 1:
+        return data
+    else:
+        pivot = data[0]
+        for i in data:
+            if i < pivot:
+                less.append(i)
+            elif i > pivot:
+                more.append(i)
+            else:
+                pivots.append(i)
+        less = sort(less)
+        more = sort(more)
+        result = less + pivots + more
+        return result
