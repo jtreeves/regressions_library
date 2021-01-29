@@ -1,2 +1,6 @@
+from .sort import sort
+
 def minimum(data):
-    return
+    sorted_data = sort(data)
+    result = sorted_data[0]
+    return result
