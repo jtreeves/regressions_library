@@ -1,6 +1,6 @@
 from .column import column
 from .transpose import transpose
-from .dot_product import dot_product
+from library.vectors.dot_product import dot_product
 
 def multiplication(matrix_one, matrix_two):
     result = []

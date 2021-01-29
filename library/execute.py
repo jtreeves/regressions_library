@@ -1,9 +1,9 @@
-from .linear import linear
-from .quadratic import quadratic
-from .cubic import cubic
-from .hyperbolic import hyperbolic
-from .exponential import exponential
-from .logarithmic import logarithmic
+from .models.linear import linear
+from .models.quadratic import quadratic
+from .models.cubic import cubic
+from .models.hyperbolic import hyperbolic
+from .models.exponential import exponential
+from .models.logarithmic import logarithmic
 from .best import best
 
 def run_all(data):

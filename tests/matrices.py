@@ -1,13 +1,13 @@
-from .addition import addition
-from .multiplication import multiplication
-from .scalar import scalar
-from .transpose import transpose
-from .determinant import determinant, diminished
-from .dot_product import dot_product
-from .column import column
-from .inverse import inverse
-from .cofactors import cofactors
-from .minors import minors
+from library.matrices.addition import addition
+from library.matrices.multiplication import multiplication
+from library.matrices.scalar import scalar
+from library.matrices.transpose import transpose
+from library.matrices.determinant import determinant, diminished
+from library.vectors.dot_product import dot_product
+from library.matrices.column import column
+from library.matrices.inverse import inverse
+from library.matrices.cofactors import cofactors
+from library.matrices.minors import minors
 
 first_input_matrix = [
     [5, 8],
