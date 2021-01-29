@@ -1,5 +1,10 @@
 def linear(first_constant, second_constant):
+    constants = [first_constant]
     def linear_derivative(variable):
-        evaluation = first_constant
+        evaluation = constants[0]
         return evaluation
-    return linear_derivative
+    results = {
+        'constants': constants,
+        'derivative': linear_derivative
+    }
+    return results

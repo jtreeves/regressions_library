@@ -1,5 +1,10 @@
 def hyperbolic(first_constant, second_constant):
+    constants = [-1 * first_constant]
     def hyperbolic_derivative(variable):
-        evaluation = -1 * first_constant / variable**2
+        evaluation = constants[0] / variable**2
         return evaluation
-    return hyperbolic_derivative
+    results = {
+        'constants': constants,
+        'derivative': hyperbolic_derivative
+    }
+    return results
