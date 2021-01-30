@@ -2,24 +2,24 @@ def intervals(equation, points):
     result = []
     if points[0] == None:
         if equation(10) > 0:
-            result = ['increasing everywhere']
+            result = ['increasing']
         elif equation(10) < 0:
-            result = ['decreasing everywhere']
+            result = ['decreasing']
         else:
-            result = ['constant everywhere']
+            result = ['constant']
     elif len(points) == 1:
         turning_point = points[0]
         before = turning_point - 1
         after = turning_point + 1
         if equation(before) > 0:
-            before = f'increasing up until {turning_point}'
+            before = 'increasing'
         elif equation(before) < 0:
-            before = f'decreaseing up until {turning_point}'
+            before = 'decreasing'
         if equation(after) > 0 :
-            after = f'increasing from {turning_point} to infinity'
+            after = 'increasing'
         elif equation(after) < 0:
-            after = f'decreasing from {turning_point} to infinity'
-        result = [before, after]
+            after = 'decreasing'
+        result = [before, turning_point, after]
     elif len(points) == 2:
         first_point = points[0]
         second_point = points[1]
@@ -29,17 +29,17 @@ def intervals(equation, points):
         before = first_point - 1
         after = second_point + 1
         if equation(before) > 0:
-            before = f'increasing up until {first_point}'
+            before = 'increasing'
         elif equation(before) < 0:
-            before = f'decreasing up until {first_point}'
+            before = 'decreasing'
         if equation(middle) > 0 :
-            middle = f'increasing between {first_point} and {second_point}'
+            middle = 'increasing'
         elif equation(middle) < 0:
-            middle = f'decreasing between {first_point} and {second_point}'
+            middle = 'decreasing'
         if equation(after) > 0:
-            after = f'increasing after {second_point}'
+            after = 'increasing'
         elif equation(after) < 0:
-            after = f'decreasing after {second_point}'
-        result = [before, middle, after]
+            after = 'decreasing'
+        result = [before, first_point, middle, second_point, after]
     return result
         
