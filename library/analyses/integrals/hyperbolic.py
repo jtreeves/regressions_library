@@ -1,7 +1,12 @@
 from math import log
 
 def hyperbolic(first_constant, second_constant):
+    constants = [first_constant, second_constant]
     def hyperbolic_integral(variable):
-        evaluation = first_constant * log(variable) + second_constant * variable
+        evaluation = constants[0] * log(variable) + constants[1] * variable
         return evaluation
-    return hyperbolic_integral
+    results = {
+        'constants': constants,
+        'evaluation': hyperbolic_integral
+    }
+    return results

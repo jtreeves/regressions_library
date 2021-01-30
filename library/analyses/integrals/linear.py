@@ -5,6 +5,6 @@ def linear(first_constant, second_constant):
         return evaluation
     results = {
         'constants': constants,
-        'integral': linear_integral
+        'evaluation': linear_integral
     }
     return results

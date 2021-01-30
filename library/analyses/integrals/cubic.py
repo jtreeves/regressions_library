@@ -5,6 +5,6 @@ def cubic(first_constant, second_constant, third_constant, fourth_constant):
         return evaluation
     results = {
         'constants': constants,
-        'integral': cubic_integral
+        'evaluation': cubic_integral
     }
     return results

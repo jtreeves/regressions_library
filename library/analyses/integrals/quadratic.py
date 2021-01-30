@@ -5,6 +5,6 @@ def quadratic(first_constant, second_constant, third_constant):
         return evaluation
     results = {
         'constants': constants,
-        'integral': quadratic_integral
+        'evaluation': quadratic_integral
     }
     return results
