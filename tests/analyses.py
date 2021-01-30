@@ -64,6 +64,20 @@ test_hypint = hypint(coefficients[0], coefficients[1])
 test_expint = expint(coefficients[0], coefficients[1])
 test_logint = logint(coefficients[0], coefficients[1])
 
+test_crit_lin1 = critical_points('linear', 1, coefficients)
+test_crit_quad1 = critical_points('quadratic', 1, coefficients)
+test_crit_cub1 = critical_points('cubic', 1, coefficients)
+test_crit_hyp1 = critical_points('hyperbolic', 1, coefficients)
+test_crit_exp1 = critical_points('exponential', 1, coefficients)
+test_crit_log1 = critical_points('logarithmic', 1, coefficients)
+
+test_crit_lin2 = critical_points('linear', 2, coefficients)
+test_crit_quad2 = critical_points('quadratic', 2, coefficients)
+test_crit_cub2 = critical_points('cubic', 2, coefficients)
+test_crit_hyp2 = critical_points('hyperbolic', 2, coefficients)
+test_crit_exp2 = critical_points('exponential', 2, coefficients)
+test_crit_log2 = critical_points('logarithmic', 2, coefficients)
+
 test_linev = test_lineq(4)
 test_quadev = test_quadeq(4)
 test_cubev = test_cubeq(4)
@@ -203,3 +217,17 @@ print(f'TEST_CUBINT_ACC: {test_cubint_acc}') # => 6309.0
 print(f'TEST_HYPINT_ACC: {test_hypint_acc}') # => 31.605170185988094
 print(f'TEST_EXPINT_ACC: {test_expint_acc}') # => 107491.97075081647
 print(f'TEST_LOGINT_ACC: {test_logint_acc}') # => 60.077552789821375
+
+print(f'TEST_CRIT_LIN1: {test_crit_lin1}') # => [None]
+print(f'TEST_CRIT_QUAD1: {test_crit_quad1}') # => [-0.75]
+print(f'TEST_CRIT_CUB1: {test_crit_cub1}') # => [(-0.49999999999999994+0.7637626158259733j), (-0.5000000000000001-0.7637626158259733j)]
+print(f'TEST_CRIT_HYP1: {test_crit_hyp1}') # => [None]
+print(f'TEST_CRIT_EXP1: {test_crit_exp1}') # => [None]
+print(f'TEST_CRIT_LOG1: {test_crit_log1}') # => [None]
+
+print(f'TEST_CRIT_LIN2: {test_crit_lin2}') # => [None]
+print(f'TEST_CRIT_QUAD2: {test_crit_quad2}') # => [None]
+print(f'TEST_CRIT_CUB2: {test_crit_cub2}') # => [-0.5]
+print(f'TEST_CRIT_HYP2: {test_crit_hyp2}') # => [None]
+print(f'TEST_CRIT_EXP2: {test_crit_exp2}') # => [None]
+print(f'TEST_CRIT_LOG2: {test_crit_log2}') # => [None]

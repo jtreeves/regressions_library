@@ -9,9 +9,11 @@ def critical_points(equation_type, derivative_level, coefficients):
         if equation_type == 'linear':
             results = [None]
         elif equation_type == 'quadratic':
-            results = linroots(quader(coefficients[0], coefficients[1], coefficients[2])['first']['constants'])
+            constants = quader(coefficients[0], coefficients[1], coefficients[2])['first']['constants']
+            results = linroots(constants[0], constants[1])
         elif equation_type == 'cubic':
-            results = quadroots(cubder(coefficients[0], coefficients[1], coefficients[2], coefficients[3])['first']['constants'])
+            constants = cubder(coefficients[0], coefficients[1], coefficients[2], coefficients[3])['first']['constants']
+            results = quadroots(constants[0], constants[1], constants[2])
         elif equation_type == 'hyperbolic':
             results = [None]
         elif equation_type == 'exponential':
@@ -24,7 +26,8 @@ def critical_points(equation_type, derivative_level, coefficients):
         elif equation_type == 'quadratic':
             results = [None]
         elif equation_type == 'cubic':
-            results = linroots(cubder(coefficients[0], coefficients[1], coefficients[2], coefficients[3])['second']['constants'])
+            constants = cubder(coefficients[0], coefficients[1], coefficients[2], coefficients[3])['second']['constants']
+            results = linroots(constants[0], constants[1])
         elif equation_type == 'hyperbolic':
             results = [None]
         elif equation_type == 'exponential':
