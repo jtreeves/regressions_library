@@ -1,3 +1,3 @@
 def exponential(first_constant, second_constant):
-    root = None
+    root = [None]
     return root
