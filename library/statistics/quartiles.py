@@ -7,13 +7,13 @@ def halve(data):
     length = len(sorted_data)
     upper = []
     lower = []
-    if len % 2 == 0:
-        upper_index = length / 2
-        lower_index = upper_index - 1
+    if length % 2 == 0:
+        upper_index = int(length / 2)
+        lower_index = int(upper_index - 1)
         upper = data[upper_index:]
         lower = data[:lower_index]
     else:
-        index = floor(length / 2)
+        index = int(floor(length / 2))
         upper = data[index:]
         lower = data[:index]
     result = {
