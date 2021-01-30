@@ -1,6 +1,6 @@
 from .residuals import residuals
 from .deviations import deviations
-from library.sequences.summation import summation
+from .summation import summation
 
 def correlation(actuals, expecteds):
     residual_array = residuals(actuals, expecteds)

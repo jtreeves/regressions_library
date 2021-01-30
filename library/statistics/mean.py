@@ -1,4 +1,4 @@
-from library.sequences.summation import summation
+from .summation import summation
 
 def mean(data):
     result = summation(data) / len(data)

@@ -1,4 +1,4 @@
-from library.sequences.summation import summation
+from library.statistics.summation import summation
 
 def magnitude(vector):
     squares = []
