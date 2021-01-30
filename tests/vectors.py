@@ -11,13 +11,13 @@ vec2 = [1, -7, 23, -2]
 vecadd = addition(vec1, vec2)
 vecdir = direction(vec1, vec2)
 vecdot = dot_product(vec1, vec2)
-# vecmag = magnitude(vec1)
+vecmag = magnitude(vec1)
 vecscal = scalar(vec1, 5)
-# vecunit = unit(vec1)
+vecunit = unit(vec1)
 
 print(f'VECADD: {vecadd}') # => [3, -2, 32, 11]
 print(f'VECDIR: {vecdir}') # => {'radian': 1.4876550949064553, 'degree': 85.23635830927383}
 print(f'VECDOT: {vecdot}') # => 148
-# print(f'VECMAG: {vecmag}')
+print(f'VECMAG: {vecmag}') # => 16.703293088490067
 print(f'VECSCAL: {vecscal}') # => [10, 25, 45, 65]
-# print(f'VECUNIT: {vecunit}')
+print(f'VECUNIT: {vecunit}') # => [0.11973686801784993, 0.2993421700446248, 0.5388159060803247, 0.7782896421160245]
