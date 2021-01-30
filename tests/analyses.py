@@ -134,6 +134,13 @@ test_hypint_ev = test_hypint['evaluation'](4)
 test_expint_ev = test_expint['evaluation'](4)
 test_logint_ev = test_logint['evaluation'](4)
 
+test_linint_acc = accumulation(test_linint['evaluation'], 1, 10)
+test_quadint_acc = accumulation(test_quadint['evaluation'], 1, 10)
+test_cubint_acc = accumulation(test_cubint['evaluation'], 1, 10)
+test_hypint_acc = accumulation(test_hypint['evaluation'], 1, 10)
+test_expint_acc = accumulation(test_expint['evaluation'], 1, 10)
+test_logint_acc = accumulation(test_logint['evaluation'], 1, 10)
+
 print(f'TEST_LINEV: {test_linev}') # => 11
 print(f'TEST_QUADEV: {test_quadev}') # => 49
 print(f'TEST_CUBEV: {test_cubev}') # => 203
@@ -189,3 +196,10 @@ print(f'TEST_CUBINT_EV: {test_cubint_ev}') # => 260.0
 print(f'TEST_HYPINT_EV: {test_hypint_ev}') # => 14.772588722239782
 print(f'TEST_EXPINT_EV: {test_expint_ev}') # => 147.45875471354765
 print(f'TEST_LOGINT_EV: {test_logint_ev}') # => 12.635532333438686
+
+print(f'TEST_LININT_ACC: {test_linint_acc}') # => 126.0
+print(f'TEST_QUADINT_ACC: {test_quadint_acc}') # => 859.5
+print(f'TEST_CUBINT_ACC: {test_cubint_acc}') # => 6309.0
+print(f'TEST_HYPINT_ACC: {test_hypint_acc}') # => 31.605170185988094
+print(f'TEST_EXPINT_ACC: {test_expint_acc}') # => 107491.97075081647
+print(f'TEST_LOGINT_ACC: {test_logint_acc}') # => 60.077552789821375
