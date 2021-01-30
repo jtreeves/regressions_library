@@ -42,4 +42,3 @@ def intervals(equation, points):
             after = 'decreasing'
         result = [before, first_point, middle, second_point, after]
     return result
-        
