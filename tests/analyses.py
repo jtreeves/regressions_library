@@ -57,6 +57,13 @@ test_hypder = hypder(coefficients[0], coefficients[1])
 test_expder = expder(coefficients[0], coefficients[1])
 test_logder = logder(coefficients[0], coefficients[1])
 
+test_linint = linint(coefficients[0], coefficients[1])
+test_quadint = quadint(coefficients[0], coefficients[1], coefficients[2])
+test_cubint = cubint(coefficients[0], coefficients[1], coefficients[2], coefficients[3])
+test_hypint = hypint(coefficients[0], coefficients[1])
+test_expint = expint(coefficients[0], coefficients[1])
+test_logint = logint(coefficients[0], coefficients[1])
+
 test_linev = test_lineq(4)
 test_quadev = test_quadeq(4)
 test_cubev = test_cubeq(4)
@@ -113,6 +120,20 @@ test_hypder_second_ev = test_hypder['second']['evaluation'](4)
 test_expder_second_ev = test_expder['second']['evaluation'](4)
 test_logder_second_ev = test_logder['second']['evaluation'](4)
 
+test_linint_arr = test_linint['constants']
+test_quadint_arr = test_quadint['constants']
+test_cubint_arr = test_cubint['constants']
+test_hypint_arr = test_hypint['constants']
+test_expint_arr = test_expint['constants']
+test_logint_arr = test_logint['constants']
+
+test_linint_ev = test_linint['evaluation'](4)
+test_quadint_ev = test_quadint['evaluation'](4)
+test_cubint_ev = test_cubint['evaluation'](4)
+test_hypint_ev = test_hypint['evaluation'](4)
+test_expint_ev = test_expint['evaluation'](4)
+test_logint_ev = test_logint['evaluation'](4)
+
 print(f'TEST_LINEV: {test_linev}') # => 11
 print(f'TEST_QUADEV: {test_quadev}') # => 49
 print(f'TEST_CUBEV: {test_cubev}') # => 203
@@ -154,3 +175,17 @@ print(f'TEST_CUBDER_SECOND_EV: {test_cubder_second_ev}') # => 54
 print(f'TEST_HYPDER_SECOND_EV: {test_hypder_second_ev}') # => 0.0625
 print(f'TEST_EXPDER_SECOND_EV: {test_expder_second_ev}') # => 195.5257316516383
 print(f'TEST_LOGDER_SECOND_EV: {test_logder_second_ev}') # => -0.1875
+
+print(f'TEST_LININT_ARR: {test_linint_arr}') # => [1.0, 3]
+print(f'TEST_QUADINT_ARR: {test_quadint_arr}') # => [0.6666666666666666, 1.5, 5]
+print(f'TEST_CUBINT_ARR: {test_cubint_arr}') # => [0.5, 1.0, 2.5, 7]
+print(f'TEST_HYPINT_ARR: {test_hypint_arr}') # => [2, 3]
+print(f'TEST_EXPINT_ARR: {test_expint_arr}') # => [1.8204784532536746, 3]
+print(f'TEST_LOGINT_ARR: {test_logint_arr}') # => [2, 3]
+
+print(f'TEST_LININT_EV: {test_linint_ev}') # => 28.0
+print(f'TEST_QUADINT_EV: {test_quadint_ev}') # => 86.66666666666666
+print(f'TEST_CUBINT_EV: {test_cubint_ev}') # => 260.0
+print(f'TEST_HYPINT_EV: {test_hypint_ev}') # => 14.772588722239782
+print(f'TEST_EXPINT_EV: {test_expint_ev}') # => 147.45875471354765
+print(f'TEST_LOGINT_EV: {test_logint_ev}') # => 12.635532333438686
