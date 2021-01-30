@@ -1,6 +1,9 @@
+from library.sequences.summation import summation
+
 def magnitude(vector):
-    summation = 0
+    squares = []
     for i in range(len(vector)):
-        summation += vector[i]**2
-    result = summation**(1/2)
+        squares.append(vector[i]**2)
+    sum_squares = summation(squares)
+    result = sum_squares**(1/2)
     return result
