@@ -43,6 +43,13 @@ test_hypeq = hypeq(coefficients[0], coefficients[1])
 test_expeq = expeq(coefficients[0], coefficients[1])
 test_logeq = logeq(coefficients[0], coefficients[1])
 
+test_linroot = linroot(coefficients[0], coefficients[1])
+test_quadroot = quadroot(coefficients[0], coefficients[1], coefficients[2])
+test_cubroot = cubroot(coefficients[0], coefficients[1], coefficients[2], coefficients[3])
+test_hyproot = hyproot(coefficients[0], coefficients[1])
+test_exproot = exproot(coefficients[0], coefficients[1])
+test_logroot = logroot(coefficients[0], coefficients[1])
+
 test_linev = test_lineq(4)
 test_quadev = test_quadeq(4)
 test_cubev = test_cubeq(4)
@@ -50,9 +57,23 @@ test_hypev = test_hypeq(4)
 test_expev = test_expeq(4)
 test_logev = test_logeq(4)
 
+test_linroot_arr = test_linroot
+test_quadroot_arr = test_quadroot
+test_cubroot_arr = test_cubroot
+test_hyproot_arr = test_hyproot
+test_exproot_arr = test_exproot
+test_logroot_arr = test_logroot
+
 print(f'TEST_LINEV: {test_linev}') # => 11
 print(f'TEST_QUADEV: {test_quadev}') # => 49
 print(f'TEST_CUBEV: {test_cubev}') # => 203
 print(f'TEST_HYPEV: {test_hypev}') # => 3.5
 print(f'TEST_EXPEV: {test_expev}') # => 162
 print(f'TEST_LOGEV: {test_logev}') # => 6.1588830833596715
+
+print(f'TEST_LINROOT_ARR: {test_linroot_arr}') # => [-1.5]
+print(f'TEST_QUADROOT_ARR: {test_quadroot_arr}') # => [(-0.7499999999999999+1.3919410907075054j), (-0.7500000000000001-1.3919410907075054j)]
+print(f'TEST_CUBROOT_ARR: {test_cubroot_arr}') # => [None]
+print(f'TEST_HYPROOT_ARR: {test_hyproot_arr}') # => [-0.6666666666666666]
+print(f'TEST_EXPROOT_ARR: {test_exproot_arr}') # => [None]
+print(f'TEST_LOGROOT_ARR: {test_logroot_arr}') # => [0.513417119032592]
