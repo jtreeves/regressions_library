@@ -1,12 +1,24 @@
 from math import log
 
 def exponential(first_constant, second_constant):
-    constants = [first_constant * log(second_constant), second_constant]
-    def exponential_derivative(variable):
-        evaluation = constants[0] * constants[1]**variable
+    first_constants = [first_constant * log(second_constant), second_constant]
+    def first_derivative(variable):
+        evaluation = first_constants[0] * first_constants[1]**variable
         return evaluation
+    first_object = {
+        'constants': first_constants,
+        'evaluation': first_derivative
+    }
+    second_constants = [first_constants[0] * log(first_constants[1]), first_constants[1]]
+    def second_derivative(variable):
+        evaluation = second_constants[0] * second_constants[1]**variable
+        return evaluation
+    second_object = {
+        'constants': second_constants,
+        'evaluation': second_derivative
+    }
     results = {
-        'constants': constants,
-        'derivative': exponential_derivative
+        'first': first_derivative,
+        'second': second_derivative
     }
     return results
