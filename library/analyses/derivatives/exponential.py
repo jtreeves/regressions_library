@@ -18,7 +18,7 @@ def exponential(first_constant, second_constant):
         'evaluation': second_derivative
     }
     results = {
-        'first': first_derivative,
-        'second': second_derivative
+        'first': first_object,
+        'second': second_object
     }
     return results
