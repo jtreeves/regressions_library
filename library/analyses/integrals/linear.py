@@ -1,5 +1,10 @@
 def linear(first_constant, second_constant):
+    constants = [(1/2) * first_constant, second_constant, 0]
     def linear_integral(variable):
-        evaluation = (1/2) * first_constant * variable**2 + second_constant * variable
+        evaluation = constants[0] * variable**2 + constants[1] * variable
         return evaluation
-    return linear_integral
+    results = {
+        'constants': constants,
+        'integral': linear_integral
+    }
+    return results
