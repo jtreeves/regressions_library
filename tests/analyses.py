@@ -49,3 +49,10 @@ test_cubev = test_cubeq(4)
 test_hypev = test_hypeq(4)
 test_expev = test_expeq(4)
 test_logev = test_logeq(4)
+
+print(f'TEST_LINEV: {test_linev}') # => 11
+print(f'TEST_QUADEV: {test_quadev}') # => 49
+print(f'TEST_CUBEV: {test_cubev}') # => 203
+print(f'TEST_HYPEV: {test_hypev}') # => 3.5
+print(f'TEST_EXPEV: {test_expev}') # => 162
+print(f'TEST_LOGEV: {test_logev}') # => 6.1588830833596715
