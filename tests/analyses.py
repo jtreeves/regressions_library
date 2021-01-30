@@ -50,6 +50,13 @@ test_hyproot = hyproot(coefficients[0], coefficients[1])
 test_exproot = exproot(coefficients[0], coefficients[1])
 test_logroot = logroot(coefficients[0], coefficients[1])
 
+test_linder = linder(coefficients[0], coefficients[1])
+test_quader = quader(coefficients[0], coefficients[1], coefficients[2])
+test_cubder = cubder(coefficients[0], coefficients[1], coefficients[2], coefficients[3])
+test_hypder = hypder(coefficients[0], coefficients[1])
+test_expder = expder(coefficients[0], coefficients[1])
+test_logder = logder(coefficients[0], coefficients[1])
+
 test_linev = test_lineq(4)
 test_quadev = test_quadeq(4)
 test_cubev = test_cubeq(4)
@@ -64,6 +71,48 @@ test_hyproot_arr = test_hyproot
 test_exproot_arr = test_exproot
 test_logroot_arr = test_logroot
 
+test_linder_first = test_linder['first']
+test_quader_first = test_quader['first']
+test_cubder_first = test_cubder['first']
+test_hypder_first = test_hypder['first']
+# test_expder_first = test_expder['first']
+test_logder_first = test_logder['first']
+
+test_linder_first_arr = test_linder['first']['constants']
+test_quader_first_arr = test_quader['first']['constants']
+test_cubder_first_arr = test_cubder['first']['constants']
+test_hypder_first_arr = test_hypder['first']['constants']
+# test_expder_first_arr = test_expder['first']['constants']
+test_logder_first_arr = test_logder['first']['constants']
+
+test_linder_first_ev = test_linder['first']['evaluation'](4)
+test_quader_first_ev = test_quader['first']['evaluation'](4)
+test_cubder_first_ev = test_cubder['first']['evaluation'](4)
+test_hypder_first_ev = test_hypder['first']['evaluation'](4)
+# test_expder_first_ev = test_expder['first']['evaluation'](4)
+test_logder_first_ev = test_logder['first']['evaluation'](4)
+
+test_linder_second = test_linder['second']
+test_quader_second = test_quader['second']
+test_cubder_second = test_cubder['second']
+test_hypder_second = test_hypder['second']
+# test_expder_second = test_expder['second']
+test_logder_second = test_logder['second']
+
+test_linder_second_arr = test_linder['second']['constants']
+test_quader_second_arr = test_quader['second']['constants']
+test_cubder_second_arr = test_cubder['second']['constants']
+test_hypder_second_arr = test_hypder['second']['constants']
+# test_expder_second_arr = test_expder['second']['constants']
+test_logder_second_arr = test_logder['second']['constants']
+
+test_linder_second_ev = test_linder['second']['evaluation'](4)
+test_quader_second_ev = test_quader['second']['evaluation'](4)
+test_cubder_second_ev = test_cubder['second']['evaluation'](4)
+test_hypder_second_ev = test_hypder['second']['evaluation'](4)
+# test_expder_second_ev = test_expder['second']['evaluation'](4)
+test_logder_second_ev = test_logder['second']['evaluation'](4)
+
 print(f'TEST_LINEV: {test_linev}') # => 11
 print(f'TEST_QUADEV: {test_quadev}') # => 49
 print(f'TEST_CUBEV: {test_cubev}') # => 203
@@ -77,3 +126,31 @@ print(f'TEST_CUBROOT_ARR: {test_cubroot_arr}') # => [None]
 print(f'TEST_HYPROOT_ARR: {test_hyproot_arr}') # => [-0.6666666666666666]
 print(f'TEST_EXPROOT_ARR: {test_exproot_arr}') # => [None]
 print(f'TEST_LOGROOT_ARR: {test_logroot_arr}') # => [0.513417119032592]
+
+print(f'TEST_LINDER_FIRST_ARR: {test_linder_first_arr}') # => [2]
+print(f'TEST_QUADER_FIRST_ARR: {test_quader_first_arr}') # => [4, 3]
+print(f'TEST_CUBDER_FIRST_ARR: {test_cubder_first_arr}') # => [6, 6, 5]
+print(f'TEST_HYPDER_FIRST_ARR: {test_hypder_first_arr}') # => [-2]
+# print(f'TEST_EXPDER_FIRST_ARR: {test_expder_first_arr}') # =>
+print(f'TEST_LOGDER_FIRST_ARR: {test_logder_first_arr}') # => [3, 0]
+
+print(f'TEST_LINDER_FIRST_EV: {test_linder_first_ev}') # => 2
+print(f'TEST_QUADER_FIRST_EV: {test_quader_first_ev}') # => 19
+print(f'TEST_CUBDER_FIRST_EV: {test_cubder_first_ev}') # => 125
+print(f'TEST_HYPDER_FIRST_EV: {test_hypder_first_ev}') # => -0.125
+# print(f'TEST_EXPDER_FIRST_EV: {test_expder_first_ev}') # =>
+print(f'TEST_LOGDER_FIRST_EV: {test_logder_first_ev}') # => 0.75
+
+print(f'TEST_LINDER_SECOND_ARR: {test_linder_second_arr}') # => [0]
+print(f'TEST_QUADER_SECOND_ARR: {test_quader_second_arr}') # => [4]
+print(f'TEST_CUBDER_SECOND_ARR: {test_cubder_second_arr}') # => [12, 6]
+print(f'TEST_HYPDER_SECOND_ARR: {test_hypder_second_arr}') # => [4]
+# print(f'TEST_EXPDER_SECOND_ARR: {test_expder_second_arr}') # =>
+print(f'TEST_LOGDER_SECOND_ARR: {test_logder_second_arr}') # => [-3, 0]
+
+print(f'TEST_LINDER_SECOND_EV: {test_linder_second_ev}') # => 0
+print(f'TEST_QUADER_SECOND_EV: {test_quader_second_ev}') # => 4
+print(f'TEST_CUBDER_SECOND_EV: {test_cubder_second_ev}') # => 54
+print(f'TEST_HYPDER_SECOND_EV: {test_hypder_second_ev}') # => 0.0625
+# print(f'TEST_EXPDER_SECOND_EV: {test_expder_second_ev}') # =>
+print(f'TEST_LOGDER_SECOND_EV: {test_logder_second_ev}') # => -0.1875

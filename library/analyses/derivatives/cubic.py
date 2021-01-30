@@ -5,7 +5,7 @@ def cubic(first_constant, second_constant, third_constant, fourth_constant):
         return evaluation
     first_object = {
         'constants': first_constants,
-        'derivative': first_derivative
+        'evaluation': first_derivative
     }
     second_constants = [2 * first_constants[0], first_constants[1]]
     def second_derivative(variable):
@@ -13,7 +13,7 @@ def cubic(first_constant, second_constant, third_constant, fourth_constant):
         return evaluation
     second_object = {
         'constants': second_constants,
-        'derivative': second_derivative
+        'evaluation': second_derivative
     }
     results = {
         'first': first_object,

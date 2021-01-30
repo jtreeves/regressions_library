@@ -10,6 +10,7 @@ def hyperbolic(first_constant, second_constant):
     second_constants = [-2 * first_constants[0]]
     def second_derivative(variable):
         evaluation = second_constants[0] / variable**3
+        return evaluation
     second_object = {
         'constants': second_constants,
         'evaluation': second_derivative
