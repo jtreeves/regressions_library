@@ -1,0 +1,2 @@
+def minima(points):
+    return
