@@ -19,7 +19,7 @@ datmin = minimum(dat1)
 datran = ranges(dat1)
 datsum = summation(dat1)
 datmean = mean(dat1)
-# datmed = median(dat1)
+datmed = median(dat1)
 # datq = quartiles(dat1, 3)
 datres = residuals(dat1, dat2)
 datdev = deviations(dat1)
@@ -31,7 +31,7 @@ print(f'DATMIN: {datmin}') # => 1
 print(f'DATRAN: {datran}') # => 21
 print(f'DATSUM: {datsum}') # => 83
 print(f'DATMEAN: {datmean}') # => 8.3
-# print(f'DATMED: {datmed}')
+print(f'DATMED: {datmed}')
 # print(f'DATQ: {datq}')
 print(f'DATRES: {datres}') # => [1, 1, -1, 1, -1, -2, 1, -3, 1, 0]
 print(f'DATDEV: {datdev}') # => [-0.3000000000000007, -6.300000000000001, -3.3000000000000007, 0.6999999999999993, -7.300000000000001, -5.300000000000001, 13.7, 2.6999999999999993, 0.6999999999999993, 4.699999999999999]
