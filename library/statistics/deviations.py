@@ -4,7 +4,7 @@ def deviation(actual, mean):
     result = actual - mean
     return result
 
-def deviation_array(actual_array):
+def deviations(actual_array):
     results = []
     average = mean(actual_array)
     for i in range(len(actual_array)):
