@@ -15,11 +15,11 @@ def critical_points(equation_type, derivative_level, coefficients):
             constants = cubder(coefficients[0], coefficients[1], coefficients[2], coefficients[3])['first']['constants']
             results = quadroots(constants[0], constants[1], constants[2])
         elif equation_type == 'hyperbolic':
-            results = [None]
+            results = [0]
         elif equation_type == 'exponential':
             results = [None]
         elif equation_type == 'logarithmic':
-            results = [None]
+            results = [0]
     elif derivative_level == 2:
         if equation_type == 'linear':
             results = [None]
@@ -29,9 +29,9 @@ def critical_points(equation_type, derivative_level, coefficients):
             constants = cubder(coefficients[0], coefficients[1], coefficients[2], coefficients[3])['second']['constants']
             results = linroots(constants[0], constants[1])
         elif equation_type == 'hyperbolic':
-            results = [None]
+            results = [0]
         elif equation_type == 'exponential':
             results = [None]
         elif equation_type == 'logarithmic':
-            results = [None]
+            results = [0]
     return results
