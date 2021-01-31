@@ -31,10 +31,9 @@ def mean_values_derivative(equation_type, equation, start, end, constants):
         value = constants[0] / average
         result.append(value)
     for i in range(len(result)):
-        try:
-            if result[i] <= start or result[i] >= end:
-                result.pop([i])
-        except TypeError:
+        if result[i] is not None and (result[i] <= start or result[i] >= end):
+            result.remove(result[i])
+        else:
             pass
     if len(result) == 0:
         result.append(None)
@@ -69,10 +68,9 @@ def mean_values_integral(equation_type, equation, start, end, constants):
         value = exp((average - constants[0]) / constants[1])
         result.append(value)
     for i in range(len(result)):
-        try:
-            if result[i] < start or result[i] > end:
-                result.pop([i])
-        except TypeError:
+        if result[i] is not None and (result[i] < start or result[i] > end):
+            result.remove(result[i])
+        else:
             pass
     if len(result) == 0:
         result.append(None)
