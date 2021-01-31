@@ -1,9 +1,9 @@
-def intervals(equation, points):
+def intervals(derivative, points):
     result = []
     if points[0] == None:
-        if equation(10) > 0:
+        if derivative(10) > 0:
             result = ['increasing']
-        elif equation(10) < 0:
+        elif derivative(10) < 0:
             result = ['decreasing']
         else:
             result = ['constant']
@@ -11,13 +11,13 @@ def intervals(equation, points):
         turning_point = points[0]
         before = turning_point - 1
         after = turning_point + 1
-        if equation(before) > 0:
+        if derivative(before) > 0:
             before = 'increasing'
-        elif equation(before) < 0:
+        elif derivative(before) < 0:
             before = 'decreasing'
-        if equation(after) > 0 :
+        if derivative(after) > 0 :
             after = 'increasing'
-        elif equation(after) < 0:
+        elif derivative(after) < 0:
             after = 'decreasing'
         result = [before, turning_point, after]
     elif len(points) == 2:
@@ -28,17 +28,17 @@ def intervals(equation, points):
             first_point = second_point
         before = first_point - 1
         after = second_point + 1
-        if equation(before) > 0:
+        if derivative(before) > 0:
             before = 'increasing'
-        elif equation(before) < 0:
+        elif derivative(before) < 0:
             before = 'decreasing'
-        if equation(middle) > 0 :
+        if derivative(middle) > 0 :
             middle = 'increasing'
-        elif equation(middle) < 0:
+        elif derivative(middle) < 0:
             middle = 'decreasing'
-        if equation(after) > 0:
+        if derivative(after) > 0:
             after = 'increasing'
-        elif equation(after) < 0:
+        elif derivative(after) < 0:
             after = 'decreasing'
         result = [before, first_point, middle, second_point, after]
     return result
