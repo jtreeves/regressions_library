@@ -33,6 +33,7 @@ from library.analyses.intervals import intervals
 from library.analyses.maxima import maxima
 from library.analyses.mean_values import mean_value_derivative, mean_value_integral
 from library.analyses.minima import minima
+from library.vectors.unify import unify
 
 coefficients = [2, 3, 5, 7]
 
@@ -77,6 +78,13 @@ test_crit_cub_val = critical_values('cubic', test_crit_cub1, coefficients)
 test_crit_hyp_val = critical_values('hyperbolic', test_crit_hyp1, coefficients)
 test_crit_exp_val = critical_values('exponential', test_crit_exp1, coefficients)
 test_crit_log_val = critical_values('logarithmic', test_crit_log1, coefficients)
+
+test_unify_lin = unify(test_crit_lin1, test_crit_lin_val)
+test_unify_quad = unify(test_crit_quad1, test_crit_quad_val)
+test_unify_cub = unify(test_crit_cub1, test_crit_cub_val)
+test_unify_hyp = unify(test_crit_hyp1, test_crit_hyp_val)
+test_unify_exp = unify(test_crit_exp1, test_crit_exp_val)
+test_unify_log = unify(test_crit_log1, test_crit_log_val)
 
 test_crit_lin2 = critical_points('linear', 2, coefficients)
 test_crit_quad2 = critical_points('quadratic', 2, coefficients)
@@ -238,6 +246,13 @@ print(f'TEST_CRIT_CUB_VAL: {test_crit_cub_val}') # => [(5+1.7821127702606043j), 
 print(f'TEST_CRIT_HYP_VAL: {test_crit_hyp_val}') # => [None]
 print(f'TEST_CRIT_EXP_VAL: {test_crit_exp_val}') # => [None]
 print(f'TEST_CRIT_LOG_VAL: {test_crit_log_val}') # => [None]
+
+print(f'TEST_UNIFY_LIN: {test_unify_lin}') # => [None]
+print(f'TEST_UNIFY_QUAD: {test_unify_quad}') # => [[-0.75, 3.875]]
+print(f'TEST_UNIFY_CUB: {test_unify_cub}') # => [[(-0.49999999999999994+0.7637626158259733j), (5+1.7821127702606043j)], [(-0.5000000000000001-0.7637626158259733j), (5-1.7821127702606043j)]]
+print(f'TEST_UNIFY_HYP: {test_unify_hyp}') # => [None]
+print(f'TEST_UNIFY_EXP: {test_unify_exp}') # => [None]
+print(f'TEST_UNIFY_LOG: {test_unify_log}') # => [None]
 
 print(f'TEST_CRIT_LIN2: {test_crit_lin2}') # => [None]
 print(f'TEST_CRIT_QUAD2: {test_crit_quad2}') # => [None]
