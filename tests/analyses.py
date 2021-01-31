@@ -29,7 +29,7 @@ from library.analyses.extrema import extrema
 from library.analyses.inflections import inflections
 from library.analyses.intervals import intervals
 from library.analyses.maxima import maxima
-from library.analyses.mean_values import mean_value_derivative, mean_value_integral
+from library.analyses.mean_values import mean_values_derivative, mean_values_integral, average_value_derivative, average_value_integral
 from library.analyses.minima import minima
 from library.vectors.unify import unify
 
@@ -210,6 +210,34 @@ test_hypint_acc = accumulation(test_hypint['evaluation'], 1, 10)
 test_expint_acc = accumulation(test_expint['evaluation'], 1, 10)
 test_logint_acc = accumulation(test_logint['evaluation'], 1, 10)
 
+test_av_der_lin = average_value_derivative(test_lineq, 1, 10)
+test_av_der_quad = average_value_derivative(test_quadeq, 1, 10)
+test_av_der_cub = average_value_derivative(test_cubeq, 1, 10)
+test_av_der_hyp = average_value_derivative(test_hypeq, 1, 10)
+test_av_der_exp = average_value_derivative(test_expeq, 1, 10)
+test_av_der_log = average_value_derivative(test_logeq, 1, 10)
+
+test_av_int_lin = average_value_integral(test_linint['evaluation'], 1, 10)
+test_av_int_quad = average_value_integral(test_quadint['evaluation'], 1, 10)
+test_av_int_cub = average_value_integral(test_cubint['evaluation'], 1, 10)
+test_av_int_hyp = average_value_integral(test_hypint['evaluation'], 1, 10)
+test_av_int_exp = average_value_integral(test_expint['evaluation'], 1, 10)
+test_av_int_log = average_value_integral(test_logint['evaluation'], 1, 10)
+
+test_m_der_lin = mean_values_derivative('linear', test_lineq, 1, 10, test_linder_first_arr)
+test_m_der_quad = mean_values_derivative('quadratic', test_quadeq, 1, 10, test_quader_first_arr)
+test_m_der_cub = mean_values_derivative('cubic', test_cubeq, 1, 10, test_cubder_first_arr)
+test_m_der_hyp = mean_values_derivative('hyperbolic', test_hypeq, 1, 10, test_hypder_first_arr)
+test_m_der_exp = mean_values_derivative('exponential', test_expeq, 1, 10, test_expder_first_arr)
+test_m_der_log = mean_values_derivative('logarithmic', test_logeq, 1, 10, test_logder_first_arr)
+
+test_m_int_lin = mean_values_integral('linear', test_linint['evaluation'], 1, 10, coefficients)
+test_m_int_quad = mean_values_integral('quadratic', test_quadint['evaluation'], 1, 10, coefficients)
+test_m_int_cub = mean_values_integral('cubic', test_cubint['evaluation'], 1, 10, coefficients)
+test_m_int_hyp = mean_values_integral('hyperbolic', test_hypint['evaluation'], 1, 10, coefficients)
+test_m_int_exp = mean_values_integral('exponential', test_expint['evaluation'], 1, 10, coefficients)
+test_m_int_log = mean_values_integral('logarithmic', test_logint['evaluation'], 1, 10, coefficients)
+
 print(f'TEST_LINEV: {test_linev}') # => 11
 print(f'TEST_QUADEV: {test_quadev}') # => 49
 print(f'TEST_CUBEV: {test_cubev}') # => 203
@@ -335,3 +363,31 @@ print(f'TEST_INFL_CUB: {test_infl_cub}') # => [-0.5]
 print(f'TEST_INFL_HYP: {test_infl_hyp}') # => [None]
 print(f'TEST_INFL_EXP: {test_infl_exp}') # => [None]
 print(f'TEST_INFL_LOG: {test_infl_log}') # => [None]
+
+print(f'TEST_AV_DER_LIN: {test_av_der_lin}') # =>
+print(f'TEST_AV_DER_QUAD: {test_av_der_quad}') # =>
+print(f'TEST_AV_DER_CUB: {test_av_der_cub}') # =>
+print(f'TEST_AV_DER_HYP: {test_av_der_hyp}') # =>
+print(f'TEST_AV_DER_EXP: {test_av_der_exp}') # =>
+print(f'TEST_AV_DER_LOG: {test_av_der_log}') # =>
+
+print(f'TEST_M_DER_LIN: {test_m_der_lin}') # =>
+print(f'TEST_M_DER_QUAD: {test_m_der_quad}') # =>
+print(f'TEST_M_DER_CUB: {test_m_der_cub}') # =>
+print(f'TEST_M_DER_HYP: {test_m_der_hyp}') # =>
+print(f'TEST_M_DER_EXP: {test_m_der_exp}') # =>
+print(f'TEST_M_DER_LOG: {test_m_der_log}') # =>
+
+print(f'TEST_AV_INT_LIN: {test_av_int_lin}') # =>
+print(f'TEST_AV_INT_QUAD: {test_av_int_quad}') # =>
+print(f'TEST_AV_INT_CUB: {test_av_int_cub}') # =>
+print(f'TEST_AV_INT_HYP: {test_av_int_hyp}') # =>
+print(f'TEST_AV_INT_EXP: {test_av_int_exp}') # =>
+print(f'TEST_AV_INT_LOG: {test_av_int_log}') # =>
+
+print(f'TEST_M_INT_LIN: {test_m_int_lin}') # =>
+print(f'TEST_M_INT_QUAD: {test_m_int_quad}') # =>
+print(f'TEST_M_INT_CUB: {test_m_int_cub}') # =>
+print(f'TEST_M_INT_HYP: {test_m_int_hyp}') # =>
+print(f'TEST_M_INT_EXP: {test_m_int_exp}') # =>
+print(f'TEST_M_INT_LOG: {test_m_int_log}') # =>
