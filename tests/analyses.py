@@ -154,6 +154,13 @@ test_ints_hyp = intervals(test_hypder_first['evaluation'], test_crit_hyp1)
 test_ints_exp = intervals(test_expder_first['evaluation'], test_crit_exp1)
 test_ints_log = intervals(test_logder_first['evaluation'], test_crit_log1)
 
+test_max_lin = maxima(test_ints_lin)
+test_max_quad = maxima(test_ints_quad)
+test_max_cub = maxima(test_ints_cub)
+test_max_hyp = maxima(test_ints_hyp)
+test_max_exp = maxima(test_ints_exp)
+test_max_log = maxima(test_ints_log)
+
 test_linint_arr = test_linint['constants']
 test_quadint_arr = test_quadint['constants']
 test_cubint_arr = test_cubint['constants']
@@ -272,3 +279,10 @@ print(f'TEST_INTS_CUB: {test_ints_cub}') # => [None]
 print(f'TEST_INTS_HYP: {test_ints_hyp}') # => ['increasing']
 print(f'TEST_INTS_EXP: {test_ints_exp}') # => ['increasing']
 print(f'TEST_INTS_LOG: {test_ints_log}') # => ['increasing']
+
+print(f'TEST_MAX_LIN: {test_max_lin}') # => [None]
+print(f'TEST_MAX_QUAD: {test_max_quad}') # => [None]
+print(f'TEST_MAX_CUB: {test_max_cub}') # => [None]
+print(f'TEST_MAX_HYP: {test_max_hyp}') # => [None]
+print(f'TEST_MAX_EXP: {test_max_exp}') # => [None]
+print(f'TEST_MAX_LOG: {test_max_log}') # => [None]
