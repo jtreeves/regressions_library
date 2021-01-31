@@ -154,6 +154,13 @@ test_ints_hyp = intervals(test_hypder_first['evaluation'], test_crit_hyp1)
 test_ints_exp = intervals(test_expder_first['evaluation'], test_crit_exp1)
 test_ints_log = intervals(test_logder_first['evaluation'], test_crit_log1)
 
+test_ints2_lin = intervals(test_linder_second['evaluation'], test_crit_lin2)
+test_ints2_quad = intervals(test_quader_second['evaluation'], test_crit_quad2)
+test_ints2_cub = intervals(test_cubder_second['evaluation'], test_crit_cub2)
+test_ints2_hyp = intervals(test_hypder_second['evaluation'], test_crit_hyp2)
+test_ints2_exp = intervals(test_expder_second['evaluation'], test_crit_exp2)
+test_ints2_log = intervals(test_logder_second['evaluation'], test_crit_log2)
+
 test_max_lin = maxima(test_ints_lin)
 test_max_quad = maxima(test_ints_quad)
 test_max_cub = maxima(test_ints_cub)
@@ -174,6 +181,13 @@ test_extr_cub = extrema(test_ints_cub)
 test_extr_hyp = extrema(test_ints_hyp)
 test_extr_exp = extrema(test_ints_exp)
 test_extr_log = extrema(test_ints_log)
+
+test_infl_lin = inflections(test_ints2_lin)
+test_infl_quad = inflections(test_ints2_quad)
+test_infl_cub = inflections(test_ints2_cub)
+test_infl_hyp = inflections(test_ints2_hyp)
+test_infl_exp = inflections(test_ints2_exp)
+test_infl_log = inflections(test_ints2_log)
 
 test_linint_arr = test_linint['constants']
 test_quadint_arr = test_quadint['constants']
@@ -314,3 +328,10 @@ print(f'TEST_EXTR_CUB: {test_extr_cub}') # => {'maxima': [None], 'minima': [None
 print(f'TEST_EXTR_HYP: {test_extr_hyp}') # => {'maxima': [None], 'minima': [None]}
 print(f'TEST_EXTR_EXP: {test_extr_exp}') # => {'maxima': [None], 'minima': [None]}
 print(f'TEST_EXTR_LOG: {test_extr_log}') # => {'maxima': [None], 'minima': [None]}
+
+print(f'TEST_INFL_LIN: {test_infl_lin}') # => [None]
+print(f'TEST_INFL_QUAD: {test_infl_quad}') # => [None]
+print(f'TEST_INFL_CUB: {test_infl_cub}') # => [-0.5]
+print(f'TEST_INFL_HYP: {test_infl_hyp}') # => [None]
+print(f'TEST_INFL_EXP: {test_infl_exp}') # => [None]
+print(f'TEST_INFL_LOG: {test_infl_log}') # => [None]
