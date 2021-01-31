@@ -149,7 +149,7 @@ test_logder_second_ev = test_logder['second']['evaluation'](4)
 
 test_ints_lin = intervals(test_linder_first['evaluation'], test_crit_lin1)
 test_ints_quad = intervals(test_quader_first['evaluation'], test_crit_quad1)
-# test_ints_cub = intervals(test_cubder_first['evaluation'], test_crit_cub1)
+test_ints_cub = intervals(test_cubder_first['evaluation'], test_crit_cub1)
 test_ints_hyp = intervals(test_hypder_first['evaluation'], test_crit_hyp1)
 test_ints_exp = intervals(test_expder_first['evaluation'], test_crit_exp1)
 test_ints_log = intervals(test_logder_first['evaluation'], test_crit_log1)
@@ -268,7 +268,7 @@ print(f'TEST_CRIT_LOG2: {test_crit_log2}') # => [None]
 
 print(f'TEST_INTS_LIN: {test_ints_lin}') # => ['increasing']
 print(f'TEST_INTS_QUAD: {test_ints_quad}') # => ['decreasing', -0.75, 'increasing']
-# print(f'TEST_INTS_CUB: {test_ints_cub}') # => ['increasing']
+print(f'TEST_INTS_CUB: {test_ints_cub}') # => [None]
 print(f'TEST_INTS_HYP: {test_ints_hyp}') # => ['increasing']
 print(f'TEST_INTS_EXP: {test_ints_exp}') # => ['increasing']
 print(f'TEST_INTS_LOG: {test_ints_log}') # => ['increasing']

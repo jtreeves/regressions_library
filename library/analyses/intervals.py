@@ -7,6 +7,8 @@ def intervals(derivative, points):
             result = ['decreasing']
         else:
             result = ['constant']
+    elif isinstance(points[0], complex):
+        result = [None]
     elif len(points) == 1:
         turning_point = points[0]
         before = turning_point - 1
