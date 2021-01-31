@@ -168,6 +168,13 @@ test_min_hyp = minima(test_ints_hyp)
 test_min_exp = minima(test_ints_exp)
 test_min_log = minima(test_ints_log)
 
+test_extr_lin = extrema(test_ints_lin)
+test_extr_quad = extrema(test_ints_quad)
+test_extr_cub = extrema(test_ints_cub)
+test_extr_hyp = extrema(test_ints_hyp)
+test_extr_exp = extrema(test_ints_exp)
+test_extr_log = extrema(test_ints_log)
+
 test_linint_arr = test_linint['constants']
 test_quadint_arr = test_quadint['constants']
 test_cubint_arr = test_cubint['constants']
@@ -300,3 +307,10 @@ print(f'TEST_MIN_CUB: {test_min_cub}') # => [None]
 print(f'TEST_MIN_HYP: {test_min_hyp}') # => [None]
 print(f'TEST_MIN_EXP: {test_min_exp}') # => [None]
 print(f'TEST_MIN_LOG: {test_min_log}') # => [None]
+
+print(f'TEST_EXTR_LIN: {test_extr_lin}') # => {'maxima': [None], 'minima': [None]}
+print(f'TEST_EXTR_QUAD: {test_extr_quad}') # => {'maxima': [None], 'minima': [-0.75]}
+print(f'TEST_EXTR_CUB: {test_extr_cub}') # => {'maxima': [None], 'minima': [None]}
+print(f'TEST_EXTR_HYP: {test_extr_hyp}') # => {'maxima': [None], 'minima': [None]}
+print(f'TEST_EXTR_EXP: {test_extr_exp}') # => {'maxima': [None], 'minima': [None]}
+print(f'TEST_EXTR_LOG: {test_extr_log}') # => {'maxima': [None], 'minima': [None]}
