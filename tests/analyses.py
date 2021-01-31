@@ -71,6 +71,13 @@ test_crit_hyp1 = critical_points('hyperbolic', 1, coefficients)
 test_crit_exp1 = critical_points('exponential', 1, coefficients)
 test_crit_log1 = critical_points('logarithmic', 1, coefficients)
 
+test_crit_lin_val = critical_values('linear', test_crit_lin1, coefficients)
+test_crit_quad_val = critical_values('quadratic', test_crit_quad1, coefficients)
+test_crit_cub_val = critical_values('cubic', test_crit_cub1, coefficients)
+test_crit_hyp_val = critical_values('hyperbolic', test_crit_hyp1, coefficients)
+test_crit_exp_val = critical_values('exponential', test_crit_exp1, coefficients)
+test_crit_log_val = critical_values('logarithmic', test_crit_log1, coefficients)
+
 test_crit_lin2 = critical_points('linear', 2, coefficients)
 test_crit_quad2 = critical_points('quadratic', 2, coefficients)
 test_crit_cub2 = critical_points('cubic', 2, coefficients)
@@ -224,6 +231,13 @@ print(f'TEST_CRIT_CUB1: {test_crit_cub1}') # => [(-0.49999999999999994+0.7637626
 print(f'TEST_CRIT_HYP1: {test_crit_hyp1}') # => [None]
 print(f'TEST_CRIT_EXP1: {test_crit_exp1}') # => [None]
 print(f'TEST_CRIT_LOG1: {test_crit_log1}') # => [None]
+
+print(f'TEST_CRIT_LIN_VAL: {test_crit_lin_val}') # => [None]
+print(f'TEST_CRIT_QUAD_VAL: {test_crit_quad_val}') # => [3.875]
+print(f'TEST_CRIT_CUB_VAL: {test_crit_cub_val}') # => [(5+1.7821127702606043j), (5-1.7821127702606043j)]
+print(f'TEST_CRIT_HYP_VAL: {test_crit_hyp_val}') # => [None]
+print(f'TEST_CRIT_EXP_VAL: {test_crit_exp_val}') # => [None]
+print(f'TEST_CRIT_LOG_VAL: {test_crit_log_val}') # => [None]
 
 print(f'TEST_CRIT_LIN2: {test_crit_lin2}') # => [None]
 print(f'TEST_CRIT_QUAD2: {test_crit_quad2}') # => [None]

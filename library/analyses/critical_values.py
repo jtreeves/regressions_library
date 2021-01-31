@@ -5,22 +5,28 @@ from .equations.hyperbolic import hyperbolic
 from .equations.exponential import exponential
 from .equations.logarithmic import logarithmic
 
-def critical_values(equation_type, array):
+def critical_values(equation_type, critical_points, coefficients):
     result = []
-    if array[0] == None:
+    if critical_points[0] == None:
         result = [None]
     else:
-        for i in range(len(array)):
+        for i in range(len(critical_points)):
             if equation_type == 'linear':
-                result.append(linear(array[i]))
+                lineq = linear(coefficients[0], coefficients[1])
+                result.append(lineq(critical_points[i]))
             elif equation_type == 'quadratic':
-                result.append(quadratic(array[i]))
+                quadeq = quadratic(coefficients[0], coefficients[1], coefficients[2])
+                result.append(quadeq(critical_points[i]))
             elif equation_type == 'cubic':
-                result.append(cubic(array[i]))
+                cubeq = cubic(coefficients[0], coefficients[1], coefficients[2], coefficients[3])
+                result.append(cubeq(critical_points[i]))
             elif equation_type == 'hyperbolic':
-                result.append(hyperbolic(array[i]))
+                hypeq = hyperbolic(coefficients[0], coefficients[1])
+                result.append(hypeq(critical_points[i]))
             elif equation_type == 'exponential':
-                result.append(exponential(array[i]))
+                expeq = exponential(coefficients[0], coefficients[1])
+                result.append(expeq(critical_points[i]))
             elif equation_type == 'logarithmic':
-                result.append(logarithmic(array[i]))
+                logeq = logarithmic(coefficients[0], coefficients[1])
+                result.append(logeq(critical_points[i]))
     return result
