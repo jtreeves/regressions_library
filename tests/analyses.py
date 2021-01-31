@@ -161,6 +161,13 @@ test_max_hyp = maxima(test_ints_hyp)
 test_max_exp = maxima(test_ints_exp)
 test_max_log = maxima(test_ints_log)
 
+test_min_lin = minima(test_ints_lin)
+test_min_quad = minima(test_ints_quad)
+test_min_cub = minima(test_ints_cub)
+test_min_hyp = minima(test_ints_hyp)
+test_min_exp = minima(test_ints_exp)
+test_min_log = minima(test_ints_log)
+
 test_linint_arr = test_linint['constants']
 test_quadint_arr = test_quadint['constants']
 test_cubint_arr = test_cubint['constants']
@@ -286,3 +293,10 @@ print(f'TEST_MAX_CUB: {test_max_cub}') # => [None]
 print(f'TEST_MAX_HYP: {test_max_hyp}') # => [None]
 print(f'TEST_MAX_EXP: {test_max_exp}') # => [None]
 print(f'TEST_MAX_LOG: {test_max_log}') # => [None]
+
+print(f'TEST_MIN_LIN: {test_min_lin}') # => [None]
+print(f'TEST_MIN_QUAD: {test_min_quad}') # => [-0.75]
+print(f'TEST_MIN_CUB: {test_min_cub}') # => [None]
+print(f'TEST_MIN_HYP: {test_min_hyp}') # => [None]
+print(f'TEST_MIN_EXP: {test_min_exp}') # => [None]
+print(f'TEST_MIN_LOG: {test_min_log}') # => [None]
