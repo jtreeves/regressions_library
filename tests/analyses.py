@@ -25,9 +25,7 @@ from library.analyses.integrals.logarithmic import logarithmic as logint
 from library.analyses.accumulation import accumulation
 from library.analyses.critical_points import critical_points
 from library.analyses.critical_values import critical_values
-from library.analyses.decreasing import decreasing
 from library.analyses.extrema import extrema
-from library.analyses.increasing import increasing
 from library.analyses.inflections import inflections
 from library.analyses.intervals import intervals
 from library.analyses.maxima import maxima
