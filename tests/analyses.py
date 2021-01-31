@@ -34,6 +34,11 @@ from library.analyses.minima import minima
 from library.vectors.unify import unify
 
 coefficients = [2, 3, 5, 7]
+other = [2, -3, -5, 7]
+
+other_cubroot = cubroot(other[0], other[1], other[2], other[3])
+
+print(f'OTHER_CUBROOT: {other_cubroot}')
 
 test_lineq = lineq(coefficients[0], coefficients[1])
 test_quadeq = quadeq(coefficients[0], coefficients[1], coefficients[2])
