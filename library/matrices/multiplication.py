@@ -1,4 +1,3 @@
-from .column import column
 from .transpose import transpose
 from library.vectors.dot_product import dot_product
 
