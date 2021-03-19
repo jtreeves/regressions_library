@@ -100,7 +100,7 @@ def cubic(data):
         'derivative': first_derivative,
         'integral': integral
     }
-    averages_range = average_values('cubic', equation, integral, minimum, maximum, solution)
+    averages_range = average_values('cubic', equation, integral, min_value, max_value, solution)
     averages_iqr = average_values('cubic', equation, integral, q1, q3, solution)
     averages = {
         'range': averages_range,
