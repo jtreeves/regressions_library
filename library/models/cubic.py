@@ -27,13 +27,18 @@ def cubic(data):
     inversion_list = matrix.tolist(inversion)
     second_product = multiplication(inversion_list, transposition)
     print(f'SECOND_PRODUCT: {second_product}')
-    solution = multiplication(second_product, dependent_matrix)
+    solution_column = multiplication(second_product, dependent_matrix)
+    solution = dimension(solution_column, 1)
     print(f'SOLUTION: {solution}')
-    equation = lambda x: solution[0][0]*x**3 + solution[1][0]*x**2 + solution[2][0]*x + solution[3][0]
-    # inaccuracy = error(data, equation)
+    equation = cubic_equation(solution[0], solution[1], solution[2], solution[3])
+    predicted = []
+    for i in range(len(data)):
+        predicted.append(equation(independent_variable[i]))
+    accuracy = correlation(dependent_variable, predicted)
     result = {
         'constants': solution,
-        # 'error': inaccuracy
+        'equation': equation,
+        'correlation': accuracy
     }
     return result
 
