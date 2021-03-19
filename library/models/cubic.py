@@ -2,6 +2,7 @@ from numpy import matrix
 from numpy.linalg import inv
 from library.vectors.dimension import dimension
 from library.vectors.column import column
+from library.vectors.unify import unify
 from library.matrices.multiplication import multiplication
 from library.matrices.transpose import transpose
 from library.matrices.inverse import inverse
@@ -38,8 +39,12 @@ def cubic(data):
     print(f'SOLUTION: {solution}')
     equation = cubic_equation(solution[0], solution[1], solution[2], solution[3])
     roots = cubic_roots(solution[0], solution[1], solution[2], solution[3])
+    zeroes = []
+    for i in range(len(roots)):
+        zeroes.append(0)
+    root_coordinates = unify(roots, zeroes)
     points = {
-        'roots': roots
+        'roots': root_coordinates
     }
     integral = cubic_integral(solution[0], solution[1], solution[2], solution[3])
     min_value = minimum(independent_variable)
