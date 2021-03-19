@@ -1,6 +1,9 @@
 from .accumulation import accumulation
+from .roots.linear import linear as linear_roots
 from .roots.quadratic import quadratic as quadratic_roots
 from .roots.cubic import cubic as cubic_roots
+from .roots.hyperbolic import hyperbolic as hyperbolic_roots
+from .roots.logarithmic import logarithmic as logarithmic_roots
 from math import log, exp
 
 def average_value_derivative(equation, start, end):
@@ -15,23 +18,31 @@ def mean_values_derivative(equation_type, equation, start, end, constants):
     if equation_type == 'linear':
         result.append(None)
     elif equation_type == 'quadratic':
-        value = (average - constants[1]) / constants[0]
+        value = linear_roots(2 * constants[0], constants[1] -  average)
         result.append(value)
     elif equation_type == 'cubic':
-        discriminant = constants[1]**2 - 4 * constants[0] * (constants[2] - average)
-        first_value = (-1 * constants[1] + discriminant**(1/2)) / (2 * constants[0])
-        second_value = (-1 * constants[1] - discriminant**(1/2)) / (2 * constants[0])
-        result.extend([first_value, second_value])
+        values = quadratic_roots(3 * constants[0], 2 * constants[1], constants[2] - average)
+        result.append(values)
     elif equation_type == 'hyperbolic':
-        first_value = (constants[0] / average)**(1/2)
-        second_value = -1 * (constants[0] / average)**(1/2)
+        ratio = -1 * average / constants[0]
+        root = ratio ** (1/2)
+        first_value = root
+        second_value = -1 * root
         result.extend([first_value, second_value])
     elif equation_type == 'exponential':
-        value = log(average / constants[0]) / log(constants[1])
+        average_log = log(average)
+        first_log = log(constants[0])
+        second_log = log(constants[1])
+        numerator = average_log - first_log - log(second_log)
+        denominator = second_log
+        value = numerator / denominator
         result.append(value)
     elif equation_type == 'logarithmic':
-        value = constants[0] / average
+        values = hyperbolic_roots(constants[1], -1 * average)
+        result.append(values)
+        value = constants[1] / average
         result.append(value)
+    print(f'AVERAGE VALUES LIST: {result}')
     for i in range(len(result)):
         if isinstance(result[i], complex):
             result.remove(result[i])
@@ -53,7 +64,7 @@ def mean_values_integral(equation_type, equation, start, end, constants):
     result = []
     average = average_value_integral(equation, start, end)
     if equation_type == 'linear':
-        value = (average - constants[1]) / constants[0]
+        value = linear_roots(constants[0], constants[1] - average)
         result.append(value)
     elif equation_type == 'quadratic':
         values = quadratic_roots(constants[0], constants[1], constants[2] - average)
@@ -62,13 +73,13 @@ def mean_values_integral(equation_type, equation, start, end, constants):
         values = cubic_roots(constants[0], constants[1], constants[2], constants[3] - average)
         result.append(values)
     elif equation_type == 'hyperbolic':
-        value = constants[0] / (average - constants[1])
+        value = hyperbolic_roots(constants[0], constants[1] - average)
         result.append(value)
     elif equation_type == 'exponential':
         value = log(average / constants[0]) / log(constants[1])
         result.append(value)
     elif equation_type == 'logarithmic':
-        value = exp((average - constants[0]) / constants[1])
+        value = logarithmic_roots(constants[0] - average, constants[1])
         result.append(value)
     for i in range(len(result)):
         if isinstance(result[i], complex):
