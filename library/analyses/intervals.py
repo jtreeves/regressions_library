@@ -1,3 +1,5 @@
+from library.statistics.sort import sort
+
 def intervals(derivative, points):
     result = []
     if points[0] == None:
@@ -23,11 +25,10 @@ def intervals(derivative, points):
             after = 'decreasing'
         result = [before, turning_point, after]
     elif len(points) == 2:
-        first_point = points[0]
-        second_point = points[1]
+        sorted_points = sort(points)
+        first_point = sorted_points[0]
+        second_point = sorted_points[1]
         middle = (first_point + second_point) / 2
-        if first_point > second_point:
-            first_point = second_point
         before = first_point - 1
         after = second_point + 1
         if derivative(before) > 0:
@@ -43,4 +44,5 @@ def intervals(derivative, points):
         elif derivative(after) < 0:
             after = 'decreasing'
         result = [before, first_point, middle, second_point, after]
+    print(f'INTERVALS: {result}')
     return result

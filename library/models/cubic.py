@@ -95,6 +95,6 @@ def cubic(data):
     }
     return result
 
-test_set = [[2, 3], [4, 7], [8, 9], [11, 11]]
+test_set = [[2, 3], [4, 27], [8, 1], [11, 15], [13, 52]]
 test_solution = cubic(test_set)
 print(f'RESULT: {test_solution}')
