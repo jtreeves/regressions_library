@@ -1,4 +1,6 @@
 from .accumulation import accumulation
+from .roots.quadratic import quadratic as quadratic_roots
+from .roots.cubic import cubic as cubic_roots
 from math import log, exp
 
 def average_value_derivative(equation, start, end):
@@ -52,12 +54,11 @@ def mean_values_integral(equation_type, equation, start, end, constants):
         value = (average - constants[1]) / constants[0]
         result.append(value)
     elif equation_type == 'quadratic':
-        discriminant = constants[1]**2 - 4 * constants[0] * (constants[2] - average)
-        first_value = (-1 * constants[1] + discriminant**(1/2)) / (2 * constants[0])
-        second_value = (-1 * constants[1] - discriminant**(1/2)) / (2 * constants[0])
-        result.extend([first_value, second_value])
+        values = quadratic_roots(constants[0], constants[1], constants[2] - average)
+        result.append(values)
     elif equation_type == 'cubic':
-        result.append(None)
+        values = cubic_roots(constants[0], constants[1], constants[2], constants[3] - average)
+        result.append(values)
     elif equation_type == 'hyperbolic':
         value = constants[0] / (average - constants[1])
         result.append(value)
@@ -75,3 +76,10 @@ def mean_values_integral(equation_type, equation, start, end, constants):
     if len(result) == 0:
         result.append(None)
     return result
+
+def average_values(equation_type, equation, integral, start, end, constants):
+    derivative_value
+    derivative_inputs
+    integral_value
+    integral_inputs
+    return results
