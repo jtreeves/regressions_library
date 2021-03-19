@@ -83,16 +83,21 @@ def cubic(data):
         'minima': minima_coordinates,
         'inflections': inflections_coordinates
     }
-    integral = cubic_integral(solution[0], solution[1], solution[2], solution[3])
+    integral = cubic_integral(solution[0], solution[1], solution[2], solution[3])['evaluation']
     min_value = minimum(independent_variable)
     max_value = maximum(independent_variable)
     q1 = quartiles(independent_variable, 1)
     q3 = quartiles(independent_variable, 3)
-    accumulated_range = accumulation(integral['evaluation'], min_value, max_value)
-    accumulated_iqr = accumulation(integral['evaluation'], q1, q3)
+    accumulated_range = accumulation(integral, min_value, max_value)
+    accumulated_iqr = accumulation(integral, q1, q3)
     accumulations = {
         'range': accumulated_range,
         'iqr': accumulated_iqr
+    }
+    evaluations = {
+        'equation': equation,
+        'derivative': first_derivative,
+        'integral': integral
     }
     predicted = []
     for i in range(len(data)):
@@ -100,10 +105,10 @@ def cubic(data):
     accuracy = correlation(dependent_variable, predicted)
     result = {
         'constants': solution,
-        'evaluation': equation,
         'correlation': accuracy,
-        'accumulations': accumulations,
-        'points': points
+        'evaluations': evaluations,
+        'points': points,
+        'accumulations': accumulations
     }
     return result
 
