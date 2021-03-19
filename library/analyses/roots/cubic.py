@@ -1,3 +1,5 @@
+from library.statistics.sort import sort
+
 def cubic(first_constant, second_constant, third_constant, fourth_constant):
     roots = []
     xi = (-1 + (-3)**(1/2)) / 2
@@ -35,4 +37,5 @@ def cubic(first_constant, second_constant, third_constant, fourth_constant):
     result = list(set(roots))
     if not result:
         result = [None]
-    return result
+    sorted_result = sort(result)
+    return sorted_result

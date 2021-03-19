@@ -1,3 +1,5 @@
+from library.statistics.sort import sort
+
 def quadratic(first_constant, second_constant, third_constant):
     roots = []
     discriminant = second_constant**2 - 4 * first_constant * third_constant
@@ -12,4 +14,5 @@ def quadratic(first_constant, second_constant, third_constant):
             roots.append(second_root)
     if not roots:
         roots = [None]
-    return roots
+    sorted_roots = sort(roots)
+    return sorted_roots
