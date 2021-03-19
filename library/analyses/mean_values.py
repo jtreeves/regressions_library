@@ -4,6 +4,7 @@ from .roots.quadratic import quadratic as quadratic_roots
 from .roots.cubic import cubic as cubic_roots
 from .roots.hyperbolic import hyperbolic as hyperbolic_roots
 from .roots.logarithmic import logarithmic as logarithmic_roots
+from library.statistics.sort import sort
 from math import log, exp
 
 def average_value_derivative(equation, start, end):
@@ -40,17 +41,11 @@ def mean_values_derivative(equation_type, equation, start, end, constants):
     elif equation_type == 'logarithmic':
         value = hyperbolic_roots(constants[1], -1 * average)
         result = value
-    print(f'AVERAGE VALUES LIST: {result}')
-    for i in range(len(result)):
-        if isinstance(result[i], complex):
-            result.remove(result[i])
-        elif result[i] is not None and (result[i] <= start or result[i] >= end):
-            result.remove(result[i])
-        else:
-            pass
-    if len(result) == 0:
-        result.append(None)
-    return result
+    final = [x for x in result if x > start and x < end]
+    if not final:
+        final = [None]
+    sorted_final = sort(final)
+    return sorted_final
 
 def average_value_integral(equation, start, end):
     accumulated_value = accumulation(equation, start, end)
@@ -79,16 +74,11 @@ def mean_values_integral(equation_type, equation, start, end, constants):
     elif equation_type == 'logarithmic':
         value = logarithmic_roots(constants[0] - average, constants[1])
         result = value
-    for i in range(len(result)):
-        if isinstance(result[i], complex):
-            result.remove(result[i])
-        elif result[i] is not None and (result[i] < start or result[i] > end):
-            result.remove(result[i])
-        else:
-            pass
-    if len(result) == 0:
-        result.append(None)
-    return result
+    final = [x for x in result if x > start and x < end]
+    if not final:
+        final = [None]
+    sorted_final = sort(final)
+    return sorted_final
 
 def average_values(equation_type, equation, integral, start, end, constants):
     derivative_value = average_value_derivative(equation, start, end)
