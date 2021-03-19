@@ -20,27 +20,20 @@ from library.statistics.quartiles import quartiles
 from library.statistics.correlation import correlation
 
 def cubic(data):
-    print(f'DATA: {data}')
     independent_variable = dimension(data, 1)
-    print(f'INDEPENDENT_VARIABLE: {independent_variable}')
     dependent_variable = dimension(data, 2)
-    print(f'DEPENDENT_VARIABLE: {dependent_variable}')
     independent_matrix = []
     dependent_matrix = column(dependent_variable)
     for i in range(len(data)):
         independent_matrix.append([independent_variable[i]**3, independent_variable[i]**2, independent_variable[i], 1])
-    print(f'INDEPENDENT_MATRIX: {independent_matrix}')
-    print(f'DEPENDENT_MATRIX: {dependent_matrix}')
     transposition = transpose(independent_matrix)
     product = multiplication(transposition, independent_matrix)
     product_matrix = matrix(product, dtype='float')
     inversion = inv(product_matrix)
     inversion_list = matrix.tolist(inversion)
     second_product = multiplication(inversion_list, transposition)
-    print(f'SECOND_PRODUCT: {second_product}')
     solution_column = multiplication(second_product, dependent_matrix)
     solution = dimension(solution_column, 1)
-    print(f'SOLUTION: {solution}')
     equation = cubic_equation(solution[0], solution[1], solution[2], solution[3])
     roots = cubic_roots(solution[0], solution[1], solution[2], solution[3])
     derivative = cubic_derivative(solution[0], solution[1], solution[2], solution[3])
@@ -119,7 +112,3 @@ def cubic(data):
         'averages': averages
     }
     return result
-
-test_set = [[2, 3], [4, 27], [8, 1], [11, 15], [13, 52]]
-test_solution = cubic(test_set)
-print(f'RESULT: {test_solution}')
