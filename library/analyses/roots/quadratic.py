@@ -10,4 +10,6 @@ def quadratic(first_constant, second_constant, third_constant):
             roots.append(first_root)
         if not isinstance(second_root, complex):
             roots.append(second_root)
+    if not roots:
+        roots = [None]
     return roots

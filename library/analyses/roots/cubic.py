@@ -33,4 +33,6 @@ def cubic(first_constant, second_constant, third_constant, fourth_constant):
         third_root = third_real
         roots.append(third_root)
     result = list(set(roots))
+    if not result:
+        result = [None]
     return result
