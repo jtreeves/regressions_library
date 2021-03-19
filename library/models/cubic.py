@@ -54,13 +54,13 @@ def cubic(data):
         maxima_coordinates = [None]
     else:
         for i in range(len(maxima_inputs)):
-            maxima_outputs.append(equation(i))
+            maxima_outputs.append(equation(maxima_inputs[i]))
         maxima_coordinates = unify(maxima_inputs, maxima_outputs)
     if minima_inputs[0] == None:
         minima_coordinates = [None]
     else:
         for i in range(len(minima_inputs)):
-            minima_outputs.append(equation(i))
+            minima_outputs.append(equation(minima_inputs[i]))
         minima_coordinates = unify(minima_inputs, minima_outputs)
     zeroes = []
     for i in range(len(roots)):
