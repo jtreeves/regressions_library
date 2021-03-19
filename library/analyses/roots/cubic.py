@@ -32,4 +32,5 @@ def cubic(first_constant, second_constant, third_constant, fourth_constant):
     if size_third_imag < 0.0001:
         third_root = third_real
         roots.append(third_root)
-    return roots
+    result = list(set(roots))
+    return result
