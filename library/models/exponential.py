@@ -1,10 +1,24 @@
 from math import log, exp
 from numpy import matrix
 from numpy.linalg import inv
-from library.statistics.error import error
-from matrices.multiplication import multiplication
-from matrices.transpose import transpose
-from matrices.inverse import inverse
+from library.vectors.dimension import dimension
+from library.vectors.column import column
+from library.vectors.unify import unify
+from library.matrices.multiplication import multiplication
+from library.matrices.transpose import transpose
+from library.matrices.inverse import inverse
+from library.analyses.equations.exponential import exponential as exponential_equation
+from library.analyses.roots.exponential import exponential as exponential_roots
+from library.analyses.derivatives.exponential import exponential as exponential_derivative
+from library.analyses.integrals.exponential import exponential as exponential_integral
+from library.analyses.extrema import extrema as extrema_independent
+from library.analyses.inflections import inflections as inflections_independent
+from library.analyses.accumulation import accumulation
+from library.analyses.mean_values import average_values
+from library.statistics.maximum import maximum
+from library.statistics.minimum import minimum
+from library.statistics.quartiles import quartiles
+from library.statistics.correlation import correlation
 
 def exponential(data):
     independent_matrix = []
