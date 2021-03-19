@@ -1,5 +1,5 @@
-from .transpose import transpose
 from library.vectors.dot_product import dot_product
+from .transpose import transpose
 
 def multiplication(matrix_one, matrix_two):
     result = []

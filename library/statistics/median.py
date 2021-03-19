@@ -1,5 +1,5 @@
-from .sort import sort
 from math import floor
+from .sort import sort
 
 def median(data):
     sorted_data = sort(data)

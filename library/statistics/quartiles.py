@@ -1,6 +1,6 @@
+from math import floor
 from .median import median
 from .sort import sort
-from math import floor
 
 def halve(data):
     sorted_data = sort(data)

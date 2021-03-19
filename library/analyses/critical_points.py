@@ -1,7 +1,7 @@
-from .roots.linear import linear as linroots
-from .roots.quadratic import quadratic as quadroots
-from .derivatives.quadratic import quadratic as quader
-from .derivatives.cubic import cubic as cubder
+from .roots.linear import linear as linear_roots
+from .roots.quadratic import quadratic as quadratic_roots
+from .derivatives.quadratic import quadratic as quadratic_derivatives
+from .derivatives.cubic import cubic as cubic_derivatives
 
 def critical_points(equation_type, derivative_level, coefficients):
     results = []
@@ -9,11 +9,11 @@ def critical_points(equation_type, derivative_level, coefficients):
         if equation_type == 'linear':
             results = [None]
         elif equation_type == 'quadratic':
-            constants = quader(coefficients[0], coefficients[1], coefficients[2])['first']['constants']
-            results = linroots(constants[0], constants[1])
+            constants = quadratic_derivatives(coefficients[0], coefficients[1], coefficients[2])['first']['constants']
+            results = linear_roots(constants[0], constants[1])
         elif equation_type == 'cubic':
-            constants = cubder(coefficients[0], coefficients[1], coefficients[2], coefficients[3])['first']['constants']
-            results = quadroots(constants[0], constants[1], constants[2])
+            constants = cubic_derivatives(coefficients[0], coefficients[1], coefficients[2], coefficients[3])['first']['constants']
+            results = quadratic_roots(constants[0], constants[1], constants[2])
         elif equation_type == 'hyperbolic':
             results = [None]
         elif equation_type == 'exponential':
@@ -26,8 +26,8 @@ def critical_points(equation_type, derivative_level, coefficients):
         elif equation_type == 'quadratic':
             results = [None]
         elif equation_type == 'cubic':
-            constants = cubder(coefficients[0], coefficients[1], coefficients[2], coefficients[3])['second']['constants']
-            results = linroots(constants[0], constants[1])
+            constants = cubic_derivatives(coefficients[0], coefficients[1], coefficients[2], coefficients[3])['second']['constants']
+            results = linear_roots(constants[0], constants[1])
         elif equation_type == 'hyperbolic':
             results = [None]
         elif equation_type == 'exponential':

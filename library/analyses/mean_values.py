@@ -1,11 +1,11 @@
-from .accumulation import accumulation
+from math import log, exp
+from library.statistics.sort import sort
 from .roots.linear import linear as linear_roots
 from .roots.quadratic import quadratic as quadratic_roots
 from .roots.cubic import cubic as cubic_roots
 from .roots.hyperbolic import hyperbolic as hyperbolic_roots
 from .roots.logarithmic import logarithmic as logarithmic_roots
-from library.statistics.sort import sort
-from math import log, exp
+from .accumulation import accumulation
 
 def average_value_derivative(equation, start, end):
     vertical_change = equation(end) - equation(start)
