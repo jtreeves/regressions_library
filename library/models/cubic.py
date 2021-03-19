@@ -6,7 +6,9 @@ from library.matrices.multiplication import multiplication
 from library.matrices.transpose import transpose
 from library.matrices.inverse import inverse
 from library.analyses.equations.cubic import cubic as cubic_equation
+from library.analyses.roots.cubic import cubic as cubic_roots
 from library.analyses.integrals.cubic import cubic as cubic_integral
+from library.analyses.accumulation import accumulation
 from library.statistics.maximum import maximum
 from library.statistics.minimum import minimum
 from library.statistics.quartiles import quartiles
@@ -35,11 +37,21 @@ def cubic(data):
     solution = dimension(solution_column, 1)
     print(f'SOLUTION: {solution}')
     equation = cubic_equation(solution[0], solution[1], solution[2], solution[3])
+    roots = cubic_roots(solution[0], solution[1], solution[2], solution[3])
+    points = {
+        'roots': roots
+    }
     integral = cubic_integral(solution[0], solution[1], solution[2], solution[3])
     min_value = minimum(independent_variable)
     max_value = maximum(independent_variable)
     q1 = quartiles(independent_variable, 1)
     q3 = quartiles(independent_variable, 3)
+    accumulated_range = accumulation(integral['evaluation'], min_value, max_value)
+    accumulated_iqr = accumulation(integral['evaluation'], q1, q3)
+    accumulations = {
+        'range': accumulated_range,
+        'iqr': accumulated_iqr
+    }
     predicted = []
     for i in range(len(data)):
         predicted.append(equation(independent_variable[i]))
@@ -47,7 +59,9 @@ def cubic(data):
     result = {
         'constants': solution,
         'evaluation': equation,
-        'correlation': accuracy
+        'correlation': accuracy,
+        'accumulations': accumulations,
+        'points': points
     }
     return result
 
