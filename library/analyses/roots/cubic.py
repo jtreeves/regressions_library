@@ -20,16 +20,16 @@ def cubic(first_constant, second_constant, third_constant, fourth_constant):
     first_imag = first_root.imag
     second_imag = second_root.imag
     third_imag = third_root.imag
-    size_first_image = (first_imag**2)**(1/2)
-    size_second_image = (second_imag**2)**(1/2)
-    size_third_image = (third_imag**2)**(1/2)
-    if size_first_image < 0.0001:
+    size_first_imag = (first_imag**2)**(1/2)
+    size_second_imag = (second_imag**2)**(1/2)
+    size_third_imag = (third_imag**2)**(1/2)
+    if size_first_imag < 0.0001:
         first_root = first_real
         roots.append(first_root)
-    if size_second_image < 0.0001:
+    if size_second_imag < 0.0001:
         second_root = second_real
         roots.append(second_root)
-    if size_third_image < 0.0001:
+    if size_third_imag < 0.0001:
         third_root = third_real
         roots.append(third_root)
     return roots
