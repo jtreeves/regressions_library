@@ -78,8 +78,14 @@ def mean_values_integral(equation_type, equation, start, end, constants):
     return result
 
 def average_values(equation_type, equation, integral, start, end, constants):
-    derivative_value
-    derivative_inputs
-    integral_value
-    integral_inputs
+    derivative_value = average_value_derivative(equation, start, end)
+    derivative_inputs = mean_values_derivative(equation_type, equation, start, end, constants)
+    integral_value = average_value_integral(integral, start, end)
+    integral_inputs = mean_values_integral(equation_type, integral, start, end, constants)
+    results = {
+        'average_value_derivative': derivative_value,
+        'mean_values_derivative': derivative_inputs,
+        'average_value_integral': integral_value,
+        'mean_values_integral': integral_inputs
+    }
     return results
