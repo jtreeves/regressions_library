@@ -13,6 +13,7 @@ from library.analyses.integrals.cubic import cubic as cubic_integral
 from library.analyses.extrema import extrema as extrema_independent
 from library.analyses.inflections import inflections as inflections_independent
 from library.analyses.accumulation import accumulation
+from library.analyses.mean_values import average_values
 from library.statistics.maximum import maximum
 from library.statistics.minimum import minimum
 from library.statistics.quartiles import quartiles
@@ -99,6 +100,12 @@ def cubic(data):
         'derivative': first_derivative,
         'integral': integral
     }
+    averages_range = average_values('cubic', equation, integral, minimum, maximum, solution)
+    averages_iqr = average_values('cubic', equation, integral, q1, q3, solution)
+    averages = {
+        'range': averages_range,
+        'iqr': averages_iqr
+    }
     predicted = []
     for i in range(len(data)):
         predicted.append(equation(independent_variable[i]))
@@ -108,7 +115,8 @@ def cubic(data):
         'correlation': accuracy,
         'evaluations': evaluations,
         'points': points,
-        'accumulations': accumulations
+        'accumulations': accumulations,
+        'averages': averages
     }
     return result
 
