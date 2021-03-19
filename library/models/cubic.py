@@ -8,7 +8,9 @@ from library.matrices.transpose import transpose
 from library.matrices.inverse import inverse
 from library.analyses.equations.cubic import cubic as cubic_equation
 from library.analyses.roots.cubic import cubic as cubic_roots
+from library.analyses.derivatives.cubic import cubic as cubic_derivative
 from library.analyses.integrals.cubic import cubic as cubic_integral
+from library.analyses.extrema import extrema as extrema_independent
 from library.analyses.accumulation import accumulation
 from library.statistics.maximum import maximum
 from library.statistics.minimum import minimum
@@ -39,12 +41,34 @@ def cubic(data):
     print(f'SOLUTION: {solution}')
     equation = cubic_equation(solution[0], solution[1], solution[2], solution[3])
     roots = cubic_roots(solution[0], solution[1], solution[2], solution[3])
+    derivative = cubic_derivative(solution[0], solution[1], solution[2], solution[3])
+    extrema_inputs = extrema_independent('cubic', solution, derivative)
+    maxima_inputs = extrema_inputs['maxima']
+    minima_inputs = extrema_inputs['minima']
+    maxima_outputs = []
+    minima_outputs = []
+    maxima_coordinates = []
+    minima_coordinates = []
+    if maxima_inputs[0] == None:
+        maxima_coordinates = [None]
+    else:
+        for i in range(len(maxima_inputs)):
+            maxima_outputs.append(equation(i))
+        maxima_coordinates = unify(maxima_inputs, maxima_outputs)
+    if minima_inputs[0] == None:
+        minima_coordinates = [None]
+    else:
+        for i in range(len(minima_inputs)):
+            minima_outputs.append(equation(i))
+        minima_coordinates = unify(minima_inputs, minima_outputs)
     zeroes = []
     for i in range(len(roots)):
         zeroes.append(0)
     root_coordinates = unify(roots, zeroes)
     points = {
-        'roots': root_coordinates
+        'roots': root_coordinates,
+        'maxima': maxima_coordinates,
+        'minima': minima_coordinates
     }
     integral = cubic_integral(solution[0], solution[1], solution[2], solution[3])
     min_value = minimum(independent_variable)
