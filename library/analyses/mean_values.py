@@ -33,7 +33,9 @@ def mean_values_derivative(equation_type, equation, start, end, constants):
         value = constants[0] / average
         result.append(value)
     for i in range(len(result)):
-        if result[i] is not None and (result[i] <= start or result[i] >= end):
+        if isinstance(result[i], complex):
+            result.remove(result[i])
+        elif result[i] is not None and (result[i] <= start or result[i] >= end):
             result.remove(result[i])
         else:
             pass
@@ -69,7 +71,9 @@ def mean_values_integral(equation_type, equation, start, end, constants):
         value = exp((average - constants[0]) / constants[1])
         result.append(value)
     for i in range(len(result)):
-        if result[i] is not None and (result[i] < start or result[i] > end):
+        if isinstance(result[i], complex):
+            result.remove(result[i])
+        elif result[i] is not None and (result[i] < start or result[i] > end):
             result.remove(result[i])
         else:
             pass
