@@ -35,17 +35,25 @@ def cubic(data):
     solution_column = multiplication(second_product, dependent_matrix)
     solution = dimension(solution_column, 1)
     equation = cubic_equation(solution[0], solution[1], solution[2], solution[3])
-    roots = cubic_roots(solution[0], solution[1], solution[2], solution[3])
     derivative = cubic_derivative(solution[0], solution[1], solution[2], solution[3])
+    integral = cubic_integral(solution[0], solution[1], solution[2], solution[3])['evaluation']
     first_derivative = derivative['first']['evaluation']
     second_derivative = derivative['second']['evaluation']
+    roots = cubic_roots(solution[0], solution[1], solution[2], solution[3])
+    zeroes = []
+    for i in range(len(roots)):
+        zeroes.append(0)
+    root_coordinates = unify(roots, zeroes)
     extrema_inputs = extrema_independent('cubic', solution, first_derivative)
     maxima_inputs = extrema_inputs['maxima']
     minima_inputs = extrema_inputs['minima']
+    inflections_inputs = inflections_independent('cubic', solution, second_derivative)
     maxima_outputs = []
-    minima_outputs = []
     maxima_coordinates = []
+    minima_outputs = []
     minima_coordinates = []
+    inflections_outputs = []
+    inflections_coordinates = []
     if maxima_inputs[0] == None:
         maxima_coordinates = [None]
     else:
@@ -58,57 +66,49 @@ def cubic(data):
         for i in range(len(minima_inputs)):
             minima_outputs.append(equation(minima_inputs[i]))
         minima_coordinates = unify(minima_inputs, minima_outputs)
-    inflections_inputs = inflections_independent('cubic', solution, second_derivative)
-    inflections_outputs = []
-    inflections_coordinates = []
     if inflections_inputs[0] == None:
         inflections_coordinates = [None]
     else:
         for i in range(len(inflections_inputs)):
             inflections_outputs.append(equation(inflections_inputs[i]))
         inflections_coordinates = unify(inflections_inputs, inflections_outputs)
-    zeroes = []
-    for i in range(len(roots)):
-        zeroes.append(0)
-    root_coordinates = unify(roots, zeroes)
-    points = {
-        'roots': root_coordinates,
-        'maxima': maxima_coordinates,
-        'minima': minima_coordinates,
-        'inflections': inflections_coordinates
-    }
-    integral = cubic_integral(solution[0], solution[1], solution[2], solution[3])['evaluation']
     min_value = minimum(independent_variable)
     max_value = maximum(independent_variable)
     q1 = quartiles(independent_variable, 1)
     q3 = quartiles(independent_variable, 3)
     accumulated_range = accumulation(integral, min_value, max_value)
     accumulated_iqr = accumulation(integral, q1, q3)
-    accumulations = {
-        'range': accumulated_range,
-        'iqr': accumulated_iqr
-    }
+    averages_range = average_values('cubic', equation, integral, min_value, max_value, solution)
+    averages_iqr = average_values('cubic', equation, integral, q1, q3, solution)
+    predicted = []
+    for i in range(len(data)):
+        predicted.append(equation(independent_variable[i]))
+    accuracy = correlation(dependent_variable, predicted)
     evaluations = {
         'equation': equation,
         'derivative': first_derivative,
         'integral': integral
     }
-    averages_range = average_values('cubic', equation, integral, min_value, max_value, solution)
-    averages_iqr = average_values('cubic', equation, integral, q1, q3, solution)
+    points = {
+        'roots': root_coordinates,
+        'maxima': maxima_coordinates,
+        'minima': minima_coordinates,
+        'inflections': inflections_coordinates
+    }
+    accumulations = {
+        'range': accumulated_range,
+        'iqr': accumulated_iqr
+    }
     averages = {
         'range': averages_range,
         'iqr': averages_iqr
     }
-    predicted = []
-    for i in range(len(data)):
-        predicted.append(equation(independent_variable[i]))
-    accuracy = correlation(dependent_variable, predicted)
     result = {
         'constants': solution,
-        'correlation': accuracy,
         'evaluations': evaluations,
         'points': points,
         'accumulations': accumulations,
-        'averages': averages
+        'averages': averages,
+        'correlation': accuracy
     }
     return result
