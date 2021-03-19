@@ -42,7 +42,8 @@ def cubic(data):
     equation = cubic_equation(solution[0], solution[1], solution[2], solution[3])
     roots = cubic_roots(solution[0], solution[1], solution[2], solution[3])
     derivative = cubic_derivative(solution[0], solution[1], solution[2], solution[3])
-    extrema_inputs = extrema_independent('cubic', solution, derivative)
+    first_derivative = derivative['first']['evaluation']
+    extrema_inputs = extrema_independent('cubic', solution, first_derivative)
     maxima_inputs = extrema_inputs['maxima']
     minima_inputs = extrema_inputs['minima']
     maxima_outputs = []
