@@ -19,10 +19,10 @@ def mean_values_derivative(equation_type, equation, start, end, constants):
         result.append(None)
     elif equation_type == 'quadratic':
         value = linear_roots(2 * constants[0], constants[1] -  average)
-        result.append(value)
+        result = value
     elif equation_type == 'cubic':
         values = quadratic_roots(3 * constants[0], 2 * constants[1], constants[2] - average)
-        result.append(values)
+        result = values
     elif equation_type == 'hyperbolic':
         ratio = -1 * average / constants[0]
         root = ratio ** (1/2)
@@ -38,10 +38,8 @@ def mean_values_derivative(equation_type, equation, start, end, constants):
         value = numerator / denominator
         result.append(value)
     elif equation_type == 'logarithmic':
-        values = hyperbolic_roots(constants[1], -1 * average)
-        result.append(values)
-        value = constants[1] / average
-        result.append(value)
+        value = hyperbolic_roots(constants[1], -1 * average)
+        result = value
     print(f'AVERAGE VALUES LIST: {result}')
     for i in range(len(result)):
         if isinstance(result[i], complex):
@@ -65,22 +63,22 @@ def mean_values_integral(equation_type, equation, start, end, constants):
     average = average_value_integral(equation, start, end)
     if equation_type == 'linear':
         value = linear_roots(constants[0], constants[1] - average)
-        result.append(value)
+        result = value
     elif equation_type == 'quadratic':
         values = quadratic_roots(constants[0], constants[1], constants[2] - average)
-        result.append(values)
+        result = values
     elif equation_type == 'cubic':
         values = cubic_roots(constants[0], constants[1], constants[2], constants[3] - average)
-        result.append(values)
+        result = values
     elif equation_type == 'hyperbolic':
         value = hyperbolic_roots(constants[0], constants[1] - average)
-        result.append(value)
+        result = value
     elif equation_type == 'exponential':
         value = log(average / constants[0]) / log(constants[1])
         result.append(value)
     elif equation_type == 'logarithmic':
         value = logarithmic_roots(constants[0] - average, constants[1])
-        result.append(value)
+        result = value
     for i in range(len(result)):
         if isinstance(result[i], complex):
             result.remove(result[i])
