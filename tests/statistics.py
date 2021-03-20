@@ -1,14 +1,14 @@
-from library.statistics.correlation import correlation
-from library.statistics.deviations import deviations
-from library.statistics.maximum import maximum
-from library.statistics.mean import mean
-from library.statistics.median import median
+from library.statistics.sort import sort
 from library.statistics.minimum import minimum
+from library.statistics.maximum import maximum
+from library.statistics.median import median
 from library.statistics.quartiles import quartiles
+from library.statistics.summation import summation
+from library.statistics.mean import mean
 from library.statistics.ranges import ranges
 from library.statistics.residuals import residuals
-from library.statistics.sort import sort
-from library.statistics.summation import summation
+from library.statistics.deviations import deviations
+from library.statistics.correlation import correlation
 
 dat1 = [8, 2, 5, 9, 1, 3, 22, 11, 9, 13]
 dat2 = [7, 1, 6, 8, 2, 5, 21, 14, 8, 13]
