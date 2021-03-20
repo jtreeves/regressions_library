@@ -34,5 +34,4 @@ def critical_points(equation_type, derivative_level, coefficients):
             results = [None]
         elif equation_type == 'logarithmic':
             results = [None]
-    print(f'POINTS: {results}')
     return results

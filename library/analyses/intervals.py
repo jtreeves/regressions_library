@@ -44,5 +44,4 @@ def intervals(derivative, points):
         elif derivative(after) < 0:
             after = 'decreasing'
         result = [before, first_point, middle, second_point, after]
-    print(f'INTERVALS: {result}')
     return result
