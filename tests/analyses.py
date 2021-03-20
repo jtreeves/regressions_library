@@ -81,13 +81,6 @@ test_crit_hyp_val = critical_values('hyperbolic', test_crit_hyp1, coefficients)
 test_crit_exp_val = critical_values('exponential', test_crit_exp1, coefficients)
 test_crit_log_val = critical_values('logarithmic', test_crit_log1, coefficients)
 
-test_unify_lin = unify(test_crit_lin1, test_crit_lin_val)
-test_unify_quad = unify(test_crit_quad1, test_crit_quad_val)
-test_unify_cub = unify(test_crit_cub1, test_crit_cub_val)
-test_unify_hyp = unify(test_crit_hyp1, test_crit_hyp_val)
-test_unify_exp = unify(test_crit_exp1, test_crit_exp_val)
-test_unify_log = unify(test_crit_log1, test_crit_log_val)
-
 test_crit_lin2 = critical_points('linear', 2, coefficients)
 test_crit_quad2 = critical_points('quadratic', 2, coefficients)
 test_crit_cub2 = critical_points('cubic', 2, coefficients)
