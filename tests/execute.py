@@ -1,26 +1,108 @@
 from library.execute import run_all
 
-set_20 = [[1, 78], [2, 64], [3, 97], [4, 34], [5, 53], [6, 65], [7, 79], [8, 201], [9, 123], [10, 145], [11, 356], [12, 77], [13, 478], [14, 598], [15, 376], [16, 294], [17, 401], [18, 532], [19, 607], [20, 752]]
+agnostic_set = {
+    [1, 32],
+    [2, 25],
+    [3, 14],
+    [4, 23],
+    [5, 39],
+    [6, 45],
+    [7, 42],
+    [8, 49],
+    [9, 36],
+    [10, 33]
+}
 
-all_solutions = run_all(set_20)
+linear_set = [
+    [1, 30],
+    [2, 27],
+    [3, 24],
+    [4, 21],
+    [5, 18],
+    [6, 15],
+    [7, 12],
+    [8, 9],
+    [9, 6],
+    [10, 3]
+]
 
-print(f"Linear Constants: {all_solutions['options']['linear']['constants']}") # => [[32.98796992481202], [-75.87368421052619]]
-print(f"Linear Error: {all_solutions['options']['linear']['error']}") # => 22.312581356511483
+quadratic_set = [
+    [1, 10],
+    [2, 27],
+    [3, 40],
+    [4, 49],
+    [5, 54],
+    [6, 55],
+    [7, 52],
+    [8, 45],
+    [9, 34],
+    [10, 19]
+]
 
-print(f"Quadratic Constants: {all_solutions['options']['quadratic']['constants']}") # => [[1.697653223969002], [-2.6627477785371454], [54.84561403508843]]
-print(f"Quadratic Error: {all_solutions['options']['quadratic']['error']}") # => 21.07459477444664
+cubic_set = [
+    [1, 42],
+    [2, 67],
+    [3, 74],
+    [4, 69],
+    [5, 58],
+    [6, 47],
+    [7, 42],
+    [8, 49],
+    [9, 74],
+    [10, 123]
+]
 
-print(f"Cubic Constants: {all_solutions['options']['cubic']['constants']}") # => [[-0.040814661624975546], [2.9833150651558444], [-13.727602545073111], [76.53044375644211]]
-print(f"Cubic Error: {all_solutions['options']['cubic']['error']}") # => 21.05493315315674
+hyperbolic_set = [
+    [1, 2519],
+    [2, 1259],
+    [3, 839],
+    [4, 629],
+    [5, 503],
+    [6, 419],
+    [7, 359],
+    [8, 314],
+    [9, 279],
+    [10, 251]
+]
 
-print(f"Hyperbolic Constants: {all_solutions['options']['hyperbolic']['constants']}") # => [[-476.2476028415365], [356.17074436813056]]
-print(f"Hyperbolic Error: {all_solutions['options']['hyperbolic']['error']}") # => 29.489660900232142
+exponential_set = [
+    [1, 6],
+    [2, 12],
+    [3, 24],
+    [4, 48],
+    [5, 96],
+    [6, 192],
+    [7, 384],
+    [8, 768],
+    [9, 1536],
+    [10, 3072]
+]
 
-print(f"Exponential Constants: {all_solutions['options']['exponential']['constants']}") # => [[39.79809056464346], [1.154903969011854]]
-print(f"Exponential Error: {all_solutions['options']['exponential']['error']}") # => 21.55169894398324
+logarithmic_set = [
+    [1, 2],
+    [2, 4.0794],
+    [3, 5.2958],
+    [4, 6.1589],
+    [5, 6.8283],
+    [6, 7.3753],
+    [7, 7.8377],
+    [8, 8.2383],
+    [9, 8.5917],
+    [10, 8.9078]
+]
 
-print(f"Logarithmic Constants: {all_solutions['options']['logarithmic']['constants']}") # => [[-154.60728466072027], [200.8272561968283]]
-print(f"Logarithmic Error: {all_solutions['options']['logarithmic']['error']}") # => 26.11858512913022
+agnostic_models = run_all(agnostic_set)
+linear_models = run_all(linear_set)
+quadratic_models = run_all(quadratic_set)
+cubic_models = run_all(cubic_set)
+hyperbolic_models = run_all(hyperbolic_set)
+exponential_models = run_all(exponential_set)
+logarithmic_models = run_all(logarithmic_set)
 
-print(f"Best Choice Function: {all_solutions['optimal']['function']}") # => cubic
-print(f"Best Choice Error: {all_solutions['optimal']['error']}") # => 21.05493315315674
+print(f'AGNOSTIC MODELS: {agnostic_models}')
+print(f'LINEAR MODELS: {linear_models}')
+print(f'QUADRATIC MODELS: {quadratic_models}')
+print(f'CUBIC MODELS: {cubic_models}')
+print(f'HYPERBOLIC MODELS: {hyperbolic_models}')
+print(f'EXPONENTIAL MODELS: {exponential_models}')
+print(f'LOGARITHMIC MODELS: {logarithmic_models}')
