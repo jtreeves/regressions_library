@@ -17,7 +17,8 @@ def mean_values_derivative(equation_type, equation, start, end, constants):
     result = []
     average = average_value_derivative(equation, start, end)
     if equation_type == 'linear':
-        result.append(None)
+        result.append('All')
+        return result
     elif equation_type == 'quadratic':
         value = linear_roots(2 * constants[0], constants[1] -  average)
         result = value
