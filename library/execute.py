@@ -22,11 +22,13 @@ def run_all(data):
         'exponential': models['exponential']['correlation'],
         'logarithmic': models['logarithmic']['correlation']
     }
-    print(f'CORRELATIONS: {correlations}')
-    maximum = max(correlations, key=correlations.get)
+    choices = {
+        k: v for k, v in correlations.items() if v is not None
+    }
+    maximum = max(choices, key=choices.get)
     optimal = {
         'option': maximum,
-        'correlation': correlations[maximum]
+        'correlation': choices[maximum]
     }
     result = {
         'models': models,
