@@ -65,9 +65,3 @@ def linear(data):
         'correlation': accuracy
     }
     return result
-
-test_set = [[3, 7], [5, 11], [10, 17], [15, 22]]
-test_eval = linear(test_set)
-print(test_eval)
-
-# {'constants': [1.219020172910662, 4.193083573487032], 'evaluations': {'equation': <function linear.<locals>.linear_equation at 0x118f55820>, 'derivative': <function linear.<locals>.first_derivative at 0x118f558b0>, 'integral': <function linear.<locals>.linear_integral at 0x118f559d0>}, 'points': {'roots': [[-3.4397163120567398, 0]], 'maxima': [None], 'minima': [None], 'inflections': [None]}, 'accumulations': {'range': 181.9711815561959, 'iqr': 129.5846541786743}, 'averages': {'range': {'average_value_derivative': 1.2190201729106622, 'mean_values_derivative': ['All'], 'average_value_integral': 15.16426512968299, 'mean_values_integral': [9.0]}, 'iqr': {'average_value_derivative': 1.219020172910662, 'mean_values_derivative': ['All'], 'average_value_integral': 13.640489913544663, 'mean_values_integral': [7.75]}}, 'correlation': 0.9929440678487984}

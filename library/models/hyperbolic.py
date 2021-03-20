@@ -65,9 +65,3 @@ def hyperbolic(data):
         'correlation': accuracy
     }
     return result
-
-test_set = [[3, 241], [5, 87], [10, 17], [15, 5]]
-test_eval = hyperbolic(test_set)
-print(test_eval)
-
-# {'constants': [894.5806451612899, -69.05161290322569], 'evaluations': {'equation': <function hyperbolic.<locals>.hyperbolic_equation at 0x10c55a820>, 'derivative': <function hyperbolic.<locals>.first_derivative at 0x10c55a8b0>, 'integral': <function hyperbolic.<locals>.hyperbolic_integral at 0x10c55a9d0>}, 'points': {'roots': [[12.955246192656281, 0]], 'maxima': [None], 'minima': [None], 'inflections': [None]}, 'accumulations': {'range': 611.1526512136287, 'iqr': 620.6803475681464}, 'averages': {'range': {'average_value_derivative': -19.87956989247311, 'mean_values_derivative': [6.708203932499369], 'average_value_integral': 50.92938760113572, 'mean_values_integral': [7.456019214715342]}, 'iqr': {'average_value_derivative': -23.85548387096773, 'mean_values_derivative': [6.123724356957945], 'average_value_integral': 65.33477342822594, 'mean_values_integral': [6.656780270546819]}}, 'correlation': 0.9874314793167438}

@@ -68,9 +68,3 @@ def exponential(data):
         'correlation': accuracy
     }
     return result
-
-test_set = [[3, 7], [5, 19], [10, 84], [15, 231]]
-test_eval = exponential(test_set)
-print(test_eval)
-
-# RESULT: {'constants': [3.8245799466028427, 1.329471489298669], 'evaluations': {'equation': <function exponential.<locals>.exponential_equation at 0x1132a08b0>, 'derivative': <function exponential.<locals>.first_derivative at 0x1132a0940>, 'integral': <function exponential.<locals>.exponential_integral at 0x1132a0a60>}, 'points': {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [None]}, 'accumulations': {'range': 930.6244416670079, 'iqr': 440.57012267343765}, 'averages': {'range': {'average_value_derivative': 22.085384345206858, 'mean_values_derivative': [10.567753347434644], 'average_value_integral': 77.552036805584, 'mean_values_integral': [10.567753347434644]}, 'iqr': {'average_value_derivative': 13.20696995482896, 'mean_values_derivative': [8.762259118959479], 'average_value_integral': 46.37580238667765, 'mean_values_integral': [8.762259118959477]}}, 'correlation': 0.9649262015080358}

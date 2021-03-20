@@ -66,9 +66,3 @@ def logarithmic(data):
         'correlation': accuracy
     }
     return result
-
-test_set = [[3, 4], [5, 5], [10, 7], [15, 10]]
-test_eval = logarithmic(test_set)
-print(test_eval)
-
-# {'constants': [3.5554345374844885, -0.36082024840229643], 'evaluations': {'equation': <function logarithmic.<locals>.logarithmic_equation at 0x1089bf820>, 'derivative': <function logarithmic.<locals>.first_derivative at 0x1089bf8b0>, 'integral': <function logarithmic.<locals>.logarithmic_integral at 0x1089bf9d0>}, 'points': {'roots': [[1.1068123741825462, 0]], 'maxima': [None], 'minima': [None], 'inflections': [None]}, 'accumulations': {'range': 85.71123855966133, 'iqr': 63.328232989362206}, 'averages': {'range': {'average_value_derivative': 0.47685426165042805, 'mean_values_derivative': [7.456019214715341], 'average_value_integral': 7.142603213305111, 'mean_values_integral': [8.251621109880897]}, 'iqr': {'average_value_derivative': 0.5341072399844179, 'mean_values_derivative': [6.65678027054682], 'average_value_integral': 6.666129788353916, 'mean_values_integral': [7.216694099878332]}}, 'correlation': 0.9622367701056326}
