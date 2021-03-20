@@ -1,29 +1,63 @@
+from library.statistics.summation import summation
 from library.statistics.sort import sort
 from library.statistics.minimum import minimum
 from library.statistics.maximum import maximum
-from library.statistics.median import median
 from library.statistics.quartiles import quartiles
-from library.statistics.summation import summation
+from library.statistics.median import median
 from library.statistics.mean import mean
 from library.statistics.ranges import ranges
-from library.statistics.residuals import residuals
 from library.statistics.deviations import deviations
+from library.statistics.residuals import residuals
 from library.statistics.correlation import correlation
 
-dat1 = [8, 2, 5, 9, 1, 3, 22, 11, 9, 13]
-dat2 = [7, 1, 6, 8, 2, 5, 21, 14, 8, 13]
+first_set = [8, 2, 5, 9, 1, 3, 22, 11, 9, 13]
+second_set = [7, 4, 6, 8, 2, 5, 21, 14, 8, 13]
 
-datsort = sort(dat1)
-datmax = maximum(dat1)
-datmin = minimum(dat1)
-datran = ranges(dat1)
-datsum = summation(dat1)
-datmean = mean(dat1)
-datmed = median(dat1)
-datq = quartiles(dat1, 3)
-datres = residuals(dat1, dat2)
-datdev = deviations(dat1)
-datcorr = correlation(dat1, dat2)
+sum_first = summation(first_set)
+sum_second = summation(second_set)
+
+sort_first = sort(first_set)
+sort_second = sort(second_set)
+
+min_first = minimum(first_set)
+min_second = minimum(second_set)
+
+max_first = maximum(first_set)
+max_second = maximum(second_set)
+
+q1_first = quartiles(first_set, 1)
+q1_second = quartiles(second_set, 1)
+
+q3_first = quartiles(first_set, 3)
+q3_second = quartiles(second_set, 3)
+
+median_first = median(first_set)
+median_second = median(second_set)
+
+mean_first = mean(first_set)
+mean_second = mean(second_set)
+
+ranges_first = ranges(first_set)
+ranges_second = ranges(second_set)
+
+deviations_first = deviations(first_set)
+deviations_second = deviations(second_set)
+
+residuals_compare = residuals(first_set, second_set)
+
+correlation_compare = correlation(first_set, second_set)
+
+datsort = sort(first_set)
+datmax = maximum(first_set)
+datmin = minimum(first_set)
+datran = ranges(first_set)
+datsum = summation(first_set)
+datmean = mean(first_set)
+datmed = median(first_set)
+datq = quartiles(first_set, 3)
+datres = residuals(first_set, second_set)
+datdev = deviations(first_set)
+datcorr = correlation(first_set, second_set)
 
 print(f'DATSORT: {datsort}') # => [1, 2, 3, 5, 8, 9, 9, 11, 13, 22]
 print(f'DATMAX: {datmax}') # => 22
