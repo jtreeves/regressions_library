@@ -82,3 +82,17 @@ logarithmic_set = [
     [9, 8.5917],
     [10, 8.9078]
 ]
+
+linear_model = linear(linear_set)
+quadratic_model = quadratic(quadratic_set)
+cubic_model = cubic(cubic_set)
+hyperbolic_model = hyperbolic(hyperbolic_set)
+exponential_model = exponential(exponential_set)
+logarithmic_model = logarithmic(logarithmic_set)
+
+print(f'LINEAR MODEL: {linear_model}')
+print(f'QUADRATIC MODEL: {quadratic_model}')
+print(f'CUBIC MODEL: {cubic_model}')
+print(f'HYPERBOLIC MODEL: {hyperbolic_model}')
+print(f'EXPONENTIAL MODEL: {exponential_model}')
+print(f'LOGARITHMIC MODEL: {logarithmic_model}')
