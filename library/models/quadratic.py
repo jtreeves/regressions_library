@@ -34,12 +34,12 @@ def quadratic(data):
     second_product = multiplication(inversion_list, transposition)
     solution_column = multiplication(second_product, dependent_matrix)
     solution = dimension(solution_column, 1)
-    equation = quadratic_equation(solution[0], solution[1], solution[2], solution[3])
-    derivative = quadratic_derivative(solution[0], solution[1], solution[2], solution[3])
-    integral = quadratic_integral(solution[0], solution[1], solution[2], solution[3])['evaluation']
+    equation = quadratic_equation(solution[0], solution[1], solution[2])
+    derivative = quadratic_derivative(solution[0], solution[1], solution[2])
+    integral = quadratic_integral(solution[0], solution[1], solution[2])['evaluation']
     first_derivative = derivative['first']['evaluation']
     second_derivative = derivative['second']['evaluation']
-    roots = quadratic_roots(solution[0], solution[1], solution[2], solution[3])
+    roots = quadratic_roots(solution[0], solution[1], solution[2])
     zeroes = []
     for i in range(len(roots)):
         zeroes.append(0)
