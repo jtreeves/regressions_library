@@ -5,6 +5,7 @@ from library.statistics.maximum import maximum
 from library.statistics.quartiles import quartiles
 from library.statistics.median import median
 from library.statistics.mean import mean
+from library.statistics.five_number_summary import five_number_summary
 from library.statistics.ranges import ranges
 from library.statistics.deviations import deviations
 from library.statistics.residuals import residuals
@@ -36,6 +37,9 @@ median_second = median(second_set)
 
 mean_first = mean(first_set)
 mean_second = mean(second_set)
+
+five_first = five_number_summary(first_set)
+five_second = five_number_summary(second_set)
 
 ranges_first = ranges(first_set)
 ranges_second = ranges(second_set)

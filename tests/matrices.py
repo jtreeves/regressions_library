@@ -6,6 +6,7 @@ from library.matrices.cofactors import cofactors
 from library.matrices.determinant import determinant, diminished
 from library.matrices.minors import minors
 from library.matrices.inverse import inverse
+from library.matrices.solve import solve
 
 first_2d = [
     [5, 8],
@@ -53,6 +54,17 @@ second_2x3 = [
     [-8, 2, 5]
 ]
 
+column_2d = [
+    [3],
+    [-4]
+]
+
+column_3d = [
+    [5],
+    [-1],
+    [7]
+]
+
 scalar_number = -7
 
 addition_2d = addition(first_2d, second_2d)
@@ -93,6 +105,9 @@ inverse_2d = inverse(first_2d)
 inverse_3d = inverse(first_3d)
 inverse_4d = inverse(first_4d)
 
+solve_2d = solve(first_2d, column_2d)
+solve_3d = solve(first_3d, column_3d)
+
 print(f'ADDITION 2D: {addition_2d}')
 print(f'ADDITION 3D: {addition_3d}')
 print(f'ADDITION 4D: {addition_4d}')
@@ -130,3 +145,6 @@ print(f'MINORS 4D: {minors_4d}')
 print(f'INVERSE 2D: {inverse_2d}')
 print(f'INVERSE 3D: {inverse_3d}')
 print(f'INVERSE 4D: {inverse_4d}')
+
+print(f'SOLVE 2D: {solve_2d}')
+print(f'SOLVE 3D: {solve_3d}')
