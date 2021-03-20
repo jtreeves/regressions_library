@@ -25,10 +25,12 @@ from library.analyses.integrals.logarithmic import logarithmic as logarithmic_in
 from library.analyses.critical_points import critical_points
 from library.analyses.critical_values import critical_values
 from library.analyses.intervals import intervals
+from library.analyses.intercepts import intercepts
 from library.analyses.maxima import maxima
 from library.analyses.minima import minima
 from library.analyses.extrema import extrema
 from library.analyses.inflections import inflections
+from library.analyses.key_points import key_points
 from library.analyses.accumulation import accumulation
 from library.analyses.mean_values import average_values
 
