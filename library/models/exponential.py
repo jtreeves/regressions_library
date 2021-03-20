@@ -36,12 +36,12 @@ def exponential(data):
     solution_column = multiplication(second_product, dependent_matrix)
     solution = dimension(solution_column, 1)
     constants = [exp(solution[1]), exp(solution[0])]
-    equation = exponential_equation(constants[0], constants[1])
-    derivative = exponential_derivative(constants[0], constants[1])
-    integral = exponential_integral(constants[0], constants[1])['evaluation']
+    equation = exponential_equation(*constants)
+    derivative = exponential_derivative(*constants)
+    integral = exponential_integral(*constants)['evaluation']
     first_derivative = derivative['first']['evaluation']
     second_derivative = derivative['second']['evaluation']
-    roots = exponential_roots(constants[0], constants[1])
+    roots = exponential_roots(*constants)
     zeroes = []
     for i in range(len(roots)):
         zeroes.append(0)
@@ -115,6 +115,8 @@ def exponential(data):
     }
     return result
 
-# test_set = [[3, 7], [5, 19], [10, 84], [15, 231]]
-# test_eval = exponential(test_set)
-# print(test_eval)
+test_set = [[3, 7], [5, 19], [10, 84], [15, 231]]
+test_eval = exponential(test_set)
+print(test_eval)
+
+# RESULT: {'constants': [3.8245799466028427, 1.329471489298669], 'evaluations': {'equation': <function exponential.<locals>.exponential_equation at 0x1132a08b0>, 'derivative': <function exponential.<locals>.first_derivative at 0x1132a0940>, 'integral': <function exponential.<locals>.exponential_integral at 0x1132a0a60>}, 'points': {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [None]}, 'accumulations': {'range': 930.6244416670079, 'iqr': 440.57012267343765}, 'averages': {'range': {'average_value_derivative': 22.085384345206858, 'mean_values_derivative': [10.567753347434644], 'average_value_integral': 77.552036805584, 'mean_values_integral': [10.567753347434644]}, 'iqr': {'average_value_derivative': 13.20696995482896, 'mean_values_derivative': [8.762259118959479], 'average_value_integral': 46.37580238667765, 'mean_values_integral': [8.762259118959477]}}, 'correlation': 0.9649262015080358}
