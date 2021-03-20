@@ -44,24 +44,24 @@ scalar_second = scalar(second_vector, scalar_number)
 dot_product_first = dot_product(first_point, second_point)
 dot_product_second = dot_product(first_vector, second_vector)
 
-print(f'DIRECTION VECTOR: {direction_vector}')
-print(f'MAGNITUDE VECTOR: {magnitude_vector}')
-print(f'UNIT VECTOR: {unit_vector}')
+print(f'DIRECTION VECTOR: {direction_vector}') # {'radian': 1.2793395323170296, 'degree': 73.30075576600639}
+print(f'MAGNITUDE VECTOR: {magnitude_vector}') # 3.605551275463989
+print(f'UNIT VECTOR: {unit_vector}') # [0.5547001962252291, -0.8320502943378437]
 
-print(f'COLUMN FIRST: {column_first}')
-print(f'COLUMN SECOND: {column_second}')
+print(f'COLUMN FIRST: {column_first}') # [[2], [5], [9], [13]]
+print(f'COLUMN SECOND: {column_second}') # [[1], [-7], [23], [-2]]
 
-print(f'DIMENSION FIRST: {dimension_first}')
-print(f'DIMENSION SECOND: {dimension_second}')
+print(f'DIMENSION FIRST: {dimension_first}') # [3, 5, 2]
+print(f'DIMENSION SECOND: {dimension_second}') # [4, 9, 8]
 
-print(f'UNIFY FIRST: {unify_first}')
-print(f'UNIFY SECOND: {unify_second}')
+print(f'UNIFY FIRST: {unify_first}') # [[2, 1], [5, -7], [9, 23], [13, -2]]
+print(f'UNIFY SECOND: {unify_second}') # [[1, 2], [-7, 5], [23, 9], [-2, 13]]
 
-print(f'ADDITION FIRST: {addition_first}')
-print(f'ADDITION SECOND: {addition_second}')
+print(f'ADDITION FIRST: {addition_first}') # [7, 4]
+print(f'ADDITION SECOND: {addition_second}') # [3, -2, 32, 11]
 
-print(f'SCALAR FIRST: {scalar_first}')
-print(f'SCALAR SECOND: {scalar_second}')
+print(f'SCALAR FIRST: {scalar_first}') # [-6, -15, -27, -39]
+print(f'SCALAR SECOND: {scalar_second}') # [-3, 21, -69, 6]
 
-print(f'DOT PRODUCT FIRST: {dot_product_first}')
-print(f'DOT PRODUCT SECOND: {dot_product_second}')
+print(f'DOT PRODUCT FIRST: {dot_product_first}') # -11
+print(f'DOT PRODUCT SECOND: {dot_product_second}') # 148
