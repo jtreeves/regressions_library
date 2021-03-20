@@ -3,7 +3,7 @@ from library.matrices.scalar import scalar
 from library.matrices.multiplication import multiplication
 from library.matrices.transpose import transpose
 from library.matrices.cofactors import cofactors
-from library.matrices.determinant import determinant, diminished
+from library.matrices.determinant import determinant
 from library.matrices.minors import minors
 from library.matrices.inverse import inverse
 from library.matrices.solve import solve
