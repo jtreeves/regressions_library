@@ -1,5 +1,5 @@
 def logarithmic(first_constant, second_constant):
-    first_constants = [second_constant]
+    first_constants = [first_constant]
     def first_derivative(variable):
         evaluation = first_constants[0] / variable
         return evaluation

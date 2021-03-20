@@ -35,21 +35,20 @@ def logarithmic(data):
     second_product = multiplication(inversion_list, transposition)
     solution_column = multiplication(second_product, dependent_matrix)
     solution = dimension(solution_column, 1)
-    constants = [solution[1], solution[0]]
-    equation = logarithmic_equation(constants[0], constants[1])
-    derivative = logarithmic_derivative(constants[0], constants[1])
-    integral = logarithmic_integral(constants[0], constants[1])['evaluation']
+    equation = logarithmic_equation(solution[0], solution[1])
+    derivative = logarithmic_derivative(solution[0], solution[1])
+    integral = logarithmic_integral(solution[0], solution[1])['evaluation']
     first_derivative = derivative['first']['evaluation']
     second_derivative = derivative['second']['evaluation']
-    roots = logarithmic_roots(constants[0], constants[1])
+    roots = logarithmic_roots(solution[0], solution[1])
     zeroes = []
     for i in range(len(roots)):
         zeroes.append(0)
     root_coordinates = unify(roots, zeroes)
-    extrema_inputs = extrema_independent('logarithmic', constants, first_derivative)
+    extrema_inputs = extrema_independent('logarithmic', solution, first_derivative)
     maxima_inputs = extrema_inputs['maxima']
     minima_inputs = extrema_inputs['minima']
-    inflections_inputs = inflections_independent('logarithmic', constants, second_derivative)
+    inflections_inputs = inflections_independent('logarithmic', solution, second_derivative)
     maxima_outputs = []
     maxima_coordinates = []
     minima_outputs = []
@@ -80,8 +79,8 @@ def logarithmic(data):
     q3 = quartiles(independent_variable, 3)
     accumulated_range = accumulation(integral, min_value, max_value)
     accumulated_iqr = accumulation(integral, q1, q3)
-    averages_range = average_values('logarithmic', equation, integral, min_value, max_value, constants)
-    averages_iqr = average_values('logarithmic', equation, integral, q1, q3, constants)
+    averages_range = average_values('logarithmic', equation, integral, min_value, max_value, solution)
+    averages_iqr = average_values('logarithmic', equation, integral, q1, q3, solution)
     predicted = []
     for i in range(len(data)):
         predicted.append(equation(independent_variable[i]))
@@ -106,7 +105,7 @@ def logarithmic(data):
         'iqr': averages_iqr
     }
     result = {
-        'constants': constants,
+        'constants': solution,
         'evaluations': evaluations,
         'points': points,
         'accumulations': accumulations,

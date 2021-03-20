@@ -40,7 +40,7 @@ def mean_values_derivative(equation_type, equation, start, end, constants):
         value = numerator / denominator
         result.append(value)
     elif equation_type == 'logarithmic':
-        value = hyperbolic_roots(constants[1], -1 * average)
+        value = hyperbolic_roots(constants[0], -1 * average)
         result = value
     final = [x for x in result if x > start and x < end]
     if not final:
@@ -73,7 +73,7 @@ def mean_values_integral(equation_type, equation, start, end, constants):
         value = log(average / constants[0]) / log(constants[1])
         result.append(value)
     elif equation_type == 'logarithmic':
-        value = logarithmic_roots(constants[0] - average, constants[1])
+        value = logarithmic_roots(constants[0], constants[1] - average)
         result = value
     final = [x for x in result if x > start and x < end]
     if not final:
