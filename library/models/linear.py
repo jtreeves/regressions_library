@@ -1,22 +1,13 @@
-from numpy import matrix
-from numpy.linalg import inv
 from library.vectors.dimension import dimension
 from library.vectors.column import column
-from library.vectors.unify import unify
-from library.matrices.multiplication import multiplication
-from library.matrices.transpose import transpose
-from library.matrices.inverse import inverse
+from library.matrices.solve import solve
 from library.analyses.equations.linear import linear as linear_equation
-from library.analyses.roots.linear import linear as linear_roots
 from library.analyses.derivatives.linear import linear as linear_derivative
 from library.analyses.integrals.linear import linear as linear_integral
-from library.analyses.extrema import extrema as extrema_independent
-from library.analyses.inflections import inflections as inflections_independent
+from library.analyses.key_points import key_points
 from library.analyses.accumulation import accumulation
 from library.analyses.mean_values import average_values
-from library.statistics.maximum import maximum
-from library.statistics.minimum import minimum
-from library.statistics.quartiles import quartiles
+from library.statistics.five_number_summary import five_number_summary
 from library.statistics.correlation import correlation
 
 def linear(data):
@@ -26,56 +17,18 @@ def linear(data):
     dependent_matrix = column(dependent_variable)
     for i in range(len(data)):
         independent_matrix.append([independent_variable[i], 1])
-    transposition = transpose(independent_matrix)
-    product = multiplication(transposition, independent_matrix)
-    product_matrix = matrix(product, dtype='float')
-    inversion = inv(product_matrix)
-    inversion_list = matrix.tolist(inversion)
-    second_product = multiplication(inversion_list, transposition)
-    solution_column = multiplication(second_product, dependent_matrix)
-    solution = dimension(solution_column, 1)
-    equation = linear_equation(solution[0], solution[1])
-    derivative = linear_derivative(solution[0], solution[1])
-    integral = linear_integral(solution[0], solution[1])['evaluation']
+    solution = solve(independent_matrix, dependent_matrix)
+    equation = linear_equation(*solution)
+    derivative = linear_derivative(*solution)
+    integral = linear_integral(*solution)['evaluation']
     first_derivative = derivative['first']['evaluation']
     second_derivative = derivative['second']['evaluation']
-    roots = linear_roots(solution[0], solution[1])
-    zeroes = []
-    for i in range(len(roots)):
-        zeroes.append(0)
-    root_coordinates = unify(roots, zeroes)
-    extrema_inputs = extrema_independent('linear', solution, first_derivative)
-    maxima_inputs = extrema_inputs['maxima']
-    minima_inputs = extrema_inputs['minima']
-    inflections_inputs = inflections_independent('linear', solution, second_derivative)
-    maxima_outputs = []
-    maxima_coordinates = []
-    minima_outputs = []
-    minima_coordinates = []
-    inflections_outputs = []
-    inflections_coordinates = []
-    if maxima_inputs[0] == None:
-        maxima_coordinates = [None]
-    else:
-        for i in range(len(maxima_inputs)):
-            maxima_outputs.append(equation(maxima_inputs[i]))
-        maxima_coordinates = unify(maxima_inputs, maxima_outputs)
-    if minima_inputs[0] == None:
-        minima_coordinates = [None]
-    else:
-        for i in range(len(minima_inputs)):
-            minima_outputs.append(equation(minima_inputs[i]))
-        minima_coordinates = unify(minima_inputs, minima_outputs)
-    if inflections_inputs[0] == None:
-        inflections_coordinates = [None]
-    else:
-        for i in range(len(inflections_inputs)):
-            inflections_outputs.append(equation(inflections_inputs[i]))
-        inflections_coordinates = unify(inflections_inputs, inflections_outputs)
-    min_value = minimum(independent_variable)
-    max_value = maximum(independent_variable)
-    q1 = quartiles(independent_variable, 1)
-    q3 = quartiles(independent_variable, 3)
+    points = key_points('linear', solution, equation, first_derivative, second_derivative)
+    five_numbers = five_number_summary(independent_variable)
+    min_value = five_numbers['minimum']
+    max_value = five_numbers['maximum']
+    q1 = five_numbers['q1']
+    q3 = five_numbers['q3']
     accumulated_range = accumulation(integral, min_value, max_value)
     accumulated_iqr = accumulation(integral, q1, q3)
     averages_range = average_values('linear', equation, integral, min_value, max_value, solution)
@@ -90,10 +43,10 @@ def linear(data):
         'integral': integral
     }
     points = {
-        'roots': root_coordinates,
-        'maxima': maxima_coordinates,
-        'minima': minima_coordinates,
-        'inflections': inflections_coordinates
+        'roots': points['roots'],
+        'maxima': points['maxima'],
+        'minima': points['minima'],
+        'inflections': points['inflections']
     }
     accumulations = {
         'range': accumulated_range,
@@ -113,6 +66,8 @@ def linear(data):
     }
     return result
 
-# test_set = [[3, 7], [5, 11], [10, 17], [15, 22]]
-# test_eval = linear(test_set)
-# print(test_eval)
+test_set = [[3, 7], [5, 11], [10, 17], [15, 22]]
+test_eval = linear(test_set)
+print(test_eval)
+
+# {'constants': [1.219020172910662, 4.193083573487032], 'evaluations': {'equation': <function linear.<locals>.linear_equation at 0x118f55820>, 'derivative': <function linear.<locals>.first_derivative at 0x118f558b0>, 'integral': <function linear.<locals>.linear_integral at 0x118f559d0>}, 'points': {'roots': [[-3.4397163120567398, 0]], 'maxima': [None], 'minima': [None], 'inflections': [None]}, 'accumulations': {'range': 181.9711815561959, 'iqr': 129.5846541786743}, 'averages': {'range': {'average_value_derivative': 1.2190201729106622, 'mean_values_derivative': ['All'], 'average_value_integral': 15.16426512968299, 'mean_values_integral': [9.0]}, 'iqr': {'average_value_derivative': 1.219020172910662, 'mean_values_derivative': ['All'], 'average_value_integral': 13.640489913544663, 'mean_values_integral': [7.75]}}, 'correlation': 0.9929440678487984}
