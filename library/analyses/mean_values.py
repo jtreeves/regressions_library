@@ -25,7 +25,7 @@ def mean_values_derivative(equation_type, equation, start, end, constants):
         values = quadratic_roots(3 * constants[0], 2 * constants[1], constants[2] - average)
         result = values
     elif equation_type == 'hyperbolic':
-        ratio = -1 * average / constants[0]
+        ratio = -1 * constants[0] / average
         root = ratio ** (1/2)
         first_value = root
         second_value = -1 * root
