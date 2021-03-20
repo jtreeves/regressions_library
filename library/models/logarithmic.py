@@ -114,6 +114,6 @@ def logarithmic(data):
     }
     return result
 
-test_set = [[3, 4], [5, 5], [10, 7], [15, 10]]
-test_eval = logarithmic(test_set)
-print(test_eval)
+# test_set = [[3, 4], [5, 5], [10, 7], [15, 10]]
+# test_eval = logarithmic(test_set)
+# print(test_eval)

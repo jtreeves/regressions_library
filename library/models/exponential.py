@@ -115,6 +115,6 @@ def exponential(data):
     }
     return result
 
-test_set = [[3, 7], [5, 19], [10, 84], [15, 231]]
-test_eval = exponential(test_set)
-print(test_eval)
+# test_set = [[3, 7], [5, 19], [10, 84], [15, 231]]
+# test_eval = exponential(test_set)
+# print(test_eval)

@@ -113,6 +113,6 @@ def quadratic(data):
     }
     return result
 
-test_set = [[3, 4], [5, 11], [10, 13], [15, 5]]
-test_eval = quadratic(test_set)
-print(test_eval)
+# test_set = [[3, 4], [5, 11], [10, 13], [15, 5]]
+# test_eval = quadratic(test_set)
+# print(test_eval)

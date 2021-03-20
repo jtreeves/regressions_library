@@ -113,6 +113,6 @@ def linear(data):
     }
     return result
 
-test_set = [[3, 7], [5, 11], [10, 17], [15, 22]]
-test_eval = linear(test_set)
-print(test_eval)
+# test_set = [[3, 7], [5, 11], [10, 17], [15, 22]]
+# test_eval = linear(test_set)
+# print(test_eval)

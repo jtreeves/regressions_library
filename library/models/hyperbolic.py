@@ -113,6 +113,6 @@ def hyperbolic(data):
     }
     return result
 
-test_set = [[3, 241], [5, 87], [10, 17], [15, 5]]
-test_eval = hyperbolic(test_set)
-print(test_eval)
+# test_set = [[3, 241], [5, 87], [10, 17], [15, 5]]
+# test_eval = hyperbolic(test_set)
+# print(test_eval)
