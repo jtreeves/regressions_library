@@ -14,4 +14,7 @@ def correlation(actuals, expecteds):
     residual_sum = summation(squared_residuals)
     deviation_sum = summation(squared_deviations)
     result = (1 - residual_sum / deviation_sum)**(1/2)
-    return result
+    if not isinstance(result, complex):
+        return result
+    else:
+        return None
