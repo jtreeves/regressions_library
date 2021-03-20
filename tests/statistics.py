@@ -41,8 +41,8 @@ mean_second = mean(second_set)
 five_first = five_number_summary(first_set)
 five_second = five_number_summary(second_set)
 
-ranges_first = ranges(first_set)
-ranges_second = ranges(second_set)
+range_first = ranges(first_set)
+range_second = ranges(second_set)
 
 deviations_first = deviations(first_set)
 deviations_second = deviations(second_set)
@@ -51,26 +51,39 @@ residuals_compare = residuals(first_set, second_set)
 
 correlation_compare = correlation(first_set, second_set)
 
-datsort = sort(first_set)
-datmax = maximum(first_set)
-datmin = minimum(first_set)
-datran = ranges(first_set)
-datsum = summation(first_set)
-datmean = mean(first_set)
-datmed = median(first_set)
-datq = quartiles(first_set, 3)
-datres = residuals(first_set, second_set)
-datdev = deviations(first_set)
-datcorr = correlation(first_set, second_set)
+print(f'SUM FIRST: {sum_first}')
+print(f'SUM SECOND: {sum_second}')
 
-print(f'DATSORT: {datsort}') # => [1, 2, 3, 5, 8, 9, 9, 11, 13, 22]
-print(f'DATMAX: {datmax}') # => 22
-print(f'DATMIN: {datmin}') # => 1
-print(f'DATRAN: {datran}') # => 21
-print(f'DATSUM: {datsum}') # => 83
-print(f'DATMEAN: {datmean}') # => 8.3
-print(f'DATMED: {datmed}') # => 8.5
-print(f'DATQ: {datq}') # => 11
-print(f'DATRES: {datres}') # => [1, 1, -1, 1, -1, -2, 1, -3, 1, 0]
-print(f'DATDEV: {datdev}') # => [-0.3000000000000007, -6.300000000000001, -3.3000000000000007, 0.6999999999999993, -7.300000000000001, -5.300000000000001, 13.7, 2.6999999999999993, 0.6999999999999993, 4.699999999999999]
-print(f'DATCORR: {datcorr}') # => 0.9710167170159144
+print(f'SORT FIRST: {sort_first}')
+print(f'SORT SECOND: {sort_second}')
+
+print(f'MIN FIRST: {min_first}')
+print(f'MIN SECOND: {min_second}')
+
+print(f'MAX FIRST: {max_first}')
+print(f'MAX SECOND: {max_second}')
+
+print(f'Q1 FIRST: {q1_first}')
+print(f'Q1 SECOND: {q1_second}')
+
+print(f'Q3 FIRST: {q3_first}')
+print(f'Q3 SECOND: {q3_second}')
+
+print(f'MEDIAN FIRST: {median_first}')
+print(f'MEDIAN SECOND: {median_second}')
+
+print(f'MEAN FIRST: {mean_first}')
+print(f'MEAN SECOND: {mean_second}')
+
+print(f'FIVE NUMBERS FIRST: {five_first}')
+print(f'FIVE NUMBERS SECOND: {five_second}')
+
+print(f'RANGE FIRST: {range_first}')
+print(f'RANGE SECOND: {range_second}')
+
+print(f'DEVIATIONS FIRST: {deviations_first}')
+print(f'DEVIATIONS SECOND: {deviations_second}')
+
+print(f'RESIDUALS COMPARE: {residuals_compare}')
+
+print(f'CORRELATION COMPARE: {correlation_compare}')
