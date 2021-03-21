@@ -10,14 +10,14 @@ from library.analyses.mean_values import average_values
 from library.statistics.five_number_summary import five_number_summary
 from library.statistics.correlation import correlation
 
-def quadratic(data):
+def quadratic(data, precision):
     independent_variable = dimension(data, 1)
     dependent_variable = dimension(data, 2)
     independent_matrix = []
     dependent_matrix = column(dependent_variable)
     for i in range(len(data)):
         independent_matrix.append([independent_variable[i]**2, independent_variable[i], 1])
-    solution = solve(independent_matrix, dependent_matrix)
+    solution = solve(independent_matrix, dependent_matrix, precision)
     equation = quadratic_equation(*solution)
     derivative = quadratic_derivative(*solution)
     integral = quadratic_integral(*solution)['evaluation']

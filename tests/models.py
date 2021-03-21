@@ -83,27 +83,55 @@ logarithmic_set = [
     [10, 8.9078]
 ]
 
-linear_model = linear(linear_set)
-quadratic_model = quadratic(quadratic_set)
-cubic_model = cubic(cubic_set)
-hyperbolic_model = hyperbolic(hyperbolic_set)
-exponential_model = exponential(exponential_set)
-logarithmic_model = logarithmic(logarithmic_set)
+low_precision = 2
+high_precision = 6
 
-print(f'LINEAR MODEL: {linear_model}')
+linear_model_low = linear(linear_set, low_precision)
+quadratic_model_low = quadratic(quadratic_set, low_precision)
+cubic_model_low = cubic(cubic_set, low_precision)
+hyperbolic_model_low = hyperbolic(hyperbolic_set, low_precision)
+exponential_model_low = exponential(exponential_set, low_precision)
+logarithmic_model_low = logarithmic(logarithmic_set, low_precision)
+
+linear_model_high = linear(linear_set, high_precision)
+quadratic_model_high = quadratic(quadratic_set, high_precision)
+cubic_model_high = cubic(cubic_set, high_precision)
+hyperbolic_model_high = hyperbolic(hyperbolic_set, high_precision)
+exponential_model_high = exponential(exponential_set, high_precision)
+logarithmic_model_high = logarithmic(logarithmic_set, high_precision)
+
+print(f'LINEAR MODEL LOW: {linear_model_low}')
 # {'constants': [-2.999999999999999, 32.99999999999999], 'evaluations': {'equation': <function linear.<locals>.linear_equation at 0x1027ec9d0>, 'derivative': <function linear.<locals>.first_derivative at 0x11789f790>, 'integral': <function linear.<locals>.linear_integral at 0x11789f8b0>}, 'points': {'roots': [[11.000000000000002, 0]], 'maxima': [None], 'minima': [None], 'inflections': [None]}, 'accumulations': {'range': 148.5, 'iqr': 82.5}, 'averages': {'range': {'average_value_derivative': -2.999999999999999, 'mean_values_derivative': ['All'], 'average_value_integral': 16.5, 'mean_values_integral': [5.499999999999999]}, 'iqr': {'average_value_derivative': -2.999999999999999, 'mean_values_derivative': ['All'], 'average_value_integral': 16.5, 'mean_values_integral': [5.499999999999999]}}, 'correlation': 1.0}
 
-print(f'QUADRATIC MODEL: {quadratic_model}')
+print(f'QUADRATIC MODEL LOW: {quadratic_model_low}')
 # {'constants': [-2.000000000000003, 23.0000000000001, -11.000000000000238], 'evaluations': {'equation': <function quadratic.<locals>.quadratic_equation at 0x11789f820>, 'derivative': <function quadratic.<locals>.first_derivative at 0x11789f940>, 'integral': <function quadratic.<locals>.quadratic_integral at 0x11789fa60>}, 'points': {'roots': [[0.500000000000009, 0], [11.000000000000021, 0]], 'maxima': [[5.750000000000016, 55.12500000000023]], 'minima': [None], 'inflections': [None]}, 'accumulations': {'range': 373.5000000000018, 'iqr': 254.1666666666677}, 'averages': {'range': {'average_value_derivative': 1.000000000000065, 'mean_values_derivative': [5.5], 'average_value_integral': 41.5000000000002, 'mean_values_integral': [3.139923372772378, 8.360076627227654]}, 'iqr': {'average_value_derivative': 1.0000000000000653, 'mean_values_derivative': [5.5], 'average_value_integral': 50.83333333333354, 'mean_values_integral': [4.2851336807294365, 7.2148663192705955]}}, 'correlation': 1.0}
 
-print(f'CUBIC MODEL: {cubic_model}')
+print(f'CUBIC MODEL LOW: {cubic_model_low}')
 # {'constants': [1.0000000000000635, -15.00000000000084, 63.000000000002764, -7.000000000003915], 'evaluations': {'equation': <function cubic.<locals>.cubic_equation at 0x11789f9d0>, 'derivative': <function cubic.<locals>.first_derivative at 0x11789faf0>, 'integral': <function cubic.<locals>.cubic_integral at 0x11789fc10>}, 'points': {'roots': [[0.1141922038243403, 0]], 'maxima': [[2.999999999999953, 73.99999999999852]], 'minima': [[6.9999999999999725, 41.99999999999597]], 'inflections': [[4.999999999999963, 57.99999999999731]]}, 'accumulations': {'range': 560.2499999999806, 'iqr': 276.2499999999845}, 'averages': {'range': {'average_value_derivative': 9.000000000000561, 'mean_values_derivative': [2.3542486889353653, 7.6457513110645605], 'average_value_integral': 62.24999999999784, 'mean_values_integral': [1.7287946059970212, 4.642010097525637, 8.629195296477228]}, 'iqr': {'average_value_derivative': -5.000000000000322, 'mean_values_derivative': [3.4724747683480035, 6.5275252316519214], 'average_value_integral': 55.249999999996895, 'mean_values_integral': [5.230183005507392]}}, 'correlation': 1.0}
 
-print(f'HYPERBOLIC MODEL: {hyperbolic_model}')
+print(f'HYPERBOLIC MODEL LOW: {hyperbolic_model_low}')
 # {'constants': [2519.999999999999, -0.9999999999995097], 'evaluations': {'equation': <function hyperbolic.<locals>.hyperbolic_equation at 0x11789fb80>, 'derivative': <function hyperbolic.<locals>.first_derivative at 0x11789fd30>, 'integral': <function hyperbolic.<locals>.hyperbolic_integral at 0x11789fdc0>}, 'points': {'roots': [[2520.0000000012346, 0]], 'maxima': [None], 'minima': [None], 'inflections': [None]}, 'accumulations': {'range': 5793.514434344997, 'iqr': 2466.6897175895506}, 'averages': {'range': {'average_value_derivative': -251.9999999999999, 'mean_values_derivative': [3.1622776601683795], 'average_value_integral': 643.7238260383331, 'mean_values_integral': [3.908650337129266]}, 'iqr': {'average_value_derivative': -104.99999999999996, 'mean_values_derivative': [4.898979485566356], 'average_value_integral': 493.3379435179101, 'mean_values_integral': [5.097727239116333]}}, 'correlation': 1.0}
 
-print(f'EXPONENTIAL MODEL: {exponential_model}')
+print(f'EXPONENTIAL MODEL LOW: {exponential_model_low}')
 # {'constants': [2.999999999999999, 2.0], 'evaluations': {'equation': <function exponential.<locals>.exponential_equation at 0x11789fca0>, 'derivative': <function exponential.<locals>.first_derivative at 0x11789fe50>, 'integral': <function exponential.<locals>.exponential_integral at 0x11789ff70>}, 'points': {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [None]}, 'accumulations': {'range': 4423.3029953655605, 'iqr': 1073.3651104213884}, 'averages': {'range': {'average_value_derivative': 340.6666666666666, 'mean_values_derivative': [7.356020852440207], 'average_value_integral': 491.4781105961734, 'mean_values_integral': [7.356020852440207]}, 'iqr': {'average_value_derivative': 148.79999999999995, 'mean_values_derivative': [6.161034588444411], 'average_value_integral': 214.67302208427768, 'mean_values_integral': [6.161034588444411]}}, 'correlation': 1.0}
 
-print(f'LOGARITHMIC MODEL: {logarithmic_model}')
+print(f'LOGARITHMIC MODEL LOW: {logarithmic_model_low}')
+# {'constants': [3.0000161177167617, 1.9999718832129783], 'evaluations': {'equation': <function logarithmic.<locals>.logarithmic_equation at 0x11789fee0>, 'derivative': <function logarithmic.<locals>.first_derivative at 0x1178b2040>, 'integral': <function logarithmic.<locals>.logarithmic_integral at 0x1178b2160>}, 'points': {'roots': [[0.5134237698335792, 0]], 'maxima': [None], 'minima': [None], 'inflections': [None]}, 'accumulations': {'range': 60.07752580343081, 'iqr': 35.01908023521739}, 'averages': {'range': {'average_value_derivative': 0.7675324879329428, 'mean_values_derivative': [3.9086503371292665], 'average_value_integral': 6.675280644825645, 'mean_values_integral': [4.751345690108391]}, 'iqr': {'average_value_derivative': 0.5885007135526539, 'mean_values_derivative': [5.097727239116332], 'average_value_integral': 7.003816047043477, 'mean_values_integral': [5.301231189503074]}}, 'correlation': 0.9999999999212983}
+
+print(f'LINEAR MODEL HIGH: {linear_model_high}')
+# {'constants': [-2.999999999999999, 32.99999999999999], 'evaluations': {'equation': <function linear.<locals>.linear_equation at 0x1027ec9d0>, 'derivative': <function linear.<locals>.first_derivative at 0x11789f790>, 'integral': <function linear.<locals>.linear_integral at 0x11789f8b0>}, 'points': {'roots': [[11.000000000000002, 0]], 'maxima': [None], 'minima': [None], 'inflections': [None]}, 'accumulations': {'range': 148.5, 'iqr': 82.5}, 'averages': {'range': {'average_value_derivative': -2.999999999999999, 'mean_values_derivative': ['All'], 'average_value_integral': 16.5, 'mean_values_integral': [5.499999999999999]}, 'iqr': {'average_value_derivative': -2.999999999999999, 'mean_values_derivative': ['All'], 'average_value_integral': 16.5, 'mean_values_integral': [5.499999999999999]}}, 'correlation': 1.0}
+
+print(f'QUADRATIC MODEL HIGH: {quadratic_model_high}')
+# {'constants': [-2.000000000000003, 23.0000000000001, -11.000000000000238], 'evaluations': {'equation': <function quadratic.<locals>.quadratic_equation at 0x11789f820>, 'derivative': <function quadratic.<locals>.first_derivative at 0x11789f940>, 'integral': <function quadratic.<locals>.quadratic_integral at 0x11789fa60>}, 'points': {'roots': [[0.500000000000009, 0], [11.000000000000021, 0]], 'maxima': [[5.750000000000016, 55.12500000000023]], 'minima': [None], 'inflections': [None]}, 'accumulations': {'range': 373.5000000000018, 'iqr': 254.1666666666677}, 'averages': {'range': {'average_value_derivative': 1.000000000000065, 'mean_values_derivative': [5.5], 'average_value_integral': 41.5000000000002, 'mean_values_integral': [3.139923372772378, 8.360076627227654]}, 'iqr': {'average_value_derivative': 1.0000000000000653, 'mean_values_derivative': [5.5], 'average_value_integral': 50.83333333333354, 'mean_values_integral': [4.2851336807294365, 7.2148663192705955]}}, 'correlation': 1.0}
+
+print(f'CUBIC MODEL HIGH: {cubic_model_high}')
+# {'constants': [1.0000000000000635, -15.00000000000084, 63.000000000002764, -7.000000000003915], 'evaluations': {'equation': <function cubic.<locals>.cubic_equation at 0x11789f9d0>, 'derivative': <function cubic.<locals>.first_derivative at 0x11789faf0>, 'integral': <function cubic.<locals>.cubic_integral at 0x11789fc10>}, 'points': {'roots': [[0.1141922038243403, 0]], 'maxima': [[2.999999999999953, 73.99999999999852]], 'minima': [[6.9999999999999725, 41.99999999999597]], 'inflections': [[4.999999999999963, 57.99999999999731]]}, 'accumulations': {'range': 560.2499999999806, 'iqr': 276.2499999999845}, 'averages': {'range': {'average_value_derivative': 9.000000000000561, 'mean_values_derivative': [2.3542486889353653, 7.6457513110645605], 'average_value_integral': 62.24999999999784, 'mean_values_integral': [1.7287946059970212, 4.642010097525637, 8.629195296477228]}, 'iqr': {'average_value_derivative': -5.000000000000322, 'mean_values_derivative': [3.4724747683480035, 6.5275252316519214], 'average_value_integral': 55.249999999996895, 'mean_values_integral': [5.230183005507392]}}, 'correlation': 1.0}
+
+print(f'HYPERBOLIC MODEL HIGH: {hyperbolic_model_high}')
+# {'constants': [2519.999999999999, -0.9999999999995097], 'evaluations': {'equation': <function hyperbolic.<locals>.hyperbolic_equation at 0x11789fb80>, 'derivative': <function hyperbolic.<locals>.first_derivative at 0x11789fd30>, 'integral': <function hyperbolic.<locals>.hyperbolic_integral at 0x11789fdc0>}, 'points': {'roots': [[2520.0000000012346, 0]], 'maxima': [None], 'minima': [None], 'inflections': [None]}, 'accumulations': {'range': 5793.514434344997, 'iqr': 2466.6897175895506}, 'averages': {'range': {'average_value_derivative': -251.9999999999999, 'mean_values_derivative': [3.1622776601683795], 'average_value_integral': 643.7238260383331, 'mean_values_integral': [3.908650337129266]}, 'iqr': {'average_value_derivative': -104.99999999999996, 'mean_values_derivative': [4.898979485566356], 'average_value_integral': 493.3379435179101, 'mean_values_integral': [5.097727239116333]}}, 'correlation': 1.0}
+
+print(f'EXPONENTIAL MODEL HIGH: {exponential_model_high}')
+# {'constants': [2.999999999999999, 2.0], 'evaluations': {'equation': <function exponential.<locals>.exponential_equation at 0x11789fca0>, 'derivative': <function exponential.<locals>.first_derivative at 0x11789fe50>, 'integral': <function exponential.<locals>.exponential_integral at 0x11789ff70>}, 'points': {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [None]}, 'accumulations': {'range': 4423.3029953655605, 'iqr': 1073.3651104213884}, 'averages': {'range': {'average_value_derivative': 340.6666666666666, 'mean_values_derivative': [7.356020852440207], 'average_value_integral': 491.4781105961734, 'mean_values_integral': [7.356020852440207]}, 'iqr': {'average_value_derivative': 148.79999999999995, 'mean_values_derivative': [6.161034588444411], 'average_value_integral': 214.67302208427768, 'mean_values_integral': [6.161034588444411]}}, 'correlation': 1.0}
+
+print(f'LOGARITHMIC MODEL HIGH: {logarithmic_model_high}')
 # {'constants': [3.0000161177167617, 1.9999718832129783], 'evaluations': {'equation': <function logarithmic.<locals>.logarithmic_equation at 0x11789fee0>, 'derivative': <function logarithmic.<locals>.first_derivative at 0x1178b2040>, 'integral': <function logarithmic.<locals>.logarithmic_integral at 0x1178b2160>}, 'points': {'roots': [[0.5134237698335792, 0]], 'maxima': [None], 'minima': [None], 'inflections': [None]}, 'accumulations': {'range': 60.07752580343081, 'iqr': 35.01908023521739}, 'averages': {'range': {'average_value_derivative': 0.7675324879329428, 'mean_values_derivative': [3.9086503371292665], 'average_value_integral': 6.675280644825645, 'mean_values_integral': [4.751345690108391]}, 'iqr': {'average_value_derivative': 0.5885007135526539, 'mean_values_derivative': [5.097727239116332], 'average_value_integral': 7.003816047043477, 'mean_values_integral': [5.301231189503074]}}, 'correlation': 0.9999999999212983}

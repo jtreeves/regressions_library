@@ -11,7 +11,7 @@ from library.analyses.mean_values import average_values
 from library.statistics.five_number_summary import five_number_summary
 from library.statistics.correlation import correlation
 
-def exponential(data):
+def exponential(data, precision):
     independent_variable = dimension(data, 1)
     dependent_variable = dimension(data, 2)
     independent_matrix = []
@@ -19,7 +19,7 @@ def exponential(data):
     for i in range(len(data)):
         independent_matrix.append([independent_variable[i], 1])
         dependent_matrix.append([log(dependent_variable[i])])
-    solution = solve(independent_matrix, dependent_matrix)
+    solution = solve(independent_matrix, dependent_matrix, precision)
     constants = [exp(solution[1]), exp(solution[0])]
     equation = exponential_equation(*constants)
     derivative = exponential_derivative(*constants)

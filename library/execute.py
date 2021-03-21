@@ -11,15 +11,15 @@ from .statistics.mean import mean
 from .statistics.median import median
 from .vectors.dimension import dimension
 
-def run_all(data):
+def run_all(data, precision):
     independent_variable = dimension(data, 1)
     models = {
-        'linear': linear(data),
-        'quadratic': quadratic(data),
-        'cubic': cubic(data),
-        'hyperbolic': hyperbolic(data),
-        'exponential': exponential(data),
-        'logarithmic': logarithmic(data)
+        'linear': linear(data, precision),
+        'quadratic': quadratic(data, precision),
+        'cubic': cubic(data, precision),
+        'hyperbolic': hyperbolic(data, precision),
+        'exponential': exponential(data, precision),
+        'logarithmic': logarithmic(data, precision)
     }
     statistics = {
         'minimum': minimum(independent_variable),
