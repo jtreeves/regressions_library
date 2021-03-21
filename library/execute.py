@@ -37,13 +37,10 @@ def run_all(data):
         'exponential': models['exponential']['correlation'],
         'logarithmic': models['logarithmic']['correlation']
     }
-    choices = {
-        k: v for k, v in correlations.items() if v is not None
-    }
-    best = max(choices, key=choices.get)
+    best = max(correlations, key=correlations.get)
     optimal = {
         'option': best,
-        'correlation': choices[best]
+        'correlation': correlations[best]
     }
     result = {
         'models': models,

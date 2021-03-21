@@ -8,14 +8,13 @@ def halve(data):
     upper = []
     lower = []
     if length % 2 == 0:
-        upper_index = int(length / 2)
-        lower_index = int(upper_index - 1)
-        upper = data[upper_index:]
-        lower = data[:lower_index]
+        index = int(length / 2)
+        upper = sorted_data[index:]
+        lower = sorted_data[:index]
     else:
         index = int(floor(length / 2))
-        upper = data[index:]
-        lower = data[:index]
+        upper = sorted_data[index + 1:]
+        lower = sorted_data[:index]
     result = {
         'upper': upper,
         'lower': lower

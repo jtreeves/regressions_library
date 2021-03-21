@@ -17,4 +17,4 @@ def correlation(actuals, expecteds):
     if not isinstance(result, complex):
         return result
     else:
-        return None
+        return 0.0
