@@ -32,11 +32,9 @@ def mean_values_derivative(equation_type, equation, start, end, constants):
         second_value = -1 * root
         result.extend([first_value, second_value])
     elif equation_type == 'exponential':
-        average_log = log(average)
-        first_log = log(constants[0])
-        second_log = log(constants[1])
-        numerator = average_log - first_log - log(second_log)
-        denominator = second_log
+        base_log = log(constants[1])
+        numerator = log(average / (constants[0] * base_log))
+        denominator = base_log
         value = numerator / denominator
         result.append(value)
     elif equation_type == 'logarithmic':
