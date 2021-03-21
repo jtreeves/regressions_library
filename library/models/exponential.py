@@ -10,6 +10,7 @@ from library.analyses.accumulation import accumulation
 from library.analyses.mean_values import average_values
 from library.statistics.five_number_summary import five_number_summary
 from library.statistics.correlation import correlation
+from library.statistics.rounding import rounding
 
 def exponential(data, precision):
     independent_variable = dimension(data, 1)
@@ -21,9 +22,10 @@ def exponential(data, precision):
         dependent_matrix.append([log(dependent_variable[i])])
     solution = solve(independent_matrix, dependent_matrix, precision)
     constants = [exp(solution[1]), exp(solution[0])]
-    equation = exponential_equation(*constants)
-    derivative = exponential_derivative(*constants)
-    integral = exponential_integral(*constants)['evaluation']
+    coefficients = [rounding(constants[0], precision), rounding(constants[1], precision)]
+    equation = exponential_equation(*coefficients)
+    derivative = exponential_derivative(*coefficients)
+    integral = exponential_integral(*coefficients)['evaluation']
     first_derivative = derivative['first']['evaluation']
     second_derivative = derivative['second']['evaluation']
     points = key_points('exponential', solution, equation, first_derivative, second_derivative, precision)
@@ -34,8 +36,8 @@ def exponential(data, precision):
     q3 = five_numbers['q3']
     accumulated_range = accumulation(integral, min_value, max_value, precision)
     accumulated_iqr = accumulation(integral, q1, q3, precision)
-    averages_range = average_values('exponential', equation, integral, min_value, max_value, constants, precision)
-    averages_iqr = average_values('exponential', equation, integral, q1, q3, constants, precision)
+    averages_range = average_values('exponential', equation, integral, min_value, max_value, coefficients, precision)
+    averages_iqr = average_values('exponential', equation, integral, q1, q3, coefficients, precision)
     predicted = []
     for i in range(len(data)):
         predicted.append(equation(independent_variable[i]))
@@ -60,7 +62,7 @@ def exponential(data, precision):
         'iqr': averages_iqr
     }
     result = {
-        'constants': constants,
+        'constants': coefficients,
         'evaluations': evaluations,
         'points': points,
         'accumulations': accumulations,
