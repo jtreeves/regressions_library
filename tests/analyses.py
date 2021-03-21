@@ -157,10 +157,10 @@ print(f'LOGARITHMIC EVALUATION: {logarithmic_function(10)}') # 7.605170185988092
 
 print(f'LINEAR ROOTS: {linear_zeroes}') # [-1.5]
 print(f'QUADRATIC ROOTS: {quadratic_zeroes}') # [None]
-print(f'CUBIC ROOTS: {cubic_zeroes}') # [-1.4455284586795223]
-print(f'HYPERBOLIC ROOTS: {hyperbolic_zeroes}') # [-0.6666666666666666]
+print(f'CUBIC ROOTS: {cubic_zeroes}') # [-1.4455]
+print(f'HYPERBOLIC ROOTS: {hyperbolic_zeroes}') # [-0.6667]
 print(f'EXPONENTIAL ROOTS: {exponential_zeroes}') # [None]
-print(f'LOGARITHMIC ROOTS: {logarithmic_zeroes}') # [0.22313016014842982]
+print(f'LOGARITHMIC ROOTS: {logarithmic_zeroes}') # [0.2231]
 
 print(f"LINEAR FIRST DERIVATIVES CONSTANTS: {linear_derivatives_object['first']['constants']}") # [2]
 print(f"QUADRATIC FIRST DERIVATIVES CONSTANTS: {quadratic_derivatives_object['first']['constants']}") # [4, 3]
@@ -213,10 +213,10 @@ print(f'SECOND LOGARITHMIC INTERVALS: {second_logarithmic_intervals}') # ['negat
 
 print(f'LINEAR INTERCEPTS: {linear_intercepts}') # [-1.5]
 print(f'QUADRATIC INTERCEPTS: {quadratic_intercepts}') # [None]
-print(f'CUBIC INTERCEPTS: {cubic_intercepts}') # [-1.4455284586795223]
-print(f'HYPERBOLIC INTERCEPTS: {hyperbolic_intercepts}') # [-0.6666666666666666]
+print(f'CUBIC INTERCEPTS: {cubic_intercepts}') # [-1.4455]
+print(f'HYPERBOLIC INTERCEPTS: {hyperbolic_intercepts}') # [-0.6667]
 print(f'EXPONENTIAL INTERCEPTS: {exponential_intercepts}') # [None]
-print(f'LOGARITHMIC INTERCEPTS: {logarithmic_intercepts}') # [0.22313016014842982]
+print(f'LOGARITHMIC INTERCEPTS: {logarithmic_intercepts}') # [0.2231]
 
 print(f'LINEAR MAXIMA: {linear_maxima}') # [None]
 print(f'QUADRATIC MAXIMA: {quadratic_maxima}') # [None]
@@ -248,21 +248,21 @@ print(f'LOGARITHMIC INFLECTIONS: {logarithmic_inflections}') # [None]
 
 print(f'LINEAR KEY POINTS: {linear_key_points}') # {'roots': [[-1.5, 0]], 'maxima': [None], 'minima': [None], 'inflections': [None]}
 print(f'QUADRATIC KEY POINTS: {quadratic_key_points}') # {'roots': [None], 'maxima': [None], 'minima': [[-0.75, 3.875]], 'inflections': [None]}
-print(f'CUBIC KEY POINTS: {cubic_key_points}') # {'roots': [[-1.4455284586795223, 0]], 'maxima': [None], 'minima': [None], 'inflections': [[-0.5, 5.0]]}
-print(f'HYPERBOLIC KEY POINTS: {hyperbolic_key_points}') # {'roots': [[-0.6666666666666666, 0]], 'maxima': [None], 'minima': [None], 'inflections': [None]}
+print(f'CUBIC KEY POINTS: {cubic_key_points}') # {'roots': [[-1.4455, 0]], 'maxima': [None], 'minima': [None], 'inflections': [[-0.5, 5.0]]
+print(f'HYPERBOLIC KEY POINTS: {hyperbolic_key_points}') # {'roots': [[-0.6667, 0]], 'maxima': [None], 'minima': [None], 'inflections': [None]}
 print(f'EXPONENTIAL KEY POINTS: {exponential_key_points}') # {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [None]}
-print(f'LOGARITHMIC KEY POINTS: {logarithmic_key_points}') # {'roots': [[0.22313016014842982, 0]], 'maxima': [None], 'minima': [None], 'inflections': [None]}
+print(f'LOGARITHMIC KEY POINTS: {logarithmic_key_points}') # {'roots': [[0.2231, 0]], 'maxima': [None], 'minima': [None], 'inflections': [None]}
 
 print(f'LINEAR ACCUMULATION: {linear_accumulation}') # 330.0
-print(f'QUADRATIC ACCUMULATION: {quadratic_accumulation}') # 5166.666666666666
+print(f'QUADRATIC ACCUMULATION: {quadratic_accumulation}') # 5166.6667
 print(f'CUBIC ACCUMULATION: {cubic_accumulation}') # 82820.0
-print(f'HYPERBOLIC ACCUMULATION: {hyperbolic_accumulation}') # 31.386294361119887
-print(f'EXPONENTIAL ACCUMULATION: {exponential_accumulation}') # 6347508375.729334
-print(f'LOGARITHMIC ACCUMULATION: {logarithmic_accumulation}') # 83.7775890822787
+print(f'HYPERBOLIC ACCUMULATION: {hyperbolic_accumulation}') # 31.3863
+print(f'EXPONENTIAL ACCUMULATION: {exponential_accumulation}') # 6347508375.7293
+print(f'LOGARITHMIC ACCUMULATION: {logarithmic_accumulation}') # 83.7776
 
 print(f'LINEAR AVERAGES: {linear_averages}') # {'average_value_derivative': 2.0, 'mean_values_derivative': ['All'], 'average_value_integral': 33.0, 'mean_values_integral': [15.0]}
-print(f'QUADRATIC AVERAGES: {quadratic_averages}') # {'average_value_derivative': 63.0, 'mean_values_derivative': [15.0], 'average_value_integral': 516.6666666666666, 'mean_values_integral': [15.262365013742766]}
-print(f'CUBIC AVERAGES: {cubic_averages}') # {'average_value_derivative': 1495.0, 'mean_values_derivative': [15.266525721709693], 'average_value_integral': 8282.0, 'mean_values_integral': [15.51881519640049]}
-print(f'HYPERBOLIC AVERAGES: {hyperbolic_averages}') # {'average_value_derivative': -0.010000000000000009, 'mean_values_derivative': [14.142135623730944], 'average_value_integral': 3.1386294361119886, 'mean_values_integral': [14.42695040888968]}
-print(f'EXPONENTIAL AVERAGES: {exponential_averages}') # {'average_value_derivative': 697345070.4, 'mean_values_derivative': [17.8184752887231], 'average_value_integral': 634750837.5729334, 'mean_values_integral': [17.818475288723096]}
-print(f'LOGARITHMIC AVERAGES: {logarithmic_averages}') # {'average_value_derivative': 0.1386294361119889, 'mean_values_derivative': [14.426950408889649], 'average_value_integral': 8.37775890822787, 'mean_values_integral': [14.715177646857672]}
+print(f'QUADRATIC AVERAGES: {quadratic_averages}') # {'average_value_derivative': 63.0, 'mean_values_derivative': [15.0], 'average_value_integral': 516.6667, 'mean_values_integral': [15.2624]}
+print(f'CUBIC AVERAGES: {cubic_averages}') # {'average_value_derivative': 1495.0, 'mean_values_derivative': [15.2665], 'average_value_integral': 8282.0, 'mean_values_integral': [15.5188]}
+print(f'HYPERBOLIC AVERAGES: {hyperbolic_averages}') # {'average_value_derivative': -0.01, 'mean_values_derivative': [14.1421], 'average_value_integral': 3.1386, 'mean_values_integral': [14.43]}
+print(f'EXPONENTIAL AVERAGES: {exponential_averages}') # {'average_value_derivative': 697345070.4, 'mean_values_derivative': [17.8185], 'average_value_integral': 634750837.5729, 'mean_values_integral': [17.8185]}
+print(f'LOGARITHMIC AVERAGES: {logarithmic_averages}') # {'average_value_derivative': 0.1386, 'mean_values_derivative': [14.43], 'average_value_integral': 8.3778, 'mean_values_integral': [14.7155]}

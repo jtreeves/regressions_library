@@ -17,15 +17,15 @@ def average_value_derivative(equation, start, end, precision):
 
 def mean_values_derivative(equation_type, equation, start, end, constants, precision):
     result = []
-    average = average_value_derivative(equation, start, end)
+    average = average_value_derivative(equation, start, end, precision)
     if equation_type == 'linear':
         result.append('All')
         return result
     elif equation_type == 'quadratic':
-        value = linear_roots(2 * constants[0], constants[1] -  average)
+        value = linear_roots(2 * constants[0], constants[1] -  average, precision)
         result = value
     elif equation_type == 'cubic':
-        values = quadratic_roots(3 * constants[0], 2 * constants[1], constants[2] - average)
+        values = quadratic_roots(3 * constants[0], 2 * constants[1], constants[2] - average, precision)
         result = values
     elif equation_type == 'hyperbolic':
         ratio = -1 * constants[0] / average
@@ -40,7 +40,7 @@ def mean_values_derivative(equation_type, equation, start, end, constants, preci
         value = numerator / denominator
         result.append(value)
     elif equation_type == 'logarithmic':
-        value = hyperbolic_roots(constants[0], -1 * average)
+        value = hyperbolic_roots(constants[0], -1 * average, precision)
         result = value
     selected = [x for x in result if x > start and x < end]
     if not selected:
@@ -48,11 +48,11 @@ def mean_values_derivative(equation_type, equation, start, end, constants, preci
     sorted_selected = sort(selected)
     final = []
     for number in sorted_selected:
-        result.append(rounding(number, precision))
+        final.append(rounding(number, precision))
     return final
 
 def average_value_integral(equation, start, end, precision):
-    accumulated_value = accumulation(equation, start, end)
+    accumulated_value = accumulation(equation, start, end, precision)
     change = end - start
     ratio = accumulated_value / change
     result = rounding(ratio, precision)
@@ -60,24 +60,24 @@ def average_value_integral(equation, start, end, precision):
 
 def mean_values_integral(equation_type, equation, start, end, constants, precision):
     result = []
-    average = average_value_integral(equation, start, end)
+    average = average_value_integral(equation, start, end, precision)
     if equation_type == 'linear':
-        value = linear_roots(constants[0], constants[1] - average)
+        value = linear_roots(constants[0], constants[1] - average, precision)
         result = value
     elif equation_type == 'quadratic':
-        values = quadratic_roots(constants[0], constants[1], constants[2] - average)
+        values = quadratic_roots(constants[0], constants[1], constants[2] - average, precision)
         result = values
     elif equation_type == 'cubic':
-        values = cubic_roots(constants[0], constants[1], constants[2], constants[3] - average)
+        values = cubic_roots(constants[0], constants[1], constants[2], constants[3] - average, precision)
         result = values
     elif equation_type == 'hyperbolic':
-        value = hyperbolic_roots(constants[0], constants[1] - average)
+        value = hyperbolic_roots(constants[0], constants[1] - average, precision)
         result = value
     elif equation_type == 'exponential':
         value = log(average / constants[0]) / log(constants[1])
         result.append(value)
     elif equation_type == 'logarithmic':
-        value = logarithmic_roots(constants[0], constants[1] - average)
+        value = logarithmic_roots(constants[0], constants[1] - average, precision)
         result = value
     selected = [x for x in result if x > start and x < end]
     if not selected:
@@ -85,7 +85,7 @@ def mean_values_integral(equation_type, equation, start, end, constants, precisi
     sorted_selected = sort(selected)
     final = []
     for number in sorted_selected:
-        result.append(rounding(number, precision))
+        final.append(rounding(number, precision))
     return final
 
 def average_values(equation_type, equation, integral, start, end, constants, precision):

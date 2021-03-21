@@ -64,10 +64,10 @@ residuals_compare = residuals(odd_set, compare_set)
 
 correlation_compare = correlation(odd_set, compare_set, precision)
 
-print(f'ROUND NORMAL: {round_normal}')
-print(f'ROUND NORMAL HIGH: {round_normal_high}')
-print(f'ROUND EXTREME: {round_extreme}')
-print(f'ROUND EXTREME HIGH: {round_extreme_high}')
+print(f'ROUND NORMAL: {round_normal}') # 6.8172
+print(f'ROUND NORMAL HIGH: {round_normal_high}') # 6.81723983
+print(f'ROUND EXTREME: {round_extreme}') # 0.0001
+print(f'ROUND EXTREME HIGH: {round_extreme_high}') # 1e-08
 
 print(f'SUM EVEN: {sum_even}') # 83
 print(f'SUM ODD: {sum_odd}') # 79
@@ -104,4 +104,4 @@ print(f'DEVIATIONS ODD: {deviations_odd}') # [-1.7777777777777786, -4.7777777777
 
 print(f'RESIDUALS COMPARE: {residuals_compare}') # [2, -1, 1, -2, 1, -2, 3, 1, 0]
 
-print(f'CORRELATION COMPARE: {correlation_compare}') # 0.9670359359614937
+print(f'CORRELATION COMPARE: {correlation_compare}') # 0.967
