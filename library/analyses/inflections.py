@@ -8,7 +8,11 @@ def inflections(equation_type, coefficients, derivative, precision):
     for i in range(len(intervals_set)):
         try:
             if (intervals_set[i] == 'positive' and intervals_set[i + 2] == 'negative') or (intervals_set[i] == 'negative' and intervals_set[i + 2] == 'positive'):
-                result.append(intervals_set[i + 1])
+                try:
+                    derivative(intervals_set[i + 1])
+                    result.append(intervals_set[i + 1])
+                except ZeroDivisionError:
+                    break
         except IndexError:
             pass
     if len(result) == 0:
