@@ -1,3 +1,4 @@
+from library.statistics.rounding import rounding
 from library.statistics.summation import summation
 from library.statistics.sort import sort
 from library.statistics.minimum import minimum
@@ -14,6 +15,17 @@ from library.statistics.correlation import correlation
 even_set = [8, 2, 5, 9, 1, 3, 22, 11, 9, 13]
 odd_set = [7, 4, 6, 8, 2, 5, 25, 14, 8]
 compare_set = [5, 5, 5, 10, 1, 7, 22, 13, 8]
+
+normal_decimal = 6.817239833721
+extreme_decimal = 0.000000000000000000005782016894
+
+precision = 4
+high_precision = 8
+
+round_normal = rounding(normal_decimal, precision)
+round_normal_high = rounding(normal_decimal, high_precision)
+round_extreme = rounding(extreme_decimal, precision)
+round_extreme_high = rounding(extreme_decimal, high_precision)
 
 sum_even = summation(even_set)
 sum_odd = summation(odd_set)
@@ -39,8 +51,8 @@ median_odd = median(odd_set)
 mean_even = mean(even_set)
 mean_odd = mean(odd_set)
 
-five_even = five_number_summary(even_set)
-five_odd = five_number_summary(odd_set)
+five_even = five_number_summary(even_set, precision)
+five_odd = five_number_summary(odd_set, precision)
 
 range_even = ranges(even_set)
 range_odd = ranges(odd_set)
@@ -50,7 +62,12 @@ deviations_odd = deviations(odd_set)
 
 residuals_compare = residuals(odd_set, compare_set)
 
-correlation_compare = correlation(odd_set, compare_set)
+correlation_compare = correlation(odd_set, compare_set, precision)
+
+print(f'ROUND NORMAL: {round_normal}')
+print(f'ROUND NORMAL HIGH: {round_normal_high}')
+print(f'ROUND EXTREME: {round_extreme}')
+print(f'ROUND EXTREME HIGH: {round_extreme_high}')
 
 print(f'SUM EVEN: {sum_even}') # 83
 print(f'SUM ODD: {sum_odd}') # 79

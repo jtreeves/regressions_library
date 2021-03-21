@@ -1,14 +1,15 @@
+from library.statistics.rounding import rounding
 from library.vectors.unify import unify
 from .intercepts import intercepts
 from .extrema import extrema
 from .inflections import inflections
 
-def key_points(equation_type, coefficients, equation, first_derivative, second_derivative):
-    intercepts_inputs = intercepts(equation_type, coefficients)
-    extrema_inputs = extrema(equation_type, coefficients, first_derivative)
+def key_points(equation_type, coefficients, equation, first_derivative, second_derivative, precision):
+    intercepts_inputs = intercepts(equation_type, coefficients, precision)
+    extrema_inputs = extrema(equation_type, coefficients, first_derivative, precision)
     maxima_inputs = extrema_inputs['maxima']
     minima_inputs = extrema_inputs['minima']
-    inflections_inputs = inflections(equation_type, coefficients, second_derivative)
+    inflections_inputs = inflections(equation_type, coefficients, second_derivative, precision)
     intercepts_outputs = []
     maxima_outputs = []
     minima_outputs = []
@@ -27,19 +28,25 @@ def key_points(equation_type, coefficients, equation, first_derivative, second_d
         maxima_coordinates = [None]
     else:
         for i in range(len(maxima_inputs)):
-            maxima_outputs.append(equation(maxima_inputs[i]))
+            output = equation(maxima_inputs[i])
+            rounded_output = rounding(output, precision)
+            maxima_outputs.append(rounded_output)
         maxima_coordinates = unify(maxima_inputs, maxima_outputs)
     if minima_inputs[0] == None:
         minima_coordinates = [None]
     else:
         for i in range(len(minima_inputs)):
-            minima_outputs.append(equation(minima_inputs[i]))
+            output = equation(minima_inputs[i])
+            rounded_output = rounding(output, precision)
+            minima_outputs.append(rounded_output)
         minima_coordinates = unify(minima_inputs, minima_outputs)
     if inflections_inputs[0] == None:
         inflections_coordinates = [None]
     else:
         for i in range(len(inflections_inputs)):
-            inflections_outputs.append(equation(inflections_inputs[i]))
+            output = equation(inflections_inputs[i])
+            rounded_output = rounding(output, precision)
+            inflections_outputs.append(rounded_output)
         inflections_coordinates = unify(inflections_inputs, inflections_outputs)
     result = {
         'roots': intercepts_coordinates,

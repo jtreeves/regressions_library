@@ -1,6 +1,7 @@
 from library.statistics.sort import sort
+from library.statistics.rounding import rounding
 
-def quadratic(first_constant, second_constant, third_constant):
+def quadratic(first_constant, second_constant, third_constant, precision):
     roots = []
     discriminant = second_constant**2 - 4 * first_constant * third_constant
     first_root = (-1 * second_constant + discriminant**(1/2)) / (2 * first_constant)
@@ -15,4 +16,7 @@ def quadratic(first_constant, second_constant, third_constant):
     if not roots:
         roots = [None]
     sorted_roots = sort(roots)
-    return sorted_roots
+    result = []
+    for number in sorted_roots:
+        result.append(rounding(number, precision))
+    return result

@@ -3,8 +3,8 @@ from .intervals import intervals
 from .maxima import maxima
 from .minima import minima
 
-def extrema(equation_type, coefficients, derivative):
-    points = critical_points(equation_type, 1, coefficients)
+def extrema(equation_type, coefficients, derivative, precision):
+    points = critical_points(equation_type, 1, coefficients, precision)
     intervals_set = intervals(derivative, points)
     max_points = maxima(intervals_set)
     min_points = minima(intervals_set)

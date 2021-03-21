@@ -66,6 +66,7 @@ column_3d = [
 ]
 
 scalar_number = -7
+precision = 4
 
 addition_2d = addition(first_2d, second_2d)
 addition_3d = addition(first_3d, second_3d)
@@ -105,8 +106,8 @@ inverse_2d = inverse(first_2d)
 inverse_3d = inverse(first_3d)
 inverse_4d = inverse(first_4d)
 
-solve_2d = solve(first_2d, column_2d)
-solve_3d = solve(first_3d, column_3d)
+solve_2d = solve(first_2d, column_2d, precision)
+solve_3d = solve(first_3d, column_3d, precision)
 
 print(f'ADDITION 2D: {addition_2d}') # [[9, 9], [9, 6]]
 print(f'ADDITION 3D: {addition_3d}') # [[9, 1, 3], [6, -2, 3], [2, 9, 8]]

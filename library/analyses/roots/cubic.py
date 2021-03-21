@@ -1,6 +1,7 @@
 from library.statistics.sort import sort
+from library.statistics.rounding import rounding
 
-def cubic(first_constant, second_constant, third_constant, fourth_constant):
+def cubic(first_constant, second_constant, third_constant, fourth_constant, precision):
     roots = []
     xi = (-1 + (-3)**(1/2)) / 2
     delta_first = second_constant**2 - 3 * first_constant * third_constant
@@ -34,8 +35,11 @@ def cubic(first_constant, second_constant, third_constant, fourth_constant):
     if size_third_imag < 0.0001:
         third_root = third_real
         roots.append(third_root)
-    result = list(set(roots))
-    if not result:
-        result = [None]
-    sorted_result = sort(result)
-    return sorted_result
+    unique_roots = list(set(roots))
+    if not unique_roots:
+        unique_roots = [None]
+    sorted_roots = sort(unique_roots)
+    result = []
+    for number in sorted_roots:
+        result.append(rounding(number, precision))
+    return result

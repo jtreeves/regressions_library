@@ -1,8 +1,8 @@
 from .critical_points import critical_points
 from .intervals import intervals
 
-def inflections(equation_type, coefficients, derivative):
-    points = critical_points(equation_type, 2, coefficients)
+def inflections(equation_type, coefficients, derivative, precision):
+    points = critical_points(equation_type, 2, coefficients, precision)
     intervals_set = intervals(derivative, points)
     result = []
     for i in range(len(intervals_set)):

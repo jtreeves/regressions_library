@@ -1,5 +1,6 @@
 from numpy import matrix
 from numpy.linalg import inv
+from library.statistics.rounding import rounding
 from library.vectors.dimension import dimension
 from .multiplication import multiplication
 from .transpose import transpose
@@ -15,10 +16,5 @@ def solve(matrix_one, matrix_two, precision):
     solution = dimension(solution_column, 1)
     result = []
     for number in solution:
-        if number < 10**(-precision) and number > 0:
-            result.append(10**(-precision))
-        elif number > -10**(-precision) and number < 0:
-            result.append(-10**(-precision))
-        else:
-            result.append(round(number, precision))
+        result.append(rounding(number, precision))
     return result

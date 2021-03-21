@@ -1,8 +1,9 @@
 from .residuals import residuals
 from .deviations import deviations
 from .summation import summation
+from .rounding import rounding
 
-def correlation(actuals, expecteds):
+def correlation(actuals, expecteds, precision):
     residual_array = residuals(actuals, expecteds)
     deviation_array = deviations(actuals)
     squared_residuals = []
@@ -15,6 +16,6 @@ def correlation(actuals, expecteds):
     deviation_sum = summation(squared_deviations)
     result = (1 - residual_sum / deviation_sum)**(1/2)
     if not isinstance(result, complex):
-        return result
+        return rounding(result, precision)
     else:
         return 0.0

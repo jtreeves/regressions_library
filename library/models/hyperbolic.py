@@ -23,20 +23,20 @@ def hyperbolic(data, precision):
     integral = hyperbolic_integral(*solution)['evaluation']
     first_derivative = derivative['first']['evaluation']
     second_derivative = derivative['second']['evaluation']
-    points = key_points('hyperbolic', solution, equation, first_derivative, second_derivative)
-    five_numbers = five_number_summary(independent_variable)
+    points = key_points('hyperbolic', solution, equation, first_derivative, second_derivative, precision)
+    five_numbers = five_number_summary(independent_variable, precision)
     min_value = five_numbers['minimum']
     max_value = five_numbers['maximum']
     q1 = five_numbers['q1']
     q3 = five_numbers['q3']
-    accumulated_range = accumulation(integral, min_value, max_value)
-    accumulated_iqr = accumulation(integral, q1, q3)
-    averages_range = average_values('hyperbolic', equation, integral, min_value, max_value, solution)
-    averages_iqr = average_values('hyperbolic', equation, integral, q1, q3, solution)
+    accumulated_range = accumulation(integral, min_value, max_value, precision)
+    accumulated_iqr = accumulation(integral, q1, q3, precision)
+    averages_range = average_values('hyperbolic', equation, integral, min_value, max_value, solution, precision)
+    averages_iqr = average_values('hyperbolic', equation, integral, q1, q3, solution, precision)
     predicted = []
     for i in range(len(data)):
         predicted.append(equation(independent_variable[i]))
-    accuracy = correlation(dependent_variable, predicted)
+    accuracy = correlation(dependent_variable, predicted, precision)
     evaluations = {
         'equation': equation,
         'derivative': first_derivative,
