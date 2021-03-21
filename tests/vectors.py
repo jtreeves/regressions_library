@@ -1,3 +1,4 @@
+from library.vectors.component_form import component_form
 from library.vectors.direction import direction
 from library.vectors.magnitude import magnitude
 from library.vectors.unit import unit
@@ -22,9 +23,10 @@ nested_vector = [
 
 scalar_number = -3
 
-direction_vector = direction(first_point, second_point)
-magnitude_vector = magnitude(first_point)
-unit_vector = unit(first_point)
+component_vector = component_form(first_point, second_point)
+direction_vector = direction(component_vector)
+magnitude_vector = magnitude(component_vector)
+unit_vector = unit(component_vector)
 
 column_first = column(first_vector)
 column_second = column(second_vector)
@@ -44,9 +46,10 @@ scalar_second = scalar(second_vector, scalar_number)
 dot_product_first = dot_product(first_point, second_point)
 dot_product_second = dot_product(first_vector, second_vector)
 
+print(f'COMPONENT VECTOR: {component_vector}') # [3, 10]
 print(f'DIRECTION VECTOR: {direction_vector}') # {'radian': 1.2793395323170296, 'degree': 73.30075576600639}
-print(f'MAGNITUDE VECTOR: {magnitude_vector}') # 3.605551275463989
-print(f'UNIT VECTOR: {unit_vector}') # [0.5547001962252291, -0.8320502943378437]
+print(f'MAGNITUDE VECTOR: {magnitude_vector}') # 10.44030650891055
+print(f'UNIT VECTOR: {unit_vector}') # [0.2873478855663454, 0.9578262852211514]
 
 print(f'COLUMN FIRST: {column_first}') # [[2], [5], [9], [13]]
 print(f'COLUMN SECOND: {column_second}') # [[1], [-7], [23], [-2]]
