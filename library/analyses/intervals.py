@@ -4,11 +4,11 @@ def intervals(derivative, points):
     result = []
     if points[0] == None:
         if derivative(10) > 0:
-            result = ['increasing']
+            result = ['positive']
         elif derivative(10) < 0:
-            result = ['decreasing']
+            result = ['negative']
         else:
-            result = ['constant']
+            result = [0]
     elif isinstance(points[0], complex):
         result = [None]
     elif len(points) == 1:
@@ -16,13 +16,13 @@ def intervals(derivative, points):
         before = turning_point - 1
         after = turning_point + 1
         if derivative(before) > 0:
-            before = 'increasing'
+            before = 'positive'
         elif derivative(before) < 0:
-            before = 'decreasing'
+            before = 'negative'
         if derivative(after) > 0 :
-            after = 'increasing'
+            after = 'positive'
         elif derivative(after) < 0:
-            after = 'decreasing'
+            after = 'negative'
         result = [before, turning_point, after]
     elif len(points) == 2:
         sorted_points = sort(points)
@@ -32,16 +32,16 @@ def intervals(derivative, points):
         before = first_point - 1
         after = second_point + 1
         if derivative(before) > 0:
-            before = 'increasing'
+            before = 'positive'
         elif derivative(before) < 0:
-            before = 'decreasing'
+            before = 'negative'
         if derivative(middle) > 0 :
-            middle = 'increasing'
+            middle = 'positive'
         elif derivative(middle) < 0:
-            middle = 'decreasing'
+            middle = 'negative'
         if derivative(after) > 0:
-            after = 'increasing'
+            after = 'positive'
         elif derivative(after) < 0:
-            after = 'decreasing'
+            after = 'negative'
         result = [before, first_point, middle, second_point, after]
     return result

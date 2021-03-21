@@ -7,7 +7,7 @@ def inflections(equation_type, coefficients, derivative):
     result = []
     for i in range(len(intervals_set)):
         try:
-            if (intervals_set[i] == 'increasing' and intervals_set[i + 2] == 'decreasing') or (intervals_set[i] == 'decreasing' and intervals_set[i + 2] == 'increasing'):
+            if (intervals_set[i] == 'positive' and intervals_set[i + 2] == 'negative') or (intervals_set[i] == 'negative' and intervals_set[i + 2] == 'positive'):
                 result.append(intervals_set[i + 1])
         except IndexError:
             pass

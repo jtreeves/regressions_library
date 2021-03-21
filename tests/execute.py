@@ -1,6 +1,6 @@
 from library.execute import run_all
 
-agnostic_set = {
+agnostic_set = [
     [1, 32],
     [2, 25],
     [3, 14],
@@ -11,7 +11,7 @@ agnostic_set = {
     [8, 49],
     [9, 36],
     [10, 33]
-}
+]
 
 linear_set = [
     [1, 30],

@@ -2,7 +2,7 @@ def maxima(intervals):
     result = []
     for i in range(len(intervals)):
         try:
-            if intervals[i] == 'increasing' and intervals[i + 2] == 'decreasing':
+            if intervals[i] == 'positive' and intervals[i + 2] == 'negative':
                 result.append(intervals[i + 1])
         except IndexError:
             pass

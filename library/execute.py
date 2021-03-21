@@ -51,7 +51,3 @@ def run_all(data):
         'optimal': optimal
     }
     return result
-
-test_set = [[3, 4], [5, 11], [10, 13], [15, 5]]
-test_eval = run_all(test_set)
-print(test_eval)
