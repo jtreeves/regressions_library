@@ -614,7 +614,7 @@ class TestLogarithmicModel(unittest.TestCase):
         self.assertEqual(logarithmic_model_low['accumulations']['iqr'], 35.02)
     
     def test_logarithmic_model_low_averages_range_derivative_value(self):
-        self.assertEqual(logarithmic_model_low['averages']['range']['average_value_derivative'],  0.77)
+        self.assertEqual(logarithmic_model_low['averages']['range']['average_value_derivative'], 0.77)
     
     def test_logarithmic_model_low_averages_range_derivative_points(self):
         self.assertEqual(logarithmic_model_low['averages']['range']['mean_values_derivative'], [3.9])
@@ -662,7 +662,7 @@ class TestLogarithmicModel(unittest.TestCase):
         self.assertEqual(logarithmic_model_high['accumulations']['iqr'], 35.01908)
     
     def test_logarithmic_model_high_averages_range_derivative_value(self):
-        self.assertEqual(logarithmic_model_high['averages']['range']['average_value_derivative'],  0.767532)
+        self.assertEqual(logarithmic_model_high['averages']['range']['average_value_derivative'], 0.767532)
     
     def test_logarithmic_model_high_averages_range_derivative_points(self):
         self.assertEqual(logarithmic_model_high['averages']['range']['mean_values_derivative'], [3.908653])
