@@ -64,32 +64,6 @@ class TestEquations(unittest.TestCase):
     def test_logarithmic_function(self):
         self.assertEqual(logarithmic_function(10), 7.605170185988092)
 
-linear_zeroes = linear_roots(coefficients[0], coefficients[1], precision)
-quadratic_zeroes = quadratic_roots(coefficients[0], coefficients[1], coefficients[2], precision)
-cubic_zeroes = cubic_roots(coefficients[0], coefficients[1], coefficients[2], coefficients[3], precision)
-hyperbolic_zeroes = hyperbolic_roots(coefficients[0], coefficients[1], precision)
-exponential_zeroes = exponential_roots(coefficients[0], coefficients[1], precision)
-logarithmic_zeroes = logarithmic_roots(coefficients[0], coefficients[1], precision)
-
-class TestRoots(unittest.TestCase):
-    def test_linear_zeroes(self):
-        self.assertEqual(linear_zeroes, [-1.5])
-    
-    def test_quadratic_zeroes(self):
-        self.assertEqual(quadratic_zeroes, [None])
-    
-    def test_cubic_zeroes(self):
-        self.assertEqual(cubic_zeroes, [-1.4455])
-    
-    def test_hyperbolic_zeroes(self):
-        self.assertEqual(hyperbolic_zeroes, [-0.6667])
-    
-    def test_exponential_zeroes(self):
-        self.assertEqual(exponential_zeroes, [None])
-    
-    def test_logarithmic_zeroes(self):
-        self.assertEqual(logarithmic_zeroes, [0.2231])
-
 linear_derivatives_object = linear_derivatives(coefficients[0], coefficients[1])
 quadratic_derivatives_object = quadratic_derivatives(coefficients[0], coefficients[1], coefficients[2])
 cubic_derivatives_object = cubic_derivatives(coefficients[0], coefficients[1], coefficients[2], coefficients[3])
@@ -262,215 +236,232 @@ class TestIntervals(unittest.TestCase):
     def test_second_logarithmic_intervals(self):
         self.assertEqual(second_logarithmic_intervals, ['negative'])
 
-linear_intercepts = intercepts('linear', coefficients[:2], precision)
-quadratic_intercepts = intercepts('quadratic', coefficients[:3], precision)
-cubic_intercepts = intercepts('cubic', coefficients, precision)
-hyperbolic_intercepts = intercepts('hyperbolic', coefficients[:2], precision)
-exponential_intercepts = intercepts('exponential', coefficients[:2], precision)
-logarithmic_intercepts = intercepts('logarithmic', coefficients[:2], precision)
+class TestRoots(unittest.TestCase):
+    def test_linear_zeroes(self):
+        linear_zeroes = linear_roots(coefficients[0], coefficients[1], precision)
+        self.assertEqual(linear_zeroes, [-1.5])
+    
+    def test_quadratic_zeroes(self):
+        quadratic_zeroes = quadratic_roots(coefficients[0], coefficients[1], coefficients[2], precision)
+        self.assertEqual(quadratic_zeroes, [None])
+    
+    def test_cubic_zeroes(self):
+        cubic_zeroes = cubic_roots(coefficients[0], coefficients[1], coefficients[2], coefficients[3], precision)
+        self.assertEqual(cubic_zeroes, [-1.4455])
+    
+    def test_hyperbolic_zeroes(self):
+        hyperbolic_zeroes = hyperbolic_roots(coefficients[0], coefficients[1], precision)
+        self.assertEqual(hyperbolic_zeroes, [-0.6667])
+    
+    def test_exponential_zeroes(self):
+        exponential_zeroes = exponential_roots(coefficients[0], coefficients[1], precision)
+        self.assertEqual(exponential_zeroes, [None])
+    
+    def test_logarithmic_zeroes(self):
+        logarithmic_zeroes = logarithmic_roots(coefficients[0], coefficients[1], precision)
+        self.assertEqual(logarithmic_zeroes, [0.2231])
 
 class TestIntercepts(unittest.TestCase):
     def test_linear_intercepts(self):
+        linear_intercepts = intercepts('linear', coefficients[:2], precision)
         self.assertEqual(linear_intercepts, [-1.5])
     
     def test_quadratic_intercepts(self):
+        quadratic_intercepts = intercepts('quadratic', coefficients[:3], precision)
         self.assertEqual(quadratic_intercepts, [None])
     
     def test_cubic_intercepts(self):
+        cubic_intercepts = intercepts('cubic', coefficients, precision)
         self.assertEqual(cubic_intercepts, [-1.4455])
     
     def test_hyperbolic_intercepts(self):
+        hyperbolic_intercepts = intercepts('hyperbolic', coefficients[:2], precision)
         self.assertEqual(hyperbolic_intercepts, [-0.6667])
     
     def test_exponential_intercepts(self):
+        exponential_intercepts = intercepts('exponential', coefficients[:2], precision)
         self.assertEqual(exponential_intercepts, [None])
     
     def test_logarithmic_intercepts(self):
+        logarithmic_intercepts = intercepts('logarithmic', coefficients[:2], precision)
         self.assertEqual(logarithmic_intercepts, [0.2231])
-
-linear_maxima = maxima(first_linear_intervals)
-quadratic_maxima = maxima(first_quadratic_intervals)
-cubic_maxima = maxima(first_cubic_intervals)
-hyperbolic_maxima = maxima(first_hyperbolic_intervals)
-exponential_maxima = maxima(first_exponential_intervals)
-logarithmic_maxima = maxima(first_logarithmic_intervals)
 
 class TestMaxima(unittest.TestCase):
     def test_linear_maxima(self):
+        linear_maxima = maxima(first_linear_intervals)
         self.assertEqual(linear_maxima, [None])
     
     def test_quadratic_maxima(self):
+        quadratic_maxima = maxima(first_quadratic_intervals)
         self.assertEqual(quadratic_maxima, [None])
     
     def test_cubic_maxima(self):
+        cubic_maxima = maxima(first_cubic_intervals)
         self.assertEqual(cubic_maxima, [None])
     
     def test_hyperbolic_maxima(self):
+        hyperbolic_maxima = maxima(first_hyperbolic_intervals)
         self.assertEqual(hyperbolic_maxima, [None])
     
     def test_exponential_maxima(self):
+        exponential_maxima = maxima(first_exponential_intervals)
         self.assertEqual(exponential_maxima, [None])
     
     def test_logarithmic_maxima(self):
+        logarithmic_maxima = maxima(first_logarithmic_intervals)
         self.assertEqual(logarithmic_maxima, [None])
-
-linear_minima = minima(first_linear_intervals)
-quadratic_minima = minima(first_quadratic_intervals)
-cubic_minima = minima(first_cubic_intervals)
-hyperbolic_minima = minima(first_hyperbolic_intervals)
-exponential_minima = minima(first_exponential_intervals)
-logarithmic_minima = minima(first_logarithmic_intervals)
 
 class TestMinima(unittest.TestCase):
     def test_linear_minima(self):
+        linear_minima = minima(first_linear_intervals)
         self.assertEqual(linear_minima, [None])
     
     def test_quadratic_minima(self):
+        quadratic_minima = minima(first_quadratic_intervals)
         self.assertEqual(quadratic_minima, [-0.75])
     
     def test_cubic_minima(self):
+        cubic_minima = minima(first_cubic_intervals)
         self.assertEqual(cubic_minima, [None])
     
     def test_hyperbolic_minima(self):
+        hyperbolic_minima = minima(first_hyperbolic_intervals)
         self.assertEqual(hyperbolic_minima, [None])
     
     def test_exponential_minima(self):
+        exponential_minima = minima(first_exponential_intervals)
         self.assertEqual(exponential_minima, [None])
     
     def test_logarithmic_minima(self):
+        logarithmic_minima = minima(first_logarithmic_intervals)
         self.assertEqual(logarithmic_minima, [None])
-
-linear_extrema = extrema('linear', coefficients[:2], linear_derivatives_object['first']['evaluation'], precision)
-quadratic_extrema = extrema('quadratic', coefficients[:3], quadratic_derivatives_object['first']['evaluation'], precision)
-cubic_extrema = extrema('cubic', coefficients, cubic_derivatives_object['first']['evaluation'], precision)
-hyperbolic_extrema = extrema('hyperbolic', coefficients[:2], hyperbolic_derivatives_object['first']['evaluation'], precision)
-exponential_extrema = extrema('exponential', coefficients[:2], exponential_derivatives_object['first']['evaluation'], precision)
-logarithmic_extrema = extrema('logarithmic', coefficients[:2], logarithmic_derivatives_object['first']['evaluation'], precision)
 
 class TestExtrema(unittest.TestCase):
     def test_linear_extrema(self):
+        linear_extrema = extrema('linear', coefficients[:2], linear_derivatives_object['first']['evaluation'], precision)
         self.assertEqual(linear_extrema, {'maxima': [None], 'minima': [None]})
     
     def test_quadratic_extrema(self):
+        quadratic_extrema = extrema('quadratic', coefficients[:3], quadratic_derivatives_object['first']['evaluation'], precision)
         self.assertEqual(quadratic_extrema, {'maxima': [None], 'minima': [-0.75]})
     
     def test_cubic_extrema(self):
+        cubic_extrema = extrema('cubic', coefficients, cubic_derivatives_object['first']['evaluation'], precision)
         self.assertEqual(cubic_extrema, {'maxima': [None], 'minima': [None]})
     
     def test_hyperbolic_extrema(self):
+        hyperbolic_extrema = extrema('hyperbolic', coefficients[:2], hyperbolic_derivatives_object['first']['evaluation'], precision)
         self.assertEqual(hyperbolic_extrema, {'maxima': [None], 'minima': [None]})
     
     def test_exponential_extrema(self):
+        exponential_extrema = extrema('exponential', coefficients[:2], exponential_derivatives_object['first']['evaluation'], precision)
         self.assertEqual(exponential_extrema, {'maxima': [None], 'minima': [None]})
     
     def test_logarithmic_extrema(self):
+        logarithmic_extrema = extrema('logarithmic', coefficients[:2], logarithmic_derivatives_object['first']['evaluation'], precision)
         self.assertEqual(logarithmic_extrema, {'maxima': [None], 'minima': [None]})
-
-linear_inflections = inflections('linear', coefficients[:2], linear_derivatives_object['second']['evaluation'], precision)
-quadratic_inflections = inflections('quadratic', coefficients[:3], quadratic_derivatives_object['second']['evaluation'], precision)
-cubic_inflections = inflections('cubic', coefficients, cubic_derivatives_object['second']['evaluation'], precision)
-hyperbolic_inflections = inflections('hyperbolic', coefficients[:2], hyperbolic_derivatives_object['second']['evaluation'], precision)
-exponential_inflections = inflections('exponential', coefficients[:2], exponential_derivatives_object['second']['evaluation'], precision)
-logarithmic_inflections = inflections('logarithmic', coefficients[:2], logarithmic_derivatives_object['second']['evaluation'], precision)
 
 class TestInflections(unittest.TestCase):
     def test_linear_inflections(self):
+        linear_inflections = inflections('linear', coefficients[:2], linear_derivatives_object['second']['evaluation'], precision)
         self.assertEqual(linear_inflections, [None])
     
     def test_quadratic_inflections(self):
+        quadratic_inflections = inflections('quadratic', coefficients[:3], quadratic_derivatives_object['second']['evaluation'], precision)
         self.assertEqual(quadratic_inflections, [None])
     
     def test_cubic_inflections(self):
+        cubic_inflections = inflections('cubic', coefficients, cubic_derivatives_object['second']['evaluation'], precision)
         self.assertEqual(cubic_inflections, [-0.5])
     
     def test_hyperbolic_inflections(self):
+        hyperbolic_inflections = inflections('hyperbolic', coefficients[:2], hyperbolic_derivatives_object['second']['evaluation'], precision)
         self.assertEqual(hyperbolic_inflections, [None])
     
     def test_exponential_inflections(self):
+        exponential_inflections = inflections('exponential', coefficients[:2], exponential_derivatives_object['second']['evaluation'], precision)
         self.assertEqual(exponential_inflections, [None])
     
     def test_logarithmic_inflections(self):
+        logarithmic_inflections = inflections('logarithmic', coefficients[:2], logarithmic_derivatives_object['second']['evaluation'], precision)
         self.assertEqual(logarithmic_inflections, [None])
-
-linear_key_points = key_points('linear', coefficients[:2], linear_function, linear_derivatives_object['first']['evaluation'], linear_derivatives_object['second']['evaluation'], precision)
-quadratic_key_points = key_points('quadratic', coefficients[:3], quadratic_function, quadratic_derivatives_object['first']['evaluation'], quadratic_derivatives_object['second']['evaluation'], precision)
-cubic_key_points = key_points('cubic', coefficients, cubic_function, cubic_derivatives_object['first']['evaluation'], cubic_derivatives_object['second']['evaluation'], precision)
-hyperbolic_key_points = key_points('hyperbolic', coefficients[:2], hyperbolic_function, hyperbolic_derivatives_object['first']['evaluation'], hyperbolic_derivatives_object['second']['evaluation'], precision)
-exponential_key_points = key_points('exponential', coefficients[:2], exponential_function, exponential_derivatives_object['first']['evaluation'], exponential_derivatives_object['second']['evaluation'], precision)
-logarithmic_key_points = key_points('logarithmic', coefficients[:2], logarithmic_function, logarithmic_derivatives_object['first']['evaluation'], logarithmic_derivatives_object['second']['evaluation'], precision)
 
 class TestKeyPoints(unittest.TestCase):
     def test_linear_key_points(self):
+        linear_key_points = key_points('linear', coefficients[:2], linear_function, linear_derivatives_object['first']['evaluation'], linear_derivatives_object['second']['evaluation'], precision)
         self.assertEqual(linear_key_points, {'roots': [[-1.5, 0]], 'maxima': [None], 'minima': [None], 'inflections': [None]})
     
     def test_quadratic_key_points(self):
+        quadratic_key_points = key_points('quadratic', coefficients[:3], quadratic_function, quadratic_derivatives_object['first']['evaluation'], quadratic_derivatives_object['second']['evaluation'], precision)
         self.assertEqual(quadratic_key_points, {'roots': [None], 'maxima': [None], 'minima': [[-0.75, 3.875]], 'inflections': [None]})
     
     def test_cubic_key_points(self):
+        cubic_key_points = key_points('cubic', coefficients, cubic_function, cubic_derivatives_object['first']['evaluation'], cubic_derivatives_object['second']['evaluation'], precision)
         self.assertEqual(cubic_key_points, {'roots': [[-1.4455, 0]], 'maxima': [None], 'minima': [None], 'inflections': [[-0.5, 5.0]]})
     
     def test_hyperbolic_key_points(self):
+        hyperbolic_key_points = key_points('hyperbolic', coefficients[:2], hyperbolic_function, hyperbolic_derivatives_object['first']['evaluation'], hyperbolic_derivatives_object['second']['evaluation'], precision)
         self.assertEqual(hyperbolic_key_points, {'roots': [[-0.6667, 0]], 'maxima': [None], 'minima': [None], 'inflections': [None]})
     
     def test_exponential_key_points(self):
+        exponential_key_points = key_points('exponential', coefficients[:2], exponential_function, exponential_derivatives_object['first']['evaluation'], exponential_derivatives_object['second']['evaluation'], precision)
         self.assertEqual(exponential_key_points, {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [None]})
     
     def test_logarithmic_key_points(self):
+        logarithmic_key_points = key_points('logarithmic', coefficients[:2], logarithmic_function, logarithmic_derivatives_object['first']['evaluation'], logarithmic_derivatives_object['second']['evaluation'], precision)
         self.assertEqual(logarithmic_key_points, {'roots': [[0.2231, 0]], 'maxima': [None], 'minima': [None], 'inflections': [None]})
-
-linear_accumulation = accumulation(linear_integral_object['evaluation'], 10, 20, precision)
-quadratic_accumulation = accumulation(quadratic_integral_object['evaluation'], 10, 20, precision)
-cubic_accumulation = accumulation(cubic_integral_object['evaluation'], 10, 20, precision)
-hyperbolic_accumulation = accumulation(hyperbolic_integral_object['evaluation'], 10, 20, precision)
-exponential_accumulation = accumulation(exponential_integral_object['evaluation'], 10, 20, precision)
-logarithmic_accumulation = accumulation(logarithmic_integral_object['evaluation'], 10, 20, precision)
 
 class TestAccumulation(unittest.TestCase):
     def test_linear_accumulation(self):
+        linear_accumulation = accumulation(linear_integral_object['evaluation'], 10, 20, precision)
         self.assertEqual(linear_accumulation, 330.0)
     
     def test_quadratic_accumulation(self):
+        quadratic_accumulation = accumulation(quadratic_integral_object['evaluation'], 10, 20, precision)
         self.assertEqual(quadratic_accumulation, 5166.6667)
     
     def test_cubic_accumulation(self):
+        cubic_accumulation = accumulation(cubic_integral_object['evaluation'], 10, 20, precision)
         self.assertEqual(cubic_accumulation, 82820.0)
     
     def test_hyperbolic_accumulation(self):
+        hyperbolic_accumulation = accumulation(hyperbolic_integral_object['evaluation'], 10, 20, precision)
         self.assertEqual(hyperbolic_accumulation, 31.3863)
     
     def test_exponential_accumulation(self):
+        exponential_accumulation = accumulation(exponential_integral_object['evaluation'], 10, 20, precision)
         self.assertEqual(exponential_accumulation, 6347508375.7293)
     
     def test_logarithmic_accumulation(self):
+        logarithmic_accumulation = accumulation(logarithmic_integral_object['evaluation'], 10, 20, precision)
         self.assertEqual(logarithmic_accumulation, 83.7776)
-
-linear_averages = average_values('linear', linear_function, linear_integral_object['evaluation'], 10, 20, coefficients[:2], precision)
-quadratic_averages = average_values('quadratic', quadratic_function, quadratic_integral_object['evaluation'], 10, 20, coefficients[:3], precision)
-cubic_averages = average_values('cubic', cubic_function, cubic_integral_object['evaluation'], 10, 20, coefficients, precision)
-hyperbolic_averages = average_values('hyperbolic', hyperbolic_function, hyperbolic_integral_object['evaluation'], 10, 20, coefficients[:2], precision)
-exponential_averages = average_values('exponential', exponential_function, exponential_integral_object['evaluation'], 10, 20, coefficients[:2], precision)
-logarithmic_averages = average_values('logarithmic', logarithmic_function, logarithmic_integral_object['evaluation'], 10, 20, coefficients[:2], precision)
 
 class TestAverages(unittest.TestCase):
     def test_linear_averages(self):
+        linear_averages = average_values('linear', linear_function, linear_integral_object['evaluation'], 10, 20, coefficients[:2], precision)
         self.assertEqual(linear_averages, {'average_value_derivative': 2.0, 'mean_values_derivative': ['All'], 'average_value_integral': 33.0, 'mean_values_integral': [15.0]})
     
     def test_quadratic_averages(self):
+        quadratic_averages = average_values('quadratic', quadratic_function, quadratic_integral_object['evaluation'], 10, 20, coefficients[:3], precision)
         self.assertEqual(quadratic_averages, {'average_value_derivative': 63.0, 'mean_values_derivative': [15.0], 'average_value_integral': 516.6667, 'mean_values_integral': [15.2624]})
     
     def test_cubic_averages(self):
+        cubic_averages = average_values('cubic', cubic_function, cubic_integral_object['evaluation'], 10, 20, coefficients, precision)
         self.assertEqual(cubic_averages, {'average_value_derivative': 1495.0, 'mean_values_derivative': [15.2665], 'average_value_integral': 8282.0, 'mean_values_integral': [15.5188]})
     
     def test_hyperbolic_averages(self):
+        hyperbolic_averages = average_values('hyperbolic', hyperbolic_function, hyperbolic_integral_object['evaluation'], 10, 20, coefficients[:2], precision)
         self.assertEqual(hyperbolic_averages, {'average_value_derivative': -0.01, 'mean_values_derivative': [14.1421], 'average_value_integral': 3.1386, 'mean_values_integral': [14.43]})
     
     def test_exponential_averages(self):
+        exponential_averages = average_values('exponential', exponential_function, exponential_integral_object['evaluation'], 10, 20, coefficients[:2], precision)
         self.assertEqual(exponential_averages, {'average_value_derivative': 697345070.4, 'mean_values_derivative': [17.8185], 'average_value_integral': 634750837.5729, 'mean_values_integral': [17.8185]})
     
     def test_logarithmic_averages(self):
+        logarithmic_averages = average_values('logarithmic', logarithmic_function, logarithmic_integral_object['evaluation'], 10, 20, coefficients[:2], precision)
         self.assertEqual(logarithmic_averages, {'average_value_derivative': 0.1386, 'mean_values_derivative': [14.43], 'average_value_integral': 8.3778, 'mean_values_integral': [14.7155]})
 
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 102 tests in 0.008s ---------- OK ---------- #
+# ---------- Ran 102 tests in 0.010s ---------- OK ---------- #
