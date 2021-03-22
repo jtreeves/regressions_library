@@ -150,3 +150,5 @@ class TestComparisons(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+# ---------- Ran 28 tests in 0.003s ---------- OK ---------- #
