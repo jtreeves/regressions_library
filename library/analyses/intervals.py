@@ -8,7 +8,7 @@ def intervals(derivative, points):
         elif derivative(10) < 0:
             result = ['negative']
         else:
-            result = [0]
+            result = ['constant']
     elif isinstance(points[0], complex):
         result = [None]
     elif len(points) == 1:
