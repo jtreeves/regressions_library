@@ -20,6 +20,8 @@ def critical_points(equation_type, derivative_level, coefficients, precision):
             results = [None]
         elif equation_type == 'logarithmic':
             results = [None]
+        elif equation_type == 'logistic':
+            results = [None]
     elif derivative_level == 2:
         if equation_type == 'linear':
             results = [None]
@@ -34,4 +36,6 @@ def critical_points(equation_type, derivative_level, coefficients, precision):
             results = [None]
         elif equation_type == 'logarithmic':
             results = [None]
+        elif equation_type == 'logistic':
+            results = [coefficients[2]]
     return results
