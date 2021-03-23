@@ -3,7 +3,7 @@ from math import log
 def hyperbolic(first_constant, second_constant):
     constants = [first_constant, second_constant]
     def hyperbolic_integral(variable):
-        evaluation = constants[0] * log(variable) + constants[1] * variable
+        evaluation = constants[0] * log(abs(variable)) + constants[1] * variable
         return evaluation
     results = {
         'constants': constants,
