@@ -5,8 +5,8 @@ from library.statistics.correlation import correlation
 def sinusoidal_function(variable, a, b, c, d):
     return a * sin(b * (variable - c)) + d
 
-inputs = [2.0, 3.0, 5.0, 7.0, 11.0, 13.0, 17.0, 19.0]
-outputs = [5.0, 6.0, 8.0, 7.0, 4.0, 3.0, 1.0, 3.0]
+inputs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+outputs = [8.0731, 6.1758, 7.5588, 6.7178, 7, 7.2822, 6.4412, 7.8242, 5.9269, 8.3006]
 
 parameters, parameters_covariance = curve_fit(sinusoidal_function, inputs, outputs)
 
