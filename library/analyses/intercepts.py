@@ -6,6 +6,8 @@ from .roots.exponential import exponential as exponential_roots
 from .roots.logarithmic import logarithmic as logarithmic_roots
 from .roots.logistic import logistic as logistic_roots
 
+from scipy.optimize import root_scalar
+
 def intercepts(equation_type, coefficients, precision):
     result = []
     if equation_type == 'linear':
@@ -23,3 +25,12 @@ def intercepts(equation_type, coefficients, precision):
     elif equation_type == 'logistic':
         result = logistic_roots(*coefficients, precision)
     return result
+
+def linear_function(variable):
+    return 3 * variable + 2
+
+solution = root_scalar(linear_function, bracket=[-100, 100], method='brentq')
+
+result = solution.root
+
+print(result)
