@@ -9,4 +9,6 @@ outputs = [5.0, 6.0, 8.0, 7.0, 4.0, 3.0, 1.0, 3.0]
 
 parameters, parameters_covariance = curve_fit(sinusoidal_function, inputs, outputs)
 
-print(parameters)
+parameters_list = list(parameters)
+
+print(parameters_list)
