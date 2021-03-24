@@ -3,6 +3,7 @@ import unittest
 from library.statistics.rounding import rounding
 from library.statistics.summation import summation
 from library.statistics.sort import sort, sort_dimension
+from library.statistics.halve import halve, halve_dimension
 from library.statistics.minimum import minimum
 from library.statistics.maximum import maximum
 from library.statistics.quartiles import quartiles
@@ -63,6 +64,19 @@ class TestSort(unittest.TestCase):
     def test_sort_dimension(self):
         dimension_sort = sort_dimension(dimension_set, 1)
         self.assertEqual(dimension_sort, [[1, 9], [1, 1], [2, 7], [2, 3], [3, 4], [4, 3], [5, 2], [5, 3], [7, 7], [8, 1]])
+
+class TestHalve(unittest.TestCase):
+    def test_halve_even(self):
+        halve_even = halve(even_set)
+        self.assertEqual(halve_even, {'upper': [9, 9, 11, 13, 22], 'lower': [1, 2, 3, 5, 8]})
+
+    def test_halve_odd(self):
+        halve_odd = halve(odd_set)
+        self.assertEqual(halve_odd, {'upper': [8, 8, 14, 25], 'lower': [2, 4, 5, 6]})
+    
+    def test_halve_dimension(self):
+        dimension_halve = halve_dimension(dimension_set, 1)
+        self.assertEqual(dimension_halve, {'upper': [[4, 3], [5, 2], [5, 3], [7, 7], [8, 1]], 'lower': [[1, 9], [1, 1], [2, 7], [2, 3], [3, 4]]})
 
 class TestMinimum(unittest.TestCase):
     def test_min_even(self):
@@ -156,4 +170,4 @@ class TestComparisons(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 29 tests in 0.003s ---------- OK ---------- #
+# ---------- Ran 32 tests in 0.004s ---------- OK ---------- #
