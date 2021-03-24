@@ -1,5 +1,4 @@
-from numpy import exp
-from numpy import inf
+from numpy import exp, inf
 from scipy.optimize import curve_fit
 from library.vectors.dimension import dimension
 from library.vectors.column import column
@@ -25,39 +24,17 @@ def logistic(data, precision):
     mean_lower = mean(dependent_lower)
     mean_upper = mean(dependent_upper)
     dependent_max = max(dependent_variable)
-    dependent_average = dependent_max / 2
-    print(f'DEPENDENT MAX: {dependent_max}')
-    print(f'DEPENDENT AVERAGE: {dependent_average}')
-    deviations_coordinates = {}
-    for i in range(len(data)):
-        deviations_coordinates[i] = {
-            'coordinates': data[i],
-            'deviation': abs(data[i][1] - dependent_average)
-        }
-    print(f'DEVIATIONS COORDINATES: {deviations_coordinates}')
-    dependent_deviations = []
-    for i in deviations_coordinates:
-        dependent_deviations.append(deviations_coordinates[i]['deviation'])
-    print(f'DEPENDENT DEVIATIONS: {dependent_deviations}')
-    smallest_deviation = min(dependent_deviations)
-    print(f'SMALLEST DEVIATION: {smallest_deviation}')
-    closest_independent = 0
-    for i in deviations_coordinates:
-        if deviations_coordinates[i]['deviation'] == smallest_deviation:
-            closest_independent = deviations_coordinates[i]['coordinates'][0]
-    print(f'CLOSEST INDEPENDENT: {closest_independent}')
+    dependent_min = min(dependent_variable)
+    dependent_range = dependent_max - dependent_min
     solution = []
+    def logistic_function(variable, first_constant, second_constant, third_constant):
+        evaluation = first_constant / (1 + exp(-1 * second_constant * (variable - third_constant)))
+        return evaluation
     if mean_upper > mean_lower:
-        def logistic_function(variable, first_constant, second_constant, third_constant):
-            evaluation = first_constant / (1 + exp(-1 * second_constant * (variable - third_constant)))
-            return evaluation
-        parameters, parameters_covariance = curve_fit(logistic_function, independent_variable, dependent_variable, bounds=[(-inf, 0, -inf), (inf, inf, inf)])
+        parameters, parameters_covariance = curve_fit(logistic_function, independent_variable, dependent_variable, bounds=[(dependent_max - dependent_range, 0, -inf), (dependent_max + dependent_range, inf, inf)])
         solution = list(parameters)
     else:
-        def logistic_function(variable, first_constant, second_constant, third_constant):
-            evaluation = first_constant / (1 + exp(-1 * second_constant * (variable - third_constant)))
-            return evaluation
-        parameters, parameters_covariance = curve_fit(logistic_function, independent_variable, dependent_variable, bounds=[(-inf, -inf, -inf), (inf, 0, inf)])
+        parameters, parameters_covariance = curve_fit(logistic_function, independent_variable, dependent_variable, bounds=[(dependent_max - dependent_range, -inf, -inf), (dependent_max + dependent_range, 0, inf)])
         solution = list(parameters)
     constants = []
     for number in solution:
