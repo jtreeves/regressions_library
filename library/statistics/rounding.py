@@ -1,5 +1,5 @@
 def rounding(number, precision):
-    if not number:
+    if number == None:
         return None
     elif number < 10**(-precision) and number > 0:
         return 10**(-precision)

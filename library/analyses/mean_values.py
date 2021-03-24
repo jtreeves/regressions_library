@@ -13,6 +13,11 @@ def average_value_derivative(equation, start, end, precision):
     horizontal_change = end - start
     ratio = vertical_change / horizontal_change
     result = rounding(ratio, precision)
+    print('///   AVERAGE VALUE DERIVATIVE   ///')
+    print(f'VERTICAL CHANGE: {vertical_change}')
+    print(f'HORIZONTAL CHANGE: {horizontal_change}')
+    print(f'RATIO: {ratio}')
+    print(f'AVERAGE: {result}')
     return result
 
 def mean_values_derivative(equation_type, equation, start, end, constants, precision):
@@ -43,9 +48,6 @@ def mean_values_derivative(equation_type, equation, start, end, constants, preci
         value = hyperbolic_roots(constants[0], -1 * average, precision)
         result = value
     elif equation_type == 'logistic':
-        print(f'AVERAGE: {average}')
-        print(f'START: {equation(start)}')
-        print(f'END: {equation(end)}')
         quadratic_values = quadratic_roots(average, 2 * average - constants[0] * constants[1], average, precision)
         if quadratic_values[0] == None:
             result = [None]
@@ -92,8 +94,18 @@ def mean_values_integral(equation_type, equation, start, end, constants, precisi
         value = logarithmic_roots(constants[0], constants[1] - average, precision)
         result = value
     elif equation_type == 'logistic':
-        value = constants[2] - log(constants[0] / average - 1) / constants[1]
-        result.append(value)
+        # print(f'LOGISTIC FIRST CONSTANT FOR MEAN VALUES INTEGRAL: {constants[0]}')
+        # print(f'LOGISTIC SECOND CONSTANT FOR MEAN VALUES INTEGRAL: {constants[1]}')
+        # print(f'LOGISTIC THIRD CONSTANT FOR MEAN VALUES INTEGRAL: {constants[2]}')
+        # print(f'LOGISTIC INTEGRAL AVERAGE: {average}')
+        # print(f'LOGISTIC FIRST CONSTANT OVER AVERAGE: {constants[0] / average}')
+        # print(f'LOGISTIC LOG OF RATIO MINUS 1: {log(abs(constants[0] / average - 1))}')
+        ratio = constants[0] / average
+        if ratio <= 1:
+            pass
+        else:
+            value = constants[2] - log(ratio - 1) / constants[1]
+            result.append(value)
     selected = [x for x in result if x > start and x < end]
     if not selected:
         selected = [None]

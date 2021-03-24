@@ -57,8 +57,8 @@ def logistic(data, precision):
     q3 = five_numbers['q3']
     accumulated_range = accumulation(integral, min_value, max_value, precision)
     accumulated_iqr = accumulation(integral, q1, q3, precision)
-    # averages_range = average_values('logistic', equation, integral, min_value, max_value, solution, precision)
-    # averages_iqr = average_values('logistic', equation, integral, q1, q3, solution, precision)
+    averages_range = average_values('logistic', equation, integral, min_value, max_value, solution, precision)
+    averages_iqr = average_values('logistic', equation, integral, q1, q3, solution, precision)
     predicted = []
     for i in range(len(data)):
         predicted.append(equation(independent_variable[i]))
@@ -78,16 +78,16 @@ def logistic(data, precision):
         'range': accumulated_range,
         'iqr': accumulated_iqr
     }
-    # averages = {
-    #     'range': averages_range,
-    #     'iqr': averages_iqr
-    # }
+    averages = {
+        'range': averages_range,
+        'iqr': averages_iqr
+    }
     result = {
         'constants': constants,
         'evaluations': evaluations,
         'points': points,
         'accumulations': accumulations,
-        # 'averages': averages,
+        'averages': averages,
         'correlation': accuracy
     }
     return result
