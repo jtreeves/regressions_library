@@ -93,6 +93,19 @@ logarithmic_set = [
     [10, 8.9078]
 ]
 
+logistic_set = [
+    [1, 0.0000122],
+    [2, 0.000247],
+    [3, 0.004945],
+    [4, 0.094852],
+    [5, 1.0],
+    [6, 1.905148],
+    [7, 1.995055],
+    [8, 1.999753],
+    [9, 1.999988],
+    [10, 1.999999],
+]
+
 precision = 4
 
 agnostic_models = run_all(agnostic_set, precision)
@@ -194,6 +207,8 @@ class TestAgnosticModels(unittest.TestCase):
     def test_agnostic_optimal(self):
         self.assertEqual(agnostic_models['optimal']['option'], 'cubic')
 
+print(f"AGNOSTIC -> LOGISTIC: {agnostic_models['models']['logistic']}")
+
 linear_models = run_all(linear_set, precision)
 
 class TestLinearModels(unittest.TestCase):
@@ -292,6 +307,8 @@ class TestLinearModels(unittest.TestCase):
     
     def test_linear_optimal(self):
         self.assertEqual(linear_models['optimal']['option'], 'linear')
+
+print(f"LINEAR -> LOGISTIC: {linear_models['models']['logistic']}")
 
 quadratic_models = run_all(quadratic_set, precision)
 
@@ -392,6 +409,8 @@ class TestQuadraticModels(unittest.TestCase):
     def test_quadratic_optimal(self):
         self.assertEqual(quadratic_models['optimal']['option'], 'quadratic')
 
+print(f"QUADRATIC -> LOGISTIC: {quadratic_models['models']['logistic']}")
+
 cubic_models = run_all(cubic_set, precision)
 
 class TestCubicModels(unittest.TestCase):
@@ -490,6 +509,8 @@ class TestCubicModels(unittest.TestCase):
     
     def test_cubic_optimal(self):
         self.assertEqual(cubic_models['optimal']['option'], 'cubic')
+
+print(f"CUBIC -> LOGISTIC: {cubic_models['models']['logistic']}")
 
 hyperbolic_models = run_all(hyperbolic_set, precision)
 
@@ -590,6 +611,8 @@ class TestHyperbolicModels(unittest.TestCase):
     def test_hyperbolic_optimal(self):
         self.assertEqual(hyperbolic_models['optimal']['option'], 'hyperbolic')
 
+print(f"HYPERBOLIC -> LOGISTIC: {hyperbolic_models['models']['logistic']}")
+
 exponential_models = run_all(exponential_set, precision)
 
 class TestExponentialModels(unittest.TestCase):
@@ -689,6 +712,8 @@ class TestExponentialModels(unittest.TestCase):
     def test_exponential_optimal(self):
         self.assertEqual(exponential_models['optimal']['option'], 'exponential')
 
+print(f"EXPONENTIAL -> LOGISTIC: {exponential_models['models']['logistic']}")
+
 logarithmic_models = run_all(logarithmic_set, precision)
 
 class TestLogarithmicModels(unittest.TestCase):
@@ -787,6 +812,12 @@ class TestLogarithmicModels(unittest.TestCase):
     
     def test_logarithmic_optimal(self):
         self.assertEqual(logarithmic_models['optimal']['option'], 'logarithmic')
+
+print(f"LOGARITHMIC -> LOGISTIC: {logarithmic_models['models']['logistic']}")
+
+logistic_models = run_all(logistic_set, precision)
+
+print(f'LOGISTIC MODELS: {logistic_models}')
 
 if __name__ == '__main__':
     unittest.main()

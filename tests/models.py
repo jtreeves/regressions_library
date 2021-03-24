@@ -705,7 +705,7 @@ class TestLogarithmicModel(unittest.TestCase):
 logistic_model_low = logistic(logistic_set, low_precision)
 logistic_model_high = logistic(logistic_set, high_precision)
 
-class TestlogisticModel(unittest.TestCase):
+class TestLogisticModel(unittest.TestCase):
     def test_logistic_model_low_constants(self):
         self.assertEqual(logistic_model_low['constants'], [2.0, 3.0, 5.0])
     
