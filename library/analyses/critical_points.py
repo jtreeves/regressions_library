@@ -1,3 +1,4 @@
+from library.statistics.rounding import rounding
 from .roots.linear import linear as linear_roots
 from .roots.quadratic import quadratic as quadratic_roots
 from .derivatives.quadratic import quadratic as quadratic_derivatives
@@ -37,5 +38,5 @@ def critical_points(equation_type, derivative_level, coefficients, precision):
         elif equation_type == 'logarithmic':
             results = [None]
         elif equation_type == 'logistic':
-            results = [coefficients[2]]
+            results = [rounding(coefficients[2], precision)]
     return results

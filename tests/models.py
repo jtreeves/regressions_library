@@ -6,6 +6,7 @@ from library.models.cubic import cubic
 from library.models.hyperbolic import hyperbolic
 from library.models.exponential import exponential
 from library.models.logarithmic import logarithmic
+from library.models.logistic import logistic
 
 linear_set = [
     [1, 30],
@@ -83,6 +84,19 @@ logarithmic_set = [
     [8, 8.2383],
     [9, 8.5917],
     [10, 8.9078]
+]
+
+logistic_set = [
+    [1, 0.0000122],
+    [2, 0.000247],
+    [3, 0.004945],
+    [4, 0.094852],
+    [5, 1.0],
+    [6, 1.905148],
+    [7, 1.995055],
+    [8, 1.999753],
+    [9, 1.999988],
+    [10, 1.999999],
 ]
 
 low_precision = 2
@@ -688,7 +702,107 @@ class TestLogarithmicModel(unittest.TestCase):
     def test_logarithmic_model_high_correlation(self):
         self.assertEqual(logarithmic_model_high['correlation'], 1.0)
 
+logistic_model_low = logistic(logistic_set, low_precision)
+logistic_model_high = logistic(logistic_set, high_precision)
+
+class TestlogisticModel(unittest.TestCase):
+    def test_logistic_model_low_constants(self):
+        self.assertEqual(logistic_model_low['constants'], [2.0, 3.0, 5.0])
+    
+    def test_logistic_model_low_roots(self):
+        self.assertEqual(logistic_model_low['points']['roots'], [None])
+    
+    def test_logistic_model_low_maxima(self):
+        self.assertEqual(logistic_model_low['points']['maxima'], [None])
+    
+    def test_logistic_model_low_minima(self):
+        self.assertEqual(logistic_model_low['points']['minima'], [None])
+    
+    def test_logistic_model_low_inflections(self):
+        self.assertEqual(logistic_model_low['points']['inflections'], [[5.0, 1.0]])
+    
+    def test_logistic_model_low_accumulations_range(self):
+        self.assertEqual(logistic_model_low['accumulations']['range'], 10.0)
+    
+    def test_logistic_model_low_accumulations_iqr(self):
+        self.assertEqual(logistic_model_low['accumulations']['iqr'], 6.0)
+    
+    def test_logistic_model_low_averages_range_derivative_value(self):
+        self.assertEqual(logistic_model_low['averages']['range']['average_value_derivative'], 0.22)
+    
+    def test_logistic_model_low_averages_range_derivative_points(self):
+        self.assertEqual(logistic_model_low['averages']['range']['mean_values_derivative'], [3.92, 6.07])
+    
+    def test_logistic_model_low_averages_range_integral_value(self):
+        self.assertEqual(logistic_model_low['averages']['range']['average_value_integral'], 1.11)
+    
+    def test_logistic_model_low_averages_range_integral_points(self):
+        self.assertEqual(logistic_model_low['averages']['range']['mean_values_integral'], [5.07])
+    
+    def test_logistic_model_low_averages_iqr_derivative_value(self):
+        self.assertEqual(logistic_model_low['averages']['iqr']['average_value_derivative'], 0.4)
+    
+    def test_logistic_model_low_averages_iqr_derivative_points(self):
+        self.assertEqual(logistic_model_low['averages']['iqr']['mean_values_derivative'], [4.15, 5.84])
+    
+    def test_logistic_model_low_averages_iqr_integral_value(self):
+        self.assertEqual(logistic_model_low['averages']['iqr']['average_value_integral'], 1.2)
+    
+    def test_logistic_model_low_averages_iqr_integral_points(self):
+        self.assertEqual(logistic_model_low['averages']['iqr']['mean_values_integral'], [5.14])
+    
+    def test_logistic_model_low_correlation(self):
+        self.assertEqual(logistic_model_low['correlation'], 1.0)
+    
+    def test_logistic_model_high_constants(self):
+        self.assertEqual(logistic_model_high['constants'], [2.0, 2.999998, 5.0])
+    
+    def test_logistic_model_high_roots(self):
+        self.assertEqual(logistic_model_high['points']['roots'], [None])
+    
+    def test_logistic_model_high_maxima(self):
+        self.assertEqual(logistic_model_high['points']['maxima'], [None])
+    
+    def test_logistic_model_high_minima(self):
+        self.assertEqual(logistic_model_high['points']['minima'], [None])
+    
+    def test_logistic_model_high_inflections(self):
+        self.assertEqual(logistic_model_high['points']['inflections'], [[5.0, 1.0]])
+    
+    def test_logistic_model_high_accumulations_range(self):
+        self.assertEqual(logistic_model_high['accumulations']['range'], 9.999996)
+    
+    def test_logistic_model_high_accumulations_iqr(self):
+        self.assertEqual(logistic_model_high['accumulations']['iqr'], 5.998432)
+    
+    def test_logistic_model_high_averages_range_derivative_value(self):
+        self.assertEqual(logistic_model_high['averages']['range']['average_value_derivative'], 0.222221)
+    
+    def test_logistic_model_high_averages_range_derivative_points(self):
+        self.assertEqual(logistic_model_high['averages']['range']['mean_values_derivative'], [3.927573, 6.072427])
+    
+    def test_logistic_model_high_averages_range_integral_value(self):
+        self.assertEqual(logistic_model_high['averages']['range']['average_value_integral'], 1.111111)
+    
+    def test_logistic_model_high_averages_range_integral_points(self):
+        self.assertEqual(logistic_model_high['averages']['range']['mean_values_integral'], [5.074381])
+    
+    def test_logistic_model_high_averages_iqr_derivative_value(self):
+        self.assertEqual(logistic_model_high['averages']['iqr']['average_value_derivative'], 0.398962)
+    
+    def test_logistic_model_high_averages_iqr_derivative_points(self):
+        self.assertEqual(logistic_model_high['averages']['iqr']['mean_values_derivative'], [4.145995, 5.854006])
+    
+    def test_logistic_model_high_averages_iqr_integral_value(self):
+        self.assertEqual(logistic_model_high['averages']['iqr']['average_value_integral'], 1.199686)
+    
+    def test_logistic_model_high_averages_iqr_integral_points(self):
+        self.assertEqual(logistic_model_high['averages']['iqr']['mean_values_integral'], [5.134937])
+    
+    def test_logistic_model_high_correlation(self):
+        self.assertEqual(logistic_model_high['correlation'], 1.0)
+
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 192 tests in 0.015s ---------- OK ---------- #
+# ---------- Ran 224 tests in 0.031s ---------- OK ---------- #
