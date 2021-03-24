@@ -1023,4 +1023,4 @@ class TestLogisticModels(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 296 tests in 0.021s ---------- OK ---------- #
+# ---------- Ran 296 tests in 0.028s ---------- OK ---------- #
