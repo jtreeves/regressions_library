@@ -1,39 +1,86 @@
 from numpy import exp
 from scipy.optimize import curve_fit
+from library.vectors.dimension import dimension
+from library.vectors.column import column
+from library.matrices.solve import solve
+from library.analyses.equations.logistic import logistic as logistic_equation
+from library.analyses.derivatives.logistic import logistic as logistic_derivative
+from library.analyses.integrals.logistic import logistic as logistic_integral
+from library.analyses.key_points import key_points
+from library.analyses.accumulation import accumulation
+from library.analyses.mean_values import average_values
+from library.statistics.five_number_summary import five_number_summary
 from library.statistics.correlation import correlation
 
-def logistic_function(variable, first_constant, second_constant, third_constant):
-    evaluation = first_constant / (1 + exp(-1 * second_constant * (variable - third_constant)))
-    return evaluation
+def logistic(data, precision):
+    independent_variable = dimension(data, 1)
+    dependent_variable = dimension(data, 2)
+    def logistic_function(variable, first_constant, second_constant, third_constant):
+        evaluation = first_constant / (1 + exp(-1 * second_constant * (variable - third_constant)))
+        return evaluation
+    parameters, parameters_covariance = curve_fit(logistic_function, independent_variable, dependent_variable)
+    solution = list(parameters)
+    equation = logistic_equation(*solution)
+    derivative = logistic_derivative(*solution)
+    integral = logistic_integral(*solution)['evaluation']
+    first_derivative = derivative['first']['evaluation']
+    second_derivative = derivative['second']['evaluation']
+    points = key_points('logistic', solution, equation, first_derivative, second_derivative, precision)
+    five_numbers = five_number_summary(independent_variable, precision)
+    min_value = five_numbers['minimum']
+    max_value = five_numbers['maximum']
+    q1 = five_numbers['q1']
+    q3 = five_numbers['q3']
+    accumulated_range = accumulation(integral, min_value, max_value, precision)
+    accumulated_iqr = accumulation(integral, q1, q3, precision)
+    averages_range = average_values('logistic', equation, integral, min_value, max_value, solution, precision)
+    averages_iqr = average_values('logistic', equation, integral, q1, q3, solution, precision)
+    predicted = []
+    for i in range(len(data)):
+        predicted.append(equation(independent_variable[i]))
+    accuracy = correlation(dependent_variable, predicted, precision)
+    evaluations = {
+        'equation': equation,
+        'derivative': first_derivative,
+        'integral': integral
+    }
+    points = {
+        'roots': points['roots'],
+        'maxima': points['maxima'],
+        'minima': points['minima'],
+        'inflections': points['inflections']
+    }
+    accumulations = {
+        'range': accumulated_range,
+        'iqr': accumulated_iqr
+    }
+    averages = {
+        'range': averages_range,
+        'iqr': averages_iqr
+    }
+    result = {
+        'constants': solution,
+        'evaluations': evaluations,
+        'points': points,
+        'accumulations': accumulations,
+        'averages': averages,
+        'correlation': accuracy
+    }
+    return result
 
-inputs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-outputs = []
+data_set = [
+    [1, 0.0000122],
+    [2, 0.000247],
+    [3, 0.004945],
+    [4, 0.094852],
+    [5, 1.0],
+    [6, 1.905148],
+    [7, 1.995055],
+    [8, 1.999753],
+    [9, 1.999988],
+    [10, 1.999999],
+]
 
-for i in range(len(inputs)):
-    outputs.append(logistic_function(inputs[i], 2, 3, 5))
+test_case = logistic(data_set, 4)
 
-print(f'OUTPUTS: {outputs}')
-# [1.2288349204429436e-05, 0.00024678915197246345, 0.004945246313269549, 0.09485174635513356, 1.0, 1.9051482536448667, 1.9950547536867307, 1.9997532108480274, 1.9999877116507956, 1.999999388195546]
-
-parameters, parameters_covariance = curve_fit(logistic_function, inputs, outputs)
-
-parameters_list = list(parameters)
-
-print(f'COEFFICIENTS: {parameters_list}')
-# SHOULD BE: [2, 3, 5]
-# ACTUALLY IS: [2.0, 3.000000000000002, 5.0]
-
-predicted = []
-
-for i in range(len(inputs)):
-    predicted.append(logistic_function(inputs[i], *parameters_list))
-
-print(f'PREDICTED: {predicted}')
-# SHOULD BE: [1.2288349204429436e-05, 0.00024678915197246345, 0.004945246313269549, 0.09485174635513356, 1.0, 1.9051482536448667, 1.9950547536867307, 1.9997532108480274, 1.9999877116507956, 1.999999388195546]
-# ACTUALLY IS: [1.2288349204429326e-05, 0.0002467891519724617, 0.004945246313269527, 0.09485174635513335, 1.0, 1.9051482536448667, 1.9950547536867307, 1.9997532108480274, 1.9999877116507956, 1.999999388195546]
-
-accuracy = correlation(outputs, predicted, 4)
-
-print(f'CORRELATION: {accuracy}')
-# SHOULD BE: 1.0
-# ACTUALLY IS: 1.0
+print(test_case)
