@@ -38,7 +38,7 @@ def run_all(data, precision):
         'hyperbolic': models['hyperbolic']['correlation'],
         'exponential': models['exponential']['correlation'],
         'logarithmic': models['logarithmic']['correlation'],
-        'logistic': models['logistic']['correlation']
+        # 'logistic': models['logistic']['correlation']
     }
     best = max(correlations, key=correlations.get)
     optimal = {

@@ -1,4 +1,5 @@
 from numpy import exp
+from numpy import inf
 from scipy.optimize import curve_fit
 from library.vectors.dimension import dimension
 from library.vectors.column import column
@@ -12,18 +13,36 @@ from library.analyses.mean_values import average_values
 from library.statistics.five_number_summary import five_number_summary
 from library.statistics.correlation import correlation
 from library.statistics.rounding import rounding
+from library.statistics.quartiles import halve
+from library.statistics.mean import mean
 
 def logistic(data, precision):
     independent_variable = dimension(data, 1)
     dependent_variable = dimension(data, 2)
-    def logistic_function(variable, first_constant, second_constant, third_constant):
-        evaluation = first_constant / (1 + exp(-1 * second_constant * (variable - third_constant)))
-        return evaluation
-    parameters, parameters_covariance = curve_fit(logistic_function, independent_variable, dependent_variable)
-    solution = list(parameters)
+    solution = []
+    independent_halves = halve()
+    dependent_halves = halve(dependent_variable)
+    mean_lower = mean(dependent_halves['lower'])
+    mean_upper = mean(dependent_halves['upper'])
+    print(f'DEPENDENT HALVES: {dependent_halves}')
+    print(f'MEAN LOWER: {mean_lower}')
+    print(f'MEAN UPPER: {mean_upper}')
+    if mean_upper > mean_lower:
+        def logistic_function(variable, first_constant, second_constant, third_constant):
+            evaluation = first_constant / (1 + exp(-1 * second_constant * (variable - third_constant)))
+            return evaluation
+        parameters, parameters_covariance = curve_fit(logistic_function, independent_variable, dependent_variable, bounds=[(-inf, 0, -inf), (inf, inf, inf)])
+        solution = list(parameters)
+    else:
+        def logistic_function(variable, first_constant, second_constant, third_constant):
+            evaluation = first_constant / (1 + exp(-1 * second_constant * (variable - third_constant)))
+            return evaluation
+        parameters, parameters_covariance = curve_fit(logistic_function, independent_variable, dependent_variable, bounds=[(-inf, -inf, -inf), (inf, 0, inf)])
+        solution = list(parameters)
     constants = []
     for number in solution:
         constants.append(rounding(number, precision))
+    print(f'CONSTANTS: {constants}')
     equation = logistic_equation(*solution)
     derivative = logistic_derivative(*solution)
     integral = logistic_integral(*solution)['evaluation']
@@ -37,8 +56,8 @@ def logistic(data, precision):
     q3 = five_numbers['q3']
     accumulated_range = accumulation(integral, min_value, max_value, precision)
     accumulated_iqr = accumulation(integral, q1, q3, precision)
-    averages_range = average_values('logistic', equation, integral, min_value, max_value, solution, precision)
-    averages_iqr = average_values('logistic', equation, integral, q1, q3, solution, precision)
+    # averages_range = average_values('logistic', equation, integral, min_value, max_value, solution, precision)
+    # averages_iqr = average_values('logistic', equation, integral, q1, q3, solution, precision)
     predicted = []
     for i in range(len(data)):
         predicted.append(equation(independent_variable[i]))
@@ -58,16 +77,16 @@ def logistic(data, precision):
         'range': accumulated_range,
         'iqr': accumulated_iqr
     }
-    averages = {
-        'range': averages_range,
-        'iqr': averages_iqr
-    }
+    # averages = {
+    #     'range': averages_range,
+    #     'iqr': averages_iqr
+    # }
     result = {
         'constants': constants,
         'evaluations': evaluations,
         'points': points,
         'accumulations': accumulations,
-        'averages': averages,
+        # 'averages': averages,
         'correlation': accuracy
     }
     return result

@@ -2,7 +2,7 @@ import unittest
 
 from library.statistics.rounding import rounding
 from library.statistics.summation import summation
-from library.statistics.sort import sort
+from library.statistics.sort import sort, sort_dimension
 from library.statistics.minimum import minimum
 from library.statistics.maximum import maximum
 from library.statistics.quartiles import quartiles
@@ -17,6 +17,7 @@ from library.statistics.correlation import correlation
 even_set = [8, 2, 5, 9, 1, 3, 22, 11, 9, 13]
 odd_set = [7, 4, 6, 8, 2, 5, 25, 14, 8]
 compare_set = [5, 5, 5, 10, 1, 7, 22, 13, 8]
+dimension_set = [[2, 7], [1, 9], [5, 2], [3, 4], [4, 3], [8, 1], [2, 3], [7, 7], [1, 1], [5, 3]]
 
 normal_decimal = 6.817239833721
 extreme_decimal = 0.000000000000000000005782016894
@@ -58,6 +59,10 @@ class TestSort(unittest.TestCase):
     def test_sort_odd(self):
         sort_odd = sort(odd_set)
         self.assertEqual(sort_odd, [2, 4, 5, 6, 7, 8, 8, 14, 25])
+    
+    def test_sort_dimension(self):
+        dimension_sort = sort_dimension(dimension_set, 1)
+        self.assertEqual(dimension_sort, [[1, 9], [1, 1], [2, 7], [2, 3], [3, 4], [4, 3], [5, 2], [5, 3], [7, 7], [8, 1]])
 
 class TestMinimum(unittest.TestCase):
     def test_min_even(self):
@@ -151,4 +156,4 @@ class TestComparisons(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 28 tests in 0.003s ---------- OK ---------- #
+# ---------- Ran 29 tests in 0.003s ---------- OK ---------- #
