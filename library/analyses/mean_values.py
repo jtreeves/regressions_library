@@ -43,20 +43,15 @@ def mean_values_derivative(equation_type, equation, start, end, constants, preci
         value = hyperbolic_roots(constants[0], -1 * average, precision)
         result = value
     elif equation_type == 'logistic':
-        print(f'AVERAGE: {average}')
-        if average == 0:
+        quadratic_values = quadratic_roots(average, 2 * average - constants[0] * constants[1], average, precision)
+        if quadratic_values[0] == None:
             result = [None]
             return result
         else:
-            quadratic_values = quadratic_roots(average, 2 * average - constants[0] * constants[1], average, precision)
-            if quadratic_values[0] == None:
-                result = [None]
-                return result
-            else:
-                values = []
-                for i in range(len(quadratic_values)):
-                    values.append(constants[2] - log(quadratic_values[i]) / constants[1])
-                result = values
+            values = []
+            for i in range(len(quadratic_values)):
+                values.append(constants[2] - log(quadratic_values[i]) / constants[1])
+            result = values
     selected = [x for x in result if x > start and x < end]
     if not selected:
         selected = [None]
