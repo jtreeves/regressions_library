@@ -24,9 +24,17 @@ def logistic(data, precision):
     dependent_upper = dimension(halved_data['upper'], 2)
     mean_lower = mean(dependent_lower)
     mean_upper = mean(dependent_upper)
-    print(f'HALVED DATA: {halved_data}')
-    print(f'MEAN LOWER: {mean_lower}')
-    print(f'MEAN UPPER: {mean_upper}')
+    dependent_max = max(dependent_variable)
+    dependent_average = dependent_max / 2
+    print(f'DEPENDENT MAX: {dependent_max}')
+    print(f'DEPENDENT AVERAGE: {dependent_average}')
+    dependent_deviations = {}
+    for i in range(len(data)):
+        dependent_deviations[i] = {
+            'coordinates': data[i],
+            'deviation': abs(data[i][1] - dependent_average)
+        }
+    print(f'DEPENDENT DEVIATIONS: {dependent_deviations}')
     solution = []
     if mean_upper > mean_lower:
         def logistic_function(variable, first_constant, second_constant, third_constant):
@@ -43,7 +51,6 @@ def logistic(data, precision):
     constants = []
     for number in solution:
         constants.append(rounding(number, precision))
-    print(f'CONSTANTS: {constants}')
     equation = logistic_equation(*solution)
     derivative = logistic_derivative(*solution)
     integral = logistic_integral(*solution)['evaluation']
