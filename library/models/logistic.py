@@ -30,7 +30,7 @@ def logistic(data, precision):
     def logistic_function(variable, first_constant, second_constant, third_constant):
         evaluation = first_constant / (1 + exp(-1 * second_constant * (variable - third_constant)))
         return evaluation
-    if mean_upper > mean_lower:
+    if mean_upper >= mean_lower:
         parameters, parameters_covariance = curve_fit(logistic_function, independent_variable, dependent_variable, bounds=[(dependent_max - dependent_range, 0, -inf), (dependent_max + dependent_range, inf, inf)])
         solution = list(parameters)
     else:
