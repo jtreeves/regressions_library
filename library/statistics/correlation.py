@@ -14,8 +14,13 @@ def correlation(actuals, expecteds, precision):
         squared_deviations.append(deviation_array[i]**2)
     residual_sum = summation(squared_residuals)
     deviation_sum = summation(squared_deviations)
-    result = (1 - residual_sum / deviation_sum)**(1/2)
-    if not isinstance(result, complex):
-        return rounding(result, precision)
-    else:
+    ratio = residual_sum / deviation_sum
+    print(f'RESIDUAL SUM: {residual_sum}')
+    print(f'DEVIATION SUM: {deviation_sum}')
+    print(f'RATIO: {residual_sum / deviation_sum}')
+    if ratio >= 1:
         return 0.0
+    else:
+        result = (1 - ratio)**(1/2)
+        print(f'CORRELATION: {result}')
+        return rounding(result, precision)
