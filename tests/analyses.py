@@ -6,24 +6,28 @@ from library.analyses.equations.cubic import cubic as cubic_equation
 from library.analyses.equations.hyperbolic import hyperbolic as hyperbolic_equation
 from library.analyses.equations.exponential import exponential as exponential_equation
 from library.analyses.equations.logarithmic import logarithmic as logarithmic_equation
+from library.analyses.equations.logistic import logistic as logistic_equation
 from library.analyses.roots.linear import linear as linear_roots
 from library.analyses.roots.quadratic import quadratic as quadratic_roots
 from library.analyses.roots.cubic import cubic as cubic_roots
 from library.analyses.roots.hyperbolic import hyperbolic as hyperbolic_roots
 from library.analyses.roots.exponential import exponential as exponential_roots
 from library.analyses.roots.logarithmic import logarithmic as logarithmic_roots
+from library.analyses.roots.logistic import logistic as logistic_roots
 from library.analyses.derivatives.linear import linear as linear_derivatives
 from library.analyses.derivatives.quadratic import quadratic as quadratic_derivatives
 from library.analyses.derivatives.cubic import cubic as cubic_derivatives
 from library.analyses.derivatives.hyperbolic import hyperbolic as hyperbolic_derivatives
 from library.analyses.derivatives.exponential import exponential as exponential_derivatives
 from library.analyses.derivatives.logarithmic import logarithmic as logarithmic_derivatives
+from library.analyses.derivatives.logistic import logistic as logistic_derivatives
 from library.analyses.integrals.linear import linear as linear_integral
 from library.analyses.integrals.quadratic import quadratic as quadratic_integral
 from library.analyses.integrals.cubic import cubic as cubic_integral
 from library.analyses.integrals.hyperbolic import hyperbolic as hyperbolic_integral
 from library.analyses.integrals.exponential import exponential as exponential_integral
 from library.analyses.integrals.logarithmic import logarithmic as logarithmic_integral
+from library.analyses.integrals.logistic import logistic as logistic_integral
 from library.analyses.critical_points import critical_points
 from library.analyses.intervals import intervals
 from library.analyses.intercepts import intercepts
@@ -44,6 +48,7 @@ cubic_function = cubic_equation(coefficients[0], coefficients[1], coefficients[2
 hyperbolic_function = hyperbolic_equation(coefficients[0], coefficients[1])
 exponential_function = exponential_equation(coefficients[0], coefficients[1])
 logarithmic_function = logarithmic_equation(coefficients[0], coefficients[1])
+logistic_function = logistic_equation(coefficients[0], coefficients[1], coefficients[2])
 
 class TestEquations(unittest.TestCase):
     def test_linear_function(self):
@@ -63,6 +68,9 @@ class TestEquations(unittest.TestCase):
     
     def test_logarithmic_function(self):
         self.assertEqual(logarithmic_function(10), 7.605170185988092)
+    
+    def test_logistic_function(self):
+        self.assertEqual(logistic_function(10), 1.999999388195546)
 
 linear_derivatives_object = linear_derivatives(coefficients[0], coefficients[1])
 quadratic_derivatives_object = quadratic_derivatives(coefficients[0], coefficients[1], coefficients[2])
@@ -70,6 +78,7 @@ cubic_derivatives_object = cubic_derivatives(coefficients[0], coefficients[1], c
 hyperbolic_derivatives_object = hyperbolic_derivatives(coefficients[0], coefficients[1])
 exponential_derivatives_object = exponential_derivatives(coefficients[0], coefficients[1])
 logarithmic_derivatives_object = logarithmic_derivatives(coefficients[0], coefficients[1])
+logistic_derivatives_object = logistic_derivatives(coefficients[0], coefficients[1], coefficients[2])
 
 class TestDerivatives(unittest.TestCase):
     def test_linear_derivatives_object_first_constants(self):
@@ -90,6 +99,9 @@ class TestDerivatives(unittest.TestCase):
     def test_logarithmic_derivatives_object_first_constants(self):
         self.assertEqual(logarithmic_derivatives_object['first']['constants'], [2])
     
+    def test_logistic_derivatives_object_first_constants(self):
+        self.assertEqual(logistic_derivatives_object['first']['constants'], [6, 3, 5])
+    
     def test_linear_derivatives_object_second_constants(self):
         self.assertEqual(linear_derivatives_object['second']['constants'], [0])
     
@@ -107,6 +119,9 @@ class TestDerivatives(unittest.TestCase):
     
     def test_logarithmic_derivatives_object_second_constants(self):
         self.assertEqual(logarithmic_derivatives_object['second']['constants'], [-2])
+    
+    def test_logistic_derivatives_object_second_constants(self):
+        self.assertEqual(logistic_derivatives_object['second']['constants'], [18, 3, 5])
 
 linear_integral_object = linear_integral(coefficients[0], coefficients[1])
 quadratic_integral_object = quadratic_integral(coefficients[0], coefficients[1], coefficients[2])
@@ -114,6 +129,7 @@ cubic_integral_object = cubic_integral(coefficients[0], coefficients[1], coeffic
 hyperbolic_integral_object = hyperbolic_integral(coefficients[0], coefficients[1])
 exponential_integral_object = exponential_integral(coefficients[0], coefficients[1])
 logarithmic_integral_object = logarithmic_integral(coefficients[0], coefficients[1])
+logistic_integral_object = logistic_integral(coefficients[0], coefficients[1], coefficients[2])
 
 class TestIntegrals(unittest.TestCase):
     def test_linear_integral_object(self):
@@ -133,6 +149,9 @@ class TestIntegrals(unittest.TestCase):
     
     def test_logarithmic_integral_object(self):
         self.assertEqual(logarithmic_integral_object['constants'], [2, 3])
+    
+    def test_logistic_integral_object(self):
+        self.assertEqual(logistic_integral_object['constants'], [0.6666666666666666, 3, 5])
 
 first_linear_critical_points = critical_points('linear', 1, coefficients[:2], precision)
 first_quadratic_critical_points = critical_points('quadratic', 1, coefficients[:3], precision)
@@ -140,6 +159,7 @@ first_cubic_critical_points = critical_points('cubic', 1, coefficients, precisio
 first_hyperbolic_critical_points = critical_points('hyperbolic', 1, coefficients[:2], precision)
 first_exponential_critical_points = critical_points('exponential', 1, coefficients[:2], precision)
 first_logarithmic_critical_points = critical_points('logarithmic', 1, coefficients[:2], precision)
+first_logistic_critical_points = critical_points('logistic', 1, coefficients[:3], precision)
 
 second_linear_critical_points = critical_points('linear', 2, coefficients[:2], precision)
 second_quadratic_critical_points = critical_points('quadratic', 2, coefficients[:3], precision)
@@ -147,6 +167,7 @@ second_cubic_critical_points = critical_points('cubic', 2, coefficients, precisi
 second_hyperbolic_critical_points = critical_points('hyperbolic', 2, coefficients[:2], precision)
 second_exponential_critical_points = critical_points('exponential', 2, coefficients[:2], precision)
 second_logarithmic_critical_points = critical_points('logarithmic', 2, coefficients[:2], precision)
+second_logistic_critical_points = critical_points('logistic', 2, coefficients[:3], precision)
 
 class TestCriticalPoints(unittest.TestCase):
     def test_first_linear_critical_points(self):
@@ -167,6 +188,9 @@ class TestCriticalPoints(unittest.TestCase):
     def test_first_logarithmic_critical_points(self):
         self.assertEqual(first_logarithmic_critical_points, [None])
     
+    def test_first_logistic_critical_points(self):
+        self.assertEqual(first_logistic_critical_points, [None])
+    
     def test_second_linear_critical_points(self):
         self.assertEqual(second_linear_critical_points, [None])
     
@@ -184,6 +208,9 @@ class TestCriticalPoints(unittest.TestCase):
     
     def test_second_logarithmic_critical_points(self):
         self.assertEqual(second_logarithmic_critical_points, [None])
+    
+    def test_second_logistic_critical_points(self):
+        self.assertEqual(second_logistic_critical_points, [5])
 
 first_linear_intervals = intervals(linear_derivatives_object['first']['evaluation'], first_linear_critical_points)
 first_quadratic_intervals = intervals(quadratic_derivatives_object['first']['evaluation'], first_quadratic_critical_points)
@@ -191,6 +218,7 @@ first_cubic_intervals = intervals(cubic_derivatives_object['first']['evaluation'
 first_hyperbolic_intervals = intervals(hyperbolic_derivatives_object['first']['evaluation'], first_hyperbolic_critical_points)
 first_exponential_intervals = intervals(exponential_derivatives_object['first']['evaluation'], first_exponential_critical_points)
 first_logarithmic_intervals = intervals(logarithmic_derivatives_object['first']['evaluation'], first_logarithmic_critical_points)
+first_logistic_intervals = intervals(logistic_derivatives_object['first']['evaluation'], first_logistic_critical_points)
 
 second_linear_intervals = intervals(linear_derivatives_object['second']['evaluation'], second_linear_critical_points)
 second_quadratic_intervals = intervals(quadratic_derivatives_object['second']['evaluation'], second_quadratic_critical_points)
@@ -198,6 +226,7 @@ second_cubic_intervals = intervals(cubic_derivatives_object['second']['evaluatio
 second_hyperbolic_intervals = intervals(hyperbolic_derivatives_object['second']['evaluation'], second_hyperbolic_critical_points)
 second_exponential_intervals = intervals(exponential_derivatives_object['second']['evaluation'], second_exponential_critical_points)
 second_logarithmic_intervals = intervals(logarithmic_derivatives_object['second']['evaluation'], second_logarithmic_critical_points)
+second_logistic_intervals = intervals(logistic_derivatives_object['second']['evaluation'], second_logistic_critical_points)
 
 class TestIntervals(unittest.TestCase):
     def test_first_linear_intervals(self):
@@ -218,6 +247,9 @@ class TestIntervals(unittest.TestCase):
     def test_first_logarithmic_intervals(self):
         self.assertEqual(first_logarithmic_intervals, ['positive'])
     
+    def test_first_logistic_intervals(self):
+        self.assertEqual(first_logistic_intervals, ['positive'])
+    
     def test_second_linear_intervals(self):
         self.assertEqual(second_linear_intervals, ['constant'])
     
@@ -235,6 +267,9 @@ class TestIntervals(unittest.TestCase):
     
     def test_second_logarithmic_intervals(self):
         self.assertEqual(second_logarithmic_intervals, ['negative'])
+    
+    def test_second_logistic_intervals(self):
+        self.assertEqual(second_logistic_intervals, ['positive', 5, 'negative'])
 
 class TestRoots(unittest.TestCase):
     def test_linear_zeroes(self):
@@ -260,6 +295,10 @@ class TestRoots(unittest.TestCase):
     def test_logarithmic_zeroes(self):
         logarithmic_zeroes = logarithmic_roots(coefficients[0], coefficients[1], precision)
         self.assertEqual(logarithmic_zeroes, [0.2231])
+    
+    def test_logistic_zeroes(self):
+        logistic_zeroes = logistic_roots(coefficients[0], coefficients[1], coefficients[2], precision)
+        self.assertEqual(logistic_zeroes, [None])
 
 class TestIntercepts(unittest.TestCase):
     def test_linear_intercepts(self):
@@ -285,6 +324,10 @@ class TestIntercepts(unittest.TestCase):
     def test_logarithmic_intercepts(self):
         logarithmic_intercepts = intercepts('logarithmic', coefficients[:2], precision)
         self.assertEqual(logarithmic_intercepts, [0.2231])
+    
+    def test_logistic_intercepts(self):
+        logistic_intercepts = intercepts('logistic', coefficients[:3], precision)
+        self.assertEqual(logistic_intercepts, [None])
 
 class TestMaxima(unittest.TestCase):
     def test_linear_maxima(self):
@@ -310,6 +353,10 @@ class TestMaxima(unittest.TestCase):
     def test_logarithmic_maxima(self):
         logarithmic_maxima = maxima(first_logarithmic_intervals)
         self.assertEqual(logarithmic_maxima, [None])
+    
+    def test_logistic_maxima(self):
+        logistic_maxima = maxima(first_logistic_intervals)
+        self.assertEqual(logistic_maxima, [None])
 
 class TestMinima(unittest.TestCase):
     def test_linear_minima(self):
@@ -335,6 +382,10 @@ class TestMinima(unittest.TestCase):
     def test_logarithmic_minima(self):
         logarithmic_minima = minima(first_logarithmic_intervals)
         self.assertEqual(logarithmic_minima, [None])
+    
+    def test_logistic_minima(self):
+        logistic_minima = minima(first_logistic_intervals)
+        self.assertEqual(logistic_minima, [None])
 
 class TestExtrema(unittest.TestCase):
     def test_linear_extrema(self):
@@ -360,6 +411,10 @@ class TestExtrema(unittest.TestCase):
     def test_logarithmic_extrema(self):
         logarithmic_extrema = extrema('logarithmic', coefficients[:2], logarithmic_derivatives_object['first']['evaluation'], precision)
         self.assertEqual(logarithmic_extrema, {'maxima': [None], 'minima': [None]})
+    
+    def test_logistic_extrema(self):
+        logistic_extrema = extrema('logistic', coefficients[:3], logistic_derivatives_object['first']['evaluation'], precision)
+        self.assertEqual(logistic_extrema, {'maxima': [None], 'minima': [None]})
 
 class TestInflections(unittest.TestCase):
     def test_linear_inflections(self):
@@ -385,6 +440,10 @@ class TestInflections(unittest.TestCase):
     def test_logarithmic_inflections(self):
         logarithmic_inflections = inflections('logarithmic', coefficients[:2], logarithmic_derivatives_object['second']['evaluation'], precision)
         self.assertEqual(logarithmic_inflections, [None])
+    
+    def test_logistic_inflections(self):
+        logistic_inflections = inflections('logistic', coefficients[:3], logistic_derivatives_object['second']['evaluation'], precision)
+        self.assertEqual(logistic_inflections, [5])
 
 class TestKeyPoints(unittest.TestCase):
     def test_linear_key_points(self):
@@ -410,6 +469,10 @@ class TestKeyPoints(unittest.TestCase):
     def test_logarithmic_key_points(self):
         logarithmic_key_points = key_points('logarithmic', coefficients[:2], logarithmic_function, logarithmic_derivatives_object['first']['evaluation'], logarithmic_derivatives_object['second']['evaluation'], precision)
         self.assertEqual(logarithmic_key_points, {'roots': [[0.2231, 0]], 'maxima': [None], 'minima': [None], 'inflections': [None]})
+    
+    def test_logistic_key_points(self):
+        logistic_key_points = key_points('logistic', coefficients[:3], logistic_function, logistic_derivatives_object['first']['evaluation'], logistic_derivatives_object['second']['evaluation'], precision)
+        self.assertEqual(logistic_key_points, {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [[5, 1.0]]})
 
 class TestAccumulation(unittest.TestCase):
     def test_linear_accumulation(self):
@@ -435,6 +498,10 @@ class TestAccumulation(unittest.TestCase):
     def test_logarithmic_accumulation(self):
         logarithmic_accumulation = accumulation(logarithmic_integral_object['evaluation'], 10, 20, precision)
         self.assertEqual(logarithmic_accumulation, 83.7776)
+    
+    def test_logistic_accumulation(self):
+        logistic_accumulation = accumulation(logistic_integral_object['evaluation'], 10, 20, precision)
+        self.assertEqual(logistic_accumulation, 20.0)
 
 class TestAverages(unittest.TestCase):
     def test_linear_averages(self):
@@ -460,8 +527,12 @@ class TestAverages(unittest.TestCase):
     def test_logarithmic_averages(self):
         logarithmic_averages = average_values('logarithmic', logarithmic_function, logarithmic_integral_object['evaluation'], 10, 20, coefficients[:2], precision)
         self.assertEqual(logarithmic_averages, {'average_value_derivative': 0.1386, 'mean_values_derivative': [14.43], 'average_value_integral': 8.3778, 'mean_values_integral': [14.7155]})
+    
+    def test_logistic_averages(self):
+        logistic_averages = average_values('logistic', logistic_function, logistic_integral_object['evaluation'], 10, 20, coefficients[:3], precision)
+        self.assertEqual(logistic_averages, {'average_value_derivative': 0.0001, 'mean_values_derivative': [None], 'average_value_integral': 2.0, 'mean_values_integral': [None]})
 
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 102 tests in 0.011s ---------- OK ---------- #
+# ---------- Ran 119 tests in 0.009s ---------- OK ---------- #

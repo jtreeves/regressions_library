@@ -1,5 +1,4 @@
-from math import exp
-from math import log
+from math import exp, log
 
 def logistic(first_constant, second_constant, third_constant):
     constants = [first_constant / second_constant, second_constant, third_constant]
