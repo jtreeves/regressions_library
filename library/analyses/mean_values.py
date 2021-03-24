@@ -90,7 +90,7 @@ def mean_values_integral(equation_type, equation, start, end, constants, precisi
         result = value
     elif equation_type == 'logistic':
         value = constants[2] - log(constants[0] / average - 1) / constants[1]
-        result = value
+        result.append(value)
     selected = [x for x in result if x > start and x < end]
     if not selected:
         selected = [None]

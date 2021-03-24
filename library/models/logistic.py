@@ -84,3 +84,4 @@ data_set = [
 test_case = logistic(data_set, 4)
 
 print(test_case)
+# {'constants': [1.9999999846356367, 2.9999975882265435, 4.999999993353611], 'evaluations': {'equation': <function logistic.<locals>.logistic_equation at 0x11f9ab3a0>, 'derivative': <function logistic.<locals>.first_derivative at 0x11f9ab550>, 'integral': <function logistic.<locals>.logistic_integral at 0x11f9ab430>}, 'points': {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [[4.999999993353611, 1.0]]}, 'accumulations': {'range': 10.0, 'iqr': 5.9984}, 'averages': {'range': {'average_value_derivative': 0.2222, 'mean_values_derivative': [3.9275, 6.0721], 'average_value_integral': 1.1111, 'mean_values_integral': [5.0744]}, 'iqr': {'average_value_derivative': 0.399, 'mean_values_derivative': [4.146, 5.8538], 'average_value_integral': 1.1997, 'mean_values_integral': [5.1349]}}, 'correlation': 1.0}
