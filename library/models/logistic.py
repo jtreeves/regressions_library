@@ -28,13 +28,24 @@ def logistic(data, precision):
     dependent_average = dependent_max / 2
     print(f'DEPENDENT MAX: {dependent_max}')
     print(f'DEPENDENT AVERAGE: {dependent_average}')
-    dependent_deviations = {}
+    deviations_coordinates = {}
     for i in range(len(data)):
-        dependent_deviations[i] = {
+        deviations_coordinates[i] = {
             'coordinates': data[i],
             'deviation': abs(data[i][1] - dependent_average)
         }
+    print(f'DEVIATIONS COORDINATES: {deviations_coordinates}')
+    dependent_deviations = []
+    for i in deviations_coordinates:
+        dependent_deviations.append(deviations_coordinates[i]['deviation'])
     print(f'DEPENDENT DEVIATIONS: {dependent_deviations}')
+    smallest_deviation = min(dependent_deviations)
+    print(f'SMALLEST DEVIATION: {smallest_deviation}')
+    closest_independent = 0
+    for i in deviations_coordinates:
+        if deviations_coordinates[i]['deviation'] == smallest_deviation:
+            closest_independent = deviations_coordinates[i]['coordinates'][0]
+    print(f'CLOSEST INDEPENDENT: {closest_independent}')
     solution = []
     if mean_upper > mean_lower:
         def logistic_function(variable, first_constant, second_constant, third_constant):
