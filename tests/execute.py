@@ -908,10 +908,119 @@ class TestLogarithmicModels(unittest.TestCase):
 
 logistic_models = run_all(logistic_set, precision)
 
-print(f'LOGISTIC MODELS: {logistic_models}')
-# {'models': {'linear': {'constants': [0.2944, -0.5193], 'evaluations': {'equation': <function linear.<locals>.linear_equation at 0x11019be50>, 'derivative': <function linear.<locals>.first_derivative at 0x1101a33a0>, 'integral': <function linear.<locals>.linear_integral at 0x1101a34c0>}, 'points': {'roots': [[1.7639, 0]], 'maxima': [None], 'minima': [None], 'inflections': [None]}, 'accumulations': {'range': 9.8991, 'iqr': 5.4995}, 'averages': {'range': {'average_value_derivative': 0.2944, 'mean_values_derivative': ['All'], 'average_value_integral': 1.0999, 'mean_values_integral': [5.5]}, 'iqr': {'average_value_derivative': 0.2944, 'mean_values_derivative': ['All'], 'average_value_integral': 1.0999, 'mean_values_integral': [5.5]}}, 'correlation': 0.9163}, 'quadratic': {'constants': [-0.0148, 0.4567, -0.8438], 'evaluations': {'equation': <function quadratic.<locals>.quadratic_equation at 0x1101a3430>, 'derivative': <function quadratic.<locals>.first_derivative at 0x1101a3550>, 'integral': <function quadratic.<locals>.quadratic_integral at 0x1101a3670>}, 'points': {'roots': [[1.9739, 0], [28.8842, 0]], 'maxima': [[15.4291, 2.6794]], 'minima': [None], 'inflections': [None]}, 'accumulations': {'range': 10.084, 'iqr': 5.9476}, 'averages': {'range': {'average_value_derivative': 0.2939, 'mean_values_derivative': [5.5], 'average_value_integral': 1.1204, 'mean_values_integral': [5.1656]}, 'iqr': {'average_value_derivative': 0.2939, 'mean_values_derivative': [5.5], 'average_value_integral': 1.1895, 'mean_values_integral': [5.3956]}}, 'correlation': 0.9236}, 'cubic': {'constants': [-0.0162, 0.2531, -0.7789, 0.5493], 'evaluations': {'equation': <function cubic.<locals>.cubic_equation at 0x1101a35e0>, 'derivative': <function cubic.<locals>.first_derivative at 0x1101a3700>, 'integral': <function cubic.<locals>.cubic_integral at 0x1101a3820>}, 'points': {'roots': [[1.0231, 0], [2.8114, 0], [11.789, 0]], 'maxima': [[8.5387, 2.2665]], 'minima': [[1.877, -0.1281]], 'inflections': [[5.2078, 1.0692]]}, 'accumulations': {'range': 10.1745, 'iqr': 5.9838}, 'averages': {'range': {'average_value_derivative': 0.207, 'mean_values_derivative': [2.5934, 7.8223], 'average_value_integral': 1.1305, 'mean_values_integral': [5.3215]}, 'iqr': {'average_value_derivative': 0.4338, 'mean_values_derivative': [3.7352, 6.6805], 'average_value_integral': 1.1968, 'mean_values_integral': [5.4448]}}, 'correlation': 0.9739}, 'hyperbolic': {'constants': [-2.4884, 1.8288], 'evaluations': {'equation': <function hyperbolic.<locals>.hyperbolic_equation at 0x1101a3790>, 'derivative': <function hyperbolic.<locals>.first_derivative at 0x1101a3940>, 'integral': <function hyperbolic.<locals>.hyperbolic_integral at 0x1101a39d0>}, 'points': {'roots': [[1.3607, 0]], 'maxima': [None], 'minima': [None], 'inflections': [None]}, 'accumulations': {'range': 10.7294, 'iqr': 6.7033}, 'averages': {'range': {'average_value_derivative': 0.2488, 'mean_values_derivative': [3.1625], 'average_value_integral': 1.1922, 'mean_values_integral': [3.9089]}, 'iqr': {'average_value_derivative': 0.1037, 'mean_values_derivative': [4.8986], 'average_value_integral': 1.3407, 'mean_values_integral': [5.0981]}}, 'correlation': 0.7092}, 'exponential': {'constants': [0.0001, 3.5891], 'evaluations': {'equation': <function exponential.<locals>.exponential_equation at 0x1101a38b0>, 'derivative': <function exponential.<locals>.first_derivative at 0x1101a3a60>, 'integral': <function exponential.<locals>.exponential_integral at 0x1101a3b80>}, 'points': {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [None]}, 'accumulations': {'range': 27.7558, 'iqr': 2.1511}, 'averages': {'range': {'average_value_derivative': 3.941, 'mean_values_derivative': [8.0887], 'average_value_integral': 3.084, 'mean_values_integral': [8.0887]}, 'iqr': {'average_value_derivative': 0.5498, 'mean_values_derivative': [6.5474], 'average_value_integral': 0.4302, 'mean_values_integral': [6.5473]}}, 'correlation': 0.0}, 'logarithmic': {'constants': [1.155, -0.6445], 'evaluations': {'equation': <function logarithmic.<locals>.logarithmic_equation at 0x1101a3af0>, 'derivative': <function logarithmic.<locals>.first_derivative at 0x1101a3c10>, 'integral': <function logarithmic.<locals>.logarithmic_integral at 0x1101a3d30>}, 'points': {'roots': [[1.7472, 0]], 'maxima': [None], 'minima': [None], 'inflections': [None]}, 'accumulations': {'range': 10.3994, 'iqr': 6.4098}, 'averages': {'range': {'average_value_derivative': 0.2955, 'mean_values_derivative': [3.9086], 'average_value_integral': 1.1555, 'mean_values_integral': [4.7514]}, 'iqr': {'average_value_derivative': 0.2266, 'mean_values_derivative': [5.0971], 'average_value_integral': 1.282, 'mean_values_integral': [5.3014]}}, 'correlation': 0.8703}, 'logistic': {'constants': [2.0, 3.0, 5.0], 'evaluations': {'equation': <function logistic.<locals>.logistic_equation at 0x1101a3dc0>, 'derivative': <function logistic.<locals>.first_derivative at 0x1101a3ee0>, 'integral': <function logistic.<locals>.logistic_integral at 0x1101a3f70>}, 'points': {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [[5.0, 1.0]]}, 'accumulations': {'range': 10.0, 'iqr': 5.9984}, 'averages': {'range': {'average_value_derivative': 0.2222, 'mean_values_derivative': [3.9275, 6.0721], 'average_value_integral': 1.1111, 'mean_values_integral': [5.0744]}, 'iqr': {'average_value_derivative': 0.399, 'mean_values_derivative': [4.146, 5.8538], 'average_value_integral': 1.1997, 'mean_values_integral': [5.1349]}}, 'correlation': 1.0}}, 'statistics': {'minimum': 1, 'maximum': 10, 'q1': 3, 'q3': 8, 'mean': 5.5, 'median': 5.5}, 'optimal': {'option': 'logistic', 'correlation': 1.0}}
+class TestLogisticModels(unittest.TestCase):
+    def test_logistic_models_linear_constants(self):
+        self.assertEqual(logistic_models['models']['linear']['constants'], [0.2944, -0.5193])
+    
+    def test_logistic_models_linear_points(self):
+        self.assertEqual(logistic_models['models']['linear']['points'], {'roots': [[1.7639, 0]], 'maxima': [None], 'minima': [None], 'inflections': [None]})
+    
+    def test_logistic_models_linear_accumulations(self):
+        self.assertEqual(logistic_models['models']['linear']['accumulations'], {'range': 9.8991, 'iqr': 5.4995})
+    
+    def test_logistic_models_linear_averages(self):
+        self.assertEqual(logistic_models['models']['linear']['averages'], {'range': {'average_value_derivative': 0.2944, 'mean_values_derivative': ['All'], 'average_value_integral': 1.0999, 'mean_values_integral': [5.5]}, 'iqr': {'average_value_derivative': 0.2944, 'mean_values_derivative': ['All'], 'average_value_integral': 1.0999, 'mean_values_integral': [5.5]}})
+    
+    def test_logistic_models_linear_correlation(self):
+        self.assertEqual(logistic_models['models']['linear']['correlation'], 0.9163)
+    
+    def test_logistic_models_quadratic_constants(self):
+        self.assertEqual(logistic_models['models']['quadratic']['constants'], [-0.0148, 0.4567, -0.8438])
+    
+    def test_logistic_models_quadratic_points(self):
+        self.assertEqual(logistic_models['models']['quadratic']['points'], {'roots': [[1.9739, 0], [28.8842, 0]], 'maxima': [[15.4291, 2.6794]], 'minima': [None], 'inflections': [None]})
+    
+    def test_logistic_models_quadratic_accumulations(self):
+        self.assertEqual(logistic_models['models']['quadratic']['accumulations'], {'range': 10.084, 'iqr': 5.9476})
+    
+    def test_logistic_models_quadratic_averages(self):
+        self.assertEqual(logistic_models['models']['quadratic']['averages'], {'range': {'average_value_derivative': 0.2939, 'mean_values_derivative': [5.5], 'average_value_integral': 1.1204, 'mean_values_integral': [5.1656]}, 'iqr': {'average_value_derivative': 0.2939, 'mean_values_derivative': [5.5], 'average_value_integral': 1.1895, 'mean_values_integral': [5.3956]}})
+    
+    def test_logistic_models_quadratic_correlation(self):
+        self.assertEqual(logistic_models['models']['quadratic']['correlation'], 0.9236)
+    
+    def test_logistic_models_cubic_constants(self):
+        self.assertEqual(logistic_models['models']['cubic']['constants'], [-0.0162, 0.2531, -0.7789, 0.5493])
+    
+    def test_logistic_models_cubic_points(self):
+        self.assertEqual(logistic_models['models']['cubic']['points'], {'roots': [[1.0231, 0], [2.8114, 0], [11.789, 0]], 'maxima': [[8.5387, 2.2665]], 'minima': [[1.877, -0.1281]], 'inflections': [[5.2078, 1.0692]]})
+    
+    def test_logistic_models_cubic_accumulations(self):
+        self.assertEqual(logistic_models['models']['cubic']['accumulations'], {'range': 10.1745, 'iqr': 5.9838})
+    
+    def test_logistic_models_cubic_averages(self):
+        self.assertEqual(logistic_models['models']['cubic']['averages'], {'range': {'average_value_derivative': 0.207, 'mean_values_derivative': [2.5934, 7.8223], 'average_value_integral': 1.1305, 'mean_values_integral': [5.3215]}, 'iqr': {'average_value_derivative': 0.4338, 'mean_values_derivative': [3.7352, 6.6805], 'average_value_integral': 1.1968, 'mean_values_integral': [5.4448]}})
+    
+    def test_logistic_models_cubic_correlation(self):
+        self.assertEqual(logistic_models['models']['cubic']['correlation'], 0.9739)
+    
+    def test_logistic_models_hyperbolic_constants(self):
+        self.assertEqual(logistic_models['models']['hyperbolic']['constants'], [-2.4884, 1.8288])
+    
+    def test_logistic_models_hyperbolic_points(self):
+        self.assertEqual(logistic_models['models']['hyperbolic']['points'], {'roots': [[1.3607, 0]], 'maxima': [None], 'minima': [None], 'inflections': [None]})
+    
+    def test_logistic_models_hyperbolic_accumulations(self):
+        self.assertEqual(logistic_models['models']['hyperbolic']['accumulations'], {'range': 10.7294, 'iqr': 6.7033})
+    
+    def test_logistic_models_hyperbolic_averages(self):
+        self.assertEqual(logistic_models['models']['hyperbolic']['averages'], {'range': {'average_value_derivative': 0.2488, 'mean_values_derivative': [3.1625], 'average_value_integral': 1.1922, 'mean_values_integral': [3.9089]}, 'iqr': {'average_value_derivative': 0.1037, 'mean_values_derivative': [4.8986], 'average_value_integral': 1.3407, 'mean_values_integral': [5.0981]}})
+    
+    def test_logistic_models_hyperbolic_correlation(self):
+        self.assertEqual(logistic_models['models']['hyperbolic']['correlation'], 0.7092)
+    
+    def test_logistic_models_exponential_constants(self):
+        self.assertEqual(logistic_models['models']['exponential']['constants'], [0.0001, 3.5891])
+    
+    def test_logistic_models_exponential_points(self):
+        self.assertEqual(logistic_models['models']['exponential']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [None]})
+    
+    def test_logistic_models_exponential_accumulations(self):
+        self.assertEqual(logistic_models['models']['exponential']['accumulations'], {'range': 27.7558, 'iqr': 2.1511})
+    
+    def test_logistic_models_exponential_averages(self):
+        self.assertEqual(logistic_models['models']['exponential']['averages'], {'range': {'average_value_derivative': 3.941, 'mean_values_derivative': [8.0887], 'average_value_integral': 3.084, 'mean_values_integral': [8.0887]}, 'iqr': {'average_value_derivative': 0.5498, 'mean_values_derivative': [6.5474], 'average_value_integral': 0.4302, 'mean_values_integral': [6.5473]}})
+    
+    def test_logistic_models_exponential_correlation(self):
+        self.assertEqual(logistic_models['models']['exponential']['correlation'], 0.0)
+    
+    def test_logistic_models_logarithmic_constants(self):
+        self.assertEqual(logistic_models['models']['logarithmic']['constants'], [1.155, -0.6445])
+    
+    def test_logistic_models_logarithmic_points(self):
+        self.assertEqual(logistic_models['models']['logarithmic']['points'], {'roots': [[1.7472, 0]], 'maxima': [None], 'minima': [None], 'inflections': [None]})
+    
+    def test_logistic_models_logarithmic_accumulations(self):
+        self.assertEqual(logistic_models['models']['logarithmic']['accumulations'], {'range': 10.3994, 'iqr': 6.4098})
+    
+    def test_logistic_models_logarithmic_averages(self):
+        self.assertEqual(logistic_models['models']['logarithmic']['averages'], {'range': {'average_value_derivative': 0.2955, 'mean_values_derivative': [3.9086], 'average_value_integral': 1.1555, 'mean_values_integral': [4.7514]}, 'iqr': {'average_value_derivative': 0.2266, 'mean_values_derivative': [5.0971], 'average_value_integral': 1.282, 'mean_values_integral': [5.3014]}})
+    
+    def test_logistic_models_logarithmic_correlation(self):
+        self.assertEqual(logistic_models['models']['logarithmic']['correlation'], 0.8703)
+    
+    def test_logistic_models_logistic_constants(self):
+        self.assertEqual(logistic_models['models']['logistic']['constants'], [2.0, 3.0, 5.0])
+    
+    def test_logistic_models_logistic_points(self):
+        self.assertEqual(logistic_models['models']['logistic']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [[5.0, 1.0]]})
+    
+    def test_logistic_models_logistic_accumulations(self):
+        self.assertEqual(logistic_models['models']['logistic']['accumulations'], {'range': 10.0, 'iqr': 5.9984})
+    
+    def test_logistic_models_logistic_averages(self):
+        self.assertEqual(logistic_models['models']['logistic']['averages'], {'range': {'average_value_derivative': 0.2222, 'mean_values_derivative': [3.9275, 6.0721], 'average_value_integral': 1.1111, 'mean_values_integral': [5.0744]}, 'iqr': {'average_value_derivative': 0.399, 'mean_values_derivative': [4.146, 5.8538], 'average_value_integral': 1.1997, 'mean_values_integral': [5.1349]}})
+    
+    def test_logistic_models_logistic_correlation(self):
+        self.assertEqual(logistic_models['models']['logistic']['correlation'], 1.0)
+    
+    def test_logistic_statistics(self):
+        self.assertEqual(logistic_models['statistics'], {'minimum': 1, 'maximum': 10, 'q1': 3, 'q3': 8, 'mean': 5.5, 'median': 5.5})
+    
+    def test_logistic_optimal(self):
+        self.assertEqual(logistic_models['optimal']['option'], 'logistic')
 
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 224 tests in 0.017s ---------- OK ---------- #
+# ---------- Ran 296 tests in 0.021s ---------- OK ---------- #
