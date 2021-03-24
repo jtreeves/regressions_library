@@ -13,20 +13,21 @@ from library.analyses.mean_values import average_values
 from library.statistics.five_number_summary import five_number_summary
 from library.statistics.correlation import correlation
 from library.statistics.rounding import rounding
-from library.statistics.quartiles import halve
+from library.statistics.halve import halve_dimension
 from library.statistics.mean import mean
 
 def logistic(data, precision):
     independent_variable = dimension(data, 1)
     dependent_variable = dimension(data, 2)
-    solution = []
-    independent_halves = halve()
-    dependent_halves = halve(dependent_variable)
-    mean_lower = mean(dependent_halves['lower'])
-    mean_upper = mean(dependent_halves['upper'])
-    print(f'DEPENDENT HALVES: {dependent_halves}')
+    halved_data = halve_dimension(data, 1)
+    dependent_lower = dimension(halved_data['lower'], 2)
+    dependent_upper = dimension(halved_data['upper'], 2)
+    mean_lower = mean(dependent_lower)
+    mean_upper = mean(dependent_upper)
+    print(f'HALVED DATA: {halved_data}')
     print(f'MEAN LOWER: {mean_lower}')
     print(f'MEAN UPPER: {mean_upper}')
+    solution = []
     if mean_upper > mean_lower:
         def logistic_function(variable, first_constant, second_constant, third_constant):
             evaluation = first_constant / (1 + exp(-1 * second_constant * (variable - third_constant)))
