@@ -60,10 +60,11 @@ def intervals(derivative, points):
         between_fourth_last = sorted_points[3] + halved_difference
         after_last = sorted_points[4] + halved_difference
         test_points = [before_first, between_first_second, between_second_third, between_third_fourth, between_fourth_last, after_last]
+        sign_chart = []
         for point in test_points:
             if derivative(point) > 0:
-                point = 'positive'
+                sign_chart.append('positive')
             elif derivative(point) < 0:
-                point = 'negative'
-        result = [before_first, sorted_points[0], between_first_second, sorted_points[1], between_second_third, sorted_points[2], between_third_fourth, sorted_points[3], between_fourth_last, sorted_points[4], after_last, *other_points]
+                sign_chart.append('negative')
+        result = [sign_chart[0], sorted_points[0], sign_chart[1], sorted_points[1], sign_chart[2], sorted_points[2], sign_chart[3], sorted_points[3], sign_chart[4], sorted_points[4], sign_chart[5], *other_points]
     return result
