@@ -25,6 +25,22 @@ def critical_points(equation_type, derivative_level, coefficients, precision):
             results = [None]
         elif equation_type == 'logistic':
             results = [None]
+        elif equation_type == 'sinusoidal':
+            periodic_unit = pi / coefficients[1]
+            initial_value = coefficients[2] + pi / (2 * coefficients[1])
+            first_value = initial_value + 1 * periodic_unit
+            second_value = initial_value + 2 * periodic_unit
+            third_value = initial_value + 3 * periodic_unit
+            fourth_value = initial_value + 4 * periodic_unit
+            values = [initial_value, first_value, second_value, third_value, fourth_value]
+            sorted_values = sort(values)
+            rounded_values = []
+            for number in sorted_values:
+                rounded_values.append(rounding(number, precision))
+            rounded_periodic_unit = rounding(periodic_unit, precision)
+            rounded_initial_value = rounding(initial_value, precision)
+            general_form = str(rounded_initial_value) + ' + ' + str(rounded_periodic_unit) + 'k'
+            results = [*rounded_values, general_form]
     elif derivative_level == 2:
         if equation_type == 'linear':
             results = [None]
