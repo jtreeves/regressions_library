@@ -18,11 +18,13 @@ from library.statistics.mean import mean
 def sinusoidal(data, precision):
     independent_variable = dimension(data, 1)
     dependent_variable = dimension(data, 2)
+    dependent_min = min(dependent_variable)
+    dependent_max = max(dependent_variable)
     solution = []
     def sinusoidal_fit(variable, first_constant, second_constant, third_constant, fourth_constant):
         evaluation = first_constant * sin(second_constant * (variable - third_constant)) + fourth_constant
         return evaluation
-    parameters, parameters_covariance = curve_fit(sinusoidal_fit, independent_variable, dependent_variable)
+    parameters, parameters_covariance = curve_fit(sinusoidal_fit, independent_variable, dependent_variable, bounds=[(-inf, -inf, -inf, dependent_min), (inf, inf, inf, dependent_max)])
     solution = list(parameters)
     constants = []
     for number in solution:
@@ -74,3 +76,7 @@ def sinusoidal(data, precision):
         'correlation': accuracy
     }
     return result
+
+test_set = [[1, 3], [2, 8], [3, 3], [4, -2], [5, 3], [6, 8], [7, 3], [8, -2], [9, 3], [10, 8]]
+test_run = sinusoidal(test_set, 4)
+print(test_run)
