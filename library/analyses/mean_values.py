@@ -1,4 +1,4 @@
-from math import log, exp
+from math import log, exp, acos, pi
 from library.statistics.sort import sort
 from library.statistics.rounding import rounding
 from .roots.linear import linear as linear_roots
@@ -53,14 +53,60 @@ def mean_values_derivative(equation_type, equation, start, end, constants, preci
             for i in range(len(quadratic_values)):
                 values.append(constants[2] - log(quadratic_values[i]) / constants[1])
             result = values
-    selected = [x for x in result if x > start and x < end]
-    if not selected:
-        selected = [None]
-    sorted_selected = sort(selected)
-    final = []
-    for number in sorted_selected:
-        final.append(rounding(number, precision))
-    return final
+    elif equation_type == 'sinusoidal':
+        ratio = average / (constants[0] * constants[1])
+        radians = acos(ratio)
+        periodic_radians = radians / constants[1]
+        if ratio == 0:
+            periodic_unit = pi / constants[1]
+            initial_value = constants[2] + periodic_radians
+            first_value = initial_value + 1 * periodic_unit
+            second_value = initial_value + 2 * periodic_unit
+            third_value = initial_value + 3 * periodic_unit
+            fourth_value = initial_value + 4 * periodic_unit
+            rounded_initial_value = rounding(initial_value, precision)
+            rounded_periodic_unit = rounding(periodic_unit, precision)
+            general_form = str(rounded_initial_value) + ' + ' + str(rounded_periodic_unit) + 'k'
+            result = [initial_value, first_value, second_value, third_value, fourth_value, general_form]
+        elif ratio == 1 or ratio == -1:
+            periodic_unit = 2 * pi / constants[1]
+            initial_value = constants[2] + periodic_radians
+            first_value = initial_value + 1 * periodic_unit
+            second_value = initial_value + 2 * periodic_unit
+            rounded_initial_value = rounding(initial_value, precision)
+            rounded_periodic_unit = rounding(periodic_unit, precision)
+            general_form = str(rounded_initial_value) + ' + ' + str(rounded_periodic_unit) + 'k'
+            result = [initial_value, first_value, second_value, general_form]
+        else:
+            periodic_unit = 2 * pi / constants[1]
+            initial_value = constants[2] + periodic_radians
+            first_value = initial_value + 1 * periodic_unit
+            second_value = initial_value + 2 * periodic_unit
+            rounded_initial_value = rounding(initial_value, precision)
+            rounded_periodic_unit = rounding(periodic_unit, precision)
+            general_form = str(rounded_initial_value) + ' + ' + str(rounded_periodic_unit) + 'k'
+            alternative_initial_value = constants[2] + pi / constants[1] - periodic_radians
+            alternative_first_value = alternative_initial_value + 1 * periodic_unit
+            alternative_second_value = alternative_initial_value + 2 * periodic_unit
+            rounded_alternative_initial_value = rounding(alternative_initial_value, precision)
+            alternative_general_form = str(rounded_alternative_initial_value) + ' + ' + str(rounded_periodic_unit) + 'k'
+            result = [initial_value, first_value, second_value, alternative_initial_value, alternative_first_value, alternative_second_value, general_form, alternative_general_form]
+    if not result:
+        result = [None]
+    numerical_results = []
+    other_results = []
+    for item in result:
+        if isinstance(item, (int, float)):
+            numerical_results.append(item)
+        else:
+            other_results.append(item)
+    selected_results = [x for x in numerical_results if x > start and x < end]
+    sorted_results = sort(selected_results)
+    rounded_results = []
+    for number in sorted_results:
+        rounded_results.append(rounding(number, precision))
+    final_result = rounded_results + other_results
+    return final_result
 
 def average_value_integral(equation, start, end, precision):
     accumulated_value = accumulation(equation, start, end, precision)
@@ -100,14 +146,22 @@ def mean_values_integral(equation_type, equation, start, end, constants, precisi
     elif equation_type == 'sinusoidal':
         values = sinusoidal_roots(constants[0], constants[1], constants[2], constants[3] - average, precision)
         result = values
-    selected = [x for x in result if x > start and x < end]
-    if not selected:
-        selected = [None]
-    sorted_selected = sort(selected)
-    final = []
-    for number in sorted_selected:
-        final.append(rounding(number, precision))
-    return final
+    if not result:
+        result = [None]
+    numerical_results = []
+    other_results = []
+    for item in result:
+        if isinstance(item, (int, float)):
+            numerical_results.append(item)
+        else:
+            other_results.append(item)
+    selected_results = [x for x in numerical_results if x > start and x < end]
+    sorted_results = sort(selected_results)
+    rounded_results = []
+    for number in sorted_results:
+        rounded_results.append(rounding(number, precision))
+    final_result = rounded_results + other_results
+    return final_result
 
 def average_values(equation_type, equation, integral, start, end, constants, precision):
     derivative_value = average_value_derivative(equation, start, end, precision)
