@@ -10,10 +10,6 @@ def key_points(equation_type, coefficients, equation, first_derivative, second_d
     maxima_inputs = extrema_inputs['maxima']
     minima_inputs = extrema_inputs['minima']
     inflections_inputs = inflections(equation_type, coefficients, second_derivative, precision)
-    print(f'INTERCEPT INPUTS: {intercepts_inputs}')
-    print(f'MAXIMA INPUTS: {maxima_inputs}')
-    print(f'MINIMA INPUTS: {minima_inputs}')
-    print(f'INFLECTIONS INPUTS: {inflections_inputs}')
     intercepts_outputs = []
     maxima_outputs = []
     minima_outputs = []
