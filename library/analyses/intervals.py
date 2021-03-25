@@ -44,27 +44,26 @@ def intervals(derivative, points):
         result = [before, first_point, middle, second_point, after]
     else:
         numerical_points = []
+        other_points = []
         for item in points:
             if isinstance(item, (int, float)):
                 numerical_points.append(item)
+            else:
+                other_points.append(item)
         sorted_points = sort(numerical_points)
         difference = sorted_points[1] - sorted_points[0]
         halved_difference = difference / 2
-        detailed_points = {}
-        for point in sorted_points:
-            detailed_points[point] = {}
-            before_point = point - halved_difference
-            after_point = point + halved_difference
-            if derivative(before_point) > 0:
-                before_point = 'positive'
-            elif derivative(before_point) < 0:
-                before_point = 'negative'
-            if derivative(after_point) > 0:
-                after_point = 'positive'
-            elif derivative(after_point) < 0:
-                after_point = 'negative'
-            detailed_points[point]['point'] = point
-            detailed_points[point]['before'] = before_point
-            detailed_points[point]['after'] = after_point
-        return
+        before_first = sorted_points[0] - halved_difference
+        between_first_second = sorted_points[0] + halved_difference
+        between_second_third = sorted_points[1] + halved_difference
+        between_third_fourth = sorted_points[2] + halved_difference
+        between_fourth_last = sorted_points[3] + halved_difference
+        after_last = sorted_points[4] + halved_difference
+        test_points = [before_first, between_first_second, between_second_third, between_third_fourth, between_fourth_last, after_last]
+        for point in test_points:
+            if derivative(point) > 0:
+                point = 'positive'
+            elif derivative(point) < 0:
+                point = 'negative'
+        result = [before_first, sorted_points[0], between_first_second, sorted_points[1], between_second_third, sorted_points[2], between_third_fourth, sorted_points[3], between_fourth_last, sorted_points[4], after_last, *other_points]
     return result
