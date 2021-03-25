@@ -59,7 +59,3 @@ def sinusoidal(first_constant, second_constant, third_constant, fourth_constant,
         rounded_roots.append(rounding(number, precision))
     result = rounded_roots + other_roots
     return result
-
-test_case = sinusoidal(3, 2, 1, 1, 4)
-print(test_case)
-# [0.8301, 2.7407, 3.9717, 5.8823, 7.1133, 9.0239, '0.8300815452729391 + 3.141592653589793k', '2.7407147815219575 + 3.141592653589793k']
