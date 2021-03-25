@@ -7,6 +7,7 @@ from library.models.hyperbolic import hyperbolic
 from library.models.exponential import exponential
 from library.models.logarithmic import logarithmic
 from library.models.logistic import logistic
+from library.models.sinusoidal import sinusoidal
 
 linear_set = [
     [1, 30],
@@ -97,6 +98,19 @@ logistic_set = [
     [8, 1.999753],
     [9, 1.999988],
     [10, 1.999999],
+]
+
+sinusoidal_set = [
+    [1, 3], 
+    [2, 8], 
+    [3, 3], 
+    [4, -2], 
+    [5, 3], 
+    [6, 8], 
+    [7, 3], 
+    [8, -2], 
+    [9, 3], 
+    [10, 8]
 ]
 
 low_precision = 2
@@ -801,6 +815,106 @@ class TestLogisticModel(unittest.TestCase):
     
     def test_logistic_model_high_correlation(self):
         self.assertEqual(logistic_model_high['correlation'], 1.0)
+
+sinusoidal_model_low = sinusoidal(sinusoidal_set, low_precision)
+sinusoidal_model_high = sinusoidal(sinusoidal_set, high_precision)
+
+class TestSinusoidalModel(unittest.TestCase):
+    def test_sinusoidal_model_low_constants(self):
+        self.assertEqual(sinusoidal_model_low['constants'], [-5.0, 1.57, 3.0, 3.0])
+    
+    def test_sinusoidal_model_low_roots(self):
+        self.assertEqual(sinusoidal_model_low['points']['roots'], [[3.41, 0], [4.59, 0], [7.41, 0], [8.59, 0], [11.41, 0], [12.59, 0], ['3.41 + 4.0k', 0], ['4.59 + 4.0k', 0]])
+    
+    def test_sinusoidal_model_low_maxima(self):
+        self.assertEqual(sinusoidal_model_low['points']['maxima'], [[6.0, 8.0], [10.0, 8.0], ['6.0 + 4.0k', 8.0]])
+    
+    def test_sinusoidal_model_low_minima(self):
+        self.assertEqual(sinusoidal_model_low['points']['minima'], [[4.0, -2.0], [8.0, -2.0], [12.0, -2.0], ['4.0 + 4.0k', -2.0]])
+    
+    def test_sinusoidal_model_low_inflections(self):
+        self.assertEqual(sinusoidal_model_low['points']['inflections'], [[3.0, 3.0], [5.0, 3.0], [7.0, 3.0], [9.0, 3.0], [11.0, 3.0], ['3.0 + 2.0k', 3.0]])
+    
+    def test_sinusoidal_model_low_accumulations_range(self):
+        self.assertEqual(sinusoidal_model_low['accumulations']['range'], 30.18)
+    
+    def test_sinusoidal_model_low_accumulations_iqr(self):
+        self.assertEqual(sinusoidal_model_low['accumulations']['iqr'], 11.82)
+    
+    def test_sinusoidal_model_low_averages_range_derivative_value(self):
+        self.assertEqual(sinusoidal_model_low['averages']['range']['average_value_derivative'], 0.56)
+    
+    def test_sinusoidal_model_low_averages_range_derivative_points(self):
+        self.assertEqual(sinusoidal_model_low['averages']['range']['mean_values_derivative'], [3.95, 4.05, 7.95, 8.05, '4.05 + 4.0k', '3.95 + 4.0k'])
+    
+    def test_sinusoidal_model_low_averages_range_integral_value(self):
+        self.assertEqual(sinusoidal_model_low['averages']['range']['average_value_integral'], 3.35)
+    
+    def test_sinusoidal_model_low_averages_range_integral_points(self):
+        self.assertEqual(sinusoidal_model_low['averages']['range']['mean_values_integral'], [2.95, 5.05, 6.95, 9.05, '2.95 + 4.0k', '5.05 + 4.0k'])
+    
+    def test_sinusoidal_model_low_averages_iqr_derivative_value(self):
+        self.assertEqual(sinusoidal_model_low['averages']['iqr']['average_value_derivative'], -1.0)
+    
+    def test_sinusoidal_model_low_averages_iqr_derivative_points(self):
+        self.assertEqual(sinusoidal_model_low['averages']['iqr']['mean_values_derivative'], [3.92, 4.08, 7.92, '3.92 + 4.0k', '4.08 + 4.0k'])
+    
+    def test_sinusoidal_model_low_averages_iqr_integral_value(self):
+        self.assertEqual(sinusoidal_model_low['averages']['iqr']['average_value_integral'], 2.36)
+    
+    def test_sinusoidal_model_low_averages_iqr_integral_points(self):
+        self.assertEqual(sinusoidal_model_low['averages']['iqr']['mean_values_integral'], [3.08, 4.92, 7.08, '3.08 + 4.0k', '4.92 + 4.0k'])
+    
+    def test_sinusoidal_model_low_correlation(self):
+        self.assertEqual(sinusoidal_model_low['correlation'], 1.0)
+    
+    def test_sinusoidal_model_high_constants(self):
+        self.assertEqual(sinusoidal_model_high['constants'], [-5.0, 1.5708, 3.0, 3.0])
+    
+    def test_sinusoidal_model_high_roots(self):
+        self.assertEqual(sinusoidal_model_high['points']['roots'], [[3.4097, 0], [4.5903, 0], [7.4097, 0], [8.5903, 0], [11.4097, 0], [12.5903, 0], ['3.4097 + 4.0k', 0], ['4.5903 + 4.0k', 0]])
+    
+    def test_sinusoidal_model_high_maxima(self):
+        self.assertEqual(sinusoidal_model_high['points']['maxima'], [[6.0, 8.0], [10.0, 8.0], ['6.0 + 4.0k', 8.0]])
+    
+    def test_sinusoidal_model_high_minima(self):
+        self.assertEqual(sinusoidal_model_high['points']['minima'], [[4.0, -2.0], [8.0, -2.0], [12.0, -2.0], ['4.0 + 4.0k', -2.0]])
+    
+    def test_sinusoidal_model_high_inflections(self):
+        self.assertEqual(sinusoidal_model_high['points']['inflections'], [[3.0, 3.0], [5.0, 3.0], [7.0, 3.0], [9.0, 3.0], [11.0, 3.0], ['3.0 + 2.0k', 3.0]])
+    
+    def test_sinusoidal_model_high_accumulations_range(self):
+        self.assertEqual(sinusoidal_model_high['accumulations']['range'], 30.1831)
+    
+    def test_sinusoidal_model_high_accumulations_iqr(self):
+        self.assertEqual(sinusoidal_model_high['accumulations']['iqr'], 11.8169)
+    
+    def test_sinusoidal_model_high_averages_range_derivative_value(self):
+        self.assertEqual(sinusoidal_model_high['averages']['range']['average_value_derivative'], 0.555556)
+    
+    def test_sinusoidal_model_high_averages_range_derivative_points(self):
+        self.assertEqual(sinusoidal_model_high['averages']['range']['mean_values_derivative'], [3.9549, 4.0451, 7.9549, 8.0451, '4.0451 + 4.0k', '3.9549 + 4.0k'])
+    
+    def test_sinusoidal_model_high_averages_range_integral_value(self):
+        self.assertEqual(sinusoidal_model_high['averages']['range']['average_value_integral'], 3.3537)
+    
+    def test_sinusoidal_model_high_averages_range_integral_points(self):
+        self.assertEqual(sinusoidal_model_high['averages']['range']['mean_values_integral'], [2.9549, 5.0451, 6.9549, 9.0451, '2.9549 + 4.0k', '5.0451 + 4.0k'])
+    
+    def test_sinusoidal_model_high_averages_iqr_derivative_value(self):
+        self.assertEqual(sinusoidal_model_high['averages']['iqr']['average_value_derivative'], -1.0)
+    
+    def test_sinusoidal_model_high_averages_iqr_derivative_points(self):
+        self.assertEqual(sinusoidal_model_high['averages']['iqr']['mean_values_derivative'], [3.9187, 4.0813, 7.9187, '3.9187 + 4.0k', '4.0813 + 4.0k'])
+    
+    def test_sinusoidal_model_high_averages_iqr_integral_value(self):
+        self.assertEqual(sinusoidal_model_high['averages']['iqr']['average_value_integral'], 2.3634)
+    
+    def test_sinusoidal_model_high_averages_iqr_integral_points(self):
+        self.assertEqual(sinusoidal_model_high['averages']['iqr']['mean_values_integral'], [3.0813, 4.9187, 7.0813, '3.0813 + 4.0k', '4.9187 + 4.0k'])
+    
+    def test_sinusoidal_model_high_correlation(self):
+        self.assertEqual(sinusoidal_model_high['correlation'], 1.0)
 
 if __name__ == '__main__':
     unittest.main()
