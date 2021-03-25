@@ -27,14 +27,14 @@ def logistic(data, precision):
     dependent_min = min(dependent_variable)
     dependent_range = dependent_max - dependent_min
     solution = []
-    def logistic_function(variable, first_constant, second_constant, third_constant):
+    def logistic_fit(variable, first_constant, second_constant, third_constant):
         evaluation = first_constant / (1 + exp(-1 * second_constant * (variable - third_constant)))
         return evaluation
     if mean_upper >= mean_lower:
-        parameters, parameters_covariance = curve_fit(logistic_function, independent_variable, dependent_variable, bounds=[(dependent_max - dependent_range, 0, -inf), (dependent_max + dependent_range, inf, inf)])
+        parameters, parameters_covariance = curve_fit(logistic_fit, independent_variable, dependent_variable, bounds=[(dependent_max - dependent_range, 0, -inf), (dependent_max + dependent_range, inf, inf)])
         solution = list(parameters)
     else:
-        parameters, parameters_covariance = curve_fit(logistic_function, independent_variable, dependent_variable, bounds=[(dependent_max - dependent_range, -inf, -inf), (dependent_max + dependent_range, 0, inf)])
+        parameters, parameters_covariance = curve_fit(logistic_fit, independent_variable, dependent_variable, bounds=[(dependent_max - dependent_range, -inf, -inf), (dependent_max + dependent_range, 0, inf)])
         solution = list(parameters)
     constants = []
     for number in solution:
