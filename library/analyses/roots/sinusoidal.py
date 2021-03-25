@@ -39,11 +39,20 @@ def sinusoidal(first_constant, second_constant, third_constant, fourth_constant,
             roots = [initial_value, first_value, second_value, alternative_initial_value, alternative_first_value, alternative_second_value, general_form, alternative_general_form]
     if not roots:
         roots = [None]
-    sorted_roots = sort(roots)
-    result = []
+    numerical_roots = []
+    other_roots = []
+    for item in roots:
+        if isinstance(item, (int, float)):
+            numerical_roots.append(item)
+        else:
+            other_roots.append(item)
+    sorted_roots = sort(numerical_roots)
+    rounded_roots = []
     for number in sorted_roots:
-        try:
-            result.append(rounding(number, precision))
-        except TypeError:
-            result.append(number)
+        rounded_roots.append(rounding(number, precision))
+    result = rounded_roots + other_roots
     return result
+
+test_case = sinusoidal(3, 2, 1, 1, 4)
+print(test_case)
+# [0.8301, 2.7407, 3.9717, 5.8823, 7.1133, 9.0239, '0.8300815452729391 + 3.141592653589793k', '2.7407147815219575 + 3.141592653589793k']
