@@ -93,6 +93,7 @@ def mean_values_derivative(equation_type, equation, start, end, constants, preci
             result = [initial_value, first_value, second_value, alternative_initial_value, alternative_first_value, alternative_second_value, general_form, alternative_general_form]
     if not result:
         result = [None]
+        return result
     numerical_results = []
     other_results = []
     for item in result:
@@ -101,6 +102,9 @@ def mean_values_derivative(equation_type, equation, start, end, constants, preci
         else:
             other_results.append(item)
     selected_results = [x for x in numerical_results if x > start and x < end]
+    if not selected_results:
+        final = [None]
+        return final
     sorted_results = sort(selected_results)
     rounded_results = []
     for number in sorted_results:
@@ -148,6 +152,7 @@ def mean_values_integral(equation_type, equation, start, end, constants, precisi
         result = values
     if not result:
         result = [None]
+        return result
     numerical_results = []
     other_results = []
     for item in result:
@@ -156,6 +161,9 @@ def mean_values_integral(equation_type, equation, start, end, constants, precisi
         else:
             other_results.append(item)
     selected_results = [x for x in numerical_results if x > start and x < end]
+    if not selected_results:
+        final = [None]
+        return final
     sorted_results = sort(selected_results)
     rounded_results = []
     for number in sorted_results:
