@@ -5,6 +5,7 @@ from .roots.hyperbolic import hyperbolic as hyperbolic_roots
 from .roots.exponential import exponential as exponential_roots
 from .roots.logarithmic import logarithmic as logarithmic_roots
 from .roots.logistic import logistic as logistic_roots
+from .roots.sinusoidal import sinusoidal as sinusoidal_roots
 
 def intercepts(equation_type, coefficients, precision):
     result = []
@@ -22,4 +23,6 @@ def intercepts(equation_type, coefficients, precision):
         result = logarithmic_roots(*coefficients, precision)
     elif equation_type == 'logistic':
         result = logistic_roots(*coefficients, precision)
+    elif equation_type == 'sinusoidal':
+        result = sinusoidal_roots(*coefficients, precision)
     return result
