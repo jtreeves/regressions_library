@@ -6,6 +6,7 @@ from .roots.quadratic import quadratic as quadratic_roots
 from .roots.cubic import cubic as cubic_roots
 from .roots.hyperbolic import hyperbolic as hyperbolic_roots
 from .roots.logarithmic import logarithmic as logarithmic_roots
+from .roots.sinusoidal import sinusoidal as sinusoidal_roots
 from .accumulation import accumulation
 
 def average_value_derivative(equation, start, end, precision):
@@ -96,6 +97,9 @@ def mean_values_integral(equation_type, equation, start, end, constants, precisi
         else:
             value = constants[2] - log(ratio - 1) / constants[1]
             result.append(value)
+    elif equation_type == 'sinusoidal':
+        values = sinusoidal_roots(constants[0], constants[1], constants[2], constants[3] - average, precision)
+        result = values
     selected = [x for x in result if x > start and x < end]
     if not selected:
         selected = [None]
