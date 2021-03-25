@@ -44,9 +44,12 @@ def key_points(equation_type, coefficients, equation, first_derivative, second_d
         inflections_coordinates = [None]
     else:
         for i in range(len(inflections_inputs)):
-            output = equation(inflections_inputs[i])
-            rounded_output = rounding(output, precision)
-            inflections_outputs.append(rounded_output)
+            if isinstance(inflections_inputs[i], (int, float)):
+                output = equation(inflections_inputs[i])
+                rounded_output = rounding(output, precision)
+                inflections_outputs.append(rounded_output)
+            else:
+                inflections_outputs.append(inflections_outputs[0])
         inflections_coordinates = unify(inflections_inputs, inflections_outputs)
     result = {
         'roots': intercepts_coordinates,

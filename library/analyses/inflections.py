@@ -17,4 +17,6 @@ def inflections(equation_type, coefficients, derivative, precision):
             pass
     if len(result) == 0:
         result.append(None)
+    if equation_type == 'sinusoidal':
+        result.append(points[-1])
     return result
