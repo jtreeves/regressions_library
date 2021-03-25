@@ -5,6 +5,7 @@ from .models.hyperbolic import hyperbolic
 from .models.exponential import exponential
 from .models.logarithmic import logarithmic
 from .models.logistic import logistic
+from .models.sinusoidal import sinusoidal
 from .statistics.minimum import minimum
 from .statistics.maximum import maximum
 from .statistics.quartiles import quartiles
@@ -21,7 +22,8 @@ def run_all(data, precision):
         'hyperbolic': hyperbolic(data, precision),
         'exponential': exponential(data, precision),
         'logarithmic': logarithmic(data, precision),
-        'logistic': logistic(data, precision)
+        'logistic': logistic(data, precision),
+        'sinusoidal': sinusoidal(data, precision)
     }
     statistics = {
         'minimum': minimum(independent_variable),
@@ -38,7 +40,8 @@ def run_all(data, precision):
         'hyperbolic': models['hyperbolic']['correlation'],
         'exponential': models['exponential']['correlation'],
         'logarithmic': models['logarithmic']['correlation'],
-        'logistic': models['logistic']['correlation']
+        'logistic': models['logistic']['correlation'],
+        'sinusoidal': models['sinusoidal']['correlation']
     }
     best = max(correlations, key=correlations.get)
     optimal = {
