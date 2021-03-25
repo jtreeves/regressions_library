@@ -18,13 +18,14 @@ from library.statistics.mean import mean
 def sinusoidal(data, precision):
     independent_variable = dimension(data, 1)
     dependent_variable = dimension(data, 2)
-    dependent_min = min(dependent_variable)
     dependent_max = max(dependent_variable)
+    dependent_min = min(dependent_variable)
+    dependent_range = dependent_max - dependent_min
     solution = []
     def sinusoidal_fit(variable, first_constant, second_constant, third_constant, fourth_constant):
         evaluation = first_constant * sin(second_constant * (variable - third_constant)) + fourth_constant
         return evaluation
-    parameters, parameters_covariance = curve_fit(sinusoidal_fit, independent_variable, dependent_variable, bounds=[(-inf, -inf, -inf, dependent_min), (inf, inf, inf, dependent_max)])
+    parameters, parameters_covariance = curve_fit(sinusoidal_fit, independent_variable, dependent_variable, bounds=[(-1 * dependent_range, -inf, -inf, dependent_min), (dependent_range, inf, inf, dependent_max)])
     solution = list(parameters)
     constants = []
     for number in solution:
@@ -80,4 +81,4 @@ def sinusoidal(data, precision):
 test_set = [[1, 3], [2, 8], [3, 3], [4, -2], [5, 3], [6, 8], [7, 3], [8, -2], [9, 3], [10, 8]]
 test_run = sinusoidal(test_set, 4)
 print(test_run)
-# {'constants': [-5.7369, 0.236, -1.2046, 8.0], 'evaluations': {'equation': <function sinusoidal.<locals>.sinusoidal_equation at 0x127615670>, 'derivative': <function sinusoidal.<locals>.first_derivative at 0x127615790>, 'integral': <function sinusoidal.<locals>.sinusoidal_integral at 0x127615820>}, 'points': {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [None]}, 'accumulations': {'range': 29.5431, 'iqr': 12.9525}, 'averages': {'range': {'average_value_derivative': 0.0128, 'mean_values_derivative': [5.4112, 5.4913, '5.4913 + 26.6236k', '5.4112 + 26.6236k'], 'average_value_integral': 3.2826, 'mean_values_integral': [2.8861, 8.0164, '2.8861 + 26.6236k', '8.0164 + 26.6236k']}, 'iqr': {'average_value_derivative': 0.0147, 'mean_values_derivative': [5.4052, 5.4973, '5.4973 + 26.6236k', '5.4052 + 26.6236k'], 'average_value_integral': 2.5905, 'mean_values_integral': [4.0127, 6.8898, '4.0127 + 26.6236k', '6.8898 + 26.6236k']}}, 'correlation': 0.3081}
+# {'constants': [-5.0, 1.5708, 3.0, 3.0], 'evaluations': {'equation': <function sinusoidal.<locals>.sinusoidal_equation at 0x10dceb700>, 'derivative': <function sinusoidal.<locals>.first_derivative at 0x10dceb820>, 'integral': <function sinusoidal.<locals>.sinusoidal_integral at 0x10dceb8b0>}, 'points': {'roots': [[3.4097, 0], [4.5903, 0], [7.4097, 0], [8.5903, 0], [11.4097, 0], [12.5903, 0], ['3.4097 + 4.0k', 0], ['4.5903 + 4.0k', 0]], 'maxima': [None], 'minima': [None], 'inflections': [None]}, 'accumulations': {'range': 30.1831, 'iqr': 11.8169}, 'averages': {'range': {'average_value_derivative': 0.5556, 'mean_values_derivative': [3.9549, 4.0451, 7.9549, 8.0451, '4.0451 + 4.0k', '3.9549 + 4.0k'], 'average_value_integral': 3.3537, 'mean_values_integral': [2.9549, 5.0451, 6.9549, 9.0451, '2.9549 + 4.0k', '5.0451 + 4.0k']}, 'iqr': {'average_value_derivative': -1.0, 'mean_values_derivative': [3.9187, 4.0813, 7.9187, '3.9187 + 4.0k', '4.0813 + 4.0k'], 'average_value_integral': 2.3634, 'mean_values_integral': [3.0813, 4.9187, 7.0813, '3.0813 + 4.0k', '4.9187 + 4.0k']}}, 'correlation': 1.0}
