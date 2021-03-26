@@ -210,4 +210,4 @@ class TestSolveSystems(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 32 tests in 0.009s ---------- OK ---------- #
+# ---------- Ran 32 tests in 0.006s ---------- OK ---------- #
