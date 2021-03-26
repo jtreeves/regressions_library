@@ -18,6 +18,9 @@ from library.statistics.mean import mean
 def sinusoidal(data, precision):
     independent_variable = dimension(data, 1)
     dependent_variable = dimension(data, 2)
+    independent_max = max(independent_variable)
+    independent_min = min(independent_variable)
+    independent_range = independent_max - independent_min
     dependent_max = max(dependent_variable)
     dependent_min = min(dependent_variable)
     dependent_range = dependent_max - dependent_min
@@ -25,8 +28,12 @@ def sinusoidal(data, precision):
     def sinusoidal_fit(variable, first_constant, second_constant, third_constant, fourth_constant):
         evaluation = first_constant * sin(second_constant * (variable - third_constant)) + fourth_constant
         return evaluation
-    parameters, covariance = curve_fit(sinusoidal_fit, independent_variable, dependent_variable, bounds=[(-1 * dependent_range, -inf, -inf, dependent_min), (dependent_range, inf, inf, dependent_max)])
-    solution = list(parameters)
+    try:
+        parameters, covariance = curve_fit(sinusoidal_fit, independent_variable, dependent_variable, bounds=[(-dependent_range, -inf, -independent_range, dependent_min), (dependent_range, inf, independent_range, dependent_max)])
+        solution = list(parameters)
+    except RuntimeError:
+        parameters, covariance = curve_fit(sinusoidal_fit, independent_variable, dependent_variable, bounds=[(dependent_range - 1, -independent_range, -independent_range, dependent_min), (dependent_range + 1, independent_range, independent_range, dependent_max)])
+        solution = list(parameters)
     constants = []
     for number in solution:
         constants.append(rounding(number, precision))

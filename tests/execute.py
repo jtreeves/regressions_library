@@ -106,9 +106,23 @@ logistic_set = [
     [10, 1.999999],
 ]
 
+sinusoidal_set = [
+    [1, 3], 
+    [2, 8], 
+    [3, 3], 
+    [4, -2], 
+    [5, 3], 
+    [6, 8], 
+    [7, 3], 
+    [8, -2], 
+    [9, 3], 
+    [10, 8]
+]
+
 precision = 4
 
 agnostic_models = run_all(agnostic_set, precision)
+print(f"AGNOSTIC -> SINUSOIDAL: {agnostic_models['models']['sinusoidal']}")
 
 class TestAgnosticModels(unittest.TestCase):
     def test_agnostic_models_linear_constants(self):
@@ -223,6 +237,7 @@ class TestAgnosticModels(unittest.TestCase):
         self.assertEqual(agnostic_models['optimal']['option'], 'cubic')
 
 linear_models = run_all(linear_set, precision)
+print(f"LINEAR -> SINUSOIDAL: {linear_models['models']['sinusoidal']}")
 
 class TestLinearModels(unittest.TestCase):
     def test_linear_models_linear_constants(self):
@@ -337,6 +352,7 @@ class TestLinearModels(unittest.TestCase):
         self.assertEqual(linear_models['optimal']['option'], 'linear')
 
 quadratic_models = run_all(quadratic_set, precision)
+print(f"QUADRATIC -> SINUSOIDAL: {quadratic_models['models']['sinusoidal']}")
 
 class TestQuadraticModels(unittest.TestCase):
     def test_quadratic_models_linear_constants(self):
@@ -451,6 +467,7 @@ class TestQuadraticModels(unittest.TestCase):
         self.assertEqual(quadratic_models['optimal']['option'], 'quadratic')
 
 cubic_models = run_all(cubic_set, precision)
+print(f"CUBIC -> SINUSOIDAL: {cubic_models['models']['sinusoidal']}")
 
 class TestCubicModels(unittest.TestCase):
     def test_cubic_models_linear_constants(self):
@@ -565,6 +582,7 @@ class TestCubicModels(unittest.TestCase):
         self.assertEqual(cubic_models['optimal']['option'], 'cubic')
 
 hyperbolic_models = run_all(hyperbolic_set, precision)
+print(f"HYPERBOLIC -> SINUSOIDAL: {hyperbolic_models['models']['sinusoidal']}")
 
 class TestHyperbolicModels(unittest.TestCase):
     def test_hyperbolic_models_linear_constants(self):
@@ -679,6 +697,7 @@ class TestHyperbolicModels(unittest.TestCase):
         self.assertEqual(hyperbolic_models['optimal']['option'], 'hyperbolic')
 
 exponential_models = run_all(exponential_set, precision)
+print(f"EXPONENTIAL -> SINUSOIDAL: {exponential_models['models']['sinusoidal']}")
 
 class TestExponentialModels(unittest.TestCase):
     def test_exponential_models_linear_constants(self):
@@ -793,6 +812,7 @@ class TestExponentialModels(unittest.TestCase):
         self.assertEqual(exponential_models['optimal']['option'], 'exponential')
 
 logarithmic_models = run_all(logarithmic_set, precision)
+print(f"LOGARITHMIC -> SINUSOIDAL: {logarithmic_models['models']['sinusoidal']}")
 
 class TestLogarithmicModels(unittest.TestCase):
     def test_logarithmic_models_linear_constants(self):
@@ -907,6 +927,7 @@ class TestLogarithmicModels(unittest.TestCase):
         self.assertEqual(logarithmic_models['optimal']['option'], 'logarithmic')
 
 logistic_models = run_all(logistic_set, precision)
+print(f"LOGISTIC -> SINUSOIDAL: {logistic_models['models']['sinusoidal']}")
 
 class TestLogisticModels(unittest.TestCase):
     def test_logistic_models_linear_constants(self):
@@ -1019,6 +1040,9 @@ class TestLogisticModels(unittest.TestCase):
     
     def test_logistic_optimal(self):
         self.assertEqual(logistic_models['optimal']['option'], 'logistic')
+
+sinusoidal_models = run_all(sinusoidal_set, precision)
+print(f"SINUSOIDAL MODELS: {sinusoidal_models}")
 
 if __name__ == '__main__':
     unittest.main()
