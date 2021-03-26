@@ -119,6 +119,8 @@ sinusoidal_set = [
     [10, 8]
 ]
 
+large_set = [[169, 423], [122, 391], [178, 555], [131, 284], [120, 520], [179, 558], [164, 265], [167, 338], [198, 445], [139, 402], [183, 725], [133, 470], [156, 573], [159, 325], [121, 653], [118, 358], [122, 633], [167, 487], [161, 453], [194, 488], [170, 517], [124, 377], [191, 310], [194, 398], [173, 744], [166, 389], [113, 583], [109, 380], [126, 668], [144, 491], [107, 533], [188, 355], [147, 553], [169, 497], [121, 606], [132, 373], [111, 554], [173, 669], [177, 483], [122, 340], [171, 286], [108, 681], [139, 502], [115, 339], [174, 396], [134, 625], [147, 435], [146, 555], [147, 656], [126, 354], [155, 679], [181, 629], [149, 417], [119, 374], [102, 422], [112, 292], [108, 464], [109, 559], [112, 635], [159, 518], [180, 304], [185, 567], [165, 299], [160, 337], [133, 730], [193, 374], [164, 537], [172, 592], [173, 660], [186, 290], [170, 670], [192, 687], [154, 596], [154, 464], [125, 383], [193, 559], [155, 586], [149, 406], [131, 590], [127, 339], [163, 378], [145, 254], [156, 395], [166, 355], [189, 661], [133, 685], [168, 685], [190, 736], [145, 564], [125, 470], [129, 541], [133, 439], [162, 486], [125, 387], [183, 596], [135, 733], [106, 329], [100, 279], [102, 439], [162, 454]]
+
 precision = 4
 
 agnostic_models = run_all(agnostic_set, precision)
@@ -1282,7 +1284,136 @@ class TestSinusoidalModels(unittest.TestCase):
     def test_sinusoidal_optimal(self):
         self.assertEqual(sinusoidal_models['optimal']['option'], 'sinusoidal')
 
+large_models = run_all(large_set, precision)
+
+class TestLargeModels(unittest.TestCase):
+    def test_large_models_linear_constants(self):
+        self.assertEqual(large_models['models']['linear']['constants'], [0.4934, 414.5401])
+    
+    def test_large_models_linear_points(self):
+        self.assertEqual(large_models['models']['linear']['points'], {'roots': [[-840.1704, 0]], 'maxima': [None], 'minima': [None], 'inflections': [None]})
+    
+    def test_large_models_linear_accumulations(self):
+        self.assertEqual(large_models['models']['linear']['accumulations'], {'range': 47829.5566, 'iqr': 22178.5177})
+    
+    def test_large_models_linear_averages(self):
+        self.assertEqual(large_models['models']['linear']['averages'], {'range': {'average_value_derivative': 0.4934, 'mean_values_derivative': ['All'], 'average_value_integral': 488.0567, 'mean_values_integral': [149.0]}, 'iqr': {'average_value_derivative': 0.4934, 'mean_values_derivative': ['All'], 'average_value_integral': 487.4399, 'mean_values_integral': [147.7499]}})
+    
+    def test_large_models_linear_correlation(self):
+        self.assertEqual(large_models['models']['linear']['correlation'], 0.1013)
+    
+    def test_large_models_quadratic_constants(self):
+        self.assertEqual(large_models['models']['quadratic']['constants'], [-0.007, 2.5668, 265.4919])
+    
+    def test_large_models_quadratic_points(self):
+        self.assertEqual(large_models['models']['quadratic']['points'], {'roots': [[-84.1305, 0], [450.8163, 0]], 'maxima': [[183.3429, 500.7941]], 'minima': [None], 'inflections': [None]})
+    
+    def test_large_models_quadratic_accumulations(self):
+        self.assertEqual(large_models['models']['quadratic']['accumulations'], {'range': 47719.7051, 'iqr': 22327.6925})
+    
+    def test_large_models_quadratic_averages(self):
+        self.assertEqual(large_models['models']['quadratic']['averages'], {'range': {'average_value_derivative': 0.4808, 'mean_values_derivative': [149.0], 'average_value_integral': 486.9358, 'mean_values_integral': [138.8484]}, 'iqr': {'average_value_derivative': 0.4983, 'mean_values_derivative': [147.75], 'average_value_integral': 490.7185, 'mean_values_integral': [145.4038]}})
+    
+    def test_large_models_quadratic_correlation(self):
+        self.assertEqual(large_models['models']['quadratic']['correlation'], 0.1071)
+    
+    def test_large_models_cubic_constants(self):
+        self.assertEqual(large_models['models']['cubic']['constants'], [0.0005, -0.2204, 33.8099, -1226.1397])
+    
+    def test_large_models_cubic_points(self):
+        self.assertEqual(large_models['models']['cubic']['points'], {'roots': [[51.579, 0]], 'maxima': [None], 'minima': [None], 'inflections': [[146.9333, 569.4584]]})
+    
+    def test_large_models_cubic_accumulations(self):
+        self.assertEqual(large_models['models']['cubic']['accumulations'], {'range': 56339.2723, 'iqr': 25972.9677})
+    
+    def test_large_models_cubic_averages(self):
+        self.assertEqual(large_models['models']['cubic']['averages'], {'range': {'average_value_derivative': 2.6327, 'mean_values_derivative': [118.5678, 175.2989], 'average_value_integral': 574.8905, 'mean_values_integral': [150.7241]}, 'iqr': {'average_value_derivative': 1.6856, 'mean_values_derivative': [133.7726, 160.094], 'average_value_integral': 570.8345, 'mean_values_integral': [147.8981]}})
+    
+    def test_large_models_cubic_correlation(self):
+        self.assertEqual(large_models['models']['cubic']['correlation'], 0.0)
+    
+    def test_large_models_hyperbolic_constants(self):
+        self.assertEqual(large_models['models']['hyperbolic']['constants'], [-10786.2465, 563.019])
+    
+    def test_large_models_hyperbolic_points(self):
+        self.assertEqual(large_models['models']['hyperbolic']['points'], {'roots': [[19.1579, 0]], 'maxima': [None], 'minima': [None], 'inflections': [None]})
+    
+    def test_large_models_hyperbolic_accumulations(self):
+        self.assertEqual(large_models['models']['hyperbolic']['accumulations'], {'range': 47807.811, 'iqr': 22269.081})
+    
+    def test_large_models_hyperbolic_averages(self):
+        self.assertEqual(large_models['models']['hyperbolic']['averages'], {'range': {'average_value_derivative': 0.5448, 'mean_values_derivative': [140.7073], 'average_value_integral': 487.8348, 'mean_values_integral': [143.4643]}, 'iqr': {'average_value_derivative': 0.5061, 'mean_values_derivative': [145.9879], 'average_value_integral': 489.4304, 'mean_values_integral': [146.575]}})
+    
+    def test_large_models_hyperbolic_correlation(self):
+        self.assertEqual(large_models['models']['hyperbolic']['correlation'], 0.1082)
+    
+    def test_large_models_exponential_constants(self):
+        self.assertEqual(large_models['models']['exponential']['constants'], [407.8094, 1.0009])
+    
+    def test_large_models_exponential_points(self):
+        self.assertEqual(large_models['models']['exponential']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [None]})
+    
+    def test_large_models_exponential_accumulations(self):
+        self.assertEqual(large_models['models']['exponential']['accumulations'], {'range': 45712.6755, 'iqr': 21194.5052})
+    
+    def test_large_models_exponential_averages(self):
+        self.assertEqual(large_models['models']['exponential']['averages'], {'range': {'average_value_derivative': 0.4196, 'mean_values_derivative': [149.3031], 'average_value_integral': 466.4559, 'mean_values_integral': [149.36]}, 'iqr': {'average_value_derivative': 0.419, 'mean_values_derivative': [147.7124], 'average_value_integral': 465.8133, 'mean_values_integral': [147.8276]}})
+    
+    def test_large_models_exponential_correlation(self):
+        self.assertEqual(large_models['models']['exponential']['correlation'], 0.0)
+    
+    def test_large_models_logarithmic_constants(self):
+        self.assertEqual(large_models['models']['logarithmic']['constants'], [74.0076, 118.997])
+    
+    def test_large_models_logarithmic_points(self):
+        self.assertEqual(large_models['models']['logarithmic']['points'], {'roots': [[0.2003, 0]], 'maxima': [None], 'minima': [None], 'inflections': [None]})
+    
+    def test_large_models_logarithmic_accumulations(self):
+        self.assertEqual(large_models['models']['logarithmic']['accumulations'], {'range': 47818.8482, 'iqr': 22222.6107})
+    
+    def test_large_models_logarithmic_averages(self):
+        self.assertEqual(large_models['models']['logarithmic']['averages'], {'range': {'average_value_derivative': 0.5159, 'mean_values_derivative': [143.4534], 'average_value_integral': 487.9474, 'mean_values_integral': [146.2481]}, 'iqr': {'average_value_derivative': 0.5049, 'mean_values_derivative': [146.5787], 'average_value_integral': 488.409, 'mean_values_integral': [147.1631]}})
+    
+    def test_large_models_logarithmic_correlation(self):
+        self.assertEqual(large_models['models']['logarithmic']['correlation'], 0.1047)
+    
+    def test_large_models_logistic_constants(self):
+        self.assertEqual(large_models['models']['logistic']['constants'], [488.2, 1.0, 1.0])
+    
+    def test_large_models_logistic_points(self):
+        self.assertEqual(large_models['models']['logistic']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [[1.0, 244.1]]})
+    
+    def test_large_models_logistic_accumulations(self):
+        self.assertEqual(large_models['models']['logistic']['accumulations'], {'range': 47843.6, 'iqr': 22213.1})
+    
+    def test_large_models_logistic_averages(self):
+        self.assertEqual(large_models['models']['logistic']['averages'], {'range': {'average_value_derivative': 0.0, 'mean_values_derivative': [None], 'average_value_integral': 488.2, 'mean_values_integral': [None]}, 'iqr': {'average_value_derivative': 0.0, 'mean_values_derivative': [None], 'average_value_integral': 488.2, 'mean_values_integral': [None]}})
+    
+    def test_large_models_logistic_correlation(self):
+        self.assertEqual(large_models['models']['logistic']['correlation'], 0.0001)
+    
+    def test_large_models_sinusoidal_constants(self):
+        self.assertEqual(large_models['models']['sinusoidal']['constants'], [32.3199, 1.0085, 1.8848, 488.9635])
+    
+    def test_large_models_sinusoidal_points(self):
+        self.assertEqual(large_models['models']['sinusoidal']['points'], {'roots': [None], 'maxima': [[3.4424, 521.2834], [9.6728, 521.2834], [15.9033, 521.2834], ['3.4424 + 6.2304k', 521.2834]], 'minima': [[6.5576, 456.6436], [12.7881, 456.6436], ['6.5576 + 6.2304k', 456.6436]], 'inflections': [[1.8848, 488.9648], [5.0, 488.9631], [8.1152, 488.9629], [11.2304, 488.9651], [14.3457, 488.9642], ['1.8848 + 3.1152k', 488.9648]]})
+    
+    def test_large_models_sinusoidal_accumulations(self):
+        self.assertEqual(large_models['models']['sinusoidal']['accumulations'], {'range': 47949.6623, 'iqr': 22220.3277})
+    
+    def test_large_models_sinusoidal_averages(self):
+        self.assertEqual(large_models['models']['sinusoidal']['averages'], {'range': {'average_value_derivative': 0.3776, 'mean_values_derivative': [None], 'average_value_integral': 489.2823, 'mean_values_integral': [None]}, 'iqr': {'average_value_derivative': 0.983, 'mean_values_derivative': [None], 'average_value_integral': 488.3589, 'mean_values_integral': [None]}})
+    
+    def test_large_models_sinusoidal_correlation(self):
+        self.assertEqual(large_models['models']['sinusoidal']['correlation'], 0.1727)
+    
+    def test_large_statistics(self):
+        self.assertEqual(large_models['statistics'], {'minimum': 100, 'maximum': 198, 'q1': 125.0, 'q3': 170.5, 'mean': 149.29, 'median': 151.5})
+    
+    def test_large_optimal(self):
+        self.assertEqual(large_models['optimal']['option'], 'sinusoidal')
+
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 378 tests in 0.034s ---------- OK ---------- #
+# ---------- Ran 420 tests in 0.027s ---------- OK ---------- #
