@@ -31,10 +31,10 @@ def logistic(data, precision):
         evaluation = first_constant / (1 + exp(-1 * second_constant * (variable - third_constant)))
         return evaluation
     if mean_upper >= mean_lower:
-        parameters, parameters_covariance = curve_fit(logistic_fit, independent_variable, dependent_variable, bounds=[(dependent_max - dependent_range, 0, -inf), (dependent_max + dependent_range, inf, inf)])
+        parameters, covariance = curve_fit(logistic_fit, independent_variable, dependent_variable, bounds=[(dependent_max - dependent_range, 0, -inf), (dependent_max + dependent_range, inf, inf)])
         solution = list(parameters)
     else:
-        parameters, parameters_covariance = curve_fit(logistic_fit, independent_variable, dependent_variable, bounds=[(dependent_max - dependent_range, -inf, -inf), (dependent_max + dependent_range, 0, inf)])
+        parameters, covariance = curve_fit(logistic_fit, independent_variable, dependent_variable, bounds=[(dependent_max - dependent_range, -inf, -inf), (dependent_max + dependent_range, 0, inf)])
         solution = list(parameters)
     constants = []
     for number in solution:

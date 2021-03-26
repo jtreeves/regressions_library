@@ -7,6 +7,7 @@ from library.analyses.equations.hyperbolic import hyperbolic as hyperbolic_equat
 from library.analyses.equations.exponential import exponential as exponential_equation
 from library.analyses.equations.logarithmic import logarithmic as logarithmic_equation
 from library.analyses.equations.logistic import logistic as logistic_equation
+from library.analyses.equations.sinusoidal import sinusoidal as sinusoidal_equation
 from library.analyses.roots.linear import linear as linear_roots
 from library.analyses.roots.quadratic import quadratic as quadratic_roots
 from library.analyses.roots.cubic import cubic as cubic_roots
@@ -14,6 +15,7 @@ from library.analyses.roots.hyperbolic import hyperbolic as hyperbolic_roots
 from library.analyses.roots.exponential import exponential as exponential_roots
 from library.analyses.roots.logarithmic import logarithmic as logarithmic_roots
 from library.analyses.roots.logistic import logistic as logistic_roots
+from library.analyses.roots.sinusoidal import sinusoidal as sinusoidal_roots
 from library.analyses.derivatives.linear import linear as linear_derivatives
 from library.analyses.derivatives.quadratic import quadratic as quadratic_derivatives
 from library.analyses.derivatives.cubic import cubic as cubic_derivatives
@@ -21,6 +23,7 @@ from library.analyses.derivatives.hyperbolic import hyperbolic as hyperbolic_der
 from library.analyses.derivatives.exponential import exponential as exponential_derivatives
 from library.analyses.derivatives.logarithmic import logarithmic as logarithmic_derivatives
 from library.analyses.derivatives.logistic import logistic as logistic_derivatives
+from library.analyses.derivatives.sinusoidal import sinusoidal as sinusoidal_derivatives
 from library.analyses.integrals.linear import linear as linear_integral
 from library.analyses.integrals.quadratic import quadratic as quadratic_integral
 from library.analyses.integrals.cubic import cubic as cubic_integral
@@ -28,6 +31,7 @@ from library.analyses.integrals.hyperbolic import hyperbolic as hyperbolic_integ
 from library.analyses.integrals.exponential import exponential as exponential_integral
 from library.analyses.integrals.logarithmic import logarithmic as logarithmic_integral
 from library.analyses.integrals.logistic import logistic as logistic_integral
+from library.analyses.integrals.sinusoidal import sinusoidal as sinusoidal_integral
 from library.analyses.critical_points import critical_points
 from library.analyses.intervals import intervals
 from library.analyses.intercepts import intercepts
@@ -49,6 +53,7 @@ hyperbolic_function = hyperbolic_equation(coefficients[0], coefficients[1])
 exponential_function = exponential_equation(coefficients[0], coefficients[1])
 logarithmic_function = logarithmic_equation(coefficients[0], coefficients[1])
 logistic_function = logistic_equation(coefficients[0], coefficients[1], coefficients[2])
+sinusoidal_function = sinusoidal_equation(coefficients[0], coefficients[1], coefficients[2], coefficients[3])
 
 class TestEquations(unittest.TestCase):
     def test_linear_function(self):
@@ -71,6 +76,9 @@ class TestEquations(unittest.TestCase):
     
     def test_logistic_function(self):
         self.assertEqual(logistic_function(10), 1.999999388195546)
+    
+    def test_sinusoidal_function(self):
+        self.assertEqual(sinusoidal_function(10), 8.300575680314234)
 
 linear_derivatives_object = linear_derivatives(coefficients[0], coefficients[1])
 quadratic_derivatives_object = quadratic_derivatives(coefficients[0], coefficients[1], coefficients[2])
@@ -79,6 +87,7 @@ hyperbolic_derivatives_object = hyperbolic_derivatives(coefficients[0], coeffici
 exponential_derivatives_object = exponential_derivatives(coefficients[0], coefficients[1])
 logarithmic_derivatives_object = logarithmic_derivatives(coefficients[0], coefficients[1])
 logistic_derivatives_object = logistic_derivatives(coefficients[0], coefficients[1], coefficients[2])
+sinusoidal_derivatives_object = sinusoidal_derivatives(coefficients[0], coefficients[1], coefficients[2], coefficients[3])
 
 class TestDerivatives(unittest.TestCase):
     def test_linear_derivatives_object_first_constants(self):
@@ -102,6 +111,9 @@ class TestDerivatives(unittest.TestCase):
     def test_logistic_derivatives_object_first_constants(self):
         self.assertEqual(logistic_derivatives_object['first']['constants'], [6, 3, 5])
     
+    def test_sinusoidal_derivatives_object_first_constants(self):
+        self.assertEqual(sinusoidal_derivatives_object['first']['constants'], [6, 3, 5])
+    
     def test_linear_derivatives_object_second_constants(self):
         self.assertEqual(linear_derivatives_object['second']['constants'], [0])
     
@@ -122,6 +134,9 @@ class TestDerivatives(unittest.TestCase):
     
     def test_logistic_derivatives_object_second_constants(self):
         self.assertEqual(logistic_derivatives_object['second']['constants'], [18, 3, 5])
+    
+    def test_sinusoidal_derivatives_object_second_constants(self):
+        self.assertEqual(sinusoidal_derivatives_object['second']['constants'], [-18, 3, 5])
 
 linear_integral_object = linear_integral(coefficients[0], coefficients[1])
 quadratic_integral_object = quadratic_integral(coefficients[0], coefficients[1], coefficients[2])
@@ -130,6 +145,7 @@ hyperbolic_integral_object = hyperbolic_integral(coefficients[0], coefficients[1
 exponential_integral_object = exponential_integral(coefficients[0], coefficients[1])
 logarithmic_integral_object = logarithmic_integral(coefficients[0], coefficients[1])
 logistic_integral_object = logistic_integral(coefficients[0], coefficients[1], coefficients[2])
+sinusoidal_integral_object = sinusoidal_integral(coefficients[0], coefficients[1], coefficients[2], coefficients[3])
 
 class TestIntegrals(unittest.TestCase):
     def test_linear_integral_object(self):
@@ -152,6 +168,9 @@ class TestIntegrals(unittest.TestCase):
     
     def test_logistic_integral_object(self):
         self.assertEqual(logistic_integral_object['constants'], [0.6666666666666666, 3, 5])
+    
+    def test_sinusoidal_integral_object(self):
+        self.assertEqual(sinusoidal_integral_object['constants'], [-0.6666666666666666, 3, 5, 7])
 
 first_linear_critical_points = critical_points('linear', 1, coefficients[:2], precision)
 first_quadratic_critical_points = critical_points('quadratic', 1, coefficients[:3], precision)
@@ -160,6 +179,7 @@ first_hyperbolic_critical_points = critical_points('hyperbolic', 1, coefficients
 first_exponential_critical_points = critical_points('exponential', 1, coefficients[:2], precision)
 first_logarithmic_critical_points = critical_points('logarithmic', 1, coefficients[:2], precision)
 first_logistic_critical_points = critical_points('logistic', 1, coefficients[:3], precision)
+first_sinusoidal_critical_points = critical_points('sinusoidal', 1, coefficients, precision)
 
 second_linear_critical_points = critical_points('linear', 2, coefficients[:2], precision)
 second_quadratic_critical_points = critical_points('quadratic', 2, coefficients[:3], precision)
@@ -168,6 +188,7 @@ second_hyperbolic_critical_points = critical_points('hyperbolic', 2, coefficient
 second_exponential_critical_points = critical_points('exponential', 2, coefficients[:2], precision)
 second_logarithmic_critical_points = critical_points('logarithmic', 2, coefficients[:2], precision)
 second_logistic_critical_points = critical_points('logistic', 2, coefficients[:3], precision)
+second_sinusoidal_critical_points = critical_points('sinusoidal', 2, coefficients, precision)
 
 class TestCriticalPoints(unittest.TestCase):
     def test_first_linear_critical_points(self):
@@ -191,6 +212,9 @@ class TestCriticalPoints(unittest.TestCase):
     def test_first_logistic_critical_points(self):
         self.assertEqual(first_logistic_critical_points, [None])
     
+    def test_first_sinusoidal_critical_points(self):
+        self.assertEqual(first_sinusoidal_critical_points, [5.5236, 6.5708, 7.618, 8.6652, 9.7124, '5.5236 + 1.0472k'])
+    
     def test_second_linear_critical_points(self):
         self.assertEqual(second_linear_critical_points, [None])
     
@@ -211,6 +235,9 @@ class TestCriticalPoints(unittest.TestCase):
     
     def test_second_logistic_critical_points(self):
         self.assertEqual(second_logistic_critical_points, [5])
+    
+    def test_second_sinusoidal_critical_points(self):
+        self.assertEqual(second_sinusoidal_critical_points, [5, 6.0472, 7.0944, 8.1416, 9.1888, '5 + 1.0472k'])
 
 first_linear_intervals = intervals(linear_derivatives_object['first']['evaluation'], first_linear_critical_points)
 first_quadratic_intervals = intervals(quadratic_derivatives_object['first']['evaluation'], first_quadratic_critical_points)
@@ -219,6 +246,7 @@ first_hyperbolic_intervals = intervals(hyperbolic_derivatives_object['first']['e
 first_exponential_intervals = intervals(exponential_derivatives_object['first']['evaluation'], first_exponential_critical_points)
 first_logarithmic_intervals = intervals(logarithmic_derivatives_object['first']['evaluation'], first_logarithmic_critical_points)
 first_logistic_intervals = intervals(logistic_derivatives_object['first']['evaluation'], first_logistic_critical_points)
+first_sinusoidal_intervals = intervals(sinusoidal_derivatives_object['first']['evaluation'], first_sinusoidal_critical_points)
 
 second_linear_intervals = intervals(linear_derivatives_object['second']['evaluation'], second_linear_critical_points)
 second_quadratic_intervals = intervals(quadratic_derivatives_object['second']['evaluation'], second_quadratic_critical_points)
@@ -227,6 +255,7 @@ second_hyperbolic_intervals = intervals(hyperbolic_derivatives_object['second'][
 second_exponential_intervals = intervals(exponential_derivatives_object['second']['evaluation'], second_exponential_critical_points)
 second_logarithmic_intervals = intervals(logarithmic_derivatives_object['second']['evaluation'], second_logarithmic_critical_points)
 second_logistic_intervals = intervals(logistic_derivatives_object['second']['evaluation'], second_logistic_critical_points)
+second_sinusoidal_intervals = intervals(sinusoidal_derivatives_object['second']['evaluation'], second_sinusoidal_critical_points)
 
 class TestIntervals(unittest.TestCase):
     def test_first_linear_intervals(self):
@@ -250,6 +279,9 @@ class TestIntervals(unittest.TestCase):
     def test_first_logistic_intervals(self):
         self.assertEqual(first_logistic_intervals, ['positive'])
     
+    def test_first_sinusoidal_intervals(self):
+        self.assertEqual(first_sinusoidal_intervals, ['positive', 5.5236, 'negative', 6.5708, 'positive', 7.618, 'negative', 8.6652, 'positive', 9.7124, 'negative', '5.5236 + 1.0472k'])
+    
     def test_second_linear_intervals(self):
         self.assertEqual(second_linear_intervals, ['constant'])
     
@@ -270,6 +302,9 @@ class TestIntervals(unittest.TestCase):
     
     def test_second_logistic_intervals(self):
         self.assertEqual(second_logistic_intervals, ['positive', 5, 'negative'])
+    
+    def test_second_sinusoidal_intervals(self):
+        self.assertEqual(second_sinusoidal_intervals, ['positive', 5, 'negative', 6.0472, 'positive', 7.0944, 'negative', 8.1416, 'positive', 9.1888, 'negative', '5 + 1.0472k'])
 
 class TestRoots(unittest.TestCase):
     def test_linear_zeroes(self):
@@ -299,6 +334,10 @@ class TestRoots(unittest.TestCase):
     def test_logistic_zeroes(self):
         logistic_zeroes = logistic_roots(coefficients[0], coefficients[1], coefficients[2], precision)
         self.assertEqual(logistic_zeroes, [None])
+    
+    def test_sinusoidal_zeroes(self):
+        sinusoidal_zeroes = sinusoidal_roots(coefficients[0], coefficients[1], coefficients[2], coefficients[3], precision)
+        self.assertEqual(sinusoidal_zeroes, [None])
 
 class TestIntercepts(unittest.TestCase):
     def test_linear_intercepts(self):
@@ -328,6 +367,10 @@ class TestIntercepts(unittest.TestCase):
     def test_logistic_intercepts(self):
         logistic_intercepts = intercepts('logistic', coefficients[:3], precision)
         self.assertEqual(logistic_intercepts, [None])
+    
+    def test_sinusoidal_intercepts(self):
+        sinusoidal_intercepts = intercepts('sinusoidal', coefficients, precision)
+        self.assertEqual(sinusoidal_intercepts, [None])
 
 class TestMaxima(unittest.TestCase):
     def test_linear_maxima(self):
@@ -357,6 +400,10 @@ class TestMaxima(unittest.TestCase):
     def test_logistic_maxima(self):
         logistic_maxima = maxima(first_logistic_intervals)
         self.assertEqual(logistic_maxima, [None])
+    
+    def test_sinusoidal_maxima(self):
+        sinusoidal_maxima = maxima(first_sinusoidal_intervals)
+        self.assertEqual(sinusoidal_maxima, [5.5236, 7.618, 9.7124])
 
 class TestMinima(unittest.TestCase):
     def test_linear_minima(self):
@@ -386,6 +433,10 @@ class TestMinima(unittest.TestCase):
     def test_logistic_minima(self):
         logistic_minima = minima(first_logistic_intervals)
         self.assertEqual(logistic_minima, [None])
+    
+    def test_sinusoidal_minima(self):
+        sinusoidal_minima = minima(first_sinusoidal_intervals)
+        self.assertEqual(sinusoidal_minima, [6.5708, 8.6652])
 
 class TestExtrema(unittest.TestCase):
     def test_linear_extrema(self):
@@ -415,6 +466,10 @@ class TestExtrema(unittest.TestCase):
     def test_logistic_extrema(self):
         logistic_extrema = extrema('logistic', coefficients[:3], logistic_derivatives_object['first']['evaluation'], precision)
         self.assertEqual(logistic_extrema, {'maxima': [None], 'minima': [None]})
+    
+    def test_sinusoidal_extrema(self):
+        sinusoidal_extrema = extrema('sinusoidal', coefficients[:3], sinusoidal_derivatives_object['first']['evaluation'], precision)
+        self.assertEqual(sinusoidal_extrema, {'maxima': [5.5236, 7.618, 9.7124, '1.0472k'], 'minima': [6.5708, 8.6652, '1.0472k']})
 
 class TestInflections(unittest.TestCase):
     def test_linear_inflections(self):
@@ -444,6 +499,10 @@ class TestInflections(unittest.TestCase):
     def test_logistic_inflections(self):
         logistic_inflections = inflections('logistic', coefficients[:3], logistic_derivatives_object['second']['evaluation'], precision)
         self.assertEqual(logistic_inflections, [5])
+    
+    def test_sinusoidal_inflections(self):
+        sinusoidal_inflections = inflections('sinusoidal', coefficients[:3], sinusoidal_derivatives_object['second']['evaluation'], precision)
+        self.assertEqual(sinusoidal_inflections, [5, 6.0472, 7.0944, 8.1416, 9.1888, '5 + 1.0472k'])
 
 class TestKeyPoints(unittest.TestCase):
     def test_linear_key_points(self):
@@ -473,6 +532,10 @@ class TestKeyPoints(unittest.TestCase):
     def test_logistic_key_points(self):
         logistic_key_points = key_points('logistic', coefficients[:3], logistic_function, logistic_derivatives_object['first']['evaluation'], logistic_derivatives_object['second']['evaluation'], precision)
         self.assertEqual(logistic_key_points, {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [[5, 1.0]]})
+    
+    def test_sinusoidal_key_points(self):
+        sinusoidal_key_points = key_points('sinusoidal', coefficients, sinusoidal_function, sinusoidal_derivatives_object['first']['evaluation'], sinusoidal_derivatives_object['second']['evaluation'], precision)
+        self.assertEqual(sinusoidal_key_points, {'roots': [None], 'maxima': [[5.5236, 9.0], [7.618, 9.0], [9.7124, 9.0], ['5.5236 + 2.0944k', 9.0]], 'minima': [[6.5708, 5.0], [8.6652, 5.0], ['6.5708 + 2.0944k', 5.0]], 'inflections': [[5, 7.0], [6.0472, 7.0], [7.0944, 7.0], [8.1416, 7.0], [9.1888, 7.0001], ['5 + 1.0472k', 7.0]]})
 
 class TestAccumulation(unittest.TestCase):
     def test_linear_accumulation(self):
@@ -502,6 +565,10 @@ class TestAccumulation(unittest.TestCase):
     def test_logistic_accumulation(self):
         logistic_accumulation = accumulation(logistic_integral_object['evaluation'], 10, 20, precision)
         self.assertEqual(logistic_accumulation, 20.0)
+    
+    def test_sinusoidal_accumulation(self):
+        sinusoidal_accumulation = accumulation(sinusoidal_integral_object['evaluation'], 10, 20, precision)
+        self.assertEqual(sinusoidal_accumulation, 69.1433)
 
 class TestAverages(unittest.TestCase):
     def test_linear_averages(self):
@@ -531,8 +598,12 @@ class TestAverages(unittest.TestCase):
     def test_logistic_averages(self):
         logistic_averages = average_values('logistic', logistic_function, logistic_integral_object['evaluation'], 10, 20, coefficients[:3], precision)
         self.assertEqual(logistic_averages, {'average_value_derivative': 0.0001, 'mean_values_derivative': [None], 'average_value_integral': 2.0, 'mean_values_integral': [None]})
+    
+    def test_sinusoidal_averages(self):
+        sinusoidal_averages = average_values('sinusoidal', sinusoidal_function, sinusoidal_integral_object['evaluation'], 10, 20, coefficients, precision)
+        self.assertEqual(sinusoidal_averages, {'average_value_derivative': 0.0401, 'mean_values_derivative': [None], 'average_value_integral': 6.9143, 'mean_values_integral': [10.2503, '4.9857 + 2.0944k', '6.0615 + 2.0944k']})
 
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 119 tests in 0.011s ---------- OK ---------- #
+# ---------- Ran 136 tests in 0.010s ---------- OK ---------- #

@@ -25,7 +25,7 @@ def sinusoidal(data, precision):
     def sinusoidal_fit(variable, first_constant, second_constant, third_constant, fourth_constant):
         evaluation = first_constant * sin(second_constant * (variable - third_constant)) + fourth_constant
         return evaluation
-    parameters, parameters_covariance = curve_fit(sinusoidal_fit, independent_variable, dependent_variable, bounds=[(-1 * dependent_range, -inf, -inf, dependent_min), (dependent_range, inf, inf, dependent_max)])
+    parameters, covariance = curve_fit(sinusoidal_fit, independent_variable, dependent_variable, bounds=[(-1 * dependent_range, -inf, -inf, dependent_min), (dependent_range, inf, inf, dependent_max)])
     solution = list(parameters)
     constants = []
     for number in solution:
