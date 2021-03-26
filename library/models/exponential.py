@@ -15,11 +15,17 @@ from library.statistics.rounding import rounding
 def exponential(data, precision):
     independent_variable = dimension(data, 1)
     dependent_variable = dimension(data, 2)
+    filtered_dependent = []
+    for i in dependent_variable:
+        if i <= 0:
+            filtered_dependent.append(10**(-precision))
+        else:
+            filtered_dependent.append(i)
     independent_matrix = []
     dependent_matrix = []
     for i in range(len(data)):
         independent_matrix.append([independent_variable[i], 1])
-        dependent_matrix.append([log(dependent_variable[i])])
+        dependent_matrix.append([log(filtered_dependent[i])])
     solution = solve(independent_matrix, dependent_matrix, precision)
     constants = [exp(solution[1]), exp(solution[0])]
     coefficients = [rounding(constants[0], precision), rounding(constants[1], precision)]

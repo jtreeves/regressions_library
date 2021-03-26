@@ -14,10 +14,16 @@ from library.statistics.correlation import correlation
 def logarithmic(data, precision):
     independent_variable = dimension(data, 1)
     dependent_variable = dimension(data, 2)
+    filtered_independent = []
+    for i in independent_variable:
+        if i <= 0:
+            filtered_independent.append(10**(-precision))
+        else:
+            filtered_independent.append(i)
     independent_matrix = []
     dependent_matrix = column(dependent_variable)
     for i in range(len(data)):
-        independent_matrix.append([log(independent_variable[i]), 1])
+        independent_matrix.append([log(filtered_independent[i]), 1])
     solution = solve(independent_matrix, dependent_matrix, precision)
     equation = logarithmic_equation(*solution)
     derivative = logarithmic_derivative(*solution)
