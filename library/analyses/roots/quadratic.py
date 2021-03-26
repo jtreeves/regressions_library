@@ -3,6 +3,8 @@ from library.statistics.rounding import rounding
 
 def quadratic(first_constant, second_constant, third_constant, precision):
     roots = []
+    if first_constant == 0:
+        first_constant = 10**(-precision)
     discriminant = second_constant**2 - 4 * first_constant * third_constant
     first_root = (-1 * second_constant + discriminant**(1/2)) / (2 * first_constant)
     second_root = (-1 * second_constant - discriminant**(1/2)) / (2 * first_constant)
