@@ -1,4 +1,4 @@
-def rounding(number, precision):
+def rounded_value(number, precision):
     if number == None:
         return None
     elif number < 10**(-precision) and number > 0:

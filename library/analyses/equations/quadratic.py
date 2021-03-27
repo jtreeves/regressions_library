@@ -1,5 +1,5 @@
-def quadratic(first_constant, second_constant, third_constant):
-    def quadratic_equation(variable):
-        evaluation = first_constant * variable**2 + second_constant * variable + third_constant
-        return evaluation
-    return quadratic_equation
+def quadratic_equation(first_constant, second_constant, third_constant):
+    def quadratic_evaluation(variable):
+        result = first_constant * variable**2 + second_constant * variable + third_constant
+        return result
+    return quadratic_evaluation

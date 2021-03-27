@@ -1,6 +1,6 @@
 from math import log
 
-def exponential(first_constant, second_constant):
+def exponential_derivatives(first_constant, second_constant):
     first_constants = [first_constant * log(second_constant), second_constant]
     def first_derivative(variable):
         evaluation = first_constants[0] * first_constants[1]**variable

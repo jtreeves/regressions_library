@@ -1,28 +1,26 @@
 from numpy import exp, inf
 from scipy.optimize import curve_fit
-from library.vectors.dimension import dimension
-from library.vectors.column import column
-from library.matrices.solve import solve
-from library.analyses.equations.logistic import logistic as logistic_equation
-from library.analyses.derivatives.logistic import logistic as logistic_derivative
-from library.analyses.integrals.logistic import logistic as logistic_integral
-from library.analyses.key_points import key_points
-from library.analyses.accumulation import accumulation
+from library.vectors.dimension import single_dimension
+from library.analyses.equations.logistic import logistic_equation
+from library.analyses.derivatives.logistic import logistic_derivatives
+from library.analyses.integrals.logistic import logistic_integral
+from library.analyses.points import key_coordinates
+from library.analyses.accumulation import accumulated_area
 from library.analyses.mean_values import average_values
-from library.statistics.five_number_summary import five_number_summary
-from library.statistics.correlation import correlation
-from library.statistics.rounding import rounding
-from library.statistics.halve import halve_dimension
-from library.statistics.mean import mean
+from library.statistics.summary import five_number_summary
+from library.statistics.correlation import correlation_coefficient
+from library.statistics.rounding import rounded_value
+from library.statistics.halve import half_dimension
+from library.statistics.mean import mean_value
 
-def logistic(data, precision):
-    independent_variable = dimension(data, 1)
-    dependent_variable = dimension(data, 2)
-    halved_data = halve_dimension(data, 1)
-    dependent_lower = dimension(halved_data['lower'], 2)
-    dependent_upper = dimension(halved_data['upper'], 2)
-    mean_lower = mean(dependent_lower)
-    mean_upper = mean(dependent_upper)
+def logistic_model(data, precision):
+    independent_variable = single_dimension(data, 1)
+    dependent_variable = single_dimension(data, 2)
+    halved_data = half_dimension(data, 1)
+    dependent_lower = single_dimension(halved_data['lower'], 2)
+    dependent_upper = single_dimension(halved_data['upper'], 2)
+    mean_lower = mean_value(dependent_lower)
+    mean_upper = mean_value(dependent_upper)
     dependent_max = max(dependent_variable)
     dependent_min = min(dependent_variable)
     dependent_range = dependent_max - dependent_min
@@ -38,26 +36,26 @@ def logistic(data, precision):
         solution = list(parameters)
     constants = []
     for number in solution:
-        constants.append(rounding(number, precision))
+        constants.append(rounded_value(number, precision))
     equation = logistic_equation(*solution)
-    derivative = logistic_derivative(*solution)
+    derivative = logistic_derivatives(*solution)
     integral = logistic_integral(*solution)['evaluation']
     first_derivative = derivative['first']['evaluation']
     second_derivative = derivative['second']['evaluation']
-    points = key_points('logistic', solution, equation, first_derivative, second_derivative, precision)
+    points = key_coordinates('logistic', solution, equation, first_derivative, second_derivative, precision)
     five_numbers = five_number_summary(independent_variable, precision)
     min_value = five_numbers['minimum']
     max_value = five_numbers['maximum']
     q1 = five_numbers['q1']
     q3 = five_numbers['q3']
-    accumulated_range = accumulation(integral, min_value, max_value, precision)
-    accumulated_iqr = accumulation(integral, q1, q3, precision)
+    accumulated_range = accumulated_area(integral, min_value, max_value, precision)
+    accumulated_iqr = accumulated_area(integral, q1, q3, precision)
     averages_range = average_values('logistic', equation, integral, min_value, max_value, solution, precision)
     averages_iqr = average_values('logistic', equation, integral, q1, q3, solution, precision)
     predicted = []
     for i in range(len(data)):
         predicted.append(equation(independent_variable[i]))
-    accuracy = correlation(dependent_variable, predicted, precision)
+    accuracy = correlation_coefficient(dependent_variable, predicted, precision)
     evaluations = {
         'equation': equation,
         'derivative': first_derivative,

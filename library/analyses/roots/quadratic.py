@@ -1,7 +1,7 @@
-from library.statistics.sort import sort
-from library.statistics.rounding import rounding
+from library.statistics.sort import sorted_list
+from library.statistics.rounding import rounded_value
 
-def quadratic(first_constant, second_constant, third_constant, precision):
+def quadratic_roots(first_constant, second_constant, third_constant, precision):
     roots = []
     if first_constant == 0:
         first_constant = 10**(-precision)
@@ -17,8 +17,8 @@ def quadratic(first_constant, second_constant, third_constant, precision):
             roots.append(second_root)
     if not roots:
         roots = [None]
-    sorted_roots = sort(roots)
+    sorted_roots = sorted_list(roots)
     result = []
     for number in sorted_roots:
-        result.append(rounding(number, precision))
+        result.append(rounded_value(number, precision))
     return result

@@ -1,4 +1,4 @@
-def column(vector):
+def column_conversion(vector):
     result = []
     for i in vector:
         result.append([i])

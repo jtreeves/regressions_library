@@ -1,6 +1,6 @@
-from .sort import sort
+from .sort import sorted_list
 
-def minimum(data):
-    sorted_data = sort(data)
+def minimum_value(data):
+    sorted_data = sorted_list(data)
     result = sorted_data[0]
     return result

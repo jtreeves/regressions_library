@@ -1,19 +1,19 @@
 from math import log
-from library.vectors.dimension import dimension
-from library.vectors.column import column
-from library.matrices.solve import solve
-from library.analyses.equations.logarithmic import logarithmic as logarithmic_equation
-from library.analyses.derivatives.logarithmic import logarithmic as logarithmic_derivative
-from library.analyses.integrals.logarithmic import logarithmic as logarithmic_integral
-from library.analyses.key_points import key_points
-from library.analyses.accumulation import accumulation
+from library.vectors.dimension import single_dimension
+from library.vectors.column import column_conversion
+from library.matrices.solve import system_solution
+from library.analyses.equations.logarithmic import logarithmic_equation
+from library.analyses.derivatives.logarithmic import logarithmic_derivatives
+from library.analyses.integrals.logarithmic import logarithmic_integral
+from library.analyses.points import key_coordinates
+from library.analyses.accumulation import accumulated_area
 from library.analyses.mean_values import average_values
-from library.statistics.five_number_summary import five_number_summary
-from library.statistics.correlation import correlation
+from library.statistics.summary import five_number_summary
+from library.statistics.correlation import correlation_coefficient
 
-def logarithmic(data, precision):
-    independent_variable = dimension(data, 1)
-    dependent_variable = dimension(data, 2)
+def logarithmic_model(data, precision):
+    independent_variable = single_dimension(data, 1)
+    dependent_variable = single_dimension(data, 2)
     filtered_independent = []
     for i in independent_variable:
         if i <= 0:
@@ -21,29 +21,29 @@ def logarithmic(data, precision):
         else:
             filtered_independent.append(i)
     independent_matrix = []
-    dependent_matrix = column(dependent_variable)
+    dependent_matrix = column_conversion(dependent_variable)
     for i in range(len(data)):
         independent_matrix.append([log(filtered_independent[i]), 1])
-    solution = solve(independent_matrix, dependent_matrix, precision)
+    solution = system_solution(independent_matrix, dependent_matrix, precision)
     equation = logarithmic_equation(*solution)
-    derivative = logarithmic_derivative(*solution)
+    derivative = logarithmic_derivatives(*solution)
     integral = logarithmic_integral(*solution)['evaluation']
     first_derivative = derivative['first']['evaluation']
     second_derivative = derivative['second']['evaluation']
-    points = key_points('logarithmic', solution, equation, first_derivative, second_derivative, precision)
+    points = key_coordinates('logarithmic', solution, equation, first_derivative, second_derivative, precision)
     five_numbers = five_number_summary(independent_variable, precision)
     min_value = five_numbers['minimum']
     max_value = five_numbers['maximum']
     q1 = five_numbers['q1']
     q3 = five_numbers['q3']
-    accumulated_range = accumulation(integral, min_value, max_value, precision)
-    accumulated_iqr = accumulation(integral, q1, q3, precision)
+    accumulated_range = accumulated_area(integral, min_value, max_value, precision)
+    accumulated_iqr = accumulated_area(integral, q1, q3, precision)
     averages_range = average_values('logarithmic', equation, integral, min_value, max_value, solution, precision)
     averages_iqr = average_values('logarithmic', equation, integral, q1, q3, solution, precision)
     predicted = []
     for i in range(len(data)):
         predicted.append(equation(independent_variable[i]))
-    accuracy = correlation(dependent_variable, predicted, precision)
+    accuracy = correlation_coefficient(dependent_variable, predicted, precision)
     evaluations = {
         'equation': equation,
         'derivative': first_derivative,

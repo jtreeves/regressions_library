@@ -1,37 +1,37 @@
-from .models.linear import linear
-from .models.quadratic import quadratic
-from .models.cubic import cubic
-from .models.hyperbolic import hyperbolic
-from .models.exponential import exponential
-from .models.logarithmic import logarithmic
-from .models.logistic import logistic
-from .models.sinusoidal import sinusoidal
-from .statistics.minimum import minimum
-from .statistics.maximum import maximum
-from .statistics.quartiles import quartiles
-from .statistics.mean import mean
-from .statistics.median import median
-from .vectors.dimension import dimension
+from .models.linear import linear_model
+from .models.quadratic import quadratic_model
+from .models.cubic import cubic_model
+from .models.hyperbolic import hyperbolic_model
+from .models.exponential import exponential_model
+from .models.logarithmic import logarithmic_model
+from .models.logistic import logistic_model
+from .models.sinusoidal import sinusoidal_model
+from .statistics.minimum import minimum_value
+from .statistics.maximum import maximum_value
+from .statistics.quartiles import quartile_value
+from .statistics.mean import mean_value
+from .statistics.median import median_value
+from .vectors.dimension import single_dimension
 
 def run_all(data, precision):
-    independent_variable = dimension(data, 1)
+    independent_variable = single_dimension(data, 1)
     models = {
-        'linear': linear(data, precision),
-        'quadratic': quadratic(data, precision),
-        'cubic': cubic(data, precision),
-        'hyperbolic': hyperbolic(data, precision),
-        'exponential': exponential(data, precision),
-        'logarithmic': logarithmic(data, precision),
-        'logistic': logistic(data, precision),
-        'sinusoidal': sinusoidal(data, precision)
+        'linear': linear_model(data, precision),
+        'quadratic': quadratic_model(data, precision),
+        'cubic': cubic_model(data, precision),
+        'hyperbolic': hyperbolic_model(data, precision),
+        'exponential': exponential_model(data, precision),
+        'logarithmic': logarithmic_model(data, precision),
+        'logistic': logistic_model(data, precision),
+        'sinusoidal': sinusoidal_model(data, precision)
     }
     statistics = {
-        'minimum': minimum(independent_variable),
-        'maximum': maximum(independent_variable),
-        'q1': quartiles(independent_variable, 1),
-        'q3': quartiles(independent_variable, 3),
-        'mean': mean(independent_variable),
-        'median': median(independent_variable)
+        'minimum': minimum_value(independent_variable),
+        'maximum': maximum_value(independent_variable),
+        'q1': quartile_value(independent_variable, 1),
+        'q3': quartile_value(independent_variable, 3),
+        'mean': mean_value(independent_variable),
+        'median': median_value(independent_variable)
     }
     correlations = {
         'linear': models['linear']['correlation'],

@@ -1,4 +1,4 @@
-def addition(first_matrix, second_matrix):
+def linear_sum(first_matrix, second_matrix):
     result = []
     for m in range(len(first_matrix)):
         result.append([])

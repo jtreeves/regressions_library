@@ -1,6 +1,6 @@
 from math import sin, cos
 
-def sinusoidal(first_constant, second_constant, third_constant, fourth_constant):
+def sinusoidal_derivatives(first_constant, second_constant, third_constant, fourth_constant):
     first_constants = [first_constant * second_constant, second_constant, third_constant]
     def first_derivative(variable):
         evaluation = first_constants[0] * cos(first_constants[1] * (variable - first_constants[2]))

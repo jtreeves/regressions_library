@@ -1,6 +1,6 @@
 from math import exp
 
-def logistic(first_constant, second_constant, third_constant):
+def logistic_derivatives(first_constant, second_constant, third_constant):
     first_constants = [first_constant * second_constant, second_constant, third_constant]
     def first_derivative(variable):
         exponential = exp(-1 * first_constants[1] * (variable - first_constants[2]))

@@ -1,10 +1,10 @@
 from math import pi
-from library.statistics.rounding import rounding
-from library.statistics.sort import sort
-from .roots.linear import linear as linear_roots
-from .roots.quadratic import quadratic as quadratic_roots
-from .derivatives.quadratic import quadratic as quadratic_derivatives
-from .derivatives.cubic import cubic as cubic_derivatives
+from library.statistics.rounding import rounded_value
+from library.statistics.sort import sorted_list
+from .roots.linear import linear_roots
+from .roots.quadratic import quadratic_roots
+from .derivatives.quadratic import quadratic_derivatives
+from .derivatives.cubic import cubic_derivatives
 
 def critical_points(equation_type, derivative_level, coefficients, precision):
     results = []
@@ -33,12 +33,12 @@ def critical_points(equation_type, derivative_level, coefficients, precision):
             third_value = initial_value + 3 * periodic_unit
             fourth_value = initial_value + 4 * periodic_unit
             values = [initial_value, first_value, second_value, third_value, fourth_value]
-            sorted_values = sort(values)
+            sorted_values = sorted_list(values)
             rounded_values = []
             for number in sorted_values:
-                rounded_values.append(rounding(number, precision))
-            rounded_periodic_unit = rounding(periodic_unit, precision)
-            rounded_initial_value = rounding(initial_value, precision)
+                rounded_values.append(rounded_value(number, precision))
+            rounded_periodic_unit = rounded_value(periodic_unit, precision)
+            rounded_initial_value = rounded_value(initial_value, precision)
             general_form = str(rounded_initial_value) + ' + ' + str(rounded_periodic_unit) + 'k'
             results = [*rounded_values, general_form]
     elif derivative_level == 2:
@@ -56,7 +56,7 @@ def critical_points(equation_type, derivative_level, coefficients, precision):
         elif equation_type == 'logarithmic':
             results = [None]
         elif equation_type == 'logistic':
-            results = [rounding(coefficients[2], precision)]
+            results = [rounded_value(coefficients[2], precision)]
         elif equation_type == 'sinusoidal':
             periodic_unit = pi / coefficients[1]
             initial_value = coefficients[2]
@@ -65,12 +65,12 @@ def critical_points(equation_type, derivative_level, coefficients, precision):
             third_value = initial_value + 3 * periodic_unit
             fourth_value = initial_value + 4 * periodic_unit
             values = [initial_value, first_value, second_value, third_value, fourth_value]
-            sorted_values = sort(values)
+            sorted_values = sorted_list(values)
             rounded_values = []
             for number in sorted_values:
-                rounded_values.append(rounding(number, precision))
-            rounded_periodic_unit = rounding(periodic_unit, precision)
-            rounded_initial_value = rounding(initial_value, precision)
+                rounded_values.append(rounded_value(number, precision))
+            rounded_periodic_unit = rounded_value(periodic_unit, precision)
+            rounded_initial_value = rounded_value(initial_value, precision)
             general_form = str(rounded_initial_value) + ' + ' + str(rounded_periodic_unit) + 'k'
             results = [*rounded_values, general_form]
     return results

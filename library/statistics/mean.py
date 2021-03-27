@@ -1,5 +1,5 @@
-from .summation import summation
+from .summation import sum_value
 
-def mean(data):
-    result = summation(data) / len(data)
+def mean_value(data):
+    result = sum_value(data) / len(data)
     return result

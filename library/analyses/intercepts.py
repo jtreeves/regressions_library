@@ -1,13 +1,13 @@
-from .roots.linear import linear as linear_roots
-from .roots.quadratic import quadratic as quadratic_roots
-from .roots.cubic import cubic as cubic_roots
-from .roots.hyperbolic import hyperbolic as hyperbolic_roots
-from .roots.exponential import exponential as exponential_roots
-from .roots.logarithmic import logarithmic as logarithmic_roots
-from .roots.logistic import logistic as logistic_roots
-from .roots.sinusoidal import sinusoidal as sinusoidal_roots
+from .roots.linear import linear_roots
+from .roots.quadratic import quadratic_roots
+from .roots.cubic import cubic_roots
+from .roots.hyperbolic import hyperbolic_roots
+from .roots.exponential import exponential_roots
+from .roots.logarithmic import logarithmic_roots
+from .roots.logistic import logistic_roots
+from .roots.sinusoidal import sinusoidal_roots
 
-def intercepts(equation_type, coefficients, precision):
+def intercept_points(equation_type, coefficients, precision):
     result = []
     if equation_type == 'linear':
         result = linear_roots(*coefficients, precision)

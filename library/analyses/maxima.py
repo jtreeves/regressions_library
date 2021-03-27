@@ -1,4 +1,4 @@
-def maxima(intervals):
+def maxima_points(intervals):
     result = []
     for i in range(len(intervals)):
         try:

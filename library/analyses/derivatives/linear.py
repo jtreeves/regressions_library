@@ -1,4 +1,4 @@
-def linear(first_constant, second_constant):
+def linear_derivatives(first_constant, second_constant):
     first_constants = [first_constant]
     def first_derivative(variable):
         evaluation = first_constants[0]

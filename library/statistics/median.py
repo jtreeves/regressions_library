@@ -1,8 +1,8 @@
 from math import floor
-from .sort import sort
+from .sort import sorted_list
 
-def median(data):
-    sorted_data = sort(data)
+def median_value(data):
+    sorted_data = sorted_list(data)
     length = len(sorted_data)
     if length % 2 == 0:
         upper_index = int(length / 2)

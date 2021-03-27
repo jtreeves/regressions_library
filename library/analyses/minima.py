@@ -1,4 +1,4 @@
-def minima(intervals):
+def minima_points(intervals):
     result = []
     for i in range(len(intervals)):
         try:

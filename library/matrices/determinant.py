@@ -1,4 +1,4 @@
-def diminished(matrix, row, column):
+def inner_determinant(matrix, row, column):
     result = []
     storage = {}
     for m in range(len(matrix)):
@@ -11,7 +11,7 @@ def diminished(matrix, row, column):
         result.append(storage[key])
     return result
 
-def determinant(matrix, result = 0):
+def linear_determinant(matrix, result = 0):
     if len(matrix) == 1:
         result += matrix[0][0]
         return result
@@ -20,11 +20,11 @@ def determinant(matrix, result = 0):
         minors = []
         leads = matrix[0]
         for i in range(len(leads)):
-            minors.append(diminished(matrix, 0, i))
+            minors.append(inner_determinant(matrix, 0, i))
             if i % 2 == 0:
                 alternating.append(leads[i])
             else:
                 alternating.append(-1 * leads[i])
         for j in range(len(alternating)):
-            result += alternating[j] * determinant(minors[j])
+            result += alternating[j] * linear_determinant(minors[j])
     return result

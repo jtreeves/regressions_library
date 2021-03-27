@@ -1,5 +1,5 @@
-def exponential(first_constant, second_constant):
-    def exponential_equation(variable):
-        evaluation = first_constant * second_constant**variable
-        return evaluation
-    return exponential_equation 
+def exponential_equation(first_constant, second_constant):
+    def exponential_evaluation(variable):
+        result = first_constant * second_constant**variable
+        return result
+    return exponential_evaluation 

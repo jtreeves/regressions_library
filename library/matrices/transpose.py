@@ -1,4 +1,4 @@
-def transpose(matrix):
+def adjugate(matrix):
     result = []
     for m in range(len(matrix[0])):
         result.append([])

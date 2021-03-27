@@ -1,7 +1,7 @@
-from library.statistics.sort import sort
-from library.statistics.rounding import rounding
+from library.statistics.sort import sorted_list
+from library.statistics.rounding import rounded_value
 
-def cubic(first_constant, second_constant, third_constant, fourth_constant, precision):
+def cubic_roots(first_constant, second_constant, third_constant, fourth_constant, precision):
     roots = []
     xi = (-1 + (-3)**(1/2)) / 2
     delta_first = second_constant**2 - 3 * first_constant * third_constant
@@ -38,8 +38,8 @@ def cubic(first_constant, second_constant, third_constant, fourth_constant, prec
     unique_roots = list(set(roots))
     if not unique_roots:
         unique_roots = [None]
-    sorted_roots = sort(unique_roots)
+    sorted_roots = sorted_list(unique_roots)
     result = []
     for number in sorted_roots:
-        result.append(rounding(number, precision))
+        result.append(rounded_value(number, precision))
     return result

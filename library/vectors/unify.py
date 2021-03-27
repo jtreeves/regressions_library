@@ -1,4 +1,4 @@
-def unify(first_vector, second_vector):
+def unite_vectors(first_vector, second_vector):
     result = []
     if first_vector[0] == None:
         result.append(None)

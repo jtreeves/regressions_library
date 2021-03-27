@@ -1,4 +1,4 @@
-def sort(data):
+def sorted_list(data):
     pivots = []
     less = []
     more = []
@@ -13,12 +13,12 @@ def sort(data):
                 more.append(i)
             else:
                 pivots.append(i)
-        less = sort(less)
-        more = sort(more)
+        less = sorted_list(less)
+        more = sorted_list(more)
         result = less + pivots + more
         return result
 
-def sort_dimension(data, dimension):
+def sorted_dimension(data, dimension):
     pivots = []
     less = []
     more = []
@@ -33,7 +33,7 @@ def sort_dimension(data, dimension):
                 more.append(i)
             else:
                 pivots.append(i)
-        less = sort_dimension(less, dimension)
-        more = sort_dimension(more, dimension)
+        less = sorted_dimension(less, dimension)
+        more = sorted_dimension(more, dimension)
         result = less + pivots + more
         return result

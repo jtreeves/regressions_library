@@ -1,13 +1,13 @@
-from .median import median
-from .halve import halve
+from .median import median_value
+from .halve import half
 
-def quartiles(data, q):
-    halved_data = halve(data)
+def quartile_value(data, q):
+    halved_data = half(data)
     result = ''
     if q == 2:
-        result = median(data)
+        result = median_value(data)
     elif q == 1:
-        result = median(halved_data['lower'])
+        result = median_value(halved_data['lower'])
     elif q == 3:
-        result = median(halved_data['upper'])
+        result = median_value(halved_data['upper'])
     return result

@@ -1,6 +1,6 @@
 from math import atan, degrees
 
-def direction(vector):
+def vector_direction(vector):
     ratio = vector[1] / vector[0]
     radian_measure = atan(ratio)
     degree_measure = degrees(radian_measure)

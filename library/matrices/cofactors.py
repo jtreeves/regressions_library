@@ -1,4 +1,4 @@
-def cofactors(matrix):
+def matrix_of_cofactors(matrix):
     result = []
     for m in range(len(matrix)):
         result.append([])

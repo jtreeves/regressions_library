@@ -1,7 +1,7 @@
 from math import floor
-from .sort import sort, sort_dimension
+from .sort import sorted_list, sorted_dimension
 
-def partitioning(data):
+def partition(data):
     length = len(data)
     upper = []
     lower = []
@@ -19,12 +19,12 @@ def partitioning(data):
     }
     return result
 
-def halve(data):
-    sorted_data = sort(data)
-    result = partitioning(sorted_data)
+def half(data):
+    sorted_data = sorted_list(data)
+    result = partition(sorted_data)
     return result
 
-def halve_dimension(data, dimension):
-    sorted_data = sort_dimension(data, dimension)
-    result = partitioning(sorted_data)
+def half_dimension(data, dimension):
+    sorted_data = sorted_dimension(data, dimension)
+    result = partition(sorted_data)
     return result

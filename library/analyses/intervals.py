@@ -1,6 +1,6 @@
-from library.statistics.sort import sort
+from library.statistics.sort import sorted_list
 
-def intervals(derivative, points):
+def sign_chart(derivative, points):
     result = []
     if points[0] == None:
         if derivative(10) > 0:
@@ -23,7 +23,7 @@ def intervals(derivative, points):
             after = 'negative'
         result = [before, turning_point, after]
     elif len(points) == 2:
-        sorted_points = sort(points)
+        sorted_points = sorted_list(points)
         first_point = sorted_points[0]
         second_point = sorted_points[1]
         middle = (first_point + second_point) / 2
@@ -50,7 +50,7 @@ def intervals(derivative, points):
                 numerical_points.append(item)
             else:
                 other_points.append(item)
-        sorted_points = sort(numerical_points)
+        sorted_points = sorted_list(numerical_points)
         difference = sorted_points[1] - sorted_points[0]
         halved_difference = difference / 2
         before_first = sorted_points[0] - halved_difference

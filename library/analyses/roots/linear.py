@@ -1,6 +1,6 @@
-from library.statistics.rounding import rounding
+from library.statistics.rounding import rounded_value
 
-def linear(first_constant, second_constant, precision):
+def linear_roots(first_constant, second_constant, precision):
     root = -1 * second_constant / first_constant
-    result = [rounding(root, precision)]
+    result = [rounded_value(root, precision)]
     return result

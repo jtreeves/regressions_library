@@ -1,6 +1,6 @@
-from library.statistics.rounding import rounding
+from library.statistics.rounding import rounded_value
 
-def accumulation(integral, start, end, precision):
+def accumulated_area(integral, start, end, precision):
     area = integral(end) - integral(start)
-    result = rounding(area, precision)
+    result = rounded_value(area, precision)
     return result

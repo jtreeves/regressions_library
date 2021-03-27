@@ -1,12 +1,12 @@
-from .mean import mean
+from .mean import mean_value
 
-def deviation(actual, mean): 
+def single_deviation(actual, mean): 
     result = actual - mean
     return result
 
-def deviations(actual_array):
+def multiple_deviations(actual_array):
     results = []
-    average = mean(actual_array)
+    average = mean_value(actual_array)
     for i in range(len(actual_array)):
-        results.append(deviation(actual_array[i], average))
+        results.append(single_deviation(actual_array[i], average))
     return results

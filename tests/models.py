@@ -1,13 +1,13 @@
 import unittest
 
-from library.models.linear import linear
-from library.models.quadratic import quadratic
-from library.models.cubic import cubic
-from library.models.hyperbolic import hyperbolic
-from library.models.exponential import exponential
-from library.models.logarithmic import logarithmic
-from library.models.logistic import logistic
-from library.models.sinusoidal import sinusoidal
+from library.models.linear import linear_model
+from library.models.quadratic import quadratic_model
+from library.models.cubic import cubic_model
+from library.models.hyperbolic import hyperbolic_model
+from library.models.exponential import exponential_model
+from library.models.logarithmic import logarithmic_model
+from library.models.logistic import logistic_model
+from library.models.sinusoidal import sinusoidal_model
 
 linear_set = [
     [1, 30],
@@ -116,8 +116,8 @@ sinusoidal_set = [
 low_precision = 2
 high_precision = 6
 
-linear_model_low = linear(linear_set, low_precision)
-linear_model_high = linear(linear_set, high_precision)
+linear_model_low = linear_model(linear_set, low_precision)
+linear_model_high = linear_model(linear_set, high_precision)
 
 class TestLinearModel(unittest.TestCase):
     def test_linear_model_low_constants(self):
@@ -216,8 +216,8 @@ class TestLinearModel(unittest.TestCase):
     def test_linear_model_high_correlation(self):
         self.assertEqual(linear_model_high['correlation'], 1.0)
 
-quadratic_model_low = quadratic(quadratic_set, low_precision)
-quadratic_model_high = quadratic(quadratic_set, high_precision)
+quadratic_model_low = quadratic_model(quadratic_set, low_precision)
+quadratic_model_high = quadratic_model(quadratic_set, high_precision)
 
 class TestQuadraticModel(unittest.TestCase):
     def test_quadratic_model_low_constants(self):
@@ -316,8 +316,8 @@ class TestQuadraticModel(unittest.TestCase):
     def test_quadratic_model_high_correlation(self):
         self.assertEqual(quadratic_model_high['correlation'], 1.0)
 
-cubic_model_low = cubic(cubic_set, low_precision)
-cubic_model_high = cubic(cubic_set, high_precision)
+cubic_model_low = cubic_model(cubic_set, low_precision)
+cubic_model_high = cubic_model(cubic_set, high_precision)
 
 class TestCubicModel(unittest.TestCase):
     def test_cubic_model_low_constants(self):
@@ -416,8 +416,8 @@ class TestCubicModel(unittest.TestCase):
     def test_cubic_model_high_correlation(self):
         self.assertEqual(cubic_model_high['correlation'], 1.0)
 
-hyperbolic_model_low = hyperbolic(hyperbolic_set, low_precision)
-hyperbolic_model_high = hyperbolic(hyperbolic_set, high_precision)
+hyperbolic_model_low = hyperbolic_model(hyperbolic_set, low_precision)
+hyperbolic_model_high = hyperbolic_model(hyperbolic_set, high_precision)
 
 class TestHyperbolicModel(unittest.TestCase):
     def test_hyperbolic_model_low_constants(self):
@@ -516,8 +516,8 @@ class TestHyperbolicModel(unittest.TestCase):
     def test_hyperbolic_model_high_correlation(self):
         self.assertEqual(hyperbolic_model_high['correlation'], 1.0)
 
-exponential_model_low = exponential(exponential_set, low_precision)
-exponential_model_high = exponential(exponential_set, high_precision)
+exponential_model_low = exponential_model(exponential_set, low_precision)
+exponential_model_high = exponential_model(exponential_set, high_precision)
 
 class TestExponentialModel(unittest.TestCase):
     def test_exponential_model_low_constants(self):
@@ -616,8 +616,8 @@ class TestExponentialModel(unittest.TestCase):
     def test_exponential_model_high_correlation(self):
         self.assertEqual(exponential_model_high['correlation'], 1.0)
 
-logarithmic_model_low = logarithmic(logarithmic_set, low_precision)
-logarithmic_model_high = logarithmic(logarithmic_set, high_precision)
+logarithmic_model_low = logarithmic_model(logarithmic_set, low_precision)
+logarithmic_model_high = logarithmic_model(logarithmic_set, high_precision)
 
 class TestLogarithmicModel(unittest.TestCase):
     def test_logarithmic_model_low_constants(self):
@@ -716,8 +716,8 @@ class TestLogarithmicModel(unittest.TestCase):
     def test_logarithmic_model_high_correlation(self):
         self.assertEqual(logarithmic_model_high['correlation'], 1.0)
 
-logistic_model_low = logistic(logistic_set, low_precision)
-logistic_model_high = logistic(logistic_set, high_precision)
+logistic_model_low = logistic_model(logistic_set, low_precision)
+logistic_model_high = logistic_model(logistic_set, high_precision)
 
 class TestLogisticModel(unittest.TestCase):
     def test_logistic_model_low_constants(self):
@@ -816,8 +816,8 @@ class TestLogisticModel(unittest.TestCase):
     def test_logistic_model_high_correlation(self):
         self.assertEqual(logistic_model_high['correlation'], 1.0)
 
-sinusoidal_model_low = sinusoidal(sinusoidal_set, low_precision)
-sinusoidal_model_high = sinusoidal(sinusoidal_set, high_precision)
+sinusoidal_model_low = sinusoidal_model(sinusoidal_set, low_precision)
+sinusoidal_model_high = sinusoidal_model(sinusoidal_set, high_precision)
 
 class TestSinusoidalModel(unittest.TestCase):
     def test_sinusoidal_model_low_constants(self):

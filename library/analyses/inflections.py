@@ -1,9 +1,9 @@
-from .critical_points import critical_points
-from .intervals import intervals
+from .criticals import critical_points
+from .intervals import sign_chart
 
-def inflections(equation_type, coefficients, derivative, precision):
+def inflection_points(equation_type, coefficients, derivative, precision):
     points = critical_points(equation_type, 2, coefficients, precision)
-    intervals_set = intervals(derivative, points)
+    intervals_set = sign_chart(derivative, points)
     result = []
     for i in range(len(intervals_set)):
         try:
