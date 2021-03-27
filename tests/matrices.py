@@ -1,6 +1,6 @@
 import unittest
 
-from library.matrices.addition import linear_sum
+from library.matrices.addition import matrix_sum
 from library.matrices.multiplication import scalar_product, matrix_product
 from library.matrices.transpose import adjugate
 from library.matrices.cofactors import matrix_of_cofactors
@@ -71,22 +71,22 @@ precision = 4
 
 class TestAddition(unittest.TestCase):
     def test_addition_2d(self):
-        addition_2d = linear_sum(first_2d, second_2d)
+        addition_2d = matrix_sum(first_2d, second_2d)
         self.assertEqual(addition_2d, [[9, 9], [9, 6]])
     
     def test_addition_3d(self):
-        addition_3d = linear_sum(first_3d, second_3d)
+        addition_3d = matrix_sum(first_3d, second_3d)
         self.assertEqual(addition_3d, [[9, 1, 3], [6, -2, 3], [2, 9, 8]])
     
     def test_addition_4d(self):
-        addition_4d = linear_sum(first_4d, second_4d)
+        addition_4d = matrix_sum(first_4d, second_4d)
         self.assertEqual(addition_4d, [[18, -5, -5, -10], [8, -12, 15, 0], [1, -2, 9, 12], [1, 5, 8, 9]])
     
     def test_addition_2x3(self):
-        addition_2x3 = linear_sum(first_2x3, second_2x3)
+        addition_2x3 = matrix_sum(first_2x3, second_2x3)
         self.assertEqual(addition_2x3, [[9, 7, -6], [-4, 7, 6]])
 
-class TestScalar(unittest.TestCase):
+class TestScalarProduct(unittest.TestCase):
     def test_scalar_2d(self):
         scalar_2d = scalar_product(first_2d, scalar_number)
         self.assertEqual(scalar_2d, [[-35, -56], [-14, -21]])
@@ -103,7 +103,7 @@ class TestScalar(unittest.TestCase):
         scalar_2x3 = scalar_product(first_2x3, scalar_number)
         self.assertEqual(scalar_2x3, [[-14, -42, 63], [-28, -35, -7]])
 
-class TestMultiplication(unittest.TestCase):
+class TestMatrixProduct(unittest.TestCase):
     def test_multiplication_2d_first(self):
         multiplication_2d_first = matrix_product(first_2d, second_2d)
         self.assertEqual(multiplication_2d_first, [[76, 29], [29, 11]])

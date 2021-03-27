@@ -7,7 +7,7 @@ from library.vectors.unit import unit_vector
 from library.vectors.column import column_conversion
 from library.vectors.dimension import single_dimension
 from library.vectors.unify import unite_vectors
-from library.vectors.addition import linear_sum
+from library.vectors.addition import vector_sum
 from library.vectors.multiplication import scalar_product, dot_product
 
 first_point = [2, -3]
@@ -71,14 +71,14 @@ class TestUnify(unittest.TestCase):
 
 class TestAddition(unittest.TestCase):
     def test_addition_first(self):
-        addition_first = linear_sum(first_point, second_point)
+        addition_first = vector_sum(first_point, second_point)
         self.assertEqual(addition_first, [7, 4])
 
     def test_addition_second(self):
-        addition_second = linear_sum(first_vector, second_vector)
+        addition_second = vector_sum(first_vector, second_vector)
         self.assertEqual(addition_second, [3, -2, 32, 11])
 
-class TestScalar(unittest.TestCase):
+class TestScalarProduct(unittest.TestCase):
     def test_scalar_first(self):
         scalar_first = scalar_product(first_vector, scalar_number)
         self.assertEqual(scalar_first, [-6, -15, -27, -39])
