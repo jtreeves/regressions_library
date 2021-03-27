@@ -13,8 +13,8 @@ def five_number_summary(data, precision):
     rounded_q1 = rounded_value(q1, precision)
     q3 = quartile_value(data, 3)
     rounded_q3 = rounded_value(q3, precision)
-    median_value = median_value(data)
-    rounded_med = rounded_value(median_value, precision)
+    median = median_value(data)
+    rounded_med = rounded_value(median, precision)
     result = {
         'minimum': rounded_min,
         'q1': rounded_q1,
