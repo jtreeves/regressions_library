@@ -1,9 +1,9 @@
-from library.errors.scalars import first_scalar, last_scalar
+from library.errors.scalars import scalar_value
 from library.errors.vectors import compare_vectors
 
 def single_residual(actual, expected):
-    first_scalar(actual)
-    last_scalar(expected)
+    scalar_value(actual, 'first')
+    scalar_value(expected, 'second')
     result = actual - expected
     return result
 

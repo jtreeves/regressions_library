@@ -1,7 +1,7 @@
-from library.errors.matrices import first_matrix
+from library.errors.matrices import matrix_of_scalars
 
 def adjugate(matrix):
-    first_matrix(matrix)
+    matrix_of_scalars(matrix, 'only')
     result = []
     for m in range(len(matrix[0])):
         result.append([])

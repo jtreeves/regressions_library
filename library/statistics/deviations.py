@@ -1,15 +1,15 @@
-from library.errors.scalars import first_scalar, last_scalar
-from library.errors.vectors import first_vector
+from library.errors.scalars import scalar_value
+from library.errors.vectors import vector_of_scalars
 from .mean import mean_value
 
 def single_deviation(actual, mean): 
-    first_scalar(actual)
-    last_scalar(mean)
+    scalar_value(actual, 'first')
+    scalar_value(mean, 'second')
     result = actual - mean
     return result
 
 def multiple_deviations(actual_array):
-    first_vector(actual_array)
+    vector_of_scalars(actual_array, 'only')
     results = []
     average = mean_value(actual_array)
     for i in range(len(actual_array)):

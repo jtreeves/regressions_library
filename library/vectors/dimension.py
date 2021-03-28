@@ -1,9 +1,9 @@
-from library.errors.matrices import first_matrix, level
-from library.errors.scalars import integer
+from library.errors.matrices import matrix_of_scalars, level
+from library.errors.scalars import positive_integer
 
 def single_dimension(vector, scalar):
-    first_matrix(vector)
-    integer(scalar)
+    matrix_of_scalars(vector, 'first')
+    positive_integer(scalar)
     level(vector, scalar)
     result = []
     for i in range(len(vector)):

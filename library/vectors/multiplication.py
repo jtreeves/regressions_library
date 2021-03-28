@@ -1,9 +1,9 @@
-from library.errors.scalars import last_scalar
-from library.errors.vectors import first_vector, compare_vectors
+from library.errors.scalars import scalar_value
+from library.errors.vectors import vector_of_scalars, compare_vectors
 
 def scalar_product(vector, scalar):
-    first_vector(vector)
-    last_scalar(scalar)
+    vector_of_scalars(vector, 'first')
+    scalar_value(scalar, 'second')
     result = []
     for i in range(len(vector)):
         result.append(vector[i] * scalar)

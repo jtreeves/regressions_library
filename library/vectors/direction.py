@@ -1,8 +1,8 @@
 from math import atan, degrees
-from library.errors.vectors import first_vector, length
+from library.errors.vectors import vector_of_scalars, length
 
 def vector_direction(vector):
-    first_vector(vector)
+    vector_of_scalars(vector, 'only')
     length(vector, 2)
     ratio = vector[1] / vector[0]
     radian_measure = atan(ratio)

@@ -1,11 +1,11 @@
-from library.errors.scalars import last_scalar
-from library.errors.matrices import first_matrix, columns_rows
+from library.errors.scalars import scalar_value
+from library.errors.matrices import matrix_of_scalars, columns_rows
 from library.vectors.multiplication import dot_product
 from .transpose import adjugate
 
 def scalar_product(matrix, scalar):
-    first_matrix(matrix)
-    last_scalar(scalar)
+    matrix_of_scalars(matrix, 'first')
+    scalar_value(scalar, 'second')
     result = []
     for m in range(len(matrix)):
         result.append([])
