@@ -217,7 +217,139 @@ none_vector = [None]
 good_multitype = ['positive', 1, 'negative']
 bad_multitype = ['positive', 'negative', 1]
 bad_vector_string = 'vector'
+bad_vector_buried_string = [1, 'two', 3]
 bad_vector_nested =[[2], 3, 5]
+
+class TestVectorScalars(unittest.TestCase):
+    def test_vector_scalars_3long(self):
+        vector_scalars_3long = vector_of_scalars(first_vector, 'only')
+        self.assertEqual(vector_scalars_3long, 'Argument is a 1-dimensional list or tuple containing elements that are integers or floats')
+    
+    def test_vector_scalars_4long(self):
+        vector_scalars_4long = vector_of_scalars(long_vector, 'only')
+        self.assertEqual(vector_scalars_4long, 'Argument is a 1-dimensional list or tuple containing elements that are integers or floats')
+    
+    def test_vector_scalars_nested_raises(self):
+        with self.assertRaises(Exception) as context:
+            vector_of_scalars(bad_vector_nested, 'only')
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'Argument must be a 1-dimensional list or tuple')
+    
+    def test_vector_scalars_string_raises(self):
+        with self.assertRaises(Exception) as context:
+            vector_of_scalars(bad_vector_string, 'only')
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'Argument must be a 1-dimensional list or tuple')
+    
+    def test_vector_scalars_none_raises(self):
+        with self.assertRaises(Exception) as context:
+            vector_of_scalars(none_vector, 'only')
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'Elements of argument must be integers or floats')
+    
+    def test_vector_scalars_multitype_raises(self):
+        with self.assertRaises(Exception) as context:
+            vector_of_scalars(good_multitype, 'only')
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'Elements of argument must be integers or floats')
+
+class TestAllowNoneVector(unittest.TestCase):
+    def test_none_vector_none(self):
+        none_vector_none = allow_none_vector(none_vector, 'only')
+        self.assertEqual(none_vector_none, 'Argument is a 1-dimensional list or tuple that only contains integers, floats, or None; if it contains a second element, then its second element is an integer or a float')
+    
+    def test_none_vector_scalars(self):
+        none_vector_scalars = allow_none_vector(first_vector, 'only')
+        self.assertEqual(none_vector_scalars, 'Argument is a 1-dimensional list or tuple that only contains integers, floats, or None; if it contains a second element, then its second element is an integer or a float')
+    
+    def test_none_vector_multitype_raises(self):
+        with self.assertRaises(Exception) as context:
+            allow_none_vector(good_multitype, 'only')
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'Argument can only contain integers, floats, or None')
+    
+    def test_none_vector_buried_string_raises(self):
+        with self.assertRaises(Exception) as context:
+            allow_none_vector(bad_vector_buried_string, 'only')
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'Second element of argument must be an integer or a float')
+    
+    def test_none_vector_string_raises(self):
+        with self.assertRaises(Exception) as context:
+            allow_none_vector(bad_vector_string, 'only')
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'Argument must be a 1-dimensional list or tuple')
+    
+    def test_none_vector_nested_raises(self):
+        with self.assertRaises(Exception) as context:
+            allow_none_vector(bad_vector_nested, 'only')
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'Argument must be a 1-dimensional list or tuple')
+
+class TestMultitypeVector(unittest.TestCase):
+    def test_multitype_vector_string_integer(self):
+        multitype_vector_string_integer = multitype_vector(good_multitype)
+        self.assertEqual(multitype_vector_string_integer, "Argument is a 1-dimensional list or tuple with an initial element of either 'constant', 'positive', or 'negative'; if it contains a second element, then its second element is an integer or a float")
+    
+    def test_multitype_vector_string_string_raises(self):
+        with self.assertRaises(Exception) as context:
+            multitype_vector(bad_multitype)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'Second element of argument must be an integer or a float')
+    
+    def test_multitype_vector_integer_raises(self):
+        with self.assertRaises(Exception) as context:
+            multitype_vector(first_vector)
+        self.assertEqual(type(context.exception), ValueError)
+        self.assertEqual(str(context.exception), "First element of argument must be either 'constant', 'positive', or 'negative'")
+    
+    def test_multitype_vector_string_raises(self):
+        with self.assertRaises(Exception) as context:
+            multitype_vector(bad_vector_string)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'Argument must be a 1-dimensional list or tuple')
+    
+    def test_multitype_vector_nested_raises(self):
+        with self.assertRaises(Exception) as context:
+            multitype_vector(bad_vector_nested)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'Argument must be a 1-dimensional list or tuple')
+
+class TestLength(unittest.TestCase):
+    def test_length_4_4_integers(self):
+        length_4_4_integers = length(long_vector, 4)
+        self.assertEqual(length_4_4_integers, 'Argument contains exactly 4 elements')
+    
+    def test_length_3_3_integers(self):
+        length_3_3_integers = length(first_vector, 3)
+        self.assertEqual(length_3_3_integers, 'Argument contains exactly 3 elements')
+    
+    def test_length_3_3_mix(self):
+        length_3_3_mix = length(good_multitype, 3)
+        self.assertEqual(length_3_3_mix, 'Argument contains exactly 3 elements')
+    
+    def test_length_2_3_raises(self):
+        with self.assertRaises(Exception) as context:
+            length(first_vector, 2)
+        self.assertEqual(type(context.exception), ValueError)
+        self.assertEqual(str(context.exception), 'Argument must contain exactly 2 elements')
+    
+    def test_length_5_4_raises(self):
+        with self.assertRaises(Exception) as context:
+            length(long_vector, 5)
+        self.assertEqual(type(context.exception), ValueError)
+        self.assertEqual(str(context.exception), 'Argument must contain exactly 5 elements')
+
+class TestCompareVectors(unittest.TestCase):
+    def test_compare_vectors_3_3(self):
+        compare_vectors_3_3 = compare_vectors(first_vector, second_vector)
+        self.assertEqual(compare_vectors_3_3, 'Both arguments contain the same number of elements')
+    
+    def test_compare_vectors_3_4_raises(self):
+        with self.assertRaises(Exception) as context:
+            compare_vectors(first_vector, long_vector)
+        self.assertEqual(type(context.exception), ValueError)
+        self.assertEqual(str(context.exception), 'Both arguments must contain the same number of elements')
 
 first_matrix = [[1, 2, 3], [4, 5, 6]]
 second_matrix = [[7, 8, 9], [10, 11, 12]]
@@ -238,4 +370,4 @@ bad_equation = 'rational'
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 36 tests in 0.003s ---------- OK ---------- #
+# ---------- Ran 60 tests in 0.007s ---------- OK ---------- #
