@@ -1,7 +1,10 @@
 from library.errors.matrices import square_matrix
+from library.errors.scalars import whole_number
 
 def inner_determinant(matrix, row, column):
     square_matrix(matrix)
+    whole_number(row, 'second')
+    whole_number(column, 'third')
     result = []
     storage = {}
     for m in range(len(matrix)):
@@ -16,6 +19,7 @@ def inner_determinant(matrix, row, column):
 
 def linear_determinant(matrix, result = 0):
     square_matrix(matrix)
+    whole_number(result, 'second')
     if len(matrix) == 1:
         result += matrix[0][0]
         return result

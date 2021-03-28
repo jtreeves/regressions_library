@@ -28,7 +28,11 @@ def compare_scalars(scalar_one, scalar_two, position_one, position_two):
 
 def positive_integer(scalar):
     if not isinstance(scalar, int) or not scalar > 0:
-        raise TypeError('Last argument must be a positive integer')
+        raise ValueError('Last argument must be a positive integer')
+
+def whole_number(scalar, position):
+    if not isinstance(scalar, int) or not scalar >= 0:
+        raise ValueError(f'{position.capitalize()} argument must be a whole number')
 
 def select_integers(scalar, choices):
     if scalar not in choices:
