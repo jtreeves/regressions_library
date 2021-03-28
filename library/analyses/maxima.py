@@ -1,4 +1,4 @@
-from library.errors.analyses import multitype_vector
+from library.errors.vectors import multitype_vector
 
 def maxima_points(intervals):
     multitype_vector(intervals)
