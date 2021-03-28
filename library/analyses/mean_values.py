@@ -1,6 +1,6 @@
 from math import log, exp, acos, pi
 from library.errors.analyses import callable_function, select_equations
-from library.errors.scalars import compare_scalars
+from library.errors.scalars import compare_scalars, positive_integer
 from library.errors.vectors import vector_of_scalars
 from library.statistics.sort import sorted_list
 from library.statistics.rounding import rounded_value
@@ -13,8 +13,9 @@ from .roots.sinusoidal import sinusoidal_roots
 from .accumulation import accumulated_area
 
 def average_value_derivative(equation, start, end, precision):
-    callable_function(equation)
-    compare_scalars(start, end)
+    callable_function(equation, 'first')
+    compare_scalars(start, end, 'second', 'third')
+    positive_integer(precision)
     vertical_change = equation(end) - equation(start)
     horizontal_change = end - start
     ratio = vertical_change / horizontal_change
@@ -23,7 +24,10 @@ def average_value_derivative(equation, start, end, precision):
 
 def mean_values_derivative(equation_type, equation, start, end, constants, precision):
     select_equations(equation_type)
+    callable_function(equation, 'second')
+    compare_scalars(start, end, 'third', 'fourth')
     vector_of_scalars(constants, 'fifth')
+    positive_integer(precision)
     result = []
     average = average_value_derivative(equation, start, end, precision)
     if equation_type == 'linear':
@@ -123,6 +127,9 @@ def mean_values_derivative(equation_type, equation, start, end, constants, preci
     return final_result
 
 def average_value_integral(equation, start, end, precision):
+    callable_function(equation, 'first')
+    compare_scalars(start, end, 'second', 'third')
+    positive_integer(precision)
     accumulated_value = accumulated_area(equation, start, end, precision)
     change = end - start
     ratio = accumulated_value / change
@@ -131,7 +138,10 @@ def average_value_integral(equation, start, end, precision):
 
 def mean_values_integral(equation_type, equation, start, end, constants, precision):
     select_equations(equation_type)
+    callable_function(equation, 'second')
+    compare_scalars(start, end, 'third', 'fourth')
     vector_of_scalars(constants, 'fifth')
+    positive_integer(precision)
     result = []
     average = average_value_integral(equation, start, end, precision)
     if equation_type == 'linear':
@@ -184,6 +194,12 @@ def mean_values_integral(equation_type, equation, start, end, constants, precisi
     return final_result
 
 def average_values(equation_type, equation, integral, start, end, constants, precision):
+    select_equations(equation_type)
+    callable_function(equation, 'second')
+    callable_function(integral, 'third')
+    compare_scalars(start, end, 'fourth', 'fifth')
+    vector_of_scalars(constants, 'sixth')
+    positive_integer(precision)
     derivative_value = average_value_derivative(equation, start, end, precision)
     derivative_inputs = mean_values_derivative(equation_type, equation, start, end, constants, precision)
     integral_value = average_value_integral(integral, start, end, precision)

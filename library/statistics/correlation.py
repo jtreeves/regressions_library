@@ -1,9 +1,14 @@
+from library.errors.vectors import vector_of_scalars
+from library.errors.scalars import positive_integer
 from .residuals import multiple_residuals
 from .deviations import multiple_deviations
 from .summation import sum_value
 from .rounding import rounded_value
 
 def correlation_coefficient(actuals, expecteds, precision):
+    vector_of_scalars(actuals, 'first')
+    vector_of_scalars(expecteds, 'second')
+    positive_integer(precision)
     residual_array = multiple_residuals(actuals, expecteds)
     deviation_array = multiple_deviations(actuals)
     squared_residuals = []

@@ -1,8 +1,4 @@
-from library.errors.vectors import vector_of_scalars
-from library.errors.matrices import matrix_of_scalars, level
-
 def sorted_list(data):
-    vector_of_scalars(data, 'only')
     pivots = []
     less = []
     more = []
@@ -23,8 +19,6 @@ def sorted_list(data):
         return result
 
 def sorted_dimension(data, dimension):
-    matrix_of_scalars(data, 'first')
-    level(data, dimension)
     pivots = []
     less = []
     more = []

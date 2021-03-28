@@ -1,7 +1,9 @@
 from math import floor
+from library.errors.vectors import vector_of_scalars
 from .sort import sorted_list
 
 def median_value(data):
+    vector_of_scalars(data, 'only')
     sorted_data = sorted_list(data)
     length = len(sorted_data)
     if length % 2 == 0:

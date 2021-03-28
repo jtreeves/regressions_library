@@ -1,3 +1,5 @@
+from library.errors.vectors import vector_of_scalars
+from library.errors.scalars import positive_integer
 from .minimum import minimum_value
 from .maximum import maximum_value
 from .median import median_value
@@ -5,6 +7,8 @@ from .quartiles import quartile_value
 from .rounding import rounded_value
 
 def five_number_summary(data, precision):
+    vector_of_scalars(data, 'first')
+    positive_integer(precision)
     min_value = minimum_value(data)
     rounded_min = rounded_value(min_value, precision)
     max_value = maximum_value(data)

@@ -1,4 +1,6 @@
 from math import floor
+from library.errors.vectors import vector_of_scalars
+from library.errors.matrices import matrix_of_scalars
 from .sort import sorted_list, sorted_dimension
 
 def partition(data):
@@ -20,11 +22,13 @@ def partition(data):
     return result
 
 def half(data):
+    vector_of_scalars(data, 'only')
     sorted_data = sorted_list(data)
     result = partition(sorted_data)
     return result
 
 def half_dimension(data, dimension):
+    matrix_of_scalars(data, 'first')
     sorted_data = sorted_dimension(data, dimension)
     result = partition(sorted_data)
     return result

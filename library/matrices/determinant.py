@@ -15,6 +15,7 @@ def inner_determinant(matrix, row, column):
     return result
 
 def linear_determinant(matrix, result = 0):
+    square_matrix(matrix)
     if len(matrix) == 1:
         result += matrix[0][0]
         return result

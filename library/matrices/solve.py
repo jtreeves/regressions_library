@@ -1,11 +1,16 @@
 from numpy import matrix
 from numpy.linalg import inv
+from library.errors.matrices import square_matrix, columns_rows
+from library.errors.scalars import positive_integer
 from library.statistics.rounding import rounded_value
 from library.vectors.dimension import single_dimension
 from .multiplication import matrix_product
 from .transpose import adjugate
 
 def system_solution(matrix_one, matrix_two, precision):
+    square_matrix(matrix_one)
+    columns_rows(matrix_one, matrix_two)
+    positive_integer(precision)
     transposition = adjugate(matrix_one)
     product = matrix_product(transposition, matrix_one)
     product_matrix = matrix(product, dtype='float')

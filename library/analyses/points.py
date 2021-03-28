@@ -1,3 +1,6 @@
+from library.errors.analyses import select_equations, callable_function
+from library.errors.scalars import positive_integer
+from library.errors.vectors import vector_of_scalars
 from library.statistics.rounding import rounded_value
 from library.vectors.unify import unite_vectors
 from .intercepts import intercept_points
@@ -5,6 +8,12 @@ from .extrema import extrema_points
 from .inflections import inflection_points
 
 def key_coordinates(equation_type, coefficients, equation, first_derivative, second_derivative, precision):
+    select_equations(equation_type)
+    vector_of_scalars(coefficients, 'second')
+    callable_function(equation, 'third')
+    callable_function(first_derivative, 'fourth')
+    callable_function(second_derivative, 'fifth')
+    positive_integer(precision)
     intercepts_inputs = intercept_points(equation_type, coefficients, precision)
     extrema_inputs = extrema_points(equation_type, coefficients, first_derivative, precision)
     maxima_inputs = extrema_inputs['maxima']

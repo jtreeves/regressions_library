@@ -1,6 +1,7 @@
-from library.errors.scalars import positive_integer
+from library.errors.scalars import allow_none_scalar, positive_integer
 
 def rounded_value(number, precision):
+    allow_none_scalar(number)
     positive_integer(precision)
     if number == None:
         return None

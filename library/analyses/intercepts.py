@@ -1,5 +1,6 @@
 from library.errors.analyses import select_equations
 from library.errors.vectors import vector_of_scalars
+from library.errors.scalars import positive_integer
 from .roots.linear import linear_roots
 from .roots.quadratic import quadratic_roots
 from .roots.cubic import cubic_roots
@@ -12,6 +13,7 @@ from .roots.sinusoidal import sinusoidal_roots
 def intercept_points(equation_type, coefficients, precision):
     select_equations(equation_type)
     vector_of_scalars(coefficients, 'second')
+    positive_integer(precision)
     result = []
     if equation_type == 'linear':
         result = linear_roots(*coefficients, precision)
