@@ -356,8 +356,118 @@ second_matrix = [[7, 8, 9], [10, 11, 12]]
 small_square = [[1, 2], [3, 4]]
 large_square = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 bad_matrix_string = 'matrix'
+bad_matrix_buried_string = [['one', 2, 3], [4, 5, 6]]
 bad_matrix_vector = [1, 2, 3]
 bad_matrix_nested = [[[1], 2, 3], [4, 5, 6]]
+
+class TestMatrixScalars(unittest.TestCase):
+    def test_matrix_scalars_2x3(self):
+        matrix_scalars_2x3 = matrix_of_scalars(first_matrix, 'only')
+        self.assertEqual(matrix_scalars_2x3, 'Argument is a 2-dimensional list or tuple containing elements that are integers or floats')
+    
+    def test_matrix_scalars_2x2(self):
+        matrix_scalars_2x2 = matrix_of_scalars(small_square, 'only')
+        self.assertEqual(matrix_scalars_2x2, 'Argument is a 2-dimensional list or tuple containing elements that are integers or floats')
+    
+    def test_matrix_scalars_buried_string_raises(self):
+        with self.assertRaises(Exception) as context:
+            matrix_of_scalars(bad_matrix_buried_string, 'only')
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'Elements nested within argument must be integers or floats')
+    
+    def test_matrix_scalars_string_raises(self):
+        with self.assertRaises(Exception) as context:
+            matrix_of_scalars(bad_matrix_string, 'only')
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'Argument must be a 2-dimensional list or tuple')
+    
+    def test_matrix_scalars_vector_raises(self):
+        with self.assertRaises(Exception) as context:
+            matrix_of_scalars(bad_matrix_vector, 'only')
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'Argument must be a 2-dimensional list or tuple')
+    
+    def test_matrix_scalars_nested_raises(self):
+        with self.assertRaises(Exception) as context:
+            matrix_of_scalars(bad_matrix_nested, 'only')
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'Argument must be a 2-dimensional list or tuple')
+
+class TestSquareMatrix(unittest.TestCase):
+    def test_square_matrix_2x2(self):
+        square_matrix_2x2 = square_matrix(small_square)
+        self.assertEqual(square_matrix_2x2, 'First argument contains the same amount of lists as the amount of elements contained within its first list')
+    
+    def test_square_matrix_3x3(self):
+        square_matrix_3x3 = square_matrix(large_square)
+        self.assertEqual(square_matrix_3x3, 'First argument contains the same amount of lists as the amount of elements contained within its first list')
+    
+    def test_square_matrix_2x3_raises(self):
+        with self.assertRaises(Exception) as context:
+            square_matrix(first_matrix)
+        self.assertEqual(type(context.exception), ValueError)
+        self.assertEqual(str(context.exception), 'First argument must contain the same amount of lists as the amount of elements contained within its first list')
+
+class TestCompareRows(unittest.TestCase):
+    def test_compare_rows_2x2_2x3(self):
+        compare_rows_2x2_2x3 = compare_rows(small_square, first_matrix)
+        self.assertEqual(compare_rows_2x2_2x3, 'First argument and second argument contain the same amount of lists')
+    
+    def test_compare_rows_3x3_2x3_raises(self):
+        with self.assertRaises(Exception) as context:
+            compare_rows(large_square, first_matrix)
+        self.assertEqual(type(context.exception), ValueError)
+        self.assertEqual(str(context.exception), 'First argument and second argument must contain the same amount of lists')
+
+class TestCompareColumns(unittest.TestCase):
+    def test_compare_columns_3x3_2x3(self):
+        compare_columns_3x3_2x3 = compare_columns(large_square, first_matrix)
+        self.assertEqual(compare_columns_3x3_2x3, 'First list within first argument and first list within second argument contain the same amount of elements')
+    
+    def test_compare_columns_2x2_2x3_raises(self):
+        with self.assertRaises(Exception) as context:
+            compare_columns(small_square, first_matrix)
+        self.assertEqual(type(context.exception), ValueError)
+        self.assertEqual(str(context.exception), 'First list within first argument and first list within second argument must contain the same amount of elements')
+
+class TestCompareMatrices(unittest.TestCase):
+    def test_compare_matrices_2x3_2x3(self):
+        compare_matrices_2x3_2x3 = compare_matrices(first_matrix, second_matrix)
+        self.assertEqual(compare_matrices_2x3_2x3, 'First argument and second argument contain the same amount of lists; first list within first argument and first list within second argument contain the same amount of elements')
+    
+    def test_compare_matrices_3x3_2x3_raises(self):
+        with self.assertRaises(Exception) as context:
+            compare_matrices(large_square, first_matrix)
+        self.assertEqual(type(context.exception), ValueError)
+        self.assertEqual(str(context.exception), 'First argument and second argument must contain the same amount of lists')
+
+    def test_compare_matrices_2x2_2x3_raises(self):
+        with self.assertRaises(Exception) as context:
+            compare_matrices(small_square, first_matrix)
+        self.assertEqual(type(context.exception), ValueError)
+        self.assertEqual(str(context.exception), 'First list within first argument and first list within second argument must contain the same amount of elements')
+
+class TestColumnsRows(unittest.TestCase):
+    def test_columns_rows_2x2_2x3(self):
+        columns_rows_2x2_2x3 = columns_rows(small_square, first_matrix)
+        self.assertEqual(columns_rows_2x2_2x3, 'First list within first argument contains the same amount of elements as the amount of lists contained within second argument')
+    
+    def test_columns_rows_2x2_3x3_raises(self):
+        with self.assertRaises(Exception) as context:
+            columns_rows(small_square, large_square)
+        self.assertEqual(type(context.exception), ValueError)
+        self.assertEqual(str(context.exception), 'First list within first argument must contain the same amount of elements as the amount of lists contained within second argument')
+
+class TestLevel(unittest.TestCase):
+    def test_level_2x3_2(self):
+        level_2x2_2 = level(first_matrix, 2)
+        self.assertEqual(level_2x2_2, 'Last argument is less than or equal to the length of the nested lists within the first argument')
+    
+    def test_level_2x3_4_raises(self):
+        with self.assertRaises(Exception) as context:
+            level(first_matrix, 4)
+        self.assertEqual(type(context.exception), ValueError)
+        self.assertEqual(str(context.exception), 'Last argument must be less than or equal to the length of the nested lists within the first argument')
 
 def good_function(x):
     return 2 * x
@@ -392,4 +502,4 @@ class TestSelectEquations(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 64 tests in 0.003s ---------- OK ---------- #
+# ---------- Ran 84 tests in 0.008s ---------- OK ---------- #
