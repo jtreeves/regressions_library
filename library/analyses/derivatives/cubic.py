@@ -1,4 +1,7 @@
+from library.errors.scalars import four_scalars
+
 def cubic_derivatives(first_constant, second_constant, third_constant, fourth_constant):
+    four_scalars(first_constant, second_constant, third_constant, fourth_constant)
     first_constants = [3 * first_constant, 2 * second_constant, third_constant]
     def first_derivative(variable):
         evaluation = first_constants[0] * variable**2 + first_constants[1] * variable + first_constants[2]

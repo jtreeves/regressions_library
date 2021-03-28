@@ -1,7 +1,9 @@
 from library.statistics.sort import sorted_list
 from library.statistics.rounding import rounded_value
+from library.errors.scalars import three_scalars
 
 def quadratic_roots(first_constant, second_constant, third_constant, precision):
+    three_scalars(first_constant, second_constant, third_constant)
     roots = []
     if first_constant == 0:
         first_constant = 10**(-precision)

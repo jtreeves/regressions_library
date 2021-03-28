@@ -1,6 +1,8 @@
 from math import sin, cos
+from library.errors.scalars import four_scalars
 
 def sinusoidal_derivatives(first_constant, second_constant, third_constant, fourth_constant):
+    four_scalars(first_constant, second_constant, third_constant, fourth_constant)
     first_constants = [first_constant * second_constant, second_constant, third_constant]
     def first_derivative(variable):
         evaluation = first_constants[0] * cos(first_constants[1] * (variable - first_constants[2]))

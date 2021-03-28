@@ -1,4 +1,7 @@
+from library.errors.scalars import two_scalars
+
 def hyperbolic_derivatives(first_constant, second_constant):
+    two_scalars(first_constant, second_constant)
     first_constants = [-1 * first_constant]
     def first_derivative(variable):
         evaluation = first_constants[0] / variable**2

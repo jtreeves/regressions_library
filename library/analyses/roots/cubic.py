@@ -1,7 +1,9 @@
 from library.statistics.sort import sorted_list
 from library.statistics.rounding import rounded_value
+from library.errors.scalars import four_scalars
 
 def cubic_roots(first_constant, second_constant, third_constant, fourth_constant, precision):
+    four_scalars(first_constant, second_constant, third_constant, fourth_constant)
     roots = []
     xi = (-1 + (-3)**(1/2)) / 2
     delta_first = second_constant**2 - 3 * first_constant * third_constant
