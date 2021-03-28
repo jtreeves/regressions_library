@@ -364,10 +364,32 @@ def good_function(x):
 
 bad_function = 'function'
 
+class TestCallableFunction(unittest.TestCase):
+    def test_callable_function_multiply(self):
+        callable_function_multiply = callable_function(good_function, 'only')
+        self.assertEqual(callable_function_multiply, 'Argument is a callable function')
+    
+    def test_callable_string_raises(self):
+        with self.assertRaises(Exception) as context:
+            callable_function(bad_function, 'only')
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'Argument must be a callable function')
+
 good_equation = 'hyperbolic'
 bad_equation = 'rational'
+
+class TestSelectEquations(unittest.TestCase):
+    def test_select_equations_included(self):
+        select_equations_multiply = select_equations(good_equation)
+        self.assertEqual(select_equations_multiply, "First argument is either 'linear', 'quadratic', 'cubic', 'hyperbolic', 'exponential', 'logarithmic', 'logistic', or 'sinusoidal'")
+    
+    def test_select_equations_excluded_raises(self):
+        with self.assertRaises(Exception) as context:
+            select_equations(bad_equation)
+        self.assertEqual(type(context.exception), ValueError)
+        self.assertEqual(str(context.exception), "First argument must be either 'linear', 'quadratic', 'cubic', 'hyperbolic', 'exponential', 'logarithmic', 'logistic', or 'sinusoidal'")
 
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 60 tests in 0.007s ---------- OK ---------- #
+# ---------- Ran 64 tests in 0.003s ---------- OK ---------- #
