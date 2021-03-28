@@ -1,4 +1,6 @@
 from math import log
+from library.errors.matrices import matrix_of_scalars
+from library.errors.scalars import positive_integer
 from library.vectors.dimension import single_dimension
 from library.vectors.column import column_conversion
 from library.matrices.solve import system_solution
@@ -12,6 +14,8 @@ from library.statistics.summary import five_number_summary
 from library.statistics.correlation import correlation_coefficient
 
 def logarithmic_model(data, precision):
+    matrix_of_scalars(data, 'first')
+    positive_integer(precision)
     independent_variable = single_dimension(data, 1)
     dependent_variable = single_dimension(data, 2)
     filtered_independent = []

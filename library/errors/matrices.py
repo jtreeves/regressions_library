@@ -15,11 +15,21 @@ def square_matrix(matrix):
     if len(matrix) is not len(matrix[0]):
         raise ValueError('First argument must contain the same amount of lists as the amount of elements contained within its first list')
 
-def compare_matrices(matrix_one, matrix_two):
+def compare_rows(matrix_one, matrix_two):
     matrix_of_scalars(matrix_one, 'first')
     matrix_of_scalars(matrix_two, 'second')
-    if len(matrix_one) is not len(matrix_two) or len(matrix_one[0]) is not len(matrix_two[0]):
-        raise ValueError('Both arguments must have the same dimensions')
+    if len(matrix_one) is not len(matrix_two):
+        raise ValueError('First argument and second argument must contain the same amount of lists')
+
+def compare_columns(matrix_one, matrix_two):
+    matrix_of_scalars(matrix_one, 'first')
+    matrix_of_scalars(matrix_two, 'second')
+    if len(matrix_one[0]) is not len(matrix_two[0]):
+        raise ValueError('First list within first argument and first list within second argument must contain the same amount of elements')
+
+def compare_matrices(matrix_one, matrix_two):
+    compare_rows(matrix_one, matrix_two)
+    compare_columns(matrix_one, matrix_two)
 
 def columns_rows(matrix_one, matrix_two):
     matrix_of_scalars(matrix_one, 'first')

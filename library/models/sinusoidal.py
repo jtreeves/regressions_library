@@ -1,5 +1,7 @@
 from numpy import sin, inf
 from scipy.optimize import curve_fit
+from library.errors.matrices import matrix_of_scalars
+from library.errors.scalars import positive_integer
 from library.vectors.dimension import single_dimension
 from library.analyses.equations.sinusoidal import sinusoidal_equation
 from library.analyses.derivatives.sinusoidal import sinusoidal_derivatives
@@ -14,6 +16,8 @@ from library.statistics.halve import half_dimension
 from library.statistics.mean import mean_value
 
 def sinusoidal_model(data, precision):
+    matrix_of_scalars(data, 'first')
+    positive_integer(precision)
     independent_variable = single_dimension(data, 1)
     dependent_variable = single_dimension(data, 2)
     independent_max = max(independent_variable)

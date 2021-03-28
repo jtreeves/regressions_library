@@ -1,3 +1,5 @@
+from .errors.matrices import matrix_of_scalars
+from .errors.scalars import positive_integer
 from .models.linear import linear_model
 from .models.quadratic import quadratic_model
 from .models.cubic import cubic_model
@@ -14,6 +16,8 @@ from .statistics.median import median_value
 from .vectors.dimension import single_dimension
 
 def run_all(data, precision):
+    matrix_of_scalars(data, 'first')
+    positive_integer(precision)
     independent_variable = single_dimension(data, 1)
     models = {
         'linear': linear_model(data, precision),
