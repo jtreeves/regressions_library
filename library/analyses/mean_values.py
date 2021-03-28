@@ -1,4 +1,7 @@
 from math import log, exp, acos, pi
+from library.errors.analyses import callable_function, select_equations
+from library.errors.scalars import compare_scalars
+from library.errors.vectors import vector_of_scalars
 from library.statistics.sort import sorted_list
 from library.statistics.rounding import rounded_value
 from .roots.linear import linear_roots
@@ -10,6 +13,8 @@ from .roots.sinusoidal import sinusoidal_roots
 from .accumulation import accumulated_area
 
 def average_value_derivative(equation, start, end, precision):
+    callable_function(equation)
+    compare_scalars(start, end)
     vertical_change = equation(end) - equation(start)
     horizontal_change = end - start
     ratio = vertical_change / horizontal_change
@@ -17,6 +22,8 @@ def average_value_derivative(equation, start, end, precision):
     return result
 
 def mean_values_derivative(equation_type, equation, start, end, constants, precision):
+    select_equations(equation_type)
+    vector_of_scalars(constants, 'fifth')
     result = []
     average = average_value_derivative(equation, start, end, precision)
     if equation_type == 'linear':
@@ -123,6 +130,8 @@ def average_value_integral(equation, start, end, precision):
     return result
 
 def mean_values_integral(equation_type, equation, start, end, constants, precision):
+    select_equations(equation_type)
+    vector_of_scalars(constants, 'fifth')
     result = []
     average = average_value_integral(equation, start, end, precision)
     if equation_type == 'linear':

@@ -1,5 +1,8 @@
 from math import pi
 from library.statistics.rounding import rounded_value
+from library.errors.analyses import select_equations
+from library.errors.scalars import select_integers
+from library.errors.vectors import vector_of_scalars
 from library.statistics.sort import sorted_list
 from .roots.linear import linear_roots
 from .roots.quadratic import quadratic_roots
@@ -7,6 +10,9 @@ from .derivatives.quadratic import quadratic_derivatives
 from .derivatives.cubic import cubic_derivatives
 
 def critical_points(equation_type, derivative_level, coefficients, precision):
+    select_equations(equation_type)
+    select_integers(derivative_level, [1, 2])
+    vector_of_scalars(coefficients, 'third')
     results = []
     if derivative_level == 1:
         if equation_type == 'linear':

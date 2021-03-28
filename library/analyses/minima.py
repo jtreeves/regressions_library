@@ -1,4 +1,7 @@
+from library.errors.analyses import multitype_vector
+
 def minima_points(intervals):
+    multitype_vector(intervals)
     result = []
     for i in range(len(intervals)):
         try:

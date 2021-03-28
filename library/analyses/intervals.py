@@ -1,6 +1,9 @@
 from library.statistics.sort import sorted_list
+from library.errors.analyses import callable_function, allow_none_vector
 
 def sign_chart(derivative, points):
+    callable_function(derivative)
+    allow_none_vector(points, 'second')
     result = []
     if points[0] == None:
         if derivative(10) > 0:
