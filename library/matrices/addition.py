@@ -1,7 +1,10 @@
-def matrix_sum(first_matrix, second_matrix):
+from library.errors.matrices import compare_matrices
+
+def matrix_sum(matrix_one, matrix_two):
+    compare_matrices(matrix_one, matrix_two)
     result = []
-    for m in range(len(first_matrix)):
+    for m in range(len(matrix_one)):
         result.append([])
-        for n in range(len(first_matrix[0])):
-            result[m].append(first_matrix[m][n] + second_matrix[m][n])
+        for n in range(len(matrix_one[0])):
+            result[m].append(matrix_one[m][n] + matrix_two[m][n])
     return result

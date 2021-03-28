@@ -1,8 +1,8 @@
-from library.errors.matrices import nested, level
+from library.errors.matrices import first_matrix, level
 from library.errors.scalars import integer
 
 def single_dimension(vector, scalar):
-    nested(vector)
+    first_matrix(vector)
     integer(scalar)
     level(vector, scalar)
     result = []

@@ -1,4 +1,7 @@
+from library.errors.matrices import square_matrix
+
 def inner_determinant(matrix, row, column):
+    square_matrix(matrix)
     result = []
     storage = {}
     for m in range(len(matrix)):

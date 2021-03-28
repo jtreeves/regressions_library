@@ -1,4 +1,7 @@
+from library.errors.matrices import first_matrix
+
 def matrix_of_cofactors(matrix):
+    first_matrix(matrix)
     result = []
     for m in range(len(matrix)):
         result.append([])
