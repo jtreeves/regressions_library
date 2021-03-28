@@ -1,8 +1,8 @@
-from .check import check_two
+from library.errors.vectors import compare_vectors
 
-def vector_sum(first_vector, second_vector):
-    check_two(first_vector, second_vector)
+def vector_sum(vector_one, vector_two):
+    compare_vectors(vector_one, vector_two)
     result = []
-    for i in range(len(first_vector)):
-        result.append(first_vector[i] + second_vector[i])
+    for i in range(len(vector_one)):
+        result.append(vector_one[i] + vector_two[i])
     return result

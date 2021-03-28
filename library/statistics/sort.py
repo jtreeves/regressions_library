@@ -1,4 +1,8 @@
+from library.errors.vectors import first_vector
+from library.errors.matrices import nested, level
+
 def sorted_list(data):
+    first_vector(data)
     pivots = []
     less = []
     more = []
@@ -19,6 +23,8 @@ def sorted_list(data):
         return result
 
 def sorted_dimension(data, dimension):
+    nested(data)
+    level(data, dimension)
     pivots = []
     less = []
     more = []

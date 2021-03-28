@@ -1,8 +1,9 @@
 from library.statistics.summation import sum_value
-from .check import check_one
+from library.errors.vectors import first_vector
+from .check import check_first_vector
 
 def vector_magnitude(vector):
-    check_one(vector)
+    first_vector(vector)
     squares = []
     for i in range(len(vector)):
         squares.append(vector[i]**2)

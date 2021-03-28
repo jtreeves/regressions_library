@@ -1,7 +1,9 @@
+from library.errors.scalars import integer
 from .median import median_value
 from .halve import half
 
 def quartile_value(data, q):
+    integer(q)
     halved_data = half(data)
     result = ''
     if q == 2:
@@ -10,4 +12,6 @@ def quartile_value(data, q):
         result = median_value(halved_data['lower'])
     elif q == 3:
         result = median_value(halved_data['upper'])
+    else:
+        raise ValueError('Second argument must be either 1, 2, or 3')
     return result
