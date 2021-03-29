@@ -30,7 +30,7 @@ def key_coordinates(equation_type, coefficients, equation, first_derivative, sec
     if intercepts_inputs[0] == None:
         intercepts_coordinates = [None]
     else:
-        for i in range(len(intercepts_inputs)):
+        for intercept in intercepts_inputs:
             intercepts_outputs.append(0)
         intercepts_coordinates = unite_vectors(intercepts_inputs, intercepts_outputs)
     if maxima_inputs[0] == None:
@@ -66,9 +66,9 @@ def key_coordinates(equation_type, coefficients, equation, first_derivative, sec
     if inflections_inputs[0] == None:
         inflections_coordinates = [None]
     else:
-        for i in range(len(inflections_inputs)):
-            if isinstance(inflections_inputs[i], (int, float)):
-                output = equation(inflections_inputs[i])
+        for inflection in inflections_inputs:
+            if isinstance(inflection, (int, float)):
+                output = equation(inflection)
                 rounded_output = rounded_value(output, precision)
                 inflections_outputs.append(rounded_output)
             else:

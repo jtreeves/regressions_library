@@ -8,12 +8,12 @@ from .models.exponential import exponential_model
 from .models.logarithmic import logarithmic_model
 from .models.logistic import logistic_model
 from .models.sinusoidal import sinusoidal_model
+from .vectors.dimension import single_dimension
 from .statistics.minimum import minimum_value
 from .statistics.maximum import maximum_value
 from .statistics.quartiles import quartile_value
 from .statistics.mean import mean_value
 from .statistics.median import median_value
-from .vectors.dimension import single_dimension
 
 def run_all(data, precision):
     matrix_of_scalars(data, 'first')

@@ -19,15 +19,15 @@ def logarithmic_model(data, precision):
     independent_variable = single_dimension(data, 1)
     dependent_variable = single_dimension(data, 2)
     filtered_independent = []
-    for i in independent_variable:
-        if i <= 0:
+    for element in independent_variable:
+        if element <= 0:
             filtered_independent.append(10**(-precision))
         else:
-            filtered_independent.append(i)
+            filtered_independent.append(element)
     independent_matrix = []
     dependent_matrix = column_conversion(dependent_variable)
-    for i in range(len(data)):
-        independent_matrix.append([log(filtered_independent[i]), 1])
+    for element in filtered_independent:
+        independent_matrix.append([log(element), 1])
     solution = system_solution(independent_matrix, dependent_matrix, precision)
     equation = logarithmic_equation(*solution)
     derivative = logarithmic_derivatives(*solution)
@@ -45,8 +45,8 @@ def logarithmic_model(data, precision):
     averages_range = average_values('logarithmic', equation, integral, min_value, max_value, solution, precision)
     averages_iqr = average_values('logarithmic', equation, integral, q1, q3, solution, precision)
     predicted = []
-    for i in range(len(data)):
-        predicted.append(equation(independent_variable[i]))
+    for element in independent_variable:
+        predicted.append(equation(element))
     accuracy = correlation_coefficient(dependent_variable, predicted, precision)
     evaluations = {
         'equation': equation,

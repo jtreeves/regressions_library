@@ -9,11 +9,11 @@ from library.analyses.integrals.logistic import logistic_integral
 from library.analyses.points import key_coordinates
 from library.analyses.accumulation import accumulated_area
 from library.analyses.mean_values import average_values
+from library.statistics.halve import half_dimension
+from library.statistics.mean import mean_value
 from library.statistics.summary import five_number_summary
 from library.statistics.correlation import correlation_coefficient
 from library.statistics.rounding import rounded_value
-from library.statistics.halve import half_dimension
-from library.statistics.mean import mean_value
 
 def logistic_model(data, precision):
     matrix_of_scalars(data, 'first')
@@ -57,8 +57,8 @@ def logistic_model(data, precision):
     averages_range = average_values('logistic', equation, integral, min_value, max_value, solution, precision)
     averages_iqr = average_values('logistic', equation, integral, q1, q3, solution, precision)
     predicted = []
-    for i in range(len(data)):
-        predicted.append(equation(independent_variable[i]))
+    for element in independent_variable:
+        predicted.append(equation(element))
     accuracy = correlation_coefficient(dependent_variable, predicted, precision)
     evaluations = {
         'equation': equation,

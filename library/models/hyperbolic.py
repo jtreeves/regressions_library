@@ -19,8 +19,8 @@ def hyperbolic_model(data, precision):
     dependent_variable = single_dimension(data, 2)
     independent_matrix = []
     dependent_matrix = column_conversion(dependent_variable)
-    for i in range(len(data)):
-        independent_matrix.append([1 / independent_variable[i], 1])
+    for element in independent_variable:
+        independent_matrix.append([1 / element, 1])
     solution = system_solution(independent_matrix, dependent_matrix, precision)
     equation = hyperbolic_equation(*solution)
     derivative = hyperbolic_derivatives(*solution)
@@ -38,8 +38,8 @@ def hyperbolic_model(data, precision):
     averages_range = average_values('hyperbolic', equation, integral, min_value, max_value, solution, precision)
     averages_iqr = average_values('hyperbolic', equation, integral, q1, q3, solution, precision)
     predicted = []
-    for i in range(len(data)):
-        predicted.append(equation(independent_variable[i]))
+    for element in independent_variable:
+        predicted.append(equation(element))
     accuracy = correlation_coefficient(dependent_variable, predicted, precision)
     evaluations = {
         'equation': equation,

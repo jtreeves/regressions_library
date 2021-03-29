@@ -1,9 +1,9 @@
 from math import pi
-from library.statistics.rounding import rounded_value
-from library.errors.analyses import select_equations
 from library.errors.scalars import select_integers, positive_integer
 from library.errors.vectors import vector_of_scalars
+from library.errors.analyses import select_equations
 from library.statistics.sort import sorted_list
+from library.statistics.rounding import rounded_value
 from .roots.linear import linear_roots
 from .roots.quadratic import quadratic_roots
 from .derivatives.quadratic import quadratic_derivatives

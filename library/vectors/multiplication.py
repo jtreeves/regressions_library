@@ -5,8 +5,8 @@ def scalar_product(vector, scalar):
     vector_of_scalars(vector, 'first')
     scalar_value(scalar, 'second')
     result = []
-    for i in range(len(vector)):
-        result.append(vector[i] * scalar)
+    for element in vector:
+        result.append(element * scalar)
     return result
 
 def dot_product(vector_one, vector_two):

@@ -12,11 +12,11 @@ def correlation_coefficient(actuals, expecteds, precision):
     residual_array = multiple_residuals(actuals, expecteds)
     deviation_array = multiple_deviations(actuals)
     squared_residuals = []
-    for i in range(len(residual_array)):
-        squared_residuals.append(residual_array[i]**2)
+    for residual in residual_array:
+        squared_residuals.append(residual**2)
     squared_deviations = []
-    for i in range(len(deviation_array)):
-        squared_deviations.append(deviation_array[i]**2)
+    for deviation in deviation_array:
+        squared_deviations.append(deviation**2)
     residual_sum = sum_value(squared_residuals)
     deviation_sum = sum_value(squared_deviations)
     ratio = residual_sum / deviation_sum

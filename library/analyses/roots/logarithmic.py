@@ -1,6 +1,6 @@
 from math import exp
-from library.statistics.rounding import rounded_value
 from library.errors.scalars import two_scalars, positive_integer
+from library.statistics.rounding import rounded_value
 
 def logarithmic_roots(first_constant, second_constant, precision):
     two_scalars(first_constant, second_constant)

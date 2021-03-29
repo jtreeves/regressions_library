@@ -61,11 +61,11 @@ def mean_values_derivative(equation_type, equation, start, end, constants, preci
             return result
         else:
             values = []
-            for i in range(len(quadratic_values)):
-                if quadratic_values[i] <= 0:
+            for value in quadratic_values:
+                if value <= 0:
                     values.append(constants[2] - log(10**(-precision)) / constants[1])
                 else:
-                    values.append(constants[2] - log(quadratic_values[i]) / constants[1])
+                    values.append(constants[2] - log(value) / constants[1])
             result = values
     elif equation_type == 'sinusoidal':
         ratio = average / (constants[0] * constants[1])

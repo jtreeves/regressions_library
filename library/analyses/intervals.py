@@ -1,6 +1,6 @@
-from library.statistics.sort import sorted_list
 from library.errors.analyses import callable_function
 from library.errors.vectors import allow_none_vector
+from library.statistics.sort import sorted_list
 
 def sign_chart(derivative, points):
     callable_function(derivative, 'first')

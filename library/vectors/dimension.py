@@ -6,6 +6,6 @@ def single_dimension(matrix, scalar):
     positive_integer(scalar)
     level(matrix, scalar)
     result = []
-    for i in range(len(matrix)):
-        result.append(matrix[i][scalar - 1])
+    for element in matrix:
+        result.append(element[scalar - 1])
     return result

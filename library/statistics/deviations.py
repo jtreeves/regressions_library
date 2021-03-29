@@ -12,6 +12,6 @@ def multiple_deviations(actual_array):
     vector_of_scalars(actual_array, 'only')
     results = []
     average = mean_value(actual_array)
-    for i in range(len(actual_array)):
-        results.append(single_deviation(actual_array[i], average))
+    for element in actual_array:
+        results.append(single_deviation(element, average))
     return results

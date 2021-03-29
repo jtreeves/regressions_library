@@ -20,11 +20,11 @@ def exponential_model(data, precision):
     independent_variable = single_dimension(data, 1)
     dependent_variable = single_dimension(data, 2)
     filtered_dependent = []
-    for i in dependent_variable:
-        if i <= 0:
+    for element in dependent_variable:
+        if element <= 0:
             filtered_dependent.append(10**(-precision))
         else:
-            filtered_dependent.append(i)
+            filtered_dependent.append(element)
     independent_matrix = []
     dependent_matrix = []
     for i in range(len(data)):
@@ -49,8 +49,8 @@ def exponential_model(data, precision):
     averages_range = average_values('exponential', equation, integral, min_value, max_value, coefficients, precision)
     averages_iqr = average_values('exponential', equation, integral, q1, q3, coefficients, precision)
     predicted = []
-    for i in range(len(data)):
-        predicted.append(equation(independent_variable[i]))
+    for element in independent_variable:
+        predicted.append(equation(element))
     accuracy = correlation_coefficient(dependent_variable, predicted, precision)
     evaluations = {
         'equation': equation,

@@ -19,8 +19,8 @@ def quadratic_model(data, precision):
     dependent_variable = single_dimension(data, 2)
     independent_matrix = []
     dependent_matrix = column_conversion(dependent_variable)
-    for i in range(len(data)):
-        independent_matrix.append([independent_variable[i]**2, independent_variable[i], 1])
+    for element in independent_variable:
+        independent_matrix.append([element**2, element, 1])
     solution = system_solution(independent_matrix, dependent_matrix, precision)
     equation = quadratic_equation(*solution)
     derivative = quadratic_derivatives(*solution)
@@ -38,8 +38,8 @@ def quadratic_model(data, precision):
     averages_range = average_values('quadratic', equation, integral, min_value, max_value, solution, precision)
     averages_iqr = average_values('quadratic', equation, integral, q1, q3, solution, precision)
     predicted = []
-    for i in range(len(data)):
-        predicted.append(equation(independent_variable[i]))
+    for element in independent_variable:
+        predicted.append(equation(element))
     accuracy = correlation_coefficient(dependent_variable, predicted, precision)
     evaluations = {
         'equation': equation,

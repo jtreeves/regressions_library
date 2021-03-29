@@ -1,6 +1,6 @@
+from library.errors.scalars import four_scalars, positive_integer
 from library.statistics.sort import sorted_list
 from library.statistics.rounding import rounded_value
-from library.errors.scalars import four_scalars, positive_integer
 
 def cubic_roots(first_constant, second_constant, third_constant, fourth_constant, precision):
     four_scalars(first_constant, second_constant, third_constant, fourth_constant)
