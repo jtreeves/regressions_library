@@ -2,13 +2,13 @@ from setuptools import setup, find_packages
 
 setup(
     name='regressions',
-    version='1.0.1',
+    version='2.0.0',
     url='https://github.com/jtreeves/regressions_library',
     license='MIT',
     author='Jackson Reeves',
     author_email='jr@jacksonreeves.com',
     description='Generate regression models from data',
-    packages=['regressions', 'matrices'],
+    packages=['library'],
     include_package_data=True,
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
@@ -17,5 +17,5 @@ setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.9',
     ],
-    install_requires=['numpy']
+    install_requires=['numpy', 'scipy']
 )
