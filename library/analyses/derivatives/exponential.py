@@ -3,7 +3,7 @@ from library.errors.scalars import two_scalars
 
 def exponential_derivatives(first_constant, second_constant):
     """
-    Calculates first and second derivatives of exponential function
+    Calculates first and second derivatives of an exponential function
 
     Parameters
     ----------
@@ -30,7 +30,7 @@ def exponential_derivatives(first_constant, second_constant):
 
     Examples
     --------
-    Evaluate exponential derivatives with coefficients 2 and 3
+    Evaluate derivatives of an exponential function with coefficients 2 and 3
         >>> test = exponential_derivatives(2, 3)
     Print coefficients of first derivative
         >>> print(test['first']['constants'])

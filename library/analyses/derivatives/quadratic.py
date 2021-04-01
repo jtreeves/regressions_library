@@ -1,6 +1,45 @@
 from library.errors.scalars import three_scalars
 
 def quadratic_derivatives(first_constant, second_constant, third_constant):
+    """
+    Calculates first and second derivatives of a quadratic function
+
+    Parameters
+    ----------
+    first_constant : int or float
+        Coefficient of the quadratic term
+    second_constant : int or float
+        Coefficient of the linear term
+    third_constant : int or float
+        Coefficient of the constant term
+
+    Raises
+    ------
+    TypeError
+        Arguments must be integers or floats
+
+    Returns
+    -------
+    derivatives['first']['constants'] : list
+        Coefficients of first derivative
+    derivatives['first']['evaluation'] : function
+        Function for evaluating first derivative at any float argument
+    derivatives['second']['constants'] : list
+        Coefficients of second derivative
+    derivatives['second']['evaluation'] : function
+        Function for evaluating second derivative at any float argument
+
+    Examples
+    --------
+    Evaluate derivatives of a quadratic function with coefficients 2, 3, and 5
+        >>> test = quadratic_derivatives(2, 3, 5)
+    Print coefficients of first derivative
+        >>> print(test['first']['constants'])
+        [4, 3]
+    Print evaluation of second derivative at an input of 10
+        >>> print(test['second']['evaluation'](10))
+        4
+    """
     three_scalars(first_constant, second_constant, third_constant)
     first_constants = [2 * first_constant, second_constant]
     def first_derivative(variable):

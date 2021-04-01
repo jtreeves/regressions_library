@@ -2,6 +2,47 @@ from math import sin, cos
 from library.errors.scalars import four_scalars
 
 def sinusoidal_derivatives(first_constant, second_constant, third_constant, fourth_constant):
+    """
+    Calculates first and second derivatives of a sinusoidal function
+
+    Parameters
+    ----------
+    first_constant : int or float
+        Vertical stretch factor; amplitude
+    second_constant : int or float
+        Horizontal stretch factor; reciprocal relationship with period
+    third_constant : int or float
+        Horizontal shift; phase adjustment
+    fourth_constant : int or float
+        Vertical shift; midline
+
+    Raises
+    ------
+    TypeError
+        Arguments must be integers or floats
+
+    Returns
+    -------
+    derivatives['first']['constants'] : list
+        Coefficients of first derivative
+    derivatives['first']['evaluation'] : function
+        Function for evaluating first derivative at any float argument
+    derivatives['second']['constants'] : list
+        Coefficients of second derivative
+    derivatives['second']['evaluation'] : function
+        Function for evaluating second derivative at any float argument
+
+    Examples
+    --------
+    Evaluate derivatives of a sinusoidal function with coefficients 2, 3, 5, and 7
+        >>> test = sinusoidal_derivatives(2, 3, 5, 7)
+    Print coefficients of first derivative
+        >>> print(test['first']['constants'])
+        [6, 3, 5]
+    Print evaluation of second derivative at an input of 10
+        >>> print(test['second']['evaluation'](10))
+        -11.705181122828105
+    """
     four_scalars(first_constant, second_constant, third_constant, fourth_constant)
     first_constants = [first_constant * second_constant, second_constant, third_constant]
     def first_derivative(variable):

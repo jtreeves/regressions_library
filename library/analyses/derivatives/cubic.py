@@ -2,7 +2,7 @@ from library.errors.scalars import four_scalars
 
 def cubic_derivatives(first_constant, second_constant, third_constant, fourth_constant):
     """
-    Calculates first and second derivatives of cubic function
+    Calculates first and second derivatives of a cubic function
 
     Parameters
     ----------
@@ -33,7 +33,7 @@ def cubic_derivatives(first_constant, second_constant, third_constant, fourth_co
 
     Examples
     --------
-    Evaluate cubic derivatives with coefficients 2, 3, 5, and 7
+    Evaluate derivatives of a cubic function with coefficients 2, 3, 5, and 7
         >>> test = cubic_derivatives(2, 3, 5, 7)
     Print coefficients of first derivative
         >>> print(test['first']['constants'])
