@@ -33,15 +33,13 @@ def cubic_derivatives(first_constant, second_constant, third_constant, fourth_co
 
     Examples
     --------
+    Evaluate cubic derivatives with coefficients 2, 3, 5, and 7
+        >>> test = cubic_derivatives(2, 3, 5, 7)
     Print coefficients of first derivative
-        >>> cbdr = cubic_derivatives(2, 3, 5, 7)
-        >>> print(cbdr['first']['constants'])
+        >>> print(test['first']['constants'])
         [6, 6, 5]
-    Evaluate second derivative with an input of 10
-        >>> cbdr = cubic_derivatives(2, 3, 5, 7)
-        >>> scnd = cbdr['second']['evaluation']
-        >>> eval = scnd(10)
-        >>> print(eval)
+    Print evaluation of second derivative at an input of 10
+        >>> print(test['second']['evaluation'](10))
         126
     """
     four_scalars(first_constant, second_constant, third_constant, fourth_constant)
