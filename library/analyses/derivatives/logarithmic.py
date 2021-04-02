@@ -2,14 +2,14 @@ from library.errors.scalars import two_scalars
 
 def logarithmic_derivatives(first_constant, second_constant):
     """
-    Calculates first and second derivatives of a logarithmic function
+    Calculates the first and second derivatives of a logarithmic function
 
     Parameters
     ----------
     first_constant : int or float
-        Coefficient of the logarithmic term
+        Coefficient of the logarithmic term of the original logarithmic function
     second_constant : int or float
-        Coefficient of the constant term
+        Coefficient of the constant term of the original logarithmic function
 
     Raises
     ------
@@ -19,22 +19,22 @@ def logarithmic_derivatives(first_constant, second_constant):
     Returns
     -------
     derivatives['first']['constants'] : list
-        Coefficients of first derivative
+        Coefficients of the resultant first derivative
     derivatives['first']['evaluation'] : function
-        Function for evaluating first derivative at any float argument
+        Function for evaluating the resultant first derivative at any float or integer argument
     derivatives['second']['constants'] : list
-        Coefficients of second derivative
+        Coefficients of the resultant second derivative
     derivatives['second']['evaluation'] : function
-        Function for evaluating second derivative at any float argument
+        Function for evaluating the resultant second derivative at any float or integer argument
 
     Examples
     --------
-    Evaluate derivatives of a logarithmic function with coefficients 2 and 3
+    Generate the derivatives of a logarithmic function with coefficients 2 and 3
         >>> test = logarithmic_derivatives(2, 3)
-    Print coefficients of first derivative
+    Print the coefficients of the first derivative
         >>> print(test['first']['constants'])
         [2]
-    Print evaluation of second derivative at an input of 10
+    Print the evaluation of the second derivative at an input of 10
         >>> print(test['second']['evaluation'](10))
         -0.02
     """

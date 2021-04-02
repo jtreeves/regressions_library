@@ -7,11 +7,11 @@ def quadratic_equation(first_constant, second_constant, third_constant):
     Parameters
     ----------
     first_constant : int or float
-        Coefficient of the quadratic term
+        Coefficient of the quadratic term of the resultant quadratic function
     second_constant : int or float
-        Coefficient of the linear term
+        Coefficient of the linear term of the resultant quadratic function
     third_constant : int or float
-        Coefficient of the constant term
+        Coefficient of the constant term of the resultant quadratic function
 
     Raises
     ------
@@ -21,13 +21,13 @@ def quadratic_equation(first_constant, second_constant, third_constant):
     Returns
     -------
     evaluation : function
-        Function for evaluating a quadratic equation when passed any integer or float arguments
+        Function for evaluating a quadratic equation when passed any integer or float argument
 
     Examples
     --------
     Create a quadratic function with coefficients 2, 3, and 5
         >>> test = quadratic_equation(2, 3, 5)
-    Print evaluation of function at an input of 10
+    Print the evaluation of the function at an input of 10
         >>> print(test(10))
         235
     """

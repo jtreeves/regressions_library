@@ -7,13 +7,13 @@ def cubic_equation(first_constant, second_constant, third_constant, fourth_const
     Parameters
     ----------
     first_constant : int or float
-        Coefficient of the cubic term
+        Coefficient of the cubic term of the resultant cubic function
     second_constant : int or float
-        Coefficient of the quadratic term
+        Coefficient of the quadratic term of the resultant cubic function
     third_constant : int or float
-        Coefficient of the linear term
+        Coefficient of the linear term of the resultant cubic function
     fourth_constant : int or float
-        Coefficient of the constant term
+        Coefficient of the constant term of the resultant cubic function
 
     Raises
     ------
@@ -23,13 +23,13 @@ def cubic_equation(first_constant, second_constant, third_constant, fourth_const
     Returns
     -------
     evaluation : function
-        Function for evaluating a cubic equation when passed any integer or float arguments
+        Function for evaluating a cubic equation when passed any integer or float argument
 
     Examples
     --------
     Create a cubic function with coefficients 2, 3, 5, and 7
         >>> test = cubic_equation(2, 3, 5, 7)
-    Print evaluation of function at an input of 10
+    Print the evaluation of the function at an input of 10
         >>> print(test(10))
         2357
     """

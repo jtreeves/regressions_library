@@ -3,18 +3,18 @@ from library.errors.scalars import four_scalars
 
 def sinusoidal_derivatives(first_constant, second_constant, third_constant, fourth_constant):
     """
-    Calculates first and second derivatives of a sinusoidal function
+    Calculates the first and second derivatives of a sinusoidal function
 
     Parameters
     ----------
     first_constant : int or float
-        Vertical stretch factor; amplitude
+        Vertical stretch factor of the original sine function
     second_constant : int or float
-        Horizontal stretch factor; reciprocal relationship with period
+        Horizontal stretch factor of the original sine function
     third_constant : int or float
-        Horizontal shift; phase adjustment
+        Horizontal shift of the original sine function
     fourth_constant : int or float
-        Vertical shift; midline
+        Vertical shift of the original sine function
 
     Raises
     ------
@@ -24,22 +24,22 @@ def sinusoidal_derivatives(first_constant, second_constant, third_constant, four
     Returns
     -------
     derivatives['first']['constants'] : list
-        Coefficients of first derivative
+        Coefficients of the resultant first derivative
     derivatives['first']['evaluation'] : function
-        Function for evaluating first derivative at any float argument
+        Function for evaluating the resultant first derivative at any float or integer argument
     derivatives['second']['constants'] : list
-        Coefficients of second derivative
+        Coefficients of the resultant second derivative
     derivatives['second']['evaluation'] : function
-        Function for evaluating second derivative at any float argument
+        Function for evaluating the resultant second derivative at any float or integer argument
 
     Examples
     --------
-    Evaluate derivatives of a sinusoidal function with coefficients 2, 3, 5, and 7
+    Generate the derivatives of a sinusoidal function with coefficients 2, 3, 5, and 7
         >>> test = sinusoidal_derivatives(2, 3, 5, 7)
-    Print coefficients of first derivative
+    Print the coefficients of the first derivative
         >>> print(test['first']['constants'])
         [6, 3, 5]
-    Print evaluation of second derivative at an input of 10
+    Print the evaluation of the second derivative at an input of 10
         >>> print(test['second']['evaluation'](10))
         -11.705181122828105
     """

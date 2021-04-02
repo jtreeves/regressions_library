@@ -7,9 +7,9 @@ def hyperbolic_equation(first_constant, second_constant):
     Parameters
     ----------
     first_constant : int or float
-        Constant multiple of reciprocal variable
+        Coefficient of the reciprocal variable of the resultant hyperbolic function
     second_constant : int or float
-        Coefficient of the constant term
+        Coefficient of the constant term of the resultant hyperbolic function
 
     Raises
     ------
@@ -19,13 +19,13 @@ def hyperbolic_equation(first_constant, second_constant):
     Returns
     -------
     evaluation : function
-        Function for evaluating a hyperbolic equation when passed any integer or float arguments
+        Function for evaluating a hyperbolic equation when passed any integer or float argument
 
     Examples
     --------
     Create a hyperbolic function with coefficients 2 and 3
         >>> test = hyperbolic_equation(2, 3)
-    Print evaluation of function at an input of 10
+    Print the evaluation of the function at an input of 10
         >>> print(test(10))
         3.2
     """

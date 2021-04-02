@@ -7,9 +7,9 @@ def exponential_equation(first_constant, second_constant):
     Parameters
     ----------
     first_constant : int or float
-        Constant multiple
+        Constant multiple of the resultant exponential function
     second_constant : int or float
-        Base rate of exponent
+        Base rate of variable of the resultant exponential function
 
     Raises
     ------
@@ -19,13 +19,13 @@ def exponential_equation(first_constant, second_constant):
     Returns
     -------
     evaluation : function
-        Function for evaluating an exponential equation when passed any integer or float arguments
+        Function for evaluating an exponential equation when passed any integer or float argument
 
     Examples
     --------
     Create an exponential function with coefficients 2 and 3
         >>> test = exponential_equation(2, 3)
-    Print evaluation of function at an input of 10
+    Print the evaluation of the function at an input of 10
         >>> print(test(10))
         118098
     """

@@ -8,9 +8,9 @@ def logarithmic_equation(first_constant, second_constant):
     Parameters
     ----------
     first_constant : int or float
-        Coefficient of the logarithmic term
+        Coefficient of the logarithmic term of the resultant logarithmic function
     second_constant : int or float
-        Coefficient of the constant term
+        Coefficient of the constant term of the resultant logarithmic function
 
     Raises
     ------
@@ -20,13 +20,13 @@ def logarithmic_equation(first_constant, second_constant):
     Returns
     -------
     evaluation : function
-        Function for evaluating a logarithmic equation when passed any integer or float arguments
+        Function for evaluating a logarithmic equation when passed any integer or float argument
 
     Examples
     --------
     Create a logarithmic function with coefficients 2 and 3
         >>> test = logarithmic_equation(2, 3)
-    Print evaluation of function at an input of 10
+    Print the evaluation of the function at an input of 10
         >>> print(test(10))
         7.605170185988092
     """

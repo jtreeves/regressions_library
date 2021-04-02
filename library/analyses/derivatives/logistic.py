@@ -3,16 +3,16 @@ from library.errors.scalars import three_scalars
 
 def logistic_derivatives(first_constant, second_constant, third_constant):
     """
-    Calculates first and second derivatives of a logistic function
+    Calculates the first and second derivatives of a logistic function
 
     Parameters
     ----------
     first_constant : int or float
-        Carrying capacity of function
+        Carrying capacity of the original logistic function
     second_constant : int or float
-        Logistic growth rate
+        Growth rate of the original logistic function
     third_constant : int or float
-        Value of sigmoid's midpoint
+        Value of the sigmoid's midpoint of the original logistic function
 
     Raises
     ------
@@ -22,22 +22,22 @@ def logistic_derivatives(first_constant, second_constant, third_constant):
     Returns
     -------
     derivatives['first']['constants'] : list
-        Coefficients of first derivative
+        Coefficients of the resultant first derivative
     derivatives['first']['evaluation'] : function
-        Function for evaluating first derivative at any float argument
+        Function for evaluating the resultant first derivative at any float or integer argument
     derivatives['second']['constants'] : list
-        Coefficients of second derivative
+        Coefficients of the resultant second derivative
     derivatives['second']['evaluation'] : function
-        Function for evaluating second derivative at any float argument
+        Function for evaluating the resultant second derivative at any float or integer argument
 
     Examples
     --------
-    Evaluate derivatives of a logistic function with coefficients 2, 3, and 5
+    Generate the derivatives of a logistic function with coefficients 2, 3, and 5
         >>> test = logistic_derivatives(2, 3, 5)
-    Print coefficients of first derivative
+    Print the coefficients of the first derivative
         >>> print(test['first']['constants'])
         [6, 3, 5]
-    Print evaluation of second derivative at an input of 10
+    Print the evaluation of the second derivative at an input of 10
         >>> print(test['second']['evaluation'](10))
         -5.506235031548963e-06
     """

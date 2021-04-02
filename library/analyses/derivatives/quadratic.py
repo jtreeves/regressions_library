@@ -2,16 +2,16 @@ from library.errors.scalars import three_scalars
 
 def quadratic_derivatives(first_constant, second_constant, third_constant):
     """
-    Calculates first and second derivatives of a quadratic function
+    Calculates the first and second derivatives of a quadratic function
 
     Parameters
     ----------
     first_constant : int or float
-        Coefficient of the quadratic term
+        Coefficient of the quadratic term of the original quadratic function
     second_constant : int or float
-        Coefficient of the linear term
+        Coefficient of the linear term of the original quadratic function
     third_constant : int or float
-        Coefficient of the constant term
+        Coefficient of the constant term of the original quadratic function
 
     Raises
     ------
@@ -21,22 +21,22 @@ def quadratic_derivatives(first_constant, second_constant, third_constant):
     Returns
     -------
     derivatives['first']['constants'] : list
-        Coefficients of first derivative
+        Coefficients of the resultant first derivative
     derivatives['first']['evaluation'] : function
-        Function for evaluating first derivative at any float argument
+        Function for evaluating the resultant first derivative at any float or integer argument
     derivatives['second']['constants'] : list
-        Coefficients of second derivative
+        Coefficients of the resultant second derivative
     derivatives['second']['evaluation'] : function
-        Function for evaluating second derivative at any float argument
+        Function for evaluating the resultant second derivative at any float or integer argument
 
     Examples
     --------
-    Evaluate derivatives of a quadratic function with coefficients 2, 3, and 5
+    Generate the derivatives of a quadratic function with coefficients 2, 3, and 5
         >>> test = quadratic_derivatives(2, 3, 5)
-    Print coefficients of first derivative
+    Print the coefficients of the first derivative
         >>> print(test['first']['constants'])
         [4, 3]
-    Print evaluation of second derivative at an input of 10
+    Print the evaluation of the second derivative at an input of 10
         >>> print(test['second']['evaluation'](10))
         4
     """

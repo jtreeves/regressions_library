@@ -2,18 +2,18 @@ from library.errors.scalars import four_scalars
 
 def cubic_derivatives(first_constant, second_constant, third_constant, fourth_constant):
     """
-    Calculates first and second derivatives of a cubic function
+    Calculates the first and second derivatives of a cubic function
 
     Parameters
     ----------
     first_constant : int or float
-        Coefficient of the cubic term
+        Coefficient of the cubic term of the original cubic function
     second_constant : int or float
-        Coefficient of the quadratic term
+        Coefficient of the quadratic term of the original cubic function
     third_constant : int or float
-        Coefficient of the linear term
+        Coefficient of the linear term of the original cubic function
     fourth_constant : int or float
-        Coefficient of the constant term
+        Coefficient of the constant term of the original cubic function
 
     Raises
     ------
@@ -23,22 +23,22 @@ def cubic_derivatives(first_constant, second_constant, third_constant, fourth_co
     Returns
     -------
     derivatives['first']['constants'] : list
-        Coefficients of first derivative
+        Coefficients of the resultant first derivative
     derivatives['first']['evaluation'] : function
-        Function for evaluating first derivative at any float argument
+        Function for evaluating the resultant first derivative at any float or integer argument
     derivatives['second']['constants'] : list
-        Coefficients of second derivative
+        Coefficients of the resultant second derivative
     derivatives['second']['evaluation'] : function
-        Function for evaluating second derivative at any float argument
+        Function for evaluating the resultant second derivative at any float or integer argument
 
     Examples
     --------
-    Evaluate derivatives of a cubic function with coefficients 2, 3, 5, and 7
+    Generate the derivatives of a cubic function with coefficients 2, 3, 5, and 7
         >>> test = cubic_derivatives(2, 3, 5, 7)
-    Print coefficients of first derivative
+    Print the coefficients of the first derivative
         >>> print(test['first']['constants'])
         [6, 6, 5]
-    Print evaluation of second derivative at an input of 10
+    Print the evaluation of the second derivative at an input of 10
         >>> print(test['second']['evaluation'](10))
         126
     """

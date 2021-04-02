@@ -8,11 +8,11 @@ def logistic_equation(first_constant, second_constant, third_constant):
     Parameters
     ----------
     first_constant : int or float
-        Carrying capacity of function
+        Carrying capacity of the resultant logistic function
     second_constant : int or float
-        Logistic growth rate
+        Growth rate of the resultant logistic function
     third_constant : int or float
-        Value of sigmoid's midpoint
+        Value of the sigmoid's midpoint of the resultant logistic function
 
     Raises
     ------
@@ -22,13 +22,13 @@ def logistic_equation(first_constant, second_constant, third_constant):
     Returns
     -------
     evaluation : function
-        Function for evaluating a logistic equation when passed any integer or float arguments
+        Function for evaluating a logistic equation when passed any integer or float argument
 
     Examples
     --------
     Create a logistic function with coefficients 2, 3, and 5
         >>> test = logistic_equation(2, 3, 5)
-    Print evaluation of function at an input of 10
+    Print the evaluation of the function at an input of 10
         >>> print(test(10))
         1.999999388195546
     """

@@ -8,13 +8,13 @@ def sinusoidal_equation(first_constant, second_constant, third_constant, fourth_
     Parameters
     ----------
     first_constant : int or float
-        Vertical stretch factor; amplitude
+        Vertical stretch factor of the resultant sine function
     second_constant : int or float
-        Horizontal stretch factor; reciprocal relationship with period
+        Horizontal stretch factor of the resultant sine function
     third_constant : int or float
-        Horizontal shift; phase adjustment
+        Horizontal shift of the resultant sine function
     fourth_constant : int or float
-        Vertical shift; midline
+        Vertical shift of the resultant sine function
 
     Raises
     ------
@@ -24,13 +24,13 @@ def sinusoidal_equation(first_constant, second_constant, third_constant, fourth_
     Returns
     -------
     evaluation : function
-        Function for evaluating a sinusoidal equation when passed any integer or float arguments
+        Function for evaluating a sinusoidal equation when passed any integer or float argument
 
     Examples
     --------
     Create a sinusoidal function with coefficients 2, 3, 5, and 7
         >>> test = sinusoidal_equation(2, 3, 5, 7)
-    Print evaluation of function at an input of 10
+    Print the evaluation of the function at an input of 10
         >>> print(test(10))
         8.300575680314234
     """
