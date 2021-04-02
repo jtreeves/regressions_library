@@ -27,12 +27,12 @@ def hyperbolic_integral(first_constant, second_constant):
     Examples
     --------
     Generate the integral of a hyperbolic function with coefficients 2 and 3
-        >>> test = hyperbolic_integral(2, 3)
+        >>> integral = hyperbolic_integral(2, 3)
     Print the coefficients of the integral
-        >>> print(test['constants'])
+        >>> print(integral['constants'])
         [2, 3]
     Print the evaluation of the integral at an input of 10
-        >>> print(test['evaluation'](10))
+        >>> print(integral['evaluation'](10))
         34.605170185988094
     """
     two_scalars(first_constant, second_constant)

@@ -27,12 +27,12 @@ def exponential_integral(first_constant, second_constant):
     Examples
     --------
     Generate the integral of an exponential function with coefficients 2 and 3
-        >>> test = exponential_integral(2, 3)
+        >>> integral = exponential_integral(2, 3)
     Print the coefficients of the integral
-        >>> print(test['constants'])
+        >>> print(integral['constants'])
         [1.8204784532536746, 3]
     Print the evaluation of the integral at an input of 10
-        >>> print(test['evaluation'](10))
+        >>> print(integral['evaluation'](10))
         107497.43218617623
     """
     two_scalars(first_constant, second_constant)

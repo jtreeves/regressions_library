@@ -32,12 +32,12 @@ def quadratic_derivatives(first_constant, second_constant, third_constant):
     Examples
     --------
     Generate the derivatives of a quadratic function with coefficients 2, 3, and 5
-        >>> test = quadratic_derivatives(2, 3, 5)
+        >>> derivatives = quadratic_derivatives(2, 3, 5)
     Print the coefficients of the first derivative
-        >>> print(test['first']['constants'])
+        >>> print(derivatives['first']['constants'])
         [4, 3]
     Print the evaluation of the second derivative at an input of 10
-        >>> print(test['second']['evaluation'](10))
+        >>> print(derivatives['second']['evaluation'](10))
         4
     """
     three_scalars(first_constant, second_constant, third_constant)

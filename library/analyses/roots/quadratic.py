@@ -31,11 +31,14 @@ def quadratic_roots(first_constant, second_constant, third_constant, precision):
 
     Examples
     --------
-    Calculate the roots of a quadratic function with coefficients 2, 3, and 5 (and round roots to four decimal places)
-        >>> test = quadratic_roots(2, 3, 5, 4)
-    Print the roots
-        >>> print(test)
-        [None]
+    Calculate the roots of a quadratic function with coefficients 10, 7, and -15 (and round roots to four decimal places)
+        >>> roots1 = quadratic_roots(10, 7, -15, 4)
+        >>> print(roots1)
+        [-5.0, 1.5]
+    Calculate the roots of a quadratic function with coefficients 9, -42, and 49 (and round roots to four decimal places)
+        >>> roots2 = quadratic_roots(9, -42, 49, 4)
+        >>> print(roots2)
+        [2.3333]
     """
     three_scalars(first_constant, second_constant, third_constant)
     positive_integer(precision)

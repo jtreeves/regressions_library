@@ -25,9 +25,9 @@ def logarithmic_equation(first_constant, second_constant):
     Examples
     --------
     Create a logarithmic function with coefficients 2 and 3
-        >>> test = logarithmic_equation(2, 3)
+        >>> evaluation = logarithmic_equation(2, 3)
     Print the evaluation of the function at an input of 10
-        >>> print(test(10))
+        >>> print(evaluation(10))
         7.605170185988092
     """
     two_scalars(first_constant, second_constant)

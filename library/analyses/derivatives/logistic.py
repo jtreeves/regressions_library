@@ -33,12 +33,12 @@ def logistic_derivatives(first_constant, second_constant, third_constant):
     Examples
     --------
     Generate the derivatives of a logistic function with coefficients 2, 3, and 5
-        >>> test = logistic_derivatives(2, 3, 5)
+        >>> derivatives = logistic_derivatives(2, 3, 5)
     Print the coefficients of the first derivative
-        >>> print(test['first']['constants'])
+        >>> print(derivatives['first']['constants'])
         [6, 3, 5]
     Print the evaluation of the second derivative at an input of 10
-        >>> print(test['second']['evaluation'](10))
+        >>> print(derivatives['second']['evaluation'](10))
         -5.506235031548963e-06
     """
     three_scalars(first_constant, second_constant, third_constant)

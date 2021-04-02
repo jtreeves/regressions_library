@@ -30,15 +30,18 @@ def sinusoidal_roots(first_constant, second_constant, third_constant, fourth_con
     Returns
     -------
     roots : list
-        List of the x-coordinates of all of the x-intercepts of the original function; if the function never crosses the x-axis, then it will return a list of `None`
+        List of the x-coordinates of the initial x-intercepts within two periods of the original function in float format, along with the general forms in string format that can be used to determine all other x-intercepts by plugging in any integer value for 'k' and evaluating; if the function never crosses the x-axis, then it will return a list of `None`
 
     Examples
     --------
-    Calculate the roots of a sinusoidal function with coefficients 2, 3, 5, and 7 (and round roots to four decimal places)
-        >>> test = sinusoidal_roots(2, 3, 5, 7, 4)
-    Print the roots
-        >>> print(test)
-        [None]
+    Calculate the roots of a sinusoidal function with coefficients 2, 3, 5, and 1 (and round roots to four decimal places)
+        >>> roots1 = sinusoidal_roots(2, 3, 5, 1, 4)
+        >>> print(roots1)
+        [4.8255, 6.2217, 6.9199, 8.3161, 9.0143, 10.4105, '4.8255 + 2.0944k', '6.2217 + 2.0944k']
+    Calculate the roots of a sinusoidal function with coefficients 3, 1, -2, and 3 (and round roots to four decimal places)
+        >>> roots2 = sinusoidal_roots(3, 1, -2, 3, 4)
+        >>> print(roots2)
+        [-3.5708, 2.7124, 8.9956, '-3.5708 + 6.2832k']
     """
     four_scalars(first_constant, second_constant, third_constant, fourth_constant)
     positive_integer(precision)

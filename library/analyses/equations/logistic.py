@@ -27,9 +27,9 @@ def logistic_equation(first_constant, second_constant, third_constant):
     Examples
     --------
     Create a logistic function with coefficients 2, 3, and 5
-        >>> test = logistic_equation(2, 3, 5)
+        >>> evaluation = logistic_equation(2, 3, 5)
     Print the evaluation of the function at an input of 10
-        >>> print(test(10))
+        >>> print(evaluation(10))
         1.999999388195546
     """
     three_scalars(first_constant, second_constant, third_constant)

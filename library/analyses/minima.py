@@ -21,21 +21,18 @@ def minima_points(intervals):
     Returns
     -------
     points : list
-        Values of the x-coordinates at which the original function has a relative minimum; if the function has no minima, then it will return a list of `None`
+        Values of the x-coordinates at which the original function has a relative minimum; if the function is sinusoidal, then only two or three results within a two period interval will be listed, but a general form will also be included (see `sinusoidal_roots`); if the function has no minima, then it will return a list of `None`
 
     Examples
     --------
-    Generate the derivatives of a cubic function with coefficients 1, -15, 63, and -7
-        >>> test1 = cubic_derivatives(1, -15, 63, -7)
-    Calulate the critical points of the first derivative of that function (and round the results to four decimal places)
-        >>> test2 = critical_points('cubic', 1, [-1, -15, 63, -7], 4)
-    Create the sign chart of that derivative
-        >>> test3 = sign_chart(test1['first']['evaluation'], test2)
-    Calculate the minima of the original cubic function
-        >>> test4 = minima_points(test3)
-    Print the x-coordinates of the original cubic function's minima
-        >>> print(test4)
+    Calculate the minima of a cubic function with coefficients 1, -15, 63, and -7
+        >>> points_cubic = minima_points(['positive', 3.0, 'negative', 7.0, 'positive'])
+        >>> print(points_cubic)
         [7.0]
+    Calculate the minima of a sinusoidal function with coefficients 2, 3, 5, and 7
+        >>> points_sinusoidal = minima_points(['positive', 5.5236, 'negative', 6.5708, 'positive', 7.618, 'negative', 8.6652, 'positive', 9.7124, 'negative', '1.0472k'])
+        >>> print(points_sinusoidal)
+        [6.5708, 8.6652, '1.0472k']
     """
     multitype_vector(intervals)
     result = []

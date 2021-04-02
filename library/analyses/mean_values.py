@@ -44,10 +44,13 @@ def average_value_derivative(equation, start, end, precision):
     Examples
     --------
     Evaluate the average rate of change of a cubic function with coefficients 2, 3, 5, and 7 between end points of 10 and 20 (and round the result to four decimal places)
-        >>> test = average_value_derivative(lambda x : x**3 - 15 * x**2 + 63 * x - 7, 10, 20, 4)
-    Print the result
-        >>> print(test)
-        313.0
+        >>> average_cubic = average_value_derivative(lambda x : 2 * x**3 + 3 * x**2 + 5 * x + 7, 10, 20, 4)
+        >>> print(average_cubic)
+        1495.0
+    Evaluate the average rate of change of a sinusoidal function with coefficients 2, 3, 5, and 7 between end points of 10 and 20 (and round the result to four decimal places)
+        >>> average_sinusoidal = average_value_derivative(lambda x : 2 * sin(3 * (x - 5)) + 7, 10, 20, 4)
+        >>> print(average_sinusoidal)
+        0.0401
     """
     callable_function(equation, 'first')
     compare_scalars(start, end, 'second', 'third')
@@ -64,36 +67,47 @@ def mean_values_derivative(equation_type, equation, start, end, constants, preci
 
     Parameters
     ----------
+    equation_type : str
+        Name of the type of function for which an average value must be determined (e.g., 'linear', 'quadratic')
     equation : function
         Function to use for evaluating the average rate of change
     start : int or float
-        Value of the x-coordinate of the first point to use for evaluating the rate of change
+        Value of the x-coordinate of the first point to use for evaluating the rate of change; all results must be greater than this value
     end : int or float
-        Value of the x-coordinate of the second point to use for evaluating the rate of change
+        Value of the x-coordinate of the second point to use for evaluating the rate of change; all results must be less than this value
+    constants : list or tuple
+        Coefficients to use to generate the equation to investigate
     precision : int
         Maximum number of digits that can appear after the decimal place of the result
 
     Raises
     ------
+    ValueError
+        First argument must be either 'linear', 'quadratic', 'cubic', 'hyperbolic', 'exponential', 'logarithmic', 'logistic', or 'sinusoidal'
     TypeError
-        First argument must be a callable function
+        Second argument must be a callable function
     TypeError
-        Second and third arguments must be integers or floats
+        Third and fourth arguments must be integers or floats
+    TypeError
+        Fifth argument must be a 1-dimensional list or tuple containing elements that are integers or floats
     ValueError
         Last argument must be a positive integer
 
     Returns
     -------
-    average : float
-        Slope of a function between two points
+    points : list
+        Values of the x-coordinates within the specified interval at which the original function has an instantaneous rate of change equal to its average rate of change over that entire interval; if the function is sinusoidal, then only the initial results within at most a two period interval within the specified interval will be listed, but general forms will also be included (however, their results may be outside the specified interval; see `sinusoidal_roots`); if the algorithm cannot determine any values, then it will return a list of `None`
 
     Examples
     --------
-    Evaluate the average rate of change of a cubic function with coefficients 2, 3, 5, and 7 between end points of 10 and 20 (and round the result to four decimal places)
-        >>> test = average_value_derivative(lambda x : x**3 - 15 * x**2 + 63 * x - 7, 10, 20, 4)
-    Print the result
-        >>> print(test)
-        313.0
+    Generate a list of all the x-coordinates whose instantaneous rates of change equal the function's average rate of change for a cubic function with coefficients 2, 3, 5, and 7 between end points of 10 and 20 (and round the result to four decimal places)
+        >>> points_cubic = mean_values_derivative('cubic', lambda x : 2 * x**3 + 3 * x**2 + 5 * x + 7, 10, 20, [2, 3, 5, 7], 4)
+        >>> print(points_cubic)
+        [15.2665]
+    Generate a list of all the x-coordinates whose instantaneous rates of change equal the function's average rate of change for a cubic function with coefficients 2, 3, 5, and 7 between end points of 10 and 20 (and round the result to four decimal places)
+        >>> points_sinusoidal = mean_values_derivative('sinusoidal', lambda x : 2 * sin(3 * (x - 5)) + 7, 10, 20, [2, 3, 5, 7], 4)
+        >>> print(points_sinusoidal)
+        [11.8046, 11.809, 13.899, 13.9034, 15.9933, 15.9978, '11.8046 + 2.0944k', '11.809 + 2.0944k']
     """
     select_equations(equation_type)
     callable_function(equation, 'second')
@@ -146,6 +160,10 @@ def mean_values_derivative(equation_type, equation, start, end, constants, preci
         if ratio == 0:
             periodic_unit = pi / constants[1]
             initial_value = constants[2] + periodic_radians
+            while initial_value < start:
+                initial_value += periodic_unit
+            while initial_value > end:
+                initial_value -= periodic_unit
             first_value = initial_value + 1 * periodic_unit
             second_value = initial_value + 2 * periodic_unit
             third_value = initial_value + 3 * periodic_unit
@@ -157,6 +175,10 @@ def mean_values_derivative(equation_type, equation, start, end, constants, preci
         elif ratio == 1 or ratio == -1:
             periodic_unit = 2 * pi / constants[1]
             initial_value = constants[2] + periodic_radians
+            while initial_value < start:
+                initial_value += periodic_unit
+            while initial_value > end:
+                initial_value -= periodic_unit
             first_value = initial_value + 1 * periodic_unit
             second_value = initial_value + 2 * periodic_unit
             rounded_initial_value = rounded_value(initial_value, precision)
@@ -166,12 +188,20 @@ def mean_values_derivative(equation_type, equation, start, end, constants, preci
         else:
             periodic_unit = 2 * pi / constants[1]
             initial_value = constants[2] + periodic_radians
+            while initial_value < start:
+                initial_value += periodic_unit
+            while initial_value > end:
+                initial_value -= periodic_unit
             first_value = initial_value + 1 * periodic_unit
             second_value = initial_value + 2 * periodic_unit
             rounded_initial_value = rounded_value(initial_value, precision)
             rounded_periodic_unit = rounded_value(periodic_unit, precision)
             general_form = str(rounded_initial_value) + ' + ' + str(rounded_periodic_unit) + 'k'
             alternative_initial_value = constants[2] + pi / constants[1] - periodic_radians
+            while alternative_initial_value < start:
+                alternative_initial_value += periodic_unit
+            while initial_value > end:
+                alternative_initial_value -= periodic_unit
             alternative_first_value = alternative_initial_value + 1 * periodic_unit
             alternative_second_value = alternative_initial_value + 2 * periodic_unit
             rounded_alternative_initial_value = rounded_value(alternative_initial_value, precision)
@@ -199,6 +229,45 @@ def mean_values_derivative(equation_type, equation, start, end, constants, preci
     return final_result
 
 def average_value_integral(equation, start, end, precision):
+    """
+    Evaluates the average value of a given function between two points
+
+    Parameters
+    ----------
+    equation : function
+        Integral of the function for which one seeks the average value
+    start : int or float
+        Value of the x-coordinate of the first point to use for evaluating the average value
+    end : int or float
+        Value of the x-coordinate of the second point to use for evaluating the average value
+    precision : int
+        Maximum number of digits that can appear after the decimal place of the result
+
+    Raises
+    ------
+    TypeError
+        First argument must be a callable function
+    TypeError
+        Second and third arguments must be integers or floats
+    ValueError
+        Last argument must be a positive integer
+
+    Returns
+    -------
+    average : float
+        Average value of the function between two points
+
+    Examples
+    --------
+    Evaluate the average value of a cubic function with coefficients 2, 3, 5, and 7 between end points of 10 and 20 (and round the result to four decimal places)
+        >>> average_cubic = average_value_integral(lambda x : 0.5 * x**4 + x**3 + 2.5 * x**2 + 7 * x, 10, 20, 4)
+        >>> print(average_cubic)
+        8282.0
+    Evaluate the average value of a sinusoidal function with coefficients 2, 3, 5, and 7 between end points of 10 and 20 (and round the result to four decimal places)
+        >>> average_sinusoidal = average_value_integral(lambda x : -2 / 3 * cos(3 * (x - 5)) + 7 * x, 10, 20, 4)
+        >>> print(average_sinusoidal)
+        6.9143
+    """
     callable_function(equation, 'first')
     compare_scalars(start, end, 'second', 'third')
     positive_integer(precision)
@@ -209,6 +278,53 @@ def average_value_integral(equation, start, end, precision):
     return result
 
 def mean_values_integral(equation_type, equation, start, end, constants, precision):
+    """
+    Generates a list of all the x-coordinates between two points at which a function's value will equal its average value over that interval
+
+    Parameters
+    ----------
+    equation_type : str
+        Name of the type of function for which an average value must be determined (e.g., 'linear', 'quadratic')
+    equation : function
+        Integral of the function for which one seeks the average value
+    start : int or float
+        Value of the x-coordinate of the first point to use for evaluating the average value; all results must be greater than this value
+    end : int or float
+        Value of the x-coordinate of the second point to use for evaluating the average value; all results must be less than this value
+    constants : list or tuple
+        Coefficients of the origianl function under investigation
+    precision : int
+        Maximum number of digits that can appear after the decimal place of the result
+
+    Raises
+    ------
+    ValueError
+        First argument must be either 'linear', 'quadratic', 'cubic', 'hyperbolic', 'exponential', 'logarithmic', 'logistic', or 'sinusoidal'
+    TypeError
+        Second argument must be a callable function
+    TypeError
+        Third and fourth arguments must be integers or floats
+    TypeError
+        Fifth argument must be a 1-dimensional list or tuple containing elements that are integers or floats
+    ValueError
+        Last argument must be a positive integer
+
+    Returns
+    -------
+    points : list
+        Values of the x-coordinates within the specified interval at which the original function has a value equal to its average value over that entire interval; if the function is sinusoidal, then only the initial results within at most a two period interval within the specified interval will be listed, but general forms will also be included (however, their results may be outside the specified interval; see `sinusoidal_roots`); if the algorithm cannot determine any values, then it will return a list of `None`
+
+    Examples
+    --------
+    Generate a list of all the x-coordinates of a cubic function with coefficients 2, 3, 5, and 7 at which the function's value will equal its average value between 10 and 20 (and round the result to four decimal places)
+        >>> points_cubic = mean_values_integral('cubic', lambda x : 0.5 * x**4 + x**3 + 2.5 * x**2 + 7 * x, 10, 20, [2, 3, 5, 7], 4)
+        >>> print(points_cubic)
+        [15.5188]
+    Generate a list of all the x-coordinates of a sinusoidal function with coefficients 2, 3, 5, and 7 at which the function's value will equal its average value between 10 and 20 (and round the result to four decimal places)
+        >>> points_sinusoidal = mean_values_integral('sinusoidal', lambda x : -2 / 3 * cos(3 * (x - 5)) + 7 * x, 10, 20, [2, 3, 5, 7], 4)
+        >>> print(points_sinusoidal)
+        [10.2498, 11.2682, 12.3442, 13.3626, 14.4386, 15.457, 16.533, 17.5514, 18.6274, 19.6458, '10.2498 + 2.0944k', '11.2682 + 2.0944k']
+    """
     select_equations(equation_type)
     callable_function(equation, 'second')
     compare_scalars(start, end, 'third', 'fourth')
@@ -243,7 +359,33 @@ def mean_values_integral(equation_type, equation, start, end, constants, precisi
             result.append(value)
     elif equation_type == 'sinusoidal':
         values = sinusoidal_roots(constants[0], constants[1], constants[2], constants[3] - average, precision)
-        result = values
+        print(values)
+        general_forms = []
+        for value in values:
+            if isinstance(value, str):
+                general_forms.append(value)
+        options = []
+        for form in general_forms:
+            pivot = form.find(' + ')
+            initial_value_index = pivot - 1
+            initial_value = float(form[:initial_value_index])
+            periodic_unit_index = pivot + 3
+            periodic_unit = float(form[periodic_unit_index:-1])
+            while initial_value < start:
+                initial_value += periodic_unit
+            while initial_value > end:
+                initial_value -= periodic_unit
+            first_value = initial_value + 1 * periodic_unit
+            second_value = initial_value + 2 * periodic_unit
+            third_value = initial_value + 3 * periodic_unit
+            fourth_value = initial_value + 4 * periodic_unit
+            rounded_initial_value = rounded_value(initial_value, precision)
+            rounded_periodic_unit = rounded_value(periodic_unit, precision)
+            general_form = str(rounded_initial_value) + ' + ' + str(rounded_periodic_unit) + 'k'
+            options += [initial_value, first_value, second_value, third_value, fourth_value, general_form]
+            print(options)
+        result = options
+        print(result)
     if not result:
         result = [None]
         return result
@@ -262,10 +404,90 @@ def mean_values_integral(equation_type, equation, start, end, constants, precisi
     rounded_results = []
     for number in sorted_results:
         rounded_results.append(rounded_value(number, precision))
-    final_result = rounded_results + other_results
+    sorted_other_results = []
+    if len(other_results) > 0:
+        if len(other_results) == 1:
+            sorted_other_results = other_results
+        else:
+            first_index = other_results[0].find(' + ') - 1
+            first_value = float(other_results[0][:first_index])
+            second_index = other_results[1].find(' + ') - 1
+            second_value = float(other_results[1][:second_index])
+            if first_value < second_value:
+                sorted_other_results = other_results
+            else:
+                sorted_other_results = [other_results[1], other_results[0]]
+    final_result = rounded_results + sorted_other_results
     return final_result
 
 def average_values(equation_type, equation, integral, start, end, constants, precision):
+    """
+    Calculates the average values for a specific function
+
+    Parameters
+    ----------
+    equation_type : str
+        Name of the type of function for which average values must be determined (e.g., 'linear', 'quadratic')
+    equation : function
+        Equation of the function for which one seeks the average values
+    integral : function
+        Integral of the function for which one seeks the average values
+    start : int or float
+        Value of the x-coordinate of the first point to use for evaluating the average values; results within lists must be greater than this value
+    end : int or float
+        Value of the x-coordinate of the second point to use for evaluating the average values; results within lists must be less than this value
+    constants : list or tuple
+        Coefficients of the origianl function under investigation
+    precision : int
+        Maximum number of digits that can appear after the decimal place of the result
+
+    Raises
+    ------
+    ValueError
+        First argument must be either 'linear', 'quadratic', 'cubic', 'hyperbolic', 'exponential', 'logarithmic', 'logistic', or 'sinusoidal'
+    TypeError
+        Second and third arguments must be callable functions
+    TypeError
+        Fourth and fifth arguments must be integers or floats
+    TypeError
+        Sixth argument must be a 1-dimensional list or tuple containing elements that are integers or floats
+    ValueError
+        Last argument must be a positive integer
+
+    Returns
+    -------
+    averages['average_value_derivative'] : float
+        Slope of a function between two points
+    averages['mean_values_derivative'] : list
+        Values of the x-coordinates within the specified interval at which the original function has a value equal to its average value over that entire interval; if the function is sinusoidal, then only the initial results within at most a two period interval within the specified interval will be listed, but general forms will also be included (however, their results may be outside the specified interval; see `sinusoidal_roots`); if the algorithm cannot determine any values, then it will return a list of `None`
+    averages['average_value_integral'] : float
+        Average value of the function between two points
+    averages['mean_values_integral'] : list
+        Values of the x-coordinates within the specified interval at which the original function has a value equal to its average value over that entire interval; if the function is sinusoidal, then only the initial results within at most a two period interval within the specified interval will be listed, but general forms will also be included (however, their results may be outside the specified interval; see `sinusoidal_roots`); if the algorithm cannot determine any values, then it will return a list of `None`
+
+    Examples
+    --------
+    Calculate the averages of a cubic function with coefficients 2, 3, 5, and 7 between 10 and 20 (and round the result to four decimal places)
+        >>> averages_cubic = average_values('cubic', lambda x : 2 * x**3 + 3 * x**2 + 5 * x + 7, lambda x : 0.5 * x**4 + x**3 + 2.5 * x**2 + 7 * x, 10, 20, [2, 3, 5, 7], 4)
+        >>> print(averages_cubic['average_value_derivative'])
+        1495.0
+        >>> print(averages_cubic['mean_values_derivative'])
+        [15.2665]
+        >>> print(averages_cubic['average_value_integral'])
+        8282.0
+        >>> print(averages_cubic['mean_values_integral'])
+        [15.5188]
+    Calculate the averages of a sinusoidal function with coefficients 2, 3, 5, and 7 between 10 and 20 (and round the result to four decimal places)
+        >>> averages_sinusoidal = average_values('sinusoidal', lambda x : 2 * sin(3 * (x - 5)) + 7, lambda x : -2 / 3 * cos(3 * (x - 5)) + 7 * x, 10, 20, [2, 3, 5, 7], 4)
+        >>> print(averages_sinusoidal['average_value_derivative'])
+        0.0401
+        >>> print(averages_sinusoidal['mean_values_derivative'])
+        [11.8046, 11.809, 13.899, 13.9034, 15.9933, 15.9978, '11.8046 + 2.0944k', '11.809 + 2.0944k']
+        >>> print(averages_sinusoidal['average_value_integral'])
+        6.9143
+        >>> print(averages_sinusoidal['mean_values_integral'])
+        [10.2498, 11.2682, 12.3442, 13.3626, 14.4386, 15.457, 16.533, 17.5514, 18.6274, 19.6458, '10.2498 + 2.0944k', '11.2682 + 2.0944k']
+    """
     select_equations(equation_type)
     callable_function(equation, 'second')
     callable_function(integral, 'third')
@@ -283,6 +505,3 @@ def average_values(equation_type, equation, integral, start, end, constants, pre
         'mean_values_integral': integral_inputs
     }
     return results
-
-test = average_value_derivative(lambda x : x**3 - 15 * x**2 + 63 * x - 7, 10, 20, 4)
-print(test)

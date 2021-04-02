@@ -4,17 +4,17 @@ Statistics
 .. toctree::
     :maxdepth: 2
 
-    pages/correlation
-    pages/deviations
+    pages/rounding
+    pages/summation
+    pages/sort
     pages/halve
     pages/maximum
+    pages/minimum
+    pages/ranges
     pages/mean
     pages/median
-    pages/minimum
     pages/quartiles
-    pages/ranges
-    pages/residuals
-    pages/rounding
-    pages/sort
     pages/summary
-    pages/summation
+    pages/residuals
+    pages/deviations
+    pages/correlation

@@ -28,9 +28,9 @@ def cubic_equation(first_constant, second_constant, third_constant, fourth_const
     Examples
     --------
     Create a cubic function with coefficients 2, 3, 5, and 7
-        >>> test = cubic_equation(2, 3, 5, 7)
+        >>> evaluation = cubic_equation(2, 3, 5, 7)
     Print the evaluation of the function at an input of 10
-        >>> print(test(10))
+        >>> print(evaluation(10))
         2357
     """
     four_scalars(first_constant, second_constant, third_constant, fourth_constant)

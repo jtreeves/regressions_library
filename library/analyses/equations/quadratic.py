@@ -26,9 +26,9 @@ def quadratic_equation(first_constant, second_constant, third_constant):
     Examples
     --------
     Create a quadratic function with coefficients 2, 3, and 5
-        >>> test = quadratic_equation(2, 3, 5)
+        >>> evaluation = quadratic_equation(2, 3, 5)
     Print the evaluation of the function at an input of 10
-        >>> print(test(10))
+        >>> print(evaluation(10))
         235
     """
     three_scalars(first_constant, second_constant, third_constant)

@@ -17,7 +17,7 @@ def intercept_points(equation_type, coefficients, precision):
     Parameters
     ----------
     equation_type : str
-        Name of the type of function for which extrema must be determined (e.g., 'linear', 'quadratic')
+        Name of the type of function for which intercepts must be determined (e.g., 'linear', 'quadratic')
     coefficients : list or tuple
         Coefficients to use to generate the equation to investigate
     precision : int
@@ -35,15 +35,18 @@ def intercept_points(equation_type, coefficients, precision):
     Returns
     -------
     points : list
-        Values of the x-coordinates at which the original function crosses the x-axis; if the function has no x-intercepts, then it will return a list of `None`
+        Values of the x-coordinates at which the original function crosses the x-axis; if the function is sinusoidal, then only the initial results within a two period interval will be listed, but general forms will also be included (see `sinusoidal_roots`); if the function has no x-intercepts, then it will return a list of `None`
 
     Examples
     --------
-    Calulate the roots of a cubic function with coefficients 1, -15, 63, and -7 (and round the results to two decimal places)
-        >>> test = intercept_points('cubic', [1, -15, 63, -7], 2)
-    Print the results
-        >>> print(test)
-        [0.11]
+    Calculate the roots of a cubic function with coefficients 1, -15, 66, and -80 (and round roots to four decimal places)
+        >>> points_cubic = intercept_points('cubic', [1, -15, 66, -80], 4)
+        >>> print(points_cubic)
+        [2.0, 5.0, 8.0]
+    Calculate the roots of a sinusoidal function with coefficients 3, 1, -2, and 3 (and round roots to four decimal places)
+        >>> points_sinusoidal = intercept_points('sinusoidal', [3, 1, -2, 3], 4)
+        >>> print(points_sinusoidal)
+        [-3.5708, 2.7124, 8.9956, '-3.5708 + 6.2832k']
     """
     select_equations(equation_type)
     vector_of_scalars(coefficients, 'second')

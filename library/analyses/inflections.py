@@ -11,7 +11,7 @@ def inflection_points(equation_type, coefficients, derivative, precision):
     Parameters
     ----------
     equation_type : str
-        Name of the type of function for which extrema must be determined (e.g., 'linear', 'quadratic')
+        Name of the type of function for which inflections must be determined (e.g., 'linear', 'quadratic')
     coefficients : list or tuple
         Coefficients to use to generate the equation to investigate
     derivative : function
@@ -33,22 +33,18 @@ def inflection_points(equation_type, coefficients, derivative, precision):
     Returns
     -------
     points : list
-        Values of the x-coordinates at which the original function has an inflection point; if the function has no inflection points, then it will return a list of `None`
+        Values of the x-coordinates at which the original function has an inflection point; if the function is sinusoidal, then only five results within a two period interval will be listed, but a general form will also be included (see `sinusoidal_roots`); if the function has no inflection points, then it will return a list of `None`
 
     Examples
     --------
-    Generate the derivatives of a cubic function with coefficients 1, -15, 63, and -7
-        >>> test1 = cubic_derivatives(1, -15, 63, -7)
-    Calulate the inflection points of that cubic function (and round the results to four decimal places)
-        >>> test2 = inflection_points('cubic', [1, -15, 63, -7], test1['second']['evaluation'], 4)
-    Print the results
-        >>> print(test2)
-        [5.0]
-    
-    ALTERNATIVE
     Calculate the inflection points of a cubic functions with coefficients 1, -15, 63, and -7 (and round the results to four decimal places)
-        >>> test = inflection_points('cubic', [1, -15, 63, -7], lambda x : 6 * x - 30, 4)
+        >>> points_cubic = inflection_points('cubic', [1, -15, 63, -7], lambda x : 6 * x - 30, 4)
+        >>> print(points_cubic)
         [5.0]
+    Calculate the inflection points of a sinusoidal functions with coefficients 2, 3, 5, and 7 (and round the results to four decimal places)
+        >>> points_sinusoidal = inflection_points('sinusoidal', [2, 3, 5, 7], lambda x : -18 * sin(3 * (x - 5)), 4)
+        >>> print(points_sinusoidal)
+        [5, 6.0472, 7.0944, 8.1416, 9.1888, '5 + 1.0472k']
     """
     select_equations(equation_type)
     vector_of_scalars(coefficients, 'second')

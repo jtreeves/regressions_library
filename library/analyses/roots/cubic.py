@@ -33,10 +33,13 @@ def cubic_roots(first_constant, second_constant, third_constant, fourth_constant
 
     Examples
     --------
+    Calculate the roots of a cubic function with coefficients 1, -15, 66, and -80 (and round roots to four decimal places)
+        >>> roots1 = cubic_roots(1, -15, 66, -80, 4)
+        >>> print(roots1)
+        [2.0, 5.0, 8.0]
     Calculate the roots of a cubic function with coefficients 2, 3, 5, and 7 (and round roots to four decimal places)
-        >>> test = cubic_roots(2, 3, 5, 7, 4)
-    Print the roots
-        >>> print(test)
+        >>> roots2 = cubic_roots(2, 3, 5, 7, 4)
+        >>> print(roots2)
         [-1.4455]
     """
     four_scalars(first_constant, second_constant, third_constant, fourth_constant)

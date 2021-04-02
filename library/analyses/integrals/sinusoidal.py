@@ -31,12 +31,12 @@ def sinusoidal_integral(first_constant, second_constant, third_constant, fourth_
     Examples
     --------
     Generate the integral of a sinusoidal function with coefficients 2, 3, 5, and 7
-        >>> test = sinusoidal_integral(2, 3, 5, 7)
+        >>> integral = sinusoidal_integral(2, 3, 5, 7)
     Print the coefficients of the integral
-        >>> print(test['constants'])
+        >>> print(integral['constants'])
         [-0.6666666666666666, 3, 5, 7]
     Print the evaluation of the integral at an input of 10
-        >>> print(test['evaluation'](10))
+        >>> print(integral['evaluation'](10))
         70.50645860857254
     """
     four_scalars(first_constant, second_constant, third_constant, fourth_constant)

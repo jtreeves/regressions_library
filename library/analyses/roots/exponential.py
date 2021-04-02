@@ -28,9 +28,12 @@ def exponential_roots(first_constant, second_constant, precision):
     Examples
     --------
     Calculate the roots of an exponential function with coefficients 2 and 3 (and round roots to four decimal places)
-        >>> test = cubic_roots(2, 3, 4)
-    Print the roots
-        >>> print(test)
+        >>> roots1 = exponential_roots(2, 3, 4)
+        >>> print(roots1)
+        [None]
+    Calculate the roots of an exponential function with coefficients 157 and -259 (and round roots to ten decimal places)
+        >>> roots2 = exponential_roots(257, -259, 10)
+        >>> print(roots2)
         [None]
     """
     two_scalars(first_constant, second_constant)

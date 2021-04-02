@@ -30,9 +30,12 @@ def logistic_roots(first_constant, second_constant, third_constant, precision):
     Examples
     --------
     Calculate the roots of a logistic function with coefficients 2, 3, and 5 (and round roots to four decimal places)
-        >>> test = logistic_roots(2, 3, 5, 4)
-    Print the roots
-        >>> print(test)
+        >>> roots1 = logistic_roots(2, 3, 5, 4)
+        >>> print(roots1)
+        [None]
+    Calculate the roots of a logistic function with coefficients 135, 246, and 43 (and round roots to ten decimal places)
+        >>> roots2 = logistic_roots(135, 246, 43, 10)
+        >>> print(roots2)
         [None]
     """
     three_scalars(first_constant, second_constant, third_constant)

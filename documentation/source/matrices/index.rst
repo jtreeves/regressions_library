@@ -4,11 +4,11 @@ Matrices
 .. toctree::
     :maxdepth: 2
 
-    pages/addition
-    pages/cofactors
-    pages/determinant
-    pages/inverse
-    pages/minors
-    pages/multiplication
-    pages/solve
     pages/transpose
+    pages/addition
+    pages/multiplication
+    pages/determinant
+    pages/cofactors
+    pages/minors
+    pages/inverse
+    pages/solve

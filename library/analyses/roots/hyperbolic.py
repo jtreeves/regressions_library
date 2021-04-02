@@ -29,10 +29,13 @@ def hyperbolic_roots(first_constant, second_constant, precision):
     Examples
     --------
     Calculate the roots of a hyperbolic function with coefficients 2 and 3 (and round roots to four decimal places)
-        >>> test = hyperbolic_roots(2, 3, 4)
-    Print the roots
-        >>> print(test)
+        >>> roots1 = hyperbolic_roots(2, 3, 4)
+        >>> print(roots1)
         [-0.6667]
+    Calculate the roots of a hyperbolic function with coefficients 5 and 7 (and round roots to four decimal places)
+        >>> roots2 = hyperbolic_roots(5, 7, 4)
+        >>> print(roots2)
+        [-0.7143]
     """
     two_scalars(first_constant, second_constant)
     positive_integer(precision)

@@ -24,9 +24,9 @@ def hyperbolic_equation(first_constant, second_constant):
     Examples
     --------
     Create a hyperbolic function with coefficients 2 and 3
-        >>> test = hyperbolic_equation(2, 3)
+        >>> evaluation = hyperbolic_equation(2, 3)
     Print the evaluation of the function at an input of 10
-        >>> print(test(10))
+        >>> print(evaluation(10))
         3.2
     """
     two_scalars(first_constant, second_constant)

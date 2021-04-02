@@ -28,16 +28,19 @@ def accumulated_area(integral, start, end, precision):
 
     Returns
     -------
-    area : float
+    area : int or float
         Definite integral of the original indefinite integral, evaluated between two points
 
     Examples
     --------
-    Generate the integral of a linear function with coefficients 2 and 3
-        >>> test = linear_integral(2, 3)
-    Print the definite integral of that integral, evaluated from 10 to 20 (and round the area to four decimal places)
-        >>> print(accumulated_area(test['evaluation'], 10, 20, 4))
-        330.0
+    Evaluate the definite integral of a linear function with coefficients 2 and 3 between the end points 10 and 20 (and round the area to four decimal places)
+        >>> area_linear = accumulated_area(lambda x : x**2 + 3 * x, 10, 20, 4)
+        >>> print(area_linear)
+        330
+    Evaluate the definite integral of a cubic function with coefficients 8, 6, -10, and 7 between the end points 10 and 20 (and round the area to four decimal places)
+        >>> area_cubic = accumulated_area(lambda x : 2 * x**4 + 2 * x**3 - 5 * x**2 + 7 * x, 10, 20, 4)
+        >>> print(area_cubic)
+        312570
     """
     callable_function(integral, 'first')
     compare_scalars(start, end, 'second', 'third')

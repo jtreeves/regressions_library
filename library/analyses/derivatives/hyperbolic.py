@@ -30,12 +30,12 @@ def hyperbolic_derivatives(first_constant, second_constant):
     Examples
     --------
     Generate the derivatives of a hyperbolic function with coefficients 2 and 3
-        >>> test = hyperbolic_derivatives(2, 3)
+        >>> derivatives = hyperbolic_derivatives(2, 3)
     Print the coefficients of the first derivative
-        >>> print(test['first']['constants'])
+        >>> print(derivatives['first']['constants'])
         [-2]
     Print the evaluation of the second derivative at an input of 10
-        >>> print(test['second']['evaluation'](10))
+        >>> print(derivatives['second']['evaluation'](10))
         0.004
     """
     two_scalars(first_constant, second_constant)

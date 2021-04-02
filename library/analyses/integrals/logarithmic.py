@@ -27,12 +27,12 @@ def logarithmic_integral(first_constant, second_constant):
     Examples
     --------
     Generate the integral of a logarithmic function with coefficients 2 and 3
-        >>> test = logarithmic_integral(2, 3)
+        >>> integral = logarithmic_integral(2, 3)
     Print the coefficients of the integral
-        >>> print(test['constants'])
+        >>> print(integral['constants'])
         [2, 3]
     Print the evaluation of the integral at an input of 10
-        >>> print(test['evaluation'](10))
+        >>> print(integral['evaluation'](10))
         56.05170185988092
     """
     two_scalars(first_constant, second_constant)

@@ -4,17 +4,17 @@ Analyses
 .. toctree::
     :maxdepth: 2
 
-    roots/index
     equations/index
     derivatives/index
     integrals/index
-    pages/accumulation
-    pages/criticals
-    pages/extrema
-    pages/inflections
+    roots/index
     pages/intercepts
+    pages/criticals
     pages/intervals
     pages/maxima
-    pages/mean_values
     pages/minima
+    pages/extrema
+    pages/inflections
     pages/points
+    pages/accumulation
+    pages/mean_values

@@ -28,12 +28,12 @@ def quadratic_integral(first_constant, second_constant, third_constant):
     Examples
     --------
     Generate the integral of a quadratic function with coefficients 2, 3, and 5
-        >>> test = quadratic_integral(2, 3, 5)
+        >>> integral = quadratic_integral(2, 3, 5)
     Print the coefficients of the integral
-        >>> print(test['constants'])
+        >>> print(integral['constants'])
         [0.6666666666666666, 1.5, 5]
     Print the evaluation of the integral at an input of 10
-        >>> print(test['evaluation'](10))
+        >>> print(integral['evaluation'](10))
         866.6666666666666
     """
     three_scalars(first_constant, second_constant, third_constant)

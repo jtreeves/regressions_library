@@ -26,12 +26,12 @@ def linear_integral(first_constant, second_constant):
     Examples
     --------
     Generate the integral of a linear function with coefficients 2 and 3
-        >>> test = linear_integral(2, 3)
+        >>> integral = linear_integral(2, 3)
     Print the coefficients of the integral
-        >>> print(test['constants'])
+        >>> print(integral['constants'])
         [1.0, 3]
     Print the evaluation of the integral at an input of 10
-        >>> print(test['evaluation'](10))
+        >>> print(integral['evaluation'](10))
         130.0
     """
     two_scalars(first_constant, second_constant)

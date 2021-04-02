@@ -34,12 +34,12 @@ def cubic_derivatives(first_constant, second_constant, third_constant, fourth_co
     Examples
     --------
     Generate the derivatives of a cubic function with coefficients 2, 3, 5, and 7
-        >>> test = cubic_derivatives(2, 3, 5, 7)
+        >>> derivatives = cubic_derivatives(2, 3, 5, 7)
     Print the coefficients of the first derivative
-        >>> print(test['first']['constants'])
+        >>> print(derivatives['first']['constants'])
         [6, 6, 5]
     Print the evaluation of the second derivative at an input of 10
-        >>> print(test['second']['evaluation'](10))
+        >>> print(derivatives['second']['evaluation'](10))
         126
     """
     four_scalars(first_constant, second_constant, third_constant, fourth_constant)

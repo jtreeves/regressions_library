@@ -14,7 +14,7 @@ def key_coordinates(equation_type, coefficients, equation, first_derivative, sec
     Parameters
     ----------
     equation_type : str
-        Name of the type of function for which extrema must be determined (e.g., 'linear', 'quadratic')
+        Name of the type of function for which key points must be determined (e.g., 'linear', 'quadratic')
     coefficients : list or tuple
         Coefficients to use to generate the equation to investigate
     equation : function
@@ -40,27 +40,36 @@ def key_coordinates(equation_type, coefficients, equation, first_derivative, sec
     Returns
     -------
     points['roots'] : list
-        List containing two-element lists for each point; first elements of those lists will be the value of the x-coordinate at which the original function has a root; second elements of those lists will be 0; if the function has no roots, then it will return a list of `None`
+        List containing two-element lists for each point; first elements of those lists will be the value of the x-coordinate at which the original function has a root; second elements of those lists will be 0; if the function is sinusoidal, then only the initial results within a two period interval will be listed, but general forms will also be included (see `sinusoidal_roots`); if the function has no roots, then it will return a list of `None`
     points['maxima'] : list
-        List containing two-element lists for each point; first elements of those lists will be the value of the x-coordinate at which the original function has a relative maximum; second elements of those lists will be the y-coordinate of that maximum; if the function has no maxima, then it will return a list of `None`
+        List containing two-element lists for each point; first elements of those lists will be the value of the x-coordinate at which the original function has a relative maximum; second elements of those lists will be the y-coordinate of that maximum; if the function is sinusoidal, then only the initial results within a two period interval will be listed, but a general form will also be included (see `sinusoidal_roots`); if the function has no maxima, then it will return a list of `None`
     points['minima'] : list
-        List containing two-element lists for each point; first elements of those lists will be the value of the x-coordinate at which the original function has a relative minimum; second elements of those lists will be the y-coordinate of that minimum; if the function has no minima, then it will return a list of `None`
+        List containing two-element lists for each point; first elements of those lists will be the value of the x-coordinate at which the original function has a relative minimum; second elements of those lists will be the y-coordinate of that minimum; if the function is sinusoidal, then only the initial results within a two period interval will be listed, but a general form will also be included (see `sinusoidal_roots`); if the function has no minima, then it will return a list of `None`
     points['inflections'] : list
-        List containing two-element lists for each point; first elements of those lists will be the value of the x-coordinate at which the original function has an inflection; second elements of those lists will be the y-coordinate of that inflection; if the function has no inflection points, then it will return a list of `None`
+        List containing two-element lists for each point; first elements of those lists will be the value of the x-coordinate at which the original function has an inflection; second elements of those lists will be the y-coordinate of that inflection; if the function is sinusoidal, then only the initial results within a two period interval will be listed, but a general form will also be included (see `sinusoidal_roots`); if the function has no inflection points, then it will return a list of `None`
 
     Examples
     --------
     Calculate the key points of a cubic function with coefficients 1, -15, 63, and -7 (and round the results to four decimal places)
-        >>> test = key_coordinates('cubic', [1, -15, 63, -7], lambda x : x**3 - 15 * x**2 + 63 * x - 7, lambda x : 3 * x**2 - 30 * x + 63, lambda x : 6 * x - 30, 4)
-    Print results
-        >>> print(test['roots'])
+        >>> points_cubic = key_coordinates('cubic', [1, -15, 63, -7], lambda x : x**3 - 15 * x**2 + 63 * x - 7, lambda x : 3 * x**2 - 30 * x + 63, lambda x : 6 * x - 30, 4)
+        >>> print(points_cubic['roots'])
         [[0.1142, 0]]
-        >>> print(test['maxima'])
+        >>> print(points_cubic['maxima'])
         [[3.0, 74.0]]
-        >>> print(test['minima'])
+        >>> print(points_cubic['minima'])
         [[7.0, 42.0]]
-        >>> print(test['inflections'])
+        >>> print(points_cubic['inflections'])
         [[5.0, 58.0]]
+    Calculate the key points of a sinusoidal function with coefficients 2, 3, 5, and 1 (and round the results to four decimal places)
+        >>> points_sinusoidal = key_coordinates('sinusoidal', [2, 3, 5, 1], lambda x : 2 * sin(3 * (x - 5)) + 1, lambda x : 6 * cos(3 * (x - 5)), lambda x : -18 * sin(3 * (x - 5)), 4)
+        >>> print(points_sinusoidal['roots'])
+        [[4.8255, 0], [6.2217, 0], [6.9199, 0], [8.3161, 0], [9.0143, 0], [10.4105, 0], ['4.8255 + 2.0944k', 0], ['6.2217 + 2.0944k', 0]]
+        >>> print(points_sinusoidal['maxima'])
+        [[5.5236, 3.0], [7.618, 3.0], [9.7124, 3.0], ['5.5236 + 2.0944k', 3.0]]
+        >>> print(points_sinusoidal['minima'])
+        [[6.5708, -1.0], [8.6652, -1.0], ['6.5708 + 2.0944k', -1.0]]
+        >>> print(points_sinusoidal['inflections'])
+        [[5, 1.0], [6.0472, 1.0], [7.0944, 1.0], [8.1416, 1.0], [9.1888, 1.0001], ['5 + 1.0472k', 1.0]]
     """
     select_equations(equation_type)
     vector_of_scalars(coefficients, 'second')

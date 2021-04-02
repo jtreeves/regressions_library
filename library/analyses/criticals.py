@@ -38,15 +38,18 @@ def critical_points(equation_type, derivative_level, coefficients, precision):
     Returns
     -------
     points : list
-        Values of the x-coordinates at which the original function's derivative either crosses the x-axis or does not exist; if the derivative has no critical points, then it will return a list of `None`
+        Values of the x-coordinates at which the original function's derivative either crosses the x-axis or does not exist; if the function is sinusoidal, then only five results within a two period interval will be listed, but a general form will also be included (see `sinusoidal_roots`); if the derivative has no critical points, then it will return a list of `None`
 
     Examples
     --------
     Calulate the critical points of the second derivative of a cubic function with coefficients 2, 3, 5, and 7 (and round the results to four decimal places)
-        >>> test = critical_points('cubic', 2, [2, 3, 5, 7], 4)
-    Print the results
-        >>> print(test)
+        >>> points_cubic = critical_points('cubic', 2, [2, 3, 5, 7], 4)
+        >>> print(points_cubic)
         [-0.5]
+    Calulate the critical points of the first derivative of a sinusoidal function with coefficients 2, 3, 5, and 7 (and round the results to four decimal places)
+        >>> points_sinusoidal = critical_points('sinusoidal', 1, [2, 3, 5, 7], 4)
+        >>> print(points_sinusoidal)
+        [5.5236, 6.5708, 7.618, 8.6652, 9.7124, '5.5236 + 1.0472k']
     """
     select_equations(equation_type)
     select_integers(derivative_level, [1, 2])
