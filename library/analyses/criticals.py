@@ -10,6 +10,44 @@ from .derivatives.quadratic import quadratic_derivatives
 from .derivatives.cubic import cubic_derivatives
 
 def critical_points(equation_type, derivative_level, coefficients, precision):
+    """
+    Calculates the critical points of a specific function at a certain derivative level
+
+    Parameters
+    ----------
+    equation_type : str
+        Name of the type of function for which critical points must be determined (e.g., 'linear', 'quadratic')
+    derivative_level : int
+        Integer corresponding to which derivative to investigate for critical points (1 for the first derivative and 2 for the second derivative)
+    coefficients : list or tuple
+        Coefficients to use to generate the equation to investigate
+    precision : int
+        Maximum number of digits that can appear after the decimal place of the results
+
+    Raises
+    ------
+    ValueError
+        First argument must be either 'linear', 'quadratic', 'cubic', 'hyperbolic', 'exponential', 'logarithmic', 'logistic', or 'sinusoidal'
+    ValueError
+        Second argument must be one of the following integers: [1, 2]
+    TypeError
+        Third argument must be a 1-dimensional list or tuple containing elements that are integers or floats
+    ValueError
+        Last argument must be a positive integer
+
+    Returns
+    -------
+    points : list
+        Values of the x-coordinates at which the original function's derivative either crosses the x-axis or does not exist; if the derivative has no critical points, then it will return a list of `None`
+
+    Examples
+    --------
+    Calulate the critical points of the second derivative of a cubic function with coefficients 2, 3, 5, and 7 (and round the results to four decimal places)
+        >>> test = critical_points('cubic', 2, [2, 3, 5, 7], 4)
+    Print the results
+        >>> print(test)
+        [-0.5]
+    """
     select_equations(equation_type)
     select_integers(derivative_level, [1, 2])
     vector_of_scalars(coefficients, 'third')

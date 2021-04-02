@@ -8,6 +8,60 @@ from .extrema import extrema_points
 from .inflections import inflection_points
 
 def key_coordinates(equation_type, coefficients, equation, first_derivative, second_derivative, precision):
+    """
+    Calculates the key points of a specific function
+
+    Parameters
+    ----------
+    equation_type : str
+        Name of the type of function for which extrema must be determined (e.g., 'linear', 'quadratic')
+    coefficients : list or tuple
+        Coefficients to use to generate the equation to investigate
+    equation : function
+        Function to use for evaluating the y-coordinates of each point
+    first_derivative : function
+        Function of the first derivative to use for generating a list of critical points
+    second_derivative : function
+        Function of the second derivative to use for generating a list of critical points
+    precision : int
+        Maximum number of digits that can appear after the decimal place of the results
+
+    Raises
+    ------
+    ValueError
+        First argument must be either 'linear', 'quadratic', 'cubic', 'hyperbolic', 'exponential', 'logarithmic', 'logistic', or 'sinusoidal'
+    TypeError
+        Second argument must be a 1-dimensional list or tuple containing elements that are integers or floats
+    TypeError
+        Third, fourth, and fifth arguments must be callable functions
+    ValueError
+        Last argument must be a positive integer
+
+    Returns
+    -------
+    points['roots'] : list
+        List containing two-element lists for each point; first elements of those lists will be the value of the x-coordinate at which the original function has a root; second elements of those lists will be 0; if the function has no roots, then it will return a list of `None`
+    points['maxima'] : list
+        List containing two-element lists for each point; first elements of those lists will be the value of the x-coordinate at which the original function has a relative maximum; second elements of those lists will be the y-coordinate of that maximum; if the function has no maxima, then it will return a list of `None`
+    points['minima'] : list
+        List containing two-element lists for each point; first elements of those lists will be the value of the x-coordinate at which the original function has a relative minimum; second elements of those lists will be the y-coordinate of that minimum; if the function has no minima, then it will return a list of `None`
+    points['inflections'] : list
+        List containing two-element lists for each point; first elements of those lists will be the value of the x-coordinate at which the original function has an inflection; second elements of those lists will be the y-coordinate of that inflection; if the function has no inflection points, then it will return a list of `None`
+
+    Examples
+    --------
+    Calculate the key points of a cubic function with coefficients 1, -15, 63, and -7 (and round the results to four decimal places)
+        >>> test = key_coordinates('cubic', [1, -15, 63, -7], lambda x : x**3 - 15 * x**2 + 63 * x - 7, lambda x : 3 * x**2 - 30 * x + 63, lambda x : 6 * x - 30, 4)
+    Print results
+        >>> print(test['roots'])
+        [[0.1142, 0]]
+        >>> print(test['maxima'])
+        [[3.0, 74.0]]
+        >>> print(test['minima'])
+        [[7.0, 42.0]]
+        >>> print(test['inflections'])
+        [[5.0, 58.0]]
+    """
     select_equations(equation_type)
     vector_of_scalars(coefficients, 'second')
     callable_function(equation, 'third')

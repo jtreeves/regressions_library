@@ -13,6 +13,42 @@ from .roots.sinusoidal import sinusoidal_roots
 from .accumulation import accumulated_area
 
 def average_value_derivative(equation, start, end, precision):
+    """
+    Evaluates the average rate of change between two points for a given function
+
+    Parameters
+    ----------
+    equation : function
+        Function to use for evaluating the average rate of change
+    start : int or float
+        Value of the x-coordinate of the first point to use for evaluating the rate of change
+    end : int or float
+        Value of the x-coordinate of the second point to use for evaluating the rate of change
+    precision : int
+        Maximum number of digits that can appear after the decimal place of the result
+
+    Raises
+    ------
+    TypeError
+        First argument must be a callable function
+    TypeError
+        Second and third arguments must be integers or floats
+    ValueError
+        Last argument must be a positive integer
+
+    Returns
+    -------
+    average : float
+        Slope of a function between two points
+
+    Examples
+    --------
+    Evaluate the average rate of change of a cubic function with coefficients 2, 3, 5, and 7 between end points of 10 and 20 (and round the result to four decimal places)
+        >>> test = average_value_derivative(lambda x : x**3 - 15 * x**2 + 63 * x - 7, 10, 20, 4)
+    Print the result
+        >>> print(test)
+        313.0
+    """
     callable_function(equation, 'first')
     compare_scalars(start, end, 'second', 'third')
     positive_integer(precision)
@@ -23,6 +59,42 @@ def average_value_derivative(equation, start, end, precision):
     return result
 
 def mean_values_derivative(equation_type, equation, start, end, constants, precision):
+    """
+    Generates a list of all the x-coordinates whose instantaneous rates of change equal the function's average rate of change between two points
+
+    Parameters
+    ----------
+    equation : function
+        Function to use for evaluating the average rate of change
+    start : int or float
+        Value of the x-coordinate of the first point to use for evaluating the rate of change
+    end : int or float
+        Value of the x-coordinate of the second point to use for evaluating the rate of change
+    precision : int
+        Maximum number of digits that can appear after the decimal place of the result
+
+    Raises
+    ------
+    TypeError
+        First argument must be a callable function
+    TypeError
+        Second and third arguments must be integers or floats
+    ValueError
+        Last argument must be a positive integer
+
+    Returns
+    -------
+    average : float
+        Slope of a function between two points
+
+    Examples
+    --------
+    Evaluate the average rate of change of a cubic function with coefficients 2, 3, 5, and 7 between end points of 10 and 20 (and round the result to four decimal places)
+        >>> test = average_value_derivative(lambda x : x**3 - 15 * x**2 + 63 * x - 7, 10, 20, 4)
+    Print the result
+        >>> print(test)
+        313.0
+    """
     select_equations(equation_type)
     callable_function(equation, 'second')
     compare_scalars(start, end, 'third', 'fourth')
@@ -211,3 +283,6 @@ def average_values(equation_type, equation, integral, start, end, constants, pre
         'mean_values_integral': integral_inputs
     }
     return results
+
+test = average_value_derivative(lambda x : x**3 - 15 * x**2 + 63 * x - 7, 10, 20, 4)
+print(test)

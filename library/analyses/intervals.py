@@ -3,6 +3,40 @@ from library.errors.vectors import allow_none_vector
 from library.statistics.sort import sorted_list
 
 def sign_chart(derivative, points):
+    """
+    Creates a sign chart for a given derivative
+
+    Parameters
+    ----------
+    derivative : function
+        Function of the derivative to use when testing values to construct the sign chart
+    points : list or tuple
+        Values where the derivative either crosses the x-axis or does not exist
+
+    Raises
+    ------
+    TypeError
+        First argument must be a callable function
+    TypeError
+        Second argument must be a 1-dimensional list or tuple that only contains integers, floats, or `None`; if it contains a second element, then its second element must be an integer or a float
+
+    Returns
+    -------
+    chart : list
+        Strings describing the sign (e.g., 'positive', 'negative') of the derivative between its critical points; as a result, its elements will alternate between strings (indicating the signs) and floats (indicating the end points)
+
+    Examples
+    --------
+    Generate the derivatives of a cubic function with coefficients 1, -15, 63, and -7
+        >>> test1 = cubic_derivatives(1, -15, 63, -7)
+    Calulate the critical points of the first derivative of that function (and round the results to four decimal places)
+        >>> test2 = critical_points('cubic', 1, [-1, -15, 63, -7], 4)
+    Create the sign chart of that derivative
+        >>> test3 = sign_chart(test1['first']['evaluation'], test2)
+    Print the results
+        >>> print(test3)
+        ['positive', 3.0, 'negative', 7.0, 'positive']
+    """
     callable_function(derivative, 'first')
     allow_none_vector(points, 'second')
     result = []
