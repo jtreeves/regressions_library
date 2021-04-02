@@ -3,6 +3,42 @@ from library.statistics.sort import sorted_list
 from library.statistics.rounding import rounded_value
 
 def cubic_roots(first_constant, second_constant, third_constant, fourth_constant, precision):
+    """
+    Calculates the roots of a cubic function
+
+    Parameters
+    ----------
+    first_constant : int or float
+        Coefficient of the cubic term of the original cubic function
+    second_constant : int or float
+        Coefficient of the quadratic term of the original cubic function
+    third_constant : int or float
+        Coefficient of the linear term of the original cubic function
+    fourth_constant : int or float
+        Coefficient of the constant term of the original cubic function
+    precision : int
+        Maximum number of digits that can appear after the decimal place of the resultant roots
+
+    Raises
+    ------
+    TypeError
+        First four arguments must be integers or floats
+    ValueError
+        Last argument must be a positive integer
+
+    Returns
+    -------
+    roots : list
+        List of the x-coordinates of all of the x-intercepts of the original function
+
+    Examples
+    --------
+    Calculate the roots of a cubic function with coefficients 2, 3, 5, and 7 (and round roots to four decimal places)
+        >>> test = cubic_roots(2, 3, 5, 7, 4)
+    Print the roots
+        >>> print(test)
+        [-1.4455]
+    """
     four_scalars(first_constant, second_constant, third_constant, fourth_constant)
     positive_integer(precision)
     roots = []

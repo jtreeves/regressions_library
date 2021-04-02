@@ -4,6 +4,42 @@ from library.statistics.sort import sorted_list
 from library.statistics.rounding import rounded_value
 
 def sinusoidal_roots(first_constant, second_constant, third_constant, fourth_constant, precision):
+    """
+    Calculates the roots of a sinusoidal function
+
+    Parameters
+    ----------
+    first_constant : int or float
+        Vertical stretch factor of the original sine function
+    second_constant : int or float
+        Horizontal stretch factor of the original sine function
+    third_constant : int or float
+        Horizontal shift of the original sine function
+    fourth_constant : int or float
+        Vertical shift of the original sine function
+    precision : int
+        Maximum number of digits that can appear after the decimal place of the resultant roots
+
+    Raises
+    ------
+    TypeError
+        First four arguments must be integers or floats
+    ValueError
+        Last argument must be a positive integer
+
+    Returns
+    -------
+    roots : list
+        List of the x-coordinates of all of the x-intercepts of the original function; if the function never crosses the x-axis, then it will return a list of `None`
+
+    Examples
+    --------
+    Calculate the roots of a sinusoidal function with coefficients 2, 3, 5, and 7 (and round roots to four decimal places)
+        >>> test = sinusoidal_roots(2, 3, 5, 7, 4)
+    Print the roots
+        >>> print(test)
+        [None]
+    """
     four_scalars(first_constant, second_constant, third_constant, fourth_constant)
     positive_integer(precision)
     roots = []

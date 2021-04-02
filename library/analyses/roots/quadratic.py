@@ -3,6 +3,40 @@ from library.statistics.sort import sorted_list
 from library.statistics.rounding import rounded_value
 
 def quadratic_roots(first_constant, second_constant, third_constant, precision):
+    """
+    Calculates the roots of a quadratic function
+
+    Parameters
+    ----------
+    first_constant : int or float
+        Coefficient of the quadratic term of the original quadratic function
+    second_constant : int or float
+        Coefficient of the linear term of the original quadratic function
+    third_constant : int or float
+        Coefficient of the constant term of the original quadratic function
+    precision : int
+        Maximum number of digits that can appear after the decimal place of the resultant roots
+
+    Raises
+    ------
+    TypeError
+        First three arguments must be integers or floats
+    ValueError
+        Last argument must be a positive integer
+
+    Returns
+    -------
+    roots : list
+        List of the x-coordinates of all of the x-intercepts of the original function; if the function never crosses the x-axis, then it will return a list of `None`
+
+    Examples
+    --------
+    Calculate the roots of a quadratic function with coefficients 2, 3, and 5 (and round roots to four decimal places)
+        >>> test = quadratic_roots(2, 3, 5, 4)
+    Print the roots
+        >>> print(test)
+        [None]
+    """
     three_scalars(first_constant, second_constant, third_constant)
     positive_integer(precision)
     roots = []

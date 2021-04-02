@@ -1,6 +1,38 @@
 from library.errors.scalars import two_scalars, positive_integer
 
 def exponential_roots(first_constant, second_constant, precision):
+    """
+    Calculates the roots of an exponential function
+
+    Parameters
+    ----------
+    first_constant : int or float
+        Constant multiple of the original exponential function
+    second_constant : int or float
+        Base rate of variable of the original exponential function
+    precision : int
+        Maximum number of digits that can appear after the decimal place of the resultant roots
+
+    Raises
+    ------
+    TypeError
+        First two arguments must be integers or floats
+    ValueError
+        Last argument must be a positive integer
+
+    Returns
+    -------
+    roots : list
+        List of the x-coordinates of all of the x-intercepts of the original function; if the function never crosses the x-axis, then it will return a list of `None`
+
+    Examples
+    --------
+    Calculate the roots of an exponential function with coefficients 2 and 3 (and round roots to four decimal places)
+        >>> test = cubic_roots(2, 3, 4)
+    Print the roots
+        >>> print(test)
+        [None]
+    """
     two_scalars(first_constant, second_constant)
     positive_integer(precision)
     root = [None]
