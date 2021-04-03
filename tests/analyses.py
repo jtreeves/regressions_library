@@ -601,9 +601,9 @@ class TestAverages(unittest.TestCase):
     
     def test_sinusoidal_averages(self):
         sinusoidal_averages = average_values('sinusoidal', sinusoidal_function, sinusoidal_integral_object['evaluation'], 10, 20, coefficients, precision)
-        self.assertEqual(sinusoidal_averages, {'average_value_derivative': 0.0401, 'mean_values_derivative': [None], 'average_value_integral': 6.9143, 'mean_values_integral': [10.2503, '4.9857 + 2.0944k', '6.0615 + 2.0944k']})
+        self.assertEqual(sinusoidal_averages, {'average_value_derivative': 0.0401, 'mean_values_derivative': [10.7618, 11.8046, 12.8562, 13.899, 14.9506, 15.9933, '10.7618 + 2.0944k', '11.8046 + 2.0944k'], 'average_value_integral': 6.9143, 'mean_values_integral': [10.2503, 11.2689, 12.3447, 13.3633, 14.4391, 15.4577, 16.5335, 17.5521, 18.6279, 19.6465, '10.2503 + 2.0944k', '11.2689 + 2.0944k']})
 
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 136 tests in 0.012s ---------- OK ---------- #
+# ---------- Ran 136 tests in 0.013s ---------- OK ---------- #

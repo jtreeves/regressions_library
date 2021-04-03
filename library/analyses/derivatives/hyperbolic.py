@@ -60,7 +60,3 @@ def hyperbolic_derivatives(first_constant, second_constant):
         'second': second_object
     }
     return results
-
-test = hyperbolic_derivatives(2, 3)
-print(test['first']['constants'])
-print(test['second']['evaluation'](10))

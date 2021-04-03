@@ -241,7 +241,7 @@ class TestAgnosticModels(unittest.TestCase):
         self.assertEqual(agnostic_models['models']['sinusoidal']['accumulations'], {'range': 307.8889, 'iqr': 183.0544})
     
     def test_agnostic_models_sinusoidal_averages(self):
-        self.assertEqual(agnostic_models['models']['sinusoidal']['averages'], {'range': {'average_value_derivative': -0.1852, 'mean_values_derivative': [7.2532, 7.3051, '-1.5207 + 8.8257k', '-1.5726 + 8.8257k'], 'average_value_integral': 34.2099, 'mean_values_integral': [5.0645, 9.4937, '-3.7612 + 8.8257k', '0.668 + 8.8257k']}, 'iqr': {'average_value_derivative': 5.2593, 'mean_values_derivative': [6.5037, '-2.322 + 8.8257k', '-0.7712 + 8.8257k'], 'average_value_integral': 36.6109, 'mean_values_integral': [5.305, '-3.5207 + 8.8257k', '0.4275 + 8.8257k']}})
+        self.assertEqual(agnostic_models['models']['sinusoidal']['averages'], {'range': {'average_value_derivative': -0.1852, 'mean_values_derivative': [2.8403, 7.3051, '2.8403 + 8.8257k', '7.3051 + 8.8257k'], 'average_value_integral': 34.2099, 'mean_values_integral': [5.0645, 9.4937, '5.0645 + 8.8257k', '9.4937 + 8.8257k']}, 'iqr': {'average_value_derivative': 5.2593, 'mean_values_derivative': [3.6416, 6.5037, '3.6416 + 8.8257k', '6.5037 + 8.8257k'], 'average_value_integral': 36.6109, 'mean_values_integral': [5.305, '0.4275 + 8.8257k', '5.305 + 8.8257k']}})
     
     def test_agnostic_models_sinusoidal_correlation(self):
         self.assertEqual(agnostic_models['models']['sinusoidal']['correlation'], 0.9264)
@@ -370,7 +370,7 @@ class TestLinearModels(unittest.TestCase):
         self.assertEqual(linear_models['models']['sinusoidal']['accumulations'], {'range': 148.4999, 'iqr': 82.5001})
     
     def test_linear_models_sinusoidal_averages(self):
-        self.assertEqual(linear_models['models']['sinusoidal']['averages'], {'range': {'average_value_derivative': -0.6829, 'mean_values_derivative': [4.6102, 4.7153, 7.9591, 8.0643, '4.7153 + 3.349k', '4.6102 + 3.349k'], 'average_value_integral': 16.5, 'mean_values_integral': [3.8255, 5.5, 7.1745, 8.849, '3.8255 + 3.349k', '5.5 + 3.349k']}, 'iqr': {'average_value_derivative': 1.4778, 'mean_values_derivative': [4.5483, 4.7772, 7.8972, '4.5483 + 3.349k', '4.7772 + 3.349k'], 'average_value_integral': 16.5, 'mean_values_integral': [3.8255, 5.5, 7.1745, '3.8255 + 3.349k', '5.5 + 3.349k']}})
+        self.assertEqual(linear_models['models']['sinusoidal']['averages'], {'range': {'average_value_derivative': -0.6829, 'mean_values_derivative': [4.7153, 6.2846, 8.0643, 9.6336, '4.7153 + 3.349k', '6.2846 + 3.349k'], 'average_value_integral': 16.5, 'mean_values_integral': [3.8255, 5.5, 7.1745, 8.849, '3.8255 + 3.349k', '5.5 + 3.349k']}, 'iqr': {'average_value_derivative': 1.4778, 'mean_values_derivative': [4.5483, 6.4517, 7.8972, '4.5483 + 3.349k', '6.4517 + 3.349k'], 'average_value_integral': 16.5, 'mean_values_integral': [3.8255, 5.5, 7.1745, '3.8255 + 3.349k', '5.5 + 3.349k']}})
     
     def test_linear_models_sinusoidal_correlation(self):
         self.assertEqual(linear_models['models']['sinusoidal']['correlation'], 0.3046)
@@ -499,7 +499,7 @@ class TestQuadraticModels(unittest.TestCase):
         self.assertEqual(quadratic_models['models']['sinusoidal']['accumulations'], {'range': 371.9341, 'iqr': 254.9671})
     
     def test_quadratic_models_sinusoidal_averages(self):
-        self.assertEqual(quadratic_models['models']['sinusoidal']['averages'], {'range': {'average_value_derivative': 0.8736, 'mean_values_derivative': [None], 'average_value_integral': 41.326, 'mean_values_integral': [3.2255, 8.3127, '-10.9219 + 19.2346k', '3.2255 + 19.2346k']}, 'iqr': {'average_value_derivative': 1.152, 'mean_values_derivative': [None], 'average_value_integral': 50.9934, 'mean_values_integral': [4.3134, 7.2249, '-12.0097 + 19.2346k', '4.3134 + 19.2346k']}})
+        self.assertEqual(quadratic_models['models']['sinusoidal']['averages'], {'range': {'average_value_derivative': 0.8736, 'mean_values_derivative': [5.5871, '-3.6661 + 19.2346k', '5.5871 + 19.2346k'], 'average_value_integral': 41.326, 'mean_values_integral': [3.2255, 8.3127, '3.2255 + 19.2346k', '8.3127 + 19.2346k']}, 'iqr': {'average_value_derivative': 1.152, 'mean_values_derivative': [5.529, '-3.608 + 19.2346k', '5.529 + 19.2346k'], 'average_value_integral': 50.9934, 'mean_values_integral': [4.3134, 7.2249, '4.3134 + 19.2346k', '7.2249 + 19.2346k']}})
     
     def test_quadratic_models_sinusoidal_correlation(self):
         self.assertEqual(quadratic_models['models']['sinusoidal']['correlation'], 0.9983)
@@ -628,7 +628,7 @@ class TestCubicModels(unittest.TestCase):
         self.assertEqual(cubic_models['models']['sinusoidal']['accumulations'], {'range': 579.7843, 'iqr': 295.5669})
     
     def test_cubic_models_sinusoidal_averages(self):
-        self.assertEqual(cubic_models['models']['sinusoidal']['averages'], {'range': {'average_value_derivative': 4.915, 'mean_values_derivative': [6.5241, 6.9368, '0.3087 + 6.6282k', '-0.1041 + 6.6282k'], 'average_value_integral': 64.4205, 'mean_values_integral': [1.8472, 4.9856, 8.4754, '-1.6426 + 6.6282k', '1.8472 + 6.6282k']}, 'iqr': {'average_value_derivative': -6.8405, 'mean_values_derivative': [6.4415, 7.0195, '-0.1867 + 6.6282k', '0.3913 + 6.6282k'], 'average_value_integral': 59.1134, 'mean_values_integral': [5.1958, '-1.4324 + 6.6282k', '1.6369 + 6.6282k']}})
+        self.assertEqual(cubic_models['models']['sinusoidal']['averages'], {'range': {'average_value_derivative': 4.915, 'mean_values_derivative': [3.21, 6.9368, 9.8382, '3.21 + 6.6282k', '6.9368 + 6.6282k'], 'average_value_integral': 64.4205, 'mean_values_integral': [1.8472, 4.9856, 8.4754, '1.8472 + 6.6282k', '4.9856 + 6.6282k']}, 'iqr': {'average_value_derivative': -6.8405, 'mean_values_derivative': [3.7054, 6.4415, '3.7054 + 6.6282k', '6.4415 + 6.6282k'], 'average_value_integral': 59.1134, 'mean_values_integral': [5.1958, '1.6369 + 6.6282k', '5.1958 + 6.6282k']}})
     
     def test_cubic_models_sinusoidal_correlation(self):
         self.assertEqual(cubic_models['models']['sinusoidal']['correlation'], 0.8205)
@@ -757,7 +757,7 @@ class TestHyperbolicModels(unittest.TestCase):
         self.assertEqual(hyperbolic_models['models']['sinusoidal']['accumulations'], {'range': 6517.2945, 'iqr': 3776.9985})
     
     def test_hyperbolic_models_sinusoidal_averages(self):
-        self.assertEqual(hyperbolic_models['models']['sinusoidal']['averages'], {'range': {'average_value_derivative': -76.0326, 'mean_values_derivative': [1.1239, 1.3653, 6.4174, 6.6589, '1.3653 + 5.2936k', '1.1239 + 5.2936k'], 'average_value_integral': 724.1438, 'mean_values_integral': [2.6104, 5.1724, 7.9039, '-0.1212 + 5.2936k', '2.6104 + 5.2936k']}, 'iqr': {'average_value_derivative': 29.3354, 'mean_values_derivative': [6.4917, 6.5846, '1.1982 + 5.2936k', '1.2911 + 5.2936k'], 'average_value_integral': 755.3997, 'mean_values_integral': [5.2311, 7.8452, '-0.0624 + 5.2936k', '2.5517 + 5.2936k']}})
+        self.assertEqual(hyperbolic_models['models']['sinusoidal']['averages'], {'range': {'average_value_derivative': -76.0326, 'mean_values_derivative': [1.3653, 3.7707, 6.6589, 9.0642, '1.3653 + 5.2936k', '3.7707 + 5.2936k'], 'average_value_integral': 724.1438, 'mean_values_integral': [2.6104, 5.1724, 7.904, '2.6104 + 5.2936k', '5.1724 + 5.2936k']}, 'iqr': {'average_value_derivative': 29.3354, 'mean_values_derivative': [3.9378, 6.4917, '3.9378 + 5.2936k', '6.4917 + 5.2936k'], 'average_value_integral': 755.3997, 'mean_values_integral': [5.2312, 7.8453, '5.2312 + 5.2936k', '7.8453 + 5.2936k']}})
     
     def test_hyperbolic_models_sinusoidal_correlation(self):
         self.assertEqual(hyperbolic_models['models']['sinusoidal']['correlation'], 0.4914)
@@ -886,7 +886,7 @@ class TestExponentialModels(unittest.TestCase):
         self.assertEqual(exponential_models['models']['sinusoidal']['accumulations'], {'range': 5450.1513, 'iqr': 2898.7499})
     
     def test_exponential_models_sinusoidal_averages(self):
-        self.assertEqual(exponential_models['models']['sinusoidal']['averages'], {'range': {'average_value_derivative': 283.2682, 'mean_values_derivative': [None], 'average_value_integral': 605.5724, 'mean_values_integral': [5.6274, '5.6274 + 61.4557k', '43.1005 + 61.4557k']}, 'iqr': {'average_value_derivative': 290.3284, 'mean_values_derivative': [None], 'average_value_integral': 579.75, 'mean_values_integral': [5.5397, '5.5397 + 61.4557k', '43.1882 + 61.4557k']}})
+        self.assertEqual(exponential_models['models']['sinusoidal']['averages'], {'range': {'average_value_derivative': 283.2682, 'mean_values_derivative': [None], 'average_value_integral': 605.5724, 'mean_values_integral': [5.6274, '-18.3552 + 61.4557k', '5.6274 + 61.4557k']}, 'iqr': {'average_value_derivative': 290.3284, 'mean_values_derivative': [None], 'average_value_integral': 579.75, 'mean_values_integral': [5.5397, '-18.2675 + 61.4557k', '5.5397 + 61.4557k']}})
     
     def test_exponential_models_sinusoidal_correlation(self):
         self.assertEqual(exponential_models['models']['sinusoidal']['correlation'], 0.8194)
@@ -1015,7 +1015,7 @@ class TestLogarithmicModels(unittest.TestCase):
         self.assertEqual(logarithmic_models['models']['sinusoidal']['accumulations'], {'range': 58.9487, 'iqr': 32.5636})
     
     def test_logarithmic_models_sinusoidal_averages(self):
-        self.assertEqual(logarithmic_models['models']['sinusoidal']['averages'], {'range': {'average_value_derivative': 0.2234, 'mean_values_derivative': [1.3352, 1.5701, 6.5654, 6.8002, '1.5701 + 5.2302k', '1.3352 + 5.2302k'], 'average_value_integral': 6.5499, 'mean_values_integral': [2.7779, 5.3576, 8.008, '0.1274 + 5.2302k', '2.7779 + 5.2302k']}, 'iqr': {'average_value_derivative': -0.0721, 'mean_values_derivative': [6.645, 6.7206, '1.4148 + 5.2302k', '1.4904 + 5.2302k'], 'average_value_integral': 6.5127, 'mean_values_integral': [5.381, 7.9846, '0.1508 + 5.2302k', '2.7545 + 5.2302k']}})
+        self.assertEqual(logarithmic_models['models']['sinusoidal']['averages'], {'range': {'average_value_derivative': 0.2234, 'mean_values_derivative': [1.5701, 3.9503, 6.8002, 9.1804, '1.5701 + 5.2302k', '3.9503 + 5.2302k'], 'average_value_integral': 6.5499, 'mean_values_integral': [2.7779, 5.3576, 8.0081, '2.7779 + 5.2302k', '5.3576 + 5.2302k']}, 'iqr': {'average_value_derivative': -0.0721, 'mean_values_derivative': [4.1055, 6.645, '4.1055 + 5.2302k', '6.645 + 5.2302k'], 'average_value_integral': 6.5127, 'mean_values_integral': [5.381, 7.9847, '5.381 + 5.2302k', '7.9847 + 5.2302k']}})
     
     def test_logarithmic_models_sinusoidal_correlation(self):
         self.assertEqual(logarithmic_models['models']['sinusoidal']['correlation'], 0.4601)
@@ -1144,7 +1144,7 @@ class TestLogisticModels(unittest.TestCase):
         self.assertEqual(logistic_models['models']['sinusoidal']['accumulations'], {'range': 10.0923, 'iqr': 6.0323})
     
     def test_logistic_models_sinusoidal_averages(self):
-        self.assertEqual(logistic_models['models']['sinusoidal']['averages'], {'range': {'average_value_derivative': 0.1992, 'mean_values_derivative': [1.3258, 2.7037, '2.7037 + 12.5386k', '1.3258 + 12.5386k'], 'average_value_integral': 1.1214, 'mean_values_integral': [5.2694, '-1.2399 + 12.5386k', '5.2694 + 12.5386k']}, 'iqr': {'average_value_derivative': 0.4394, 'mean_values_derivative': [3.6967, '3.6967 + 12.5386k', '0.3328 + 12.5386k'], 'average_value_integral': 1.2065, 'mean_values_integral': [5.4147, '-1.3852 + 12.5386k', '5.4147 + 12.5386k']}})
+        self.assertEqual(logistic_models['models']['sinusoidal']['averages'], {'range': {'average_value_derivative': 0.1992, 'mean_values_derivative': [2.7037, 7.5951, '2.7037 + 12.5386k', '7.5951 + 12.5386k'], 'average_value_integral': 1.1214, 'mean_values_integral': [5.2694, '-1.2399 + 12.5386k', '5.2694 + 12.5386k']}, 'iqr': {'average_value_derivative': 0.4394, 'mean_values_derivative': [3.6967, 6.6021, '3.6967 + 12.5386k', '6.6021 + 12.5386k'], 'average_value_integral': 1.2065, 'mean_values_integral': [5.4147, '-1.3852 + 12.5386k', '5.4147 + 12.5386k']}})
     
     def test_logistic_models_sinusoidal_correlation(self):
         self.assertEqual(logistic_models['models']['sinusoidal']['correlation'], 0.9789)
@@ -1273,7 +1273,7 @@ class TestSinusoidalModels(unittest.TestCase):
         self.assertEqual(sinusoidal_models['models']['sinusoidal']['accumulations'], {'range': 30.1831, 'iqr': 11.8169})
     
     def test_sinusoidal_models_sinusoidal_averages(self):
-        self.assertEqual(sinusoidal_models['models']['sinusoidal']['averages'], {'range': {'average_value_derivative': 0.5556, 'mean_values_derivative': [3.9549, 4.0451, 7.9549, 8.0451, '4.0451 + 4.0k', '3.9549 + 4.0k'], 'average_value_integral': 3.3537, 'mean_values_integral': [2.9549, 5.0451, 6.9549, 9.0451, '2.9549 + 4.0k', '5.0451 + 4.0k']}, 'iqr': {'average_value_derivative': -1.0, 'mean_values_derivative': [3.9187, 4.0813, 7.9187, '3.9187 + 4.0k', '4.0813 + 4.0k'], 'average_value_integral': 2.3634, 'mean_values_integral': [3.0813, 4.9187, 7.0813, '3.0813 + 4.0k', '4.9187 + 4.0k']}})
+        self.assertEqual(sinusoidal_models['models']['sinusoidal']['averages'], {'range': {'average_value_derivative': 0.5556, 'mean_values_derivative': [4.0451, 5.9549, 8.0451, 9.9549, '4.0451 + 4.0k', '5.9549 + 4.0k'], 'average_value_integral': 3.3537, 'mean_values_integral': [2.9549, 5.0451, 6.9549, 9.0451, '2.9549 + 4.0k', '5.0451 + 4.0k']}, 'iqr': {'average_value_derivative': -1.0, 'mean_values_derivative': [3.9187, 6.0813, 7.9187, '3.9187 + 4.0k', '6.0813 + 4.0k'], 'average_value_integral': 2.3634, 'mean_values_integral': [3.0813, 4.9187, 7.0813, '3.0813 + 4.0k', '4.9187 + 4.0k']}})
     
     def test_sinusoidal_models_sinusoidal_correlation(self):
         self.assertEqual(sinusoidal_models['models']['sinusoidal']['correlation'], 1.0)
@@ -1402,7 +1402,7 @@ class TestLargeModels(unittest.TestCase):
         self.assertEqual(large_models['models']['sinusoidal']['accumulations'], {'range': 47949.6623, 'iqr': 22220.3277})
     
     def test_large_models_sinusoidal_averages(self):
-        self.assertEqual(large_models['models']['sinusoidal']['averages'], {'range': {'average_value_derivative': 0.3776, 'mean_values_derivative': [None], 'average_value_integral': 489.2823, 'mean_values_integral': [None]}, 'iqr': {'average_value_derivative': 0.983, 'mean_values_derivative': [None], 'average_value_integral': 488.3589, 'mean_values_integral': [None]}})
+        self.assertEqual(large_models['models']['sinusoidal']['averages'], {'range': {'average_value_derivative': 0.3776, 'mean_values_derivative': [100.026, 103.1182, 106.2564, 109.3487, 112.4869, 115.5792, '100.026 + 6.2305k', '103.1182 + 6.2305k'], 'average_value_integral': 489.2823, 'mean_values_integral': [101.5825, 104.6782, 107.813, 110.9087, 114.0435, 117.1392, 120.274, 123.3697, 126.5045, 129.6002, '101.5825 + 6.2305k', '104.6782 + 6.2305k']}, 'iqr': {'average_value_derivative': 0.983, 'mean_values_derivative': [128.0217, 131.1967, 134.2521, 137.4272, 140.4826, 143.6576, '128.0217 + 6.2305k', '131.1967 + 6.2305k'], 'average_value_integral': 488.3589, 'mean_values_integral': [126.4762, 129.6285, 132.7067, 135.859, 138.9372, 142.0895, 145.1677, 148.32, 151.3982, 154.5505, '126.4762 + 6.2305k', '129.6285 + 6.2305k']}})
     
     def test_large_models_sinusoidal_correlation(self):
         self.assertEqual(large_models['models']['sinusoidal']['correlation'], 0.1727)
@@ -1416,4 +1416,4 @@ class TestLargeModels(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 420 tests in 0.032s ---------- OK ---------- #
+# ---------- Ran 420 tests in 0.033s ---------- OK ---------- #

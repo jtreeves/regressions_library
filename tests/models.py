@@ -845,7 +845,7 @@ class TestSinusoidalModel(unittest.TestCase):
         self.assertEqual(sinusoidal_model_low['averages']['range']['average_value_derivative'], 0.56)
     
     def test_sinusoidal_model_low_averages_range_derivative_points(self):
-        self.assertEqual(sinusoidal_model_low['averages']['range']['mean_values_derivative'], [3.95, 4.05, 7.95, 8.05, '4.05 + 4.0k', '3.95 + 4.0k'])
+        self.assertEqual(sinusoidal_model_low['averages']['range']['mean_values_derivative'], [4.05, 5.95, 8.05, 9.95, '4.05 + 4.0k', '5.95 + 4.0k'])
     
     def test_sinusoidal_model_low_averages_range_integral_value(self):
         self.assertEqual(sinusoidal_model_low['averages']['range']['average_value_integral'], 3.35)
@@ -857,7 +857,7 @@ class TestSinusoidalModel(unittest.TestCase):
         self.assertEqual(sinusoidal_model_low['averages']['iqr']['average_value_derivative'], -1.0)
     
     def test_sinusoidal_model_low_averages_iqr_derivative_points(self):
-        self.assertEqual(sinusoidal_model_low['averages']['iqr']['mean_values_derivative'], [3.92, 4.08, 7.92, '3.92 + 4.0k', '4.08 + 4.0k'])
+        self.assertEqual(sinusoidal_model_low['averages']['iqr']['mean_values_derivative'], [3.92, 6.08, 7.92, '3.92 + 4.0k', '6.08 + 4.0k'])
     
     def test_sinusoidal_model_low_averages_iqr_integral_value(self):
         self.assertEqual(sinusoidal_model_low['averages']['iqr']['average_value_integral'], 2.36)
@@ -893,7 +893,7 @@ class TestSinusoidalModel(unittest.TestCase):
         self.assertEqual(sinusoidal_model_high['averages']['range']['average_value_derivative'], 0.555556)
     
     def test_sinusoidal_model_high_averages_range_derivative_points(self):
-        self.assertEqual(sinusoidal_model_high['averages']['range']['mean_values_derivative'], [3.954931, 4.045069, 7.954931, 8.045069, '4.045069 + 4.0k', '3.954931 + 4.0k'])
+        self.assertEqual(sinusoidal_model_high['averages']['range']['mean_values_derivative'], [4.045069, 5.954931, 8.045069, 9.954931, '4.045069 + 4.0k', '5.954931 + 4.0k'])
     
     def test_sinusoidal_model_high_averages_range_integral_value(self):
         self.assertEqual(sinusoidal_model_high['averages']['range']['average_value_integral'], 3.353678)
@@ -905,7 +905,7 @@ class TestSinusoidalModel(unittest.TestCase):
         self.assertEqual(sinusoidal_model_high['averages']['iqr']['average_value_derivative'], -1.0)
     
     def test_sinusoidal_model_high_averages_iqr_derivative_points(self):
-        self.assertEqual(sinusoidal_model_high['averages']['iqr']['mean_values_derivative'], [3.918722, 4.081278, 7.918722, '3.918722 + 4.0k', '4.081278 + 4.0k'])
+        self.assertEqual(sinusoidal_model_high['averages']['iqr']['mean_values_derivative'], [3.918722, 6.081278, 7.918722, '3.918722 + 4.0k', '6.081278 + 4.0k'])
     
     def test_sinusoidal_model_high_averages_iqr_integral_value(self):
         self.assertEqual(sinusoidal_model_high['averages']['iqr']['average_value_integral'], 2.36338)

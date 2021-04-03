@@ -34,6 +34,8 @@ def average_value_derivative(equation, start, end, precision):
     TypeError
         Second and third arguments must be integers or floats
     ValueError
+        Second argument must be less than third argument
+    ValueError
         Last argument must be a positive integer
 
     Returns
@@ -88,6 +90,8 @@ def mean_values_derivative(equation_type, equation, start, end, constants, preci
         Second argument must be a callable function
     TypeError
         Third and fourth arguments must be integers or floats
+    ValueError
+        Third argument must be less than fourth argument
     TypeError
         Fifth argument must be a 1-dimensional list or tuple containing elements that are integers or floats
     ValueError
@@ -197,7 +201,7 @@ def mean_values_derivative(equation_type, equation, start, end, constants, preci
             rounded_initial_value = rounded_value(initial_value, precision)
             rounded_periodic_unit = rounded_value(periodic_unit, precision)
             general_form = str(rounded_initial_value) + ' + ' + str(rounded_periodic_unit) + 'k'
-            alternative_initial_value = constants[2] + pi / constants[1] - periodic_radians
+            alternative_initial_value = constants[2] + 2 * pi / constants[1] - periodic_radians
             while alternative_initial_value < start:
                 alternative_initial_value += periodic_unit
             while initial_value > end:
@@ -225,7 +229,20 @@ def mean_values_derivative(equation_type, equation, start, end, constants, preci
     rounded_results = []
     for number in sorted_results:
         rounded_results.append(rounded_value(number, precision))
-    final_result = rounded_results + other_results
+    sorted_other_results = []
+    if len(other_results) > 0:
+        if len(other_results) == 1:
+            sorted_other_results = other_results
+        else:
+            first_index = other_results[0].find(' + ') - 1
+            first_value = float(other_results[0][:first_index])
+            second_index = other_results[1].find(' + ') - 1
+            second_value = float(other_results[1][:second_index])
+            if first_value < second_value:
+                sorted_other_results = other_results
+            else:
+                sorted_other_results = [other_results[1], other_results[0]]
+    final_result = rounded_results + sorted_other_results
     return final_result
 
 def average_value_integral(equation, start, end, precision):
@@ -249,6 +266,8 @@ def average_value_integral(equation, start, end, precision):
         First argument must be a callable function
     TypeError
         Second and third arguments must be integers or floats
+    ValueError
+        Second argument must be less than third argument
     ValueError
         Last argument must be a positive integer
 
@@ -304,6 +323,8 @@ def mean_values_integral(equation_type, equation, start, end, constants, precisi
         Second argument must be a callable function
     TypeError
         Third and fourth arguments must be integers or floats
+    ValueError
+        Third argument must be less than fourth argument
     TypeError
         Fifth argument must be a 1-dimensional list or tuple containing elements that are integers or floats
     ValueError
@@ -359,17 +380,15 @@ def mean_values_integral(equation_type, equation, start, end, constants, precisi
             result.append(value)
     elif equation_type == 'sinusoidal':
         values = sinusoidal_roots(constants[0], constants[1], constants[2], constants[3] - average, precision)
-        print(values)
         general_forms = []
         for value in values:
             if isinstance(value, str):
                 general_forms.append(value)
         options = []
         for form in general_forms:
-            pivot = form.find(' + ')
-            initial_value_index = pivot - 1
+            initial_value_index = form.find(' + ')
             initial_value = float(form[:initial_value_index])
-            periodic_unit_index = pivot + 3
+            periodic_unit_index = initial_value_index + 3
             periodic_unit = float(form[periodic_unit_index:-1])
             while initial_value < start:
                 initial_value += periodic_unit
@@ -383,9 +402,7 @@ def mean_values_integral(equation_type, equation, start, end, constants, precisi
             rounded_periodic_unit = rounded_value(periodic_unit, precision)
             general_form = str(rounded_initial_value) + ' + ' + str(rounded_periodic_unit) + 'k'
             options += [initial_value, first_value, second_value, third_value, fourth_value, general_form]
-            print(options)
         result = options
-        print(result)
     if not result:
         result = [None]
         return result
@@ -449,6 +466,8 @@ def average_values(equation_type, equation, integral, start, end, constants, pre
         Second and third arguments must be callable functions
     TypeError
         Fourth and fifth arguments must be integers or floats
+    ValueError
+        Fourth argument must be less than fifth argument
     TypeError
         Sixth argument must be a 1-dimensional list or tuple containing elements that are integers or floats
     ValueError
