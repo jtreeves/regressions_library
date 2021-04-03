@@ -5,7 +5,7 @@ def matrix_of_scalars(matrix, position):
     Parameters
     ----------
     matrix : list or tuple
-        List of lists of numbers represening a matrix
+        List of lists of numbers representing a matrix
     position : str
         String representing the position of the matrix argument within the parent function, expressed as an ordinal (e.g., 'first', 'second')
 
@@ -51,7 +51,7 @@ def square_matrix(matrix):
     Parameters
     ----------
     matrix : list or tuple
-        List of lists of numbers represening a matrix
+        List of lists of numbers representing a matrix
 
     Raises
     ------
@@ -90,9 +90,9 @@ def compare_rows(matrix_one, matrix_two):
     Parameters
     ----------
     matrix_one : list or tuple
-        List of lists of numbers represening a matrix
+        List of lists of numbers representing a matrix
     matrix_two : list or tuple
-        List of lists of numbers represening a matrix
+        List of lists of numbers representing a matrix
 
     Raises
     ------
@@ -132,9 +132,9 @@ def compare_columns(matrix_one, matrix_two):
     Parameters
     ----------
     matrix_one : list or tuple
-        List of lists of numbers represening a matrix
+        List of lists of numbers representing a matrix
     matrix_two : list or tuple
-        List of lists of numbers represening a matrix
+        List of lists of numbers representing a matrix
 
     Raises
     ------
@@ -174,9 +174,9 @@ def compare_matrices(matrix_one, matrix_two):
     Parameters
     ----------
     matrix_one : list or tuple
-        List of lists of numbers represening a matrix
+        List of lists of numbers representing a matrix
     matrix_two : list or tuple
-        List of lists of numbers represening a matrix
+        List of lists of numbers representing a matrix
 
     Raises
     ------
@@ -215,9 +215,9 @@ def columns_rows(matrix_one, matrix_two):
     Parameters
     ----------
     matrix_one : list or tuple
-        List of lists of numbers represening a matrix
+        List of lists of numbers representing a matrix
     matrix_two : list or tuple
-        List of lists of numbers represening a matrix
+        List of lists of numbers representing a matrix
 
     Raises
     ------
@@ -257,7 +257,7 @@ def level(matrix, scalar):
     Parameters
     ----------
     matrix : list or tuple
-        List of lists of numbers represening a matrix
+        List of lists of numbers representing a matrix
     scalar : int
         Number representing a column in a matrix
 

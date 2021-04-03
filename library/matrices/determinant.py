@@ -18,6 +18,39 @@ def inner_determinant(matrix, row, column):
     return result
 
 def linear_determinant(matrix, result = 0):
+    """
+    Calculate the determinant of a matrix
+
+    Parameters
+    ----------
+    matrix : list or tuple
+        List of lists of numbers representing a matrix
+
+    Raises
+    ------
+    TypeError
+        First argument must be a 2-dimensional list or tuple
+    TypeError
+        Elements nested within first argument must be integers or floats
+    ValueError
+        First argument must contain the same amount of lists as the amount of elements contained within its first list
+    
+    Returns
+    -------
+    determinant : int or float
+        Determinant of a matrix
+
+    Examples
+    --------
+    Calculate the determinant of [[1, 2], [3, 4]]
+        >>> determinant_2x2 = linear_determinant([[1, 2], [3, 4]])
+        >>> print(determinant_2x2)
+        -2
+    Calculate the determinant of [[2, 3, 5], [7, 11, 13], [17, 19, 23]]
+        >>> determinant_3x3 = linear_determinant([[2, 3, 5], [7, 11, 13], [17, 19, 23]])
+        >>> print(determinant_3x3)
+        -78
+    """
     square_matrix(matrix)
     whole_number(result, 'second')
     if len(matrix) == 1:
