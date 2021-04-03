@@ -3,7 +3,7 @@ from library.errors.scalars import positive_integer
 
 def single_dimension(matrix, scalar):
     """
-    Extracts a column vector from a matrix according to an integer corresponding to the column's position
+    Extracts a column vector as a row vector from a matrix according to an integer corresponding to the column's position
 
     Parameters
     ----------
@@ -24,18 +24,18 @@ def single_dimension(matrix, scalar):
     Returns
     -------
     vector : list
-        List in which each element is the difference of the corresponding elements from the input points (specifically, the change from the initial point to the terminal point)
+        List containing only integers or floats
 
     Examples
     --------
-    Determince coordinate form of a vector with an initial point of [1, 2, 3] and a terminal point of [4, 5, 6]
-        >>> vector_3d = component_form([1, 2, 3], [4, 5, 6])
-        >>> print(vector_3d)
-        [3, 3, 3]
-    Determince coordinate form of a vector with an initial point of [-5, 12] and a terminal point of [3, -7]
-        >>> vector_2d = component_form([-5, 12], [3, -7])
-        >>> print(vector_2d)
-        [8, -19]
+    Extract the second column from the matrix [[3, 5, 9], [1, -4, 2]]
+        >>> vector_2c = single_dimension([[3, 5, 9], [1, -4, 2]], 2)
+        >>> print(vector_2c)
+        [5, -4]
+    Extract the first column from the matrix [[3, 5, 9], [1, -4, 2]]
+        >>> vector_1c = single_dimension([[3, 5, 9], [1, -4, 2]], 1)
+        >>> print(vector_1c)
+        [3, 1]
     """
     matrix_of_scalars(matrix, 'first')
     positive_integer(scalar)
