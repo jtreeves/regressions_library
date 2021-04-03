@@ -111,7 +111,7 @@ def mean_values_derivative(equation_type, equation, start, end, constants, preci
     Generate a list of all the x-coordinates whose instantaneous rates of change equal the function's average rate of change for a cubic function with coefficients 2, 3, 5, and 7 between end points of 10 and 20 (and round the result to four decimal places)
         >>> points_sinusoidal = mean_values_derivative('sinusoidal', lambda x : 2 * sin(3 * (x - 5)) + 7, 10, 20, [2, 3, 5, 7], 4)
         >>> print(points_sinusoidal)
-        [11.8046, 11.809, 13.899, 13.9034, 15.9933, 15.9978, '11.8046 + 2.0944k', '11.809 + 2.0944k']
+        [10.7618, 11.8046, 12.8562, 13.899, 14.9506, 15.9933, '10.7618 + 2.0944k', '11.8046 + 2.0944k']
     """
     select_equations(equation_type)
     callable_function(equation, 'second')
@@ -368,7 +368,7 @@ def mean_values_integral(equation_type, equation, start, end, constants, precisi
     Generate a list of all the x-coordinates of a sinusoidal function with coefficients 2, 3, 5, and 7 at which the function's value will equal its average value between 10 and 20 (and round the result to four decimal places)
         >>> points_sinusoidal = mean_values_integral('sinusoidal', lambda x : -2 / 3 * cos(3 * (x - 5)) + 7 * x, 10, 20, [2, 3, 5, 7], 4)
         >>> print(points_sinusoidal)
-        [10.2498, 11.2682, 12.3442, 13.3626, 14.4386, 15.457, 16.533, 17.5514, 18.6274, 19.6458, '10.2498 + 2.0944k', '11.2682 + 2.0944k']
+        [10.2503, 11.2689, 12.3447, 13.3633, 14.4391, 15.4577, 16.5335, 17.5521, 18.6279, 19.6465, '10.2503 + 2.0944k', '11.2689 + 2.0944k']
     """
     select_equations(equation_type)
     callable_function(equation, 'second')
@@ -531,11 +531,11 @@ def average_values(equation_type, equation, integral, start, end, constants, pre
         >>> print(averages_sinusoidal['average_value_derivative'])
         0.0401
         >>> print(averages_sinusoidal['mean_values_derivative'])
-        [11.8046, 11.809, 13.899, 13.9034, 15.9933, 15.9978, '11.8046 + 2.0944k', '11.809 + 2.0944k']
+        [10.7618, 11.8046, 12.8562, 13.899, 14.9506, 15.9933, '10.7618 + 2.0944k', '11.8046 + 2.0944k']
         >>> print(averages_sinusoidal['average_value_integral'])
         6.9143
         >>> print(averages_sinusoidal['mean_values_integral'])
-        [10.2498, 11.2682, 12.3442, 13.3626, 14.4386, 15.457, 16.533, 17.5514, 18.6274, 19.6458, '10.2498 + 2.0944k', '11.2682 + 2.0944k']
+        [10.2503, 11.2689, 12.3447, 13.3633, 14.4391, 15.4577, 16.5335, 17.5521, 18.6279, 19.6465, '10.2503 + 2.0944k', '11.2689 + 2.0944k']
     """
     select_equations(equation_type)
     callable_function(equation, 'second')
