@@ -824,16 +824,16 @@ class TestSinusoidalModel(unittest.TestCase):
         self.assertEqual(sinusoidal_model_low['constants'], [-5.0, 1.57, 3.0, 3.0])
     
     def test_sinusoidal_model_low_roots(self):
-        self.assertEqual(sinusoidal_model_low['points']['roots'], [[3.41, 0], [4.59, 0], [7.41, 0], [8.59, 0], [11.41, 0], [12.59, 0], ['3.41 + 4.0k', 0], ['4.59 + 4.0k', 0]])
+        self.assertEqual(sinusoidal_model_low['points']['roots'], [[3.41, 0], [4.59, 0], [7.41, 0], [8.59, 0], ['3.41 + 4.0k', 0], ['4.59 + 4.0k', 0]])
     
     def test_sinusoidal_model_low_maxima(self):
         self.assertEqual(sinusoidal_model_low['points']['maxima'], [[6.0, 8.0], [10.0, 8.0], ['6.0 + 4.0k', 8.0]])
     
     def test_sinusoidal_model_low_minima(self):
-        self.assertEqual(sinusoidal_model_low['points']['minima'], [[4.0, -2.0], [8.0, -2.0], [12.0, -2.0], ['4.0 + 4.0k', -2.0]])
+        self.assertEqual(sinusoidal_model_low['points']['minima'], [[4.0, -2.0], [8.0, -2.0], ['4.0 + 4.0k', -2.0]])
     
     def test_sinusoidal_model_low_inflections(self):
-        self.assertEqual(sinusoidal_model_low['points']['inflections'], [[3.0, 3.0], [5.0, 3.0], [7.0, 3.0], [9.0, 3.0], [11.0, 3.0], ['3.0 + 2.0k', 3.0]])
+        self.assertEqual(sinusoidal_model_low['points']['inflections'], [[3.0, 3.0], [5.0, 3.0], [7.0, 3.0], [9.0, 3.0], ['3.0 + 2.0k', 3.0]])
     
     def test_sinusoidal_model_low_accumulations_range(self):
         self.assertEqual(sinusoidal_model_low['accumulations']['range'], 30.18)
@@ -872,16 +872,16 @@ class TestSinusoidalModel(unittest.TestCase):
         self.assertEqual(sinusoidal_model_high['constants'], [-5.0, 1.570796, 3.0, 3.0])
     
     def test_sinusoidal_model_high_roots(self):
-        self.assertEqual(sinusoidal_model_high['points']['roots'], [[3.409666, 0], [4.590334, 0], [7.409666, 0], [8.590334, 0], [11.409666, 0], [12.590334, 0], ['3.409666 + 4.0k', 0], ['4.590334 + 4.0k', 0]])
+        self.assertEqual(sinusoidal_model_high['points']['roots'], [[3.409666, 0], [4.590334, 0], [7.409666, 0], [8.590334, 0], ['3.409666 + 4.0k', 0], ['4.590334 + 4.0k', 0]])
     
     def test_sinusoidal_model_high_maxima(self):
         self.assertEqual(sinusoidal_model_high['points']['maxima'], [[6.0, 8.0], [10.0, 8.0], ['6.0 + 4.0k', 8.0]])
     
     def test_sinusoidal_model_high_minima(self):
-        self.assertEqual(sinusoidal_model_high['points']['minima'], [[4.0, -2.0], [8.0, -2.0], [12.0, -2.0], ['4.0 + 4.0k', -2.0]])
+        self.assertEqual(sinusoidal_model_high['points']['minima'], [[4.0, -2.0], [8.0, -2.0], ['4.0 + 4.0k', -2.0]])
     
     def test_sinusoidal_model_high_inflections(self):
-        self.assertEqual(sinusoidal_model_high['points']['inflections'], [[3.0, 3.0], [5.0, 3.0], [7.0, 3.0], [9.0, 3.0], [11.0, 3.0], ['3.0 + 2.0k', 3.0]])
+        self.assertEqual(sinusoidal_model_high['points']['inflections'], [[3.0, 3.0], [5.0, 3.0], [7.0, 3.0], [9.0, 3.0], ['3.0 + 2.0k', 3.0]])
     
     def test_sinusoidal_model_high_accumulations_range(self):
         self.assertEqual(sinusoidal_model_high['accumulations']['range'], 30.183099)
@@ -919,4 +919,4 @@ class TestSinusoidalModel(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 256 tests in 0.016s ---------- OK ---------- #
+# ---------- Ran 256 tests in 0.017s ---------- OK ---------- #

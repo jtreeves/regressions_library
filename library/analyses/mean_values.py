@@ -164,10 +164,16 @@ def mean_values_derivative(equation_type, equation, start, end, constants, preci
         if ratio == 0:
             periodic_unit = pi / constants[1]
             initial_value = constants[2] + periodic_radians
-            while initial_value < start:
-                initial_value += periodic_unit
-            while initial_value > end:
-                initial_value -= periodic_unit
+            if periodic_unit > 0:
+                while initial_value > end:
+                    initial_value -= periodic_unit
+                while initial_value < start:
+                    initial_value += periodic_unit
+            else:
+                while initial_value > end:
+                    initial_value += periodic_unit
+                while initial_value < start:
+                    initial_value -= periodic_unit
             first_value = initial_value + 1 * periodic_unit
             second_value = initial_value + 2 * periodic_unit
             third_value = initial_value + 3 * periodic_unit
@@ -179,10 +185,16 @@ def mean_values_derivative(equation_type, equation, start, end, constants, preci
         elif ratio == 1 or ratio == -1:
             periodic_unit = 2 * pi / constants[1]
             initial_value = constants[2] + periodic_radians
-            while initial_value < start:
-                initial_value += periodic_unit
-            while initial_value > end:
-                initial_value -= periodic_unit
+            if periodic_unit > 0:
+                while initial_value > end:
+                    initial_value -= periodic_unit
+                while initial_value < start:
+                    initial_value += periodic_unit
+            else:
+                while initial_value > end:
+                    initial_value += periodic_unit
+                while initial_value < start:
+                    initial_value -= periodic_unit
             first_value = initial_value + 1 * periodic_unit
             second_value = initial_value + 2 * periodic_unit
             rounded_initial_value = rounded_value(initial_value, precision)
@@ -192,20 +204,32 @@ def mean_values_derivative(equation_type, equation, start, end, constants, preci
         else:
             periodic_unit = 2 * pi / constants[1]
             initial_value = constants[2] + periodic_radians
-            while initial_value < start:
-                initial_value += periodic_unit
-            while initial_value > end:
-                initial_value -= periodic_unit
+            if periodic_unit > 0:
+                while initial_value > end:
+                    initial_value -= periodic_unit
+                while initial_value < start:
+                    initial_value += periodic_unit
+            else:
+                while initial_value > end:
+                    initial_value += periodic_unit
+                while initial_value < start:
+                    initial_value -= periodic_unit
             first_value = initial_value + 1 * periodic_unit
             second_value = initial_value + 2 * periodic_unit
             rounded_initial_value = rounded_value(initial_value, precision)
             rounded_periodic_unit = rounded_value(periodic_unit, precision)
             general_form = str(rounded_initial_value) + ' + ' + str(rounded_periodic_unit) + 'k'
             alternative_initial_value = constants[2] + 2 * pi / constants[1] - periodic_radians
-            while alternative_initial_value < start:
-                alternative_initial_value += periodic_unit
-            while initial_value > end:
-                alternative_initial_value -= periodic_unit
+            if periodic_unit > 0:
+                while alternative_initial_value > end:
+                    alternative_initial_value -= periodic_unit
+                while alternative_initial_value < start:
+                    alternative_initial_value += periodic_unit
+            else:
+                while alternative_initial_value > end:
+                    alternative_initial_value += periodic_unit
+                while alternative_initial_value < start:
+                    alternative_initial_value -= periodic_unit
             alternative_first_value = alternative_initial_value + 1 * periodic_unit
             alternative_second_value = alternative_initial_value + 2 * periodic_unit
             rounded_alternative_initial_value = rounded_value(alternative_initial_value, precision)
@@ -390,10 +414,16 @@ def mean_values_integral(equation_type, equation, start, end, constants, precisi
             initial_value = float(form[:initial_value_index])
             periodic_unit_index = initial_value_index + 3
             periodic_unit = float(form[periodic_unit_index:-1])
-            while initial_value < start:
-                initial_value += periodic_unit
-            while initial_value > end:
-                initial_value -= periodic_unit
+            if periodic_unit > 0:
+                while initial_value > end:
+                    initial_value -= periodic_unit
+                while initial_value < start:
+                    initial_value += periodic_unit
+            else:
+                while initial_value > end:
+                    initial_value += periodic_unit
+                while initial_value < start:
+                    initial_value -= periodic_unit
             first_value = initial_value + 1 * periodic_unit
             second_value = initial_value + 2 * periodic_unit
             third_value = initial_value + 3 * periodic_unit
