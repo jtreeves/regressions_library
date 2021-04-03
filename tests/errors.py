@@ -1,7 +1,7 @@
 import unittest
 
 from library.errors.scalars import scalar_value, two_scalars, three_scalars, four_scalars, compare_scalars, positive_integer, whole_number, select_integers, allow_none_scalar
-from library.errors.vectors import vector_of_scalars, compare_vectors, multitype_vector, allow_none_vector, length
+from library.errors.vectors import vector_of_scalars, compare_vectors, multitype_vector, allow_none_vector, length, long_vector
 from library.errors.matrices import matrix_of_scalars, square_matrix, compare_rows, compare_columns, compare_matrices, columns_rows, level
 from library.errors.analyses import callable_function, select_equations
 
@@ -212,13 +212,15 @@ class TestFourScalars(unittest.TestCase):
 
 first_vector = [2, 3, 5]
 second_vector = [7, 11, 13]
-long_vector = [1, 2, 3, 4]
+longer_vector = [1, 2, 3, 4]
 none_vector = [None]
 good_multitype = ['positive', 1, 'negative']
 bad_multitype = ['positive', 'negative', 1]
 bad_vector_string = 'vector'
 bad_vector_buried_string = [1, 'two', 3]
 bad_vector_nested =[[2], 3, 5]
+good_long_vector = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+better_long_vector = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
 class TestVectorScalars(unittest.TestCase):
     def test_vector_scalars_3long(self):
@@ -226,7 +228,7 @@ class TestVectorScalars(unittest.TestCase):
         self.assertEqual(vector_scalars_3long, 'Argument is a 1-dimensional list or tuple containing elements that are integers or floats')
     
     def test_vector_scalars_4long(self):
-        vector_scalars_4long = vector_of_scalars(long_vector, 'only')
+        vector_scalars_4long = vector_of_scalars(longer_vector, 'only')
         self.assertEqual(vector_scalars_4long, 'Argument is a 1-dimensional list or tuple containing elements that are integers or floats')
     
     def test_vector_scalars_nested_raises(self):
@@ -317,7 +319,7 @@ class TestMultitypeVector(unittest.TestCase):
 
 class TestLength(unittest.TestCase):
     def test_length_4_4_integers(self):
-        length_4_4_integers = length(long_vector, 4)
+        length_4_4_integers = length(longer_vector, 4)
         self.assertEqual(length_4_4_integers, 'Argument contains exactly 4 elements')
     
     def test_length_3_3_integers(self):
@@ -336,7 +338,7 @@ class TestLength(unittest.TestCase):
     
     def test_length_5_4_raises(self):
         with self.assertRaises(Exception) as context:
-            length(long_vector, 5)
+            length(longer_vector, 5)
         self.assertEqual(type(context.exception), ValueError)
         self.assertEqual(str(context.exception), 'Argument must contain exactly 5 elements')
 
@@ -347,9 +349,24 @@ class TestCompareVectors(unittest.TestCase):
     
     def test_compare_vectors_3_4_raises(self):
         with self.assertRaises(Exception) as context:
-            compare_vectors(first_vector, long_vector)
+            compare_vectors(first_vector, longer_vector)
         self.assertEqual(type(context.exception), ValueError)
         self.assertEqual(str(context.exception), 'Both arguments must contain the same number of elements')
+
+class TestLongVector(unittest.TestCase):
+    def test_long_vector_10(self):
+        long_vector_10 = long_vector(good_long_vector)
+        self.assertEqual(long_vector_10, 'First argument contains at least 10 elements')
+    
+    def test_long_vector_11(self):
+        long_vector_11 = long_vector(better_long_vector)
+        self.assertEqual(long_vector_11, 'First argument contains at least 10 elements')
+    
+    def test_long_vector_3_raises(self):
+        with self.assertRaises(Exception) as context:
+            long_vector(first_vector)
+        self.assertEqual(type(context.exception), ValueError)
+        self.assertEqual(str(context.exception), 'First argument must contain at least 10 elements')
 
 first_matrix = [[1, 2, 3], [4, 5, 6]]
 second_matrix = [[7, 8, 9], [10, 11, 12]]
@@ -502,4 +519,4 @@ class TestSelectEquations(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 84 tests in 0.007s ---------- OK ---------- #
+# ---------- Ran 87 tests in 0.008s ---------- OK ---------- #

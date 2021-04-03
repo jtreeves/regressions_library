@@ -2,6 +2,7 @@ from math import pi
 from numpy import sin, inf
 from scipy.optimize import curve_fit
 from library.errors.matrices import matrix_of_scalars
+from library.errors.vectors import long_vector
 from library.errors.scalars import positive_integer
 from library.vectors.dimension import single_dimension
 from library.vectors.unify import unite_vectors
@@ -20,6 +21,7 @@ from library.statistics.rounding import rounded_value
 
 def sinusoidal_model(data, precision):
     matrix_of_scalars(data, 'first')
+    long_vector(data)
     positive_integer(precision)
     independent_variable = single_dimension(data, 1)
     dependent_variable = single_dimension(data, 2)

@@ -52,3 +52,9 @@ def length(vector, size):
         raise ValueError(f'Argument must contain exactly {size} elements')
     else:
         return f'Argument contains exactly {size} elements'
+
+def long_vector(vector):
+    if not len(vector) >= 10:
+        raise ValueError(f'First argument must contain at least 10 elements')
+    else:
+        return f'First argument contains at least 10 elements'
