@@ -3,6 +3,37 @@ from library.errors.vectors import vector_of_scalars
 from .sort import sorted_list
 
 def median_value(data):
+    """
+    Determines the median value of a data set
+
+    Parameters
+    ----------
+    data : list or tuple
+        List of numbers to analyze
+
+    Raises
+    ------
+    TypeError
+        Argument must be a 1-dimensional list or tuple
+    TypeError
+        Elements of argument must be integers or floats
+
+    Returns
+    -------
+    median : int or float
+        Middle value of the data set, splitting the data evenly in half
+
+    Examples
+    --------
+    Determine the median of the set [21, 53, 3, 68, 43, 9, 72, 19, 20, 1]
+        >>> median_even = median_value([21, 53, 3, 68, 43, 9, 72, 19, 20, 1])
+        >>> print(median_even)
+        20.5
+    Determine the median of the set [12, 81, 13, 8, 42, 72, 91, 20, 20]
+        >>> median_odd = median_value([12, 81, 13, 8, 42, 72, 91, 20, 20])
+        >>> print(median_odd)
+        20
+    """
     vector_of_scalars(data, 'only')
     sorted_data = sorted_list(data)
     length = len(sorted_data)

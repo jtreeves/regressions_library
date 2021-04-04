@@ -2,12 +2,78 @@ from library.errors.scalars import scalar_value
 from library.errors.vectors import compare_vectors
 
 def single_residual(actual, expected):
+    """
+    Calculates the difference between the actual value and the expected value
+
+    Parameters
+    ----------
+    actual : int or float
+        Value actually provided by an initial data set
+    expected : int or float
+        Value predicted to occur by a generated model at the same input to the one that coincided with the actual value
+
+    Raises
+    ------
+    TypeError
+        Arguments must be integers or floats
+
+    Returns
+    -------
+    residual : int or float
+        Difference between the actual value and the expected value
+
+    Examples
+    --------
+    Determine the residual between an actual value of 7.8 and an expected value of 9.2
+        >>> residual_small = single_residual(7.8, 9.2)
+        >>> print(residual_small)
+        -1.3999999999999995
+    Determine the residual between an actual value of 6.1 and an expected value of 19.8
+        >>> residual_large = single_residual(6.1, 19.8)
+        >>> print(residual_large)
+        -13.700000000000001
+    """
     scalar_value(actual, 'first')
     scalar_value(expected, 'second')
     result = actual - expected
     return result
 
 def multiple_residuals(actual_array, expected_array):
+    """
+    Generates a list of the differences between the actual values from one list and the expected values from another list
+
+    Parameters
+    ----------
+    actual_array : list or tuple
+        List containing the actual values observed from a data set
+    expected_array : list or tuple
+        List containing the expected values predicted for a data set
+
+    Raises
+    ------
+    TypeError
+        Arguments must be 1-dimensional lists or tuples
+    TypeError
+        Elements of arguments must be integers or floats
+    ValueError
+        Both arguments must contain the same number of elements
+
+    Returns
+    -------
+    residuals : list
+        Differences between the actual values and the expected values
+
+    Examples
+    --------
+    Determine the residuals between the actual values [5.6, 8.1, 6.3] and the expected values [6.03, 8.92, 6.12]
+        >>> residuals_short = multiple_residuals([5.6, 8.1, 6.3], [6.03, 8.92, 6.12])
+        >>> print(residuals_short)
+       [-0.4300000000000006, -0.8200000000000003, 0.17999999999999972]
+    Determine the residuals between the actual values [11.7, 5.6, 8.1, 13.4, 6.3] and the expected values [15.17, 6.03, 8.92, 9.42, 6.12]
+        >>> residuals_long = multiple_residuals([11.7, 5.6, 8.1, 13.4, 6.3], [15.17, 6.03, 8.92, 9.42, 6.12])
+        >>> print(residuals_long)
+        [-3.4700000000000006, -0.4300000000000006, -0.8200000000000003, 3.9800000000000004, 0.17999999999999972]
+    """
     compare_vectors(actual_array, expected_array)
     results = []
     for i in range(len(actual_array)):
