@@ -15,7 +15,7 @@ from library.statistics.correlation import correlation_coefficient
 
 def cubic_model(data, precision):
     """
-    Generates a cubic regression model from data sets
+    Generates a cubic regression model from a given data set
 
     Parameters
     ----------
