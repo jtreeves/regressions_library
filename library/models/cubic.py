@@ -38,18 +38,43 @@ def cubic_model(data, precision):
     Returns
     -------
     model['constants'] : list
+        Coefficients of the resultant cubic model; the first element is the coefficient of the cubic term, the second element is the coefficient of the quadratic term, the third element is the coefficient of the linear term, and the fourth element is the coefficient of the constant term
     model['evaluations']['equation'] : function
+        Function that evaluates the equation of the cubic model at a given numeric input (e.g., model['evaluations']['equation'](10) would evaluate the equation of the cubic model when the independent variable is 10)
     model['evaluations']['derivative'] : function
+        Function that evaluates the first derivative of the cubic model at a given numeric input (e.g., model['evaluations']['derivative'](10) would evaluate the first derivative of the cubic model when the independent variable is 10)
     model['evaluations']['integral'] : function
+        Function that evaluates the integral of the cubic model at a given numeric input (e.g., model['evaluations']['integral'](10) would evaluate the integral of the cubic model when the independent variable is 10)
     model['points']['roots'] : list
+        List of lists of numbers representing the coordinate pairs of all the x-intercepts of the cubic model (will contain at least one and at most three points)
     model['points']['maxima'] : list
+        List of lists of numbers representing the coordinate pairs of all the maxima of the cubic model (will contain either `None` or one point)
     model['points']['minima'] : list
+        List of lists of numbers representing the coordinate pairs of all the minima of the cubic model (will contain either `None` or one point)
     model['points']['inflections'] : list
+        List of lists of numbers representing the coordinate pairs of all the inflection points of the cubic model (will contain exactly one point)
     model['accumulations']['range'] : float
+        Total area under the curve represented by the cubic model between the smallest independent coordinate originally provided and the largest independent coordinate originally provided (i.e., over the range)
     model['accumulations']['iqr'] : float
-    model['averages']['range'] : dict
-    model['averages']['iqr'] : dict
+        Total area under the curve represented by the cubic model between the first and third quartiles of all the independent coordinates originally provided (i.e., over the interquartile range)
+    model['averages']['range']['average_value_derivative'] : float
+        Average rate of change of the curve represented by the cubic model between the smallest independent coordinate originally provided and the largest independent coordinate originally provided (see `Mean Value Theorem for Derivatives <https://tutorial.math.lamar.edu/classes/calci/MeanValueTheorem.aspx>`_)
+    model['averages']['range']['mean_values_derivative'] : list
+        All points between the smallest independent coordinate originally provided and the largest independent coordinate originally provided where their instantaneous rate of change equals the function's average rate of change over that interval (see `Mean Value Theorem for Derivatives <https://tutorial.math.lamar.edu/classes/calci/MeanValueTheorem.aspx>`_)
+    model['averages']['range']['average_value_integral'] : float
+        Average value of the curve represented by the cubic model between the smallest independent coordinate originally provided and the largest independent coordinate originally provided (see `Mean Value Theorem for Integrals <https://tutorial.math.lamar.edu/classes/calci/avgfcnvalue.aspx>`_)
+    model['averages']['range']['mean_values_integral'] : list
+        All points between the smallest independent coordinate originally provided and the largest independent coordinate originally provided where their value equals the function's average value over that interval (see `Mean Value Theorem for Integrals <https://tutorial.math.lamar.edu/classes/calci/avgfcnvalue.aspx>`_)
+    model['averages']['iqr']['average_value_derivative'] : float
+        Average rate of change of the curve represented by the cubic model between the first and third quartiles of all the independent coordinates originally provided (see `Mean Value Theorem for Derivatives <https://tutorial.math.lamar.edu/classes/calci/MeanValueTheorem.aspx>`_)
+    model['averages']['iqr']['mean_values_derivative'] : list
+        All points between the first and third quartiles of all the independent coordinates originally provided where their instantaneous rate of change equals the function's average rate of change over that interval (see `Mean Value Theorem for Derivatives <https://tutorial.math.lamar.edu/classes/calci/MeanValueTheorem.aspx>`_)
+    model['averages']['iqr']['average_value_integral'] : float
+        Average value of the curve represented by the cubic model between the first and third quartiles of all the independent coordinates originally provided (see `Mean Value Theorem for Integrals <https://tutorial.math.lamar.edu/classes/calci/avgfcnvalue.aspx>`_)
+    model['averages']['iqr']['mean_values_integral'] : list
+        All points between the first and third quartiles of all the independent coordinates originally provided where their value equals the function's average value over that interval (see `Mean Value Theorem for Integrals <https://tutorial.math.lamar.edu/classes/calci/avgfcnvalue.aspx>`_)
     model['correlation'] : float
+        Correlation coefficient indicating how well the model fits the original data set (values range between 0.0, implying no fit, and 1.0, implying a perfect fit)
 
     Examples
     --------
