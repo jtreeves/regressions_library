@@ -68,7 +68,7 @@ def multiple_residuals(actual_array, expected_array):
     Determine the residuals between the actual values [5.6, 8.1, 6.3] and the expected values [6.03, 8.92, 6.12]
         >>> residuals_short = multiple_residuals([5.6, 8.1, 6.3], [6.03, 8.92, 6.12])
         >>> print(residuals_short)
-       [-0.4300000000000006, -0.8200000000000003, 0.17999999999999972]
+        [-0.4300000000000006, -0.8200000000000003, 0.17999999999999972]
     Determine the residuals between the actual values [11.7, 5.6, 8.1, 13.4, 6.3] and the expected values [15.17, 6.03, 8.92, 9.42, 6.12]
         >>> residuals_long = multiple_residuals([11.7, 5.6, 8.1, 13.4, 6.3], [15.17, 6.03, 8.92, 9.42, 6.12])
         >>> print(residuals_long)

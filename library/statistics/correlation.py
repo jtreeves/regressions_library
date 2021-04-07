@@ -39,11 +39,11 @@ def correlation_coefficient(actuals, expecteds, precision):
     Calculate the correlation using the provided actual values [8.2, 9.41, 1.23, 34.7] and the predicted values [7.863, 8.9173, 2.0114, 35.8021] (and round the result to four decimal places)
         >>> correlation_short = correlation_coefficient([8.2, 9.41, 1.23, 34.7], [7.863, 8.9173, 2.0114, 35.8021], 4)
         >>> print(correlation_short)
-       0.9983
+        0.9983
     Calculate the correlation using the provided actual values [2, 3, 5, 7, 11, 13, 17, 19] and the predicted values [1.0245, 3.7157, 6.1398, 8.1199, 12.7518, 14.9621, 15.2912, 25.3182] (and round the result to four decimal places)
         >>> correlation_long = correlation_coefficient([2, 3, 5, 7, 11, 13, 17, 19], [1.0245, 3.7157, 6.1398, 8.1199, 12.7518, 14.9621, 15.2912, 25.3182], 4)
         >>> print(correlation_long)
-       0.9011
+        0.9011
     """
     compare_vectors(actuals, expecteds)
     positive_integer(precision)

@@ -65,11 +65,11 @@ def multiple_deviations(actual_array):
     Generate a list of deviations from this data set [8.2, 9.41, 1.23, 34.7]
         >>> deviations_short = multiple_deviations([8.2, 9.41, 1.23, 34.7])
         >>> print(deviations_short)
-       [-5.185000000000002, -3.9750000000000014, -12.155000000000001, 21.315]
+        [-5.185000000000002, -3.9750000000000014, -12.155000000000001, 21.315]
     Generate a list of deviations from this data set [5.21, 8.2, 9.41, 1.23, 10.52, 21.76, 34.7]
         >>> deviations_long = multiple_deviations([5.21, 8.2, 9.41, 1.23, 10.52, 21.76, 34.7])
         >>> print(deviations_long)
-       [-7.7942857142857145, -4.804285714285715, -3.5942857142857143, -11.774285714285714, -2.484285714285715, 8.755714285714287, 21.69571428571429]
+        [-7.7942857142857145, -4.804285714285715, -3.5942857142857143, -11.774285714285714, -2.484285714285715, 8.755714285714287, 21.69571428571429]
     """
     vector_of_scalars(actual_array, 'only')
     results = []
