@@ -58,21 +58,21 @@ def quadratic_model(data, precision):
     model['accumulations']['iqr'] : float
         Total area under the curve represented by the quadratic model between the first and third quartiles of all the independent coordinates originally provided (i.e., over the interquartile range)
     model['averages']['range']['average_value_derivative'] : float
-        Average rate of change of the curve represented by the quadratic model between the smallest independent coordinate originally provided and the largest independent coordinate originally provided (see `Mean Value Theorem for Derivatives <https://tutorial.math.lamar.edu/classes/calci/MeanValueTheorem.aspx>`_)
+        Average rate of change of the curve represented by the quadratic model between the smallest independent coordinate originally provided and the largest independent coordinate originally provided
     model['averages']['range']['mean_values_derivative'] : list
-        All points between the smallest independent coordinate originally provided and the largest independent coordinate originally provided where their instantaneous rate of change equals the function's average rate of change over that interval (see `Mean Value Theorem for Derivatives <https://tutorial.math.lamar.edu/classes/calci/MeanValueTheorem.aspx>`_)
+        All points between the smallest independent coordinate originally provided and the largest independent coordinate originally provided where their instantaneous rate of change equals the function's average rate of change over that interval
     model['averages']['range']['average_value_integral'] : float
-        Average value of the curve represented by the quadratic model between the smallest independent coordinate originally provided and the largest independent coordinate originally provided (see `Mean Value Theorem for Integrals <https://tutorial.math.lamar.edu/classes/calci/avgfcnvalue.aspx>`_)
+        Average value of the curve represented by the quadratic model between the smallest independent coordinate originally provided and the largest independent coordinate originally provided
     model['averages']['range']['mean_values_integral'] : list
-        All points between the smallest independent coordinate originally provided and the largest independent coordinate originally provided where their value equals the function's average value over that interval (see `Mean Value Theorem for Integrals <https://tutorial.math.lamar.edu/classes/calci/avgfcnvalue.aspx>`_)
+        All points between the smallest independent coordinate originally provided and the largest independent coordinate originally provided where their value equals the function's average value over that interval
     model['averages']['iqr']['average_value_derivative'] : float
-        Average rate of change of the curve represented by the quadratic model between the first and third quartiles of all the independent coordinates originally provided (see `Mean Value Theorem for Derivatives <https://tutorial.math.lamar.edu/classes/calci/MeanValueTheorem.aspx>`_)
+        Average rate of change of the curve represented by the quadratic model between the first and third quartiles of all the independent coordinates originally provided
     model['averages']['iqr']['mean_values_derivative'] : list
-        All points between the first and third quartiles of all the independent coordinates originally provided where their instantaneous rate of change equals the function's average rate of change over that interval (see `Mean Value Theorem for Derivatives <https://tutorial.math.lamar.edu/classes/calci/MeanValueTheorem.aspx>`_)
+        All points between the first and third quartiles of all the independent coordinates originally provided where their instantaneous rate of change equals the function's average rate of change over that interval
     model['averages']['iqr']['average_value_integral'] : float
-        Average value of the curve represented by the quadratic model between the first and third quartiles of all the independent coordinates originally provided (see `Mean Value Theorem for Integrals <https://tutorial.math.lamar.edu/classes/calci/avgfcnvalue.aspx>`_)
+        Average value of the curve represented by the quadratic model between the first and third quartiles of all the independent coordinates originally provided
     model['averages']['iqr']['mean_values_integral'] : list
-        All points between the first and third quartiles of all the independent coordinates originally provided where their value equals the function's average value over that interval (see `Mean Value Theorem for Integrals <https://tutorial.math.lamar.edu/classes/calci/avgfcnvalue.aspx>`_)
+        All points between the first and third quartiles of all the independent coordinates originally provided where their value equals the function's average value over that interval
     model['correlation'] : float
         Correlation coefficient indicating how well the model fits the original data set (values range between 0.0, implying no fit, and 1.0, implying a perfect fit)
 

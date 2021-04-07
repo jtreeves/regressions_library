@@ -14,7 +14,7 @@ from .accumulation import accumulated_area
 
 def average_value_derivative(equation, start, end, precision):
     """
-    Evaluates the average rate of change between two points for a given function
+    Evaluates the average rate of change between two points for a given function (see |mean_derivatives|)
 
     Parameters
     ----------
@@ -65,7 +65,7 @@ def average_value_derivative(equation, start, end, precision):
 
 def mean_values_derivative(equation_type, equation, start, end, constants, precision):
     """
-    Generates a list of all the x-coordinates whose instantaneous rates of change equal the function's average rate of change between two points
+    Generates a list of all the x-coordinates whose instantaneous rates of change equal the function's average rate of change between two points (see |mean_derivatives|)
 
     Parameters
     ----------
@@ -271,7 +271,7 @@ def mean_values_derivative(equation_type, equation, start, end, constants, preci
 
 def average_value_integral(equation, start, end, precision):
     """
-    Evaluates the average value of a given function between two points
+    Evaluates the average value of a given function between two points (see |mean_integrals|)
 
     Parameters
     ----------
@@ -322,7 +322,7 @@ def average_value_integral(equation, start, end, precision):
 
 def mean_values_integral(equation_type, equation, start, end, constants, precision):
     """
-    Generates a list of all the x-coordinates between two points at which a function's value will equal its average value over that interval
+    Generates a list of all the x-coordinates between two points at which a function's value will equal its average value over that interval (see |mean_integrals|)
 
     Parameters
     ----------
