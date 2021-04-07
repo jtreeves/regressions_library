@@ -20,6 +20,91 @@ from library.statistics.correlation import correlation_coefficient
 from library.statistics.rounding import rounded_value
 
 def sinusoidal_model(data, precision):
+    """
+    Generates a sinusoidal regression model from a given data set
+
+    Parameters
+    ----------
+    data : list or tuple
+        List of lists of numbers representing a collection of coordinate pairs
+    precision : int
+        Maximum number of digits that can appear after the decimal place of the results
+
+    Raises
+    ------
+    TypeError
+        First argument must be a 2-dimensional list or tuple
+    TypeError
+        Elements nested within first argument must be integers or floats
+    ValueError
+        First argument must contain at least 10 elements
+    ValueError
+        Last argument must be a positive integer
+
+    Returns
+    -------
+    model['constants'] : list
+        Coefficients of the resultant sinusoidal model; the first element is the vertical stretch factor, the second element is the horizontal stretch factor, the third element is the horizontal shift, and the fourth element is the vertical shift
+    model['evaluations']['equation'] : function
+        Function that evaluates the equation of the sinusoidal model at a given numeric input (e.g., model['evaluations']['equation'](10) would evaluate the equation of the sinusoidal model when the independent variable is 10)
+    model['evaluations']['derivative'] : function
+        Function that evaluates the first derivative of the sinusoidal model at a given numeric input (e.g., model['evaluations']['derivative'](10) would evaluate the first derivative of the sinusoidal model when the independent variable is 10)
+    model['evaluations']['integral'] : function
+        Function that evaluates the integral of the sinusoidal model at a given numeric input (e.g., model['evaluations']['integral'](10) would evaluate the integral of the sinusoidal model when the independent variable is 10)
+    model['points']['roots'] : list
+        List of lists of numbers representing the coordinate pairs of all the x-intercepts of the sinusoidal model (will contain either `None` or an initial set of points within two periods along with general terms for finding the other points)
+    model['points']['maxima'] : list
+        List of lists of numbers representing the coordinate pairs of all the maxima of the sinusoidal model (will contain an initial set of points within two periods along with a general term for finding the other points)
+    model['points']['minima'] : list
+        List of lists of numbers representing the coordinate pairs of all the minima of the sinusoidal model (will contain an initial set of points within two periods along with a general term for finding the other points)
+    model['points']['inflections'] : list
+        List of lists of numbers representing the coordinate pairs of all the inflection points of the sinusoidal model (will contain an initial set of points within two periods along with a general term for finding the other points)
+    model['accumulations']['range'] : float
+        Total area under the curve represented by the sinusoidal model between the smallest independent coordinate originally provided and the largest independent coordinate originally provided (i.e., over the range)
+    model['accumulations']['iqr'] : float
+        Total area under the curve represented by the sinusoidal model between the first and third quartiles of all the independent coordinates originally provided (i.e., over the interquartile range)
+    model['averages']['range']['average_value_derivative'] : float
+        Average rate of change of the curve represented by the sinusoidal model between the smallest independent coordinate originally provided and the largest independent coordinate originally provided (see `Mean Value Theorem for Derivatives <https://tutorial.math.lamar.edu/classes/calci/MeanValueTheorem.aspx>`_)
+    model['averages']['range']['mean_values_derivative'] : list
+        All points between the smallest independent coordinate originally provided and the largest independent coordinate originally provided where their instantaneous rate of change equals the function's average rate of change over that interval (see `Mean Value Theorem for Derivatives <https://tutorial.math.lamar.edu/classes/calci/MeanValueTheorem.aspx>`_)
+    model['averages']['range']['average_value_integral'] : float
+        Average value of the curve represented by the sinusoidal model between the smallest independent coordinate originally provided and the largest independent coordinate originally provided (see `Mean Value Theorem for Integrals <https://tutorial.math.lamar.edu/classes/calci/avgfcnvalue.aspx>`_)
+    model['averages']['range']['mean_values_integral'] : list
+        All points between the smallest independent coordinate originally provided and the largest independent coordinate originally provided where their value equals the function's average value over that interval (see `Mean Value Theorem for Integrals <https://tutorial.math.lamar.edu/classes/calci/avgfcnvalue.aspx>`_)
+    model['averages']['iqr']['average_value_derivative'] : float
+        Average rate of change of the curve represented by the sinusoidal model between the first and third quartiles of all the independent coordinates originally provided (see `Mean Value Theorem for Derivatives <https://tutorial.math.lamar.edu/classes/calci/MeanValueTheorem.aspx>`_)
+    model['averages']['iqr']['mean_values_derivative'] : list
+        All points between the first and third quartiles of all the independent coordinates originally provided where their instantaneous rate of change equals the function's average rate of change over that interval (see `Mean Value Theorem for Derivatives <https://tutorial.math.lamar.edu/classes/calci/MeanValueTheorem.aspx>`_)
+    model['averages']['iqr']['average_value_integral'] : float
+        Average value of the curve represented by the sinusoidal model between the first and third quartiles of all the independent coordinates originally provided (see `Mean Value Theorem for Integrals <https://tutorial.math.lamar.edu/classes/calci/avgfcnvalue.aspx>`_)
+    model['averages']['iqr']['mean_values_integral'] : list
+        All points between the first and third quartiles of all the independent coordinates originally provided where their value equals the function's average value over that interval (see `Mean Value Theorem for Integrals <https://tutorial.math.lamar.edu/classes/calci/avgfcnvalue.aspx>`_)
+    model['correlation'] : float
+        Correlation coefficient indicating how well the model fits the original data set (values range between 0.0, implying no fit, and 1.0, implying a perfect fit)
+
+    Examples
+    --------
+    Generate a sinusoidal regression model for the data set [[1, 3], [2, 8], [3, 3], [4, -2], [5, 3], [6, 8], [7, 3], [8, -2], [9, 3], [10, 8]], then print its coefficients, roots, total accumulation over its interquartile range, and correlation (and round the results to four decimal places)
+        >>> model_perfect = sinusoidal_model([[1, 3], [2, 8], [3, 3], [4, -2], [5, 3], [6, 8], [7, 3], [8, -2], [9, 3], [10, 8]], 4)
+        >>> print(model_perfect['constants'])
+        [-5.0, 1.5708, 3.0, 3.0]
+        >>> print(model_perfect['points']['roots'])
+        [[3.4097, 0], [4.5903, 0], [7.4097, 0], [8.5903, 0], ['3.4097 + 4.0k', 0], ['4.5903 + 4.0k', 0]]
+        >>> print(model_perfect['accumulations']['iqr'])
+        11.8169
+        >>> print(model_perfect['correlation'])
+        1.0
+    Generate a sinusoidal regression model for the data set [[1, 32], [2, 25], [3, 14], [4, 23], [5, 39], [6, 45], [7, 42], [8, 49], [9, 36], [10, 33]], then print its coefficients, inflections, total accumulation over its range, and correlation (and round the results to four decimal places)
+        >>> model_agnostic = sinusoidal_model([[1, 32], [2, 25], [3, 14], [4, 23], [5, 39], [6, 45], [7, 42], [8, 49], [9, 36], [10, 33]], 4)
+        >>> print(model_agnostic['constants'])
+        [14.0875, 0.7119, -3.7531, 34.2915]
+        >>> print(model_agnostic['points']['inflections'])
+        [[5.0727, 34.291], [9.4856, 34.291], [13.8985, 34.291], [18.3114, 34.291], ['5.0727 + 4.4129k', 34.291]]
+        >>> print(model_agnostic['accumulations']['range'])
+        307.8889
+        >>> print(model_agnostic['correlation'])
+        0.9264
+    """
     matrix_of_scalars(data, 'first')
     long_vector(data)
     positive_integer(precision)
