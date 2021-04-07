@@ -3,7 +3,7 @@ from library.errors.matrices import matrix_of_scalars, columns_rows
 from library.vectors.multiplication import dot_product
 from .transpose import adjugate
 
-def scalar_product(matrix, scalar):
+def scalar_product_matrix(matrix, scalar):
     """
     Calculates the product of a matrix and a scalar
 

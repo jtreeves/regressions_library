@@ -1,5 +1,5 @@
 from library.errors.matrices import square_matrix
-from .multiplication import scalar_product
+from .multiplication import scalar_product_matrix
 from .determinant import linear_determinant
 from .transpose import adjugate
 from .minors import matrix_of_minors
@@ -42,5 +42,5 @@ def inverse_matrix(matrix):
     square_matrix(matrix)
     determinant_reciprocal = 1 / linear_determinant(matrix)
     transform = adjugate(matrix_of_cofactors(matrix_of_minors(matrix)))
-    result = scalar_product(transform, determinant_reciprocal)
+    result = scalar_product_matrix(transform, determinant_reciprocal)
     return result

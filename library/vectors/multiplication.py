@@ -1,7 +1,7 @@
 from library.errors.scalars import scalar_value
 from library.errors.vectors import vector_of_scalars, compare_vectors
 
-def scalar_product(vector, scalar):
+def scalar_product_vector(vector, scalar):
     """
     Calculates the product of a vector and a scalar
 

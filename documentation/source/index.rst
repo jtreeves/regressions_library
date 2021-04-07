@@ -11,12 +11,12 @@ Regressions Library Documentation
     :caption: Guide
     
     sections/introduction
-    vectors/index
-    matrices/index
-    statistics/index
-    analyses/index
-    models/index
     sections/execute
+    models/index
+    analyses/index
+    statistics/index
+    matrices/index
+    vectors/index
 
 Indices and Tables
 ==================

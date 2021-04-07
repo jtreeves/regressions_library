@@ -1,6 +1,6 @@
 from library.errors.vectors import compare_vectors
 from .addition import vector_sum
-from .multiplication import scalar_product
+from .multiplication import scalar_product_vector
 
 def component_form(initial_point, terminal_point):
     """
@@ -39,5 +39,5 @@ def component_form(initial_point, terminal_point):
         [8, -19]
     """
     compare_vectors(initial_point, terminal_point)
-    result = vector_sum(terminal_point, scalar_product(initial_point, -1))
+    result = vector_sum(terminal_point, scalar_product_vector(initial_point, -1))
     return result

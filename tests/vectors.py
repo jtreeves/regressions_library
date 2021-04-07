@@ -8,7 +8,7 @@ from library.vectors.column import column_conversion
 from library.vectors.dimension import single_dimension
 from library.vectors.unify import unite_vectors
 from library.vectors.addition import vector_sum
-from library.vectors.multiplication import scalar_product, dot_product
+from library.vectors.multiplication import scalar_product_vector, dot_product
 
 first_point = [2, -3]
 second_point = [5, 7]
@@ -80,11 +80,11 @@ class TestAddition(unittest.TestCase):
 
 class TestScalarProduct(unittest.TestCase):
     def test_scalar_first(self):
-        scalar_first = scalar_product(first_vector, scalar_number)
+        scalar_first = scalar_product_vector(first_vector, scalar_number)
         self.assertEqual(scalar_first, [-6, -15, -27, -39])
 
     def test_scalar_second(self):
-        scalar_second = scalar_product(second_vector, scalar_number)
+        scalar_second = scalar_product_vector(second_vector, scalar_number)
         self.assertEqual(scalar_second, [-3, 21, -69, 6])
 
 class TestDotProduct(unittest.TestCase):
@@ -99,4 +99,4 @@ class TestDotProduct(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 16 tests in 0.002s ---------- OK ---------- #
+# ---------- Ran 16 tests in 0.001s ---------- OK ---------- #

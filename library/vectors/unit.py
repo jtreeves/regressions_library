@@ -1,6 +1,6 @@
 from library.errors.vectors import vector_of_scalars
 from .magnitude import vector_magnitude
-from .multiplication import scalar_product
+from .multiplication import scalar_product_vector
 
 def unit_vector(vector):
     """
@@ -37,5 +37,5 @@ def unit_vector(vector):
     vector_of_scalars(vector, 'only')
     magnitude = vector_magnitude(vector)
     reciprocal_magnitude = 1 / magnitude
-    result = scalar_product(vector, reciprocal_magnitude)
+    result = scalar_product_vector(vector, reciprocal_magnitude)
     return result
