@@ -38,7 +38,7 @@ def critical_points(equation_type, derivative_level, coefficients, precision):
     Returns
     -------
     points : list
-        Values of the x-coordinates at which the original function's derivative either crosses the x-axis or does not exist; if the function is sinusoidal, then only five results within a two period interval will be listed, but a general form will also be included (see `sinusoidal_roots`); if the derivative has no critical points, then it will return a list of `None`
+        Values of the x-coordinates at which the original function's derivative either crosses the x-axis or does not exist; if the function is sinusoidal, then only five results within a two period interval will be listed, but a general form will also be included (see :ref:`Sinusoidal Roots`); if the derivative has no critical points, then it will return a list of `None`
 
     Examples
     --------

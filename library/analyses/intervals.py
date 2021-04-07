@@ -23,7 +23,7 @@ def sign_chart(derivative, points):
     Returns
     -------
     chart : list
-        Strings describing the sign (e.g., 'positive', 'negative') of the derivative between its critical points; as a result, its elements will alternate between strings (indicating the signs) and floats (indicating the end points); if the function is sinusoidal, then only the initial results within a two period interval will be listed, but a general form to determine other end points will also be included (see `sinusoidal_roots`)
+        Strings describing the sign (e.g., 'positive', 'negative') of the derivative between its critical points; as a result, its elements will alternate between strings (indicating the signs) and floats (indicating the end points); if the function is sinusoidal, then only the initial results within a two period interval will be listed, but a general form to determine other end points will also be included (see :ref:`Sinusoidal Roots`)
 
     Examples
     --------

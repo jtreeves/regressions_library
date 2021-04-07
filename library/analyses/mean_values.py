@@ -100,7 +100,7 @@ def mean_values_derivative(equation_type, equation, start, end, constants, preci
     Returns
     -------
     points : list
-        Values of the x-coordinates within the specified interval at which the original function has an instantaneous rate of change equal to its average rate of change over that entire interval; if the function is sinusoidal, then only the initial results within at most a two period interval within the specified interval will be listed, but general forms will also be included (however, their results may be outside the specified interval; see `sinusoidal_roots`); if the algorithm cannot determine any values, then it will return a list of `None`
+        Values of the x-coordinates within the specified interval at which the original function has an instantaneous rate of change equal to its average rate of change over that entire interval; if the function is sinusoidal, then only the initial results within at most a two period interval within the specified interval will be listed, but general forms will also be included (however, their results may be outside the specified interval; see :ref:`Sinusoidal Roots`); if the algorithm cannot determine any values, then it will return a list of `None`
 
     Examples
     --------
@@ -357,7 +357,7 @@ def mean_values_integral(equation_type, equation, start, end, constants, precisi
     Returns
     -------
     points : list
-        Values of the x-coordinates within the specified interval at which the original function has a value equal to its average value over that entire interval; if the function is sinusoidal, then only the initial results within at most a two period interval within the specified interval will be listed, but general forms will also be included (however, their results may be outside the specified interval; see `sinusoidal_roots`); if the algorithm cannot determine any values, then it will return a list of `None`
+        Values of the x-coordinates within the specified interval at which the original function has a value equal to its average value over that entire interval; if the function is sinusoidal, then only the initial results within at most a two period interval within the specified interval will be listed, but general forms will also be included (however, their results may be outside the specified interval; see :ref:`Sinusoidal Roots`); if the algorithm cannot determine any values, then it will return a list of `None`
 
     Examples
     --------

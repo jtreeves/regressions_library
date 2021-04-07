@@ -40,21 +40,21 @@ def run_all(data, precision):
     Returns
     -------
     results['models']['linear'] : dict
-        See `models.linear`
+        See :ref:`Linear Models`
     results['models']['quadratic'] : dict
-        See `models.quadratic`
+        See :ref:`Quadratic Models`
     results['models']['cubic'] : dict
-        See `models.cubic`
+        See :ref:`Cubic Models`
     results['models']['hyperbolic'] : dict
-        See `models.hyperbolic`
+        See :ref:`Hyperbolic Models`
     results['models']['exponential'] : dict
-        See `models.exponential`
+        See :ref:`Exponential Models`
     results['models']['logarithmic'] : dict
-        See `models.logarithmic`
+        See :ref:`Logarithmic Models`
     results['models']['logistic'] : dict
-        See `models.logistic`
+        See :ref:`Logistic Models`
     results['models']['sinusoidal'] : dict
-        See `models.sinusoidal`
+        See :ref:`Sinusoidal Models`
     results['statistics']['minimum'] : int or float
         Smallest value of the independent variable from the provided data set
     results['statistics']['maximum'] : int or float

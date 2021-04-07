@@ -1,4 +1,4 @@
-Multiplication
---------------
+Multiplication with Matrices
+----------------------------
 .. automodule:: library.matrices.multiplication
     :members:

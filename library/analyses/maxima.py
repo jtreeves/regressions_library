@@ -21,7 +21,7 @@ def maxima_points(intervals):
     Returns
     -------
     points : list
-        Values of the x-coordinates at which the original function has a relative maximum; if the function is sinusoidal, then only two or three results within a two period interval will be listed, but a general form will also be included (see `sinusoidal_roots`); if the function has no maxima, then it will return a list of `None`
+        Values of the x-coordinates at which the original function has a relative maximum; if the function is sinusoidal, then only two or three results within a two period interval will be listed, but a general form will also be included (see :ref:`Sinusoidal Roots`); if the function has no maxima, then it will return a list of `None`
 
     Examples
     --------
