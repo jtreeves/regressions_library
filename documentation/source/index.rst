@@ -13,10 +13,9 @@ Regressions Library Documentation
     sections/introduction
     vectors/index
     matrices/index
-    analyses/index
     statistics/index
+    analyses/index
     models/index
-    errors/index
     sections/execute
 
 Indices and Tables

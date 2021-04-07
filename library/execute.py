@@ -17,7 +17,7 @@ from .statistics.median import median_value
 
 def run_all(data, precision):
     """
-    Generates all eight key regression models (linear, quadratic, cubic, hyperbolic, exponential, logarithmic, logistic, and sinusoidal) for a given data set, in addition to determining the best fit based correlation and providing various statistical measures
+    Generates all eight key regression models (linear, quadratic, cubic, hyperbolic, exponential, logarithmic, logistic, and sinusoidal) for a given data set, in addition to determining the best fit based on correlation and providing various statistical measures
 
     Parameters
     ----------
