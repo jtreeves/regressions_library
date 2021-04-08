@@ -326,7 +326,7 @@ def average_value_integral(equation, start, end, precision):
 
     Notes
     -----
-    - Average value of a function over an interval: :math:`f_avg = \\frac{1}{b - a}\\cdot{\\int_{a}^{b} f(x) \\,dx}`
+    - Average value of a function over an interval: :math:`f_{avg} = \\frac{1}{b - a}\\cdot{\\int_{a}^{b} f(x) \\,dx}`
     - Theorem: |mean_integrals|
 
     Examples
