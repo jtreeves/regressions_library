@@ -23,7 +23,16 @@ def sign_chart(derivative, points):
     Returns
     -------
     chart : list
-        Strings describing the sign (e.g., 'positive', 'negative') of the derivative between its critical points; as a result, its elements will alternate between strings (indicating the signs) and floats (indicating the end points); if the function is sinusoidal, then only the initial results within a two period interval will be listed, but a general form to determine other end points will also be included (see :ref:`Sinusoidal Roots`)
+        Strings describing the sign (e.g., 'positive', 'negative') of the derivative between its critical points; as a result, its elements will alternate between strings (indicating the signs) and floats (indicating the end points); if the function is sinusoidal, then only the initial results within a two period interval will be listed, but a general form to determine other end points will also be included
+
+    See Also
+    --------
+    - Roots for key functions: :func:`~library.analyses.roots.linear.linear_roots`, :func:`~library.analyses.roots.quadratic.quadratic_roots`, :func:`~library.analyses.roots.cubic.cubic_roots`, :func:`~library.analyses.roots.hyperbolic.hyperbolic_roots`, :func:`~library.analyses.roots.exponential.exponential_roots`, :func:`~library.analyses.roots.logarithmic.logarithmic_roots`, :func:`~library.analyses.roots.logistic.logistic_roots`, :func:`~library.analyses.roots.sinusoidal.sinusoidal_roots`
+    - Graphical analysis: :func:`~library.analyses.criticals.critical_points`, :func:`~library.analyses.points.key_coordinates`
+
+    Notes
+    -----
+    Sign charts for individual derivatives break up a function's domain into intervals demarcated by the critical points of that derivative, where each interval is noted as being either 'positive', 'negative', or 'constant' based on the values of that derivative during that interval
 
     Examples
     --------

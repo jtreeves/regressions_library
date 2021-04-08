@@ -40,13 +40,22 @@ def key_coordinates(equation_type, coefficients, equation, first_derivative, sec
     Returns
     -------
     points['roots'] : list
-        List containing two-element lists for each point; first elements of those lists will be the value of the x-coordinate at which the original function has a root; second elements of those lists will be 0; if the function is sinusoidal, then only the initial results within a two period interval will be listed, but general forms will also be included (see :ref:`Sinusoidal Roots`); if the function has no roots, then it will return a list of `None`
+        List containing two-element lists for each point; first elements of those lists will be the value of the x-coordinate at which the original function has a root; second elements of those lists will be 0; if the function is sinusoidal, then only the initial results within a two period interval will be listed, but general forms will also be included; if the function has no roots, then it will return a list of `None`
     points['maxima'] : list
-        List containing two-element lists for each point; first elements of those lists will be the value of the x-coordinate at which the original function has a relative maximum; second elements of those lists will be the y-coordinate of that maximum; if the function is sinusoidal, then only the initial results within a two period interval will be listed, but a general form will also be included (see :ref:`Sinusoidal Roots`); if the function has no maxima, then it will return a list of `None`
+        List containing two-element lists for each point; first elements of those lists will be the value of the x-coordinate at which the original function has a relative maximum; second elements of those lists will be the y-coordinate of that maximum; if the function is sinusoidal, then only the initial results within a two period interval will be listed, but a general form will also be included; if the function has no maxima, then it will return a list of `None`
     points['minima'] : list
-        List containing two-element lists for each point; first elements of those lists will be the value of the x-coordinate at which the original function has a relative minimum; second elements of those lists will be the y-coordinate of that minimum; if the function is sinusoidal, then only the initial results within a two period interval will be listed, but a general form will also be included (see :ref:`Sinusoidal Roots`); if the function has no minima, then it will return a list of `None`
+        List containing two-element lists for each point; first elements of those lists will be the value of the x-coordinate at which the original function has a relative minimum; second elements of those lists will be the y-coordinate of that minimum; if the function is sinusoidal, then only the initial results within a two period interval will be listed, but a general form will also be included; if the function has no minima, then it will return a list of `None`
     points['inflections'] : list
-        List containing two-element lists for each point; first elements of those lists will be the value of the x-coordinate at which the original function has an inflection; second elements of those lists will be the y-coordinate of that inflection; if the function is sinusoidal, then only the initial results within a two period interval will be listed, but a general form will also be included (see :ref:`Sinusoidal Roots`); if the function has no inflection points, then it will return a list of `None`
+        List containing two-element lists for each point; first elements of those lists will be the value of the x-coordinate at which the original function has an inflection; second elements of those lists will be the y-coordinate of that inflection; if the function is sinusoidal, then only the initial results within a two period interval will be listed, but a general form will also be included; if the function has no inflection points, then it will return a list of `None`
+
+    See Also
+    --------
+    - Roots for key functions: :func:`~library.analyses.roots.linear.linear_roots`, :func:`~library.analyses.roots.quadratic.quadratic_roots`, :func:`~library.analyses.roots.cubic.cubic_roots`, :func:`~library.analyses.roots.hyperbolic.hyperbolic_roots`, :func:`~library.analyses.roots.exponential.exponential_roots`, :func:`~library.analyses.roots.logarithmic.logarithmic_roots`, :func:`~library.analyses.roots.logistic.logistic_roots`, :func:`~library.analyses.roots.sinusoidal.sinusoidal_roots`
+    - Graphical analysis: :func:`~library.analyses.criticals.critical_points`, :func:`~library.analyses.intervals.sign_chart`, :func:`~library.analyses.maxima.maxima_points`, :func:`~library.analyses.minima.minima_points`, :func:`~library.analyses.extrema.extrema_points`, :func:`~library.analyses.inflections.inflection_points`
+
+    Notes
+    -----
+    Key points include x-intercepts, maxima, minima, and points of inflection
 
     Examples
     --------

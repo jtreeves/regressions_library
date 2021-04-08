@@ -33,7 +33,16 @@ def inflection_points(equation_type, coefficients, derivative, precision):
     Returns
     -------
     points : list
-        Values of the x-coordinates at which the original function has an inflection point; if the function is sinusoidal, then only five results within a two period interval will be listed, but a general form will also be included (see :ref:`Sinusoidal Roots`); if the function has no inflection points, then it will return a list of `None`
+        Values of the x-coordinates at which the original function has an inflection point; if the function is sinusoidal, then only five results within a two period interval will be listed, but a general form will also be included; if the function has no inflection points, then it will return a list of `None`
+
+    See Also
+    --------
+    - Roots for key functions: :func:`~library.analyses.roots.linear.linear_roots`, :func:`~library.analyses.roots.quadratic.quadratic_roots`, :func:`~library.analyses.roots.cubic.cubic_roots`, :func:`~library.analyses.roots.hyperbolic.hyperbolic_roots`, :func:`~library.analyses.roots.exponential.exponential_roots`, :func:`~library.analyses.roots.logarithmic.logarithmic_roots`, :func:`~library.analyses.roots.logistic.logistic_roots`, :func:`~library.analyses.roots.sinusoidal.sinusoidal_roots`
+    - Graphical analysis: :func:`~library.analyses.criticals.critical_points`, :func:`~library.analyses.intervals.sign_chart`, :func:`~library.analyses.points.key_coordinates`
+
+    Notes
+    -----
+    Inflection points occur at x-coordinates where the sign of the second derivative changes from either 'positive' to 'negative' or 'negative' to 'positive'
 
     Examples
     --------

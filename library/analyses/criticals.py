@@ -38,7 +38,16 @@ def critical_points(equation_type, derivative_level, coefficients, precision):
     Returns
     -------
     points : list
-        Values of the x-coordinates at which the original function's derivative either crosses the x-axis or does not exist; if the function is sinusoidal, then only five results within a two period interval will be listed, but a general form will also be included (see :ref:`Sinusoidal Roots`); if the derivative has no critical points, then it will return a list of `None`
+        Values of the x-coordinates at which the original function's derivative either crosses the x-axis or does not exist; if the function is sinusoidal, then only five results within a two period interval will be listed, but a general form will also be included; if the derivative has no critical points, then it will return a list of `None`
+
+    See Also
+    --------
+    - Roots for key functions: :func:`~library.analyses.roots.linear.linear_roots`, :func:`~library.analyses.roots.quadratic.quadratic_roots`, :func:`~library.analyses.roots.cubic.cubic_roots`, :func:`~library.analyses.roots.hyperbolic.hyperbolic_roots`, :func:`~library.analyses.roots.exponential.exponential_roots`, :func:`~library.analyses.roots.logarithmic.logarithmic_roots`, :func:`~library.analyses.roots.logistic.logistic_roots`, :func:`~library.analyses.roots.sinusoidal.sinusoidal_roots`
+    - Graphical analysis: :func:`~library.analyses.intervals.sign_chart`, :func:`~library.analyses.points.key_coordinates`
+
+    Notes
+    -----
+    Critical points occur at x-coordinates where either the derivative at that coordinate equals 0 or the derivative at that coordinate does not exist
 
     Examples
     --------

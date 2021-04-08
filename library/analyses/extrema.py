@@ -35,9 +35,18 @@ def extrema_points(equation_type, coefficients, derivative, precision):
     Returns
     -------
     points['maxima'] : list
-        Values of the x-coordinates at which the original function has a relative maximum; if the function is sinusoidal, then only two or three results within a two period interval will be listed, but a general form will also be included (see :ref:`Sinusoidal Roots`); if the function has no maxima, then it will return a list of `None`
+        Values of the x-coordinates at which the original function has a relative maximum; if the function is sinusoidal, then only two or three results within a two period interval will be listed, but a general form will also be included; if the function has no maxima, then it will return a list of `None`
     points['minima'] : list
-        Values of the x-coordinates at which the original function has a relative minimum; if the function is sinusoidal, then only two or three results within a two period interval will be listed, but a general form will also be included (see :ref:`Sinusoidal Roots`); if the function has no minima, then it will return a list of `None`
+        Values of the x-coordinates at which the original function has a relative minimum; if the function is sinusoidal, then only two or three results within a two period interval will be listed, but a general form will also be included; if the function has no minima, then it will return a list of `None`
+
+    See Also
+    --------
+    - Roots for key functions: :func:`~library.analyses.roots.linear.linear_roots`, :func:`~library.analyses.roots.quadratic.quadratic_roots`, :func:`~library.analyses.roots.cubic.cubic_roots`, :func:`~library.analyses.roots.hyperbolic.hyperbolic_roots`, :func:`~library.analyses.roots.exponential.exponential_roots`, :func:`~library.analyses.roots.logarithmic.logarithmic_roots`, :func:`~library.analyses.roots.logistic.logistic_roots`, :func:`~library.analyses.roots.sinusoidal.sinusoidal_roots`
+    - Graphical analysis: :func:`~library.analyses.criticals.critical_points`, :func:`~library.analyses.intervals.sign_chart`, :func:`~library.analyses.maxima.maxima_points`, :func:`~library.analyses.minima.minima_points`, :func:`~library.analyses.points.key_coordinates`
+
+    Notes
+    -----
+    Extrema occur at x-coordinates where the sign of the first derivative changes from either 'positive' to 'negative' (at which point, there is a maximum) or 'negative' to 'positive' (at which point, there is a minimum)
 
     Examples
     --------

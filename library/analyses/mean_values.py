@@ -14,7 +14,7 @@ from .accumulation import accumulated_area
 
 def average_value_derivative(equation, start, end, precision):
     """
-    Evaluates the average rate of change between two points for a given function (see |mean_derivatives|)
+    Evaluates the average rate of change between two points for a given function
 
     Parameters
     ----------
@@ -43,6 +43,16 @@ def average_value_derivative(equation, start, end, precision):
     average : float
         Slope of a function between two points
 
+    See Also
+    --------
+    :func:`~library.analyses.mean_values.mean_values_derivative`, 
+    :func:`~library.analyses.mean_values.average_value_integral`, :func:`~library.analyses.mean_values.mean_values_integral`
+
+    Notes
+    -----
+    - Slope of a function over an interval: :math:`m = \\frac{f(b) - f(a)}{b - a}`
+    - Theorem: |mean_derivatives|
+
     Examples
     --------
     Evaluate the average rate of change of a cubic function with coefficients 2, 3, 5, and 7 between end points of 10 and 20 (and round the result to four decimal places)
@@ -65,7 +75,7 @@ def average_value_derivative(equation, start, end, precision):
 
 def mean_values_derivative(equation_type, equation, start, end, constants, precision):
     """
-    Generates a list of all the x-coordinates whose instantaneous rates of change equal the function's average rate of change between two points (see |mean_derivatives|)
+    Generates a list of all the x-coordinates whose instantaneous rates of change equal the function's average rate of change between two points
 
     Parameters
     ----------
@@ -100,7 +110,17 @@ def mean_values_derivative(equation_type, equation, start, end, constants, preci
     Returns
     -------
     points : list
-        Values of the x-coordinates within the specified interval at which the original function has an instantaneous rate of change equal to its average rate of change over that entire interval; if the function is sinusoidal, then only the initial results within at most a two period interval within the specified interval will be listed, but general forms will also be included (however, their results may be outside the specified interval; see :ref:`Sinusoidal Roots`); if the algorithm cannot determine any values, then it will return a list of `None`
+        Values of the x-coordinates within the specified interval at which the original function has an instantaneous rate of change equal to its average rate of change over that entire interval; if the function is sinusoidal, then only the initial results within at most a two period interval within the specified interval will be listed, but general forms will also be included (however, their results may be outside the specified interval); if the algorithm cannot determine any values, then it will return a list of `None`
+
+    See Also
+    --------
+    - Roots for key functions: :func:`~library.analyses.roots.linear.linear_roots`, :func:`~library.analyses.roots.quadratic.quadratic_roots`, :func:`~library.analyses.roots.cubic.cubic_roots`, :func:`~library.analyses.roots.hyperbolic.hyperbolic_roots`, :func:`~library.analyses.roots.exponential.exponential_roots`, :func:`~library.analyses.roots.logarithmic.logarithmic_roots`, :func:`~library.analyses.roots.logistic.logistic_roots`, :func:`~library.analyses.roots.sinusoidal.sinusoidal_roots`
+    - Mean values: :func:`~library.analyses.mean_values.average_value_derivative`, :func:`~library.analyses.mean_values.average_value_integral`, :func:`~library.analyses.mean_values.mean_values_integral`
+
+    Notes
+    -----
+    - Mean values for the derivative over an interval: :math:`f'(c) = \\frac{f(b) - f(a)}{b - a}` 
+    - Theorem: |mean_derivatives|
 
     Examples
     --------
@@ -271,7 +291,7 @@ def mean_values_derivative(equation_type, equation, start, end, constants, preci
 
 def average_value_integral(equation, start, end, precision):
     """
-    Evaluates the average value of a given function between two points (see |mean_integrals|)
+    Evaluates the average value of a given function between two points
 
     Parameters
     ----------
@@ -300,6 +320,15 @@ def average_value_integral(equation, start, end, precision):
     average : float
         Average value of the function between two points
 
+    See Also
+    --------
+    :func:`~library.analyses.accumulation.accumulated_area`, :func:`~library.analyses.mean_values.mean_values_integral`, :func:`~library.analyses.mean_values.average_value_derivative`, :func:`~library.analyses.mean_values.mean_values_derivative`
+
+    Notes
+    -----
+    - Average value of a function over an interval: :math:`f_avg = \\frac{1}{b - a}\\cdot{\\int_{a}^{b} f(x) \\,dx}`
+    - Theorem: |mean_integrals|
+
     Examples
     --------
     Evaluate the average value of a cubic function with coefficients 2, 3, 5, and 7 between end points of 10 and 20 (and round the result to four decimal places)
@@ -322,7 +351,7 @@ def average_value_integral(equation, start, end, precision):
 
 def mean_values_integral(equation_type, equation, start, end, constants, precision):
     """
-    Generates a list of all the x-coordinates between two points at which a function's value will equal its average value over that interval (see |mean_integrals|)
+    Generates a list of all the x-coordinates between two points at which a function's value will equal its average value over that interval
 
     Parameters
     ----------
@@ -357,7 +386,17 @@ def mean_values_integral(equation_type, equation, start, end, constants, precisi
     Returns
     -------
     points : list
-        Values of the x-coordinates within the specified interval at which the original function has a value equal to its average value over that entire interval; if the function is sinusoidal, then only the initial results within at most a two period interval within the specified interval will be listed, but general forms will also be included (however, their results may be outside the specified interval; see :ref:`Sinusoidal Roots`); if the algorithm cannot determine any values, then it will return a list of `None`
+        Values of the x-coordinates within the specified interval at which the original function has a value equal to its average value over that entire interval; if the function is sinusoidal, then only the initial results within at most a two period interval within the specified interval will be listed, but general forms will also be included (however, their results may be outside the specified interval); if the algorithm cannot determine any values, then it will return a list of `None`
+
+    See Also
+    --------
+    - Roots for key functions: :func:`~library.analyses.roots.linear.linear_roots`, :func:`~library.analyses.roots.quadratic.quadratic_roots`, :func:`~library.analyses.roots.cubic.cubic_roots`, :func:`~library.analyses.roots.hyperbolic.hyperbolic_roots`, :func:`~library.analyses.roots.exponential.exponential_roots`, :func:`~library.analyses.roots.logarithmic.logarithmic_roots`, :func:`~library.analyses.roots.logistic.logistic_roots`, :func:`~library.analyses.roots.sinusoidal.sinusoidal_roots`
+    - Mean values: :func:`~library.analyses.mean_values.average_value_integral`, :func:`~library.analyses.mean_values.average_value_derivative`, :func:`~library.analyses.mean_values.mean_values_derivative`
+
+    Notes
+    -----
+    - Mean values for the integral over an interval: :math:`f(c) = \\frac{1}{b - a}\\cdot{\\int_{a}^{b} f(x) \\,dx}` 
+    - Theorem: |mean_integrals|
 
     Examples
     --------
@@ -508,11 +547,20 @@ def average_values(equation_type, equation, integral, start, end, constants, pre
     averages['average_value_derivative'] : float
         Slope of a function between two points
     averages['mean_values_derivative'] : list
-        Values of the x-coordinates within the specified interval at which the original function has a value equal to its average value over that entire interval; if the function is sinusoidal, then only the initial results within at most a two period interval within the specified interval will be listed, but general forms will also be included (however, their results may be outside the specified interval; see `sinusoidal_roots`); if the algorithm cannot determine any values, then it will return a list of `None`
+        Values of the x-coordinates within the specified interval at which the original function has a value equal to its average value over that entire interval; if the function is sinusoidal, then only the initial results within at most a two period interval within the specified interval will be listed, but general forms will also be included (however, their results may be outside the specified interval); if the algorithm cannot determine any values, then it will return a list of `None`
     averages['average_value_integral'] : float
         Average value of the function between two points
     averages['mean_values_integral'] : list
-        Values of the x-coordinates within the specified interval at which the original function has a value equal to its average value over that entire interval; if the function is sinusoidal, then only the initial results within at most a two period interval within the specified interval will be listed, but general forms will also be included (however, their results may be outside the specified interval; see `sinusoidal_roots`); if the algorithm cannot determine any values, then it will return a list of `None`
+        Values of the x-coordinates within the specified interval at which the original function has a value equal to its average value over that entire interval; if the function is sinusoidal, then only the initial results within at most a two period interval within the specified interval will be listed, but general forms will also be included (however, their results may be outside the specified interval); if the algorithm cannot determine any values, then it will return a list of `None`
+
+    See Also
+    --------
+    :func:`~library.analyses.mean_values.average_value_derivative`, :func:`~library.analyses.mean_values.mean_values_derivative`, :func:`~library.analyses.mean_values.average_value_integral`, :func:`~library.analyses.mean_values.mean_values_integral`
+
+    Notes
+    -----
+    - Derivative theorem: |mean_derivatives|
+    - Integral theorem: |mean_integrals|
 
     Examples
     --------

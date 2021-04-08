@@ -31,9 +31,13 @@ def accumulated_area(integral, start, end, precision):
     area : int or float
         Definite integral of the original indefinite integral, evaluated between two points
 
+    See Also
+    --------
+    :func:`~library.analyses.integrals.linear.linear_integral`, :func:`~library.analyses.integrals.quadratic.quadratic_integral`, :func:`~library.analyses.integrals.cubic.cubic_integral`, :func:`~library.analyses.integrals.hyperbolic.hyperbolic_integral`, :func:`~library.analyses.integrals.exponential.exponential_integral`, :func:`~library.analyses.integrals.logarithmic.logarithmic_integral`, :func:`~library.analyses.integrals.logistic.logistic_integral`, :func:`~library.analyses.integrals.sinusoidal.sinusoidal_integral`
+
     Notes
     -----
-    Definite integral: :math:`\\int_{a}^{b} x^2 \\,dx`
+    Definite integral: :math:`\\int_{a}^{b} f(x) \\,dx = F(b) - F(a)`
 
     Examples
     --------
