@@ -34,7 +34,7 @@ def logarithmic_roots(first_constant, second_constant, precision):
     Notes
     -----
     - Standard form of a logarithmic function: :math:`f(x) = a\\cdot{\\ln{x}} + b`
-    - Logarithmic formula: :math:`x = e^{-\\frac{b}{a}}`
+    - Logarithmic formula: :math:`x = \\text{e}^{-\\frac{b}{a}}`
 
     Examples
     --------

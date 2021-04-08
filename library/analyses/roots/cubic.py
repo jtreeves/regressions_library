@@ -38,7 +38,13 @@ def cubic_roots(first_constant, second_constant, third_constant, fourth_constant
     Notes
     -----
     - Standard form of a cubic function: :math:`f(x) = a\\cdot{x^3} + b\\cdot{x^2} + c\\cdot{x} + d`
-    - Cubic formula: :math:`x = -\\frac{1}{3a}\\cdot(b + (\\frac{-1 + \\sqrt{-3}}{2})^k\\cdot{\\sqrt[3]{\\frac{2b^3 - 9abc + 27a^2d \pm \\sqrt{(2b^3 - 9abc + 27a^2d)^2 - 4(b^2 - 3ac)^3}}{2}}} + \\frac{b^2 - 3ac}{(\\frac{-1 + \\sqrt{-3}}{2})^k\\cdot{\\sqrt[3]{\\frac{2b^3 - 9abc + 27a^2d \pm \\sqrt{(2b^3 - 9abc + 27a^2d)^2 - 4(b^2 - 3ac)^3}}{2}}}}), k \\in{0, 1, 2}`
+    - Cubic formula: :math:`x_k = -\\frac{1}{3a}\\cdot(b + \\xi^k\\cdot{\\eta} + \\frac{\\Delta_0}{\\xi^k\\cdot{\\eta}})`
+
+        - :math:`\\Delta_0 = b^2 - 3ac`
+        - :math:`\\Delta_1 = 2b^3 - 9abc +27a^2d`
+        - :math:`\\xi = \\frac{-1 + \\sqrt{-3}}{2}`
+        - :math:`\\eta = \\sqrt[3]{\\frac{\\Delta_1 \\pm \\sqrt{\\Delta_1^2 - 4\\Delta_0^3}}{2}}`
+        - :math:`k \\in \\{ 0, 1, 2 \\}`
 
     Examples
     --------
@@ -58,16 +64,16 @@ def cubic_roots(first_constant, second_constant, third_constant, fourth_constant
     delta_first = second_constant**2 - 3 * first_constant * third_constant
     delta_second = 2 * second_constant**3 - 9 * first_constant * second_constant * third_constant + 27 * first_constant**2 * fourth_constant
     discriminant = delta_second**2 - 4 * delta_first**3
-    zeta_first = ((delta_second + discriminant**(1/2)) / 2)**(1/3)
-    zeta_second = ((delta_second - discriminant**(1/2)) / 2)**(1/3)
-    zeta = 0
-    if zeta_first == 0:
-        zeta = zeta_second
+    eta_first = ((delta_second + discriminant**(1/2)) / 2)**(1/3)
+    eta_second = ((delta_second - discriminant**(1/2)) / 2)**(1/3)
+    eta = 0
+    if eta_first == 0:
+        eta = eta_second
     else:
-        zeta = zeta_first
-    first_root = (-1 / (3 * first_constant)) * (second_constant + zeta * xi**0 + delta_first / (zeta * xi**0))
-    second_root = (-1 / (3 * first_constant)) * (second_constant + zeta * xi**1 + delta_first / (zeta * xi**1))
-    third_root = (-1 / (3 * first_constant)) * (second_constant + zeta * xi**2 + delta_first / (zeta * xi**2))
+        eta = eta_first
+    first_root = (-1 / (3 * first_constant)) * (second_constant + eta * xi**0 + delta_first / (eta * xi**0))
+    second_root = (-1 / (3 * first_constant)) * (second_constant + eta * xi**1 + delta_first / (eta * xi**1))
+    third_root = (-1 / (3 * first_constant)) * (second_constant + eta * xi**2 + delta_first / (eta * xi**2))
     first_real = first_root.real
     second_real = second_root.real
     third_real = third_root.real

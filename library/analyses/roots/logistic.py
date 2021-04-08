@@ -33,7 +33,7 @@ def logistic_roots(first_constant, second_constant, third_constant, precision):
 
     Notes
     -----
-    - Standard form of a logistic function: :math:`f(x) = \\frac{a}{1 + e^{-b\\cdot(x - c)}}`
+    - Standard form of a logistic function: :math:`f(x) = \\frac{a}{1 + \\text{e}^{-b\\cdot(x - c)}}`
     - Logistic formula: `None`
 
     Examples

@@ -32,6 +32,19 @@ def sinusoidal_roots(first_constant, second_constant, third_constant, fourth_con
     roots : list
         List of the x-coordinates of the initial x-intercepts within two periods of the original function in float format, along with the general forms in string format that can be used to determine all other x-intercepts by plugging in any integer value for 'k' and evaluating; if the function never crosses the x-axis, then it will return a list of `None`
 
+    See Also
+    --------
+    :func:`~library.analyses.equations.sinusoidal.sinusoidal_equation`, :func:`~library.analyses.derivatives.sinusoidal.sinusoidal_derivatives`, :func:`~library.analyses.integrals.sinusoidal.sinusoidal_integral`, :func:`~library.models.sinusoidal.sinusoidal_model`
+
+    Notes
+    -----
+    - Standard form of a sinusoidal function: :math:`f(x) = a\\cdot{\\sin(b\\cdot(x - c))} + d`
+    - Sinusoidal formula: :math:`x_0 = c + \\frac{1}{b}\\cdot{\\sin^{-1}(-\\frac{d}{a})} + \\frac{2\\pi}{b}\\cdot{k}`
+
+        - :math:`\\text{if} -1 < -\\frac{d}{a} < 0 \\text{ or } 0 < -\\frac{d}{a} < 1, x_1 = c + \\frac{\\pi}{b} - \\frac{1}{b}\\cdot{\\sin^{-1}(-\\frac{d}{a})} + \\frac{2\\pi}{b}\\cdot{k}`
+        - :math:`\\text{if} -\\frac{d}{a} = 0, x_1 = c - \\frac{\\pi}{b} + \\frac{2\\pi}{b}\\cdot{k}`
+        - :math:`k \\in \\mathbb{Z}`
+
     Examples
     --------
     Calculate the roots of a sinusoidal function with coefficients 2, 3, 5, and 1 (and round roots to four decimal places)
