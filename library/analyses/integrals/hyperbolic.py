@@ -24,6 +24,15 @@ def hyperbolic_integral(first_constant, second_constant):
     integral['evaluation'] : function
         Function for evaluating the resultant integral at any float or integer argument
 
+    See Also
+    --------
+    :func:`~library.analyses.equations.hyperbolic.hyperbolic_equation`, :func:`~library.analyses.derivatives.hyperbolic.hyperbolic_derivatives`, :func:`~library.analyses.roots.hyperbolic.hyperbolic_roots`, :func:`~library.models.hyperbolic.hyperbolic_model`
+
+    Notes
+    -----
+    - Standard form of a hyperbolic function: :math:`f(x) = a\\cdot{\\frac{1}{x}} + b`
+    - Integral of a hyperbolic function: :math:`F(x) = a\\cdot{\\ln|x|} + bx`
+
     Examples
     --------
     Generate the integral of a hyperbolic function with coefficients 2 and 3

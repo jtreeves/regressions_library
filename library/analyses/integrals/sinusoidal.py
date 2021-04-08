@@ -28,6 +28,15 @@ def sinusoidal_integral(first_constant, second_constant, third_constant, fourth_
     integral['evaluation'] : function
         Function for evaluating the resultant integral at any float or integer argument
 
+    See Also
+    --------
+    :func:`~library.analyses.equations.sinusoidal.sinusoidal_equation`, :func:`~library.analyses.derivatives.sinusoidal.sinusoidal_derivatives`, :func:`~library.analyses.roots.sinusoidal.sinusoidal_roots`, :func:`~library.models.sinusoidal.sinusoidal_model`
+
+    Notes
+    -----
+    - Standard form of a sinusoidal function: :math:`f(x) = a\\cdot{\\sin(b\\cdot(x - c))} + d`
+    - Integral of a sinusoidal function: :math:`F(x) = \\frac{-a}{b}\\cdot{\\cos(b\\cdot(x - c))} + d\\cdot{x}`
+
     Examples
     --------
     Generate the integral of a sinusoidal function with coefficients 2, 3, 5, and 7

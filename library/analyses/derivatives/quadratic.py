@@ -35,8 +35,8 @@ def quadratic_derivatives(first_constant, second_constant, third_constant):
 
     Notes
     -----
-    - Standard form of a quadratic function: :math:`f(x) = ax^2 + bx + c`
-    - First derivative of a quadratic function: :math:`f'(x) = 2ax + b`
+    - Standard form of a quadratic function: :math:`f(x) = a\\cdot{x^2} + b\\cdot{x} + c`
+    - First derivative of a quadratic function: :math:`f'(x) = 2a\\cdot{x} + b`
     - Second derivative of a quadratic function: :math:`f''(x) = 2a`
 
     Examples

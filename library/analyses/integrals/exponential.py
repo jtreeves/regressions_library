@@ -24,6 +24,15 @@ def exponential_integral(first_constant, second_constant):
     integral['evaluation'] : function
         Function for evaluating the resultant integral at any float or integer argument
 
+    See Also
+    --------
+    :func:`~library.analyses.equations.exponential.exponential_equation`, :func:`~library.analyses.derivatives.exponential.exponential_derivatives`, :func:`~library.analyses.roots.exponential.exponential_roots`, :func:`~library.models.exponential.exponential_model`
+
+    Notes
+    -----
+    - Standard form of an exponential function: :math:`f(x) = a\\cdot{b^x}`
+    - Integral of an exponential function: :math:`F(x) = \\frac{a}{\\ln{b}}\\cdot{b^x}`
+
     Examples
     --------
     Generate the integral of an exponential function with coefficients 2 and 3

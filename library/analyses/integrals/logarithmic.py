@@ -24,6 +24,15 @@ def logarithmic_integral(first_constant, second_constant):
     integral['evaluation'] : function
         Function for evaluating the resultant integral at any float or integer argument
 
+    See Also
+    --------
+    :func:`~library.analyses.equations.logarithmic.logarithmic_equation`, :func:`~library.analyses.derivatives.logarithmic.logarithmic_derivatives`, :func:`~library.analyses.roots.logarithmic.logarithmic_roots`, :func:`~library.models.logarithmic.logarithmic_model`
+
+    Notes
+    -----
+    - Standard form of a logarithmic function: :math:`f(x) = a\\cdot{\\ln{x}} + b`
+    - Integral of a logarithmic function: :math:`F(x) = a\\cdot{x}\\cdot(\\ln{x} - 1) + b\\cdot{x}`
+
     Examples
     --------
     Generate the integral of a logarithmic function with coefficients 2 and 3

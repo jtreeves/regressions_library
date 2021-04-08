@@ -26,6 +26,15 @@ def logistic_integral(first_constant, second_constant, third_constant):
     integral['evaluation'] : function
         Function for evaluating the resultant integral at any float or integer argument
 
+    See Also
+    --------
+    :func:`~library.analyses.equations.logistic.logistic_equation`, :func:`~library.analyses.derivatives.logistic.logistic_derivatives`, :func:`~library.analyses.roots.logistic.logistic_roots`, :func:`~library.models.logistic.logistic_model`
+
+    Notes
+    -----
+    - Standard form of a logistic function: :math:`f(x) = \\frac{a}{1 + e^{-b\\cdot(x - c)}}`
+    - Integral of a logistic function: :math:`F(x) = \\frac{a}{b}\\cdot{\\ln|e^{b\\cdot(x - c)} + 1|}`
+
     Examples
     --------
     Generate the integral of a logistic function with coefficients 2, 3, and 5

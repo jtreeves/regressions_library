@@ -25,6 +25,15 @@ def quadratic_integral(first_constant, second_constant, third_constant):
     integral['evaluation'] : function
         Function for evaluating the resultant integral at any float or integer argument
 
+    See Also
+    --------
+    :func:`~library.analyses.equations.quadratic.quadratic_equation`, :func:`~library.analyses.derivatives.quadratic.quadratic_derivatives`, :func:`~library.analyses.roots.quadratic.quadratic_roots`, :func:`~library.models.quadratic.quadratic_model`
+
+    Notes
+    -----
+    - Standard form of a quadratic function: :math:`f(x) = a\\cdot{x^2} + b\\cdot{x} + c`
+    - Integral of a quadratic function: :math:`F(x) = \\frac{a}{3}\\cdot{x^3} + \\frac{b}{2}\\cdot{x^2} + c\\cdot{x}`
+
     Examples
     --------
     Generate the integral of a quadratic function with coefficients 2, 3, and 5

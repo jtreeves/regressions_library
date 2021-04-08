@@ -23,6 +23,15 @@ def linear_integral(first_constant, second_constant):
     integral['evaluation'] : function
         Function for evaluating the resultant integral at any float or integer argument
 
+    See Also
+    --------
+    :func:`~library.analyses.equations.linear.linear_equation`, :func:`~library.analyses.derivatives.linear.linear_derivatives`, :func:`~library.analyses.roots.linear.linear_roots`, :func:`~library.models.linear.linear_model`
+
+    Notes
+    -----
+    - Standard form of a linear function: :math:`f(x) = a\\cdot{x} + b`
+    - Integral of a linear function: :math:`F(x) = \\frac{a}{2}\\cdot{x^2} + b\\cdot{x}`
+
     Examples
     --------
     Generate the integral of a linear function with coefficients 2 and 3

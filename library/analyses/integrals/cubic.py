@@ -33,8 +33,8 @@ def cubic_integral(first_constant, second_constant, third_constant, fourth_const
 
     Notes
     -----
-    - Standard form of a cubic function: :math:`f(x) = ax^3 + bx^2 + cx + d`
-    - Integral of a cubic function: :math:`F(x) = \\frac{a}{4}x^4 + \\frac{b}{3}x^3 + \\frac{c}{2}x^2 + dx`
+    - Standard form of a cubic function: :math:`f(x) = a\\cdot{x^3} + b\\cdot{x^2} + c\\cdot{x} + d`
+    - Integral of a cubic function: :math:`F(x) = \\frac{a}{4}\\cdot{x^4} + \\frac{b}{3}\\cdot{x^3} + \\frac{c}{2}\\cdot{x^2} + d\\cdot{x}`
 
     Examples
     --------

@@ -32,7 +32,7 @@ def sinusoidal_equation(first_constant, second_constant, third_constant, fourth_
 
     Notes
     -----
-    Standard form of a sinusoidal function: :math:`f(x) = a\\cdot{\\sin(b(x - c))} + d`
+    Standard form of a sinusoidal function: :math:`f(x) = a\\cdot{\\sin(b\\cdot(x - c))} + d`
 
     Examples
     --------

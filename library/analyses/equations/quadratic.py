@@ -29,7 +29,7 @@ def quadratic_equation(first_constant, second_constant, third_constant):
 
     Notes
     -----
-    Standard form of a quadratic function: :math:`f(x) = ax^2 + bx + c`
+    Standard form of a quadratic function: :math:`f(x) = a\\cdot{x^2} + b\\cdot{x} + c`
 
     Examples
     --------

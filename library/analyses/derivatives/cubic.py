@@ -37,9 +37,9 @@ def cubic_derivatives(first_constant, second_constant, third_constant, fourth_co
 
     Notes
     -----
-    - Standard form of a cubic function: :math:`f(x) = ax^3 + bx^2 + cx + d`
-    - First derivative of a cubic function: :math:`f'(x) = 3ax^2 + 2bx + c`
-    - Second derivative of a cubic function: :math:`f''(x) = 6ax + 2b`
+    - Standard form of a cubic function: :math:`f(x) = a\\cdot{x^3} + b\\cdot{x^2} + c\\cdot{x} + d`
+    - First derivative of a cubic function: :math:`f'(x) = 3a\\cdot{x^2} + 2b\\cdot{x} + c`
+    - Second derivative of a cubic function: :math:`f''(x) = 6a\\cdot{x} + 2b`
 
     Examples
     --------

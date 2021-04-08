@@ -30,7 +30,7 @@ def logistic_equation(first_constant, second_constant, third_constant):
 
     Notes
     -----
-    Standard form of a logistic function: :math:`f(x) = \\frac{a}{1 + e^{-b(x - c)}}`
+    Standard form of a logistic function: :math:`f(x) = \\frac{a}{1 + e^{-b\\cdot(x - c)}}`
 
     Examples
     --------
