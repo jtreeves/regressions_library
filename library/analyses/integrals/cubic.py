@@ -26,6 +26,15 @@ def cubic_integral(first_constant, second_constant, third_constant, fourth_const
         Coefficients of the resultant integral
     integral['evaluation'] : function
         Function for evaluating the resultant integral at any float or integer argument
+    
+    See Also
+    --------
+    :func:`~library.analyses.equations.cubic.cubic_equation`, :func:`~library.analyses.derivatives.cubic.cubic_derivatives`, :func:`~library.analyses.roots.cubic.cubic_roots`, :func:`~library.models.cubic.cubic_model`
+
+    Notes
+    -----
+    - Standard form of a cubic function: :math:`f(x) = ax^3 + bx^2 + cx + d`
+    - Integral of a cubic function: :math:`F(x) = \\frac{a}{4}x^4 + \\frac{b}{3}x^3 + \\frac{c}{2}x^2 + dx`
 
     Examples
     --------

@@ -26,6 +26,14 @@ def sinusoidal_equation(first_constant, second_constant, third_constant, fourth_
     evaluation : function
         Function for evaluating a sinusoidal equation when passed any integer or float argument
 
+    See Also
+    --------
+    :func:`~library.analyses.derivatives.sinusoidal.sinusoidal_derivatives`, :func:`~library.analyses.integrals.sinusoidal.sinusoidal_integral`, :func:`~library.analyses.roots.sinusoidal.sinusoidal_roots`, :func:`~library.models.sinusoidal.sinusoidal_model`
+
+    Notes
+    -----
+    Standard form of a sinusoidal function: :math:`f(x) = a\\cdot{\\sin(b(x - c))} + d`
+
     Examples
     --------
     Create a sinusoidal function with coefficients 2, 3, 5, and 7

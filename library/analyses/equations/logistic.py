@@ -24,6 +24,14 @@ def logistic_equation(first_constant, second_constant, third_constant):
     evaluation : function
         Function for evaluating a logistic equation when passed any integer or float argument
 
+    See Also
+    --------
+    :func:`~library.analyses.derivatives.logistic.logistic_derivatives`, :func:`~library.analyses.integrals.logistic.logistic_integral`, :func:`~library.analyses.roots.logistic.logistic_roots`, :func:`~library.models.logistic.logistic_model`
+
+    Notes
+    -----
+    Standard form of a logistic function: :math:`f(x) = \\frac{a}{1 + e^{-b(x - c)}}`
+
     Examples
     --------
     Create a logistic function with coefficients 2, 3, and 5

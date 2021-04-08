@@ -21,6 +21,14 @@ def linear_equation(first_constant, second_constant):
     evaluation : function
         Function for evaluating a linear equation when passed any integer or float argument
 
+    See Also
+    --------
+    :func:`~library.analyses.derivatives.linear.linear_derivatives`, :func:`~library.analyses.integrals.linear.linear_integral`, :func:`~library.analyses.roots.linear.linear_roots`, :func:`~library.models.linear.linear_model`
+
+    Notes
+    -----
+    Standard form of a linear function: :math:`f(x) = ax + b`
+
     Examples
     --------
     Create a linear function with coefficients 2 and 3

@@ -27,6 +27,16 @@ def hyperbolic_derivatives(first_constant, second_constant):
     derivatives['second']['evaluation'] : function
         Function for evaluating the resultant second derivative at any float or integer argumentor evaluating second derivative at any float argument
 
+    See Also
+    --------
+    :func:`~library.analyses.equations.hyperbolic.hyperbolic_equation`, :func:`~library.analyses.integrals.hyperbolic.hyperbolic_integral`, :func:`~library.analyses.roots.hyperbolic.hyperbolic_roots`, :func:`~library.models.hyperbolic.hyperbolic_model`
+
+    Notes
+    -----
+    - Standard form of a hyperbolic function: :math:`f(x) = a\\cdot{\\frac{1}{x}} + b`
+    - First derivative of a hyperbolic function: :math:`f'(x) = -a\\cdot{\\frac{1}{x^2}}`
+    - Second derivative of a hyperbolic function: :math:`f''(x) = 2a\\cdot{\\frac{1}{x^3}}`
+
     Examples
     --------
     Generate the derivatives of a hyperbolic function with coefficients 2 and 3

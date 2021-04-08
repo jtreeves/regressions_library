@@ -24,6 +24,14 @@ def cubic_equation(first_constant, second_constant, third_constant, fourth_const
     -------
     evaluation : function
         Function for evaluating a cubic equation when passed any integer or float argument
+    
+    See Also
+    --------
+    :func:`~library.analyses.derivatives.cubic.cubic_derivatives`, :func:`~library.analyses.integrals.cubic.cubic_integral`, :func:`~library.analyses.roots.cubic.cubic_roots`, :func:`~library.models.cubic.cubic_model`
+
+    Notes
+    -----
+    Standard form of a cubic function: :math:`f(x) = ax^3 + bx^2 + cx + d`
 
     Examples
     --------

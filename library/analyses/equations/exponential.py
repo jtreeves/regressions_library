@@ -20,6 +20,14 @@ def exponential_equation(first_constant, second_constant):
     -------
     evaluation : function
         Function for evaluating an exponential equation when passed any integer or float argument
+    
+    See Also
+    --------
+    :func:`~library.analyses.derivatives.exponential.exponential_derivatives`, :func:`~library.analyses.integrals.exponential.exponential_integral`, :func:`~library.analyses.roots.exponential.exponential_roots`, :func:`~library.models.exponential.exponential_model`
+
+    Notes
+    -----
+    Standard form of an exponential function: :math:`f(x) = a\\cdot{b^x}`
 
     Examples
     --------

@@ -31,6 +31,16 @@ def cubic_derivatives(first_constant, second_constant, third_constant, fourth_co
     derivatives['second']['evaluation'] : function
         Function for evaluating the resultant second derivative at any float or integer argument
 
+    See Also
+    --------
+    :func:`~library.analyses.equations.cubic.cubic_equation`, :func:`~library.analyses.integrals.cubic.cubic_integral`, :func:`~library.analyses.roots.cubic.cubic_roots`, :func:`~library.models.cubic.cubic_model`
+
+    Notes
+    -----
+    - Standard form of a cubic function: :math:`f(x) = ax^3 + bx^2 + cx + d`
+    - First derivative of a cubic function: :math:`f'(x) = 3ax^2 + 2bx + c`
+    - Second derivative of a cubic function: :math:`f''(x) = 6ax + 2b`
+
     Examples
     --------
     Generate the derivatives of a cubic function with coefficients 2, 3, 5, and 7

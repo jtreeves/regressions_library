@@ -29,6 +29,15 @@ def quadratic_roots(first_constant, second_constant, third_constant, precision):
     roots : list
         List of the x-coordinates of all of the x-intercepts of the original function; if the function never crosses the x-axis, then it will return a list of `None`
 
+    See Also
+    --------
+    :func:`~library.analyses.equations.quadratic.quadratic_equation`, :func:`~library.analyses.derivatives.quadratic.quadratic_derivatives`, :func:`~library.analyses.integrals.quadratic.quadratic_integral`, :func:`~library.models.quadratic.quadratic_model`
+
+    Notes
+    -----
+    - Standard form of a quadratic function: :math:`f(x) = ax^2 + bx + c`
+    - Quadratic formula: :math:`x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}`
+
     Examples
     --------
     Calculate the roots of a quadratic function with coefficients 10, 7, and -15 (and round roots to four decimal places)

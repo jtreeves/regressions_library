@@ -29,6 +29,16 @@ def quadratic_derivatives(first_constant, second_constant, third_constant):
     derivatives['second']['evaluation'] : function
         Function for evaluating the resultant second derivative at any float or integer argument
 
+    See Also
+    --------
+    :func:`~library.analyses.equations.quadratic.quadratic_equation`, :func:`~library.analyses.integrals.quadratic.quadratic_integral`, :func:`~library.analyses.roots.quadratic.quadratic_roots`, :func:`~library.models.quadratic.quadratic_model`
+
+    Notes
+    -----
+    - Standard form of a quadratic function: :math:`f(x) = ax^2 + bx + c`
+    - First derivative of a quadratic function: :math:`f'(x) = 2ax + b`
+    - Second derivative of a quadratic function: :math:`f''(x) = 2a`
+
     Examples
     --------
     Generate the derivatives of a quadratic function with coefficients 2, 3, and 5

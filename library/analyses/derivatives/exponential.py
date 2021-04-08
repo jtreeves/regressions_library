@@ -28,6 +28,16 @@ def exponential_derivatives(first_constant, second_constant):
     derivatives['second']['evaluation'] : function
         Function for evaluating the resultant second derivative at any float or integer argument
 
+    See Also
+    --------
+    :func:`~library.analyses.equations.exponential.exponential_equation`, :func:`~library.analyses.integrals.exponential.exponential_integral`, :func:`~library.analyses.roots.exponential.exponential_roots`, :func:`~library.models.exponential.exponential_model`
+
+    Notes
+    -----
+    - Standard form of an exponential function: :math:`f(x) = a\\cdot{b^x}`
+    - First derivative of an exponential function: :math:`f'(x) = a\\cdot{\\ln{b}\\cdot{b^x}}`
+    - Second derivative of an exponential function: :math:`f''(x) = a\\cdot{\\ln^2{b}\\cdot{b^x}}`
+
     Examples
     --------
     Generate the derivatives of an exponential function with coefficients 2 and 3

@@ -23,6 +23,14 @@ def quadratic_equation(first_constant, second_constant, third_constant):
     evaluation : function
         Function for evaluating a quadratic equation when passed any integer or float argument
 
+    See Also
+    --------
+    :func:`~library.analyses.derivatives.quadratic.quadratic_derivatives`, :func:`~library.analyses.integrals.quadratic.quadratic_integral`, :func:`~library.analyses.roots.quadratic.quadratic_roots`, :func:`~library.models.quadratic.quadratic_model`
+
+    Notes
+    -----
+    Standard form of a quadratic function: :math:`f(x) = ax^2 + bx + c`
+
     Examples
     --------
     Create a quadratic function with coefficients 2, 3, and 5

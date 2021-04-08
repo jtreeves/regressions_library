@@ -27,6 +27,16 @@ def logarithmic_derivatives(first_constant, second_constant):
     derivatives['second']['evaluation'] : function
         Function for evaluating the resultant second derivative at any float or integer argument
 
+    See Also
+    --------
+    :func:`~library.analyses.equations.logarithmic.logarithmic_equation`, :func:`~library.analyses.integrals.logarithmic.logarithmic_integral`, :func:`~library.analyses.roots.logarithmic.logarithmic_roots`, :func:`~library.models.logarithmic.logarithmic_model`
+
+    Notes
+    -----
+    - Standard form of a logarithmic function: :math:`f(x) = a\\cdot{\\ln{x}} + b`
+    - First derivative of a logarithmic function: :math:`f'(x) = a\\cdot{\\frac{1}{x}}`
+    - Second derivative of a logarithmic function: :math:`f''(x) = -a\\cdot{\\frac{1}{x^2}}`
+
     Examples
     --------
     Generate the derivatives of a logarithmic function with coefficients 2 and 3

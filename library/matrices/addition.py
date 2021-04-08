@@ -27,6 +27,10 @@ def matrix_sum(matrix_one, matrix_two):
     matrix : list
         List of lists in which each inner element is the sum of the corresponding elements from the input matrices
 
+    Notes
+    -----
+    :math:`\\mathbf{A} = \\begin{bmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\end{bmatrix}`
+
     Examples
     --------
     Add [[1, 2, 3], [4, 5, 6]] and [[2, 3, 5], [7, 11, 13]]

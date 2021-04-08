@@ -30,6 +30,16 @@ def logistic_derivatives(first_constant, second_constant, third_constant):
     derivatives['second']['evaluation'] : function
         Function for evaluating the resultant second derivative at any float or integer argument
 
+    See Also
+    --------
+    :func:`~library.analyses.equations.logistic.logistic_equation`, :func:`~library.analyses.integrals.logistic.logistic_integral`, :func:`~library.analyses.roots.logistic.logistic_roots`, :func:`~library.models.logistic.logistic_model`
+
+    Notes
+    -----
+    - Standard form of a logistic function: :math:`f(x) = \\frac{a}{1 + e^{-b(x - c)}}`
+    - First derivative of a logistic function: :math:`f'(x) = \\frac{ab\\cdot{e^{-b(x - c)}}}{(1 + e^{-b(x - c)})^2}`
+    - Second derivative of a logistic function: :math:`f''(x) = \\frac{2ab^2\\cdot{e^{-2b(x - c)}}}{(1 + e^{-b(x - c)})^3} - \\frac{ab^2\\cdot{e^{-b(x - c)}}}{(1 + e^{-b(x - c)})^2}`
+
     Examples
     --------
     Generate the derivatives of a logistic function with coefficients 2, 3, and 5

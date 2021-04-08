@@ -25,6 +25,10 @@ def vector_sum(vector_one, vector_two):
     vector : list
         List in which each element is the sum of the corresponding elements from the input vectors
 
+    Notes
+    -----
+    :math:`\\mathbf{v} = \\begin{bmatrix} 1 & 2 & 3 \\end{bmatrix}`
+
     Examples
     --------
     Add [1, 2, 3] and [4, 5, 6]

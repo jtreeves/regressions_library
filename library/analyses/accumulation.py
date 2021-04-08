@@ -31,6 +31,10 @@ def accumulated_area(integral, start, end, precision):
     area : int or float
         Definite integral of the original indefinite integral, evaluated between two points
 
+    Notes
+    -----
+    Definite integral: :math:`\\int_{a}^{b} x^2 \\,dx`
+
     Examples
     --------
     Evaluate the definite integral of a linear function with coefficients 2 and 3 between the end points 10 and 20 (and round the area to four decimal places)

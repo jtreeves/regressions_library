@@ -22,6 +22,14 @@ def logarithmic_equation(first_constant, second_constant):
     evaluation : function
         Function for evaluating a logarithmic equation when passed any integer or float argument
 
+    See Also
+    --------
+    :func:`~library.analyses.derivatives.logarithmic.logarithmic_derivatives`, :func:`~library.analyses.integrals.logarithmic.logarithmic_integral`, :func:`~library.analyses.roots.logarithmic.logarithmic_roots`, :func:`~library.models.logarithmic.logarithmic_model`
+
+    Notes
+    -----
+    Standard form of a logarithmic function: :math:`f(x) = a\\cdot{\\ln{x}} + b`
+
     Examples
     --------
     Create a logarithmic function with coefficients 2 and 3

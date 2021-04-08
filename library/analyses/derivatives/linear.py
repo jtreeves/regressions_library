@@ -27,6 +27,16 @@ def linear_derivatives(first_constant, second_constant):
     derivatives['second']['evaluation'] : function
         Function for evaluating the resultant second derivative at any float or integer argument
 
+    See Also
+    --------
+    :func:`~library.analyses.equations.linear.linear_equation`, :func:`~library.analyses.integrals.linear.linear_integral`, :func:`~library.analyses.roots.linear.linear_roots`, :func:`~library.models.linear.linear_model`
+
+    Notes
+    -----
+    - Standard form of a linear function: :math:`f(x) = ax + b`
+    - First derivative of a linear function: :math:`f'(x) = a`
+    - Second derivative of a linear function: :math:`f''(x) = 0`
+
     Examples
     --------
     Generate the derivatives of a linear function with coefficients 2 and 3

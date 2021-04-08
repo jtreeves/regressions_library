@@ -32,6 +32,16 @@ def sinusoidal_derivatives(first_constant, second_constant, third_constant, four
     derivatives['second']['evaluation'] : function
         Function for evaluating the resultant second derivative at any float or integer argument
 
+    See Also
+    --------
+    :func:`~library.analyses.equations.sinusoidal.sinusoidal_equation`, :func:`~library.analyses.integrals.sinusoidal.sinusoidal_integral`, :func:`~library.analyses.roots.sinusoidal.sinusoidal_roots`, :func:`~library.models.sinusoidal.sinusoidal_model`
+
+    Notes
+    -----
+    - Standard form of a sinusoidal function: :math:`f(x) = a\\cdot{\\sin(b(x - c))} + d`
+    - First derivative of a sinusoidal function: :math:`f'(x) = ab\\cdot{\\cos(b(x - c))}`
+    - Second derivative of a sinusoidal function: :math:`f''(x) = -ab^2\\cdot{\\sin(b(x - c))}`
+
     Examples
     --------
     Generate the derivatives of a sinusoidal function with coefficients 2, 3, 5, and 7

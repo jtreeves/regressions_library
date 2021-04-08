@@ -21,6 +21,14 @@ def hyperbolic_equation(first_constant, second_constant):
     evaluation : function
         Function for evaluating a hyperbolic equation when passed any integer or float argument
 
+    See Also
+    --------
+    :func:`~library.analyses.derivatives.hyperbolic.hyperbolic_derivatives`, :func:`~library.analyses.integrals.hyperbolic.hyperbolic_integral`, :func:`~library.analyses.roots.hyperbolic.hyperbolic_roots`, :func:`~library.models.hyperbolic.hyperbolic_model`
+
+    Notes
+    -----
+    Standard form of a hyperbolic function: :math:`f(x) = a\\cdot{\\frac{1}{x}} + b`
+
     Examples
     --------
     Create a hyperbolic function with coefficients 2 and 3
