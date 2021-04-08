@@ -31,6 +31,15 @@ def cubic_roots(first_constant, second_constant, third_constant, fourth_constant
     roots : list
         List of the x-coordinates of all of the x-intercepts of the original function
 
+    See Also
+    --------
+    :func:`~library.analyses.equations.cubic.cubic_equation`, :func:`~library.analyses.derivatives.cubic.cubic_derivatives`, :func:`~library.analyses.integrals.cubic.cubic_integral`, :func:`~library.models.cubic.cubic_model`
+
+    Notes
+    -----
+    - Standard form of a cubic function: :math:`f(x) = a\\cdot{x^3} + b\\cdot{x^2} + c\\cdot{x} + d`
+    - Cubic formula: :math:`x = -\\frac{1}{3a}\\cdot(b + (\\frac{-1 + \\sqrt{-3}}{2})^k\\cdot{\\sqrt[3]{\\frac{2b^3 - 9abc + 27a^2d \pm \\sqrt{(2b^3 - 9abc + 27a^2d)^2 - 4(b^2 - 3ac)^3}}{2}}} + \\frac{b^2 - 3ac}{(\\frac{-1 + \\sqrt{-3}}{2})^k\\cdot{\\sqrt[3]{\\frac{2b^3 - 9abc + 27a^2d \pm \\sqrt{(2b^3 - 9abc + 27a^2d)^2 - 4(b^2 - 3ac)^3}}{2}}}}), k \\in{0, 1, 2}`
+
     Examples
     --------
     Calculate the roots of a cubic function with coefficients 1, -15, 66, and -80 (and round roots to four decimal places)

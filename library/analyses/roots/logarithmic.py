@@ -27,6 +27,15 @@ def logarithmic_roots(first_constant, second_constant, precision):
     roots : list
         List of the x-coordinates of all of the x-intercepts of the original function
 
+    See Also
+    --------
+    :func:`~library.analyses.equations.logarithmic.logarithmic_equation`, :func:`~library.analyses.derivatives.logarithmic.logarithmic_derivatives`, :func:`~library.analyses.integrals.logarithmic.logarithmic_integral`, :func:`~library.models.logarithmic.logarithmic_model`
+
+    Notes
+    -----
+    - Standard form of a logarithmic function: :math:`f(x) = a\\cdot{\\ln{x}} + b`
+    - Logarithmic formula: :math:`x = e^{-\\frac{b}{a}}`
+
     Examples
     --------
     Calculate the roots of a logarithmic function with coefficients 2 and 3 (and round roots to four decimal places)

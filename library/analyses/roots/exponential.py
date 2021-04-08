@@ -25,6 +25,15 @@ def exponential_roots(first_constant, second_constant, precision):
     roots : list
         List of the x-coordinates of all of the x-intercepts of the original function; if the function never crosses the x-axis, then it will return a list of `None`
 
+    See Also
+    --------
+    :func:`~library.analyses.equations.exponential.exponential_equation`, :func:`~library.analyses.derivatives.exponential.exponential_derivatives`, :func:`~library.analyses.integrals.exponential.exponential_integral`, :func:`~library.models.exponential.exponential_model`
+
+    Notes
+    -----
+    - Standard form of a exponential function: :math:`f(x) = a\\cdot{b^x}`
+    - Exponential formula: `None`
+
     Examples
     --------
     Calculate the roots of an exponential function with coefficients 2 and 3 (and round roots to four decimal places)

@@ -27,6 +27,15 @@ def logistic_roots(first_constant, second_constant, third_constant, precision):
     roots : list
         List of the x-coordinates of all of the x-intercepts of the original function; if the function never crosses the x-axis, then it will return a list of `None`
 
+    See Also
+    --------
+    :func:`~library.analyses.equations.logistic.logistic_equation`, :func:`~library.analyses.derivatives.logistic.logistic_derivatives`, :func:`~library.analyses.integrals.logistic.logistic_integral`, :func:`~library.models.logistic.logistic_model`
+
+    Notes
+    -----
+    - Standard form of a logistic function: :math:`f(x) = \\frac{a}{1 + e^{-b\\cdot(x - c)}}`
+    - Logistic formula: `None`
+
     Examples
     --------
     Calculate the roots of a logistic function with coefficients 2, 3, and 5 (and round roots to four decimal places)

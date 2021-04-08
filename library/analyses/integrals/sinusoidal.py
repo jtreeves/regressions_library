@@ -35,7 +35,7 @@ def sinusoidal_integral(first_constant, second_constant, third_constant, fourth_
     Notes
     -----
     - Standard form of a sinusoidal function: :math:`f(x) = a\\cdot{\\sin(b\\cdot(x - c))} + d`
-    - Integral of a sinusoidal function: :math:`F(x) = \\frac{-a}{b}\\cdot{\\cos(b\\cdot(x - c))} + d\\cdot{x}`
+    - Integral of a sinusoidal function: :math:`F(x) = -\\frac{a}{b}\\cdot{\\cos(b\\cdot(x - c))} + d\\cdot{x}`
 
     Examples
     --------

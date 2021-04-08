@@ -26,6 +26,15 @@ def hyperbolic_roots(first_constant, second_constant, precision):
     roots : list
         List of the x-coordinates of all of the x-intercepts of the original function; if the function never crosses the x-axis, then it will return a list of `None`
 
+    See Also
+    --------
+    :func:`~library.analyses.equations.hyperbolic.hyperbolic_equation`, :func:`~library.analyses.derivatives.hyperbolic.hyperbolic_derivatives`, :func:`~library.analyses.integrals.hyperbolic.hyperbolic_integral`, :func:`~library.models.hyperbolic.hyperbolic_model`
+
+    Notes
+    -----
+    - Standard form of a hyperbolic function: :math:`f(x) = a\\cdot{\\frac{1}{x}} + b`
+    - Hyperbolic formula: :math:`x = -\\frac{a}{b}`
+
     Examples
     --------
     Calculate the roots of a hyperbolic function with coefficients 2 and 3 (and round roots to four decimal places)

@@ -26,6 +26,15 @@ def linear_roots(first_constant, second_constant, precision):
     roots : list
         List of the x-coordinates of all of the x-intercepts of the original function
 
+    See Also
+    --------
+    :func:`~library.analyses.equations.linear.linear_equation`, :func:`~library.analyses.derivatives.linear.linear_derivatives`, :func:`~library.analyses.integrals.linear.linear_integral`, :func:`~library.models.linear.linear_model`
+
+    Notes
+    -----
+    - Standard form of a linear function: :math:`f(x) = a\\cdot{x} + b`
+    - Linear formula: :math:`x = -\\frac{b}{a}`
+
     Examples
     --------
     Calculate the roots of a linear function with coefficients 2 and 3 (and round roots to four decimal places)
