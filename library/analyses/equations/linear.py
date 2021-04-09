@@ -27,7 +27,8 @@ def linear_equation(first_constant, second_constant):
 
     Notes
     -----
-    Standard form of a linear function: :math:`f(x) = a\\cdot{x} + b`
+    - Standard form of a linear function: :math:`f(x) = a\\cdot{x} + b`
+    - |linear_functions|
 
     Examples
     --------

@@ -27,7 +27,8 @@ def hyperbolic_equation(first_constant, second_constant):
 
     Notes
     -----
-    Standard form of a hyperbolic function: :math:`f(x) = a\\cdot{\\frac{1}{x}} + b`
+    - Standard form of a hyperbolic function: :math:`f(x) = a\\cdot{\\frac{1}{x}} + b`
+    - |rational_functions|
 
     Examples
     --------

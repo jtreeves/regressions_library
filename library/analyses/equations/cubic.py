@@ -31,7 +31,8 @@ def cubic_equation(first_constant, second_constant, third_constant, fourth_const
 
     Notes
     -----
-    Standard form of a cubic function: :math:`f(x) = a\\cdot{x^3} + b\\cdot{x^2} + c\\cdot{x} + d`
+    - Standard form of a cubic function: :math:`f(x) = a\\cdot{x^3} + b\\cdot{x^2} + c\\cdot{x} + d`
+    - |cubic_functions|
 
     Examples
     --------

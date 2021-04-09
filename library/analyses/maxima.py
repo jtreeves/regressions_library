@@ -30,7 +30,8 @@ def maxima_points(intervals):
 
     Notes
     -----
-    Maxima occur at x-coordinates where the sign of the first derivative changes from 'positive' to 'negative'
+    - Maxima occur at x-coordinates where the sign of the first derivative changes from 'positive' to 'negative'
+    - |maxima_values|
 
     Examples
     --------

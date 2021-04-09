@@ -42,7 +42,8 @@ def inflection_points(equation_type, coefficients, derivative, precision):
 
     Notes
     -----
-    Inflection points occur at x-coordinates where the sign of the second derivative changes from either 'positive' to 'negative' or 'negative' to 'positive'
+    - Inflection points occur at x-coordinates where the sign of the second derivative changes from either 'positive' to 'negative' or 'negative' to 'positive'
+    - |inflection_points|
 
     Examples
     --------

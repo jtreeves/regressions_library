@@ -46,7 +46,8 @@ def extrema_points(equation_type, coefficients, derivative, precision):
 
     Notes
     -----
-    Extrema occur at x-coordinates where the sign of the first derivative changes from either 'positive' to 'negative' (at which point, there is a maximum) or 'negative' to 'positive' (at which point, there is a minimum)
+    - Extrema occur at x-coordinates where the sign of the first derivative changes from either 'positive' to 'negative' (at which point, there is a maximum) or 'negative' to 'positive' (at which point, there is a minimum)
+    - |extrema_values|
 
     Examples
     --------

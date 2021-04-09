@@ -37,7 +37,9 @@ def accumulated_area(integral, start, end, precision):
 
     Notes
     -----
-    Definite integral: :math:`\\int_{a}^{b} f(x) \\,dx = F(b) - F(a)`
+    - Definite integral: :math:`\\int_{a}^{b} f(x) \\,dx = F(b) - F(a)`
+    - |definite_integral|
+    - |fundamental_theorem|
 
     Examples
     --------

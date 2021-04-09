@@ -51,7 +51,7 @@ def average_value_derivative(equation, start, end, precision):
     Notes
     -----
     - Slope of a function over an interval: :math:`m = \\frac{f(b) - f(a)}{b - a}`
-    - Theorem: |mean_derivatives|
+    - |mean_derivatives|
 
     Examples
     --------
@@ -120,7 +120,7 @@ def mean_values_derivative(equation_type, equation, start, end, constants, preci
     Notes
     -----
     - Mean values for the derivative over an interval: :math:`f'(c) = \\frac{f(b) - f(a)}{b - a}` 
-    - Theorem: |mean_derivatives|
+    - |mean_derivatives|
 
     Examples
     --------
@@ -327,7 +327,7 @@ def average_value_integral(equation, start, end, precision):
     Notes
     -----
     - Average value of a function over an interval: :math:`f_{avg} = \\frac{1}{b - a}\\cdot{\\int_{a}^{b} f(x) \\,dx}`
-    - Theorem: |mean_integrals|
+    - |mean_integrals|
 
     Examples
     --------
@@ -396,7 +396,7 @@ def mean_values_integral(equation_type, equation, start, end, constants, precisi
     Notes
     -----
     - Mean values for the integral over an interval: :math:`f(c) = \\frac{1}{b - a}\\cdot{\\int_{a}^{b} f(x) \\,dx}` 
-    - Theorem: |mean_integrals|
+    - |mean_integrals|
 
     Examples
     --------
@@ -559,8 +559,8 @@ def average_values(equation_type, equation, integral, start, end, constants, pre
 
     Notes
     -----
-    - Derivative theorem: |mean_derivatives|
-    - Integral theorem: |mean_integrals|
+    - |mean_derivatives|
+    - |mean_integrals|
 
     Examples
     --------

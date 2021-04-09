@@ -44,7 +44,8 @@ def intercept_points(equation_type, coefficients, precision):
 
     Notes
     -----
-    Intercepts occur at x-coordinates where the function equals 0; graphically, the curve crosses the x-axis at these points
+    - Intercepts occur at x-coordinates where the function equals 0; graphically, the curve crosses the x-axis at these points
+    - |intercepts|
 
     Examples
     --------

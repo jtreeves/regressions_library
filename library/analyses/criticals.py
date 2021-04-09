@@ -47,7 +47,8 @@ def critical_points(equation_type, derivative_level, coefficients, precision):
 
     Notes
     -----
-    Critical points occur at x-coordinates where either the derivative at that coordinate equals 0 or the derivative at that coordinate does not exist
+    - Critical points occur at x-coordinates where either the derivative at that coordinate equals 0 or the derivative at that coordinate does not exist
+    - |critical_points|
 
     Examples
     --------

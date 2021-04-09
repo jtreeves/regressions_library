@@ -28,7 +28,8 @@ def logarithmic_equation(first_constant, second_constant):
 
     Notes
     -----
-    Standard form of a logarithmic function: :math:`f(x) = a\\cdot{\\ln{x}} + b`
+    - Standard form of a logarithmic function: :math:`f(x) = a\\cdot{\\ln{x}} + b`
+    - |logarithmic_functions|
 
     Examples
     --------

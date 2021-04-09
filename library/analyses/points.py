@@ -55,7 +55,10 @@ def key_coordinates(equation_type, coefficients, equation, first_derivative, sec
 
     Notes
     -----
-    Key points include x-intercepts, maxima, minima, and points of inflection
+    - Key points include x-intercepts, maxima, minima, and points of inflection
+    - |intercepts|
+    - |extrema|
+    - |inflections|
 
     Examples
     --------

@@ -30,7 +30,8 @@ def minima_points(intervals):
 
     Notes
     -----
-    Minima occur at x-coordinates where the sign of the first derivative changes from 'negative' to 'positive'
+    - Minima occur at x-coordinates where the sign of the first derivative changes from 'negative' to 'positive'
+    - |maxima_values|
 
     Examples
     --------

@@ -27,7 +27,8 @@ def exponential_equation(first_constant, second_constant):
 
     Notes
     -----
-    Standard form of an exponential function: :math:`f(x) = a\\cdot{b^x}`
+    - Standard form of an exponential function: :math:`f(x) = a\\cdot{b^x}`
+    - |exponential_functions|
 
     Examples
     --------

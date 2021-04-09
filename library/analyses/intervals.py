@@ -32,7 +32,8 @@ def sign_chart(derivative, points):
 
     Notes
     -----
-    Sign charts for individual derivatives break up a function's domain into intervals demarcated by the critical points of that derivative, where each interval is noted as being either 'positive', 'negative', or 'constant' based on the values of that derivative during that interval
+    - Sign charts for individual derivatives break up a function's domain into intervals demarcated by the critical points of that derivative, where each interval is noted as being either 'positive', 'negative', or 'constant' based on the values of that derivative during that interval
+    - |intervals|
 
     Examples
     --------
