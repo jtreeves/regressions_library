@@ -25,9 +25,14 @@ def vector_sum(vector_one, vector_two):
     vector : list
         List in which each element is the sum of the corresponding elements from the input vectors
 
+    See Also
+    --------
+    :func:`~library.matrices.addition.matrix_sum`, :func:`~library.vectors.multiplication.scalar_product_vector`
+
     Notes
     -----
-    :math:`\\mathbf{v} = \\begin{bmatrix} 1 & 2 & 3 \\end{bmatrix}`
+    - Vector addition: If :math:`\\mathbf{a} = \\langle a_1, a_2, \\cdots, a_n \\rangle` and :math:`\\mathbf{b} = \\langle b_1, b_2, \\cdots, b_n \\rangle`, then :math:`\\mathbf{a} + \\mathbf{b} = \\langle a_1 + b_1, a_2 + b_2, \\cdots, a_n + b_n \\rangle`
+    - |vector_addition|
 
     Examples
     --------

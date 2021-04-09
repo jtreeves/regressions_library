@@ -26,6 +26,15 @@ def scalar_product_vector(vector, scalar):
     product : list
         List of numbers in which each element is the product of the scalar factor and the corresponding element from the input vector
 
+    See Also
+    --------
+    :func:`~library.matrices.multiplication.scalar_product_matrix`, :func:`~library.vectors.addition.vector_sum`
+
+    Notes
+    -----
+    - Scalar multiplication: If :math:`\\mathbf{a} = \\langle a_1, a_2, \\cdots, a_n \\rangle` and :math:`c` is a scalar number, then :math:`c\\cdot{\\mathbf{a}} = \\langle c\\cdot{a_1}, c\\cdot{a_2}, \\cdots, c\\cdot{a_n} \\rangle`
+    - |scalar_multiplication|
+
     Examples
     --------
     Multiply [1, 2, 3] and -2
