@@ -29,7 +29,8 @@ def vector_magnitude(vector):
 
     Notes
     -----
-    - Magnitude of vector :math:`\\mathbf{a}` with form :math:`\\langle a_1, a_2, \\cdots, a_n \\rangle`: :math:`\\|\\mathbf{a}\\| = \\sqrt{a_1^2 + a_2^2 + \\cdots + a_n^2}`
+    - Vector: :math:`\\mathbf{a} = \\langle a_1, a_2, \\cdots, a_n \\rangle`
+    - Magnitude of vector: :math:`\\|\\mathbf{a}\\| = \\sqrt{a_1^2 + a_2^2 + \\cdots + a_n^2}`
     - |magnitude|
 
     Examples

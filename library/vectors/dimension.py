@@ -32,8 +32,8 @@ def single_dimension(matrix, scalar):
 
     Notes
     -----
-    - Matrix: :math:`\\begin{bmatrix} a_{11} & a_{12} & \\cdots & a_{1n} \\\\ a_{21} & a_{22} & \\cdots & a_{2n} \\\\ \\cdots & \\cdots & \\cdots & \\cdots \\\\ a_{m1} & a_{m2} & \\cdots & a_{mn} \\end{bmatrix}`
-    - Row vector corresponding to the :math:`n`\ th column of the matrix: :math:`\\langle a_{1n}, a_{2n}, \\cdots, a_{mn} \\rangle`
+    - Matrix: :math:`\\begin{bmatrix} a_{1,1} & a_{1,2} & \\cdots & a_{1,n} \\\\ a_{2,1} & a_{2,2} & \\cdots & a_{2,n} \\\\ \\cdots & \\cdots & \\cdots & \\cdots \\\\ a_{m,1} & a_{m,2} & \\cdots & a_{m,n} \\end{bmatrix}`
+    - Row vector corresponding to the :math:`n`\ th column of the matrix: :math:`\\langle a_{1,n}, a_{2,n}, \\cdots, a_{m,n} \\rangle`
 
     Examples
     --------

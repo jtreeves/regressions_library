@@ -30,7 +30,8 @@ def unit_vector(vector):
 
     Notes
     -----
-    - Unit vector :math:`\\mathbf{u}` with the same direction as vector :math:`\\mathbf{a}` with form :math:`\\langle a_1, a_2, \\cdots, a_n \\rangle`: :math:`\\mathbf{u}= \\frac{\\mathbf{a}}{\\|\\mathbf{a}\\|}`
+    - Comparison vector: :math:`\\mathbf{a} = \\langle a_1, a_2, \\cdots, a_n \\rangle`
+    - Unit vector with same direction: :math:`\\mathbf{u}= \\frac{\\mathbf{a}}{\\|\\mathbf{a}\\|}`
     - |unit_vector|
 
     Examples

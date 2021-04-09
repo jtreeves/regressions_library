@@ -32,7 +32,9 @@ def scalar_product_vector(vector, scalar):
 
     Notes
     -----
-    - Scalar product of vector :math:`\\mathbf{a}` with form :math:`\\langle a_1, a_2, \\cdots, a_n \\rangle` and scalar :math:`c`: :math:`c\\cdot{\\mathbf{a}} = \\langle c\\cdot{a_1}, c\\cdot{a_2}, \\cdots, c\\cdot{a_n} \\rangle`
+    - Vector: :math:`\\mathbf{a} = \\langle a_1, a_2, \\cdots, a_n \\rangle`
+    - Scalar: :math:`c`
+    - Scalar product: :math:`c\\cdot{\\mathbf{a}} = \\langle c\\cdot{a_1}, c\\cdot{a_2}, \\cdots, c\\cdot{a_n} \\rangle`
     - |scalar_multiplication|
 
     Examples
@@ -84,7 +86,9 @@ def dot_product(vector_one, vector_two):
 
     Notes
     -----
-    - Dot product of vector :math:`\\mathbf{a}` with form :math:`\\langle a_1, a_2, \\cdots, a_n \\rangle` and vector :math:`\\mathbf{b}` with form :math:`\\langle b_1, b_2, \\cdots, b_n \\rangle`: :math:`\\mathbf{a}\\cdot{\\mathbf{b}} = a_1\\cdot{b_1} + a_2\\cdot{b_2} + \\cdots + a_n\\cdot{b_n}`
+    - First vector: :math:`\\mathbf{a} = \\langle a_1, a_2, \\cdots, a_n \\rangle`
+    - Second vector: :math:`\\mathbf{b} = \\langle b_1, b_2, \\cdots, b_n \\rangle`:
+    - Dot product of vectors: :math:`\\mathbf{a}\\cdot{\\mathbf{b}} = a_1\\cdot{b_1} + a_2\\cdot{b_2} + \\cdots + a_n\\cdot{b_n}`
     - |dot_product|
 
     Examples

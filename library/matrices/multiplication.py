@@ -28,6 +28,17 @@ def scalar_product_matrix(matrix, scalar):
     matrix : list
         List of lists in which each inner element is the product of the corresponding element from the input matrix and the scalar value
 
+    See Also
+    --------
+    :func:`~library.vectors.multiplication.scalar_product_vector`, :func:`~library.matrices.addition.matrix_sum`
+
+    Notes
+    -----
+    - Matrix: :math:`\\mathbf{A} = \\begin{bmatrix} a_{1,1} & a_{1,2} & \\cdots & a_{1,n} \\\\ a_{2,1} & a_{2,2} & \\cdots & a_{2,n} \\\\ \\cdots & \\cdots & \\cdots & \\cdots \\\\ a_{m,1} & a_{m,2} & \\cdots & a_{m,n} \\end{bmatrix}`
+    - Scalar: :math:`c`
+    - Scalar product: :math:`c\\cdot{\\mathbf{A}} = \\begin{bmatrix} c\\cdot{a_{1,1}} & c\\cdot{a_{1,2}} & \\cdots & c\\cdot{a_{1,n}} \\\\ c\\cdot{a_{2,1}} & c\\cdot{a_{2,2}} & \\cdots & c\\cdot{a_{2,n}} \\\\ \\cdots & \\cdots & \\cdots & \\cdots \\\\ c\\cdot{a_{m,1}} & c\\cdot{a_{m,2}} & \\cdots & c\\cdot{a_{m,n}} \\end{bmatrix}`
+    - |matrix_scalar_multiplication|
+
     Examples
     --------
     Multiply [[1, 2, 3], [4, 5, 6]] and -2
@@ -72,6 +83,17 @@ def matrix_product(matrix_one, matrix_two):
     -------
     matrix : list
         List of lists in which each inner element is the dot product of the first matrix's row vector corresponding to that element's row position and the second matrix's column vector corresponding to that element's column position; resultant matrix will have the same number of rows as the first matrix and the same number of columns as the second matrix
+
+    See Also
+    --------
+    :func:`~library.vectors.multiplication.dot_product`, :func:`~library.matrices.transpose.adjugate`
+
+    Notes
+    -----
+    - First matrix: :math:`\\mathbf{A} = \\begin{bmatrix} a_{1,1} & a_{1,2} & \\cdots & a_{1,n} \\\\ a_{2,1} & a_{2,2} & \\cdots & a_{2,n} \\\\ \\cdots & \\cdots & \\cdots & \\cdots \\\\ a_{m,1} & a_{m,2} & \\cdots & a_{m,n} \\end{bmatrix}`
+    - Second matrix: :math:`\\mathbf{B} = \\begin{bmatrix} b_{1,1} & b_{1,2} & \\cdots & b_{1,p} \\\\ b_{2,1} & b_{2,2} & \\cdots & b_{2,p} \\\\ \\cdots & \\cdots & \\cdots & \\cdots \\\\ b_{n,1} & b_{n,2} & \\cdots & b_{n,p} \\end{bmatrix}`
+    - Product of matrices: :math:`\\mathbf{A}\\cdot{\\mathbf{B}} = \\begin{bmatrix} a_{1,1}\\cdot{b_{1,1}} + a_{1,2}\\cdot{b_{2,1}} + \\cdots + a_{1,n}\\cdot{b_{n,1}} & a_{1,1}\\cdot{b_{1,2}} + a_{1,2}\\cdot{b_{2,2}} + \\cdots + a_{1,n}\\cdot{b_{n,2}} & \\cdots & a_{1,1}\\cdot{b_{1,p}} + a_{1,2}\\cdot{b_{2,p}} + \\cdots + a_{1,n}\\cdot{b_{n,p}} \\\\ a_{2,1}\\cdot{b_{1,1}} + a_{2,2}\\cdot{b_{2,1}} + \\cdots + a_{2,n}\\cdot{b_{n,1}} & a_{2,1}\\cdot{b_{1,2}} + a_{2,2}\\cdot{b_{2,2}} + \\cdots + a_{2,n}\\cdot{b_{n,2}} & \\cdots & a_{2,1}\\cdot{b_{1,p}} + a_{2,2}\\cdot{b_{2,p}} + \\cdots + a_{2,n}\\cdot{b_{n,p}} \\\\ \\cdots & \\cdots & \\cdots & \\cdots \\\\ a_{m,1}\\cdot{b_{1,1}} + a_{m,2}\\cdot{b_{2,1}} + \\cdots + a_{m,n}\\cdot{b_{n,1}} & a_{m,1}\\cdot{b_{1,2}} + a_{m,2}\\cdot{b_{2,2}} + \\cdots + a_{m,n}\\cdot{b_{n,2}} & \\cdots & a_{m,1}\\cdot{b_{1,p}} + a_{m,2}\\cdot{b_{2,p}} + \\cdots + a_{m,n}\\cdot{b_{n,p}} \\end{bmatrix}`
+    - |matrix_multiplication|
 
     Examples
     --------

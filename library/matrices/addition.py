@@ -26,10 +26,17 @@ def matrix_sum(matrix_one, matrix_two):
     -------
     matrix : list
         List of lists in which each inner element is the sum of the corresponding elements from the input matrices
+    
+    See Also
+    --------
+    :func:`~library.vectors.addition.vector_sum`, :func:`~library.matrices.multiplication.scalar_product_matrix`
 
     Notes
     -----
-    :math:`\\mathbf{A} = \\begin{bmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\end{bmatrix}`
+    - First matrix: :math:`\\mathbf{A} = \\begin{bmatrix} a_{1,1} & a_{1,2} & \\cdots & a_{1,n} \\\\ a_{2,1} & a_{2,2} & \\cdots & a_{2,n} \\\\ \\cdots & \\cdots & \\cdots & \\cdots \\\\ a_{m,1} & a_{m,2} & \\cdots & a_{m,n} \\end{bmatrix}`
+    - Second matrix: :math:`\\mathbf{B} = \\begin{bmatrix} b_{1,1} & b_{1,2} & \\cdots & b_{1,n} \\\\ b_{2,1} & b_{2,2} & \\cdots & b_{2,n} \\\\ \\cdots & \\cdots & \\cdots & \\cdots \\\\ b_{m,1} & b_{m,2} & \\cdots & b_{m,n} \\end{bmatrix}`
+    - Sum of matrices: :math:`\\mathbf{A} + \\mathbf{B} = \\begin{bmatrix} a_{1,1} + b_{1,1} & a_{1,2} + b_{1,2} & \\cdots & a_{1,n} + b_{1,n} \\\\ a_{2,1} + b_{2,1} & a_{2,2} + b_{2,2} & \\cdots & a_{2,n} + b_{2,n} \\\\ \\cdots & \\cdots & \\cdots & \\cdots \\\\ a_{m,1} + b_{m,1} & a_{m,2} + b_{m,2} & \\cdots & a_{m,n} + b_{m,n} \\end{bmatrix}`
+    - |matrix_addition|
 
     Examples
     --------

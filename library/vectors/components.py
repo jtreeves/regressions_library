@@ -33,7 +33,9 @@ def component_form(initial_point, terminal_point):
 
     Notes
     -----
-    - Component form of vector beginning at point :math:`A` with coordinates :math:`(a_1, a_2, \\cdots, a_n)` and ending at point :math:`B` with coordinates :math:`(b_1, b_2, \\cdots, b_n)`: :math:`\\overrightarrow{AB} = \\langle b_1 - a_1, b_2 - a_2, \\cdots, b_n - a_n \\rangle`
+    - Initial point: :math:`A = (a_1, a_2, \\cdots, a_n)`
+    - Terminal point: :math:`B = (b_1, b_2, \\cdots, b_n)`
+    - Component form of vector: :math:`\\overrightarrow{AB} = \\langle b_1 - a_1, b_2 - a_2, \\cdots, b_n - a_n \\rangle`
     - |component_form|
 
     Examples
