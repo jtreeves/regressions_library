@@ -25,6 +25,16 @@ def unite_vectors(vector_one, vector_two):
     matrix : list
         List containing lists; length of outer list will equal lengths of supplied vectors; length of inner lists will equal two
 
+    See Also
+    --------
+    :func:`~library.vectors.dimension.single_dimension`
+
+    Notes
+    -----
+    - First vector: :math:`\\langle a_1, a_2, \\cdots, a_n \\rangle`
+    - Second vector: :math:`\\langle b_1, b_2, \\cdots, b_n \\rangle`
+    - Matrix unifying first and second vectors: :math:`\\begin{bmatrix} a_1 & b_1 \\\\ a_2 & b_2 \\\\ \\cdots & \\cdots \\\\ a_n & b_n \\end{bmatrix}`
+
     Examples
     --------
     Unite [1, 2, 3] and [4, 5, 6]

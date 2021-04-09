@@ -22,6 +22,16 @@ def vector_magnitude(vector):
     magnitude : float
         Measure of the size of the vector, as determined by taking the root of the sum of the squares of its components
 
+    See Also
+    --------
+    :func:`~library.vectors.components.component_form`, :func:`~library.vectors.direction.vector_direction`,
+    :func:`~library.vectors.unit.unit_vector`
+
+    Notes
+    -----
+    - Magnitude of vector :math:`\\mathbf{a}` with form :math:`\\langle a_1, a_2, \\cdots, a_n \\rangle`: :math:`\\|\\mathbf{a}\\| = \\sqrt{a_1^2 + a_2^2 + \\cdots + a_n^2}`
+    - |magnitude|
+
     Examples
     --------
     Determine the magnitude of the vector with components [7, 5, -1]

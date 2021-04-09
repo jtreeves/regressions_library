@@ -24,18 +24,27 @@ def component_form(initial_point, terminal_point):
 
     Returns
     -------
-    vector : list
+    components : list
         List in which each element is the difference of the corresponding elements from the input points (specifically, the change from the initial point to the terminal point)
+
+    See Also
+    --------
+    :func:`~library.vectors.addition.vector_sum`, :func:`~library.vectors.multiplication.scalar_product_vector`, :func:`~library.vectors.direction.vector_direction`, :func:`~library.vectors.magnitude.vector_magnitude`
+
+    Notes
+    -----
+    - Component form of vector beginning at point :math:`A` with coordinates :math:`(a_1, a_2, \\cdots, a_n)` and ending at point :math:`B` with coordinates :math:`(b_1, b_2, \\cdots, b_n)`: :math:`\\overrightarrow{AB} = \\langle b_1 - a_1, b_2 - a_2, \\cdots, b_n - a_n \\rangle`
+    - |component_form|
 
     Examples
     --------
-    Determince coordinate form of a vector with an initial point of [1, 2, 3] and a terminal point of [4, 5, 6]
-        >>> vector_3d = component_form([1, 2, 3], [4, 5, 6])
-        >>> print(vector_3d)
+    Determine the component form of a vector with an initial point of [1, 2, 3] and a terminal point of [4, 5, 6]
+        >>> components_3d = component_form([1, 2, 3], [4, 5, 6])
+        >>> print(components_3d)
         [3, 3, 3]
-    Determince coordinate form of a vector with an initial point of [-5, 12] and a terminal point of [3, -7]
-        >>> vector_2d = component_form([-5, 12], [3, -7])
-        >>> print(vector_2d)
+    Determine the component form of a vector with an initial point of [-5, 12] and a terminal point of [3, -7]
+        >>> components_2d = component_form([-5, 12], [3, -7])
+        >>> print(components_2d)
         [8, -19]
     """
     compare_vectors(initial_point, terminal_point)

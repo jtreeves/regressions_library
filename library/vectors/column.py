@@ -19,6 +19,15 @@ def column_conversion(vector):
     column : list
         List in which each element is a list containing an element from the input vector
 
+    See Also
+    --------
+    :func:`~library.vectors.dimension.single_dimension`
+
+    Notes
+    -----
+    - Row vector: :math:`\\langle a_1, a_2, \\cdots, a_n \\rangle`
+    - Column vector: :math:`\\left\\langle\\begin{matrix} a_1, \\\\ a_2, \\\\ \\cdots, \\\\ a_n \\end{matrix}\\right\\rangle`
+
     Examples
     --------
     Convert [1, 2, 3]

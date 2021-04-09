@@ -26,6 +26,15 @@ def vector_direction(vector):
     direction['degree'] : float
         Measure of the angle of the vector in degrees
 
+    See Also
+    --------
+    :func:`~library.vectors.components.component_form`, :func:`~library.vectors.magnitude.vector_magnitude`, :func:`~library.vectors.unit.unit_vector`
+
+    Notes
+    -----
+    - Direction of vector with component form :math:`\\langle x, y \\rangle`: :math:`\\theta = \\tan^{-1}(\\frac{y}{x})`
+    - |direction|
+
     Examples
     --------
     Determine the direction of a vector with a component form of [7, 5]

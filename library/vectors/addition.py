@@ -31,7 +31,7 @@ def vector_sum(vector_one, vector_two):
 
     Notes
     -----
-    - Vector addition: If :math:`\\mathbf{a} = \\langle a_1, a_2, \\cdots, a_n \\rangle` and :math:`\\mathbf{b} = \\langle b_1, b_2, \\cdots, b_n \\rangle`, then :math:`\\mathbf{a} + \\mathbf{b} = \\langle a_1 + b_1, a_2 + b_2, \\cdots, a_n + b_n \\rangle`
+    - Sum of vector :math:`\\mathbf{a}` with form :math:`\\langle a_1, a_2, \\cdots, a_n \\rangle` and vector :math:`\\mathbf{b}` with form :math:`\\langle b_1, b_2, \\cdots, b_n \\rangle`: :math:`\\mathbf{a} + \\mathbf{b} = \\langle a_1 + b_1, a_2 + b_2, \\cdots, a_n + b_n \\rangle`
     - |vector_addition|
 
     Examples

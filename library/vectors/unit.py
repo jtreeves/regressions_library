@@ -23,6 +23,16 @@ def unit_vector(vector):
     unit : list
         Vector with a magnitue of 1 in the same direction as the original vector
 
+    See Also
+    --------
+    :func:`~library.vectors.components.component_form`, :func:`~library.vectors.multiplication.scalar_product_vector`, :func:`~library.vectors.direction.vector_direction`,
+    :func:`~library.vectors.magnitude.vector_magnitude`
+
+    Notes
+    -----
+    - Unit vector :math:`\\mathbf{u}` with the same direction as vector :math:`\\mathbf{a}` with form :math:`\\langle a_1, a_2, \\cdots, a_n \\rangle`: :math:`\\mathbf{u}= \\frac{\\mathbf{a}}{\\|\\mathbf{a}\\|}`
+    - |unit_vector|
+
     Examples
     --------
     Determine the unit vector of the vector with components [7, 5, -1]

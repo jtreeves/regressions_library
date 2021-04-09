@@ -26,6 +26,15 @@ def single_dimension(matrix, scalar):
     vector : list
         List containing only integers or floats
 
+    See Also
+    --------
+    :func:`~library.vectors.column.column_conversion`
+
+    Notes
+    -----
+    - Matrix: :math:`\\begin{bmatrix} a_{11} & a_{12} & \\cdots & a_{1n} \\\\ a_{21} & a_{22} & \\cdots & a_{2n} \\\\ \\cdots & \\cdots & \\cdots & \\cdots \\\\ a_{m1} & a_{m2} & \\cdots & a_{mn} \\end{bmatrix}`
+    - Row vector corresponding to the :math:`n`\ th column of the matrix: :math:`\\langle a_{1n}, a_{2n}, \\cdots, a_{mn} \\rangle`
+
     Examples
     --------
     Extract the second column from the matrix [[3, 5, 9], [1, -4, 2]]
