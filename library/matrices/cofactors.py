@@ -21,6 +21,17 @@ def matrix_of_cofactors(matrix):
     matrix : list
         List of lists in which each inner element alternates being positive or negative versions of the corresponding element from the original matrix
 
+    See Also
+    --------
+    :func:`~library.matrices.minors.matrix_of_minors`, :func:`~library.matrices.transpose.adjugate`, :func:`~library.matrices.determinant.linear_determinant`, :func:`~library.matrices.inverse.inverse_matrix`
+
+    Notes
+    -----
+    - Original matrix: :math:`\\mathbf{A} = \\begin{bmatrix} a_{1,1} & a_{1,2} & \\cdots & a_{1,n} \\\\ a_{2,1} & a_{2,2} & \\cdots & a_{2,n} \\\\ \\cdots & \\cdots & \\cdots & \\cdots \\\\ a_{m,1} & a_{m,2} & \\cdots & a_{m,n} \\end{bmatrix}`
+    - Matrix of cofactors (if :math:`\\mathbf{A}` contains an odd number of rows and columns): :math:`\\mathbf{A}^C = \\begin{bmatrix} a_{1,1} & -1\\cdot{a_{1,2}} & \\cdots & a_{1,n} \\\\ -1\\cdot{a_{2,1}} & a_{2,2} & \\cdots & -1\\cdot{a_{2,n}} \\\\ \\cdots & \\cdots & \\cdots & \\cdots \\\\ a_{m,1} & -1\\cdot{a_{m,2}} & \\cdots & a_{m,n} \\end{bmatrix}`
+    - Matrix of cofactors (if :math:`\\mathbf{A}` contains an even number of rows and columns): :math:`\\mathbf{A}^C = \\begin{bmatrix} a_{1,1} & -1\\cdot{a_{1,2}} & \\cdots & -1\\cdot{a_{1,n}} \\\\ -1\\cdot{a_{2,1}} & a_{2,2} & \\cdots & a_{2,n} \\\\ \\cdots & \\cdots & \\cdots & \\cdots \\\\ -1\\cdot{a_{m,1}} & a_{m,2} & \\cdots & a_{m,n} \\end{bmatrix}`
+    - |cofactors|
+
     Examples
     --------
     Create the matrix of cofactors for [[1, 2, 3], [4, 5, 6]]
