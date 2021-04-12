@@ -40,6 +40,17 @@ def linear_determinant(matrix, result = 0):
     determinant : int or float
         Determinant of a matrix
 
+    See Also
+    --------
+    :func:`~library.matrices.minors.matrix_of_minors`, :func:`~library.matrices.inverse.inverse_matrix`
+
+    Notes
+    -----
+    - Original matrix: :math:`\\mathbf{A} = \\begin{bmatrix} a_{1,1} & a_{1,2} & \\cdots & a_{1,j} & a_{1,n} \\\\ a_{2,1} & a_{2,2} & \\cdots & a_{2,j} & a_{2,n} \\\\ a_{i,1} & a_{i,2} & \\cdots & a_{i,j} & a_{i,n} \\\\ \\cdots & \\cdots & \\cdots & \\cdots & \\cdots \\\\ a_{m,1} & a_{m,2} & \\cdots & a_{m,j} & a_{m,n} \\end{bmatrix}`
+    - Determinant of matrix (if :math:`\\mathbf{A}` contains an odd number of columns): :math:`|\\mathbf{A}| = a_{1,1}\\cdot{|\\mathbf{A}_{1,1}|} - a_{1,2}\\cdot{|\\mathbf{A}_{1,2}|} + \\cdots - a_{1,j}\\cdot{|\\mathbf{A}_{1,j}|} + a_{1,n}\\cdot{|\\mathbf{A}_{1,n}|}`
+    - Determinant of matrix (if :math:`\\mathbf{A}` contains an even number of columns): :math:`|\\mathbf{A}| = a_{1,1}\\cdot{|\\mathbf{A}_{1,1}|} - a_{1,2}\\cdot{|\\mathbf{A}_{1,2}|} + \\cdots + a_{1,j}\\cdot{|\\mathbf{A}_{1,j}|} - a_{1,n}\\cdot{|\\mathbf{A}_{1,n}|}`
+    - |determinant|
+
     Examples
     --------
     Calculate the determinant of [[1, 2], [3, 4]]

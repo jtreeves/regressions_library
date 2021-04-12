@@ -36,6 +36,19 @@ def system_solution(matrix_one, matrix_two, precision):
     solution : list
         Row vector of coefficients that if expressed as a column vector would satisfy the equation
 
+    See Also
+    --------
+    :func:`~library.matrices.multiplication.matrix_product`, :func:`~library.matrices.transpose.adjugate`, :func:`~library.matrices.determinant.linear_determinant`, :func:`~library.matrices.inverse.inverse_matrix`
+
+    Notes
+    -----
+    - Independent matrix: :math:`\\mathbf{A} = \\begin{bmatrix} a_{1,1} & a_{1,2} & \\cdots & a_{1,n} \\\\ a_{2,1} & a_{2,2} & \\cdots & a_{2,n} \\\\ \\cdots & \\cdots & \\cdots & \\cdots \\\\ a_{m,1} & a_{m,2} & \\cdots & a_{m,n} \\end{bmatrix}`
+    - Dependent matrix: :math:`\\mathbf{B} = \\begin{bmatrix} b_{1,1} \\\\ b_{2,1} \\\\ \\cdots \\\\ b_{m,1} \\end{bmatrix}`
+    - Variable matrix: :math:`\\mathbf{X} = \\begin{bmatrix} x_{1,1} \\\\ x_{2,1} \\\\ \\cdots \\\\ x_{m,1} \\end{bmatrix}`
+    - System of equations in terms of matrices: :math:`\\mathbf{A}\\cdot{\\mathbf{X}} = \\mathbf{B}`
+    - Solution of system of equations: :math:`\\mathbf{X} = \\mathbf{A}^{-1}\\cdot{\\mathbf{B}}`
+    - |solve|
+
     Examples
     --------
     Solve the system that has an independent matrix of [[2, 3], [1, -1]] and a dependent matrix of [[5], [1]] (and round the results to four decimal places)

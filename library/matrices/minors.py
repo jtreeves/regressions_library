@@ -24,6 +24,17 @@ def matrix_of_minors(matrix):
     matrix : list
         List of lists in which each inner element is a determinant of a subsection of the original matrix
 
+    See Also
+    --------
+    :func:`~library.matrices.cofactors.matrix_of_cofactors`, :func:`~library.matrices.transpose.adjugate`, :func:`~library.matrices.determinant.linear_determinant`, :func:`~library.matrices.inverse.inverse_matrix`
+
+    Notes
+    -----
+    - Original matrix: :math:`\\mathbf{A} = \\begin{bmatrix} a_{1,1} & a_{1,2} & \\cdots & a_{1,j} & a_{1,n} \\\\ a_{2,1} & a_{2,2} & \\cdots & a_{2,j} & a_{2,n} \\\\ a_{i,1} & a_{i,2} & \\cdots & a_{i,j} & a_{i,n} \\\\ \\cdots & \\cdots & \\cdots & \\cdots & \\cdots \\\\ a_{m,1} & a_{m,2} & \\cdots & a_{m,j} & a_{m,n} \\end{bmatrix}`
+    - Minor of matrix: :math:`|\\mathbf{A}_{i,j}| = \\begin{vmatrix} a_{1,1} & a_{1,2} & \\cdots & a_{1,n} \\\\ a_{2,1} & a_{2,2} & \\cdots & a_{2,n} \\\\ \\cdots & \\cdots & \\cdots & \\cdots \\\\ a_{m,1} & a_{m,2} & \\cdots & a_{m,n} \\end{vmatrix}`
+    - Matrix of minors: :math:`\\mathbf{A}^M = \\begin{bmatrix} |\\mathbf{A}_{1,1}| & |\\mathbf{A}_{1,2}| & \\cdots & |\\mathbf{A}_{1,j}| & |\\mathbf{A}_{1,n}| \\\\ |\\mathbf{A}_{2,1}| & |\\mathbf{A}_{2,2}| & \\cdots & |\\mathbf{A}_{2,j}| & |\\mathbf{A}_{2,n}| \\\\ |\\mathbf{A}_{i,1}| & |\\mathbf{A}_{i,2}| & \\cdots & |\\mathbf{A}_{i,j}| & |\\mathbf{A}_{i,n}| \\\\ \\cdots & \\cdots & \\cdots & \\cdots & \\cdots \\\\ |\\mathbf{A}_{m,1}| & |\\mathbf{A}_{m,2}| & \\cdots & |\\mathbf{A}_{m,j}| & |\\mathbf{A}_{m,n}| \\end{bmatrix}`
+    - |minors|
+
     Examples
     --------
     Create the matrix of minors for [[1, 2], [3, 4]]

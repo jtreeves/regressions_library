@@ -28,6 +28,16 @@ def inverse_matrix(matrix):
     inverse : list
         List of lists corresponding to the inverse of the original matrix
 
+    See Also
+    --------
+    :func:`~library.matrices.cofactors.matrix_of_cofactors`, :func:`~library.matrices.minors.matrix_of_minors`, :func:`~library.matrices.transpose.adjugate`, :func:`~library.matrices.determinant.linear_determinant`, :func:`~library.matrices.multiplication.scalar_product_matrix`
+
+    Notes
+    -----
+    - Original matrix: :math:`\\mathbf{A} = \\begin{bmatrix} a_{1,1} & a_{1,2} & \\cdots & a_{1,n} \\\\ a_{2,1} & a_{2,2} & \\cdots & a_{2,n} \\\\ \\cdots & \\cdots & \\cdots & \\cdots \\\\ a_{m,1} & a_{m,2} & \\cdots & a_{m,n} \\end{bmatrix}`
+    - Inverse of matrix: :math:`\\mathbf{A}^{-1} = \\frac{1}{|\\mathbf{A}|}\\cdot{{{\\mathbf{A}^M}^C}^T}`
+    - |inverse|
+
     Examples
     --------
     Generate the inverse of [[1, 2], [3, 4]]
