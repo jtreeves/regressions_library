@@ -76,6 +76,47 @@ def linear_model(data, precision):
     model['correlation'] : float
         Correlation coefficient indicating how well the model fits the original data set (values range between 0.0, implying no fit, and 1.0, implying a perfect fit)
 
+    See Also
+    --------
+    :func:`~library.analyses.equations.linear.linear_equation`, :func:`~library.analyses.derivatives.linear.linear_derivatives`, :func:`~library.analyses.integrals.linear.linear_integral`, :func:`~library.analyses.roots.linear.linear_roots`, :func:`~library.statistics.correlation.correlation_coefficient`, :func:`~library.statistics.execute.run_all`
+
+    Notes
+    -----
+    - Provided ordered pairs for the data set: :math:`p_i = \\{ (p_{1,x}, p_{1,y}), (p_{2,x}, p_{2,y}), \\cdots, (p_{n,x}, p_{n,y}) \\}`
+    - Provided values for the independent variable: :math:`X = \\{ p_{1,x}, p_{2,x}, \\cdots, p_{n,x} \\}`
+    - Provided values for the dependent variable: :math:`Y = \\{ p_{1,y}, p_{2,y}, \\cdots, p_{n,y} \\}`
+    - Minimum value of the provided values for the independent variable: :math:`X_{min} \\leq p_{j,x}, \\forall p_{j,x} \\in X`
+    - Maximum value of the provided values for the independent variable: :math:`X_{max} \\geq p_{j,x}, \\forall p_{j,x} \\in X`
+    - First quartile of the provided values for the independent variable: :math:`X_{Q1}`
+    - Third quartile of the provided values for the independent variable: :math:`X_{Q3}`
+    - Mean of all provided values for the dependent variable: :math:`\\bar{y} = \\frac{1}{n}\\cdot{\\sum\\limits_{i=1}^n Y_i}`
+    - Resultant values for the coefficients of the linear model: :math:`C = \\{ a, b \\}`
+    - Standard form for the equation of the linear model: :math:`f(x) = a\\cdot{x} + b`
+    - First derivative of the linear model: :math:`f'(x) = a`
+    - Second derivative of the linear model: :math:`f''(x) = 0`
+    - Integral of the linear model: :math:`F(x) = \\frac{a}{2}\\cdot{x^2} + b\\cdot{x}`
+    - X-values of the roots of the linear model: :math:`x_{intercepts} = \\{ -\\frac{b}{a} \\}`
+    - X-values of the maxima of the linear model: :math:`x_{maxima} = \\{ \\varnothing \\}`
+    - X-values of the minima of the linear model: :math:`x_{minima} = \\{ \\varnothing \\}`
+    - X-values of the inflection points of the linear model: :math:`x_{inflections} = \\{ \\varnothing \\}`
+    - Accumulatation of the linear model over its range: :math:`A_{range} = \\int_{X_{min}}^{X_{max}} f(x) \\,dx`
+    - Accumulatation of the linear model over its interquartile range: :math:`A_{iqr} = \\int_{X_{Q1}}^{X_{Q3}} f(x) \\,dx`
+    - Average rate of change of the linear model over its range: :math:`m_{range} = \\frac{f(X_{max}) - f(X_{min})}{X_{max} - X_{min}}`
+    - X-values at which the linear model's instantaneous rate of change equals its average rate of change over its range: :math:`x_{m,range} = \\{ [X_{min}, X_{max}] \\}`
+    - Average value of the linear model over its range: :math:`v_{range} = \\frac{1}{X_{max} - X_{min}}\\cdot{A_{range}}`
+    - X-values at which the linear model's value equals its average value over its range: :math:`x_{v,range} = \\{ -\\frac{b - v_{range}}{a} \\}`
+    - Average rate of change of the linear model over its interquartile range: :math:`m_{iqr} = \\frac{f(X_{Q3}) - f(X_{Q1})}{X_{Q3} - X_{Q1}}`
+    - X-values at which the linear model's instantaneous rate of change equals its average rate of change over its interquartile range: :math:`x_{m,iqr} = \\{ [X_{Q1}, X_{Q3}] \\}`
+    - Average value of the linear model over its interquartile range: :math:`v_{iqr} = \\frac{1}{X_{max} - X_{min}}\\cdot{A_{iqr}}`
+    - X-values at which the linear model's value equals its average value over its interquartile range: :math:`x_{v,iqr} = \\{ -\\frac{b - v_{iqr}}{a} \\}`
+    - Predicted values based on the linear model: :math:`\\hat{y}_i = \\{ \\hat{y}_1, \\hat{y}_2, \\cdots, \\hat{y}_n \\}`
+    - Residuals of the dependent variable: :math:`e_i = \\{ p_{1,y} - \\hat{y}_1, p_{2,y} - \\hat{y}_2, \\cdots, p_{n,y} - \\hat{y}_n \\}`
+    - Deviations of the dependent variable: :math:`d_i = \\{ p_{1,y} - \\bar{y}, p_{2,y} - \\bar{y}, \\cdots, p_{n,y} - \\bar{y} \\}`
+    - Sum of squares of residuals: :math:`SS_{res} = \\sum\\limits_{i=1}^n e_i^2`
+    - Sum of squares of deviations: :math:`SS_{dev} = \\sum\\limits_{i=1}^n d_i^2`
+    - Correlation coefficient for the linear model: :math:`r = \\sqrt{1 - \\frac{SS_{res}}{SS_{dev}}}`
+    - |regression_analysis|
+
     Examples
     --------
     Generate a linear regression model for the data set [[1, 30], [2, 27], [3, 24], [4, 21], [5, 18], [6, 15], [7, 12], [8, 9], [9, 6], [10, 3]], then print its coefficients, roots, total accumulation over its interquartile range, and correlation (and round the results to four decimal places)
