@@ -76,6 +76,47 @@ def quadratic_model(data, precision):
     model['correlation'] : float
         Correlation coefficient indicating how well the model fits the original data set (values range between 0.0, implying no fit, and 1.0, implying a perfect fit)
 
+    See Also
+    --------
+    :func:`~library.analyses.equations.quadratic.quadratic_equation`, :func:`~library.analyses.derivatives.quadratic.quadratic_derivatives`, :func:`~library.analyses.integrals.quadratic.quadratic_integral`, :func:`~library.analyses.roots.quadratic.quadratic_roots`, :func:`~library.statistics.correlation.correlation_coefficient`, :func:`~library.execute.run_all`
+
+    Notes
+    -----
+    - Provided ordered pairs for the data set: :math:`p_i = \\{ (p_{1,x}, p_{1,y}), (p_{2,x}, p_{2,y}), \\cdots, (p_{n,x}, p_{n,y}) \\}`
+    - Provided values for the independent variable: :math:`X_i = \\{ p_{1,x}, p_{2,x}, \\cdots, p_{n,x} \\}`
+    - Provided values for the dependent variable: :math:`Y_i = \\{ p_{1,y}, p_{2,y}, \\cdots, p_{n,y} \\}`
+    - Minimum value of the provided values for the independent variable: :math:`X_{min} \\leq p_{j,x}, \\forall p_{j,x} \\in X_i`
+    - Maximum value of the provided values for the independent variable: :math:`X_{max} \\geq p_{j,x}, \\forall p_{j,x} \\in X_i`
+    - First quartile of the provided values for the independent variable: :math:`X_{Q1}`
+    - Third quartile of the provided values for the independent variable: :math:`X_{Q3}`
+    - Mean of all provided values for the dependent variable: :math:`\\bar{y} = \\frac{1}{n}\\cdot{\\sum\\limits_{i=1}^n Y_i}`
+    - Resultant values for the coefficients of the quadratic model: :math:`C_i = \\{ a, b, c \\}`
+    - Standard form for the equation of the quadratic model: :math:`f(x) = a\\cdot{x^2} + b\\cdot{x} + c`
+    - First derivative of the quadratic model: :math:`f'(x) = 2a\\cdot{x} + b`
+    - Second derivative of the quadratic model: :math:`f''(x) = 2a`
+    - Integral of the quadratic model: :math:`F(x) = \\frac{a}{3}\\cdot{x^3} + \\frac{b}{2}\\cdot{x^2} + c\\cdot{x}`
+    - X-values of the roots of the quadratic model: :math:`x_{intercepts} = \\{ \\frac{-b - \\sqrt{b^2 - 4ac}}{2a}, \\frac{-b + \\sqrt{b^2 - 4ac}}{2a} \\}`
+    - X-values of the maxima of the quadratic model: :math:`x_{maxima} = \\{ -\\frac{b}{2a} \\}`
+    - X-values of the minima of the quadratic model: :math:`x_{minima} = \\{ -\\frac{b}{2a} \\}`
+    - X-values of the inflection points of the quadratic model: :math:`x_{inflections} = \\{ \\varnothing \\}`
+    - Accumulatation of the quadratic model over its range: :math:`A_{range} = \\int_{X_{min}}^{X_{max}} f(x) \\,dx`
+    - Accumulatation of the quadratic model over its interquartile range: :math:`A_{iqr} = \\int_{X_{Q1}}^{X_{Q3}} f(x) \\,dx`
+    - Average rate of change of the quadratic model over its range: :math:`m_{range} = \\frac{f(X_{max}) - f(X_{min})}{X_{max} - X_{min}}`
+    - X-values at which the quadratic model's instantaneous rate of change equals its average rate of change over its range: :math:`x_{m,range} = \\{ -\\frac{b - m_{range}}{2a} \\}`
+    - Average value of the quadratic model over its range: :math:`v_{range} = \\frac{1}{X_{max} - X_{min}}\\cdot{A_{range}}`
+    - X-values at which the quadratic model's value equals its average value over its range: :math:`x_{v,range} = \\{ \\frac{-b - \\sqrt{b^2 - 4a(c - v_{range})}}{2a}, \\frac{-b + \\sqrt{b^2 - 4a(c - v_{range})}}{2a} \\}`
+    - Average rate of change of the quadratic model over its interquartile range: :math:`m_{iqr} = \\frac{f(X_{Q3}) - f(X_{Q1})}{X_{Q3} - X_{Q1}}`
+    - X-values at which the quadratic model's instantaneous rate of change equals its average rate of change over its interquartile range: :math:`x_{m,iqr} = \\{ -\\frac{b - m_{iqr}}{2a} \\}`
+    - Average value of the quadratic model over its interquartile range: :math:`v_{iqr} = \\frac{1}{X_{max} - X_{min}}\\cdot{A_{iqr}}`
+    - X-values at which the quadratic model's value equals its average value over its interquartile range: :math:`x_{v,iqr} = \\{ \\frac{-b - \\sqrt{b^2 - 4a(c - v_{iqr})}}{2a}, \\frac{-b + \\sqrt{b^2 - 4a(c - v_{iqr})}}{2a} \\}`
+    - Predicted values based on the quadratic model: :math:`\\hat{y}_i = \\{ \\hat{y}_1, \\hat{y}_2, \\cdots, \\hat{y}_n \\}`
+    - Residuals of the dependent variable: :math:`e_i = \\{ p_{1,y} - \\hat{y}_1, p_{2,y} - \\hat{y}_2, \\cdots, p_{n,y} - \\hat{y}_n \\}`
+    - Deviations of the dependent variable: :math:`d_i = \\{ p_{1,y} - \\bar{y}, p_{2,y} - \\bar{y}, \\cdots, p_{n,y} - \\bar{y} \\}`
+    - Sum of squares of residuals: :math:`SS_{res} = \\sum\\limits_{i=1}^n e_i^2`
+    - Sum of squares of deviations: :math:`SS_{dev} = \\sum\\limits_{i=1}^n d_i^2`
+    - Correlation coefficient for the quadratic model: :math:`r = \\sqrt{1 - \\frac{SS_{res}}{SS_{dev}}}`
+    - |regression_analysis|
+
     Examples
     --------
     Generate a quadratic regression model for the data set [[1, 10], [2, 27], [3, 40], [4, 49], [5, 54], [6, 55], [7, 52], [8, 45], [9, 34], [10, 19]], then print its coefficients, roots, total accumulation over its interquartile range, and correlation (and round the results to four decimal places)
