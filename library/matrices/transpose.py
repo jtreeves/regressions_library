@@ -28,7 +28,7 @@ def adjugate(matrix):
     Notes
     -----
     - Original matrix: :math:`\\mathbf{A} = \\begin{bmatrix} a_{1,1} & a_{1,2} & \\cdots & a_{1,n} \\\\ a_{2,1} & a_{2,2} & \\cdots & a_{2,n} \\\\ \\cdots & \\cdots & \\cdots & \\cdots \\\\ a_{m,1} & a_{m,2} & \\cdots & a_{m,n} \\end{bmatrix}`
-    - Transpose of matrix: :math:`\\mathbf{A}^T = \\begin{bmatrix} a_{1,1} & a_{2,1} & \\cdots & a_{n,1} \\\\ a_{1,2} & a_{2,2} & \\cdots & a_{n,2} \\\\ \\cdots & \\cdots & \\cdots & \\cdots \\\\ a_{1,m} & a_{2,m} & \\cdots & a_{n,m} \\end{bmatrix}`
+    - Transpose of matrix: :math:`\\mathbf{A}^T = \\begin{bmatrix} a_{1,1} & a_{2,1} & \\cdots & a_{m,1} \\\\ a_{1,2} & a_{2,2} & \\cdots & a_{m,2} \\\\ \\cdots & \\cdots & \\cdots & \\cdots \\\\ a_{1,n} & a_{2,n} & \\cdots & a_{m,n} \\end{bmatrix}`
     - |adjugate|
 
     Examples
