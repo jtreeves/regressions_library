@@ -77,8 +77,8 @@ def sorted_dimension(data, dimension):
 
     Notes
     -----
-    - Set of ordered pairs of numbers: :math:`a_i = \\{ ( a_{1,1}, a_{1,2}, \\cdots, a_{1,j}, a_{1,n} ), ( a_{2,1}, a_{2,2}, \\cdots, a_{2,j}, a_{2,n} ), \\cdots, ( a_{m,1}, a_{m,2}, \\cdots, a_{m,j}, a_{m,n} ) \\}`
-    - Sorted version of set according to the values in the :math:`j`\ th position: :math:`A_i = ( ( A_{1,1}, A_{1,2}, \\cdots, A_{1,j}, A_{1,n} ), ( A_{2,1}, A_{2,2}, \\cdots, A_{2,j}, A_{2,n} ), \\cdots, ( A_{m,1}, A_{m,2}, \\cdots, A_{m,j}, A_{m,n} ) )`
+    - Set of ordered pairs of numbers: :math:`a_i = \\{ ( a_{1,1}, a_{1,2}, \\cdots, a_{1,j}, a_{1,n} ), ( a_{2,1}, a_{2,2}, \\cdots, a_{2,j}, a_{2,n} ), \\cdots, ( a_{m,1}, a_{m,2}, \\cdots, \\\\ a_{m,j}, a_{m,n} ) \\}`
+    - Sorted version of set according to the values in the :math:`j`\ th position: :math:`A_i = ( ( A_{1,1}, A_{1,2}, \\cdots, A_{1,j}, A_{1,n} ), ( A_{2,1}, A_{2,2}, \\cdots, A_{2,j}, A_{2,n} ), \\cdots, \\\\ ( A_{m,1}, A_{m,2}, \\cdots, A_{m,j}, A_{m,n} ) )`
 
         - For all terms in :math:`A_i`: :math:`A_{n-1,j} \\leq A_{n,j}`
 

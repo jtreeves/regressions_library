@@ -95,7 +95,7 @@ def cubic_model(data, precision):
     - First derivative of the cubic model: :math:`f'(x) = 3a\\cdot{x^2} + 2b\\cdot{x} + c``
     - Second derivative of the cubic model: :math:`f''(x) = 6a\\cdot{x} + 2b`
     - Integral of the cubic model: :math:`F(x) = \\frac{a}{4}\\cdot{x^4} + \\frac{b}{3}\\cdot{x^3} + \\frac{c}{2}\\cdot{x^2} + d\\cdot{x}`
-    - Potential x-values of the roots of the cubic model: :math:`x_{intercepts} = \\{ -\\frac{1}{3a}\\cdot(b + \\xi^0\\cdot{\\eta} + \\frac{\\Delta_0}{\\xi^0\\cdot{\\eta}}), -\\frac{1}{3a}\\cdot(b + \\xi^1\\cdot{\\eta} + \\frac{\\Delta_0}{\\xi^1\\cdot{\\eta}}), -\\frac{1}{3a}\\cdot(b + \\xi^2\\cdot{\\eta} + \\frac{\\Delta_0}{\\xi^2\\cdot{\\eta}}) \\}`
+    - Potential x-values of the roots of the cubic model: :math:`x_{intercepts} = \\{ -\\frac{1}{3a}\\cdot(b + \\xi^0\\cdot{\\eta} + \\frac{\\Delta_0}{\\xi^0\\cdot{\\eta}}), -\\frac{1}{3a}\\cdot(b + \\xi^1\\cdot{\\eta} + \\frac{\\Delta_0}{\\xi^1\\cdot{\\eta}}), \\\\ -\\frac{1}{3a}\\cdot(b + \\xi^2\\cdot{\\eta} + \\frac{\\Delta_0}{\\xi^2\\cdot{\\eta}}) \\}`
 
         - :math:`\\Delta_0 = b^2 - 3ac`
         - :math:`\\Delta_1 = 2b^3 - 9abc +27a^2d`
@@ -110,7 +110,7 @@ def cubic_model(data, precision):
     - Average rate of change of the cubic model over its range: :math:`m_{range} = \\frac{f(X_{max}) - f(X_{min})}{X_{max} - X_{min}}`
     - Potential x-values at which the cubic model's instantaneous rate of change equals its average rate of change over its range: :math:`x_{m,range} = \\{ \\frac{-b - \\sqrt{b^2 - 3a(c - m_{range})}}{3a}, \\frac{-b + \\sqrt{b^2 - 3a(c - m_{range})}}{3a} \\}`
     - Average value of the cubic model over its range: :math:`v_{range} = \\frac{1}{X_{max} - X_{min}}\\cdot{A_{range}}`
-    - Potential x-values at which the cubic model's value equals its average value over its range: :math:`x_{v,range} = \\{ -\\frac{1}{3a}\\cdot(b + \\xi^0\\cdot{\\eta} + \\frac{\\Delta_0}{\\xi^0\\cdot{\\eta}}), -\\frac{1}{3a}\\cdot(b + \\xi^1\\cdot{\\eta} + \\frac{\\Delta_0}{\\xi^1\\cdot{\\eta}}), -\\frac{1}{3a}\\cdot(b + \\xi^2\\cdot{\\eta} + \\frac{\\Delta_0}{\\xi^2\\cdot{\\eta}}) \\}`
+    - Potential x-values at which the cubic model's value equals its average value over its range: :math:`x_{v,range} = \\{ -\\frac{1}{3a}\\cdot(b + \\xi^0\\cdot{\\eta} + \\frac{\\Delta_0}{\\xi^0\\cdot{\\eta}}), -\\frac{1}{3a}\\cdot(b + \\xi^1\\cdot{\\eta} + \\frac{\\Delta_0}{\\xi^1\\cdot{\\eta}}), \\\\ -\\frac{1}{3a}\\cdot(b + \\xi^2\\cdot{\\eta} + \\frac{\\Delta_0}{\\xi^2\\cdot{\\eta}}) \\}`
 
         - :math:`\\Delta_0 = b^2 - 3ac`
         - :math:`\\Delta_1 = 2b^3 - 9abc +27a^2(d - v_{range})`
@@ -120,13 +120,13 @@ def cubic_model(data, precision):
     - Average rate of change of the cubic model over its interquartile range: :math:`m_{iqr} = \\frac{f(X_{Q3}) - f(X_{Q1})}{X_{Q3} - X_{Q1}}`
     - Potential x-values at which the cubic model's instantaneous rate of change equals its average rate of change over its interquartile range: :math:`x_{m,iqr} = \\{ \\frac{-b - \\sqrt{b^2 - 3a(c - m_{iqr})}}{3a}, \\frac{-b + \\sqrt{b^2 - 3a(c - m_{iqr})}}{3a} \\}`
     - Average value of the cubic model over its interquartile range: :math:`v_{iqr} = \\frac{1}{X_{Q3} - X_{Q1}}\\cdot{A_{iqr}}`
-    - Potential x-values at which the cubic model's value equals its average value over its interquartile range: :math:`x_{v,iqr} = \\{ -\\frac{1}{3a}\\cdot(b + \\xi^0\\cdot{\\eta} + \\frac{\\Delta_0}{\\xi^0\\cdot{\\eta}}), -\\frac{1}{3a}\\cdot(b + \\xi^1\\cdot{\\eta} + \\frac{\\Delta_0}{\\xi^1\\cdot{\\eta}}), -\\frac{1}{3a}\\cdot(b + \\xi^2\\cdot{\\eta} + \\frac{\\Delta_0}{\\xi^2\\cdot{\\eta}}) \\}`
+    - Potential x-values at which the cubic model's value equals its average value over its interquartile range: :math:`x_{v,iqr} = \\{ -\\frac{1}{3a}\\cdot(b + \\xi^0\\cdot{\\eta} + \\frac{\\Delta_0}{\\xi^0\\cdot{\\eta}}), -\\frac{1}{3a}\\cdot(b + \\xi^1\\cdot{\\eta} + \\frac{\\Delta_0}{\\xi^1\\cdot{\\eta}}), \\\\ -\\frac{1}{3a}\\cdot(b + \\xi^2\\cdot{\\eta} + \\frac{\\Delta_0}{\\xi^2\\cdot{\\eta}}) \\}`
 
         - :math:`\\Delta_0 = b^2 - 3ac`
         - :math:`\\Delta_1 = 2b^3 - 9abc +27a^2(d - v_{iqr})`
         - :math:`\\xi = \\frac{-1 + \\sqrt{-3}}{2}`
         - :math:`\\eta = \\sqrt[3]{\\frac{\\Delta_1 \\pm \\sqrt{\\Delta_1^2 - 4\\Delta_0^3}}{2}}`
-        
+
     - Predicted values based on the cubic model: :math:`\\hat{y}_i = \\{ \\hat{y}_1, \\hat{y}_2, \\cdots, \\hat{y}_n \\}`
     - Residuals of the dependent variable: :math:`e_i = \\{ p_{1,y} - \\hat{y}_1, p_{2,y} - \\hat{y}_2, \\cdots, p_{n,y} - \\hat{y}_n \\}`
     - Deviations of the dependent variable: :math:`d_i = \\{ p_{1,y} - \\bar{y}, p_{2,y} - \\bar{y}, \\cdots, p_{n,y} - \\bar{y} \\}`

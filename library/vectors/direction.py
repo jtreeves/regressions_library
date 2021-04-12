@@ -32,7 +32,7 @@ def vector_direction(vector):
 
     Notes
     -----
-    - Vector: :math:`\\langle x, y \\rangle`:
+    - Vector: :math:`\\langle x, y \\rangle`
     - Direction of vector: :math:`\\theta = \\tan^{-1}(\\frac{y}{x})`
     - |direction|
 
