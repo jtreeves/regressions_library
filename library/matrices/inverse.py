@@ -30,7 +30,7 @@ def inverse_matrix(matrix):
 
     See Also
     --------
-    :func:`~library.matrices.cofactors.matrix_of_cofactors`, :func:`~library.matrices.minors.matrix_of_minors`, :func:`~library.matrices.transpose.adjugate`, :func:`~library.matrices.determinant.linear_determinant`, :func:`~library.matrices.multiplication.scalar_product_matrix`
+    :func:`~library.matrices.cofactors.matrix_of_cofactors`, :func:`~library.matrices.minors.matrix_of_minors`, :func:`~library.matrices.transpose.adjugate`, :func:`~library.matrices.determinant.linear_determinant`, :func:`~library.matrices.multiplication.scalar_product_matrix`, :func:`~library.matrices.solve.system_solution`
 
     Notes
     -----

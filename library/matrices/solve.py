@@ -1,11 +1,10 @@
-from numpy import matrix
-from numpy.linalg import inv
 from library.errors.matrices import compare_rows
 from library.errors.scalars import positive_integer
 from library.statistics.rounding import rounded_value
 from library.vectors.dimension import single_dimension
 from .multiplication import matrix_product
 from .transpose import adjugate
+from .inverse import inverse_matrix
 
 def system_solution(matrix_one, matrix_two, precision):
     """
@@ -64,10 +63,8 @@ def system_solution(matrix_one, matrix_two, precision):
     positive_integer(precision)
     transposition = adjugate(matrix_one)
     product = matrix_product(transposition, matrix_one)
-    product_matrix = matrix(product, dtype='float')
-    inversion = inv(product_matrix)
-    inversion_list = matrix.tolist(inversion)
-    second_product = matrix_product(inversion_list, transposition)
+    inversion = inverse_matrix(product)
+    second_product = matrix_product(inversion, transposition)
     solution_column = matrix_product(second_product, matrix_two)
     solution = single_dimension(solution_column, 1)
     result = []

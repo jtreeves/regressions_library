@@ -271,31 +271,31 @@ class TestLinearModels(unittest.TestCase):
         self.assertEqual(linear_models['models']['linear']['correlation'], 1.0)
     
     def test_linear_models_quadratic_constants(self):
-        self.assertEqual(linear_models['models']['quadratic']['constants'], [0.0001, -3.0, 33.0])
+        self.assertEqual(linear_models['models']['quadratic']['constants'], [-0.0001, -3.0, 33.0])
     
     def test_linear_models_quadratic_points(self):
-        self.assertEqual(linear_models['models']['quadratic']['points'], {'roots': [[11.004, 0], [29988.996, 0]], 'maxima': [None], 'minima': [[15000.0, -22467.0]], 'inflections': [None]})
+        self.assertEqual(linear_models['models']['quadratic']['points'], {'roots': [[-30010.996, 0], [10.996, 0]], 'maxima': [[-15000.0, 22533.0]], 'minima': [None], 'inflections': [None]})
     
     def test_linear_models_quadratic_accumulations(self):
-        self.assertEqual(linear_models['models']['quadratic']['accumulations'], {'range': 148.5333, 'iqr': 82.5162})
+        self.assertEqual(linear_models['models']['quadratic']['accumulations'], {'range': 148.4667, 'iqr': 82.4838})
     
     def test_linear_models_quadratic_averages(self):
-        self.assertEqual(linear_models['models']['quadratic']['averages'], {'range': {'average_value_derivative': -2.9989, 'mean_values_derivative': [5.5], 'average_value_integral': 16.5037, 'mean_values_integral': [5.4998]}, 'iqr': {'average_value_derivative': -2.9989, 'mean_values_derivative': [5.5], 'average_value_integral': 16.5032, 'mean_values_integral': [5.4999]}})
+        self.assertEqual(linear_models['models']['quadratic']['averages'], {'range': {'average_value_derivative': -3.0011, 'mean_values_derivative': [5.5], 'average_value_integral': 16.4963, 'mean_values_integral': [5.5002]}, 'iqr': {'average_value_derivative': -3.0011, 'mean_values_derivative': [5.5], 'average_value_integral': 16.4968, 'mean_values_integral': [5.5001]}})
     
     def test_linear_models_quadratic_correlation(self):
         self.assertEqual(linear_models['models']['quadratic']['correlation'], 1.0)
     
     def test_linear_models_cubic_constants(self):
-        self.assertEqual(linear_models['models']['cubic']['constants'], [0.0001, -0.0001, -3.0, 33.0])
+        self.assertEqual(linear_models['models']['cubic']['constants'], [-0.0001, -0.0001, -3.0, 33.0])
     
     def test_linear_models_cubic_points(self):
-        self.assertEqual(linear_models['models']['cubic']['points'], {'roots': [[-177.978, 0], [11.0408, 0], [167.9372, 0]], 'maxima': [[-99.6672, 232.0033]], 'minima': [[100.3339, -168.0033]], 'inflections': [[0.3333, 32.0001]]})
+        self.assertEqual(linear_models['models']['cubic']['points'], {'roots': [[10.9522, 0]], 'maxima': [None], 'minima': [None], 'inflections': [[-0.3333, 33.9999]]})
     
     def test_linear_models_cubic_accumulations(self):
-        self.assertEqual(linear_models['models']['cubic']['accumulations'], {'range': 148.7167, 'iqr': 82.5842})
+        self.assertEqual(linear_models['models']['cubic']['accumulations'], {'range': 148.2167, 'iqr': 82.3835})
     
     def test_linear_models_cubic_averages(self):
-        self.assertEqual(linear_models['models']['cubic']['averages'], {'range': {'average_value_derivative': -2.99, 'mean_values_derivative': [6.1165], 'average_value_integral': 16.5241, 'mean_values_integral': [5.4965]}, 'iqr': {'average_value_derivative': -2.9914, 'mean_values_derivative': [5.6978], 'average_value_integral': 16.5168, 'mean_values_integral': [5.4989]}})
+        self.assertEqual(linear_models['models']['cubic']['averages'], {'range': {'average_value_derivative': -3.0122, 'mean_values_derivative': [6.0524], 'average_value_integral': 16.4685, 'mean_values_integral': [5.5039]}, 'iqr': {'average_value_derivative': -3.0108, 'mean_values_derivative': [5.6759], 'average_value_integral': 16.4767, 'mean_values_integral': [5.5012]}})
     
     def test_linear_models_cubic_correlation(self):
         self.assertEqual(linear_models['models']['cubic']['correlation'], 1.0)
@@ -415,16 +415,16 @@ class TestQuadraticModels(unittest.TestCase):
         self.assertEqual(quadratic_models['models']['quadratic']['correlation'], 1.0)
     
     def test_quadratic_models_cubic_constants(self):
-        self.assertEqual(quadratic_models['models']['cubic']['constants'], [0.0001, -2.0, 23.0, -11.0])
+        self.assertEqual(quadratic_models['models']['cubic']['constants'], [-0.0001, -2.0, 23.0, -11.0])
     
     def test_quadratic_models_cubic_points(self):
-        self.assertEqual(quadratic_models['models']['cubic']['points'], {'roots': [[0.5, 0], [11.0063, 0], [19988.4937, 0]], 'maxima': [[5.7525, 55.144]], 'minima': [[13327.5809, -118211928.9959]], 'inflections': [[6666.6667, -59105937.3696]]})
+        self.assertEqual(quadratic_models['models']['cubic']['points'], {'roots': [[-20011.4937, 0], [0.5, 0], [10.9937, 0]], 'maxima': [[5.7475, 55.106]], 'minima': [[-13339.0809, -118825262.2912]], 'inflections': [[-6666.6667, -59412604.0378]]})
     
     def test_quadratic_models_cubic_accumulations(self):
-        self.assertEqual(quadratic_models['models']['cubic']['accumulations'], {'range': 373.75, 'iqr': 254.267})
+        self.assertEqual(quadratic_models['models']['cubic']['accumulations'], {'range': 373.25, 'iqr': 254.0663})
     
     def test_quadratic_models_cubic_averages(self):
-        self.assertEqual(quadratic_models['models']['cubic']['averages'], {'range': {'average_value_derivative': 1.0111, 'mean_values_derivative': [5.4995], 'average_value_integral': 41.5278, 'mean_values_integral': [3.1423, 8.363]}, 'iqr': {'average_value_derivative': 1.0097, 'mean_values_derivative': [5.4998], 'average_value_integral': 50.8534, 'mean_values_integral': [4.2872, 7.2179]}})
+        self.assertEqual(quadratic_models['models']['cubic']['averages'], {'range': {'average_value_derivative': 0.9889, 'mean_values_derivative': [5.5005], 'average_value_integral': 41.4722, 'mean_values_integral': [3.1376, 8.3571]}, 'iqr': {'average_value_derivative': 0.9903, 'mean_values_derivative': [5.5002], 'average_value_integral': 50.8133, 'mean_values_integral': [4.2831, 7.2119]}})
     
     def test_quadratic_models_cubic_correlation(self):
         self.assertEqual(quadratic_models['models']['cubic']['correlation'], 1.0)
@@ -1416,4 +1416,4 @@ class TestLargeModels(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 420 tests in 0.029s ---------- OK ---------- #
+# ---------- Ran 420 tests in 0.023s ---------- OK ---------- #
