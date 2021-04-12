@@ -76,6 +76,47 @@ def hyperbolic_model(data, precision):
     model['correlation'] : float
         Correlation coefficient indicating how well the model fits the original data set (values range between 0.0, implying no fit, and 1.0, implying a perfect fit)
 
+    See Also
+    --------
+    :func:`~library.analyses.equations.hyperbolic.hyperbolic_equation`, :func:`~library.analyses.derivatives.hyperbolic.hyperbolic_derivatives`, :func:`~library.analyses.integrals.hyperbolic.hyperbolic_integral`, :func:`~library.analyses.roots.hyperbolic.hyperbolic_roots`, :func:`~library.statistics.correlation.correlation_coefficient`, :func:`~library.execute.run_all`
+
+    Notes
+    -----
+    - Provided ordered pairs for the data set: :math:`p_i = \\{ (p_{1,x}, p_{1,y}), (p_{2,x}, p_{2,y}), \\cdots, (p_{n,x}, p_{n,y}) \\}`
+    - Provided values for the independent variable: :math:`X_i = \\{ p_{1,x}, p_{2,x}, \\cdots, p_{n,x} \\}`
+    - Provided values for the dependent variable: :math:`Y_i = \\{ p_{1,y}, p_{2,y}, \\cdots, p_{n,y} \\}`
+    - Minimum value of the provided values for the independent variable: :math:`X_{min} \\leq p_{j,x}, \\forall p_{j,x} \\in X_i`
+    - Maximum value of the provided values for the independent variable: :math:`X_{max} \\geq p_{j,x}, \\forall p_{j,x} \\in X_i`
+    - First quartile of the provided values for the independent variable: :math:`X_{Q1}`
+    - Third quartile of the provided values for the independent variable: :math:`X_{Q3}`
+    - Mean of all provided values for the dependent variable: :math:`\\bar{y} = \\frac{1}{n}\\cdot{\\sum\\limits_{i=1}^n Y_i}`
+    - Resultant values for the coefficients of the hyperbolic model: :math:`C_i = \\{ a, b \\}`
+    - Standard form for the equation of the hyperbolic model: :math:`f(x) = a\\cdot{\\frac{1}{x}} + b`
+    - First derivative of the hyperbolic model: :math:`f'(x) = -a\\cdot{\\frac{1}{x^2}}`
+    - Second derivative of the hyperbolic model: :math:`f''(x) = 2a\\cdot{\\frac{1}{x^3}}`
+    - Integral of the hyperbolic model: :math:`F(x) = a\\cdot{\\ln|x|} + b\\cdot{x}`
+    - Potential x-values of the roots of the hyperbolic model: :math:`x_{intercepts} = \\{ -\\frac{a}{b} \\}`
+    - Potential x-values of the maxima of the hyperbolic model: :math:`x_{maxima} = \\{ 0 \\}`
+    - Potential x-values of the minima of the hyperbolic model: :math:`x_{minima} = \\{ 0 \\}`
+    - Potential x-values of the inflection points of the hyperbolic model: :math:`x_{inflections} = \\{ 0 \\}`
+    - Accumulatation of the hyperbolic model over its range: :math:`A_{range} = \\int_{X_{min}}^{X_{max}} f(x) \\,dx`
+    - Accumulatation of the hyperbolic model over its interquartile range: :math:`A_{iqr} = \\int_{X_{Q1}}^{X_{Q3}} f(x) \\,dx`
+    - Average rate of change of the hyperbolic model over its range: :math:`m_{range} = \\frac{f(X_{max}) - f(X_{min})}{X_{max} - X_{min}}`
+    - Potential x-values at which the hyperbolic model's instantaneous rate of change equals its average rate of change over its range: :math:`x_{m,range} = \\{ -\\sqrt{-\\frac{a}{m_{range}}}, \\sqrt{-\\frac{a}{m_{range}}} \\}`
+    - Average value of the hyperbolic model over its range: :math:`v_{range} = \\frac{1}{X_{max} - X_{min}}\\cdot{A_{range}}`
+    - Potential x-values at which the hyperbolic model's value equals its average value over its range: :math:`x_{v,range} = \\{ -\\frac{a}{b - v_{range}} \\}`
+    - Average rate of change of the hyperbolic model over its interquartile range: :math:`m_{iqr} = \\frac{f(X_{Q3}) - f(X_{Q1})}{X_{Q3} - X_{Q1}}`
+    - Potential x-values at which the hyperbolic model's instantaneous rate of change equals its average rate of change over its interquartile range: :math:`x_{m,iqr} = \\{ -\\sqrt{-\\frac{a}{m_{iqr}}}, \\sqrt{-\\frac{a}{m_{iqr}}} \\}`
+    - Average value of the hyperbolic model over its interquartile range: :math:`v_{iqr} = \\frac{1}{X_{Q3} - X_{Q1}}\\cdot{A_{iqr}}`
+    - Potential x-values at which the hyperbolic model's value equals its average value over its interquartile range: :math:`x_{v,iqr} = \\{ -\\frac{a}{b - v_{iqr}} \\}`
+    - Predicted values based on the hyperbolic model: :math:`\\hat{y}_i = \\{ \\hat{y}_1, \\hat{y}_2, \\cdots, \\hat{y}_n \\}`
+    - Residuals of the dependent variable: :math:`e_i = \\{ p_{1,y} - \\hat{y}_1, p_{2,y} - \\hat{y}_2, \\cdots, p_{n,y} - \\hat{y}_n \\}`
+    - Deviations of the dependent variable: :math:`d_i = \\{ p_{1,y} - \\bar{y}, p_{2,y} - \\bar{y}, \\cdots, p_{n,y} - \\bar{y} \\}`
+    - Sum of squares of residuals: :math:`SS_{res} = \\sum\\limits_{i=1}^n e_i^2`
+    - Sum of squares of deviations: :math:`SS_{dev} = \\sum\\limits_{i=1}^n d_i^2`
+    - Correlation coefficient for the hyperbolic model: :math:`r = \\sqrt{1 - \\frac{SS_{res}}{SS_{dev}}}`
+    - |regression_analysis|
+
     Examples
     --------
     Generate a hyperbolic regression model for the data set [[1, 2519], [2, 1259], [3, 839], [4, 629], [5, 503], [6, 419], [7, 359], [8, 314], [9, 279], [10, 251]], then print its coefficients, roots, total accumulation over its interquartile range, and correlation (and round the results to four decimal places)

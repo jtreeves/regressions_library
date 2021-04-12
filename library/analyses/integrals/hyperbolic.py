@@ -31,7 +31,7 @@ def hyperbolic_integral(first_constant, second_constant):
     Notes
     -----
     - Standard form of a hyperbolic function: :math:`f(x) = a\\cdot{\\frac{1}{x}} + b`
-    - Integral of a hyperbolic function: :math:`F(x) = a\\cdot{\\ln|x|} + bx`
+    - Integral of a hyperbolic function: :math:`F(x) = a\\cdot{\\ln|x|} + b\\cdot{x}`
     - |indefinite_integral|
     - |integration_formulas|
 
