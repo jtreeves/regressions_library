@@ -33,11 +33,11 @@ def rounded_value(number, precision):
     - Absolute value of number: :math:`a = |n|`
     - Maximum number of digits after decimal place of result: :math:`d`
     - Check size of number: :math:`c(a,d) = \\lfloor a\\cdot{10^d} \\rfloor`
-    - Significant digit: :math:`s(a,d) = \\lfoor ( a\\cdot{10^d} - \\lfloor a\\cdot{10^d} \\rfloor )\\cdot{10} \\rfloor`
+    - Significant digit: :math:`s(a,d) = \\lfloor ( a\\cdot{10^d} - \\lfloor a\\cdot{10^d} \\rfloor )\\cdot{10} \\rfloor`
     - If :math:`c(a,d) = 0`:
         
         - Rounding formula (if :math:`n = 0`): :math:`r = 0`
-        - If math:`n \\neq 0`:
+        - If :math:`n \\neq 0`:
 
             - Rounding formula (if :math:`a = n`): :math:`r(d) = 10^{-d}`
             - Rounding formula (if :math:`a \\neq n`): :math:`r(d) = -10^{-d}`

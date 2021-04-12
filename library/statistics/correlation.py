@@ -47,7 +47,7 @@ def correlation_coefficient(actuals, expecteds, precision):
     - Deviations: :math:`d_i = \\{ y_1 - \\bar{y}, y_2 - \\bar{y}, \\cdots, y_n - \\bar{y} \\}`
     - Sum of squares of residuals: :math:`SS_{res} = \\sum\\limits_{i=1}^n e_i^2`
     - Sum of squares of deviations: :math:`SS_{dev} = \\sum\\limits_{i=1}^n d_i^2`
-    - Correlation coefficient: :math:`\\sqrt{1 - \\frac{SS_{res}}{SS_{dev}}}`
+    - Correlation coefficient: :math:`r = \\sqrt{1 - \\frac{SS_{res}}{SS_{dev}}}`
     - |determination|
 
     Examples
