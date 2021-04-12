@@ -72,6 +72,33 @@ def run_all(data, precision):
     results['optimal']['correlation'] : float
         Value of the correlation for the model with the best fit (i.e., the model listed in ['optimal']['option'])
 
+    See Also
+    --------
+    :func:`~library.models.linear.linear_model`, :func:`~library.models.quadratic.quadratic_model`, :func:`~library.models.cubic.cubic_model`, :func:`~library.models.hyperbolic.hyperbolic_model`, :func:`~library.models.exponential.exponential_model`, :func:`~library.models.logarithmic.logarithmic_model`, :func:`~library.models.logistic.logistic_model`, :func:`~library.models.sinusoidal.sinusoidal_model`, :func:`~library.statistics.summary.five_number_summary`, :func:`~library.statistics.correlation.correlation_coefficient`
+
+    Notes
+    -----
+    - Provided ordered pairs for the data set: :math:`p_i = \\{ (p_{1,x}, p_{1,y}), (p_{2,x}, p_{2,y}), \\cdots, (p_{n,x}, p_{n,y}) \\}`
+    - Provided values for the independent variable: :math:`X_i = \\{ p_{1,x}, p_{2,x}, \\cdots, p_{n,x} \\}`
+    - Provided values for the dependent variable: :math:`Y_i = \\{ p_{1,y}, p_{2,y}, \\cdots, p_{n,y} \\}`
+    - Resultant values for the coefficients of the linear model: :math:`C_{lin} = \\{ a_{lin}, b_{lin} \\}`
+    - Standard form for the equation of the linear model: :math:`lin(x) = a_{lin}\\cdot{x} + b_{lin}`
+    - Resultant values for the coefficients of the quadratic model: :math:`C_{quad} = \\{ a_{quad}, b_{quad}, c_{quad} \\}`
+    - Standard form for the equation of the quadratic model: :math:`quad(x) = a_{quad}\\cdot{x^2} + b_{quad}\\cdot{x} + c_{quad}`
+    - Resultant values for the coefficients of the cubic model: :math:`C_{cub} = \\{ a_{cub}, b_{cub}, c_{cub}, d_{cub} \\}`
+    - Standard form for the equation of the cubic model: :math:`cub(x) = a_{cub}\\cdot{x^3} + b_{cub}\\cdot{x^2} + c_{cub}\\cdot{x} + d_{cub}`
+    - Resultant values for the coefficients of the hyperbolic model: :math:`C_{hyp} = \\{ a_{hyp}, b_{hyp} \\}`
+    - Standard form for the equation of the hyperbolic model: :math:`hyp(x) = a_{hyp}\\cdot{\\frac{1}{x}} + b_{hyp}`
+    - Resultant values for the coefficients of the exponential model: :math:`C_{exp} = \\{ a_{exp}, b_{exp} \\}`
+    - Standard form for the equation of the exponential model: :math:`exp(x) = a_{exp}\\cdot{b_{exp}^x}`
+    - Resultant values for the coefficients of the logarithmic model: :math:`C_{log} = \\{ a_{log}, b_{log} \\}`
+    - Standard form for the equation of the logarithmic model: :math:`log(x) = a_{log}\\cdot{\\ln{x}} + b_{log}`
+    - Resultant values for the coefficients of the logistic model: :math:`C_{lst} = \\{ a_{lst}, b_{lst}, c_{lst} \\}`
+    - Standard form for the equation of the logistic model: :math:`lst(x) = \\frac{a_{lst}}{1 + \\text{e}^{-b_{lst}\\cdot(x - c_{lst})}}`
+    - Resultant values for the coefficients of the sinusoidal model: :math:`C_{sin} = \\{ a_{sin}, b_{sin}, c_{sin}, d_{sin} \\}`
+    - Standard form for the equation of the sinusoidal model: :math:`sin(x) = a_{sin}\\cdot{\\sin(b_{sin}\\cdot(x - c_{sin}))} + d_{sin}`
+    - |regression_analysis|
+
     Examples
     --------
     Generate all eight regression models for the data set [[1, 32], [2, 25], [3, 14], [4, 23], [5, 39], [6, 45], [7, 42], [8, 49], [9, 36], [10, 33]], then print each model's coefficients, the mean of the data set, and the name of the model with the best fit (and round the results to four decimal places, where applicable)
