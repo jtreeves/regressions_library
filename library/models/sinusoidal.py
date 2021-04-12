@@ -101,15 +101,15 @@ def sinusoidal_model(data, precision):
     - First derivative of the sinusoidal model: :math:`f'(x) = ab\\cdot{\\cos(b\\cdot(x - c))}`
     - Second derivative of the sinusoidal model: :math:`f''(x) = -ab^2\\cdot{\\sin(b\\cdot(x - c))}`
     - Integral of the sinusoidal model: :math:`F(x) = -\\frac{a}{b}\\cdot{\\cos(b\\cdot(x - c))} + d\\cdot{x}`
-    - Potential x-values of the roots of the sinusoidal model: :math:`x_{intercepts} = \\{ c + \\frac{1}{b}\\cdot{\\sin^{-1}(-\\frac{d}{a})} + \\frac{2\\pi}{b}\\cdot{k}, c + \\frac{\\pi}{b} - \\frac{1}{b}\\cdot{\\sin^{-1}(-\\frac{d}{a})} + \\frac{2\\pi}{b}\\cdot{k}, c - \\frac{\\pi}{b} + \\frac{2\\pi}{b}\\cdot{k} \\}`
+    - Potential x-values of the roots of the sinusoidal model: :math:`x_{intercepts} = \\{ c + \\frac{1}{b}\\cdot{\\left(\\sin^{-1}(-\\frac{d}{a}) + 2\\pi\\cdot{k} \\right)}, c + \\frac{1}{b}\\cdot{\\left(-\\sin^{-1}(-\\frac{d}{a}) + \\pi\\cdot(2k - 1) \\right)}, \\\\ c - \\frac{\\pi}{b}\\cdot(2k - 1) \\}`
         
         - :math:`k \\in \\mathbb{Z}`
 
-    - Potential x-values of the maxima of the sinusoidal model: :math:`x_{maxima} = \\{ c + \\frac{\\pi}{2b} + \\frac{\\pi}{b}\\cdot{k} \\}`
+    - Potential x-values of the maxima of the sinusoidal model: :math:`x_{maxima} = \\{ c + \\frac{\\pi}{b}\\cdot(\\frac{1}{2} + k) \\}`
 
         - :math:`k \\in \\mathbb{Z}`
 
-    - Potential x-values of the minima of the sinusoidal model: :math:`x_{maxima} = \\{ c + \\frac{\\pi}{2b} + \\frac{\\pi}{b}\\cdot{k} \\}`
+    - Potential x-values of the minima of the sinusoidal model: :math:`x_{maxima} = \\{ c + \\frac{\\pi}{b}\\cdot(\\frac{1}{2} + k) \\}`
 
         - :math:`k \\in \\mathbb{Z}`
 
@@ -120,22 +120,22 @@ def sinusoidal_model(data, precision):
     - Accumulatation of the sinusoidal model over its range: :math:`A_{range} = \\int_{X_{min}}^{X_{max}} f(x) \\,dx`
     - Accumulatation of the sinusoidal model over its interquartile range: :math:`A_{iqr} = \\int_{X_{Q1}}^{X_{Q3}} f(x) \\,dx`
     - Average rate of change of the sinusoidal model over its range: :math:`m_{range} = \\frac{f(X_{max}) - f(X_{min})}{X_{max} - X_{min}}`
-    - Potential x-values at which the sinusoidal model's instantaneous rate of change equals its average rate of change over its range: :math:`x_{m,range} = \\{ c + \\frac{\\cos^{-1}(\\frac{m_{range}}{ab})}{b} + \\frac{\\pi}{b}\\cdot{k}, c + \\frac{2\\pi}{b} - \\frac{\\cos^{-1}(\\frac{m_{range}}{ab})}{b} + \\frac{2\\pi}{b}\\cdot{k} \\}`
+    - Potential x-values at which the sinusoidal model's instantaneous rate of change equals its average rate of change over its range: :math:`x_{m,range} = \\{ c + \\frac{1}{b}\\cdot{\\left(\\cos^{-1}(\\frac{m_{range}}{ab}) + \\pi\\cdot{k} \\right)}, c + \\frac{1}{b}\\cdot{\\left(-\\cos^{-1}(\\frac{m_{range}}{ab}) + 2\\pi\\cdot{k} \\right)} \\}`
 
         - :math:`k \\in \\mathbb{Z}`
     
     - Average value of the sinusoidal model over its range: :math:`v_{range} = \\frac{1}{X_{max} - X_{min}}\\cdot{A_{range}}`
-    - Potential x-values at which the sinusoidal model's value equals its average value over its range: :math:`x_{v,range} = \\{ c + \\frac{1}{b}\\cdot{\\sin^{-1}(-\\frac{d - v_{range}}{a})} + \\frac{2\\pi}{b}\\cdot{k}, c + \\frac{\\pi}{b} - \\frac{1}{b}\\cdot{\\sin^{-1}(-\\frac{d - v_{range}}{a})} + \\frac{2\\pi}{b}\\cdot{k}, c - \\frac{\\pi}{b} + \\frac{2\\pi}{b}\\cdot{k} \\}`
+    - Potential x-values at which the sinusoidal model's value equals its average value over its range: :math:`x_{v,range} = \\{ c + \\frac{1}{b}\\cdot{\\left(\\sin^{-1}(-\\frac{d - v_{range}}{a}) + 2\\pi\\cdot{k} \\right)}, c + \\frac{1}{b}\\cdot{\\left(-\\sin^{-1}(-\\frac{d - v_{range}}{a}) + \\pi\\cdot(2k - 1) \\right)}, \\\\ c + \\frac{\\pi}{b}\\cdot(2k - 1) \\}`
 
         - :math:`k \\in \\mathbb{Z}`
 
     - Average rate of change of the sinusoidal model over its interquartile range: :math:`m_{iqr} = \\frac{f(X_{Q3}) - f(X_{Q1})}{X_{Q3} - X_{Q1}}`
-    - Potential x-values at which the sinusoidal model's instantaneous rate of change equals its average rate of change over its interquartile range: :math:`x_{m,iqr} = \\{ c + \\frac{\\cos^{-1}(\\frac{m_{iqr}}{ab})}{b} + \\frac{\\pi}{b}\\cdot{k}, c + \\frac{2\\pi}{b} - \\frac{\\cos^{-1}(\\frac{m_{iqr}}{ab})}{b} + \\frac{2\\pi}{b}\\cdot{k} \\}`
+    - Potential x-values at which the sinusoidal model's instantaneous rate of change equals its average rate of change over its interquartile range: :math:`x_{m,iqr} = \\{ c + \\frac{1}{b}\\cdot{\\left(\\cos^{-1}(\\frac{m_{iqr}}{ab}) + \\pi\\cdot{k} \\right)}, c + \\frac{1}{b}\\cdot{\\left(-\\cos^{-1}(\\frac{m_{iqr}}{ab}) + 2\\pi\\cdot{k} \\right)} \\}`
 
         - :math:`k \\in \\mathbb{Z}`
 
     - Average value of the sinusoidal model over its interquartile range: :math:`v_{iqr} = \\frac{1}{X_{Q3} - X_{Q1}}\\cdot{A_{iqr}}`
-    - Potential x-values at which the sinusoidal model's value equals its average value over its interquartile range: :math:`x_{v,iqr} = \\{ c + \\frac{1}{b}\\cdot{\\sin^{-1}(-\\frac{d - v_{iqr}}{a})} + \\frac{2\\pi}{b}\\cdot{k}, c + \\frac{\\pi}{b} - \\frac{1}{b}\\cdot{\\sin^{-1}(-\\frac{d - v_{iqr}}{a})} + \\frac{2\\pi}{b}\\cdot{k}, c - \\frac{\\pi}{b} + \\frac{2\\pi}{b}\\cdot{k} \\}`
+    - Potential x-values at which the sinusoidal model's value equals its average value over its interquartile range: :math:`x_{v,iqr} = \\{ c + \\frac{1}{b}\\cdot{\\left(\\sin^{-1}(-\\frac{d - v_{iqr}}{a}) + 2\\pi\\cdot{k} \\right)}, c + \\frac{1}{b}\\cdot{\\left(-\\sin^{-1}(-\\frac{d - v_{iqr}}{a}) + \\pi\\cdot(2k - 1) \\right)}, \\\\ c + \\frac{\\pi}{b}\\cdot(2k - 1) \\}`
 
         - :math:`k \\in \\mathbb{Z}`
 

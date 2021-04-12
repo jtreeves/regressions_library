@@ -104,13 +104,13 @@ def exponential_model(data, precision):
     - Accumulatation of the exponential model over its range: :math:`A_{range} = \\int_{X_{min}}^{X_{max}} f(x) \\,dx`
     - Accumulatation of the exponential model over its interquartile range: :math:`A_{iqr} = \\int_{X_{Q1}}^{X_{Q3}} f(x) \\,dx`
     - Average rate of change of the exponential model over its range: :math:`m_{range} = \\frac{f(X_{max}) - f(X_{min})}{X_{max} - X_{min}}`
-    - Potential x-values at which the exponential model's instantaneous rate of change equals its average rate of change over its range: :math:`x_{m,range} = \\{ \\frac{\\ln(\\frac{m_{range}}{a\\cdot{\\ln(b)}})}{\\ln(b)} \\}`
+    - Potential x-values at which the exponential model's instantaneous rate of change equals its average rate of change over its range: :math:`x_{m,range} = \\{ \\log_b(\\frac{m_{range}}{a\\cdot{\\ln(b)}}) \\}`
     - Average value of the exponential model over its range: :math:`v_{range} = \\frac{1}{X_{max} - X_{min}}\\cdot{A_{range}}`
-    - Potential x-values at which the exponential model's value equals its average value over its range: :math:`x_{v,range} = \\{ \\frac{\\ln(\\frac{v_{range}}{a})}{\\ln(b)} \\}`
+    - Potential x-values at which the exponential model's value equals its average value over its range: :math:`x_{v,range} = \\{ \\log_b(\\frac{v_{range}}{a}) \\}`
     - Average rate of change of the exponential model over its interquartile range: :math:`m_{iqr} = \\frac{f(X_{Q3}) - f(X_{Q1})}{X_{Q3} - X_{Q1}}`
-    - Potential x-values at which the exponential model's instantaneous rate of change equals its average rate of change over its interquartile range: :math:`x_{m,iqr} = \\{ \\frac{\\ln(\\frac{m_{iqr}}{a\\cdot{\\ln(b)}})}{\\ln(b)} \\}`
+    - Potential x-values at which the exponential model's instantaneous rate of change equals its average rate of change over its interquartile range: :math:`x_{m,iqr} = \\{ \\log_b(\\frac{m_{iqr}}{a\\cdot{\\ln(b)}}) \\}`
     - Average value of the exponential model over its interquartile range: :math:`v_{iqr} = \\frac{1}{X_{Q3} - X_{Q1}}\\cdot{A_{iqr}}`
-    - Potential x-values at which the exponential model's value equals its average value over its interquartile range: :math:`x_{v,iqr} = \\{ \\frac{\\ln(\\frac{v_{iqr}}{a})}{\\ln(b)} \\}`
+    - Potential x-values at which the exponential model's value equals its average value over its interquartile range: :math:`x_{v,iqr} = \\{ \\log_b(\\frac{v_{iqr}}{a}) \\}`
     - Predicted values based on the exponential model: :math:`\\hat{y}_i = \\{ \\hat{y}_1, \\hat{y}_2, \\cdots, \\hat{y}_n \\}`
     - Residuals of the dependent variable: :math:`e_i = \\{ p_{1,y} - \\hat{y}_1, p_{2,y} - \\hat{y}_2, \\cdots, p_{n,y} - \\hat{y}_n \\}`
     - Deviations of the dependent variable: :math:`d_i = \\{ p_{1,y} - \\bar{y}, p_{2,y} - \\bar{y}, \\cdots, p_{n,y} - \\bar{y} \\}`
