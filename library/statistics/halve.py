@@ -166,12 +166,12 @@ def half_dimension(data, dimension):
     - For sets with an odd amount of ordered pairs:
 
         - Lower section: :math:`A_{lower} = ( ( A_{1,1}, A_{1,2}, \\cdots, A_{1,j}, A_{1,n} ), ( A_{2,1}, A_{2,2}, \\cdots, A_{2,j}, A_{2,n} ), \\cdots, \\\\ ( A_{\\lfloor m/2 \\rfloor,1}, A_{\\lfloor m/2 \\rfloor,2}, \\cdots, A_{\\lfloor m/2 \\rfloor,j}, A_{\\lfloor m/2 \\rfloor,n} ) )`
-        - Upper section: :math:`A_{upper} = ( ( A_{\\lceil m/2 \\rceil,1}, A_{\\lceil m/2 \\rceil,2}, \\cdots, A_{\\lceil m/2 \\rceil,j}, A_{\\lceil m/2 \\rceil,n} ), ( A_{\\lceil m/2 \\rceil + 1,1}, A_{\\lceil m/2 \\rceil + 1,2}, \\cdots, A_{\\lceil m/2 \\rceil + 1,j}, A_{\\lceil m/2 \\rceil + 1,n} ), \\cdots, \\\\ ( A_{m,1}, A_{m,2}, \\cdots, A_{m,j}, A_{m,n} ) )`
+        - Upper section: :math:`A_{upper} = ( ( A_{\\lceil m/2 \\rceil,1}, A_{\\lceil m/2 \\rceil,2}, \\cdots, A_{\\lceil m/2 \\rceil,j}, A_{\\lceil m/2 \\rceil,n} ), ( A_{\\lceil m/2 \\rceil + 1,1}, A_{\\lceil m/2 \\rceil + 1,2}, \\cdots, \\\\ A_{\\lceil m/2 \\rceil + 1,j}, A_{\\lceil m/2 \\rceil + 1,n} ), \\cdots, ( A_{m,1}, A_{m,2}, \\cdots, A_{m,j}, A_{m,n} ) )`
     
     - For sets with an even amount of ordered pairs:
 
         - Lower section: :math:`A_{lower} = ( ( A_{1,1}, A_{1,2}, \\cdots, A_{1,j}, A_{1,n} ), ( A_{2,1}, A_{2,2}, \\cdots, A_{2,j}, A_{2,n} ), \\cdots, \\\\ ( A_{m/2,1}, A_{m/2,2}, \\cdots, A_{m/2,j}, A_{m/2,n} ) )`
-        - Upper section: :math:`A_{upper} = ( ( A_{m/2 + 1,1}, A_{m/2 + 1,2}, \\cdots, A_{m/2 + 1,j}, A_{m/2 + 1,n} ), ( A_{m/2 + 2,1}, A_{m/2 + 2,2}, \\cdots, A_{m/2 + 2,j}, A_{m/2 + 2,n} ), \\cdots, \\\\ ( A_{m,1}, A_{m,2}, \\cdots, A_{m,j}, A_{m,n} ) )`
+        - Upper section: :math:`A_{upper} = ( ( A_{m/2 + 1,1}, A_{m/2 + 1,2}, \\cdots, A_{m/2 + 1,j}, A_{m/2 + 1,n} ), ( A_{m/2 + 2,1}, A_{m/2 + 2,2}, \\cdots, \\\\ A_{m/2 + 2,j}, A_{m/2 + 2,n} ), \\cdots, ( A_{m,1}, A_{m,2}, \\cdots, A_{m,j}, A_{m,n} ) )`
 
     Examples
     --------
