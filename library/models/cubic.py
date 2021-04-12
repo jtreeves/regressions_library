@@ -38,7 +38,7 @@ def cubic_model(data, precision):
     Returns
     -------
     model['constants'] : list
-        Coefficients of the resultant cubic model; the first element is the coefficient of the cubic term, the second element is the coefficient of the quadratic term, the third element is the coefficient of the linear term, and the fourth element is the coefficient of the constant term
+        Coefficients of the resultant cubic model; the first element is the coefficient of the cubic term, the second element is the coefficient of the cubic term, the third element is the coefficient of the linear term, and the fourth element is the coefficient of the constant term
     model['evaluations']['equation'] : function
         Function that evaluates the equation of the cubic model at a given numeric input (e.g., model['evaluations']['equation'](10) would evaluate the equation of the cubic model when the independent variable is 10)
     model['evaluations']['derivative'] : function
@@ -75,6 +75,65 @@ def cubic_model(data, precision):
         All points between the first and third quartiles of all the independent coordinates originally provided where their value equals the function's average value over that interval
     model['correlation'] : float
         Correlation coefficient indicating how well the model fits the original data set (values range between 0.0, implying no fit, and 1.0, implying a perfect fit)
+
+    See Also
+    --------
+    :func:`~library.analyses.equations.cubic.cubic_equation`, :func:`~library.analyses.derivatives.cubic.cubic_derivatives`, :func:`~library.analyses.integrals.cubic.cubic_integral`, :func:`~library.analyses.roots.cubic.cubic_roots`, :func:`~library.statistics.correlation.correlation_coefficient`, :func:`~library.execute.run_all`
+
+    Notes
+    -----
+    - Provided ordered pairs for the data set: :math:`p_i = \\{ (p_{1,x}, p_{1,y}), (p_{2,x}, p_{2,y}), \\cdots, (p_{n,x}, p_{n,y}) \\}`
+    - Provided values for the independent variable: :math:`X_i = \\{ p_{1,x}, p_{2,x}, \\cdots, p_{n,x} \\}`
+    - Provided values for the dependent variable: :math:`Y_i = \\{ p_{1,y}, p_{2,y}, \\cdots, p_{n,y} \\}`
+    - Minimum value of the provided values for the independent variable: :math:`X_{min} \\leq p_{j,x}, \\forall p_{j,x} \\in X_i`
+    - Maximum value of the provided values for the independent variable: :math:`X_{max} \\geq p_{j,x}, \\forall p_{j,x} \\in X_i`
+    - First quartile of the provided values for the independent variable: :math:`X_{Q1}`
+    - Third quartile of the provided values for the independent variable: :math:`X_{Q3}`
+    - Mean of all provided values for the dependent variable: :math:`\\bar{y} = \\frac{1}{n}\\cdot{\\sum\\limits_{i=1}^n Y_i}`
+    - Resultant values for the coefficients of the cubic model: :math:`C_i = \\{ a, b, c, d \\}`
+    - Standard form for the equation of the cubic model: :math:`f(x) = a\\cdot{x^3} + b\\cdot{x^2} + c\\cdot{x} + d`
+    - First derivative of the cubic model: :math:`f'(x) = 3a\\cdot{x^2} + 2b\\cdot{x} + c``
+    - Second derivative of the cubic model: :math:`f''(x) = 6a\\cdot{x} + 2b`
+    - Integral of the cubic model: :math:`F(x) = \\frac{a}{4}\\cdot{x^4} + \\frac{b}{3}\\cdot{x^3} + \\frac{c}{2}\\cdot{x^2} + d\\cdot{x}`
+    - Potential x-values of the roots of the cubic model: :math:`x_{intercepts} = \\{ -\\frac{1}{3a}\\cdot(b + \\xi^0\\cdot{\\eta} + \\frac{\\Delta_0}{\\xi^0\\cdot{\\eta}}), -\\frac{1}{3a}\\cdot(b + \\xi^1\\cdot{\\eta} + \\frac{\\Delta_0}{\\xi^1\\cdot{\\eta}}), -\\frac{1}{3a}\\cdot(b + \\xi^2\\cdot{\\eta} + \\frac{\\Delta_0}{\\xi^2\\cdot{\\eta}}) \\}`
+
+        - :math:`\\Delta_0 = b^2 - 3ac`
+        - :math:`\\Delta_1 = 2b^3 - 9abc +27a^2d`
+        - :math:`\\xi = \\frac{-1 + \\sqrt{-3}}{2}`
+        - :math:`\\eta = \\sqrt[3]{\\frac{\\Delta_1 \\pm \\sqrt{\\Delta_1^2 - 4\\Delta_0^3}}{2}}`
+        
+    - Potential x-values of the maxima of the cubic model: :math:`x_{maxima} = \\{ \\frac{-b - \\sqrt{b^2 - 3ac}}{3a}, \\frac{-b + \\sqrt{b^2 - 3ac}}{3a} \\}`
+    - Potential x-values of the minima of the cubic model: :math:`x_{minima} = \\{ \\frac{-b - \\sqrt{b^2 - 3ac}}{3a}, \\frac{-b + \\sqrt{b^2 - 3ac}}{3a} \\}`
+    - Potential x-values of the inflection points of the cubic model: :math:`x_{inflections} = \\{ -\\frac{b}{3a} \\}`
+    - Accumulatation of the cubic model over its range: :math:`A_{range} = \\int_{X_{min}}^{X_{max}} f(x) \\,dx`
+    - Accumulatation of the cubic model over its interquartile range: :math:`A_{iqr} = \\int_{X_{Q1}}^{X_{Q3}} f(x) \\,dx`
+    - Average rate of change of the cubic model over its range: :math:`m_{range} = \\frac{f(X_{max}) - f(X_{min})}{X_{max} - X_{min}}`
+    - Potential x-values at which the cubic model's instantaneous rate of change equals its average rate of change over its range: :math:`x_{m,range} = \\{ \\frac{-b - \\sqrt{b^2 - 3a(c - m_{range})}}{3a}, \\frac{-b + \\sqrt{b^2 - 3a(c - m_{range})}}{3a} \\}`
+    - Average value of the cubic model over its range: :math:`v_{range} = \\frac{1}{X_{max} - X_{min}}\\cdot{A_{range}}`
+    - Potential x-values at which the cubic model's value equals its average value over its range: :math:`x_{v,range} = \\{ -\\frac{1}{3a}\\cdot(b + \\xi^0\\cdot{\\eta} + \\frac{\\Delta_0}{\\xi^0\\cdot{\\eta}}), -\\frac{1}{3a}\\cdot(b + \\xi^1\\cdot{\\eta} + \\frac{\\Delta_0}{\\xi^1\\cdot{\\eta}}), -\\frac{1}{3a}\\cdot(b + \\xi^2\\cdot{\\eta} + \\frac{\\Delta_0}{\\xi^2\\cdot{\\eta}}) \\}`
+
+        - :math:`\\Delta_0 = b^2 - 3ac`
+        - :math:`\\Delta_1 = 2b^3 - 9abc +27a^2(d - v_{range})`
+        - :math:`\\xi = \\frac{-1 + \\sqrt{-3}}{2}`
+        - :math:`\\eta = \\sqrt[3]{\\frac{\\Delta_1 \\pm \\sqrt{\\Delta_1^2 - 4\\Delta_0^3}}{2}}`
+
+    - Average rate of change of the cubic model over its interquartile range: :math:`m_{iqr} = \\frac{f(X_{Q3}) - f(X_{Q1})}{X_{Q3} - X_{Q1}}`
+    - Potential x-values at which the cubic model's instantaneous rate of change equals its average rate of change over its interquartile range: :math:`x_{m,iqr} = \\{ \\frac{-b - \\sqrt{b^2 - 3a(c - m_{iqr})}}{3a}, \\frac{-b + \\sqrt{b^2 - 3a(c - m_{iqr})}}{3a} \\}`
+    - Average value of the cubic model over its interquartile range: :math:`v_{iqr} = \\frac{1}{X_{Q3} - X_{Q1}}\\cdot{A_{iqr}}`
+    - Potential x-values at which the cubic model's value equals its average value over its interquartile range: :math:`x_{v,iqr} = \\{ -\\frac{1}{3a}\\cdot(b + \\xi^0\\cdot{\\eta} + \\frac{\\Delta_0}{\\xi^0\\cdot{\\eta}}), -\\frac{1}{3a}\\cdot(b + \\xi^1\\cdot{\\eta} + \\frac{\\Delta_0}{\\xi^1\\cdot{\\eta}}), -\\frac{1}{3a}\\cdot(b + \\xi^2\\cdot{\\eta} + \\frac{\\Delta_0}{\\xi^2\\cdot{\\eta}}) \\}`
+
+        - :math:`\\Delta_0 = b^2 - 3ac`
+        - :math:`\\Delta_1 = 2b^3 - 9abc +27a^2(d - v_{iqr})`
+        - :math:`\\xi = \\frac{-1 + \\sqrt{-3}}{2}`
+        - :math:`\\eta = \\sqrt[3]{\\frac{\\Delta_1 \\pm \\sqrt{\\Delta_1^2 - 4\\Delta_0^3}}{2}}`
+        
+    - Predicted values based on the cubic model: :math:`\\hat{y}_i = \\{ \\hat{y}_1, \\hat{y}_2, \\cdots, \\hat{y}_n \\}`
+    - Residuals of the dependent variable: :math:`e_i = \\{ p_{1,y} - \\hat{y}_1, p_{2,y} - \\hat{y}_2, \\cdots, p_{n,y} - \\hat{y}_n \\}`
+    - Deviations of the dependent variable: :math:`d_i = \\{ p_{1,y} - \\bar{y}, p_{2,y} - \\bar{y}, \\cdots, p_{n,y} - \\bar{y} \\}`
+    - Sum of squares of residuals: :math:`SS_{res} = \\sum\\limits_{i=1}^n e_i^2`
+    - Sum of squares of deviations: :math:`SS_{dev} = \\sum\\limits_{i=1}^n d_i^2`
+    - Correlation coefficient for the cubic model: :math:`r = \\sqrt{1 - \\frac{SS_{res}}{SS_{dev}}}`
+    - |regression_analysis|
 
     Examples
     --------
