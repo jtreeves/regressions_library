@@ -83,14 +83,14 @@ def linear_model(data, precision):
     Notes
     -----
     - Provided ordered pairs for the data set: :math:`p_i = \\{ (p_{1,x}, p_{1,y}), (p_{2,x}, p_{2,y}), \\cdots, (p_{n,x}, p_{n,y}) \\}`
-    - Provided values for the independent variable: :math:`X = \\{ p_{1,x}, p_{2,x}, \\cdots, p_{n,x} \\}`
-    - Provided values for the dependent variable: :math:`Y = \\{ p_{1,y}, p_{2,y}, \\cdots, p_{n,y} \\}`
-    - Minimum value of the provided values for the independent variable: :math:`X_{min} \\leq p_{j,x}, \\forall p_{j,x} \\in X`
-    - Maximum value of the provided values for the independent variable: :math:`X_{max} \\geq p_{j,x}, \\forall p_{j,x} \\in X`
+    - Provided values for the independent variable: :math:`X_i = \\{ p_{1,x}, p_{2,x}, \\cdots, p_{n,x} \\}`
+    - Provided values for the dependent variable: :math:`Y_i = \\{ p_{1,y}, p_{2,y}, \\cdots, p_{n,y} \\}`
+    - Minimum value of the provided values for the independent variable: :math:`X_{min} \\leq p_{j,x}, \\forall p_{j,x} \\in X_i`
+    - Maximum value of the provided values for the independent variable: :math:`X_{max} \\geq p_{j,x}, \\forall p_{j,x} \\in X_i`
     - First quartile of the provided values for the independent variable: :math:`X_{Q1}`
     - Third quartile of the provided values for the independent variable: :math:`X_{Q3}`
     - Mean of all provided values for the dependent variable: :math:`\\bar{y} = \\frac{1}{n}\\cdot{\\sum\\limits_{i=1}^n Y_i}`
-    - Resultant values for the coefficients of the linear model: :math:`C = \\{ a, b \\}`
+    - Resultant values for the coefficients of the linear model: :math:`C_i = \\{ a, b \\}`
     - Standard form for the equation of the linear model: :math:`f(x) = a\\cdot{x} + b`
     - First derivative of the linear model: :math:`f'(x) = a`
     - Second derivative of the linear model: :math:`f''(x) = 0`
