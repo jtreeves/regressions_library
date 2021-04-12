@@ -32,6 +32,9 @@ def logarithmic_integral(first_constant, second_constant):
     -----
     - Standard form of a logarithmic function: :math:`f(x) = a\\cdot{\\ln{x}} + b`
     - Integral of a logarithmic function: :math:`F(x) = a\\cdot{x}\\cdot(\\ln{x} - 1) + b\\cdot{x}`
+    - |indefinite_integral|
+    - |integration_formulas|
+    - |integration_by_parts|
 
     Examples
     --------

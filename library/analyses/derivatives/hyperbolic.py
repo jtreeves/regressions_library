@@ -36,6 +36,7 @@ def hyperbolic_derivatives(first_constant, second_constant):
     - Standard form of a hyperbolic function: :math:`f(x) = a\\cdot{\\frac{1}{x}} + b`
     - First derivative of a hyperbolic function: :math:`f'(x) = -a\\cdot{\\frac{1}{x^2}}`
     - Second derivative of a hyperbolic function: :math:`f''(x) = 2a\\cdot{\\frac{1}{x^3}}`
+    - |differentiation_formulas|
 
     Examples
     --------

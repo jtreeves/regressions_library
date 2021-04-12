@@ -36,6 +36,8 @@ def logarithmic_derivatives(first_constant, second_constant):
     - Standard form of a logarithmic function: :math:`f(x) = a\\cdot{\\ln{x}} + b`
     - First derivative of a logarithmic function: :math:`f'(x) = a\\cdot{\\frac{1}{x}}`
     - Second derivative of a logarithmic function: :math:`f''(x) = -a\\cdot{\\frac{1}{x^2}}`
+    - |differentiation_formulas|
+    - |logarithmic|
 
     Examples
     --------

@@ -33,6 +33,8 @@ def quadratic_integral(first_constant, second_constant, third_constant):
     -----
     - Standard form of a quadratic function: :math:`f(x) = a\\cdot{x^2} + b\\cdot{x} + c`
     - Integral of a quadratic function: :math:`F(x) = \\frac{a}{3}\\cdot{x^3} + \\frac{b}{2}\\cdot{x^2} + c\\cdot{x}`
+    - |indefinite_integral|
+    - |integration_formulas|
 
     Examples
     --------

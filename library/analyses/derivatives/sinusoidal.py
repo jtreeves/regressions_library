@@ -41,6 +41,9 @@ def sinusoidal_derivatives(first_constant, second_constant, third_constant, four
     - Standard form of a sinusoidal function: :math:`f(x) = a\\cdot{\\sin(b\\cdot(x - c))} + d`
     - First derivative of a sinusoidal function: :math:`f'(x) = ab\\cdot{\\cos(b\\cdot(x - c))}`
     - Second derivative of a sinusoidal function: :math:`f''(x) = -ab^2\\cdot{\\sin(b\\cdot(x - c))}`
+    - |differentiation_formulas|
+    - |chain_rule|
+    - |trigonometric|
 
     Examples
     --------

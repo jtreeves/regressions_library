@@ -31,6 +31,8 @@ def linear_integral(first_constant, second_constant):
     -----
     - Standard form of a linear function: :math:`f(x) = a\\cdot{x} + b`
     - Integral of a linear function: :math:`F(x) = \\frac{a}{2}\\cdot{x^2} + b\\cdot{x}`
+    - |indefinite_integral|
+    - |integration_formulas|
 
     Examples
     --------

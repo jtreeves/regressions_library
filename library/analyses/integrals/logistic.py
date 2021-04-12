@@ -34,6 +34,9 @@ def logistic_integral(first_constant, second_constant, third_constant):
     -----
     - Standard form of a logistic function: :math:`f(x) = \\frac{a}{1 + \\text{e}^{-b\\cdot(x - c)}}`
     - Integral of a logistic function: :math:`F(x) = \\frac{a}{b}\\cdot{\\ln|\\text{e}^{b\\cdot(x - c)} + 1|}`
+    - |indefinite_integral|
+    - |integration_formulas|
+    - |substitution_rule|
 
     Examples
     --------

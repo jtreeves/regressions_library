@@ -32,6 +32,8 @@ def exponential_integral(first_constant, second_constant):
     -----
     - Standard form of an exponential function: :math:`f(x) = a\\cdot{b^x}`
     - Integral of an exponential function: :math:`F(x) = \\frac{a}{\\ln{b}}\\cdot{b^x}`
+    - |indefinite_integral|
+    - |integration_formulas|
 
     Examples
     --------

@@ -37,6 +37,7 @@ def quadratic_roots(first_constant, second_constant, third_constant, precision):
     -----
     - Standard form of a quadratic function: :math:`f(x) = a\\cdot{x^2} + b\\cdot{x} + c`
     - Quadratic formula: :math:`x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}`
+    - |quadratic_formula|
 
     Examples
     --------

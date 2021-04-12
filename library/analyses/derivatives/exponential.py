@@ -37,6 +37,8 @@ def exponential_derivatives(first_constant, second_constant):
     - Standard form of an exponential function: :math:`f(x) = a\\cdot{b^x}`
     - First derivative of an exponential function: :math:`f'(x) = a\\cdot{\\ln{b}\\cdot{b^x}}`
     - Second derivative of an exponential function: :math:`f''(x) = a\\cdot{\\ln^2{b}\\cdot{b^x}}`
+    - |differentiation_formulas|
+    - |exponential|
 
     Examples
     --------

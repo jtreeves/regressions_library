@@ -34,6 +34,7 @@ def linear_roots(first_constant, second_constant, precision):
     -----
     - Standard form of a linear function: :math:`f(x) = a\\cdot{x} + b`
     - Linear formula: :math:`x = -\\frac{b}{a}`
+    - |linear_formula|
 
     Examples
     --------

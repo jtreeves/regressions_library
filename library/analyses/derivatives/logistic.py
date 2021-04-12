@@ -39,6 +39,9 @@ def logistic_derivatives(first_constant, second_constant, third_constant):
     - Standard form of a logistic function: :math:`f(x) = \\frac{a}{1 + \\text{e}^{-b\\cdot(x - c)}}`
     - First derivative of a logistic function: :math:`f'(x) = \\frac{ab\\cdot{\\text{e}^{-b\\cdot(x - c)}}}{(1 + \\text{e}^{-b\\cdot(x - c)})^2}`
     - Second derivative of a logistic function: :math:`f''(x) = \\frac{2ab^2\\cdot{\\text{e}^{-2b\\cdot(x - c)}}}{(1 + \\text{e}^{-b\\cdot(x - c)})^3} - \\frac{ab^2\\cdot{\\text{e}^{-b\\cdot(x - c)}}}{(1 + \\text{e}^{-b\\cdot(x - c)})^2}`
+    - |differentiation_formulas|
+    - |chain_rule|
+    - |exponential|
 
     Examples
     --------

@@ -36,6 +36,7 @@ def linear_derivatives(first_constant, second_constant):
     - Standard form of a linear function: :math:`f(x) = a\\cdot{x} + b`
     - First derivative of a linear function: :math:`f'(x) = a`
     - Second derivative of a linear function: :math:`f''(x) = 0`
+    - |differentiation_formulas|
 
     Examples
     --------

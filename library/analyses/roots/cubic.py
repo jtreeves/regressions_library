@@ -45,6 +45,8 @@ def cubic_roots(first_constant, second_constant, third_constant, fourth_constant
         - :math:`\\xi = \\frac{-1 + \\sqrt{-3}}{2}`
         - :math:`\\eta = \\sqrt[3]{\\frac{\\Delta_1 \\pm \\sqrt{\\Delta_1^2 - 4\\Delta_0^3}}{2}}`
         - :math:`k \\in \\{ 0, 1, 2 \\}`
+    
+    - |cubic_formula|
 
     Examples
     --------
