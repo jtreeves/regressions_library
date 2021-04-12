@@ -22,6 +22,17 @@ def single_residual(actual, expected):
     residual : int or float
         Difference between the actual value and the expected value
 
+    See Also
+    --------
+    :func:`~library.statistics.deviations.single_deviation`, :func:`~library.statistics.correlation.correlation_coefficient`
+
+    Notes
+    -----
+    - Observed value: :math:`y`
+    - Predicted value: :math:`\\hat{y}`
+    - Residual: :math:`e = y - \\hat{y}`
+    - |residual|
+
     Examples
     --------
     Determine the residual between an actual value of 7.8 and an expected value of 9.2
@@ -62,6 +73,17 @@ def multiple_residuals(actual_array, expected_array):
     -------
     residuals : list
         Differences between the actual values and the expected values
+
+    See Also
+    --------
+    :func:`~library.statistics.deviations.multiple_deviations`, :func:`~library.statistics.correlation.correlation_coefficient`
+
+    Notes
+    -----
+    - Observed values: :math:`y_i = \\{ y_1, y_2, \\cdots, y_n \\}`
+    - Predicted values: :math:`\\hat{y}_i = \\{ \\hat{y}_1, \\hat{y}_2, \\cdots, \\hat{y}_n \\}`
+    - Residuals: :math:`e_i = \\{ y_1 - \\hat{y}_1, y_2 - \\hat{y}_2, \\cdots, y_n - \\hat{y}_n \\}`
+    - |residual|
 
     Examples
     --------

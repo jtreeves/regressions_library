@@ -23,6 +23,39 @@ def rounded_value(number, precision):
     number : int or float
         Original number rounded to the number of decimal places indicated by the precision input
 
+    See Also
+    --------
+    :func:`~library.statistics.sort.sorted_list`, :func:`~library.statistics.summation.sum_value`
+
+    Notes
+    -----
+    - Number to round: :math:`n`
+    - Absolute value of number: :math:`a = |n|`
+    - Maximum number of digits after decimal place of result: :math:`d`
+    - Check size of number: :math:`c(a,d) = \\lfloor a\\cdot{10^d} \\rfloor`
+    - Significant digit: :math:`s(a,d) = \\lfoor ( a\\cdot{10^d} - \\lfloor a\\cdot{10^d} \\rfloor )\\cdot{10} \\rfloor`
+    - If :math:`c(a,d) = 0`:
+        
+        - Rounding formula (if :math:`n = 0`): :math:`r = 0`
+        - If math:`n \\neq 0`:
+
+            - Rounding formula (if :math:`a = n`): :math:`r(d) = 10^{-d}`
+            - Rounding formula (if :math:`a \\neq n`): :math:`r(d) = -10^{-d}`
+    
+    - If :math:`c(a,d) \\neq 0`:
+
+        - If :math:`a = n`:
+        
+            - Rounding formula (if :math:`s(a,d) \\geq 5`): :math:`r(a,d) = \\frac{\\lceil a\\cdot{10^d} \\rceil}{10^d}`
+            - Rounding formula (if :math:`s(a,d) < 5`): :math:`r(a,d) = \\frac{\\lfloor a\\cdot{10^d} \\rfloor}{10^d}`
+        
+        - If :math:`a \\neq n`:
+        
+            - Rounding formula (if :math:`s(a,d) \\geq 5`): :math:`r(a,d) = -\\frac{\\lceil a\\cdot{10^d} \\rceil}{10^d}`
+            - Rounding formula (if :math:`s(a,d) < 5`): :math:`r(a,d) = -\\frac{\\lfloor a\\cdot{10^d} \\rfloor}{10^d}`
+    
+    - |rounding|
+
     Examples
     --------
     Round the number 9.2157823956916472 to four decimal places

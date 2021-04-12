@@ -21,6 +21,16 @@ def sum_value(data):
     total : int or float
         Number representing the sum of all elements in the original set
 
+    See Also
+    --------
+    :func:`~library.statistics.mean.mean_value`, :func:`~library.statistics.correlation.correlation_coefficient`
+
+    Notes
+    -----
+    - Set of numbers: :math:`a_i = \\{ a_1, a_2, \\cdots, a_n \\}`
+    - Sum of all numbers in set: :math:`\\sum\\limits_{i=1}^n a_i = a_1 + a_2 + \\cdots + a_n`
+    - |summation_notation|
+
     Examples
     --------
     Find the total sum of all values in the array [2, 3, 5, 7]

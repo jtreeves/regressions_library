@@ -23,6 +23,17 @@ def single_deviation(actual, mean):
     deviation : int or float
         Difference between the actual value and the mean of the data set
 
+    See Also
+    --------
+    :func:`~library.statistics.mean.mean_value`, :func:`~library.statistics.residuals.single_residual`, :func:`~library.statistics.correlation.correlation_coefficient`
+
+    Notes
+    -----
+    - Observed value: :math:`y`
+    - Mean of all observed values: :math:`\\bar{y}`
+    - Deviation: :math:`d = y - \\bar{y}`
+    - |deviation|
+
     Examples
     --------
     Determine the deviation for an actual value of 7.8 and a mean of 13.75
@@ -59,6 +70,17 @@ def multiple_deviations(actual_array):
     -------
     deviations : list
         List of differences between the actual values and the mean value for all elements from the original list
+
+    See Also
+    --------
+    :func:`~library.statistics.mean.mean_value`, :func:`~library.statistics.residuals.multiple_residuals`, :func:`~library.statistics.correlation.correlation_coefficient`
+
+    Notes
+    -----
+    - Observed values: :math:`y_i = \\{ y_1, y_2, \\cdots, y_n \\}`
+    - Mean of all observed values: :math:`\\bar{y} = \\frac{1}{n}\\cdot{\\sum\\limits_{i=1}^n y_i}`
+    - Deviations: :math:`d_i = \\{ y_1 - \\bar{y}, y_2 - \\bar{y}, \\cdots, y_n - \\bar{y} \\}`
+    - |deviation|
 
     Examples
     --------

@@ -28,7 +28,7 @@ def single_dimension(matrix, scalar):
 
     See Also
     --------
-    :func:`~library.vectors.column.column_conversion`
+    :func:`~library.vectors.column.column_conversion`, :func:`~library.statistics.sort.sorted_dimension`, :func:`~library.statistics.half.half_dimension`
 
     Notes
     -----

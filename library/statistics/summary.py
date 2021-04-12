@@ -39,6 +39,37 @@ def five_number_summary(data, precision):
     summary['maximum'] : int or float
         Largest value from the data set
 
+    See Also
+    --------
+    :func:`~library.statistics.sort.sorted_list`, :func:`~library.statistics.minimum.minimum_value`, :func:`~library.statistics.maximum.maximum_value`, :func:`~library.statistics.median.median_value`, :func:`~library.statistics.quartiles.quartile_value`
+
+    Notes
+    -----
+    - Set of numbers: :math:`a_i = \\{ a_1, a_2, \\cdots, a_n \\}`
+    - Minimum: :math:`a_{min} \\leq a_j, \\forall a_j \\in a_i`
+    - Maximum: :math:`a_{max} \\geq a_j, \\forall a_j \\in a_i`
+    - For sets with an odd amount of numbers:
+        
+        - First quartile: :math:`Q_1 = a_{\\lceil n/4 \\rceil}`
+        - Median: :math:`M = a_{\\lceil n/2 \\rceil}`
+        - Third quartile: :math:`Q_3 = a_{\\lceil 3n/4 \\rceil}`
+    
+    - For sets with an even amount of numbers:
+
+        - If :math:`n \\text{ mod } 4 \\neq 0`:
+
+            - First quartile: :math:`Q_1 = a_{\\lceil n/4 \\rceil}`
+            - Median: :math:`M = \\frac{a_{n/2} + a_{n/2 + 1}}{2}`
+            - Third quartile: :math:`Q_3 = a_{\\lceil 3n/4 \\rceil}`
+        
+        - If :math:`n \\text{ mod } 4 = 0`:
+
+            - First quartile: :math:`Q_1 = \\frac{a_{n/4} + a_{n/4 + 1}}{2}`
+            - Median: :math:`M = \\frac{a_{n/2} + a_{n/2 + 1}}{2}`
+            - Third quartile: :math:`Q_3 = \\frac{a_{3n/4} + a_{3n/4 + 1}}{2}`
+
+    - |five_number_summary|
+
     Examples
     --------
     Determine the five number summary of the set [21, 53, 3, 68, 43, 9, 72, 19, 20, 1] (and round the result to two decimal places)

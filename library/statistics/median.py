@@ -23,6 +23,17 @@ def median_value(data):
     median : int or float
         Middle value of the data set, splitting the data evenly in half
 
+    See Also
+    --------
+    :func:`~library.statistics.sort.sorted_list`, :func:`~library.statistics.minimum.minimum_value`, :func:`~library.statistics.maximum.maximum_value`
+
+    Notes
+    -----
+    - Ordered set of numbers: :math:`a_i = ( a_1, a_2, \\cdots, a_n )`
+    - Median of all numbers in set (if set contains an odd amount of numbers): :math:`M = a_{\\lceil n/2 \\rceil}`
+    - Median of all numbers in set (if set contains an even amount of numbers): :math:`M = \\frac{a_{n/2} + a_{n/2 + 1}}{2}`
+    - |median|
+
     Examples
     --------
     Determine the median of the set [21, 53, 3, 68, 43, 9, 72, 19, 20, 1]

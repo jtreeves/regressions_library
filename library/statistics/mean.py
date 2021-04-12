@@ -22,6 +22,16 @@ def mean_value(data):
     mean : int or float
         Arithmetic mean of the data set
 
+    See Also
+    --------
+    :func:`~library.statistics.summation.sum_value`, :func:`~library.statistics.median.median_value`, :func:`~library.statistics.correlation.correlation_coefficient`
+
+    Notes
+    -----
+    - Set of numbers: :math:`a_i = \\{ a_1, a_2, \\cdots, a_n \\}`
+    - Mean of all numbers in set: :math:`\\bar{a} = \\frac{1}{n}\\cdot{\\sum\\limits_{i=1}^n a_i}`
+    - |mean|
+
     Examples
     --------
     Determine the mean of the set [21, 53, 3, 68, 43, 9, 72, 19, 20, 1]

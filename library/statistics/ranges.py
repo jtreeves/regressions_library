@@ -23,6 +23,20 @@ def range_value(data):
     interval : int or float
         Range of data set
 
+    See Also
+    --------
+    :func:`~library.statistics.sort.sorted_list`, :func:`~library.statistics.minimum.minimum_value`, :func:`~library.statistics.maximum.maximum_value`
+
+    Notes
+    -----
+    - Set of numbers: :math:`a_i = \\{ a_1, a_2, \\cdots, a_n \\}`
+    - Range of set: :math:`R = a_{max} - a_{min}`
+    
+        - :math:`a_{min} \\leq a_j, \\forall a_j \\in a_i`
+        - :math:`a_{max} \\geq a_j, \\forall a_j \\in a_i`
+
+    - |range|
+
     Examples
     --------
     Determine the range of the set [21, 53, 3, 68, 43, 9, 72, 19, 20, 1]

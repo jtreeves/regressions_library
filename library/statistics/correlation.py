@@ -34,6 +34,22 @@ def correlation_coefficient(actuals, expecteds, precision):
     correlation : float
         Number indicating statistical strenght of the relationship between two variables; the closer to 1, the stronger; the closer to 0, the weaker
 
+    See Also
+    --------
+    :func:`~library.statistics.residuals.multiple_residuals`, :func:`~library.statistics.deviations.multiple_deviations`, :func:`~library.statistics.summation.sum_value`
+
+    Notes
+    -----
+    - Observed values: :math:`y_i = \\{ y_1, y_2, \\cdots, y_n \\}`
+    - Predicted values: :math:`\\hat{y}_i = \\{ \\hat{y}_1, \\hat{y}_2, \\cdots, \\hat{y}_n \\}`
+    - Mean of all observed values: :math:`\\bar{y} = \\frac{1}{n}\\cdot{\\sum\\limits_{i=1}^n y_i}`
+    - Residuals: :math:`e_i = \\{ y_1 - \\hat{y}_1, y_2 - \\hat{y}_2, \\cdots, y_n - \\hat{y}_n \\}`
+    - Deviations: :math:`d_i = \\{ y_1 - \\bar{y}, y_2 - \\bar{y}, \\cdots, y_n - \\bar{y} \\}`
+    - Sum of squares of residuals: :math:`SS_{res} = \\sum\\limits_{i=1}^n e_i^2`
+    - Sum of squares of deviations: :math:`SS_{dev} = \\sum\\limits_{i=1}^n d_i^2`
+    - Correlation coefficient: :math:`\\sqrt{1 - \\frac{SS_{res}}{SS_{dev}}}`
+    - |determination|
+
     Examples
     --------
     Calculate the correlation using the provided actual values [8.2, 9.41, 1.23, 34.7] and the predicted values [7.863, 8.9173, 2.0114, 35.8021] (and round the result to four decimal places)

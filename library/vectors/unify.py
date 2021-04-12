@@ -27,7 +27,7 @@ def unite_vectors(vector_one, vector_two):
 
     See Also
     --------
-    :func:`~library.vectors.dimension.single_dimension`
+    :func:`~library.vectors.dimension.single_dimension`, :func:`~library.statistics.halve.partition`
 
     Notes
     -----

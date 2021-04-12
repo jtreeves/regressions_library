@@ -28,6 +28,35 @@ def quartile_value(data, q):
     quartile : int or float
         Quartile value of the data set
 
+    See Also
+    --------
+    :func:`~library.statistics.sort.sorted_list`, :func:`~library.statistics.halve.half`, :func:`~library.statistics.minimum.minimum_value`, :func:`~library.statistics.maximum.maximum_value`, :func:`~library.statistics.median.median_value`
+
+    Notes
+    -----
+    - Ordered set of numbers: :math:`a_i = ( a_1, a_2, \\cdots, a_n )`
+    - For sets with an odd amount of numbers:
+        
+        - First quartile: :math:`Q_1 = a_{\\lceil n/4 \\rceil}`
+        - Second quartile: :math:`Q_2 = a_{\\lceil n/2 \\rceil}`
+        - Third quartile: :math:`Q_3 = a_{\\lceil 3n/4 \\rceil}`
+    
+    - For sets with an even amount of numbers:
+
+        - If :math:`n \\text{ mod } 4 \\neq 0`:
+
+            - First quartile: :math:`Q_1 = a_{\\lceil n/4 \\rceil}`
+            - Second quartile: :math:`Q_2 = \\frac{a_{n/2} + a_{n/2 + 1}}{2}`
+            - Third quartile: :math:`Q_3 = a_{\\lceil 3n/4 \\rceil}`
+        
+        - If :math:`n \\text{ mod } 4 = 0`:
+
+            - First quartile: :math:`Q_1 = \\frac{a_{n/4} + a_{n/4 + 1}}{2}`
+            - Second quartile: :math:`Q_2 = \\frac{a_{n/2} + a_{n/2 + 1}}{2}`
+            - Third quartile: :math:`Q_3 = \\frac{a_{3n/4} + a_{3n/4 + 1}}{2}`
+
+    - |quartiles|
+
     Examples
     --------
     Determine the first quartile of the set [21, 53, 3, 68, 43, 9, 72, 19, 20, 1]

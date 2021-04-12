@@ -22,6 +22,16 @@ def minimum_value(data):
     minimum : int or float
         Smallest value from the data set
 
+    See Also
+    --------
+    :func:`~library.statistics.sort.sorted_list`, :func:`~library.statistics.maximum.maximum_value`, :func:`~library.statistics.median.median_value`
+
+    Notes
+    -----
+    - Set of numbers: :math:`a_i = \\{ a_1, a_2, \\cdots, a_n \\}`
+    - Minimum value of set: :math:`a_{min} \\leq a_j, \\forall a_j \\in a_i`
+    - |minimum|
+
     Examples
     --------
     Determine the minimum of the set [21, 53, 3, 68, 43, 9, 72, 19, 20, 1]

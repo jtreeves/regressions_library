@@ -22,6 +22,16 @@ def maximum_value(data):
     maximum : int or float
         Largest value from the data set
 
+    See Also
+    --------
+    :func:`~library.statistics.sort.sorted_list`, :func:`~library.statistics.minimum.minimum_value`, :func:`~library.statistics.median.median_value`
+
+    Notes
+    -----
+    - Set of numbers: :math:`a_i = \\{ a_1, a_2, \\cdots, a_n \\}`
+    - Maximum value of set: :math:`a_{max} \\geq a_j, \\forall a_j \\in a_i`
+    - |maximum|
+
     Examples
     --------
     Determine the maximum of the set [21, 53, 3, 68, 43, 9, 72, 19, 20, 1]
