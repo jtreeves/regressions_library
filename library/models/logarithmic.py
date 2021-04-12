@@ -77,6 +77,47 @@ def logarithmic_model(data, precision):
     model['correlation'] : float
         Correlation coefficient indicating how well the model fits the original data set (values range between 0.0, implying no fit, and 1.0, implying a perfect fit)
 
+    See Also
+    --------
+    :func:`~library.analyses.equations.logarithmic.logarithmic_equation`, :func:`~library.analyses.derivatives.logarithmic.logarithmic_derivatives`, :func:`~library.analyses.integrals.logarithmic.logarithmic_integral`, :func:`~library.analyses.roots.logarithmic.logarithmic_roots`, :func:`~library.statistics.correlation.correlation_coefficient`, :func:`~library.execute.run_all`
+
+    Notes
+    -----
+    - Provided ordered pairs for the data set: :math:`p_i = \\{ (p_{1,x}, p_{1,y}), (p_{2,x}, p_{2,y}), \\cdots, (p_{n,x}, p_{n,y}) \\}`
+    - Provided values for the independent variable: :math:`X_i = \\{ p_{1,x}, p_{2,x}, \\cdots, p_{n,x} \\}`
+    - Provided values for the dependent variable: :math:`Y_i = \\{ p_{1,y}, p_{2,y}, \\cdots, p_{n,y} \\}`
+    - Minimum value of the provided values for the independent variable: :math:`X_{min} \\leq p_{j,x}, \\forall p_{j,x} \\in X_i`
+    - Maximum value of the provided values for the independent variable: :math:`X_{max} \\geq p_{j,x}, \\forall p_{j,x} \\in X_i`
+    - First quartile of the provided values for the independent variable: :math:`X_{Q1}`
+    - Third quartile of the provided values for the independent variable: :math:`X_{Q3}`
+    - Mean of all provided values for the dependent variable: :math:`\\bar{y} = \\frac{1}{n}\\cdot{\\sum\\limits_{i=1}^n Y_i}`
+    - Resultant values for the coefficients of the logarithmic model: :math:`C_i = \\{ a, b \\}`
+    - Standard form for the equation of the logarithmic model: :math:`f(x) = a\\cdot{\\ln{x}} + b`
+    - First derivative of the logarithmic model: :math:`f'(x) = a\\cdot{\\frac{1}{x}}`
+    - Second derivative of the logarithmic model: :math:`f''(x) = -a\\cdot{\\frac{1}{x^2}}`
+    - Integral of the logarithmic model: :math:`F(x) = a\\cdot{x}\\cdot(\\ln{x} - 1) + b\\cdot{x}`
+    - Potential x-values of the roots of the logarithmic model: :math:`x_{intercepts} = \\{ \\text{e}^{-\\frac{b}{a}} \\}`
+    - Potential x-values of the maxima of the logarithmic model: :math:`x_{maxima} = \\{ \\varnothing \\}`
+    - Potential x-values of the minima of the logarithmic model: :math:`x_{minima} = \\{ \\varnothing \\}`
+    - Potential x-values of the inflection points of the logarithmic model: :math:`x_{inflections} = \\{ \\varnothing \\}`
+    - Accumulatation of the logarithmic model over its range: :math:`A_{range} = \\int_{X_{min}}^{X_{max}} f(x) \\,dx`
+    - Accumulatation of the logarithmic model over its interquartile range: :math:`A_{iqr} = \\int_{X_{Q1}}^{X_{Q3}} f(x) \\,dx`
+    - Average rate of change of the logarithmic model over its range: :math:`m_{range} = \\frac{f(X_{max}) - f(X_{min})}{X_{max} - X_{min}}`
+    - Potential x-values at which the logarithmic model's instantaneous rate of change equals its average rate of change over its range: :math:`x_{m,range} = \\{ \\frac{a}{m_{range}} \\}`
+    - Average value of the logarithmic model over its range: :math:`v_{range} = \\frac{1}{X_{max} - X_{min}}\\cdot{A_{range}}`
+    - Potential x-values at which the logarithmic model's value equals its average value over its range: :math:`x_{v,range} = \\{ \\text{e}^{-\\frac{b - v_{range}}{a}} \\}`
+    - Average rate of change of the logarithmic model over its interquartile range: :math:`m_{iqr} = \\frac{f(X_{Q3}) - f(X_{Q1})}{X_{Q3} - X_{Q1}}`
+    - Potential x-values at which the logarithmic model's instantaneous rate of change equals its average rate of change over its interquartile range: :math:`x_{m,iqr} = \\{ \\frac{a}{m_{iqr}} \\}`
+    - Average value of the logarithmic model over its interquartile range: :math:`v_{iqr} = \\frac{1}{X_{Q3} - X_{Q1}}\\cdot{A_{iqr}}`
+    - Potential x-values at which the logarithmic model's value equals its average value over its interquartile range: :math:`x_{v,iqr} = \\{ \\text{e}^{-\\frac{b - v_{iqr}}{a}} \\}`
+    - Predicted values based on the logarithmic model: :math:`\\hat{y}_i = \\{ \\hat{y}_1, \\hat{y}_2, \\cdots, \\hat{y}_n \\}`
+    - Residuals of the dependent variable: :math:`e_i = \\{ p_{1,y} - \\hat{y}_1, p_{2,y} - \\hat{y}_2, \\cdots, p_{n,y} - \\hat{y}_n \\}`
+    - Deviations of the dependent variable: :math:`d_i = \\{ p_{1,y} - \\bar{y}, p_{2,y} - \\bar{y}, \\cdots, p_{n,y} - \\bar{y} \\}`
+    - Sum of squares of residuals: :math:`SS_{res} = \\sum\\limits_{i=1}^n e_i^2`
+    - Sum of squares of deviations: :math:`SS_{dev} = \\sum\\limits_{i=1}^n d_i^2`
+    - Correlation coefficient for the logarithmic model: :math:`r = \\sqrt{1 - \\frac{SS_{res}}{SS_{dev}}}`
+    - |regression_analysis|
+
     Examples
     --------
     Generate a logarithmic regression model for the data set [[1, 2], [2, 4.0794], [3, 5.2958], [4, 6.1589], [5, 6.8283], [6, 7.3753], [7, 7.8377], [8, 8.2383], [9, 8.5917], [10, 8.9078]], then print its coefficients, roots, total accumulation over its interquartile range, and correlation (and round the results to four decimal places)
