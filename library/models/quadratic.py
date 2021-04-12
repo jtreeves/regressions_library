@@ -107,7 +107,7 @@ def quadratic_model(data, precision):
     - X-values at which the quadratic model's value equals its average value over its range: :math:`x_{v,range} = \\{ \\frac{-b - \\sqrt{b^2 - 4a(c - v_{range})}}{2a}, \\frac{-b + \\sqrt{b^2 - 4a(c - v_{range})}}{2a} \\}`
     - Average rate of change of the quadratic model over its interquartile range: :math:`m_{iqr} = \\frac{f(X_{Q3}) - f(X_{Q1})}{X_{Q3} - X_{Q1}}`
     - X-values at which the quadratic model's instantaneous rate of change equals its average rate of change over its interquartile range: :math:`x_{m,iqr} = \\{ -\\frac{b - m_{iqr}}{2a} \\}`
-    - Average value of the quadratic model over its interquartile range: :math:`v_{iqr} = \\frac{1}{X_{max} - X_{min}}\\cdot{A_{iqr}}`
+    - Average value of the quadratic model over its interquartile range: :math:`v_{iqr} = \\frac{1}{X_{Q3} - X_{Q1}}\\cdot{A_{iqr}}`
     - X-values at which the quadratic model's value equals its average value over its interquartile range: :math:`x_{v,iqr} = \\{ \\frac{-b - \\sqrt{b^2 - 4a(c - v_{iqr})}}{2a}, \\frac{-b + \\sqrt{b^2 - 4a(c - v_{iqr})}}{2a} \\}`
     - Predicted values based on the quadratic model: :math:`\\hat{y}_i = \\{ \\hat{y}_1, \\hat{y}_2, \\cdots, \\hat{y}_n \\}`
     - Residuals of the dependent variable: :math:`e_i = \\{ p_{1,y} - \\hat{y}_1, p_{2,y} - \\hat{y}_2, \\cdots, p_{n,y} - \\hat{y}_n \\}`
