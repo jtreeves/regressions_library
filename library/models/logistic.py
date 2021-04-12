@@ -79,6 +79,47 @@ def logistic_model(data, precision):
     model['correlation'] : float
         Correlation coefficient indicating how well the model fits the original data set (values range between 0.0, implying no fit, and 1.0, implying a perfect fit)
 
+    See Also
+    --------
+    :func:`~library.analyses.equations.logistic.logistic_equation`, :func:`~library.analyses.derivatives.logistic.logistic_derivatives`, :func:`~library.analyses.integrals.logistic.logistic_integral`, :func:`~library.analyses.roots.logistic.logistic_roots`, :func:`~library.statistics.correlation.correlation_coefficient`, :func:`~library.execute.run_all`
+
+    Notes
+    -----
+    - Provided ordered pairs for the data set: :math:`p_i = \\{ (p_{1,x}, p_{1,y}), (p_{2,x}, p_{2,y}), \\cdots, (p_{n,x}, p_{n,y}) \\}`
+    - Provided values for the independent variable: :math:`X_i = \\{ p_{1,x}, p_{2,x}, \\cdots, p_{n,x} \\}`
+    - Provided values for the dependent variable: :math:`Y_i = \\{ p_{1,y}, p_{2,y}, \\cdots, p_{n,y} \\}`
+    - Minimum value of the provided values for the independent variable: :math:`X_{min} \\leq p_{j,x}, \\forall p_{j,x} \\in X_i`
+    - Maximum value of the provided values for the independent variable: :math:`X_{max} \\geq p_{j,x}, \\forall p_{j,x} \\in X_i`
+    - First quartile of the provided values for the independent variable: :math:`X_{Q1}`
+    - Third quartile of the provided values for the independent variable: :math:`X_{Q3}`
+    - Mean of all provided values for the dependent variable: :math:`\\bar{y} = \\frac{1}{n}\\cdot{\\sum\\limits_{i=1}^n Y_i}`
+    - Resultant values for the coefficients of the logistic model: :math:`C_i = \\{ a, b, c \\}`
+    - Standard form for the equation of the logistic model: :math:`f(x) = \\frac{a}{1 + \\text{e}^{-b\\cdot(x - c)}}`
+    - First derivative of the logistic model: :math:`f'(x) = \\frac{ab\\cdot{\\text{e}^{-b\\cdot(x - c)}}}{(1 + \\text{e}^{-b\\cdot(x - c)})^2}`
+    - Second derivative of the logistic model: :math:`f''(x) = \\frac{2ab^2\\cdot{\\text{e}^{-2b\\cdot(x - c)}}}{(1 + \\text{e}^{-b\\cdot(x - c)})^3} - \\frac{ab^2\\cdot{\\text{e}^{-b\\cdot(x - c)}}}{(1 + \\text{e}^{-b\\cdot(x - c)})^2}`
+    - Integral of the logistic model: :math:`F(x) = \\frac{a}{b}\\cdot{\\ln|\\text{e}^{b\\cdot(x - c)} + 1|}`
+    - Potential x-values of the roots of the logistic model: :math:`x_{intercepts} = \\{ \\varnothing \\}`
+    - Potential x-values of the maxima of the logistic model: :math:`x_{maxima} = \\{ \\varnothing \\}`
+    - Potential x-values of the minima of the logistic model: :math:`x_{minima} = \\{ \\varnothing \\}`
+    - Potential x-values of the inflection points of the logistic model: :math:`x_{inflections} = \\{ c \\}`
+    - Accumulatation of the logistic model over its range: :math:`A_{range} = \\int_{X_{min}}^{X_{max}} f(x) \\,dx`
+    - Accumulatation of the logistic model over its interquartile range: :math:`A_{iqr} = \\int_{X_{Q1}}^{X_{Q3}} f(x) \\,dx`
+    - Average rate of change of the logistic model over its range: :math:`m_{range} = \\frac{f(X_{max}) - f(X_{min})}{X_{max} - X_{min}}`
+    - Potential x-values at which the logistic model's instantaneous rate of change equals its average rate of change over its range: :math:`x_{m,range} = \\{ c - \\frac{\\ln(\\frac{ab - 2m_{range} - \\sqrt{(2m_{range} - ab)^2 - 4m_{range}^2}}{2m_{range}})}{b}, c - \\frac{\\ln(\\frac{ab - 2m_{range} + \\sqrt{(2m_{range} - ab)^2 - 4m_{range}^2}}{2m_{range}})}{b} \\}`
+    - Average value of the logistic model over its range: :math:`v_{range} = \\frac{1}{X_{max} - X_{min}}\\cdot{A_{range}}`
+    - Potential x-values at which the logistic model's value equals its average value over its range: :math:`x_{v,range} = \\{ c - \\frac{\\ln(\\frac{a}{v_{range}} - 1)}{b} \\}`
+    - Average rate of change of the logistic model over its interquartile range: :math:`m_{iqr} = \\frac{f(X_{Q3}) - f(X_{Q1})}{X_{Q3} - X_{Q1}}`
+    - Potential x-values at which the logistic model's instantaneous rate of change equals its average rate of change over its interquartile range: :math:`x_{m,iqr} = \\{ c - \\frac{\\ln(\\frac{ab - 2m_{iqr} - \\sqrt{(2m_{iqr} - ab)^2 - 4m_{iqr}^2}}{2m_{iqr}})}{b}, c - \\frac{\\ln(\\frac{ab - 2m_{iqr} + \\sqrt{(2m_{iqr} - ab)^2 - 4m_{iqr}^2}}{2m_{iqr}})}{b} \\}`
+    - Average value of the logistic model over its interquartile range: :math:`v_{iqr} = \\frac{1}{X_{Q3} - X_{Q1}}\\cdot{A_{iqr}}`
+    - Potential x-values at which the logistic model's value equals its average value over its interquartile range: :math:`x_{v,iqr} = \\{ c - \\frac{\\ln(\\frac{a}{v_{iqr}} - 1)}{b} \\}`
+    - Predicted values based on the logistic model: :math:`\\hat{y}_i = \\{ \\hat{y}_1, \\hat{y}_2, \\cdots, \\hat{y}_n \\}`
+    - Residuals of the dependent variable: :math:`e_i = \\{ p_{1,y} - \\hat{y}_1, p_{2,y} - \\hat{y}_2, \\cdots, p_{n,y} - \\hat{y}_n \\}`
+    - Deviations of the dependent variable: :math:`d_i = \\{ p_{1,y} - \\bar{y}, p_{2,y} - \\bar{y}, \\cdots, p_{n,y} - \\bar{y} \\}`
+    - Sum of squares of residuals: :math:`SS_{res} = \\sum\\limits_{i=1}^n e_i^2`
+    - Sum of squares of deviations: :math:`SS_{dev} = \\sum\\limits_{i=1}^n d_i^2`
+    - Correlation coefficient for the logistic model: :math:`r = \\sqrt{1 - \\frac{SS_{res}}{SS_{dev}}}`
+    - |regression_analysis|
+
     Examples
     --------
     Generate a logistic regression model for the data set [[1, 0.0000122], [2, 0.000247], [3, 0.004945], [4, 0.094852], [5, 1.0], [6, 1.905148], [7, 1.995055], [8, 1.999753], [9, 1.999988], [10, 1.999999]], then print its coefficients, roots, total accumulation over its interquartile range, and correlation (and round the results to four decimal places)
