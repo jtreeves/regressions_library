@@ -82,6 +82,71 @@ def sinusoidal_model(data, precision):
     model['correlation'] : float
         Correlation coefficient indicating how well the model fits the original data set (values range between 0.0, implying no fit, and 1.0, implying a perfect fit)
 
+    See Also
+    --------
+    :func:`~library.analyses.equations.sinusoidal.sinusoidal_equation`, :func:`~library.analyses.derivatives.sinusoidal.sinusoidal_derivatives`, :func:`~library.analyses.integrals.sinusoidal.sinusoidal_integral`, :func:`~library.analyses.roots.sinusoidal.sinusoidal_roots`, :func:`~library.statistics.correlation.correlation_coefficient`, :func:`~library.execute.run_all`
+
+    Notes
+    -----
+    - Provided ordered pairs for the data set: :math:`p_i = \\{ (p_{1,x}, p_{1,y}), (p_{2,x}, p_{2,y}), \\cdots, (p_{n,x}, p_{n,y}) \\}`
+    - Provided values for the independent variable: :math:`X_i = \\{ p_{1,x}, p_{2,x}, \\cdots, p_{n,x} \\}`
+    - Provided values for the dependent variable: :math:`Y_i = \\{ p_{1,y}, p_{2,y}, \\cdots, p_{n,y} \\}`
+    - Minimum value of the provided values for the independent variable: :math:`X_{min} \\leq p_{j,x}, \\forall p_{j,x} \\in X_i`
+    - Maximum value of the provided values for the independent variable: :math:`X_{max} \\geq p_{j,x}, \\forall p_{j,x} \\in X_i`
+    - First quartile of the provided values for the independent variable: :math:`X_{Q1}`
+    - Third quartile of the provided values for the independent variable: :math:`X_{Q3}`
+    - Mean of all provided values for the dependent variable: :math:`\\bar{y} = \\frac{1}{n}\\cdot{\\sum\\limits_{i=1}^n Y_i}`
+    - Resultant values for the coefficients of the sinusoidal model: :math:`C_i = \\{ a, b, c, d \\}`
+    - Standard form for the equation of the sinusoidal model: :math:`f(x) = a\\cdot{\\sin(b\\cdot(x - c))} + d`
+    - First derivative of the sinusoidal model: :math:`f'(x) = ab\\cdot{\\cos(b\\cdot(x - c))}`
+    - Second derivative of the sinusoidal model: :math:`f''(x) = -ab^2\\cdot{\\sin(b\\cdot(x - c))}`
+    - Integral of the sinusoidal model: :math:`F(x) = -\\frac{a}{b}\\cdot{\\cos(b\\cdot(x - c))} + d\\cdot{x}`
+    - Potential x-values of the roots of the sinusoidal model: :math:`x_{intercepts} = \\{ c + \\frac{1}{b}\\cdot{\\sin^{-1}(-\\frac{d}{a})} + \\frac{2\\pi}{b}\\cdot{k}, c + \\frac{\\pi}{b} - \\frac{1}{b}\\cdot{\\sin^{-1}(-\\frac{d}{a})} + \\frac{2\\pi}{b}\\cdot{k}, c - \\frac{\\pi}{b} + \\frac{2\\pi}{b}\\cdot{k} \\}`
+        
+        - :math:`k \\in \\mathbb{Z}`
+
+    - Potential x-values of the maxima of the sinusoidal model: :math:`x_{maxima} = \\{ c + \\frac{\\pi}{2b} + \\frac{\\pi}{b}\\cdot{k} \\}`
+
+        - :math:`k \\in \\mathbb{Z}`
+
+    - Potential x-values of the minima of the sinusoidal model: :math:`x_{maxima} = \\{ c + \\frac{\\pi}{2b} + \\frac{\\pi}{b}\\cdot{k} \\}`
+
+        - :math:`k \\in \\mathbb{Z}`
+
+    - Potential x-values of the inflection points of the sinusoidal model: :math:`x_{inflections} = \\{ c + \\frac{\\pi}{b}\\cdot{k} \\}`
+
+        - :math:`k \\in \\mathbb{Z}`
+
+    - Accumulatation of the sinusoidal model over its range: :math:`A_{range} = \\int_{X_{min}}^{X_{max}} f(x) \\,dx`
+    - Accumulatation of the sinusoidal model over its interquartile range: :math:`A_{iqr} = \\int_{X_{Q1}}^{X_{Q3}} f(x) \\,dx`
+    - Average rate of change of the sinusoidal model over its range: :math:`m_{range} = \\frac{f(X_{max}) - f(X_{min})}{X_{max} - X_{min}}`
+    - Potential x-values at which the sinusoidal model's instantaneous rate of change equals its average rate of change over its range: :math:`x_{m,range} = \\{ c + \\frac{\\cos^{-1}(\\frac{m_{range}}{ab})}{b} + \\frac{\\pi}{b}\\cdot{k}, c + \\frac{2\\pi}{b} - \\frac{\\cos^{-1}(\\frac{m_{range}}{ab})}{b} + \\frac{2\\pi}{b}\\cdot{k} \\}`
+
+        - :math:`k \\in \\mathbb{Z}`
+    
+    - Average value of the sinusoidal model over its range: :math:`v_{range} = \\frac{1}{X_{max} - X_{min}}\\cdot{A_{range}}`
+    - Potential x-values at which the sinusoidal model's value equals its average value over its range: :math:`x_{v,range} = \\{ c + \\frac{1}{b}\\cdot{\\sin^{-1}(-\\frac{d - v_{range}}{a})} + \\frac{2\\pi}{b}\\cdot{k}, c + \\frac{\\pi}{b} - \\frac{1}{b}\\cdot{\\sin^{-1}(-\\frac{d - v_{range}}{a})} + \\frac{2\\pi}{b}\\cdot{k}, c - \\frac{\\pi}{b} + \\frac{2\\pi}{b}\\cdot{k} \\}`
+
+        - :math:`k \\in \\mathbb{Z}`
+
+    - Average rate of change of the sinusoidal model over its interquartile range: :math:`m_{iqr} = \\frac{f(X_{Q3}) - f(X_{Q1})}{X_{Q3} - X_{Q1}}`
+    - Potential x-values at which the sinusoidal model's instantaneous rate of change equals its average rate of change over its interquartile range: :math:`x_{m,iqr} = \\{ c + \\frac{\\cos^{-1}(\\frac{m_{iqr}}{ab})}{b} + \\frac{\\pi}{b}\\cdot{k}, c + \\frac{2\\pi}{b} - \\frac{\\cos^{-1}(\\frac{m_{iqr}}{ab})}{b} + \\frac{2\\pi}{b}\\cdot{k} \\}`
+
+        - :math:`k \\in \\mathbb{Z}`
+
+    - Average value of the sinusoidal model over its interquartile range: :math:`v_{iqr} = \\frac{1}{X_{Q3} - X_{Q1}}\\cdot{A_{iqr}}`
+    - Potential x-values at which the sinusoidal model's value equals its average value over its interquartile range: :math:`x_{v,iqr} = \\{ c + \\frac{1}{b}\\cdot{\\sin^{-1}(-\\frac{d - v_{iqr}}{a})} + \\frac{2\\pi}{b}\\cdot{k}, c + \\frac{\\pi}{b} - \\frac{1}{b}\\cdot{\\sin^{-1}(-\\frac{d - v_{iqr}}{a})} + \\frac{2\\pi}{b}\\cdot{k}, c - \\frac{\\pi}{b} + \\frac{2\\pi}{b}\\cdot{k} \\}`
+
+        - :math:`k \\in \\mathbb{Z}`
+
+    - Predicted values based on the sinusoidal model: :math:`\\hat{y}_i = \\{ \\hat{y}_1, \\hat{y}_2, \\cdots, \\hat{y}_n \\}`
+    - Residuals of the dependent variable: :math:`e_i = \\{ p_{1,y} - \\hat{y}_1, p_{2,y} - \\hat{y}_2, \\cdots, p_{n,y} - \\hat{y}_n \\}`
+    - Deviations of the dependent variable: :math:`d_i = \\{ p_{1,y} - \\bar{y}, p_{2,y} - \\bar{y}, \\cdots, p_{n,y} - \\bar{y} \\}`
+    - Sum of squares of residuals: :math:`SS_{res} = \\sum\\limits_{i=1}^n e_i^2`
+    - Sum of squares of deviations: :math:`SS_{dev} = \\sum\\limits_{i=1}^n d_i^2`
+    - Correlation coefficient for the sinusoidal model: :math:`r = \\sqrt{1 - \\frac{SS_{res}}{SS_{dev}}}`
+    - |regression_analysis|
+
     Examples
     --------
     Generate a sinusoidal regression model for the data set [[1, 3], [2, 8], [3, 3], [4, -2], [5, 3], [6, 8], [7, 3], [8, -2], [9, 3], [10, 8]], then print its coefficients, roots, total accumulation over its interquartile range, and correlation (and round the results to four decimal places)
