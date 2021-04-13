@@ -238,23 +238,23 @@ class TestCriticalPoints(unittest.TestCase):
     def test_second_sinusoidal_critical_points(self):
         self.assertEqual(second_sinusoidal_critical_points, [5.0, 6.0472, 7.0944, 8.1416, 9.1888, '5.0 + 1.0472k'])
 
-first_linear_intervals = sign_chart(linear_derivatives_object['first']['evaluation'], first_linear_critical_points)
-first_quadratic_intervals = sign_chart(quadratic_derivatives_object['first']['evaluation'], first_quadratic_critical_points)
-first_cubic_intervals = sign_chart(cubic_derivatives_object['first']['evaluation'], first_cubic_critical_points)
-first_hyperbolic_intervals = sign_chart(hyperbolic_derivatives_object['first']['evaluation'], first_hyperbolic_critical_points)
-first_exponential_intervals = sign_chart(exponential_derivatives_object['first']['evaluation'], first_exponential_critical_points)
-first_logarithmic_intervals = sign_chart(logarithmic_derivatives_object['first']['evaluation'], first_logarithmic_critical_points)
-first_logistic_intervals = sign_chart(logistic_derivatives_object['first']['evaluation'], first_logistic_critical_points)
-first_sinusoidal_intervals = sign_chart(sinusoidal_derivatives_object['first']['evaluation'], first_sinusoidal_critical_points)
+first_linear_intervals = sign_chart('linear', coefficients[:2], 1)
+first_quadratic_intervals = sign_chart('quadratic', coefficients[:3], 1)
+first_cubic_intervals = sign_chart('cubic', coefficients[:4], 1)
+first_hyperbolic_intervals = sign_chart('hyperbolic', coefficients[:2], 1)
+first_exponential_intervals = sign_chart('exponential', coefficients[:2], 1)
+first_logarithmic_intervals = sign_chart('logarithmic', coefficients[:2], 1)
+first_logistic_intervals = sign_chart('logistic', coefficients[:3], 1)
+first_sinusoidal_intervals = sign_chart('sinusoidal', coefficients[:4], 1)
 
-second_linear_intervals = sign_chart(linear_derivatives_object['second']['evaluation'], second_linear_critical_points)
-second_quadratic_intervals = sign_chart(quadratic_derivatives_object['second']['evaluation'], second_quadratic_critical_points)
-second_cubic_intervals = sign_chart(cubic_derivatives_object['second']['evaluation'], second_cubic_critical_points)
-second_hyperbolic_intervals = sign_chart(hyperbolic_derivatives_object['second']['evaluation'], second_hyperbolic_critical_points)
-second_exponential_intervals = sign_chart(exponential_derivatives_object['second']['evaluation'], second_exponential_critical_points)
-second_logarithmic_intervals = sign_chart(logarithmic_derivatives_object['second']['evaluation'], second_logarithmic_critical_points)
-second_logistic_intervals = sign_chart(logistic_derivatives_object['second']['evaluation'], second_logistic_critical_points)
-second_sinusoidal_intervals = sign_chart(sinusoidal_derivatives_object['second']['evaluation'], second_sinusoidal_critical_points)
+second_linear_intervals = sign_chart('linear', coefficients[:2], 2)
+second_quadratic_intervals = sign_chart('quadratic', coefficients[:3], 2)
+second_cubic_intervals = sign_chart('cubic', coefficients[:4], 2)
+second_hyperbolic_intervals = sign_chart('hyperbolic', coefficients[:2], 2)
+second_exponential_intervals = sign_chart('exponential', coefficients[:2], 2)
+second_logarithmic_intervals = sign_chart('logarithmic', coefficients[:2], 2)
+second_logistic_intervals = sign_chart('logistic', coefficients[:3], 2)
+second_sinusoidal_intervals = sign_chart('sinusoidal', coefficients[:4], 2)
 
 class TestIntervals(unittest.TestCase):
     def test_first_linear_intervals(self):
@@ -447,7 +447,7 @@ class TestExtrema(unittest.TestCase):
         self.assertEqual(quadratic_extrema, {'maxima': [None], 'minima': [-0.75]})
     
     def test_cubic_extrema(self):
-        cubic_extrema = extrema_points('cubic', coefficients, cubic_derivatives_object['first']['evaluation'])
+        cubic_extrema = extrema_points('cubic', coefficients[:4], cubic_derivatives_object['first']['evaluation'])
         self.assertEqual(cubic_extrema, {'maxima': [None], 'minima': [None]})
     
     def test_hyperbolic_extrema(self):
@@ -467,7 +467,7 @@ class TestExtrema(unittest.TestCase):
         self.assertEqual(logistic_extrema, {'maxima': [None], 'minima': [None]})
     
     def test_sinusoidal_extrema(self):
-        sinusoidal_extrema = extrema_points('sinusoidal', coefficients[:3], sinusoidal_derivatives_object['first']['evaluation'])
+        sinusoidal_extrema = extrema_points('sinusoidal', coefficients[:4], sinusoidal_derivatives_object['first']['evaluation'])
         self.assertEqual(sinusoidal_extrema, {'maxima': [5.5236, 7.618, 9.7124, '1.0472k'], 'minima': [6.5708, 8.6652, '1.0472k']})
 
 class TestInflections(unittest.TestCase):

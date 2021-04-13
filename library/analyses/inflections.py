@@ -61,7 +61,7 @@ def inflection_points(equation_type, coefficients, derivative, precision = 4):
     callable_function(derivative, 'third')
     positive_integer(precision)
     points = critical_points(equation_type, coefficients, 2, precision)
-    intervals_set = sign_chart(derivative, points)
+    intervals_set = sign_chart(equation_type, coefficients, 2, precision)
     result = []
     for i in range(len(intervals_set)):
         try:

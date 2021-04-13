@@ -1,24 +1,42 @@
-from library.errors.analyses import callable_function
-from library.errors.vectors import allow_none_vector
+from library.errors.analyses import select_equations
+from library.errors.vectors import vector_of_scalars
+from library.errors.scalars import select_integers, positive_integer
 from library.statistics.sort import sorted_list
+from .derivatives.linear import linear_derivatives
+from .derivatives.quadratic import quadratic_derivatives
+from .derivatives.cubic import cubic_derivatives
+from .derivatives.hyperbolic import hyperbolic_derivatives
+from .derivatives.exponential import exponential_derivatives
+from .derivatives.logarithmic import logarithmic_derivatives
+from .derivatives.logistic import logistic_derivatives
+from .derivatives.sinusoidal import sinusoidal_derivatives
+from .criticals import critical_points
 
-def sign_chart(derivative, points):
+def sign_chart(equation_type, coefficients, derivative_level, precision = 4):
     """
     Creates a sign chart for a given derivative
 
     Parameters
     ----------
-    derivative : function
-        Function of the derivative to use when testing values to construct the sign chart
-    points : list
-        Values where the derivative either crosses the x-axis or does not exist
+    equation_type : str
+        Name of the type of function for which the sign chart must be constructed (e.g., 'linear', 'quadratic')
+    coefficients : list
+        Coefficients to use to generate the equation to investigate
+    derivative_level : int
+        Integer corresponding to which derivative to investigate for sign chart (1 for the first derivative and 2 for the second derivative)
+    precision : int, default=4
+        Maximum number of digits that can appear after the decimal place of the results
 
     Raises
     ------
+    ValueError
+        First argument must be either 'linear', 'quadratic', 'cubic', 'hyperbolic', 'exponential', 'logarithmic', 'logistic', or 'sinusoidal'
     TypeError
-        First argument must be a callable function
-    TypeError
-        Second argument must be a 1-dimensional list that only contains integers, floats, `None`, or a final string; if it contains a second element, then its second element must be an integer or a float
+        Second argument must be a 1-dimensional list containing elements that are integers or floats
+    ValueError
+        Third argument must be one of the following integers: [1, 2]
+    ValueError
+        Last argument must be a positive integer
 
     Returns
     -------
@@ -38,17 +56,42 @@ def sign_chart(derivative, points):
     Examples
     --------
     Create the sign chart for the first derivative of a cubic function with coefficients 1, -15, 63, and -7
-        >>> chart_cubic = sign_chart(lambda x : 3 * x**2 - 30 * x + 63, [3.0, 7.0])
+        >>> chart_cubic = sign_chart('cubic', [1, -15, 63, -7], 1)
         >>> print(chart_cubic)
         ['positive', 3.0, 'negative', 7.0, 'positive']
     Create the sign chart for the second derivative of a sinusoidal function with coefficients 2, 3, 5, and 7
-        >>> chart_sinusoidal = sign_chart(lambda x : -18 * sin(3 * (x - 5)), [5, 6.0472, 7.0944, 8.1416, 9.1888, '5 + 1.0472k'])
+        >>> chart_sinusoidal = sign_chart('sinusoidal', [2, 3, 5, 7], 2)
         >>> print(chart_sinusoidal)
         ['positive', 5, 'negative', 6.0472, 'positive', 7.0944, 'negative', 8.1416, 'positive', 9.1888, 'negative', '5 + 1.0472k']
     """
-    callable_function(derivative, 'first')
-    allow_none_vector(points, 'second')
+    select_equations(equation_type)
+    vector_of_scalars(coefficients, 'second')
+    select_integers(derivative_level, [1, 2], 'third')
+    positive_integer(precision)
     result = []
+    both_derivatives = {}
+    if equation_type == 'linear':
+        both_derivatives = linear_derivatives(*coefficients)
+    elif equation_type == 'quadratic':
+        both_derivatives = quadratic_derivatives(*coefficients)
+    elif equation_type == 'cubic':
+        both_derivatives = cubic_derivatives(*coefficients)
+    elif equation_type == 'hyperbolic':
+        both_derivatives = hyperbolic_derivatives(*coefficients)
+    elif equation_type == 'exponential':
+        both_derivatives = exponential_derivatives(*coefficients)
+    elif equation_type == 'logarithmic':
+        both_derivatives = logarithmic_derivatives(*coefficients)
+    elif equation_type == 'logistic':
+        both_derivatives = logistic_derivatives(*coefficients)
+    elif equation_type == 'sinusoidal':
+        both_derivatives = sinusoidal_derivatives(*coefficients)
+    derivative = lambda x : x
+    if derivative_level == 1:
+        derivative = both_derivatives['first']['evaluation']
+    elif derivative_level == 2:
+        derivative = both_derivatives['second']['evaluation']
+    points = critical_points(equation_type, coefficients, derivative_level, precision)
     if points[0] == None:
         if derivative(10) > 0:
             result = ['positive']

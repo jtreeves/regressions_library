@@ -69,7 +69,7 @@ def extrema_points(equation_type, coefficients, derivative, precision = 4):
     callable_function(derivative, 'third')
     positive_integer(precision)
     points = critical_points(equation_type, coefficients, 1, precision)
-    intervals_set = sign_chart(derivative, points)
+    intervals_set = sign_chart(equation_type, coefficients, 1, precision)
     result = {}
     if equation_type == 'sinusoidal':
         general_form = intervals_set[-1]
