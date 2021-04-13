@@ -1,15 +1,15 @@
 from library.errors.scalars import compare_scalars, positive_integer
 from library.errors.vectors import vector_of_scalars
 from library.errors.analyses import select_equations
-from library.analyses.integrals.linear import linear_integral
-from library.analyses.integrals.quadratic import quadratic_integral
-from library.analyses.integrals.cubic import cubic_integral
-from library.analyses.integrals.hyperbolic import hyperbolic_integral
-from library.analyses.integrals.exponential import exponential_integral
-from library.analyses.integrals.logarithmic import logarithmic_integral
-from library.analyses.integrals.logistic import logistic_integral
-from library.analyses.integrals.sinusoidal import sinusoidal_integral
 from library.statistics.rounding import rounded_value
+from .integrals.linear import linear_integral
+from .integrals.quadratic import quadratic_integral
+from .integrals.cubic import cubic_integral
+from .integrals.hyperbolic import hyperbolic_integral
+from .integrals.exponential import exponential_integral
+from .integrals.logarithmic import logarithmic_integral
+from .integrals.logistic import logistic_integral
+from .integrals.sinusoidal import sinusoidal_integral
 
 def accumulated_area(equation_type, coefficients, start, end, precision = 4):
     """

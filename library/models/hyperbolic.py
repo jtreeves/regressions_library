@@ -163,8 +163,8 @@ def hyperbolic_model(data, precision = 4):
     q3 = five_numbers['q3']
     accumulated_range = accumulated_area('hyperbolic', solution, min_value, max_value, precision)
     accumulated_iqr = accumulated_area('hyperbolic', solution, q1, q3, precision)
-    averages_range = average_values('hyperbolic', equation, integral, min_value, max_value, solution, precision)
-    averages_iqr = average_values('hyperbolic', equation, integral, q1, q3, solution, precision)
+    averages_range = average_values('hyperbolic', solution, min_value, max_value, precision)
+    averages_iqr = average_values('hyperbolic', solution, q1, q3, precision)
     predicted = []
     for element in independent_variable:
         predicted.append(equation(element))

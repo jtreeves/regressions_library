@@ -4,6 +4,14 @@ from library.errors.scalars import compare_scalars, positive_integer
 from library.errors.vectors import vector_of_scalars
 from library.statistics.sort import sorted_list
 from library.statistics.rounding import rounded_value
+from .equations.linear import linear_equation
+from .equations.quadratic import quadratic_equation
+from .equations.cubic import cubic_equation
+from .equations.hyperbolic import hyperbolic_equation
+from .equations.exponential import exponential_equation
+from .equations.logarithmic import logarithmic_equation
+from .equations.logistic import logistic_equation
+from .equations.sinusoidal import sinusoidal_equation
 from .roots.linear import linear_roots
 from .roots.quadratic import quadratic_roots
 from .roots.cubic import cubic_roots
@@ -12,14 +20,16 @@ from .roots.logarithmic import logarithmic_roots
 from .roots.sinusoidal import sinusoidal_roots
 from .accumulation import accumulated_area
 
-def average_value_derivative(equation, start, end, precision = 4):
+def average_value_derivative(equation_type, coefficients, start, end, precision = 4):
     """
     Evaluates the average rate of change between two points for a given function
 
     Parameters
     ----------
-    equation : function
-        Function to use for evaluating the average rate of change
+    equation_type : str
+        Name of the type of function for which the definite integral must be evaluated (e.g., 'linear', 'quadratic')
+    coefficients : list
+        Coefficients of the original function to use for evaluating the average rate of change
     start : int or float
         Value of the x-coordinate of the first point to use for evaluating the rate of change
     end : int or float
@@ -29,12 +39,12 @@ def average_value_derivative(equation, start, end, precision = 4):
 
     Raises
     ------
-    TypeError
-        First argument must be a callable function
-    TypeError
-        Second and third arguments must be integers or floats
     ValueError
-        Second argument must be less than third argument
+        First argument must be either 'linear', 'quadratic', 'cubic', 'hyperbolic', 'exponential', 'logarithmic', 'logistic', or 'sinusoidal'
+    TypeError
+        Second argument must be a 1-dimensional list containing elements that are integers or floats
+    TypeError
+        Third and fourth arguments must be integers or floats
     ValueError
         Last argument must be a positive integer
 
@@ -56,24 +66,42 @@ def average_value_derivative(equation, start, end, precision = 4):
     Examples
     --------
     Evaluate the average rate of change of a cubic function with coefficients 2, 3, 5, and 7 between end points of 10 and 20
-        >>> average_cubic = average_value_derivative(lambda x : 2 * x**3 + 3 * x**2 + 5 * x + 7, 10, 20)
+        >>> average_cubic = average_value_derivative('cubic', [2, 3, 5, 7], 10, 20)
         >>> print(average_cubic)
         1495.0
     Evaluate the average rate of change of a sinusoidal function with coefficients 2, 3, 5, and 7 between end points of 10 and 20
-        >>> average_sinusoidal = average_value_derivative(lambda x : 2 * sin(3 * (x - 5)) + 7, 10, 20)
+        >>> average_sinusoidal = average_value_derivative('sinusoidal', [2, 3, 5, 7], 10, 20)
         >>> print(average_sinusoidal)
         0.0401
     """
-    callable_function(equation, 'first')
-    compare_scalars(start, end, 'second', 'third')
+    select_equations(equation_type)
+    vector_of_scalars(coefficients, 'second')
+    compare_scalars(start, end, 'third', 'fourth')
     positive_integer(precision)
+    equation = lambda x : x
+    if equation_type == 'linear':
+        equation = linear_equation(*coefficients)
+    elif equation_type == 'quadratic':
+        equation = quadratic_equation(*coefficients)
+    elif equation_type == 'cubic':
+        equation = cubic_equation(*coefficients)
+    elif equation_type == 'hyperbolic':
+        equation = hyperbolic_equation(*coefficients)
+    elif equation_type == 'exponential':
+        equation = exponential_equation(*coefficients)
+    elif equation_type == 'logarithmic':
+        equation = logarithmic_equation(*coefficients)
+    elif equation_type == 'logistic':
+        equation = logistic_equation(*coefficients)
+    elif equation_type == 'sinusoidal':
+        equation = sinusoidal_equation(*coefficients)
     vertical_change = equation(end) - equation(start)
     horizontal_change = end - start
     ratio = vertical_change / horizontal_change
     result = rounded_value(ratio, precision)
     return result
 
-def mean_values_derivative(equation_type, equation, start, end, constants, precision = 4):
+def mean_values_derivative(equation_type, coefficients, start, end, precision = 4):
     """
     Generates a list of all the x-coordinates whose instantaneous rates of change equal the function's average rate of change between two points
 
@@ -81,14 +109,12 @@ def mean_values_derivative(equation_type, equation, start, end, constants, preci
     ----------
     equation_type : str
         Name of the type of function for which an average value must be determined (e.g., 'linear', 'quadratic')
-    equation : function
-        Function to use for evaluating the average rate of change
+    coefficients : list
+        Coefficients to use to generate the equation to investigate
     start : int or float
         Value of the x-coordinate of the first point to use for evaluating the rate of change; all results must be greater than this value
     end : int or float
         Value of the x-coordinate of the second point to use for evaluating the rate of change; all results must be less than this value
-    constants : list
-        Coefficients to use to generate the equation to investigate
     precision : int, default=4
         Maximum number of digits that can appear after the decimal place of the result
 
@@ -97,13 +123,9 @@ def mean_values_derivative(equation_type, equation, start, end, constants, preci
     ValueError
         First argument must be either 'linear', 'quadratic', 'cubic', 'hyperbolic', 'exponential', 'logarithmic', 'logistic', or 'sinusoidal'
     TypeError
-        Second argument must be a callable function
+        Second argument must be a 1-dimensional list containing elements that are integers or floats
     TypeError
         Third and fourth arguments must be integers or floats
-    ValueError
-        Third argument must be less than fourth argument
-    TypeError
-        Fifth argument must be a 1-dimensional list containing elements that are integers or floats
     ValueError
         Last argument must be a positive integer
 
@@ -125,47 +147,46 @@ def mean_values_derivative(equation_type, equation, start, end, constants, preci
     Examples
     --------
     Generate a list of all the x-coordinates whose instantaneous rates of change equal the function's average rate of change for a cubic function with coefficients 2, 3, 5, and 7 between end points of 10 and 20
-        >>> points_cubic = mean_values_derivative('cubic', lambda x : 2 * x**3 + 3 * x**2 + 5 * x + 7, 10, 20, [2, 3, 5, 7])
+        >>> points_cubic = mean_values_derivative('cubic', [2, 3, 5, 7], 10, 20)
         >>> print(points_cubic)
         [15.2665]
     Generate a list of all the x-coordinates whose instantaneous rates of change equal the function's average rate of change for a cubic function with coefficients 2, 3, 5, and 7 between end points of 10 and 20
-        >>> points_sinusoidal = mean_values_derivative('sinusoidal', lambda x : 2 * sin(3 * (x - 5)) + 7, 10, 20, [2, 3, 5, 7])
+        >>> points_sinusoidal = mean_values_derivative('sinusoidal', [2, 3, 5, 7], 10, 20)
         >>> print(points_sinusoidal)
         [10.7618, 11.8046, 12.8562, 13.899, 14.9506, 15.9933, '10.7618 + 2.0944k', '11.8046 + 2.0944k']
     """
     select_equations(equation_type)
-    callable_function(equation, 'second')
+    vector_of_scalars(coefficients, 'second')
     compare_scalars(start, end, 'third', 'fourth')
-    vector_of_scalars(constants, 'fifth')
     positive_integer(precision)
     result = []
-    average = average_value_derivative(equation, start, end, precision)
+    average = average_value_derivative(equation_type, coefficients, start, end, precision)
     if equation_type == 'linear':
         result.append('All')
         return result
     elif equation_type == 'quadratic':
-        value = linear_roots(2 * constants[0], constants[1] -  average, precision)
+        value = linear_roots(2 * coefficients[0], coefficients[1] -  average, precision)
         result = value
     elif equation_type == 'cubic':
-        values = quadratic_roots(3 * constants[0], 2 * constants[1], constants[2] - average, precision)
+        values = quadratic_roots(3 * coefficients[0], 2 * coefficients[1], coefficients[2] - average, precision)
         result = values
     elif equation_type == 'hyperbolic':
-        ratio = -1 * constants[0] / average
+        ratio = -1 * coefficients[0] / average
         root = ratio ** (1/2)
         first_value = root
         second_value = -1 * root
         result.extend([first_value, second_value])
     elif equation_type == 'exponential':
-        base_log = log(constants[1])
-        numerator = log(average / (constants[0] * base_log))
+        base_log = log(coefficients[1])
+        numerator = log(average / (coefficients[0] * base_log))
         denominator = base_log
         value = numerator / denominator
         result.append(value)
     elif equation_type == 'logarithmic':
-        value = hyperbolic_roots(constants[0], -1 * average, precision)
+        value = hyperbolic_roots(coefficients[0], -1 * average, precision)
         result = value
     elif equation_type == 'logistic':
-        quadratic_values = quadratic_roots(average, 2 * average - constants[0] * constants[1], average, precision)
+        quadratic_values = quadratic_roots(average, 2 * average - coefficients[0] * coefficients[1], average, precision)
         if quadratic_values[0] == None:
             result = [None]
             return result
@@ -173,17 +194,17 @@ def mean_values_derivative(equation_type, equation, start, end, constants, preci
             values = []
             for value in quadratic_values:
                 if value <= 0:
-                    values.append(constants[2] - log(10**(-precision)) / constants[1])
+                    values.append(coefficients[2] - log(10**(-precision)) / coefficients[1])
                 else:
-                    values.append(constants[2] - log(value) / constants[1])
+                    values.append(coefficients[2] - log(value) / coefficients[1])
             result = values
     elif equation_type == 'sinusoidal':
-        ratio = average / (constants[0] * constants[1])
+        ratio = average / (coefficients[0] * coefficients[1])
         radians = acos(ratio)
-        periodic_radians = radians / constants[1]
+        periodic_radians = radians / coefficients[1]
         if ratio == 0:
-            periodic_unit = pi / constants[1]
-            initial_value = constants[2] + periodic_radians
+            periodic_unit = pi / coefficients[1]
+            initial_value = coefficients[2] + periodic_radians
             if periodic_unit > 0:
                 while initial_value > end:
                     initial_value -= periodic_unit
@@ -203,8 +224,8 @@ def mean_values_derivative(equation_type, equation, start, end, constants, preci
             general_form = str(rounded_initial_value) + ' + ' + str(rounded_periodic_unit) + 'k'
             result = [initial_value, first_value, second_value, third_value, fourth_value, general_form]
         elif ratio == 1 or ratio == -1:
-            periodic_unit = 2 * pi / constants[1]
-            initial_value = constants[2] + periodic_radians
+            periodic_unit = 2 * pi / coefficients[1]
+            initial_value = coefficients[2] + periodic_radians
             if periodic_unit > 0:
                 while initial_value > end:
                     initial_value -= periodic_unit
@@ -222,8 +243,8 @@ def mean_values_derivative(equation_type, equation, start, end, constants, preci
             general_form = str(rounded_initial_value) + ' + ' + str(rounded_periodic_unit) + 'k'
             result = [initial_value, first_value, second_value, general_form]
         else:
-            periodic_unit = 2 * pi / constants[1]
-            initial_value = constants[2] + periodic_radians
+            periodic_unit = 2 * pi / coefficients[1]
+            initial_value = coefficients[2] + periodic_radians
             if periodic_unit > 0:
                 while initial_value > end:
                     initial_value -= periodic_unit
@@ -239,7 +260,7 @@ def mean_values_derivative(equation_type, equation, start, end, constants, preci
             rounded_initial_value = rounded_value(initial_value, precision)
             rounded_periodic_unit = rounded_value(periodic_unit, precision)
             general_form = str(rounded_initial_value) + ' + ' + str(rounded_periodic_unit) + 'k'
-            alternative_initial_value = constants[2] + 2 * pi / constants[1] - periodic_radians
+            alternative_initial_value = coefficients[2] + 2 * pi / coefficients[1] - periodic_radians
             if periodic_unit > 0:
                 while alternative_initial_value > end:
                     alternative_initial_value -= periodic_unit
@@ -502,7 +523,7 @@ def mean_values_integral(equation_type, coefficients, start, end, precision = 4)
     final_result = rounded_results + sorted_other_results
     return final_result
 
-def average_values(equation_type, equation, integral, start, end, constants, precision = 4):
+def average_values(equation_type, coefficients, start, end, precision = 4):
     """
     Calculates the average values for a specific function
 
@@ -510,16 +531,12 @@ def average_values(equation_type, equation, integral, start, end, constants, pre
     ----------
     equation_type : str
         Name of the type of function for which average values must be determined (e.g., 'linear', 'quadratic')
-    equation : function
-        Equation of the function for which one seeks the average values
-    integral : function
-        Integral of the function for which one seeks the average values
+    coefficients : list
+        Coefficients of the origianl function under investigation
     start : int or float
         Value of the x-coordinate of the first point to use for evaluating the average values; results within lists must be greater than this value
     end : int or float
         Value of the x-coordinate of the second point to use for evaluating the average values; results within lists must be less than this value
-    constants : list
-        Coefficients of the origianl function under investigation
     precision : int, default=4
         Maximum number of digits that can appear after the decimal place of the result
 
@@ -528,13 +545,9 @@ def average_values(equation_type, equation, integral, start, end, constants, pre
     ValueError
         First argument must be either 'linear', 'quadratic', 'cubic', 'hyperbolic', 'exponential', 'logarithmic', 'logistic', or 'sinusoidal'
     TypeError
-        Second and third arguments must be callable functions
+        Second argument must be a 1-dimensional list containing elements that are integers or floats
     TypeError
-        Fourth and fifth arguments must be integers or floats
-    ValueError
-        Fourth argument must be less than fifth argument
-    TypeError
-        Sixth argument must be a 1-dimensional list containing elements that are integers or floats
+        Third and fourth arguments must be integers or floats
     ValueError
         Last argument must be a positive integer
 
@@ -561,7 +574,7 @@ def average_values(equation_type, equation, integral, start, end, constants, pre
     Examples
     --------
     Calculate the averages of a cubic function with coefficients 2, 3, 5, and 7 between 10 and 20
-        >>> averages_cubic = average_values('cubic', lambda x : 2 * x**3 + 3 * x**2 + 5 * x + 7, lambda x : 0.5 * x**4 + x**3 + 2.5 * x**2 + 7 * x, 10, 20, [2, 3, 5, 7])
+        >>> averages_cubic = average_values('cubic', [2, 3, 5, 7], 10, 20)
         >>> print(averages_cubic['average_value_derivative'])
         1495.0
         >>> print(averages_cubic['mean_values_derivative'])
@@ -571,7 +584,7 @@ def average_values(equation_type, equation, integral, start, end, constants, pre
         >>> print(averages_cubic['mean_values_integral'])
         [15.5188]
     Calculate the averages of a sinusoidal function with coefficients 2, 3, 5, and 7 between 10 and 20
-        >>> averages_sinusoidal = average_values('sinusoidal', lambda x : 2 * sin(3 * (x - 5)) + 7, lambda x : -2 / 3 * cos(3 * (x - 5)) + 7 * x, 10, 20, [2, 3, 5, 7])
+        >>> averages_sinusoidal = average_values('sinusoidal', [2, 3, 5, 7], 10, 20)
         >>> print(averages_sinusoidal['average_value_derivative'])
         0.0401
         >>> print(averages_sinusoidal['mean_values_derivative'])
@@ -582,15 +595,13 @@ def average_values(equation_type, equation, integral, start, end, constants, pre
         [10.2503, 11.2689, 12.3447, 13.3633, 14.4391, 15.4577, 16.5335, 17.5521, 18.6279, 19.6465, '10.2503 + 2.0944k', '11.2689 + 2.0944k']
     """
     select_equations(equation_type)
-    callable_function(equation, 'second')
-    callable_function(integral, 'third')
-    compare_scalars(start, end, 'fourth', 'fifth')
-    vector_of_scalars(constants, 'sixth')
+    vector_of_scalars(coefficients, 'second')
+    compare_scalars(start, end, 'third', 'fourth')
     positive_integer(precision)
-    derivative_value = average_value_derivative(equation, start, end, precision)
-    derivative_inputs = mean_values_derivative(equation_type, equation, start, end, constants, precision)
-    integral_value = average_value_integral(equation_type, constants, start, end, precision)
-    integral_inputs = mean_values_integral(equation_type, constants, start, end, precision)
+    derivative_value = average_value_derivative(equation_type, coefficients, start, end, precision)
+    derivative_inputs = mean_values_derivative(equation_type, coefficients, start, end, precision)
+    integral_value = average_value_integral(equation_type, coefficients, start, end, precision)
+    integral_inputs = mean_values_integral(equation_type, coefficients, start, end, precision)
     results = {
         'average_value_derivative': derivative_value,
         'mean_values_derivative': derivative_inputs,

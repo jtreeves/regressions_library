@@ -163,8 +163,8 @@ def quadratic_model(data, precision = 4):
     q3 = five_numbers['q3']
     accumulated_range = accumulated_area('quadratic', solution, min_value, max_value, precision)
     accumulated_iqr = accumulated_area('quadratic', solution, q1, q3, precision)
-    averages_range = average_values('quadratic', equation, integral, min_value, max_value, solution, precision)
-    averages_iqr = average_values('quadratic', equation, integral, q1, q3, solution, precision)
+    averages_range = average_values('quadratic', solution, min_value, max_value, precision)
+    averages_iqr = average_values('quadratic', solution, q1, q3, precision)
     predicted = []
     for element in independent_variable:
         predicted.append(equation(element))

@@ -584,38 +584,38 @@ class TestAccumulation(unittest.TestCase):
 
 class TestAverages(unittest.TestCase):
     def test_linear_averages(self):
-        linear_averages = average_values('linear', linear_function, linear_integral_object['evaluation'], 10, 20, coefficients[:2])
+        linear_averages = average_values('linear', coefficients[:2], 10, 20)
         self.assertEqual(linear_averages, {'average_value_derivative': 2.0, 'mean_values_derivative': ['All'], 'average_value_integral': 33.0, 'mean_values_integral': [15.0]})
     
     def test_quadratic_averages(self):
-        quadratic_averages = average_values('quadratic', quadratic_function, quadratic_integral_object['evaluation'], 10, 20, coefficients[:3])
+        quadratic_averages = average_values('quadratic', coefficients[:3], 10, 20)
         self.assertEqual(quadratic_averages, {'average_value_derivative': 63.0, 'mean_values_derivative': [15.0], 'average_value_integral': 516.6667, 'mean_values_integral': [15.2624]})
     
     def test_cubic_averages(self):
-        cubic_averages = average_values('cubic', cubic_function, cubic_integral_object['evaluation'], 10, 20, coefficients)
+        cubic_averages = average_values('cubic', coefficients[:4], 10, 20)
         self.assertEqual(cubic_averages, {'average_value_derivative': 1495.0, 'mean_values_derivative': [15.2665], 'average_value_integral': 8282.0, 'mean_values_integral': [15.5188]})
     
     def test_hyperbolic_averages(self):
-        hyperbolic_averages = average_values('hyperbolic', hyperbolic_function, hyperbolic_integral_object['evaluation'], 10, 20, coefficients[:2])
+        hyperbolic_averages = average_values('hyperbolic', coefficients[:2], 10, 20)
         self.assertEqual(hyperbolic_averages, {'average_value_derivative': -0.01, 'mean_values_derivative': [14.1421], 'average_value_integral': 3.1386, 'mean_values_integral': [14.43]})
     
     def test_exponential_averages(self):
-        exponential_averages = average_values('exponential', exponential_function, exponential_integral_object['evaluation'], 10, 20, coefficients[:2])
+        exponential_averages = average_values('exponential', coefficients[:2], 10, 20)
         self.assertEqual(exponential_averages, {'average_value_derivative': 697345070.4, 'mean_values_derivative': [17.8185], 'average_value_integral': 634750837.5729, 'mean_values_integral': [17.8185]})
     
     def test_logarithmic_averages(self):
-        logarithmic_averages = average_values('logarithmic', logarithmic_function, logarithmic_integral_object['evaluation'], 10, 20, coefficients[:2])
+        logarithmic_averages = average_values('logarithmic', coefficients[:2], 10, 20)
         self.assertEqual(logarithmic_averages, {'average_value_derivative': 0.1386, 'mean_values_derivative': [14.43], 'average_value_integral': 8.3778, 'mean_values_integral': [14.7155]})
     
     def test_logistic_averages(self):
-        logistic_averages = average_values('logistic', logistic_function, logistic_integral_object['evaluation'], 10, 20, coefficients[:3])
+        logistic_averages = average_values('logistic', coefficients[:3], 10, 20)
         self.assertEqual(logistic_averages, {'average_value_derivative': 0.0001, 'mean_values_derivative': [None], 'average_value_integral': 2.0, 'mean_values_integral': [None]})
     
     def test_sinusoidal_averages(self):
-        sinusoidal_averages = average_values('sinusoidal', sinusoidal_function, sinusoidal_integral_object['evaluation'], 10, 20, coefficients)
+        sinusoidal_averages = average_values('sinusoidal', coefficients[:4], 10, 20)
         self.assertEqual(sinusoidal_averages, {'average_value_derivative': 0.0401, 'mean_values_derivative': [10.7618, 11.8046, 12.8562, 13.899, 14.9506, 15.9933, '10.7618 + 2.0944k', '11.8046 + 2.0944k'], 'average_value_integral': 6.9143, 'mean_values_integral': [10.2503, 11.2689, 12.3447, 13.3633, 14.4391, 15.4577, 16.5335, 17.5521, 18.6279, 19.6465, '10.2503 + 2.0944k', '11.2689 + 2.0944k']})
 
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 139 tests in 0.023s ---------- OK ---------- #
+# ---------- Ran 139 tests in 0.015s ---------- OK ---------- #

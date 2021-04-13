@@ -182,8 +182,8 @@ def logistic_model(data, precision = 4):
     q3 = five_numbers['q3']
     accumulated_range = accumulated_area('logistic', constants, min_value, max_value, precision)
     accumulated_iqr = accumulated_area('logistic', constants, q1, q3, precision)
-    averages_range = average_values('logistic', equation, integral, min_value, max_value, solution, precision)
-    averages_iqr = average_values('logistic', equation, integral, q1, q3, solution, precision)
+    averages_range = average_values('logistic', solution, min_value, max_value, precision)
+    averages_iqr = average_values('logistic', solution, q1, q3, precision)
     predicted = []
     for element in independent_variable:
         predicted.append(equation(element))
