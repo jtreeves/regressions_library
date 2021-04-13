@@ -15,11 +15,11 @@ choices = [4, 5, 6]
 
 class TestScalarValue(unittest.TestCase):
     def test_scalar_integer(self):
-        scalar_integer = scalar_value(good_integer, 'only')
+        scalar_integer = scalar_value(good_integer)
         self.assertEqual(scalar_integer, 'Argument is an integer or a float')
     
     def test_scalar_float(self):
-        scalar_float = scalar_value(good_float, 'only')
+        scalar_float = scalar_value(good_float)
         self.assertEqual(scalar_float, 'Argument is an integer or a float')
     
     def test_scalar_position(self):
@@ -28,19 +28,19 @@ class TestScalarValue(unittest.TestCase):
     
     def test_scalar_string_raises(self):
         with self.assertRaises(Exception) as context:
-            scalar_value(bad_scalar, 'only')
+            scalar_value(bad_scalar)
         self.assertEqual(type(context.exception), TypeError)
         self.assertEqual(str(context.exception), 'Argument must be an integer or a float')
     
     def test_scalar_none_raises(self):
         with self.assertRaises(Exception) as context:
-            scalar_value(none_scalar, 'only')
+            scalar_value(none_scalar)
         self.assertEqual(type(context.exception), TypeError)
         self.assertEqual(str(context.exception), 'Argument must be an integer or a float')
     
     def test_scalar_array_raises(self):
         with self.assertRaises(Exception) as context:
-            scalar_value(choices, 'only')
+            scalar_value(choices)
         self.assertEqual(type(context.exception), TypeError)
         self.assertEqual(str(context.exception), 'Argument must be an integer or a float')
 
@@ -224,67 +224,67 @@ better_long_vector = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
 class TestVectorScalars(unittest.TestCase):
     def test_vector_scalars_3long(self):
-        vector_scalars_3long = vector_of_scalars(first_vector, 'only')
+        vector_scalars_3long = vector_of_scalars(first_vector)
         self.assertEqual(vector_scalars_3long, 'Argument is a 1-dimensional list containing elements that are integers or floats')
     
     def test_vector_scalars_4long(self):
-        vector_scalars_4long = vector_of_scalars(longer_vector, 'only')
+        vector_scalars_4long = vector_of_scalars(longer_vector)
         self.assertEqual(vector_scalars_4long, 'Argument is a 1-dimensional list containing elements that are integers or floats')
     
     def test_vector_scalars_nested_raises(self):
         with self.assertRaises(Exception) as context:
-            vector_of_scalars(bad_vector_nested, 'only')
+            vector_of_scalars(bad_vector_nested)
         self.assertEqual(type(context.exception), TypeError)
         self.assertEqual(str(context.exception), 'Argument must be a 1-dimensional list')
     
     def test_vector_scalars_string_raises(self):
         with self.assertRaises(Exception) as context:
-            vector_of_scalars(bad_vector_string, 'only')
+            vector_of_scalars(bad_vector_string)
         self.assertEqual(type(context.exception), TypeError)
         self.assertEqual(str(context.exception), 'Argument must be a 1-dimensional list')
     
     def test_vector_scalars_none_raises(self):
         with self.assertRaises(Exception) as context:
-            vector_of_scalars(none_vector, 'only')
+            vector_of_scalars(none_vector)
         self.assertEqual(type(context.exception), TypeError)
         self.assertEqual(str(context.exception), 'Elements of argument must be integers or floats')
     
     def test_vector_scalars_multitype_raises(self):
         with self.assertRaises(Exception) as context:
-            vector_of_scalars(good_multitype, 'only')
+            vector_of_scalars(good_multitype)
         self.assertEqual(type(context.exception), TypeError)
         self.assertEqual(str(context.exception), 'Elements of argument must be integers or floats')
 
 class TestAllowNoneVector(unittest.TestCase):
     def test_none_vector_none(self):
-        none_vector_none = allow_none_vector(none_vector, 'only')
+        none_vector_none = allow_none_vector(none_vector)
         self.assertEqual(none_vector_none, 'Argument is a 1-dimensional list that only contains integers, floats, or None; if it contains a second element, then its second element is an integer or a float')
     
     def test_none_vector_scalars(self):
-        none_vector_scalars = allow_none_vector(first_vector, 'only')
+        none_vector_scalars = allow_none_vector(first_vector)
         self.assertEqual(none_vector_scalars, 'Argument is a 1-dimensional list that only contains integers, floats, or None; if it contains a second element, then its second element is an integer or a float')
     
     def test_none_vector_multitype_raises(self):
         with self.assertRaises(Exception) as context:
-            allow_none_vector(good_multitype, 'only')
+            allow_none_vector(good_multitype)
         self.assertEqual(type(context.exception), TypeError)
         self.assertEqual(str(context.exception), 'Argument can only contain integers, floats, or None')
     
     def test_none_vector_buried_string_raises(self):
         with self.assertRaises(Exception) as context:
-            allow_none_vector(bad_vector_buried_string, 'only')
+            allow_none_vector(bad_vector_buried_string)
         self.assertEqual(type(context.exception), TypeError)
         self.assertEqual(str(context.exception), 'Second element of argument must be an integer or a float')
     
     def test_none_vector_string_raises(self):
         with self.assertRaises(Exception) as context:
-            allow_none_vector(bad_vector_string, 'only')
+            allow_none_vector(bad_vector_string)
         self.assertEqual(type(context.exception), TypeError)
         self.assertEqual(str(context.exception), 'Argument must be a 1-dimensional list')
     
     def test_none_vector_nested_raises(self):
         with self.assertRaises(Exception) as context:
-            allow_none_vector(bad_vector_nested, 'only')
+            allow_none_vector(bad_vector_nested)
         self.assertEqual(type(context.exception), TypeError)
         self.assertEqual(str(context.exception), 'Argument must be a 1-dimensional list')
 
@@ -380,34 +380,34 @@ bad_matrix_nested = [[[1], 2, 3], [4, 5, 6]]
 
 class TestMatrixScalars(unittest.TestCase):
     def test_matrix_scalars_2x3(self):
-        matrix_scalars_2x3 = matrix_of_scalars(first_matrix, 'only')
+        matrix_scalars_2x3 = matrix_of_scalars(first_matrix)
         self.assertEqual(matrix_scalars_2x3, 'Argument is a 2-dimensional list containing elements that are integers or floats')
     
     def test_matrix_scalars_2x2(self):
-        matrix_scalars_2x2 = matrix_of_scalars(small_square, 'only')
+        matrix_scalars_2x2 = matrix_of_scalars(small_square)
         self.assertEqual(matrix_scalars_2x2, 'Argument is a 2-dimensional list containing elements that are integers or floats')
     
     def test_matrix_scalars_buried_string_raises(self):
         with self.assertRaises(Exception) as context:
-            matrix_of_scalars(bad_matrix_buried_string, 'only')
+            matrix_of_scalars(bad_matrix_buried_string)
         self.assertEqual(type(context.exception), TypeError)
         self.assertEqual(str(context.exception), 'Elements nested within argument must be integers or floats')
     
     def test_matrix_scalars_string_raises(self):
         with self.assertRaises(Exception) as context:
-            matrix_of_scalars(bad_matrix_string, 'only')
+            matrix_of_scalars(bad_matrix_string)
         self.assertEqual(type(context.exception), TypeError)
         self.assertEqual(str(context.exception), 'Argument must be a 2-dimensional list')
     
     def test_matrix_scalars_vector_raises(self):
         with self.assertRaises(Exception) as context:
-            matrix_of_scalars(bad_matrix_vector, 'only')
+            matrix_of_scalars(bad_matrix_vector)
         self.assertEqual(type(context.exception), TypeError)
         self.assertEqual(str(context.exception), 'Argument must be a 2-dimensional list')
     
     def test_matrix_scalars_nested_raises(self):
         with self.assertRaises(Exception) as context:
-            matrix_of_scalars(bad_matrix_nested, 'only')
+            matrix_of_scalars(bad_matrix_nested)
         self.assertEqual(type(context.exception), TypeError)
         self.assertEqual(str(context.exception), 'Argument must be a 2-dimensional list')
 
@@ -478,16 +478,16 @@ class TestColumnsRows(unittest.TestCase):
 
 class TestAllowNoneMatrix(unittest.TestCase):
     def test_none_matrix_none(self):
-        none_matrix_none = allow_none_matrix(none_vector, 'only')
+        none_matrix_none = allow_none_matrix(none_vector)
         self.assertEqual(none_matrix_none, 'Argument is either a 1-dimensional list that contains None or a 2-dimensional list containing lists in which the first nested list contains integers or floats and the last nested list begins with a string')
     
     def test_none_matrix_lists(self):
-        none_matrix_lists = allow_none_matrix(matrix_points, 'only')
+        none_matrix_lists = allow_none_matrix(matrix_points)
         self.assertEqual(none_matrix_lists, 'Argument is either a 1-dimensional list that contains None or a 2-dimensional list containing lists in which the first nested list contains integers or floats and the last nested list begins with a string')
 
     def test_none_matrix_no_string_raises(self):
         with self.assertRaises(Exception) as context:
-            allow_none_matrix(first_matrix, 'only')
+            allow_none_matrix(first_matrix)
         self.assertEqual(type(context.exception), TypeError)
         self.assertEqual(str(context.exception), 'If the first element of argument is not None, then the last element must be a list with a first element that is a string')
 
@@ -509,12 +509,12 @@ bad_function = 'function'
 
 class TestCallableFunction(unittest.TestCase):
     def test_callable_function_multiply(self):
-        callable_function_multiply = callable_function(good_function, 'only')
+        callable_function_multiply = callable_function(good_function)
         self.assertEqual(callable_function_multiply, 'Argument is a callable function')
     
     def test_callable_string_raises(self):
         with self.assertRaises(Exception) as context:
-            callable_function(bad_function, 'only')
+            callable_function(bad_function)
         self.assertEqual(type(context.exception), TypeError)
         self.assertEqual(str(context.exception), 'Argument must be a callable function')
 
