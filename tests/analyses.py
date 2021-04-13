@@ -552,35 +552,35 @@ class TestPointsWithinRange(unittest.TestCase):
 
 class TestAccumulation(unittest.TestCase):
     def test_linear_accumulation(self):
-        linear_accumulation = accumulated_area(linear_integral_object['evaluation'], 10, 20, precision)
+        linear_accumulation = accumulated_area('linear', coefficients[:2], 10, 20, precision)
         self.assertEqual(linear_accumulation, 330.0)
     
     def test_quadratic_accumulation(self):
-        quadratic_accumulation = accumulated_area(quadratic_integral_object['evaluation'], 10, 20, precision)
+        quadratic_accumulation = accumulated_area('quadratic', coefficients[:3], 10, 20, precision)
         self.assertEqual(quadratic_accumulation, 5166.6667)
     
     def test_cubic_accumulation(self):
-        cubic_accumulation = accumulated_area(cubic_integral_object['evaluation'], 10, 20, precision)
+        cubic_accumulation = accumulated_area('cubic', coefficients[:4], 10, 20, precision)
         self.assertEqual(cubic_accumulation, 82820.0)
     
     def test_hyperbolic_accumulation(self):
-        hyperbolic_accumulation = accumulated_area(hyperbolic_integral_object['evaluation'], 10, 20, precision)
+        hyperbolic_accumulation = accumulated_area('hyperbolic', coefficients[:2], 10, 20, precision)
         self.assertEqual(hyperbolic_accumulation, 31.3863)
     
     def test_exponential_accumulation(self):
-        exponential_accumulation = accumulated_area(exponential_integral_object['evaluation'], 10, 20, precision)
+        exponential_accumulation = accumulated_area('exponential', coefficients[:2], 10, 20, precision)
         self.assertEqual(exponential_accumulation, 6347508375.7293)
     
     def test_logarithmic_accumulation(self):
-        logarithmic_accumulation = accumulated_area(logarithmic_integral_object['evaluation'], 10, 20, precision)
+        logarithmic_accumulation = accumulated_area('logarithmic', coefficients[:2], 10, 20, precision)
         self.assertEqual(logarithmic_accumulation, 83.7776)
     
     def test_logistic_accumulation(self):
-        logistic_accumulation = accumulated_area(logistic_integral_object['evaluation'], 10, 20, precision)
+        logistic_accumulation = accumulated_area('logistic', coefficients[:3], 10, 20, precision)
         self.assertEqual(logistic_accumulation, 20.0)
     
     def test_sinusoidal_accumulation(self):
-        sinusoidal_accumulation = accumulated_area(sinusoidal_integral_object['evaluation'], 10, 20, precision)
+        sinusoidal_accumulation = accumulated_area('sinusoidal', coefficients[:4], 10, 20, precision)
         self.assertEqual(sinusoidal_accumulation, 69.1433)
 
 class TestAverages(unittest.TestCase):
@@ -619,4 +619,4 @@ class TestAverages(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 139 tests in 0.021s ---------- OK ---------- #
+# ---------- Ran 139 tests in 0.018s ---------- OK ---------- #

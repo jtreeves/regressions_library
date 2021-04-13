@@ -289,14 +289,16 @@ def mean_values_derivative(equation_type, equation, start, end, constants, preci
     final_result = rounded_results + sorted_other_results
     return final_result
 
-def average_value_integral(equation, start, end, precision):
+def average_value_integral(equation_type, coefficients, start, end, precision):
     """
     Evaluates the average value of a given function between two points
 
     Parameters
     ----------
-    equation : function
-        Integral of the function for which one seeks the average value
+    equation_type : str
+        Name of the type of function for which the definite integral must be evaluated (e.g., 'linear', 'quadratic')
+    coefficients : list
+        Coefficients of the original function to integrate
     start : int or float
         Value of the x-coordinate of the first point to use for evaluating the average value
     end : int or float
@@ -306,12 +308,12 @@ def average_value_integral(equation, start, end, precision):
 
     Raises
     ------
-    TypeError
-        First argument must be a callable function
-    TypeError
-        Second and third arguments must be integers or floats
     ValueError
-        Second argument must be less than third argument
+        First argument must be either 'linear', 'quadratic', 'cubic', 'hyperbolic', 'exponential', 'logarithmic', 'logistic', or 'sinusoidal'
+    TypeError
+        Second argument must be a 1-dimensional list containing elements that are integers or floats
+    TypeError
+        Third and fourth arguments must be integers or floats
     ValueError
         Last argument must be a positive integer
 
@@ -332,24 +334,25 @@ def average_value_integral(equation, start, end, precision):
     Examples
     --------
     Evaluate the average value of a cubic function with coefficients 2, 3, 5, and 7 between end points of 10 and 20 (and round the result to four decimal places)
-        >>> average_cubic = average_value_integral(lambda x : 0.5 * x**4 + x**3 + 2.5 * x**2 + 7 * x, 10, 20, 4)
+        >>> average_cubic = average_value_integral('cubic', [2, 3, 5, 7], 10, 20, 4)
         >>> print(average_cubic)
         8282.0
     Evaluate the average value of a sinusoidal function with coefficients 2, 3, 5, and 7 between end points of 10 and 20 (and round the result to four decimal places)
-        >>> average_sinusoidal = average_value_integral(lambda x : -2 / 3 * cos(3 * (x - 5)) + 7 * x, 10, 20, 4)
+        >>> average_sinusoidal = average_value_integral('sinusoidal', [2, 3, 5, 7], 10, 20, 4)
         >>> print(average_sinusoidal)
         6.9143
     """
-    callable_function(equation, 'first')
-    compare_scalars(start, end, 'second', 'third')
+    select_equations(equation_type)
+    vector_of_scalars(coefficients, 'second')
+    compare_scalars(start, end, 'third', 'fourth')
     positive_integer(precision)
-    accumulated_value = accumulated_area(equation, start, end, precision)
+    accumulated_value = accumulated_area(equation_type, coefficients, start, end, precision)
     change = end - start
     ratio = accumulated_value / change
     result = rounded_value(ratio, precision)
     return result
 
-def mean_values_integral(equation_type, equation, start, end, constants, precision):
+def mean_values_integral(equation_type, coefficients, start, end, precision):
     """
     Generates a list of all the x-coordinates between two points at which a function's value will equal its average value over that interval
 
@@ -357,14 +360,12 @@ def mean_values_integral(equation_type, equation, start, end, constants, precisi
     ----------
     equation_type : str
         Name of the type of function for which an average value must be determined (e.g., 'linear', 'quadratic')
-    equation : function
-        Integral of the function for which one seeks the average value
+    coefficients : list
+        Coefficients of the origianl function under investigation
     start : int or float
         Value of the x-coordinate of the first point to use for evaluating the average value; all results must be greater than this value
     end : int or float
         Value of the x-coordinate of the second point to use for evaluating the average value; all results must be less than this value
-    constants : list
-        Coefficients of the origianl function under investigation
     precision : int
         Maximum number of digits that can appear after the decimal place of the result
 
@@ -373,13 +374,9 @@ def mean_values_integral(equation_type, equation, start, end, constants, precisi
     ValueError
         First argument must be either 'linear', 'quadratic', 'cubic', 'hyperbolic', 'exponential', 'logarithmic', 'logistic', or 'sinusoidal'
     TypeError
-        Second argument must be a callable function
+        Second argument must be a 1-dimensional list containing elements that are integers or floats
     TypeError
         Third and fourth arguments must be integers or floats
-    ValueError
-        Third argument must be less than fourth argument
-    TypeError
-        Fifth argument must be a 1-dimensional list containing elements that are integers or floats
     ValueError
         Last argument must be a positive integer
 
@@ -401,48 +398,47 @@ def mean_values_integral(equation_type, equation, start, end, constants, precisi
     Examples
     --------
     Generate a list of all the x-coordinates of a cubic function with coefficients 2, 3, 5, and 7 at which the function's value will equal its average value between 10 and 20 (and round the result to four decimal places)
-        >>> points_cubic = mean_values_integral('cubic', lambda x : 0.5 * x**4 + x**3 + 2.5 * x**2 + 7 * x, 10, 20, [2, 3, 5, 7], 4)
+        >>> points_cubic = mean_values_integral('cubic', [2, 3, 5, 7], 10, 20, 4)
         >>> print(points_cubic)
         [15.5188]
     Generate a list of all the x-coordinates of a sinusoidal function with coefficients 2, 3, 5, and 7 at which the function's value will equal its average value between 10 and 20 (and round the result to four decimal places)
-        >>> points_sinusoidal = mean_values_integral('sinusoidal', lambda x : -2 / 3 * cos(3 * (x - 5)) + 7 * x, 10, 20, [2, 3, 5, 7], 4)
+        >>> points_sinusoidal = mean_values_integral('sinusoidal', [2, 3, 5, 7], 10, 20, 4)
         >>> print(points_sinusoidal)
         [10.2503, 11.2689, 12.3447, 13.3633, 14.4391, 15.4577, 16.5335, 17.5521, 18.6279, 19.6465, '10.2503 + 2.0944k', '11.2689 + 2.0944k']
     """
     select_equations(equation_type)
-    callable_function(equation, 'second')
+    vector_of_scalars(coefficients, 'second')
     compare_scalars(start, end, 'third', 'fourth')
-    vector_of_scalars(constants, 'fifth')
     positive_integer(precision)
     result = []
-    average = average_value_integral(equation, start, end, precision)
+    average = average_value_integral(equation_type, coefficients, start, end, precision)
     if equation_type == 'linear':
-        value = linear_roots(constants[0], constants[1] - average, precision)
+        value = linear_roots(coefficients[0], coefficients[1] - average, precision)
         result = value
     elif equation_type == 'quadratic':
-        values = quadratic_roots(constants[0], constants[1], constants[2] - average, precision)
+        values = quadratic_roots(coefficients[0], coefficients[1], coefficients[2] - average, precision)
         result = values
     elif equation_type == 'cubic':
-        values = cubic_roots(constants[0], constants[1], constants[2], constants[3] - average, precision)
+        values = cubic_roots(coefficients[0], coefficients[1], coefficients[2], coefficients[3] - average, precision)
         result = values
     elif equation_type == 'hyperbolic':
-        value = hyperbolic_roots(constants[0], constants[1] - average, precision)
+        value = hyperbolic_roots(coefficients[0], coefficients[1] - average, precision)
         result = value
     elif equation_type == 'exponential':
-        value = log(average / constants[0]) / log(constants[1])
+        value = log(average / coefficients[0]) / log(coefficients[1])
         result.append(value)
     elif equation_type == 'logarithmic':
-        value = logarithmic_roots(constants[0], constants[1] - average, precision)
+        value = logarithmic_roots(coefficients[0], coefficients[1] - average, precision)
         result = value
     elif equation_type == 'logistic':
-        ratio = constants[0] / average
+        ratio = coefficients[0] / average
         if ratio <= 1:
             pass
         else:
-            value = constants[2] - log(ratio - 1) / constants[1]
+            value = coefficients[2] - log(ratio - 1) / coefficients[1]
             result.append(value)
     elif equation_type == 'sinusoidal':
-        values = sinusoidal_roots(constants[0], constants[1], constants[2], constants[3] - average, precision)
+        values = sinusoidal_roots(coefficients[0], coefficients[1], coefficients[2], coefficients[3] - average, precision)
         general_forms = []
         for value in values:
             if isinstance(value, str):
@@ -593,8 +589,8 @@ def average_values(equation_type, equation, integral, start, end, constants, pre
     positive_integer(precision)
     derivative_value = average_value_derivative(equation, start, end, precision)
     derivative_inputs = mean_values_derivative(equation_type, equation, start, end, constants, precision)
-    integral_value = average_value_integral(integral, start, end, precision)
-    integral_inputs = mean_values_integral(equation_type, integral, start, end, constants, precision)
+    integral_value = average_value_integral(equation_type, constants, start, end, precision)
+    integral_inputs = mean_values_integral(equation_type, constants, start, end, precision)
     results = {
         'average_value_derivative': derivative_value,
         'mean_values_derivative': derivative_inputs,

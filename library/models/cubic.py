@@ -179,8 +179,8 @@ def cubic_model(data, precision):
     max_value = five_numbers['maximum']
     q1 = five_numbers['q1']
     q3 = five_numbers['q3']
-    accumulated_range = accumulated_area(integral, min_value, max_value, precision)
-    accumulated_iqr = accumulated_area(integral, q1, q3, precision)
+    accumulated_range = accumulated_area('cubic', solution, min_value, max_value, precision)
+    accumulated_iqr = accumulated_area('cubic', solution, q1, q3, precision)
     averages_range = average_values('cubic', equation, integral, min_value, max_value, solution, precision)
     averages_iqr = average_values('cubic', equation, integral, q1, q3, solution, precision)
     predicted = []

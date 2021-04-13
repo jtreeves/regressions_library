@@ -172,8 +172,8 @@ def exponential_model(data, precision):
     max_value = five_numbers['maximum']
     q1 = five_numbers['q1']
     q3 = five_numbers['q3']
-    accumulated_range = accumulated_area(integral, min_value, max_value, precision)
-    accumulated_iqr = accumulated_area(integral, q1, q3, precision)
+    accumulated_range = accumulated_area('exponential', constants, min_value, max_value, precision)
+    accumulated_iqr = accumulated_area('exponential', constants, q1, q3, precision)
     averages_range = average_values('exponential', equation, integral, min_value, max_value, coefficients, precision)
     averages_iqr = average_values('exponential', equation, integral, q1, q3, coefficients, precision)
     predicted = []

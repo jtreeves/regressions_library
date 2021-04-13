@@ -1,15 +1,26 @@
 from library.errors.scalars import compare_scalars, positive_integer
-from library.errors.analyses import callable_function
+from library.errors.vectors import vector_of_scalars
+from library.errors.analyses import select_equations
+from library.analyses.integrals.linear import linear_integral
+from library.analyses.integrals.quadratic import quadratic_integral
+from library.analyses.integrals.cubic import cubic_integral
+from library.analyses.integrals.hyperbolic import hyperbolic_integral
+from library.analyses.integrals.exponential import exponential_integral
+from library.analyses.integrals.logarithmic import logarithmic_integral
+from library.analyses.integrals.logistic import logistic_integral
+from library.analyses.integrals.sinusoidal import sinusoidal_integral
 from library.statistics.rounding import rounded_value
 
-def accumulated_area(integral, start, end, precision):
+def accumulated_area(equation_type, coefficients, start, end, precision):
     """
-    Evaluates the definite integral between two points for a given integral
+    Evaluates the definite integral between two points for a specific function
 
     Parameters
     ----------
-    integral : function
-        Function of the indefinite integral to use for evaluating the definite integral
+    equation_type : str
+        Name of the type of function for which the definite integral must be evaluated (e.g., 'linear', 'quadratic')
+    coefficients : list
+        Coefficients of the original function to integrate
     start : int or float
         Value of the x-coordinate of the first point to use for evaluating the definite integral
     end : int or float
@@ -19,17 +30,19 @@ def accumulated_area(integral, start, end, precision):
 
     Raises
     ------
+    ValueError
+        First argument must be either 'linear', 'quadratic', 'cubic', 'hyperbolic', 'exponential', 'logarithmic', 'logistic', or 'sinusoidal'
     TypeError
-        First argument must be a callable function
+        Second argument must be a 1-dimensional list containing elements that are integers or floats
     TypeError
-        Second and third arguments must be integers or floats
+        Third and fourth arguments must be integers or floats
     ValueError
         Last argument must be a positive integer
 
     Returns
     -------
     area : float
-        Definite integral of the original indefinite integral, evaluated between two points
+        Definite integral of the original equation, evaluated between two points
 
     See Also
     --------
@@ -44,17 +57,35 @@ def accumulated_area(integral, start, end, precision):
     Examples
     --------
     Evaluate the definite integral of a linear function with coefficients 2 and 3 between the end points 10 and 20 (and round the area to four decimal places)
-        >>> area_linear = accumulated_area(lambda x : x**2 + 3 * x, 10, 20, 4)
+        >>> area_linear = accumulated_area('linear', [2, 3], 10, 20, 4)
         >>> print(area_linear)
-        330
+        330.0
     Evaluate the definite integral of a cubic function with coefficients 8, 6, -10, and 7 between the end points 10 and 20 (and round the area to four decimal places)
-        >>> area_cubic = accumulated_area(lambda x : 2 * x**4 + 2 * x**3 - 5 * x**2 + 7 * x, 10, 20, 4)
+        >>> area_cubic = accumulated_area('cubic', [8, 6, -10, 7], 10, 20, 4)
         >>> print(area_cubic)
-        312570
+        312570.0
     """
-    callable_function(integral, 'first')
-    compare_scalars(start, end, 'second', 'third')
+    select_equations(equation_type)
+    vector_of_scalars(coefficients, 'second')
+    compare_scalars(start, end, 'third', 'fourth')
     positive_integer(precision)
+    integral = lambda x : x
+    if equation_type == 'linear':
+        integral = linear_integral(*coefficients)['evaluation']
+    elif equation_type == 'quadratic':
+        integral = quadratic_integral(*coefficients)['evaluation']
+    elif equation_type == 'cubic':
+        integral = cubic_integral(*coefficients)['evaluation']
+    elif equation_type == 'hyperbolic':
+        integral = hyperbolic_integral(*coefficients)['evaluation']
+    elif equation_type == 'exponential':
+        integral = exponential_integral(*coefficients)['evaluation']
+    elif equation_type == 'logarithmic':
+        integral = logarithmic_integral(*coefficients)['evaluation']
+    elif equation_type == 'logistic':
+        integral = logistic_integral(*coefficients)['evaluation']
+    elif equation_type == 'sinusoidal':
+        integral = sinusoidal_integral(*coefficients)['evaluation']
     area = integral(end) - integral(start)
     result = rounded_value(area, precision)
     return result
