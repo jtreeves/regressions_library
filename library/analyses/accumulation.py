@@ -28,7 +28,7 @@ def accumulated_area(integral, start, end, precision):
 
     Returns
     -------
-    area : int or float
+    area : float
         Definite integral of the original indefinite integral, evaluated between two points
 
     See Also

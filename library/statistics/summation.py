@@ -18,7 +18,7 @@ def sum_value(data):
 
     Returns
     -------
-    total : int or float
+    total : float
         Number representing the sum of all elements in the original set
 
     See Also
@@ -46,4 +46,4 @@ def sum_value(data):
     result = 0
     for element in data:
         result += element
-    return result
+    return float(result)

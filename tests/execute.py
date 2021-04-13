@@ -1318,16 +1318,16 @@ class TestLargeModels(unittest.TestCase):
         self.assertEqual(large_models['models']['quadratic']['correlation'], 0.1071)
     
     def test_large_models_cubic_constants(self):
-        self.assertEqual(large_models['models']['cubic']['constants'], [0.0005, -0.2204, 33.8099, -1226.1397])
+        self.assertEqual(large_models['models']['cubic']['constants'], [0.0005, -0.2204, 33.8099, -1226.1398])
     
     def test_large_models_cubic_points(self):
-        self.assertEqual(large_models['models']['cubic']['points'], {'roots': [[51.579, 0]], 'maxima': [None], 'minima': [None], 'inflections': [[146.9333, 569.4584]]})
+        self.assertEqual(large_models['models']['cubic']['points'], {'roots': [[51.579, 0]], 'maxima': [None], 'minima': [None], 'inflections': [[146.9333, 569.4583]]})
     
     def test_large_models_cubic_accumulations(self):
-        self.assertEqual(large_models['models']['cubic']['accumulations'], {'range': 56339.2723, 'iqr': 25972.9677})
+        self.assertEqual(large_models['models']['cubic']['accumulations'], {'range': 56339.2625, 'iqr': 25972.9632})
     
     def test_large_models_cubic_averages(self):
-        self.assertEqual(large_models['models']['cubic']['averages'], {'range': {'average_value_derivative': 2.6327, 'mean_values_derivative': [118.5678, 175.2989], 'average_value_integral': 574.8905, 'mean_values_integral': [150.7241]}, 'iqr': {'average_value_derivative': 1.6856, 'mean_values_derivative': [133.7726, 160.094], 'average_value_integral': 570.8345, 'mean_values_integral': [147.8981]}})
+        self.assertEqual(large_models['models']['cubic']['averages'], {'range': {'average_value_derivative': 2.6327, 'mean_values_derivative': [118.5678, 175.2989], 'average_value_integral': 574.8904, 'mean_values_integral': [150.7241]}, 'iqr': {'average_value_derivative': 1.6856, 'mean_values_derivative': [133.7726, 160.094], 'average_value_integral': 570.8344, 'mean_values_integral': [147.8981]}})
     
     def test_large_models_cubic_correlation(self):
         self.assertEqual(large_models['models']['cubic']['correlation'], 0.0)
@@ -1416,4 +1416,4 @@ class TestLargeModels(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 420 tests in 0.023s ---------- OK ---------- #
+# ---------- Ran 420 tests in 0.027s ---------- OK ---------- #

@@ -19,7 +19,7 @@ def mean_value(data):
 
     Returns
     -------
-    mean : int or float
+    mean : float
         Arithmetic mean of the data set
 
     See Also
@@ -45,4 +45,4 @@ def mean_value(data):
     """
     vector_of_scalars(data, 'only')
     result = sum_value(data) / len(data)
-    return result
+    return float(result)

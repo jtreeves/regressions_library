@@ -237,7 +237,7 @@ class TestCriticalPoints(unittest.TestCase):
         self.assertEqual(second_logistic_critical_points, [5])
     
     def test_second_sinusoidal_critical_points(self):
-        self.assertEqual(second_sinusoidal_critical_points, [5, 6.0472, 7.0944, 8.1416, 9.1888, '5 + 1.0472k'])
+        self.assertEqual(second_sinusoidal_critical_points, [5.0, 6.0472, 7.0944, 8.1416, 9.1888, '5.0 + 1.0472k'])
 
 first_linear_intervals = sign_chart(linear_derivatives_object['first']['evaluation'], first_linear_critical_points)
 first_quadratic_intervals = sign_chart(quadratic_derivatives_object['first']['evaluation'], first_quadratic_critical_points)
@@ -304,7 +304,7 @@ class TestIntervals(unittest.TestCase):
         self.assertEqual(second_logistic_intervals, ['positive', 5, 'negative'])
     
     def test_second_sinusoidal_intervals(self):
-        self.assertEqual(second_sinusoidal_intervals, ['positive', 5, 'negative', 6.0472, 'positive', 7.0944, 'negative', 8.1416, 'positive', 9.1888, 'negative', '5 + 1.0472k'])
+        self.assertEqual(second_sinusoidal_intervals, ['positive', 5.0, 'negative', 6.0472, 'positive', 7.0944, 'negative', 8.1416, 'positive', 9.1888, 'negative', '5.0 + 1.0472k'])
 
 class TestRoots(unittest.TestCase):
     def test_linear_zeroes(self):
@@ -502,7 +502,7 @@ class TestInflections(unittest.TestCase):
     
     def test_sinusoidal_inflections(self):
         sinusoidal_inflections = inflection_points('sinusoidal', coefficients[:3], sinusoidal_derivatives_object['second']['evaluation'], precision)
-        self.assertEqual(sinusoidal_inflections, [5, 6.0472, 7.0944, 8.1416, 9.1888, '5 + 1.0472k'])
+        self.assertEqual(sinusoidal_inflections, [5.0, 6.0472, 7.0944, 8.1416, 9.1888, '5.0 + 1.0472k'])
 
 class TestKeyPoints(unittest.TestCase):
     def test_linear_key_points(self):
@@ -535,7 +535,7 @@ class TestKeyPoints(unittest.TestCase):
     
     def test_sinusoidal_key_points(self):
         sinusoidal_key_points = key_coordinates('sinusoidal', coefficients, sinusoidal_function, sinusoidal_derivatives_object['first']['evaluation'], sinusoidal_derivatives_object['second']['evaluation'], precision)
-        self.assertEqual(sinusoidal_key_points, {'roots': [None], 'maxima': [[5.5236, 9.0], [7.618, 9.0], [9.7124, 9.0], ['5.5236 + 2.0944k', 9.0]], 'minima': [[6.5708, 5.0], [8.6652, 5.0], ['6.5708 + 2.0944k', 5.0]], 'inflections': [[5, 7.0], [6.0472, 7.0], [7.0944, 7.0], [8.1416, 7.0], [9.1888, 7.0001], ['5 + 1.0472k', 7.0]]})
+        self.assertEqual(sinusoidal_key_points, {'roots': [None], 'maxima': [[5.5236, 9.0], [7.618, 9.0], [9.7124, 9.0], ['5.5236 + 2.0944k', 9.0]], 'minima': [[6.5708, 5.0], [8.6652, 5.0], ['6.5708 + 2.0944k', 5.0]], 'inflections': [[5.0, 7.0], [6.0472, 7.0], [7.0944, 7.0], [8.1416, 7.0], [9.1888, 7.0001], ['5.0 + 1.0472k', 7.0]]})
 
 class TestPointsWithinRange(unittest.TestCase):
     def test_points_in_range(self):
@@ -619,4 +619,4 @@ class TestAverages(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 139 tests in 0.014s ---------- OK ---------- #
+# ---------- Ran 139 tests in 0.021s ---------- OK ---------- #

@@ -108,7 +108,7 @@ def key_coordinates(equation_type, coefficients, equation, first_derivative, sec
         intercepts_coordinates = [None]
     else:
         for intercept in intercepts_inputs:
-            intercepts_outputs.append(0)
+            intercepts_outputs.append(0.0)
         intercepts_coordinates = unite_vectors(intercepts_inputs, intercepts_outputs)
     if maxima_inputs[0] == None:
         maxima_coordinates = [None]

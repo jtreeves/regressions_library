@@ -20,7 +20,7 @@ def rounded_value(number, precision):
 
     Returns
     -------
-    number : int or float
+    number : float
         Original number rounded to the number of decimal places indicated by the precision input
 
     See Also
@@ -76,4 +76,4 @@ def rounded_value(number, precision):
     elif number > -10**(-precision) and number < 0:
         return -10**(-precision)
     else:
-        return round(number, precision)
+        return float(round(number, precision))

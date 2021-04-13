@@ -37,7 +37,7 @@ def linear_determinant(matrix, result = 0):
     
     Returns
     -------
-    determinant : int or float
+    determinant : float
         Determinant of a matrix
 
     See Also
@@ -79,4 +79,4 @@ def linear_determinant(matrix, result = 0):
                 alternating.append(-1 * leads[i])
         for j in range(len(alternating)):
             result += alternating[j] * linear_determinant(minors[j])
-    return result
+    return float(result)

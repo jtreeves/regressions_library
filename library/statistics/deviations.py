@@ -20,7 +20,7 @@ def single_deviation(actual, mean):
 
     Returns
     -------
-    deviation : int or float
+    deviation : float
         Difference between the actual value and the mean of the data set
 
     See Also
@@ -48,7 +48,7 @@ def single_deviation(actual, mean):
     scalar_value(actual, 'first')
     scalar_value(mean, 'second')
     result = actual - mean
-    return result
+    return float(result)
 
 def multiple_deviations(actual_array):
     """

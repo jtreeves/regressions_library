@@ -19,7 +19,7 @@ def single_residual(actual, expected):
 
     Returns
     -------
-    residual : int or float
+    residual : float
         Difference between the actual value and the expected value
 
     See Also
@@ -47,7 +47,7 @@ def single_residual(actual, expected):
     scalar_value(actual, 'first')
     scalar_value(expected, 'second')
     result = actual - expected
-    return result
+    return float(result)
 
 def multiple_residuals(actual_array, expected_array):
     """

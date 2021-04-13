@@ -20,7 +20,7 @@ def range_value(data):
 
     Returns
     -------
-    interval : int or float
+    interval : float
         Range of data set
 
     See Also
@@ -52,4 +52,4 @@ def range_value(data):
     max_value = maximum_value(data)
     min_value = minimum_value(data)
     result = max_value - min_value
-    return result
+    return float(result)
