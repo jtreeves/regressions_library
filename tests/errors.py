@@ -2,7 +2,7 @@ import unittest
 
 from library.errors.scalars import scalar_value, two_scalars, three_scalars, four_scalars, compare_scalars, positive_integer, whole_number, select_integers, allow_none_scalar
 from library.errors.vectors import vector_of_scalars, compare_vectors, multitype_vector, allow_none_vector, length, long_vector
-from library.errors.matrices import matrix_of_scalars, square_matrix, compare_rows, compare_columns, compare_matrices, columns_rows, level
+from library.errors.matrices import matrix_of_scalars, square_matrix, compare_rows, compare_columns, compare_matrices, columns_rows, allow_none_matrix, level
 from library.errors.analyses import callable_function, select_equations
 
 good_positive = 3
@@ -372,6 +372,7 @@ first_matrix = [[1, 2, 3], [4, 5, 6]]
 second_matrix = [[7, 8, 9], [10, 11, 12]]
 small_square = [[1, 2], [3, 4]]
 large_square = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+matrix_points = [[1, 2], [3, 2], [5, 2], ['1 + 2k', 2]]
 bad_matrix_string = 'matrix'
 bad_matrix_buried_string = [['one', 2, 3], [4, 5, 6]]
 bad_matrix_vector = [1, 2, 3]
@@ -475,6 +476,21 @@ class TestColumnsRows(unittest.TestCase):
         self.assertEqual(type(context.exception), ValueError)
         self.assertEqual(str(context.exception), 'First list within first argument must contain the same amount of elements as the amount of lists contained within second argument')
 
+class TestAllowNoneMatrix(unittest.TestCase):
+    def test_none_matrix_none(self):
+        none_matrix_none = allow_none_matrix(none_vector, 'only')
+        self.assertEqual(none_matrix_none, 'Argument is either a 1-dimensional list that contains None or a 2-dimensional list containing lists in which the first nested list contains integers or floats and the last nested list begins with a string')
+    
+    def test_none_matrix_lists(self):
+        none_matrix_lists = allow_none_matrix(matrix_points, 'only')
+        self.assertEqual(none_matrix_lists, 'Argument is either a 1-dimensional list that contains None or a 2-dimensional list containing lists in which the first nested list contains integers or floats and the last nested list begins with a string')
+
+    def test_none_matrix_no_string_raises(self):
+        with self.assertRaises(Exception) as context:
+            allow_none_matrix(first_matrix, 'only')
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'If the first element of argument is not None, then the last element must be a list with a first element that is a string')
+
 class TestLevel(unittest.TestCase):
     def test_level_2x3_2(self):
         level_2x2_2 = level(first_matrix, 2)
@@ -519,4 +535,4 @@ class TestSelectEquations(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 87 tests in 0.008s ---------- OK ---------- #
+# ---------- Ran 90 tests in 0.009s ---------- OK ---------- #

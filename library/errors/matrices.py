@@ -48,6 +48,26 @@ def columns_rows(matrix_one, matrix_two):
     else:
         return 'First list within first argument contains the same amount of elements as the amount of lists contained within second argument'
 
+def allow_none_matrix(matrix, position):
+    identifier = ''
+    argument = 'argument'
+    if position == 'only':
+        identifier = argument
+    else:
+        identifier = position + ' ' + argument
+    if not isinstance(matrix, list):
+        raise TypeError(f'{identifier.capitalize()} must be a list')
+    if not isinstance(matrix[0], list) and matrix[0] is not None:
+        raise TypeError(f'{identifier.capitalize()} must contain either lists or None')
+    if len(matrix) > 1 and not isinstance(matrix[1], list):
+        raise TypeError(f'Second element of {identifier} must be a list')
+    if len(matrix) > 1 and not isinstance(matrix[0][0], (int, float)):
+        raise TypeError(f'If the first element of {identifier} is not None, then it must be a list of integers or floats')
+    if len(matrix) > 1 and not isinstance(matrix[-1][0], str):
+        raise TypeError(f'If the first element of {identifier} is not None, then the last element must be a list with a first element that is a string')
+    else:
+        return f'{identifier.capitalize()} is either a 1-dimensional list that contains None or a 2-dimensional list containing lists in which the first nested list contains integers or floats and the last nested list begins with a string'
+
 def level(matrix, scalar):
     if not scalar <= len(matrix[0]):
         raise ValueError('Last argument must be less than or equal to the length of the nested lists within the first argument')

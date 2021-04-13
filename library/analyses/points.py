@@ -1,7 +1,9 @@
 from library.errors.analyses import select_equations, callable_function
-from library.errors.scalars import positive_integer
+from library.errors.scalars import scalar_value, compare_scalars, positive_integer
 from library.errors.vectors import vector_of_scalars
+from library.errors.matrices import allow_none_matrix
 from library.statistics.rounding import rounded_value
+from library.statistics.sort import sorted_list
 from library.vectors.unify import unite_vectors
 from .intercepts import intercept_points
 from .extrema import extrema_points
@@ -156,3 +158,72 @@ def key_coordinates(equation_type, coefficients, equation, first_derivative, sec
         'inflections': inflections_coordinates
     }
     return result
+
+def points_within_range(coordinates, minimum, maximum, interval, precision):
+    allow_none_matrix(coordinates, 'first')
+    compare_scalars(minimum, maximum, 'second', 'third')
+    scalar_value(interval, 'fourth')
+    positive_integer(precision)
+    final_points = []
+    if coordinates[0] is not None:
+        general_points = []
+        for point in coordinates:
+            if isinstance(point[0], str):
+                general_points.append(point[0])
+        optional_points = []
+        for point in general_points:
+            initial_value_index = point.find(' + ')
+            initial_value = float(point[:initial_value_index])
+            periodic_unit_index = initial_value_index + 3
+            periodic_unit = float(point[periodic_unit_index:-1])
+            if periodic_unit > 0:
+                while initial_value > maximum:
+                    initial_value -= periodic_unit
+                while initial_value < minimum:
+                    initial_value += periodic_unit
+            else:
+                while initial_value > maximum:
+                    initial_value += periodic_unit
+                while initial_value < minimum:
+                    initial_value -= periodic_unit
+            first_value = initial_value + 1 * periodic_unit
+            second_value = initial_value + 2 * periodic_unit
+            third_value = initial_value + 3 * periodic_unit
+            fourth_value = initial_value + 4 * periodic_unit
+            rounded_initial_value = rounded_value(initial_value, precision)
+            rounded_periodic_unit = rounded_value(periodic_unit, precision)
+            general_form = str(rounded_initial_value) + ' + ' + str(rounded_periodic_unit) + 'k'
+            optional_points += [initial_value, first_value, second_value, third_value, fourth_value, general_form]
+        numerical_points = []
+        other_points = []
+        for point in optional_points:
+            if isinstance(point, (int, float)):
+                numerical_points.append(point)
+            else:
+                other_points.append(point)
+        sorted_points = sorted_list(numerical_points)
+        selected_points = [x for x in sorted_points if x >= sorted_points[0] and x <= sorted_points[0] + interval]
+        rounded_points = []
+        for point in selected_points:
+            rounded_points.append(rounded_value(point, precision))
+        sorted_other_points = []
+        if len(other_points) > 0:
+            if len(other_points) == 1:
+                sorted_other_points = other_points
+            else:
+                first_index = other_points[0].find(' + ') - 1
+                first_value = float(other_points[0][:first_index])
+                second_index = other_points[1].find(' + ') - 1
+                second_value = float(other_points[1][:second_index])
+                if first_value < second_value:
+                    sorted_other_points = other_points
+                else:
+                    sorted_other_points = [other_points[1], other_points[0]]
+        input_points = rounded_points + sorted_other_points
+        output_points = []
+        for point in input_points:
+            output_points.append(coordinates[0][1])
+        final_points = unite_vectors(input_points, output_points)
+    else:
+        final_points = coordinates
+    return final_points
