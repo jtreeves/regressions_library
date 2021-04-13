@@ -24,7 +24,7 @@ def average_value_derivative(equation, start, end, precision = 4):
         Value of the x-coordinate of the first point to use for evaluating the rate of change
     end : int or float
         Value of the x-coordinate of the second point to use for evaluating the rate of change
-    precision : int, optional
+    precision : int, default=4
         Maximum number of digits that can appear after the decimal place of the result
 
     Raises
@@ -89,7 +89,7 @@ def mean_values_derivative(equation_type, equation, start, end, constants, preci
         Value of the x-coordinate of the second point to use for evaluating the rate of change; all results must be less than this value
     constants : list
         Coefficients to use to generate the equation to investigate
-    precision : int, optional
+    precision : int, default=4
         Maximum number of digits that can appear after the decimal place of the result
 
     Raises
@@ -303,7 +303,7 @@ def average_value_integral(equation_type, coefficients, start, end, precision = 
         Value of the x-coordinate of the first point to use for evaluating the average value
     end : int or float
         Value of the x-coordinate of the second point to use for evaluating the average value
-    precision : int, optional
+    precision : int, default=4
         Maximum number of digits that can appear after the decimal place of the result
 
     Raises
@@ -366,7 +366,7 @@ def mean_values_integral(equation_type, coefficients, start, end, precision = 4)
         Value of the x-coordinate of the first point to use for evaluating the average value; all results must be greater than this value
     end : int or float
         Value of the x-coordinate of the second point to use for evaluating the average value; all results must be less than this value
-    precision : int, optional
+    precision : int, default=4
         Maximum number of digits that can appear after the decimal place of the result
 
     Raises
@@ -520,7 +520,7 @@ def average_values(equation_type, equation, integral, start, end, constants, pre
         Value of the x-coordinate of the second point to use for evaluating the average values; results within lists must be less than this value
     constants : list
         Coefficients of the origianl function under investigation
-    precision : int, optional
+    precision : int, default=4
         Maximum number of digits that can appear after the decimal place of the result
 
     Raises

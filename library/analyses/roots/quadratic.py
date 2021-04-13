@@ -14,7 +14,7 @@ def quadratic_roots(first_constant, second_constant, third_constant, precision =
         Coefficient of the linear term of the original quadratic function
     third_constant : int or float
         Coefficient of the constant term of the original quadratic function
-    precision : int, optional
+    precision : int, default=4
         Maximum number of digits that can appear after the decimal place of the resultant roots
 
     Raises

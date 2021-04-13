@@ -14,7 +14,7 @@ def five_number_summary(data, precision = 4):
     ----------
     data : list
         List of numbers to analyze
-    precision : int, optional
+    precision : int, default=4
         Maximum number of digits that can appear after the decimal place of the result
 
     Raises

@@ -9,7 +9,7 @@ def single_dimension(matrix, scalar = 1):
     ----------
     matrix : list
         List containing other lists, where each inner list is a row and elements within those inner lists correspond to columns
-    scalar : int, optional
+    scalar : int, default=1
         Number corresponding to the column's position
 
     Raises

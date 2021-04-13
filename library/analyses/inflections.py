@@ -16,7 +16,7 @@ def inflection_points(equation_type, coefficients, derivative, precision = 4):
         Coefficients to use to generate the equation to investigate
     derivative : function
         Function of the second derivative to use for generating a list of critical points
-    precision : int, optional
+    precision : int, default=4
         Maximum number of digits that can appear after the decimal place of the results
 
     Raises

@@ -10,7 +10,7 @@ def exponential_roots(first_constant, second_constant, precision = 4):
         Constant multiple of the original exponential function
     second_constant : int or float
         Base rate of variable of the original exponential function
-    precision : int, optional
+    precision : int, default=4
         Maximum number of digits that can appear after the decimal place of the resultant roots
 
     Raises

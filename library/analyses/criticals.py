@@ -21,7 +21,7 @@ def critical_points(equation_type, derivative_level, coefficients, precision = 4
         Integer corresponding to which derivative to investigate for critical points (1 for the first derivative and 2 for the second derivative)
     coefficients : list
         Coefficients to use to generate the equation to investigate
-    precision : int, optional
+    precision : int, default=4
         Maximum number of digits that can appear after the decimal place of the results
 
     Raises

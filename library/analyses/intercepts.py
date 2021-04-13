@@ -20,7 +20,7 @@ def intercept_points(equation_type, coefficients, precision = 4):
         Name of the type of function for which intercepts must be determined (e.g., 'linear', 'quadratic')
     coefficients : list
         Coefficients to use to generate the equation to investigate
-    precision : int, optional
+    precision : int, default=4
         Maximum number of digits that can appear after the decimal place of the results
 
     Raises

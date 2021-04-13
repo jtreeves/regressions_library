@@ -133,7 +133,7 @@ def half_dimension(data, dimension = 1):
     ----------
     data : list
         List of lists of numbers to analyze
-    dimension : int, optional
+    dimension : int, default=1
         Number indicating by which element of the nested lists to sort
     
     Raises

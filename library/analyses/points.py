@@ -25,7 +25,7 @@ def key_coordinates(equation_type, coefficients, equation, first_derivative, sec
         Function of the first derivative to use for generating a list of critical points
     second_derivative : function
         Function of the second derivative to use for generating a list of critical points
-    precision : int, optional
+    precision : int, default=4
         Maximum number of digits that can appear after the decimal place of the results
 
     Raises

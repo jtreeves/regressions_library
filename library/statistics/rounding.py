@@ -8,7 +8,7 @@ def rounded_value(number, precision = 4):
     ----------
     number : int or float
         Number to round
-    precision : int, optional
+    precision : int, default=4
         Maximum number of digits that can appear after the decimal place of the result
 
     Raises

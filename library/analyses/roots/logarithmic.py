@@ -12,7 +12,7 @@ def logarithmic_roots(first_constant, second_constant, precision = 4):
         Coefficient of the logarithmic term of the original logarithmic function
     second_constant : int or float
         Coefficient of the constant term of the original logarithmic function
-    precision : int, optional
+    precision : int, default=4
         Maximum number of digits that can appear after the decimal place of the resultant roots
 
     Raises

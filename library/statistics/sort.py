@@ -63,7 +63,7 @@ def sorted_dimension(data, dimension = 1):
     ----------
     data : list
         List of lists of numbers to analyze
-    dimension: int, optional
+    dimension: int, default=1
         Number representing the dimension to use for sorting
 
     Returns

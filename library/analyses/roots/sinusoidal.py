@@ -17,7 +17,7 @@ def sinusoidal_roots(first_constant, second_constant, third_constant, fourth_con
         Horizontal shift of the original sine function
     fourth_constant : int or float
         Vertical shift of the original sine function
-    precision : int, optional
+    precision : int, default=4
         Maximum number of digits that can appear after the decimal place of the resultant roots
 
     Raises

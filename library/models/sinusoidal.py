@@ -27,7 +27,7 @@ def sinusoidal_model(data, precision = 4):
     ----------
     data : list
         List of lists of numbers representing a collection of coordinate pairs
-    precision : int, optional
+    precision : int, default=4
         Maximum number of digits that can appear after the decimal place of the results
 
     Raises

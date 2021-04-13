@@ -25,7 +25,7 @@ def accumulated_area(equation_type, coefficients, start, end, precision = 4):
         Value of the x-coordinate of the first point to use for evaluating the definite integral
     end : int or float
         Value of the x-coordinate of the second point to use for evaluating the definite integral
-    precision : int, optional
+    precision : int, default=4
         Maximum number of digits that can appear after the decimal place of the result
 
     Raises

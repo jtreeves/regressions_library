@@ -16,7 +16,7 @@ def system_solution(matrix_one, matrix_two, precision = 4):
         List of lists of numbers representing the independent matrix of a system of equations
     matrix_two : list
         List of lists of numbers representing the dependent matrix of a system of equations
-    precision : int, optional
+    precision : int, default=4
         Maximum number of digits that can appear after the decimal place of the results
 
     Raises
