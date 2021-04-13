@@ -6,13 +6,13 @@ def sum_value(data):
 
     Parameters
     ----------
-    data : list or tuple
+    data : list
         List of numbers
 
     Raises
     ------
     TypeError
-        Argument must be a 1-dimensional list or tuple
+        Argument must be a 1-dimensional list
     TypeError
         Elements of argument must be integers or floats
 

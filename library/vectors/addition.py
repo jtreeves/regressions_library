@@ -6,15 +6,15 @@ def vector_sum(vector_one, vector_two):
 
     Parameters
     ----------
-    vector_one : list or tuple
+    vector_one : list
         List of numbers representing a vector
-    vector_two : list or tuple
+    vector_two : list
         List of numbers representing a vector
 
     Raises
     ------
     TypeError
-        Arguments must be 1-dimensional lists or tuples
+        Arguments must be 1-dimensional lists
     TypeError
         Elements of arguments must be integers or floats
     ValueError

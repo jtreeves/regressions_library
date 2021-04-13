@@ -87,7 +87,7 @@ def mean_values_derivative(equation_type, equation, start, end, constants, preci
         Value of the x-coordinate of the first point to use for evaluating the rate of change; all results must be greater than this value
     end : int or float
         Value of the x-coordinate of the second point to use for evaluating the rate of change; all results must be less than this value
-    constants : list or tuple
+    constants : list
         Coefficients to use to generate the equation to investigate
     precision : int
         Maximum number of digits that can appear after the decimal place of the result
@@ -103,7 +103,7 @@ def mean_values_derivative(equation_type, equation, start, end, constants, preci
     ValueError
         Third argument must be less than fourth argument
     TypeError
-        Fifth argument must be a 1-dimensional list or tuple containing elements that are integers or floats
+        Fifth argument must be a 1-dimensional list containing elements that are integers or floats
     ValueError
         Last argument must be a positive integer
 
@@ -363,7 +363,7 @@ def mean_values_integral(equation_type, equation, start, end, constants, precisi
         Value of the x-coordinate of the first point to use for evaluating the average value; all results must be greater than this value
     end : int or float
         Value of the x-coordinate of the second point to use for evaluating the average value; all results must be less than this value
-    constants : list or tuple
+    constants : list
         Coefficients of the origianl function under investigation
     precision : int
         Maximum number of digits that can appear after the decimal place of the result
@@ -379,7 +379,7 @@ def mean_values_integral(equation_type, equation, start, end, constants, precisi
     ValueError
         Third argument must be less than fourth argument
     TypeError
-        Fifth argument must be a 1-dimensional list or tuple containing elements that are integers or floats
+        Fifth argument must be a 1-dimensional list containing elements that are integers or floats
     ValueError
         Last argument must be a positive integer
 
@@ -522,7 +522,7 @@ def average_values(equation_type, equation, integral, start, end, constants, pre
         Value of the x-coordinate of the first point to use for evaluating the average values; results within lists must be greater than this value
     end : int or float
         Value of the x-coordinate of the second point to use for evaluating the average values; results within lists must be less than this value
-    constants : list or tuple
+    constants : list
         Coefficients of the origianl function under investigation
     precision : int
         Maximum number of digits that can appear after the decimal place of the result
@@ -538,7 +538,7 @@ def average_values(equation_type, equation, integral, start, end, constants, pre
     ValueError
         Fourth argument must be less than fifth argument
     TypeError
-        Sixth argument must be a 1-dimensional list or tuple containing elements that are integers or floats
+        Sixth argument must be a 1-dimensional list containing elements that are integers or floats
     ValueError
         Last argument must be a positive integer
 

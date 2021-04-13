@@ -11,9 +11,9 @@ def correlation_coefficient(actuals, expecteds, precision):
 
     Parameters
     ----------
-    actuals : list or tuple
+    actuals : list
         List containing the actual values observed from a data set
-    expecteds : list or tuple
+    expecteds : list
         List containing the expected values for a data set based on a predictive model
     precision : int
         Maximum number of digits that can appear after the decimal place of the result
@@ -21,7 +21,7 @@ def correlation_coefficient(actuals, expecteds, precision):
     Raises
     ------
     TypeError
-        First and second arguments must be 1-dimensional lists or tuples
+        First and second arguments must be 1-dimensional lists
     TypeError
         Elements of first and second arguments must be integers or floats
     ValueError

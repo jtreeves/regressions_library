@@ -18,7 +18,7 @@ def intercept_points(equation_type, coefficients, precision):
     ----------
     equation_type : str
         Name of the type of function for which intercepts must be determined (e.g., 'linear', 'quadratic')
-    coefficients : list or tuple
+    coefficients : list
         Coefficients to use to generate the equation to investigate
     precision : int
         Maximum number of digits that can appear after the decimal place of the results
@@ -28,7 +28,7 @@ def intercept_points(equation_type, coefficients, precision):
     ValueError
         First argument must be either 'linear', 'quadratic', 'cubic', 'hyperbolic', 'exponential', 'logarithmic', 'logistic', or 'sinusoidal'
     TypeError
-        Second argument must be a 1-dimensional list or tuple containing elements that are integers or floats
+        Second argument must be a 1-dimensional list containing elements that are integers or floats
     ValueError
         Last argument must be a positive integer
 

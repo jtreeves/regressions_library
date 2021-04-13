@@ -7,7 +7,7 @@ def scalar_product_vector(vector, scalar):
 
     Parameters
     ----------
-    vector : list or tuple
+    vector : list
         List of numbers representing a vector
     scalar : int or float
         Number representing a scalar
@@ -15,7 +15,7 @@ def scalar_product_vector(vector, scalar):
     Raises
     ------
     TypeError
-        First argument must be a 1-dimensional list or tuple
+        First argument must be a 1-dimensional list
     TypeError
         Elements of first argument must be integers or floats
     TypeError
@@ -61,15 +61,15 @@ def dot_product(vector_one, vector_two):
 
     Parameters
     ----------
-    vector_one : list or tuple
+    vector_one : list
         List of numbers representing a vector
-    vector_two : list or tuple
+    vector_two : list
         List of numbers representing a vector
 
     Raises
     ------
     TypeError
-        Arguments must be 1-dimensional lists or tuples
+        Arguments must be 1-dimensional lists
     TypeError
         Elements of arguments must be integers or floats
     ValueError

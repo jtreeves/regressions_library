@@ -6,15 +6,15 @@ def matrix_sum(matrix_one, matrix_two):
 
     Parameters
     ----------
-    matrix_one : list or tuple
+    matrix_one : list
         List of lists of numbers representing a matrix
-    matrix_two : list or tuple
+    matrix_two : list
         List of lists of numbers representing a matrix
 
     Raises
     ------
     TypeError
-        Arguments must be 2-dimensional lists or tuples
+        Arguments must be 2-dimensional lists
     TypeError
         Elements nested within arguments must be integers or floats
     ValueError

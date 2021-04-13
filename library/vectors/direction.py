@@ -7,13 +7,13 @@ def vector_direction(vector):
 
     Parameters
     ----------
-    vector : list or tuple
+    vector : list
         List of two numbers representing a vector, in which the first number is the horizontal component and the second is the vertical component
 
     Raises
     ------
     TypeError
-        Argument must be a 1-dimensional list or tuple
+        Argument must be a 1-dimensional list
     TypeError
         Elements of argument must be integers or floats
     ValueError

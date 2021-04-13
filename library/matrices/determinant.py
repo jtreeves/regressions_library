@@ -23,13 +23,13 @@ def linear_determinant(matrix, result = 0):
 
     Parameters
     ----------
-    matrix : list or tuple
+    matrix : list
         List of lists of numbers representing a matrix
 
     Raises
     ------
     TypeError
-        First argument must be a 2-dimensional list or tuple
+        First argument must be a 2-dimensional list
     TypeError
         Elements nested within first argument must be integers or floats
     ValueError

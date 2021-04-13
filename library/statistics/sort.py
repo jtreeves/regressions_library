@@ -4,7 +4,7 @@ def sorted_list(data):
 
     Parameters
     ----------
-    data : list or tuple
+    data : list
         List of numbers to analyze
 
     Returns
@@ -61,7 +61,7 @@ def sorted_dimension(data, dimension):
 
     Parameters
     ----------
-    data : list or tuple
+    data : list
         List of lists of numbers to analyze
     dimension: int
         Number representing the dimension to use for sorting

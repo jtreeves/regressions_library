@@ -9,7 +9,7 @@ def scalar_product_matrix(matrix, scalar):
 
     Parameters
     ----------
-    matrix : list or tuple
+    matrix : list
         List of lists of numbers representing a matrix
     scalar : int or float
         Number representing a scalar
@@ -17,7 +17,7 @@ def scalar_product_matrix(matrix, scalar):
     Raises
     ------
     TypeError
-        First argument must be 2-dimensional lists or tuples
+        First argument must be 2-dimensional lists
     TypeError
         Elements nested within first argument must be integers or floats
     TypeError
@@ -65,15 +65,15 @@ def matrix_product(matrix_one, matrix_two):
 
     Parameters
     ----------
-    matrix_one : list or tuple
+    matrix_one : list
         List of lists of numbers representing a matrix
-    matrix_two : list or tuple
+    matrix_two : list
         List of lists of numbers representing a matrix
 
     Raises
     ------
     TypeError
-        Arguments must be 2-dimensional lists or tuples
+        Arguments must be 2-dimensional lists
     TypeError
         Elements nested within arguments must be integers or floats
     ValueError

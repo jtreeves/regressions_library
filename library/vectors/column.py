@@ -6,13 +6,13 @@ def column_conversion(vector):
 
     Parameters
     ----------
-    vector : list or tuple
+    vector : list
         List of numbers representing a vector
 
     Raises
     ------
     TypeError
-        Argument must be a 1-dimensional list or tuple
+        Argument must be a 1-dimensional list
 
     Returns
     -------

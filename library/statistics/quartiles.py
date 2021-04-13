@@ -9,7 +9,7 @@ def quartile_value(data, q):
 
     Parameters
     ----------
-    data : list or tuple
+    data : list
         List of numbers to analyze
     q : int
         Number determining which quartile to provide
@@ -17,7 +17,7 @@ def quartile_value(data, q):
     Raises
     ------
     TypeError
-        First argument must be a 1-dimensional list or tuple
+        First argument must be a 1-dimensional list
     TypeError
         Elements of first argument must be integers or floats
     ValueError

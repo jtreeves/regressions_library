@@ -10,7 +10,7 @@ def sign_chart(derivative, points):
     ----------
     derivative : function
         Function of the derivative to use when testing values to construct the sign chart
-    points : list or tuple
+    points : list
         Values where the derivative either crosses the x-axis or does not exist
 
     Raises
@@ -18,7 +18,7 @@ def sign_chart(derivative, points):
     TypeError
         First argument must be a callable function
     TypeError
-        Second argument must be a 1-dimensional list or tuple that only contains integers, floats, `None`, or a final string; if it contains a second element, then its second element must be an integer or a float
+        Second argument must be a 1-dimensional list that only contains integers, floats, `None`, or a final string; if it contains a second element, then its second element must be an integer or a float
 
     Returns
     -------

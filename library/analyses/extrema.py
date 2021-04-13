@@ -14,7 +14,7 @@ def extrema_points(equation_type, coefficients, derivative, precision):
     ----------
     equation_type : str
         Name of the type of function for which extrema must be determined (e.g., 'linear', 'quadratic')
-    coefficients : list or tuple
+    coefficients : list
         Coefficients to use to generate the equation to investigate
     derivative : function
         Function of the first derivative to use for generating a list of critical points
@@ -26,7 +26,7 @@ def extrema_points(equation_type, coefficients, derivative, precision):
     ValueError
         First argument must be either 'linear', 'quadratic', 'cubic', 'hyperbolic', 'exponential', 'logarithmic', 'logistic', or 'sinusoidal'
     TypeError
-        Second argument must be a 1-dimensional list or tuple containing elements that are integers or floats
+        Second argument must be a 1-dimensional list containing elements that are integers or floats
     TypeError
         Third argument must be a callable function
     ValueError

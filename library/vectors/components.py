@@ -8,15 +8,15 @@ def component_form(initial_point, terminal_point):
 
     Parameters
     ----------
-    initial_point : list or tuple
+    initial_point : list
         List of numbers representing a point
-    terminal_point : list or tuple
+    terminal_point : list
         List of numbers representing a point
 
     Raises
     ------
     TypeError
-        Arguments must be 1-dimensional lists or tuples
+        Arguments must be 1-dimensional lists
     TypeError
         Elements of arguments must be integers or floats
     ValueError

@@ -7,7 +7,7 @@ def single_dimension(matrix, scalar):
 
     Parameters
     ----------
-    matrix : list or tuple
+    matrix : list
         List containing other lists, where each inner list is a row and elements within those inner lists correspond to columns
     scalar : int
         Number corresponding to the column's position
@@ -15,7 +15,7 @@ def single_dimension(matrix, scalar):
     Raises
     ------
     TypeError
-        First argument must be a 2-dimensional list or tuple
+        First argument must be a 2-dimensional list
     TypeError
         Elements nested within the first argument's lists must be integers or floats
     ValueError

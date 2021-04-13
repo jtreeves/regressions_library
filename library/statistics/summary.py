@@ -12,7 +12,7 @@ def five_number_summary(data, precision):
 
     Parameters
     ----------
-    data : list or tuple
+    data : list
         List of numbers to analyze
     precision : int
         Maximum number of digits that can appear after the decimal place of the result
@@ -20,7 +20,7 @@ def five_number_summary(data, precision):
     Raises
     ------
     TypeError
-        First argument must be a 1-dimensional list or tuple
+        First argument must be a 1-dimensional list
     TypeError
         Elements of first argument must be integers or floats
     ValueError

@@ -7,13 +7,13 @@ def matrix_of_minors(matrix):
 
     Parameters
     ----------
-    matrix : list or tuple
+    matrix : list
         List of lists of numbers representing a matrix
 
     Raises
     ------
     TypeError
-        Argument must be a 2-dimensional list or tuple
+        Argument must be a 2-dimensional list
     TypeError
         Elements nested within argument must be integers or floats
     ValueError

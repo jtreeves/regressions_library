@@ -55,15 +55,15 @@ def multiple_residuals(actual_array, expected_array):
 
     Parameters
     ----------
-    actual_array : list or tuple
+    actual_array : list
         List containing the actual values observed from a data set
-    expected_array : list or tuple
+    expected_array : list
         List containing the expected values predicted for a data set
 
     Raises
     ------
     TypeError
-        Arguments must be 1-dimensional lists or tuples
+        Arguments must be 1-dimensional lists
     TypeError
         Elements of arguments must be integers or floats
     ValueError

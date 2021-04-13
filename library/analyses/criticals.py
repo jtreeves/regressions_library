@@ -19,7 +19,7 @@ def critical_points(equation_type, derivative_level, coefficients, precision):
         Name of the type of function for which critical points must be determined (e.g., 'linear', 'quadratic')
     derivative_level : int
         Integer corresponding to which derivative to investigate for critical points (1 for the first derivative and 2 for the second derivative)
-    coefficients : list or tuple
+    coefficients : list
         Coefficients to use to generate the equation to investigate
     precision : int
         Maximum number of digits that can appear after the decimal place of the results
@@ -31,7 +31,7 @@ def critical_points(equation_type, derivative_level, coefficients, precision):
     ValueError
         Second argument must be one of the following integers: [1, 2]
     TypeError
-        Third argument must be a 1-dimensional list or tuple containing elements that are integers or floats
+        Third argument must be a 1-dimensional list containing elements that are integers or floats
     ValueError
         Last argument must be a positive integer
 

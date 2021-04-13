@@ -25,7 +25,7 @@ def sinusoidal_model(data, precision):
 
     Parameters
     ----------
-    data : list or tuple
+    data : list
         List of lists of numbers representing a collection of coordinate pairs
     precision : int
         Maximum number of digits that can appear after the decimal place of the results
@@ -33,7 +33,7 @@ def sinusoidal_model(data, precision):
     Raises
     ------
     TypeError
-        First argument must be a 2-dimensional list or tuple
+        First argument must be a 2-dimensional list
     TypeError
         Elements nested within first argument must be integers or floats
     ValueError

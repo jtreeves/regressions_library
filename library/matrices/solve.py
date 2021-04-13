@@ -12,9 +12,9 @@ def system_solution(matrix_one, matrix_two, precision):
 
     Parameters
     ----------
-    matrix_one : list or tuple
+    matrix_one : list
         List of lists of numbers representing the independent matrix of a system of equations
-    matrix_two : list or tuple
+    matrix_two : list
         List of lists of numbers representing the dependent matrix of a system of equations
     precision : int
         Maximum number of digits that can appear after the decimal place of the results
@@ -22,7 +22,7 @@ def system_solution(matrix_one, matrix_two, precision):
     Raises
     ------
     TypeError
-        First and second arguments must be 2-dimensional lists or tuples
+        First and second arguments must be 2-dimensional lists
     TypeError
         Elements nested within first and second arguments must be integers or floats
     ValueError

@@ -10,7 +10,7 @@ def partition(data):
 
     Parameters
     ----------
-    data : list or tuple
+    data : list
         List of numbers to analyze
 
     Returns
@@ -71,13 +71,13 @@ def half(data):
 
     Parameters
     ----------
-    data : list or tuple
+    data : list
         List of numbers to analyze
     
     Raises
     ------
     TypeError
-        Argument must be a 1-dimensional list or tuple
+        Argument must be a 1-dimensional list
     TypeError
         Elements of argument must be integers or floats
 
@@ -131,7 +131,7 @@ def half_dimension(data, dimension):
 
     Parameters
     ----------
-    data : list or tuple
+    data : list
         List of lists of numbers to analyze
     dimension : int
         Number indicating by which element of the nested lists to sort
@@ -139,7 +139,7 @@ def half_dimension(data, dimension):
     Raises
     ------
     TypeError
-        First argument must be a 2-dimensional list or tuple
+        First argument must be a 2-dimensional list
     TypeError
         Elements nested within first argument must be integers or floats
     ValueError

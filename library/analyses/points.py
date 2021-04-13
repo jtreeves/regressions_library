@@ -17,7 +17,7 @@ def key_coordinates(equation_type, coefficients, equation, first_derivative, sec
     ----------
     equation_type : str
         Name of the type of function for which key points must be determined (e.g., 'linear', 'quadratic')
-    coefficients : list or tuple
+    coefficients : list
         Coefficients to use to generate the equation to investigate
     equation : function
         Function to use for evaluating the y-coordinates of each point
@@ -33,7 +33,7 @@ def key_coordinates(equation_type, coefficients, equation, first_derivative, sec
     ValueError
         First argument must be either 'linear', 'quadratic', 'cubic', 'hyperbolic', 'exponential', 'logarithmic', 'logistic', or 'sinusoidal'
     TypeError
-        Second argument must be a 1-dimensional list or tuple containing elements that are integers or floats
+        Second argument must be a 1-dimensional list containing elements that are integers or floats
     TypeError
         Third, fourth, and fifth arguments must be callable functions
     ValueError

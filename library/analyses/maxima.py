@@ -6,13 +6,13 @@ def maxima_points(intervals):
 
     Parameters
     ----------
-    intervals : list or tuple
+    intervals : list
         Array containing the sign chart of the specific function's first derivative
 
     Raises
     ------
     TypeError
-        Argument must be a 1-dimensional list or tuple
+        Argument must be a 1-dimensional list
     ValueError
         First element of argument must be either 'constant', 'positive', or 'negative'
     TypeError
