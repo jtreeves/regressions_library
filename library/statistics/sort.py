@@ -55,7 +55,7 @@ def sorted_list(data):
         result = less + pivots + more
         return result
 
-def sorted_dimension(data, dimension):
+def sorted_dimension(data, dimension = 1):
     """
     Sorts all elements in a multidimensional data set in increasing order, according to particular dimension
 
@@ -63,7 +63,7 @@ def sorted_dimension(data, dimension):
     ----------
     data : list
         List of lists of numbers to analyze
-    dimension: int
+    dimension: int, optional
         Number representing the dimension to use for sorting
 
     Returns

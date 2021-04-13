@@ -536,10 +536,10 @@ class TestExponentialModel(unittest.TestCase):
         self.assertEqual(exponential_model_low['points']['inflections'], [None])
     
     def test_exponential_model_low_accumulations_range(self):
-        self.assertEqual(exponential_model_low['accumulations']['range'], 4237.31)
+        self.assertEqual(exponential_model_low['accumulations']['range'], 4311.55)
     
     def test_exponential_model_low_accumulations_iqr(self):
-        self.assertEqual(exponential_model_low['accumulations']['iqr'], 1037.84)
+        self.assertEqual(exponential_model_low['accumulations']['iqr'], 1052.37)
     
     def test_exponential_model_low_averages_range_derivative_value(self):
         self.assertEqual(exponential_model_low['averages']['range']['average_value_derivative'], 323.98)
@@ -584,10 +584,10 @@ class TestExponentialModel(unittest.TestCase):
         self.assertEqual(exponential_model_high['points']['inflections'], [None])
     
     def test_exponential_model_high_accumulations_range(self):
-        self.assertEqual(exponential_model_high['accumulations']['range'], 4423.301521)
+        self.assertEqual(exponential_model_high['accumulations']['range'], 4423.29487)
     
     def test_exponential_model_high_accumulations_iqr(self):
-        self.assertEqual(exponential_model_high['accumulations']['iqr'], 1073.364753)
+        self.assertEqual(exponential_model_high['accumulations']['iqr'], 1073.363498)
     
     def test_exponential_model_high_averages_range_derivative_value(self):
         self.assertEqual(exponential_model_high['averages']['range']['average_value_derivative'], 340.666553)
@@ -836,10 +836,10 @@ class TestSinusoidalModel(unittest.TestCase):
         self.assertEqual(sinusoidal_model_low['points']['inflections'], [[3.0, 3.0], [5.0, 3.0], [7.0, 3.0], [9.0, 3.0], ['3.0 + 2.0k', 3.0]])
     
     def test_sinusoidal_model_low_accumulations_range(self):
-        self.assertEqual(sinusoidal_model_low['accumulations']['range'], 30.18)
+        self.assertEqual(sinusoidal_model_low['accumulations']['range'], 30.17)
     
     def test_sinusoidal_model_low_accumulations_iqr(self):
-        self.assertEqual(sinusoidal_model_low['accumulations']['iqr'], 11.82)
+        self.assertEqual(sinusoidal_model_low['accumulations']['iqr'], 11.83)
     
     def test_sinusoidal_model_low_averages_range_derivative_value(self):
         self.assertEqual(sinusoidal_model_low['averages']['range']['average_value_derivative'], 0.56)
@@ -884,10 +884,10 @@ class TestSinusoidalModel(unittest.TestCase):
         self.assertEqual(sinusoidal_model_high['points']['inflections'], [[3.0, 3.0], [5.0, 3.0], [7.0, 3.0], [9.0, 3.0], ['3.0 + 2.0k', 3.0]])
     
     def test_sinusoidal_model_high_accumulations_range(self):
-        self.assertEqual(sinusoidal_model_high['accumulations']['range'], 30.183099)
+        self.assertEqual(sinusoidal_model_high['accumulations']['range'], 30.183092)
     
     def test_sinusoidal_model_high_accumulations_iqr(self):
-        self.assertEqual(sinusoidal_model_high['accumulations']['iqr'], 11.816901)
+        self.assertEqual(sinusoidal_model_high['accumulations']['iqr'], 11.816906)
     
     def test_sinusoidal_model_high_averages_range_derivative_value(self):
         self.assertEqual(sinusoidal_model_high['averages']['range']['average_value_derivative'], 0.555556)
@@ -919,4 +919,4 @@ class TestSinusoidalModel(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 256 tests in 0.016s ---------- OK ---------- #
+# ---------- Ran 256 tests in 0.017s ---------- OK ---------- #

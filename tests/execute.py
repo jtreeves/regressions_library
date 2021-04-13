@@ -121,9 +121,7 @@ sinusoidal_set = [
 
 large_set = [[169, 423], [122, 391], [178, 555], [131, 284], [120, 520], [179, 558], [164, 265], [167, 338], [198, 445], [139, 402], [183, 725], [133, 470], [156, 573], [159, 325], [121, 653], [118, 358], [122, 633], [167, 487], [161, 453], [194, 488], [170, 517], [124, 377], [191, 310], [194, 398], [173, 744], [166, 389], [113, 583], [109, 380], [126, 668], [144, 491], [107, 533], [188, 355], [147, 553], [169, 497], [121, 606], [132, 373], [111, 554], [173, 669], [177, 483], [122, 340], [171, 286], [108, 681], [139, 502], [115, 339], [174, 396], [134, 625], [147, 435], [146, 555], [147, 656], [126, 354], [155, 679], [181, 629], [149, 417], [119, 374], [102, 422], [112, 292], [108, 464], [109, 559], [112, 635], [159, 518], [180, 304], [185, 567], [165, 299], [160, 337], [133, 730], [193, 374], [164, 537], [172, 592], [173, 660], [186, 290], [170, 670], [192, 687], [154, 596], [154, 464], [125, 383], [193, 559], [155, 586], [149, 406], [131, 590], [127, 339], [163, 378], [145, 254], [156, 395], [166, 355], [189, 661], [133, 685], [168, 685], [190, 736], [145, 564], [125, 470], [129, 541], [133, 439], [162, 486], [125, 387], [183, 596], [135, 733], [106, 329], [100, 279], [102, 439], [162, 454]]
 
-precision = 4
-
-agnostic_models = run_all(agnostic_set, precision)
+agnostic_models = run_all(agnostic_set)
 
 class TestAgnosticModels(unittest.TestCase):
     def test_agnostic_models_linear_constants(self):
@@ -193,7 +191,7 @@ class TestAgnosticModels(unittest.TestCase):
         self.assertEqual(agnostic_models['models']['exponential']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [None]})
     
     def test_agnostic_models_exponential_accumulations(self):
-        self.assertEqual(agnostic_models['models']['exponential']['accumulations'], {'range': 291.8084, 'iqr': 160.4376})
+        self.assertEqual(agnostic_models['models']['exponential']['accumulations'], {'range': 291.79, 'iqr': 160.4281})
     
     def test_agnostic_models_exponential_averages(self):
         self.assertEqual(agnostic_models['models']['exponential']['averages'], {'range': {'average_value_derivative': 2.1695, 'mean_values_derivative': [5.7254], 'average_value_integral': 32.4232, 'mean_values_integral': [5.7252]}, 'iqr': {'average_value_derivative': 2.147, 'mean_values_derivative': [5.5696], 'average_value_integral': 32.0875, 'mean_values_integral': [5.5696]}})
@@ -223,7 +221,7 @@ class TestAgnosticModels(unittest.TestCase):
         self.assertEqual(agnostic_models['models']['logistic']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [[0.9746, 21.9914]]})
     
     def test_agnostic_models_logistic_accumulations(self):
-        self.assertEqual(agnostic_models['models']['logistic']['accumulations'], {'range': 305.924, 'iqr': 174.1038})
+        self.assertEqual(agnostic_models['models']['logistic']['accumulations'], {'range': 305.9311, 'iqr': 174.1085})
     
     def test_agnostic_models_logistic_averages(self):
         self.assertEqual(agnostic_models['models']['logistic']['averages'], {'range': {'average_value_derivative': 2.1474, 'mean_values_derivative': [5.5251], 'average_value_integral': 33.9916, 'mean_values_integral': [4.9555]}, 'iqr': {'average_value_derivative': 2.1621, 'mean_values_derivative': [5.4884], 'average_value_integral': 34.8208, 'mean_values_integral': [5.3155]}})
@@ -238,7 +236,7 @@ class TestAgnosticModels(unittest.TestCase):
         self.assertEqual(agnostic_models['models']['sinusoidal']['points'], {'roots': [None], 'maxima': [[7.2792, 48.379], [16.105, 48.379], ['7.2792 + 8.8258k', 48.379]], 'minima': [[2.8663, 20.204], [11.6921, 20.204], ['2.8663 + 8.8258k', 20.204]], 'inflections': [[5.0727, 34.291], [9.4856, 34.291], [13.8985, 34.291], [18.3114, 34.291], ['5.0727 + 4.4129k', 34.291]]})
     
     def test_agnostic_models_sinusoidal_accumulations(self):
-        self.assertEqual(agnostic_models['models']['sinusoidal']['accumulations'], {'range': 307.8889, 'iqr': 183.0544})
+        self.assertEqual(agnostic_models['models']['sinusoidal']['accumulations'], {'range': 307.8897, 'iqr': 183.0504})
     
     def test_agnostic_models_sinusoidal_averages(self):
         self.assertEqual(agnostic_models['models']['sinusoidal']['averages'], {'range': {'average_value_derivative': -0.1852, 'mean_values_derivative': [2.8403, 7.3051, '2.8403 + 8.8257k', '7.3051 + 8.8257k'], 'average_value_integral': 34.2099, 'mean_values_integral': [5.0645, 9.4937, '5.0645 + 8.8257k', '9.4937 + 8.8257k']}, 'iqr': {'average_value_derivative': 5.2593, 'mean_values_derivative': [3.6416, 6.5037, '3.6416 + 8.8257k', '6.5037 + 8.8257k'], 'average_value_integral': 36.6109, 'mean_values_integral': [5.305, '5.305 + 8.8257k', '9.2532 + 8.8257k']}})
@@ -252,7 +250,7 @@ class TestAgnosticModels(unittest.TestCase):
     def test_agnostic_optimal(self):
         self.assertEqual(agnostic_models['optimal']['option'], 'sinusoidal')
 
-linear_models = run_all(linear_set, precision)
+linear_models = run_all(linear_set)
 
 class TestLinearModels(unittest.TestCase):
     def test_linear_models_linear_constants(self):
@@ -322,7 +320,7 @@ class TestLinearModels(unittest.TestCase):
         self.assertEqual(linear_models['models']['exponential']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [None]})
     
     def test_linear_models_exponential_accumulations(self):
-        self.assertEqual(linear_models['models']['exponential']['accumulations'], {'range': 145.3856, 'iqr': 71.7462})
+        self.assertEqual(linear_models['models']['exponential']['accumulations'], {'range': 145.3973, 'iqr': 71.7534})
     
     def test_linear_models_exponential_averages(self):
         self.assertEqual(linear_models['models']['exponential']['averages'], {'range': {'average_value_derivative': -3.7222, 'mean_values_derivative': [4.7484], 'average_value_integral': 16.154, 'mean_values_integral': [4.7484]}, 'iqr': {'average_value_derivative': -3.3064, 'mean_values_derivative': [5.2625], 'average_value_integral': 14.3492, 'mean_values_integral': [5.2626]}})
@@ -352,7 +350,7 @@ class TestLinearModels(unittest.TestCase):
         self.assertEqual(linear_models['models']['logistic']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [[5.1708, 17.4261]]})
     
     def test_linear_models_logistic_accumulations(self):
-        self.assertEqual(linear_models['models']['logistic']['accumulations'], {'range': 148.5979, 'iqr': 81.8126})
+        self.assertEqual(linear_models['models']['logistic']['accumulations'], {'range': 148.596, 'iqr': 81.8113})
     
     def test_linear_models_logistic_averages(self):
         self.assertEqual(linear_models['models']['logistic']['averages'], {'range': {'average_value_derivative': -2.7762, 'mean_values_derivative': [2.7261, 7.6158], 'average_value_integral': 16.5109, 'mean_values_integral': [5.4324]}, 'iqr': {'average_value_derivative': -3.2234, 'mean_values_derivative': [3.7279, 6.614], 'average_value_integral': 16.3625, 'mean_values_integral': [5.4749]}})
@@ -367,7 +365,7 @@ class TestLinearModels(unittest.TestCase):
         self.assertEqual(linear_models['models']['sinusoidal']['points'], {'roots': [None], 'maxima': [[4.6627, 20.1953], [8.0117, 20.1953], ['4.6627 + 3.349k', 20.1953]], 'minima': [[6.3372, 12.8047], [9.6862, 12.8047], ['6.3372 + 3.349k', 12.8047]], 'inflections': [[3.8255, 16.5], [5.5, 16.5], [7.1745, 16.5], [8.849, 16.5], ['3.8255 + 1.6745k', 16.5]]})
     
     def test_linear_models_sinusoidal_accumulations(self):
-        self.assertEqual(linear_models['models']['sinusoidal']['accumulations'], {'range': 148.4999, 'iqr': 82.5001})
+        self.assertEqual(linear_models['models']['sinusoidal']['accumulations'], {'range': 148.4997, 'iqr': 82.5004})
     
     def test_linear_models_sinusoidal_averages(self):
         self.assertEqual(linear_models['models']['sinusoidal']['averages'], {'range': {'average_value_derivative': -0.6829, 'mean_values_derivative': [4.7153, 6.2846, 8.0643, 9.6336, '4.7153 + 3.349k', '6.2846 + 3.349k'], 'average_value_integral': 16.5, 'mean_values_integral': [3.8255, 5.5, 7.1745, 8.849, '3.8255 + 3.349k', '5.5 + 3.349k']}, 'iqr': {'average_value_derivative': 1.4778, 'mean_values_derivative': [4.5483, 6.4517, 7.8972, '4.5483 + 3.349k', '6.4517 + 3.349k'], 'average_value_integral': 16.5, 'mean_values_integral': [3.8255, 5.5, 7.1745, '3.8255 + 3.349k', '5.5 + 3.349k']}})
@@ -381,7 +379,7 @@ class TestLinearModels(unittest.TestCase):
     def test_linear_optimal(self):
         self.assertEqual(linear_models['optimal']['option'], 'linear')
 
-quadratic_models = run_all(quadratic_set, precision)
+quadratic_models = run_all(quadratic_set)
 
 class TestQuadraticModels(unittest.TestCase):
     def test_quadratic_models_linear_constants(self):
@@ -451,7 +449,7 @@ class TestQuadraticModels(unittest.TestCase):
         self.assertEqual(quadratic_models['models']['exponential']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [None]})
     
     def test_quadratic_models_exponential_accumulations(self):
-        self.assertEqual(quadratic_models['models']['exponential']['accumulations'], {'range': 313.0885, 'iqr': 172.9428})
+        self.assertEqual(quadratic_models['models']['exponential']['accumulations'], {'range': 313.0033, 'iqr': 172.8976})
     
     def test_quadratic_models_exponential_averages(self):
         self.assertEqual(quadratic_models['models']['exponential']['averages'], {'range': {'average_value_derivative': 1.7271, 'mean_values_derivative': [5.6673], 'average_value_integral': 34.7876, 'mean_values_integral': [5.6673]}, 'iqr': {'average_value_derivative': 1.7172, 'mean_values_derivative': [5.5515], 'average_value_integral': 34.5886, 'mean_values_integral': [5.5517]}})
@@ -481,7 +479,7 @@ class TestQuadraticModels(unittest.TestCase):
         self.assertEqual(quadratic_models['models']['logistic']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [[1.7096, 21.9765]]})
     
     def test_quadratic_models_logistic_accumulations(self):
-        self.assertEqual(quadratic_models['models']['logistic']['accumulations'], {'range': 359.1389, 'iqr': 217.9023})
+        self.assertEqual(quadratic_models['models']['logistic']['accumulations'], {'range': 359.1381, 'iqr': 217.9023})
     
     def test_quadratic_models_logistic_averages(self):
         self.assertEqual(quadratic_models['models']['logistic']['averages'], {'range': {'average_value_derivative': 3.8859, 'mean_values_derivative': [3.2626], 'average_value_integral': 39.9043, 'mean_values_integral': [2.9038]}, 'iqr': {'average_value_derivative': 0.6837, 'mean_values_derivative': [4.21], 'average_value_integral': 43.5805, 'mean_values_integral': [4.1962]}})
@@ -496,7 +494,7 @@ class TestQuadraticModels(unittest.TestCase):
         self.assertEqual(quadratic_models['models']['sinusoidal']['points'], {'roots': [[11.3328, 0], [19.4401, 0], [30.5674, 0], [38.6747, 0], [49.802, 0], ['11.3328 + 19.2346k', 0], ['19.4401 + 19.2346k', 0]], 'maxima': [[5.7691, 55.9862], [25.0037, 55.9862], [44.2383, 55.9862], ['5.7691 + 19.2346k', 55.9862]], 'minima': [[15.3864, -34.0138], [34.621, -34.0138], [53.8556, -34.0138], ['15.3864 + 19.2346k', -34.0138]], 'inflections': [[10.5778, 10.9857], [20.1951, 10.9857], [29.8124, 10.9857], [39.4297, 10.9857], [49.047, 10.9857], ['10.5778 + 9.6173k', 10.9857]]})
     
     def test_quadratic_models_sinusoidal_accumulations(self):
-        self.assertEqual(quadratic_models['models']['sinusoidal']['accumulations'], {'range': 371.9341, 'iqr': 254.9671})
+        self.assertEqual(quadratic_models['models']['sinusoidal']['accumulations'], {'range': 371.9185, 'iqr': 254.9709})
     
     def test_quadratic_models_sinusoidal_averages(self):
         self.assertEqual(quadratic_models['models']['sinusoidal']['averages'], {'range': {'average_value_derivative': 0.8736, 'mean_values_derivative': [5.5871, '5.5871 + 19.2346k', '15.5685 + 19.2346k'], 'average_value_integral': 41.326, 'mean_values_integral': [3.2255, 8.3127, '3.2255 + 19.2346k', '8.3127 + 19.2346k']}, 'iqr': {'average_value_derivative': 1.152, 'mean_values_derivative': [5.529, '5.529 + 19.2346k', '15.6266 + 19.2346k'], 'average_value_integral': 50.9934, 'mean_values_integral': [4.3134, 7.2249, '4.3134 + 19.2346k', '7.2249 + 19.2346k']}})
@@ -510,7 +508,7 @@ class TestQuadraticModels(unittest.TestCase):
     def test_quadratic_optimal(self):
         self.assertEqual(quadratic_models['optimal']['option'], 'quadratic')
 
-cubic_models = run_all(cubic_set, precision)
+cubic_models = run_all(cubic_set)
 
 class TestCubicModels(unittest.TestCase):
     def test_cubic_models_linear_constants(self):
@@ -580,7 +578,7 @@ class TestCubicModels(unittest.TestCase):
         self.assertEqual(cubic_models['models']['exponential']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [None]})
     
     def test_cubic_models_exponential_accumulations(self):
-        self.assertEqual(cubic_models['models']['exponential']['accumulations'], {'range': 553.3881, 'iqr': 306.2944})
+        self.assertEqual(cubic_models['models']['exponential']['accumulations'], {'range': 553.4209, 'iqr': 306.3119})
     
     def test_cubic_models_exponential_averages(self):
         self.assertEqual(cubic_models['models']['exponential']['averages'], {'range': {'average_value_derivative': 2.4589, 'mean_values_derivative': [5.6352], 'average_value_integral': 61.4876, 'mean_values_integral': [5.6348]}, 'iqr': {'average_value_derivative': 2.4497, 'mean_values_derivative': [5.5414], 'average_value_integral': 61.2589, 'mean_values_integral': [5.5416]}})
@@ -610,7 +608,7 @@ class TestCubicModels(unittest.TestCase):
         self.assertEqual(cubic_models['models']['logistic']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [[14.9001, 102.0001]]})
     
     def test_cubic_models_logistic_accumulations(self):
-        self.assertEqual(cubic_models['models']['logistic']['accumulations'], {'range': 578.3231, 'iqr': 319.9737})
+        self.assertEqual(cubic_models['models']['logistic']['accumulations'], {'range': 578.2231, 'iqr': 319.917})
     
     def test_cubic_models_logistic_averages(self):
         self.assertEqual(cubic_models['models']['logistic']['averages'], {'range': {'average_value_derivative': 3.6417, 'mean_values_derivative': [5.2827], 'average_value_integral': 64.2581, 'mean_values_integral': [5.6041]}, 'iqr': {'average_value_derivative': 3.659, 'mean_values_derivative': [5.4325], 'average_value_integral': 63.9947, 'mean_values_integral': [5.5324]}})
@@ -625,7 +623,7 @@ class TestCubicModels(unittest.TestCase):
         self.assertEqual(cubic_models['models']['sinusoidal']['points'], {'roots': [None], 'maxima': [[3.4164, 88.8755], [10.0446, 88.8755], ['3.4164 + 6.6282k', 88.8755]], 'minima': [[6.7305, 35.5276], [13.3587, 35.5276], ['6.7305 + 6.6282k', 35.5276]], 'inflections': [[1.7593, 62.2026], [5.0734, 62.2026], [8.3875, 62.2026], [11.7016, 62.2026], ['1.7593 + 3.3141k', 62.2026]]})
     
     def test_cubic_models_sinusoidal_accumulations(self):
-        self.assertEqual(cubic_models['models']['sinusoidal']['accumulations'], {'range': 579.7843, 'iqr': 295.5669})
+        self.assertEqual(cubic_models['models']['sinusoidal']['accumulations'], {'range': 579.7687, 'iqr': 295.5756})
     
     def test_cubic_models_sinusoidal_averages(self):
         self.assertEqual(cubic_models['models']['sinusoidal']['averages'], {'range': {'average_value_derivative': 4.915, 'mean_values_derivative': [3.21, 6.9368, 9.8382, '3.21 + 6.6282k', '6.9368 + 6.6282k'], 'average_value_integral': 64.4205, 'mean_values_integral': [1.8472, 4.9856, 8.4754, '1.8472 + 6.6282k', '4.9856 + 6.6282k']}, 'iqr': {'average_value_derivative': -6.8405, 'mean_values_derivative': [3.7054, 6.4415, '3.7054 + 6.6282k', '6.4415 + 6.6282k'], 'average_value_integral': 59.1134, 'mean_values_integral': [5.1958, '5.1958 + 6.6282k', '8.2651 + 6.6282k']}})
@@ -639,7 +637,7 @@ class TestCubicModels(unittest.TestCase):
     def test_cubic_optimal(self):
         self.assertEqual(cubic_models['optimal']['option'], 'cubic')
 
-hyperbolic_models = run_all(hyperbolic_set, precision)
+hyperbolic_models = run_all(hyperbolic_set)
 
 class TestHyperbolicModels(unittest.TestCase):
     def test_hyperbolic_models_linear_constants(self):
@@ -709,7 +707,7 @@ class TestHyperbolicModels(unittest.TestCase):
         self.assertEqual(hyperbolic_models['models']['exponential']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [None]})
     
     def test_hyperbolic_models_exponential_accumulations(self):
-        self.assertEqual(hyperbolic_models['models']['exponential']['accumulations'], {'range': 5945.3267, 'iqr': 2932.8626})
+        self.assertEqual(hyperbolic_models['models']['exponential']['accumulations'], {'range': 5945.273, 'iqr': 2932.8297})
     
     def test_hyperbolic_models_exponential_averages(self):
         self.assertEqual(hyperbolic_models['models']['exponential']['averages'], {'range': {'average_value_derivative': -152.4631, 'mean_values_derivative': [4.7473], 'average_value_integral': 660.5919, 'mean_values_integral': [4.7473]}, 'iqr': {'average_value_derivative': -135.3796, 'mean_values_derivative': [5.2622], 'average_value_integral': 586.5725, 'mean_values_integral': [5.2622]}})
@@ -739,7 +737,7 @@ class TestHyperbolicModels(unittest.TestCase):
         self.assertEqual(hyperbolic_models['models']['logistic']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [[0.6592, 2393.475]]})
     
     def test_hyperbolic_models_logistic_accumulations(self):
-        self.assertEqual(hyperbolic_models['models']['logistic']['accumulations'], {'range': 5357.9935, 'iqr': 2071.5342})
+        self.assertEqual(hyperbolic_models['models']['logistic']['accumulations'], {'range': 5357.8056, 'iqr': 2071.3903})
     
     def test_hyperbolic_models_logistic_averages(self):
         self.assertEqual(hyperbolic_models['models']['logistic']['averages'], {'range': {'average_value_derivative': -238.1892, 'mean_values_derivative': [4.6875], 'average_value_integral': 595.3326, 'mean_values_integral': [4.304]}, 'iqr': {'average_value_derivative': -194.2107, 'mean_values_derivative': [5.1556], 'average_value_integral': 414.3068, 'mean_values_integral': [5.06]}})
@@ -754,7 +752,7 @@ class TestHyperbolicModels(unittest.TestCase):
         self.assertEqual(hyperbolic_models['models']['sinusoidal']['points'], {'roots': [None], 'maxima': [[1.2446, 1195.2458], [6.5382, 1195.2458], ['1.2446 + 5.2936k', 1195.2458]], 'minima': [[3.8914, 298.1497], [9.185, 298.1497], ['3.8914 + 5.2936k', 298.1497]], 'inflections': [[2.568, 746.6851], [5.2148, 746.6851], [7.8616, 746.6851], [10.5084, 746.6851], ['2.568 + 2.6468k', 746.6851]]})
     
     def test_hyperbolic_models_sinusoidal_accumulations(self):
-        self.assertEqual(hyperbolic_models['models']['sinusoidal']['accumulations'], {'range': 6517.2945, 'iqr': 3776.9985})
+        self.assertEqual(hyperbolic_models['models']['sinusoidal']['accumulations'], {'range': 6517.3946, 'iqr': 3777.0004})
     
     def test_hyperbolic_models_sinusoidal_averages(self):
         self.assertEqual(hyperbolic_models['models']['sinusoidal']['averages'], {'range': {'average_value_derivative': -76.0326, 'mean_values_derivative': [1.3653, 3.7707, 6.6589, 9.0642, '1.3653 + 5.2936k', '3.7707 + 5.2936k'], 'average_value_integral': 724.1438, 'mean_values_integral': [2.6104, 5.1724, 7.904, '2.6104 + 5.2936k', '5.1724 + 5.2936k']}, 'iqr': {'average_value_derivative': 29.3354, 'mean_values_derivative': [3.9378, 6.4917, '3.9378 + 5.2936k', '6.4917 + 5.2936k'], 'average_value_integral': 755.3997, 'mean_values_integral': [5.2312, 7.8453, '5.2312 + 5.2936k', '7.8453 + 5.2936k']}})
@@ -768,7 +766,7 @@ class TestHyperbolicModels(unittest.TestCase):
     def test_hyperbolic_optimal(self):
         self.assertEqual(hyperbolic_models['optimal']['option'], 'hyperbolic')
 
-exponential_models = run_all(exponential_set, precision)
+exponential_models = run_all(exponential_set)
 
 class TestExponentialModels(unittest.TestCase):
     def test_exponential_models_linear_constants(self):
@@ -838,7 +836,7 @@ class TestExponentialModels(unittest.TestCase):
         self.assertEqual(exponential_models['models']['exponential']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [None]})
     
     def test_exponential_models_exponential_accumulations(self):
-        self.assertEqual(exponential_models['models']['exponential']['accumulations'], {'range': 4421.4069, 'iqr': 1073.0046})
+        self.assertEqual(exponential_models['models']['exponential']['accumulations'], {'range': 4421.4595, 'iqr': 1073.0117})
     
     def test_exponential_models_exponential_averages(self):
         self.assertEqual(exponential_models['models']['exponential']['averages'], {'range': {'average_value_derivative': 340.4961, 'mean_values_derivative': [7.3559], 'average_value_integral': 491.2674, 'mean_values_integral': [7.3559]}, 'iqr': {'average_value_derivative': 148.7393, 'mean_values_derivative': [6.161], 'average_value_integral': 214.6009, 'mean_values_integral': [6.161]}})
@@ -868,7 +866,7 @@ class TestExponentialModels(unittest.TestCase):
         self.assertEqual(exponential_models['models']['logistic']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [[10.0383, 3069.0584]]})
     
     def test_exponential_models_logistic_accumulations(self):
-        self.assertEqual(exponential_models['models']['logistic']['accumulations'], {'range': 4289.2526, 'iqr': 824.485})
+        self.assertEqual(exponential_models['models']['logistic']['accumulations'], {'range': 4289.0764, 'iqr': 824.4254})
     
     def test_exponential_models_logistic_averages(self):
         self.assertEqual(exponential_models['models']['logistic']['averages'], {'range': {'average_value_derivative': 334.5918, 'mean_values_derivative': [7.1896], 'average_value_integral': 476.5836, 'mean_values_integral': [7.475]}, 'iqr': {'average_value_derivative': 149.1477, 'mean_values_derivative': [6.2787], 'average_value_integral': 164.897, 'mean_values_integral': [6.3202]}})
@@ -883,7 +881,7 @@ class TestExponentialModels(unittest.TestCase):
         self.assertEqual(exponential_models['models']['sinusoidal']['points'], {'roots': [[3.4716, 0], [45.2562, 0], [64.9273, 0], [106.7119, 0], ['3.4716 + 61.4557k', 0], ['45.2562 + 61.4557k', 0]], 'maxima': [[24.3639, 4706.6143], [85.8195, 4706.6143], [147.2751, 4706.6143], ['24.3639 + 61.4556k', 4706.6143]], 'minima': [[55.0918, -1423.3857], [116.5474, -1423.3857], [178.003, -1423.3857], ['55.0918 + 61.4556k', -1423.3857]], 'inflections': [[9.0, 1641.6143], [39.7278, 1641.6143], [70.4556, 1641.6143], [101.1834, 1641.6143], [131.9112, 1641.6143], ['9.0 + 30.7278k', 1641.6143]]})
     
     def test_exponential_models_sinusoidal_accumulations(self):
-        self.assertEqual(exponential_models['models']['sinusoidal']['accumulations'], {'range': 5450.1513, 'iqr': 2898.7499})
+        self.assertEqual(exponential_models['models']['sinusoidal']['accumulations'], {'range': 5453.3259, 'iqr': 2900.6589})
     
     def test_exponential_models_sinusoidal_averages(self):
         self.assertEqual(exponential_models['models']['sinusoidal']['averages'], {'range': {'average_value_derivative': 283.2682, 'mean_values_derivative': [4.6782, '4.6782 + 61.4557k', '13.3218 + 61.4557k'], 'average_value_integral': 605.5724, 'mean_values_integral': [5.6274, '5.6274 + 61.4557k', '43.1005 + 61.4557k']}, 'iqr': {'average_value_derivative': 290.3284, 'mean_values_derivative': [5.2263, '5.2263 + 61.4557k', '12.7737 + 61.4557k'], 'average_value_integral': 579.75, 'mean_values_integral': [5.5397, '5.5397 + 61.4557k', '43.1882 + 61.4557k']}})
@@ -897,7 +895,7 @@ class TestExponentialModels(unittest.TestCase):
     def test_exponential_optimal(self):
         self.assertEqual(exponential_models['optimal']['option'], 'exponential')
 
-logarithmic_models = run_all(logarithmic_set, precision)
+logarithmic_models = run_all(logarithmic_set)
 
 class TestLogarithmicModels(unittest.TestCase):
     def test_logarithmic_models_linear_constants(self):
@@ -967,7 +965,7 @@ class TestLogarithmicModels(unittest.TestCase):
         self.assertEqual(logarithmic_models['models']['exponential']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [None]})
     
     def test_logarithmic_models_exponential_accumulations(self):
-        self.assertEqual(logarithmic_models['models']['exponential']['accumulations'], {'range': 57.7114, 'iqr': 30.8164})
+        self.assertEqual(logarithmic_models['models']['exponential']['accumulations'], {'range': 57.7138, 'iqr': 30.8175})
     
     def test_logarithmic_models_exponential_averages(self):
         self.assertEqual(logarithmic_models['models']['exponential']['averages'], {'range': {'average_value_derivative': 0.8419, 'mean_values_derivative': [5.9382], 'average_value_integral': 6.4124, 'mean_values_integral': [5.9381]}, 'iqr': {'average_value_derivative': 0.8092, 'mean_values_derivative': [5.6364], 'average_value_integral': 6.1633, 'mean_values_integral': [5.6363]}})
@@ -997,7 +995,7 @@ class TestLogarithmicModels(unittest.TestCase):
         self.assertEqual(logarithmic_models['models']['logistic']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [[2.5092, 4.3447]]})
     
     def test_logarithmic_models_logistic_accumulations(self):
-        self.assertEqual(logarithmic_models['models']['logistic']['accumulations'], {'range': 59.9283, 'iqr': 35.521})
+        self.assertEqual(logarithmic_models['models']['logistic']['accumulations'], {'range': 59.9282, 'iqr': 35.5211})
     
     def test_logarithmic_models_logistic_averages(self):
         self.assertEqual(logarithmic_models['models']['logistic']['averages'], {'range': {'average_value_derivative': 0.6653, 'mean_values_derivative': [5.4199], 'average_value_integral': 6.6587, 'mean_values_integral': [4.5914]}, 'iqr': {'average_value_derivative': 0.6754, 'mean_values_derivative': [5.3807], 'average_value_integral': 7.1042, 'mean_values_integral': [5.1392]}})
@@ -1012,7 +1010,7 @@ class TestLogarithmicModels(unittest.TestCase):
         self.assertEqual(logarithmic_models['models']['sinusoidal']['points'], {'roots': [None], 'maxima': [[4.0677, 7.8441], [9.2979, 7.8441], ['4.0677 + 5.2302k', 7.8441]], 'minima': [[1.4526, 5.1994], [6.6828, 5.1994], ['1.4526 + 5.2302k', 5.1994]], 'inflections': [[2.7602, 6.5218], [5.3753, 6.5218], [7.9904, 6.5218], [10.6055, 6.5218], ['2.7602 + 2.6151k', 6.5218]]})
     
     def test_logarithmic_models_sinusoidal_accumulations(self):
-        self.assertEqual(logarithmic_models['models']['sinusoidal']['accumulations'], {'range': 58.9487, 'iqr': 32.5636})
+        self.assertEqual(logarithmic_models['models']['sinusoidal']['accumulations'], {'range': 58.9486, 'iqr': 32.5637})
     
     def test_logarithmic_models_sinusoidal_averages(self):
         self.assertEqual(logarithmic_models['models']['sinusoidal']['averages'], {'range': {'average_value_derivative': 0.2234, 'mean_values_derivative': [1.5701, 3.9503, 6.8002, 9.1804, '1.5701 + 5.2302k', '3.9503 + 5.2302k'], 'average_value_integral': 6.5499, 'mean_values_integral': [2.7779, 5.3576, 8.0081, '2.7779 + 5.2302k', '5.3576 + 5.2302k']}, 'iqr': {'average_value_derivative': -0.0721, 'mean_values_derivative': [4.1055, 6.645, '4.1055 + 5.2302k', '6.645 + 5.2302k'], 'average_value_integral': 6.5127, 'mean_values_integral': [5.381, 7.9847, '5.381 + 5.2302k', '7.9847 + 5.2302k']}})
@@ -1026,7 +1024,7 @@ class TestLogarithmicModels(unittest.TestCase):
     def test_logarithmic_optimal(self):
         self.assertEqual(logarithmic_models['optimal']['option'], 'logarithmic')
 
-logistic_models = run_all(logistic_set, precision)
+logistic_models = run_all(logistic_set)
 
 class TestLogisticModels(unittest.TestCase):
     def test_logistic_models_linear_constants(self):
@@ -1096,7 +1094,7 @@ class TestLogisticModels(unittest.TestCase):
         self.assertEqual(logistic_models['models']['exponential']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [None]})
     
     def test_logistic_models_exponential_accumulations(self):
-        self.assertEqual(logistic_models['models']['exponential']['accumulations'], {'range': 27.7558, 'iqr': 2.1511})
+        self.assertEqual(logistic_models['models']['exponential']['accumulations'], {'range': 22.6073, 'iqr': 1.7521})
     
     def test_logistic_models_exponential_averages(self):
         self.assertEqual(logistic_models['models']['exponential']['averages'], {'range': {'average_value_derivative': 3.941, 'mean_values_derivative': [8.0887], 'average_value_integral': 3.084, 'mean_values_integral': [8.0887]}, 'iqr': {'average_value_derivative': 0.5498, 'mean_values_derivative': [6.5474], 'average_value_integral': 0.4302, 'mean_values_integral': [6.5473]}})
@@ -1141,7 +1139,7 @@ class TestLogisticModels(unittest.TestCase):
         self.assertEqual(logistic_models['models']['sinusoidal']['points'], {'roots': [[1.0904, 0], [2.9391, 0], [13.629, 0], [15.4777, 0], [26.1676, 0], ['1.0904 + 12.5386k', 0], ['2.9391 + 12.5386k', 0]], 'maxima': [[8.2841, 2.2254], [20.8227, 2.2254], [33.3613, 2.2254], ['8.2841 + 12.5386k', 2.2254]], 'minima': [[2.0148, -0.1238], [14.5534, -0.1238], [27.092, -0.1238], ['2.0148 + 12.5386k', -0.1238]], 'inflections': [[5.1494, 1.0508], [11.4187, 1.0508], [17.688, 1.0508], [23.9573, 1.0508], [30.2266, 1.0508], ['5.1494 + 6.2693k', 1.0508]]})
     
     def test_logistic_models_sinusoidal_accumulations(self):
-        self.assertEqual(logistic_models['models']['sinusoidal']['accumulations'], {'range': 10.0923, 'iqr': 6.0323})
+        self.assertEqual(logistic_models['models']['sinusoidal']['accumulations'], {'range': 10.092, 'iqr': 6.0321})
     
     def test_logistic_models_sinusoidal_averages(self):
         self.assertEqual(logistic_models['models']['sinusoidal']['averages'], {'range': {'average_value_derivative': 0.1992, 'mean_values_derivative': [2.7037, 7.5951, '2.7037 + 12.5386k', '7.5951 + 12.5386k'], 'average_value_integral': 1.1214, 'mean_values_integral': [5.2694, '5.2694 + 12.5386k', '11.2987 + 12.5386k']}, 'iqr': {'average_value_derivative': 0.4394, 'mean_values_derivative': [3.6967, 6.6021, '3.6967 + 12.5386k', '6.6021 + 12.5386k'], 'average_value_integral': 1.2065, 'mean_values_integral': [5.4147, '5.4147 + 12.5386k', '11.1534 + 12.5386k']}})
@@ -1155,7 +1153,7 @@ class TestLogisticModels(unittest.TestCase):
     def test_logistic_optimal(self):
         self.assertEqual(logistic_models['optimal']['option'], 'logistic')
 
-sinusoidal_models = run_all(sinusoidal_set, precision)
+sinusoidal_models = run_all(sinusoidal_set)
 
 class TestSinusoidalModels(unittest.TestCase):
     def test_sinusoidal_models_linear_constants(self):
@@ -1225,7 +1223,7 @@ class TestSinusoidalModels(unittest.TestCase):
         self.assertEqual(sinusoidal_models['models']['exponential']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [None]})
     
     def test_sinusoidal_models_exponential_accumulations(self):
-        self.assertEqual(sinusoidal_models['models']['exponential']['accumulations'], {'range': 4.7909, 'iqr': 2.5919})
+        self.assertEqual(sinusoidal_models['models']['exponential']['accumulations'], {'range': 4.7917, 'iqr': 2.5925})
     
     def test_sinusoidal_models_exponential_averages(self):
         self.assertEqual(sinusoidal_models['models']['exponential']['averages'], {'range': {'average_value_derivative': -0.057, 'mean_values_derivative': [5.1465], 'average_value_integral': 0.5323, 'mean_values_integral': [5.1415]}, 'iqr': {'average_value_derivative': -0.0555, 'mean_values_derivative': [5.3954], 'average_value_integral': 0.5184, 'mean_values_integral': [5.3884]}})
@@ -1270,7 +1268,7 @@ class TestSinusoidalModels(unittest.TestCase):
         self.assertEqual(sinusoidal_models['models']['sinusoidal']['points'], {'roots': [[3.4097, 0], [4.5903, 0], [7.4097, 0], [8.5903, 0], ['3.4097 + 4.0k', 0], ['4.5903 + 4.0k', 0]], 'maxima': [[6.0, 8.0], [10.0, 8.0], ['6.0 + 4.0k', 8.0]], 'minima': [[4.0, -2.0], [8.0, -2.0], ['4.0 + 4.0k', -2.0]], 'inflections': [[3.0, 3.0], [5.0, 3.0], [7.0, 3.0], [9.0, 3.0], ['3.0 + 2.0k', 3.0]]})
     
     def test_sinusoidal_models_sinusoidal_accumulations(self):
-        self.assertEqual(sinusoidal_models['models']['sinusoidal']['accumulations'], {'range': 30.1831, 'iqr': 11.8169})
+        self.assertEqual(sinusoidal_models['models']['sinusoidal']['accumulations'], {'range': 30.1832, 'iqr': 11.8169})
     
     def test_sinusoidal_models_sinusoidal_averages(self):
         self.assertEqual(sinusoidal_models['models']['sinusoidal']['averages'], {'range': {'average_value_derivative': 0.5556, 'mean_values_derivative': [4.0451, 5.9549, 8.0451, 9.9549, '4.0451 + 4.0k', '5.9549 + 4.0k'], 'average_value_integral': 3.3537, 'mean_values_integral': [2.9549, 5.0451, 6.9549, 9.0451, '2.9549 + 4.0k', '5.0451 + 4.0k']}, 'iqr': {'average_value_derivative': -1.0, 'mean_values_derivative': [3.9187, 6.0813, 7.9187, '3.9187 + 4.0k', '6.0813 + 4.0k'], 'average_value_integral': 2.3634, 'mean_values_integral': [3.0813, 4.9187, 7.0813, '3.0813 + 4.0k', '4.9187 + 4.0k']}})
@@ -1284,7 +1282,7 @@ class TestSinusoidalModels(unittest.TestCase):
     def test_sinusoidal_optimal(self):
         self.assertEqual(sinusoidal_models['optimal']['option'], 'sinusoidal')
 
-large_models = run_all(large_set, precision)
+large_models = run_all(large_set)
 
 class TestLargeModels(unittest.TestCase):
     def test_large_models_linear_constants(self):
@@ -1354,7 +1352,7 @@ class TestLargeModels(unittest.TestCase):
         self.assertEqual(large_models['models']['exponential']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [None]})
     
     def test_large_models_exponential_accumulations(self):
-        self.assertEqual(large_models['models']['exponential']['accumulations'], {'range': 45712.6755, 'iqr': 21194.5052})
+        self.assertEqual(large_models['models']['exponential']['accumulations'], {'range': 45715.4499, 'iqr': 21195.776})
     
     def test_large_models_exponential_averages(self):
         self.assertEqual(large_models['models']['exponential']['averages'], {'range': {'average_value_derivative': 0.4196, 'mean_values_derivative': [149.3031], 'average_value_integral': 466.4559, 'mean_values_integral': [149.36]}, 'iqr': {'average_value_derivative': 0.419, 'mean_values_derivative': [147.7124], 'average_value_integral': 465.8133, 'mean_values_integral': [147.8276]}})
@@ -1399,7 +1397,7 @@ class TestLargeModels(unittest.TestCase):
         self.assertEqual(large_models['models']['sinusoidal']['points'], {'roots': [None], 'maxima': [[103.1288, 521.2834], [109.3592, 521.2834], [115.5896, 521.2834], ['103.1288 + 6.2304k', 521.2834]], 'minima': [[100.0136, 456.6436], [106.244, 456.6436], [112.4744, 456.6436], ['100.0136 + 6.2304k', 456.6436]], 'inflections': [[101.5712, 488.9648], [104.6864, 488.9648], [107.8016, 488.9648], [110.9168, 488.9648], [114.032, 488.9648], ['101.5712 + 3.1152k', 488.9648]]})
     
     def test_large_models_sinusoidal_accumulations(self):
-        self.assertEqual(large_models['models']['sinusoidal']['accumulations'], {'range': 47949.6623, 'iqr': 22220.3277})
+        self.assertEqual(large_models['models']['sinusoidal']['accumulations'], {'range': 47949.813, 'iqr': 22220.5541})
     
     def test_large_models_sinusoidal_averages(self):
         self.assertEqual(large_models['models']['sinusoidal']['averages'], {'range': {'average_value_derivative': 0.3776, 'mean_values_derivative': [100.026, 103.1182, 106.2564, 109.3487, 112.4869, 115.5792, '100.026 + 6.2305k', '103.1182 + 6.2305k'], 'average_value_integral': 489.2823, 'mean_values_integral': [101.5825, 104.6782, 107.813, 110.9087, 114.0435, 117.1392, 120.274, 123.3697, 126.5045, 129.6002, '101.5825 + 6.2305k', '104.6782 + 6.2305k']}, 'iqr': {'average_value_derivative': 0.983, 'mean_values_derivative': [128.0217, 131.1967, 134.2521, 137.4272, 140.4826, 143.6576, '128.0217 + 6.2305k', '131.1967 + 6.2305k'], 'average_value_integral': 488.3589, 'mean_values_integral': [126.4762, 129.6285, 132.7067, 135.859, 138.9372, 142.0895, 145.1677, 148.32, 151.3982, 154.5505, '126.4762 + 6.2305k', '129.6285 + 6.2305k']}})
@@ -1416,4 +1414,4 @@ class TestLargeModels(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 420 tests in 0.027s ---------- OK ---------- #
+# ---------- Ran 420 tests in 0.028s ---------- OK ---------- #

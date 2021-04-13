@@ -23,7 +23,7 @@ def matrix_of_cofactors(matrix):
 
     See Also
     --------
-    :func:`~library.matrices.minors.matrix_of_minors`, :func:`~library.matrices.transpose.adjugate`, :func:`~library.matrices.determinant.linear_determinant`, :func:`~library.matrices.inverse.inverse_matrix`
+    :func:`~library.matrices.minors.matrix_of_minors`, :func:`~library.matrices.transpose.transposed_matrix`, :func:`~library.matrices.determinant.linear_determinant`, :func:`~library.matrices.inverse.inverse_matrix`
 
     Notes
     -----

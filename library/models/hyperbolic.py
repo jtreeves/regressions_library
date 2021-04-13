@@ -13,7 +13,7 @@ from library.analyses.mean_values import average_values
 from library.statistics.summary import five_number_summary
 from library.statistics.correlation import correlation_coefficient
 
-def hyperbolic_model(data, precision):
+def hyperbolic_model(data, precision = 4):
     """
     Generates a hyperbolic regression model from a given data set
 
@@ -21,7 +21,7 @@ def hyperbolic_model(data, precision):
     ----------
     data : list
         List of lists of numbers representing a collection of coordinate pairs
-    precision : int
+    precision : int, optional
         Maximum number of digits that can appear after the decimal place of the results
 
     Raises
@@ -119,8 +119,8 @@ def hyperbolic_model(data, precision):
 
     Examples
     --------
-    Generate a hyperbolic regression model for the data set [[1, 2519], [2, 1259], [3, 839], [4, 629], [5, 503], [6, 419], [7, 359], [8, 314], [9, 279], [10, 251]], then print its coefficients, roots, total accumulation over its interquartile range, and correlation (and round the results to four decimal places)
-        >>> model_perfect = hyperbolic_model([[1, 2519], [2, 1259], [3, 839], [4, 629], [5, 503], [6, 419], [7, 359], [8, 314], [9, 279], [10, 251]], 4)
+    Generate a hyperbolic regression model for the data set [[1, 2519], [2, 1259], [3, 839], [4, 629], [5, 503], [6, 419], [7, 359], [8, 314], [9, 279], [10, 251]], then print its coefficients, roots, total accumulation over its interquartile range, and correlation
+        >>> model_perfect = hyperbolic_model([[1, 2519], [2, 1259], [3, 839], [4, 629], [5, 503], [6, 419], [7, 359], [8, 314], [9, 279], [10, 251]])
         >>> print(model_perfect['constants'])
         [2520.0, -1.0]
         >>> print(model_perfect['points']['roots'])
@@ -129,8 +129,8 @@ def hyperbolic_model(data, precision):
         2466.6897
         >>> print(model_perfect['correlation'])
         1.0
-    Generate a hyperbolic regression model for the data set [[1, 32], [2, 25], [3, 14], [4, 23], [5, 39], [6, 45], [7, 42], [8, 49], [9, 36], [10, 33]], then print its coefficients, inflections, total accumulation over its range, and correlation (and round the results to four decimal places)
-        >>> model_agnostic = hyperbolic_model([[1, 32], [2, 25], [3, 14], [4, 23], [5, 39], [6, 45], [7, 42], [8, 49], [9, 36], [10, 33]], 4)
+    Generate a hyperbolic regression model for the data set [[1, 32], [2, 25], [3, 14], [4, 23], [5, 39], [6, 45], [7, 42], [8, 49], [9, 36], [10, 33]], then print its coefficients, inflections, total accumulation over its range, and correlation
+        >>> model_agnostic = hyperbolic_model([[1, 32], [2, 25], [3, 14], [4, 23], [5, 39], [6, 45], [7, 42], [8, 49], [9, 36], [10, 33]])
         >>> print(model_agnostic['constants'])
         [-13.5246, 37.7613]
         >>> print(model_agnostic['points']['inflections'])

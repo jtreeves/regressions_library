@@ -11,7 +11,7 @@ from library.analyses.integrals.logistic import logistic_integral
 from library.analyses.integrals.sinusoidal import sinusoidal_integral
 from library.statistics.rounding import rounded_value
 
-def accumulated_area(equation_type, coefficients, start, end, precision):
+def accumulated_area(equation_type, coefficients, start, end, precision = 4):
     """
     Evaluates the definite integral between two points for a specific function
 
@@ -25,7 +25,7 @@ def accumulated_area(equation_type, coefficients, start, end, precision):
         Value of the x-coordinate of the first point to use for evaluating the definite integral
     end : int or float
         Value of the x-coordinate of the second point to use for evaluating the definite integral
-    precision : int
+    precision : int, optional
         Maximum number of digits that can appear after the decimal place of the result
 
     Raises
@@ -56,12 +56,12 @@ def accumulated_area(equation_type, coefficients, start, end, precision):
 
     Examples
     --------
-    Evaluate the definite integral of a linear function with coefficients 2 and 3 between the end points 10 and 20 (and round the area to four decimal places)
-        >>> area_linear = accumulated_area('linear', [2, 3], 10, 20, 4)
+    Evaluate the definite integral of a linear function with coefficients 2 and 3 between the end points 10 and 20
+        >>> area_linear = accumulated_area('linear', [2, 3], 10, 20)
         >>> print(area_linear)
         330.0
-    Evaluate the definite integral of a cubic function with coefficients 8, 6, -10, and 7 between the end points 10 and 20 (and round the area to four decimal places)
-        >>> area_cubic = accumulated_area('cubic', [8, 6, -10, 7], 10, 20, 4)
+    Evaluate the definite integral of a cubic function with coefficients 8, 6, -10, and 7 between the end points 10 and 20
+        >>> area_cubic = accumulated_area('cubic', [8, 6, -10, 7], 10, 20)
         >>> print(area_cubic)
         312570.0
     """

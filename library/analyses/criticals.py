@@ -9,7 +9,7 @@ from .roots.quadratic import quadratic_roots
 from .derivatives.quadratic import quadratic_derivatives
 from .derivatives.cubic import cubic_derivatives
 
-def critical_points(equation_type, derivative_level, coefficients, precision):
+def critical_points(equation_type, derivative_level, coefficients, precision = 4):
     """
     Calculates the critical points of a specific function at a certain derivative level
 
@@ -21,7 +21,7 @@ def critical_points(equation_type, derivative_level, coefficients, precision):
         Integer corresponding to which derivative to investigate for critical points (1 for the first derivative and 2 for the second derivative)
     coefficients : list
         Coefficients to use to generate the equation to investigate
-    precision : int
+    precision : int, optional
         Maximum number of digits that can appear after the decimal place of the results
 
     Raises
@@ -52,12 +52,12 @@ def critical_points(equation_type, derivative_level, coefficients, precision):
 
     Examples
     --------
-    Calulate the critical points of the second derivative of a cubic function with coefficients 2, 3, 5, and 7 (and round the results to four decimal places)
-        >>> points_cubic = critical_points('cubic', 2, [2, 3, 5, 7], 4)
+    Calulate the critical points of the second derivative of a cubic function with coefficients 2, 3, 5, and 7
+        >>> points_cubic = critical_points('cubic', 2, [2, 3, 5, 7])
         >>> print(points_cubic)
         [-0.5]
-    Calulate the critical points of the first derivative of a sinusoidal function with coefficients 2, 3, 5, and 7 (and round the results to four decimal places)
-        >>> points_sinusoidal = critical_points('sinusoidal', 1, [2, 3, 5, 7], 4)
+    Calulate the critical points of the first derivative of a sinusoidal function with coefficients 2, 3, 5, and 7
+        >>> points_sinusoidal = critical_points('sinusoidal', 1, [2, 3, 5, 7])
         >>> print(points_sinusoidal)
         [5.5236, 6.5708, 7.618, 8.6652, 9.7124, '5.5236 + 1.0472k']
     """

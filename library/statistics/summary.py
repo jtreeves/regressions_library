@@ -6,7 +6,7 @@ from .median import median_value
 from .quartiles import quartile_value
 from .rounding import rounded_value
 
-def five_number_summary(data, precision):
+def five_number_summary(data, precision = 4):
     """
     Calculates the five number summary of a given data set: minimum, first quartile, median, third quartile, and maximum
 
@@ -14,7 +14,7 @@ def five_number_summary(data, precision):
     ----------
     data : list
         List of numbers to analyze
-    precision : int
+    precision : int, optional
         Maximum number of digits that can appear after the decimal place of the result
 
     Raises
@@ -72,14 +72,14 @@ def five_number_summary(data, precision):
 
     Examples
     --------
-    Determine the five number summary of the set [21, 53, 3, 68, 43, 9, 72, 19, 20, 1] (and round the result to two decimal places)
-        >>> summary_even = five_number_summary([21, 53, 3, 68, 43, 9, 72, 19, 20, 1], 2)
+    Determine the five number summary of the set [21, 53, 3, 68, 43, 9, 72, 19, 20, 1]
+        >>> summary_even = five_number_summary([21, 53, 3, 68, 43, 9, 72, 19, 20, 1])
         >>> print(summary_even['q1'])
         9
         >>> print(summary_even['maximum'])
         72
-    Determine the five number summary of the set [12, 81, 13, 8, 42, 72, 91, 20, 20] (and round the result to two decimal places)
-        >>> summary_odd = five_number_summary([12, 81, 13, 8, 42, 72, 91, 20, 20], 2)
+    Determine the five number summary of the set [12, 81, 13, 8, 42, 72, 91, 20, 20]
+        >>> summary_odd = five_number_summary([12, 81, 13, 8, 42, 72, 91, 20, 20])
         >>> print(summary_odd['q3'])
         76.5
         >>> print(summary_odd['minimum'])

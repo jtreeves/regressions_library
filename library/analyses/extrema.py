@@ -6,7 +6,7 @@ from .intervals import sign_chart
 from .maxima import maxima_points
 from .minima import minima_points
 
-def extrema_points(equation_type, coefficients, derivative, precision):
+def extrema_points(equation_type, coefficients, derivative, precision = 4):
     """
     Calculates the extrema of a specific function
 
@@ -18,7 +18,7 @@ def extrema_points(equation_type, coefficients, derivative, precision):
         Coefficients to use to generate the equation to investigate
     derivative : function
         Function of the first derivative to use for generating a list of critical points
-    precision : int
+    precision : int, optional
         Maximum number of digits that can appear after the decimal place of the results
 
     Raises
@@ -51,14 +51,14 @@ def extrema_points(equation_type, coefficients, derivative, precision):
 
     Examples
     --------
-    Calulate the extrema of a cubic function with coefficients 1, -15, 63, and -7 (and round the results to four decimal places)
-        >>> points_cubic = extrema_points('cubic', [1, -15, 63, -7], lambda x : 3 * x**2 - 30 * x + 63, 4)
+    Calulate the extrema of a cubic function with coefficients 1, -15, 63, and -7
+        >>> points_cubic = extrema_points('cubic', [1, -15, 63, -7], lambda x : 3 * x**2 - 30 * x + 63)
         >>> print(points_cubic['maxima'])
         [3.0]
         >>> print(points_cubic['minima'])
         [7.0]
-    Calulate the extrema of a sinusoidal function with coefficients 2, 3, 5, and 7 (and round the results to four decimal places)
-        >>> points_sinusoidal = extrema_points('sinusoidal', [2, 3, 5, 7], lambda x : 6 * cos(3 * (x - 5)), 4)
+    Calulate the extrema of a sinusoidal function with coefficients 2, 3, 5, and 7
+        >>> points_sinusoidal = extrema_points('sinusoidal', [2, 3, 5, 7], lambda x : 6 * cos(3 * (x - 5)))
         >>> print(points_sinusoidal['maxima'])
         [5.5236, 7.618, 9.7124, '1.0472k']
         >>> print(points_sinusoidal['minima'])

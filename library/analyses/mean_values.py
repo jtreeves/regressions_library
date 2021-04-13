@@ -12,7 +12,7 @@ from .roots.logarithmic import logarithmic_roots
 from .roots.sinusoidal import sinusoidal_roots
 from .accumulation import accumulated_area
 
-def average_value_derivative(equation, start, end, precision):
+def average_value_derivative(equation, start, end, precision = 4):
     """
     Evaluates the average rate of change between two points for a given function
 
@@ -24,7 +24,7 @@ def average_value_derivative(equation, start, end, precision):
         Value of the x-coordinate of the first point to use for evaluating the rate of change
     end : int or float
         Value of the x-coordinate of the second point to use for evaluating the rate of change
-    precision : int
+    precision : int, optional
         Maximum number of digits that can appear after the decimal place of the result
 
     Raises
@@ -55,12 +55,12 @@ def average_value_derivative(equation, start, end, precision):
 
     Examples
     --------
-    Evaluate the average rate of change of a cubic function with coefficients 2, 3, 5, and 7 between end points of 10 and 20 (and round the result to four decimal places)
-        >>> average_cubic = average_value_derivative(lambda x : 2 * x**3 + 3 * x**2 + 5 * x + 7, 10, 20, 4)
+    Evaluate the average rate of change of a cubic function with coefficients 2, 3, 5, and 7 between end points of 10 and 20
+        >>> average_cubic = average_value_derivative(lambda x : 2 * x**3 + 3 * x**2 + 5 * x + 7, 10, 20)
         >>> print(average_cubic)
         1495.0
-    Evaluate the average rate of change of a sinusoidal function with coefficients 2, 3, 5, and 7 between end points of 10 and 20 (and round the result to four decimal places)
-        >>> average_sinusoidal = average_value_derivative(lambda x : 2 * sin(3 * (x - 5)) + 7, 10, 20, 4)
+    Evaluate the average rate of change of a sinusoidal function with coefficients 2, 3, 5, and 7 between end points of 10 and 20
+        >>> average_sinusoidal = average_value_derivative(lambda x : 2 * sin(3 * (x - 5)) + 7, 10, 20)
         >>> print(average_sinusoidal)
         0.0401
     """
@@ -73,7 +73,7 @@ def average_value_derivative(equation, start, end, precision):
     result = rounded_value(ratio, precision)
     return result
 
-def mean_values_derivative(equation_type, equation, start, end, constants, precision):
+def mean_values_derivative(equation_type, equation, start, end, constants, precision = 4):
     """
     Generates a list of all the x-coordinates whose instantaneous rates of change equal the function's average rate of change between two points
 
@@ -89,7 +89,7 @@ def mean_values_derivative(equation_type, equation, start, end, constants, preci
         Value of the x-coordinate of the second point to use for evaluating the rate of change; all results must be less than this value
     constants : list
         Coefficients to use to generate the equation to investigate
-    precision : int
+    precision : int, optional
         Maximum number of digits that can appear after the decimal place of the result
 
     Raises
@@ -124,12 +124,12 @@ def mean_values_derivative(equation_type, equation, start, end, constants, preci
 
     Examples
     --------
-    Generate a list of all the x-coordinates whose instantaneous rates of change equal the function's average rate of change for a cubic function with coefficients 2, 3, 5, and 7 between end points of 10 and 20 (and round the result to four decimal places)
-        >>> points_cubic = mean_values_derivative('cubic', lambda x : 2 * x**3 + 3 * x**2 + 5 * x + 7, 10, 20, [2, 3, 5, 7], 4)
+    Generate a list of all the x-coordinates whose instantaneous rates of change equal the function's average rate of change for a cubic function with coefficients 2, 3, 5, and 7 between end points of 10 and 20
+        >>> points_cubic = mean_values_derivative('cubic', lambda x : 2 * x**3 + 3 * x**2 + 5 * x + 7, 10, 20, [2, 3, 5, 7])
         >>> print(points_cubic)
         [15.2665]
-    Generate a list of all the x-coordinates whose instantaneous rates of change equal the function's average rate of change for a cubic function with coefficients 2, 3, 5, and 7 between end points of 10 and 20 (and round the result to four decimal places)
-        >>> points_sinusoidal = mean_values_derivative('sinusoidal', lambda x : 2 * sin(3 * (x - 5)) + 7, 10, 20, [2, 3, 5, 7], 4)
+    Generate a list of all the x-coordinates whose instantaneous rates of change equal the function's average rate of change for a cubic function with coefficients 2, 3, 5, and 7 between end points of 10 and 20
+        >>> points_sinusoidal = mean_values_derivative('sinusoidal', lambda x : 2 * sin(3 * (x - 5)) + 7, 10, 20, [2, 3, 5, 7])
         >>> print(points_sinusoidal)
         [10.7618, 11.8046, 12.8562, 13.899, 14.9506, 15.9933, '10.7618 + 2.0944k', '11.8046 + 2.0944k']
     """
@@ -289,7 +289,7 @@ def mean_values_derivative(equation_type, equation, start, end, constants, preci
     final_result = rounded_results + sorted_other_results
     return final_result
 
-def average_value_integral(equation_type, coefficients, start, end, precision):
+def average_value_integral(equation_type, coefficients, start, end, precision = 4):
     """
     Evaluates the average value of a given function between two points
 
@@ -303,7 +303,7 @@ def average_value_integral(equation_type, coefficients, start, end, precision):
         Value of the x-coordinate of the first point to use for evaluating the average value
     end : int or float
         Value of the x-coordinate of the second point to use for evaluating the average value
-    precision : int
+    precision : int, optional
         Maximum number of digits that can appear after the decimal place of the result
 
     Raises
@@ -333,12 +333,12 @@ def average_value_integral(equation_type, coefficients, start, end, precision):
 
     Examples
     --------
-    Evaluate the average value of a cubic function with coefficients 2, 3, 5, and 7 between end points of 10 and 20 (and round the result to four decimal places)
-        >>> average_cubic = average_value_integral('cubic', [2, 3, 5, 7], 10, 20, 4)
+    Evaluate the average value of a cubic function with coefficients 2, 3, 5, and 7 between end points of 10 and 20
+        >>> average_cubic = average_value_integral('cubic', [2, 3, 5, 7], 10, 20)
         >>> print(average_cubic)
         8282.0
-    Evaluate the average value of a sinusoidal function with coefficients 2, 3, 5, and 7 between end points of 10 and 20 (and round the result to four decimal places)
-        >>> average_sinusoidal = average_value_integral('sinusoidal', [2, 3, 5, 7], 10, 20, 4)
+    Evaluate the average value of a sinusoidal function with coefficients 2, 3, 5, and 7 between end points of 10 and 20
+        >>> average_sinusoidal = average_value_integral('sinusoidal', [2, 3, 5, 7], 10, 20)
         >>> print(average_sinusoidal)
         6.9143
     """
@@ -352,7 +352,7 @@ def average_value_integral(equation_type, coefficients, start, end, precision):
     result = rounded_value(ratio, precision)
     return result
 
-def mean_values_integral(equation_type, coefficients, start, end, precision):
+def mean_values_integral(equation_type, coefficients, start, end, precision = 4):
     """
     Generates a list of all the x-coordinates between two points at which a function's value will equal its average value over that interval
 
@@ -366,7 +366,7 @@ def mean_values_integral(equation_type, coefficients, start, end, precision):
         Value of the x-coordinate of the first point to use for evaluating the average value; all results must be greater than this value
     end : int or float
         Value of the x-coordinate of the second point to use for evaluating the average value; all results must be less than this value
-    precision : int
+    precision : int, optional
         Maximum number of digits that can appear after the decimal place of the result
 
     Raises
@@ -397,12 +397,12 @@ def mean_values_integral(equation_type, coefficients, start, end, precision):
 
     Examples
     --------
-    Generate a list of all the x-coordinates of a cubic function with coefficients 2, 3, 5, and 7 at which the function's value will equal its average value between 10 and 20 (and round the result to four decimal places)
-        >>> points_cubic = mean_values_integral('cubic', [2, 3, 5, 7], 10, 20, 4)
+    Generate a list of all the x-coordinates of a cubic function with coefficients 2, 3, 5, and 7 at which the function's value will equal its average value between 10 and 20
+        >>> points_cubic = mean_values_integral('cubic', [2, 3, 5, 7], 10, 20)
         >>> print(points_cubic)
         [15.5188]
-    Generate a list of all the x-coordinates of a sinusoidal function with coefficients 2, 3, 5, and 7 at which the function's value will equal its average value between 10 and 20 (and round the result to four decimal places)
-        >>> points_sinusoidal = mean_values_integral('sinusoidal', [2, 3, 5, 7], 10, 20, 4)
+    Generate a list of all the x-coordinates of a sinusoidal function with coefficients 2, 3, 5, and 7 at which the function's value will equal its average value between 10 and 20
+        >>> points_sinusoidal = mean_values_integral('sinusoidal', [2, 3, 5, 7], 10, 20)
         >>> print(points_sinusoidal)
         [10.2503, 11.2689, 12.3447, 13.3633, 14.4391, 15.4577, 16.5335, 17.5521, 18.6279, 19.6465, '10.2503 + 2.0944k', '11.2689 + 2.0944k']
     """
@@ -502,7 +502,7 @@ def mean_values_integral(equation_type, coefficients, start, end, precision):
     final_result = rounded_results + sorted_other_results
     return final_result
 
-def average_values(equation_type, equation, integral, start, end, constants, precision):
+def average_values(equation_type, equation, integral, start, end, constants, precision = 4):
     """
     Calculates the average values for a specific function
 
@@ -520,7 +520,7 @@ def average_values(equation_type, equation, integral, start, end, constants, pre
         Value of the x-coordinate of the second point to use for evaluating the average values; results within lists must be less than this value
     constants : list
         Coefficients of the origianl function under investigation
-    precision : int
+    precision : int, optional
         Maximum number of digits that can appear after the decimal place of the result
 
     Raises
@@ -560,8 +560,8 @@ def average_values(equation_type, equation, integral, start, end, constants, pre
 
     Examples
     --------
-    Calculate the averages of a cubic function with coefficients 2, 3, 5, and 7 between 10 and 20 (and round the result to four decimal places)
-        >>> averages_cubic = average_values('cubic', lambda x : 2 * x**3 + 3 * x**2 + 5 * x + 7, lambda x : 0.5 * x**4 + x**3 + 2.5 * x**2 + 7 * x, 10, 20, [2, 3, 5, 7], 4)
+    Calculate the averages of a cubic function with coefficients 2, 3, 5, and 7 between 10 and 20
+        >>> averages_cubic = average_values('cubic', lambda x : 2 * x**3 + 3 * x**2 + 5 * x + 7, lambda x : 0.5 * x**4 + x**3 + 2.5 * x**2 + 7 * x, 10, 20, [2, 3, 5, 7])
         >>> print(averages_cubic['average_value_derivative'])
         1495.0
         >>> print(averages_cubic['mean_values_derivative'])
@@ -570,8 +570,8 @@ def average_values(equation_type, equation, integral, start, end, constants, pre
         8282.0
         >>> print(averages_cubic['mean_values_integral'])
         [15.5188]
-    Calculate the averages of a sinusoidal function with coefficients 2, 3, 5, and 7 between 10 and 20 (and round the result to four decimal places)
-        >>> averages_sinusoidal = average_values('sinusoidal', lambda x : 2 * sin(3 * (x - 5)) + 7, lambda x : -2 / 3 * cos(3 * (x - 5)) + 7 * x, 10, 20, [2, 3, 5, 7], 4)
+    Calculate the averages of a sinusoidal function with coefficients 2, 3, 5, and 7 between 10 and 20
+        >>> averages_sinusoidal = average_values('sinusoidal', lambda x : 2 * sin(3 * (x - 5)) + 7, lambda x : -2 / 3 * cos(3 * (x - 5)) + 7 * x, 10, 20, [2, 3, 5, 7])
         >>> print(averages_sinusoidal['average_value_derivative'])
         0.0401
         >>> print(averages_sinusoidal['mean_values_derivative'])

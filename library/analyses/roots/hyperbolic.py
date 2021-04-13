@@ -1,7 +1,7 @@
 from library.errors.scalars import two_scalars, positive_integer
 from library.statistics.rounding import rounded_value
 
-def hyperbolic_roots(first_constant, second_constant, precision):
+def hyperbolic_roots(first_constant, second_constant, precision = 4):
     """
     Calculates the roots of a hyperbolic function
 
@@ -11,7 +11,7 @@ def hyperbolic_roots(first_constant, second_constant, precision):
         Coefficient of the reciprocal variable of the original hyperbolic function
     second_constant : int or float
         Coefficient of the constant term of the original hyperbolic function
-    precision : int
+    precision : int, optional
         Maximum number of digits that can appear after the decimal place of the resultant roots
 
     Raises
@@ -37,12 +37,12 @@ def hyperbolic_roots(first_constant, second_constant, precision):
 
     Examples
     --------
-    Calculate the roots of a hyperbolic function with coefficients 2 and 3 (and round roots to four decimal places)
-        >>> roots1 = hyperbolic_roots(2, 3, 4)
+    Calculate the roots of a hyperbolic function with coefficients 2 and 3
+        >>> roots1 = hyperbolic_roots(2, 3)
         >>> print(roots1)
         [-0.6667]
-    Calculate the roots of a hyperbolic function with coefficients 5 and 7 (and round roots to four decimal places)
-        >>> roots2 = hyperbolic_roots(5, 7, 4)
+    Calculate the roots of a hyperbolic function with coefficients 5 and 7
+        >>> roots2 = hyperbolic_roots(5, 7)
         >>> print(roots2)
         [-0.7143]
     """

@@ -1,6 +1,6 @@
 from library.errors.matrices import matrix_of_scalars
 
-def adjugate(matrix):
+def transposed_matrix(matrix):
     """
     Transpose a matrix's rows and columns
 
@@ -34,11 +34,11 @@ def adjugate(matrix):
     Examples
     --------
     Transpose [[1, 2, 3], [4, 5, 6]]
-        >>> matrix_3x2 = adjugate([[1, 2, 3], [4, 5, 6]])
+        >>> matrix_3x2 = transposed_matrix([[1, 2, 3], [4, 5, 6]])
         >>> print(matrix_3x2)
         [[1, 4], [2, 5], [3, 6]]
     Transpose [[2, 3], [5, 7]]
-        >>> matrix_2x2 = adjugate([[2, 3], [5, 7]])
+        >>> matrix_2x2 = transposed_matrix([[2, 3], [5, 7]])
         >>> print(matrix_2x2)
         [[2, 5], [3, 7]]
     """

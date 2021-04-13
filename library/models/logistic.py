@@ -16,7 +16,7 @@ from library.statistics.summary import five_number_summary
 from library.statistics.correlation import correlation_coefficient
 from library.statistics.rounding import rounded_value
 
-def logistic_model(data, precision):
+def logistic_model(data, precision = 4):
     """
     Generates a logistic regression model from a given data set
 
@@ -24,7 +24,7 @@ def logistic_model(data, precision):
     ----------
     data : list
         List of lists of numbers representing a collection of coordinate pairs
-    precision : int
+    precision : int, optional
         Maximum number of digits that can appear after the decimal place of the results
 
     Raises
@@ -122,8 +122,8 @@ def logistic_model(data, precision):
 
     Examples
     --------
-    Generate a logistic regression model for the data set [[1, 0.0000122], [2, 0.000247], [3, 0.004945], [4, 0.094852], [5, 1.0], [6, 1.905148], [7, 1.995055], [8, 1.999753], [9, 1.999988], [10, 1.999999]], then print its coefficients, roots, total accumulation over its interquartile range, and correlation (and round the results to four decimal places)
-        >>> model_perfect = logistic_model([[1, 0.0000122], [2, 0.000247], [3, 0.004945], [4, 0.094852], [5, 1.0], [6, 1.905148], [7, 1.995055], [8, 1.999753], [9, 1.999988], [10, 1.999999]], 4)
+    Generate a logistic regression model for the data set [[1, 0.0000122], [2, 0.000247], [3, 0.004945], [4, 0.094852], [5, 1.0], [6, 1.905148], [7, 1.995055], [8, 1.999753], [9, 1.999988], [10, 1.999999]], then print its coefficients, roots, total accumulation over its interquartile range, and correlation
+        >>> model_perfect = logistic_model([[1, 0.0000122], [2, 0.000247], [3, 0.004945], [4, 0.094852], [5, 1.0], [6, 1.905148], [7, 1.995055], [8, 1.999753], [9, 1.999988], [10, 1.999999]])
         >>> print(model_perfect['constants'])
         [2.0, 3.0, 5.0]
         >>> print(model_perfect['points']['roots'])
@@ -132,8 +132,8 @@ def logistic_model(data, precision):
         5.9984
         >>> print(model_perfect['correlation'])
         1.0
-    Generate a logistic regression model for the data set [[1, 32], [2, 25], [3, 14], [4, 23], [5, 39], [6, 45], [7, 42], [8, 49], [9, 36], [10, 33]], then print its coefficients, inflections, total accumulation over its range, and correlation (and round the results to four decimal places)
-        >>> model_agnostic = logistic_model([[1, 32], [2, 25], [3, 14], [4, 23], [5, 39], [6, 45], [7, 42], [8, 49], [9, 36], [10, 33]], 4)
+    Generate a logistic regression model for the data set [[1, 32], [2, 25], [3, 14], [4, 23], [5, 39], [6, 45], [7, 42], [8, 49], [9, 36], [10, 33]], then print its coefficients, inflections, total accumulation over its range, and correlation
+        >>> model_agnostic = logistic_model([[1, 32], [2, 25], [3, 14], [4, 23], [5, 39], [6, 45], [7, 42], [8, 49], [9, 36], [10, 33]])
         >>> print(model_agnostic['constants'])
         [43.983, 0.3076, 0.9746]
         >>> print(model_agnostic['points']['inflections'])

@@ -125,7 +125,7 @@ def half(data):
     result = partition(sorted_data)
     return result
 
-def half_dimension(data, dimension):
+def half_dimension(data, dimension = 1):
     """
     Splits an unsorted 2-dimensional data set into two sorted 2-dimensional data sets, each containing the same amount of elements, in which the sorting occurs based on the elements of the nested lists indicated by the dimension parameter (in sets with an odd amount of elements, the median is not included in either half)
 
@@ -133,7 +133,7 @@ def half_dimension(data, dimension):
     ----------
     data : list
         List of lists of numbers to analyze
-    dimension : int
+    dimension : int, optional
         Number indicating by which element of the nested lists to sort
     
     Raises

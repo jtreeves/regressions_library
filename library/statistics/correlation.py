@@ -5,7 +5,7 @@ from .deviations import multiple_deviations
 from .summation import sum_value
 from .rounding import rounded_value
 
-def correlation_coefficient(actuals, expecteds, precision):
+def correlation_coefficient(actuals, expecteds, precision = 4):
     """
     Calculates the correlation coefficient as a way to predict the strength of a predicted model by comparing the ratio of residuals to deviations, in order to determine a strong or weak relationship
 
@@ -15,7 +15,7 @@ def correlation_coefficient(actuals, expecteds, precision):
         List containing the actual values observed from a data set
     expecteds : list
         List containing the expected values for a data set based on a predictive model
-    precision : int
+    precision : int, optional
         Maximum number of digits that can appear after the decimal place of the result
 
     Raises
@@ -52,12 +52,12 @@ def correlation_coefficient(actuals, expecteds, precision):
 
     Examples
     --------
-    Calculate the correlation using the provided actual values [8.2, 9.41, 1.23, 34.7] and the predicted values [7.863, 8.9173, 2.0114, 35.8021] (and round the result to four decimal places)
-        >>> correlation_short = correlation_coefficient([8.2, 9.41, 1.23, 34.7], [7.863, 8.9173, 2.0114, 35.8021], 4)
+    Calculate the correlation using the provided actual values [8.2, 9.41, 1.23, 34.7] and the predicted values [7.863, 8.9173, 2.0114, 35.8021]
+        >>> correlation_short = correlation_coefficient([8.2, 9.41, 1.23, 34.7], [7.863, 8.9173, 2.0114, 35.8021])
         >>> print(correlation_short)
         0.9983
-    Calculate the correlation using the provided actual values [2, 3, 5, 7, 11, 13, 17, 19] and the predicted values [1.0245, 3.7157, 6.1398, 8.1199, 12.7518, 14.9621, 15.2912, 25.3182] (and round the result to four decimal places)
-        >>> correlation_long = correlation_coefficient([2, 3, 5, 7, 11, 13, 17, 19], [1.0245, 3.7157, 6.1398, 8.1199, 12.7518, 14.9621, 15.2912, 25.3182], 4)
+    Calculate the correlation using the provided actual values [2, 3, 5, 7, 11, 13, 17, 19] and the predicted values [1.0245, 3.7157, 6.1398, 8.1199, 12.7518, 14.9621, 15.2912, 25.3182]
+        >>> correlation_long = correlation_coefficient([2, 3, 5, 7, 11, 13, 17, 19], [1.0245, 3.7157, 6.1398, 8.1199, 12.7518, 14.9621, 15.2912, 25.3182])
         >>> print(correlation_long)
         0.9011
     """

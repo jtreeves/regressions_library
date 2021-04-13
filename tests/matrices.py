@@ -2,7 +2,7 @@ import unittest
 
 from library.matrices.addition import matrix_sum
 from library.matrices.multiplication import scalar_product_matrix, matrix_product
-from library.matrices.transpose import adjugate
+from library.matrices.transpose import transposed_matrix
 from library.matrices.cofactors import matrix_of_cofactors
 from library.matrices.determinant import linear_determinant
 from library.matrices.minors import matrix_of_minors
@@ -67,7 +67,6 @@ column_3d = [
 ]
 
 scalar_number = -7
-precision = 4
 
 class TestAddition(unittest.TestCase):
     def test_addition_2d(self):
@@ -130,19 +129,19 @@ class TestMatrixProduct(unittest.TestCase):
 
 class TestTranspose(unittest.TestCase):
     def test_transpose_2d(self):
-        transpose_2d = adjugate(first_2d)
+        transpose_2d = transposed_matrix(first_2d)
         self.assertEqual(transpose_2d, [[5, 2], [8, 3]])
     
     def test_transpose_3d(self):
-        transpose_3d = adjugate(first_3d)
+        transpose_3d = transposed_matrix(first_3d)
         self.assertEqual(transpose_3d, [[6, 4, 2], [1, -2, 8], [1, 5, 7]])
     
     def test_transpose_4d(self):
-        transpose_4d = adjugate(first_4d)
+        transpose_4d = transposed_matrix(first_4d)
         self.assertEqual(transpose_4d, [[5, 3, 9, -2], [2, 4, -8, 5], [-6, 1, 7, 0], [2, -5, 1, 11]])
     
     def test_transpose_2x3(self):
-        transpose_2x3 = adjugate(first_2x3)
+        transpose_2x3 = transposed_matrix(first_2x3)
         self.assertEqual(transpose_2x3, [[2, 4], [6, 5], [-9, 1]])
 
 class TestCofactors(unittest.TestCase):
@@ -199,14 +198,14 @@ class TestInverse(unittest.TestCase):
 
 class TestSolveSystems(unittest.TestCase):
     def test_solve_2d(self):
-        solve_2d = system_solution(first_2d, column_2d, precision)
+        solve_2d = system_solution(first_2d, column_2d)
         self.assertEqual(solve_2d, [-41.0, 26.0])
     
     def test_solve_3d(self):
-        solve_3d = system_solution(first_3d, column_3d, precision)
+        solve_3d = system_solution(first_3d, column_3d)
         self.assertEqual(solve_3d, [0.7255, 1.0196, -0.3725])
 
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 32 tests in 0.010s ---------- OK ---------- #
+# ---------- Ran 32 tests in 0.011s ---------- OK ---------- #

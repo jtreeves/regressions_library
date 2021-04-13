@@ -3,7 +3,7 @@ from library.errors.scalars import four_scalars, positive_integer
 from library.statistics.sort import sorted_list
 from library.statistics.rounding import rounded_value
 
-def sinusoidal_roots(first_constant, second_constant, third_constant, fourth_constant, precision):
+def sinusoidal_roots(first_constant, second_constant, third_constant, fourth_constant, precision = 4):
     """
     Calculates the roots of a sinusoidal function
 
@@ -17,7 +17,7 @@ def sinusoidal_roots(first_constant, second_constant, third_constant, fourth_con
         Horizontal shift of the original sine function
     fourth_constant : int or float
         Vertical shift of the original sine function
-    precision : int
+    precision : int, optional
         Maximum number of digits that can appear after the decimal place of the resultant roots
 
     Raises
@@ -47,12 +47,12 @@ def sinusoidal_roots(first_constant, second_constant, third_constant, fourth_con
 
     Examples
     --------
-    Calculate the roots of a sinusoidal function with coefficients 2, 3, 5, and 1 (and round roots to four decimal places)
-        >>> roots1 = sinusoidal_roots(2, 3, 5, 1, 4)
+    Calculate the roots of a sinusoidal function with coefficients 2, 3, 5, and 1
+        >>> roots1 = sinusoidal_roots(2, 3, 5, 1)
         >>> print(roots1)
         [4.8255, 6.2217, 6.9199, 8.3161, 9.0143, 10.4105, '4.8255 + 2.0944k', '6.2217 + 2.0944k']
-    Calculate the roots of a sinusoidal function with coefficients 3, 1, -2, and 3 (and round roots to four decimal places)
-        >>> roots2 = sinusoidal_roots(3, 1, -2, 3, 4)
+    Calculate the roots of a sinusoidal function with coefficients 3, 1, -2, and 3
+        >>> roots2 = sinusoidal_roots(3, 1, -2, 3)
         >>> print(roots2)
         [-3.5708, 2.7124, 8.9956, '-3.5708 + 6.2832k']
     """

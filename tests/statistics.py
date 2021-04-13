@@ -27,6 +27,10 @@ precision = 4
 high_precision = 8
 
 class TestRounding(unittest.TestCase):
+    def test_round_missing(self):
+        round_normal = rounded_value(normal_decimal)
+        self.assertEqual(round_normal, 6.8172)
+    
     def test_round_normal(self):
         round_normal = rounded_value(normal_decimal, precision)
         self.assertEqual(round_normal, 6.8172)
@@ -170,4 +174,4 @@ class TestComparisons(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 32 tests in 0.004s ---------- OK ---------- #
+# ---------- Ran 33 tests in 0.004s ---------- OK ---------- #

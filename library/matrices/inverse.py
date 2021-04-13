@@ -1,7 +1,7 @@
 from library.errors.matrices import square_matrix
 from .multiplication import scalar_product_matrix
 from .determinant import linear_determinant
-from .transpose import adjugate
+from .transpose import transposed_matrix
 from .minors import matrix_of_minors
 from .cofactors import matrix_of_cofactors
 
@@ -30,7 +30,7 @@ def inverse_matrix(matrix):
 
     See Also
     --------
-    :func:`~library.matrices.cofactors.matrix_of_cofactors`, :func:`~library.matrices.minors.matrix_of_minors`, :func:`~library.matrices.transpose.adjugate`, :func:`~library.matrices.determinant.linear_determinant`, :func:`~library.matrices.multiplication.scalar_product_matrix`, :func:`~library.matrices.solve.system_solution`
+    :func:`~library.matrices.cofactors.matrix_of_cofactors`, :func:`~library.matrices.minors.matrix_of_minors`, :func:`~library.matrices.transpose.transposed_matrix`, :func:`~library.matrices.determinant.linear_determinant`, :func:`~library.matrices.multiplication.scalar_product_matrix`, :func:`~library.matrices.solve.system_solution`
 
     Notes
     -----
@@ -51,6 +51,6 @@ def inverse_matrix(matrix):
     """
     square_matrix(matrix)
     determinant_reciprocal = 1 / linear_determinant(matrix)
-    transform = adjugate(matrix_of_cofactors(matrix_of_minors(matrix)))
+    transform = transposed_matrix(matrix_of_cofactors(matrix_of_minors(matrix)))
     result = scalar_product_matrix(transform, determinant_reciprocal)
     return result

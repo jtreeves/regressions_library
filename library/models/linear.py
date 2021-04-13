@@ -13,7 +13,7 @@ from library.analyses.mean_values import average_values
 from library.statistics.summary import five_number_summary
 from library.statistics.correlation import correlation_coefficient
 
-def linear_model(data, precision):
+def linear_model(data, precision = 4):
     """
     Generates a linear regression model from a given data set
 
@@ -21,7 +21,7 @@ def linear_model(data, precision):
     ----------
     data : list
         List of lists of numbers representing a collection of coordinate pairs
-    precision : int
+    precision : int, optional
         Maximum number of digits that can appear after the decimal place of the results
 
     Raises
@@ -119,8 +119,8 @@ def linear_model(data, precision):
 
     Examples
     --------
-    Generate a linear regression model for the data set [[1, 30], [2, 27], [3, 24], [4, 21], [5, 18], [6, 15], [7, 12], [8, 9], [9, 6], [10, 3]], then print its coefficients, roots, total accumulation over its interquartile range, and correlation (and round the results to four decimal places)
-        >>> model_perfect = linear_model([[1, 30], [2, 27], [3, 24], [4, 21], [5, 18], [6, 15], [7, 12], [8, 9], [9, 6], [10, 3]], 4)
+    Generate a linear regression model for the data set [[1, 30], [2, 27], [3, 24], [4, 21], [5, 18], [6, 15], [7, 12], [8, 9], [9, 6], [10, 3]], then print its coefficients, roots, total accumulation over its interquartile range, and correlation
+        >>> model_perfect = linear_model([[1, 30], [2, 27], [3, 24], [4, 21], [5, 18], [6, 15], [7, 12], [8, 9], [9, 6], [10, 3]])
         >>> print(model_perfect['constants'])
         [-3.0, 33.0]
         >>> print(model_perfect['points']['roots'])
@@ -129,8 +129,8 @@ def linear_model(data, precision):
         82.5
         >>> print(model_perfect['correlation'])
         1.0
-    Generate a linear regression model for the data set [[1, 32], [2, 25], [3, 14], [4, 23], [5, 39], [6, 45], [7, 42], [8, 49], [9, 36], [10, 33]], then print its coefficients, inflections, total accumulation over its range, and correlation (and round the results to four decimal places)
-        >>> model_agnostic = linear_model([[1, 32], [2, 25], [3, 14], [4, 23], [5, 39], [6, 45], [7, 42], [8, 49], [9, 36], [10, 33]], 4)
+    Generate a linear regression model for the data set [[1, 32], [2, 25], [3, 14], [4, 23], [5, 39], [6, 45], [7, 42], [8, 49], [9, 36], [10, 33]], then print its coefficients, inflections, total accumulation over its range, and correlation
+        >>> model_agnostic = linear_model([[1, 32], [2, 25], [3, 14], [4, 23], [5, 39], [6, 45], [7, 42], [8, 49], [9, 36], [10, 33]])
         >>> print(model_agnostic['constants'])
         [1.9636, 23.0]
         >>> print(model_agnostic['points']['inflections'])

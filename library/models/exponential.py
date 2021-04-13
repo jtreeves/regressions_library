@@ -15,7 +15,7 @@ from library.statistics.summary import five_number_summary
 from library.statistics.correlation import correlation_coefficient
 from library.statistics.rounding import rounded_value
 
-def exponential_model(data, precision):
+def exponential_model(data, precision = 4):
     """
     Generates an exponential regression model from a given data set
 
@@ -23,7 +23,7 @@ def exponential_model(data, precision):
     ----------
     data : list
         List of lists of numbers representing a collection of coordinate pairs
-    precision : int
+    precision : int, optional
         Maximum number of digits that can appear after the decimal place of the results
 
     Raises
@@ -121,8 +121,8 @@ def exponential_model(data, precision):
 
     Examples
     --------
-    Generate an exponential regression model for the data set [[1, 6], [2, 12], [3, 24], [4, 48], [5, 96], [6, 192], [7, 384], [8, 768], [9, 1536], [10, 3072]], then print its coefficients, roots, total accumulation over its interquartile range, and correlation (and round the results to four decimal places)
-        >>> model_perfect = exponential_model([[1, 6], [2, 12], [3, 24], [4, 48], [5, 96], [6, 192], [7, 384], [8, 768], [9, 1536], [10, 3072]], 4)
+    Generate an exponential regression model for the data set [[1, 6], [2, 12], [3, 24], [4, 48], [5, 96], [6, 192], [7, 384], [8, 768], [9, 1536], [10, 3072]], then print its coefficients, roots, total accumulation over its interquartile range, and correlation
+        >>> model_perfect = exponential_model([[1, 6], [2, 12], [3, 24], [4, 48], [5, 96], [6, 192], [7, 384], [8, 768], [9, 1536], [10, 3072]])
         >>> print(model_perfect['constants'])
         [3.0, 1.9999]
         >>> print(model_perfect['points']['roots'])
@@ -131,8 +131,8 @@ def exponential_model(data, precision):
         1073.0046
         >>> print(model_perfect['correlation'])
         1.0
-    Generate an exponential regression model for the data set [[1, 32], [2, 25], [3, 14], [4, 23], [5, 39], [6, 45], [7, 42], [8, 49], [9, 36], [10, 33]], then print its coefficients, inflections, total accumulation over its range, and correlation (and round the results to four decimal places)
-        >>> model_agnostic = exponential_model([[1, 32], [2, 25], [3, 14], [4, 23], [5, 39], [6, 45], [7, 42], [8, 49], [9, 36], [10, 33]], 4)
+    Generate an exponential regression model for the data set [[1, 32], [2, 25], [3, 14], [4, 23], [5, 39], [6, 45], [7, 42], [8, 49], [9, 36], [10, 33]], then print its coefficients, inflections, total accumulation over its range, and correlation
+        >>> model_agnostic = exponential_model([[1, 32], [2, 25], [3, 14], [4, 23], [5, 39], [6, 45], [7, 42], [8, 49], [9, 36], [10, 33]])
         >>> print(model_agnostic['constants'])
         [22.1049, 1.0692]
         >>> print(model_agnostic['points']['inflections'])

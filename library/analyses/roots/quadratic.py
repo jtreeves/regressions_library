@@ -2,7 +2,7 @@ from library.errors.scalars import three_scalars, positive_integer
 from library.statistics.sort import sorted_list
 from library.statistics.rounding import rounded_value
 
-def quadratic_roots(first_constant, second_constant, third_constant, precision):
+def quadratic_roots(first_constant, second_constant, third_constant, precision = 4):
     """
     Calculates the roots of a quadratic function
 
@@ -14,7 +14,7 @@ def quadratic_roots(first_constant, second_constant, third_constant, precision):
         Coefficient of the linear term of the original quadratic function
     third_constant : int or float
         Coefficient of the constant term of the original quadratic function
-    precision : int
+    precision : int, optional
         Maximum number of digits that can appear after the decimal place of the resultant roots
 
     Raises
@@ -41,12 +41,12 @@ def quadratic_roots(first_constant, second_constant, third_constant, precision):
 
     Examples
     --------
-    Calculate the roots of a quadratic function with coefficients 10, 7, and -15 (and round roots to four decimal places)
-        >>> roots1 = quadratic_roots(10, 7, -15, 4)
+    Calculate the roots of a quadratic function with coefficients 10, 7, and -15
+        >>> roots1 = quadratic_roots(10, 7, -15)
         >>> print(roots1)
         [-5.0, 1.5]
-    Calculate the roots of a quadratic function with coefficients 9, -42, and 49 (and round roots to four decimal places)
-        >>> roots2 = quadratic_roots(9, -42, 49, 4)
+    Calculate the roots of a quadratic function with coefficients 9, -42, and 49
+        >>> roots2 = quadratic_roots(9, -42, 49)
         >>> print(roots2)
         [2.3333]
     """

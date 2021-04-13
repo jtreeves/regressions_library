@@ -10,7 +10,7 @@ from .roots.logarithmic import logarithmic_roots
 from .roots.logistic import logistic_roots
 from .roots.sinusoidal import sinusoidal_roots
 
-def intercept_points(equation_type, coefficients, precision):
+def intercept_points(equation_type, coefficients, precision = 4):
     """
     Calculates the roots of a specific function
 
@@ -20,7 +20,7 @@ def intercept_points(equation_type, coefficients, precision):
         Name of the type of function for which intercepts must be determined (e.g., 'linear', 'quadratic')
     coefficients : list
         Coefficients to use to generate the equation to investigate
-    precision : int
+    precision : int, optional
         Maximum number of digits that can appear after the decimal place of the results
 
     Raises
@@ -49,12 +49,12 @@ def intercept_points(equation_type, coefficients, precision):
 
     Examples
     --------
-    Calculate the roots of a cubic function with coefficients 1, -15, 66, and -80 (and round roots to four decimal places)
-        >>> points_cubic = intercept_points('cubic', [1, -15, 66, -80], 4)
+    Calculate the roots of a cubic function with coefficients 1, -15, 66, and -80
+        >>> points_cubic = intercept_points('cubic', [1, -15, 66, -80])
         >>> print(points_cubic)
         [2.0, 5.0, 8.0]
-    Calculate the roots of a sinusoidal function with coefficients 3, 1, -2, and 3 (and round roots to four decimal places)
-        >>> points_sinusoidal = intercept_points('sinusoidal', [3, 1, -2, 3], 4)
+    Calculate the roots of a sinusoidal function with coefficients 3, 1, -2, and 3
+        >>> points_sinusoidal = intercept_points('sinusoidal', [3, 1, -2, 3])
         >>> print(points_sinusoidal)
         [-3.5708, 2.7124, 8.9956, '-3.5708 + 6.2832k']
     """

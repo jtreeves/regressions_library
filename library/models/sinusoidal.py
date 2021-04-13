@@ -19,7 +19,7 @@ from library.statistics.sort import sorted_list
 from library.statistics.correlation import correlation_coefficient
 from library.statistics.rounding import rounded_value
 
-def sinusoidal_model(data, precision):
+def sinusoidal_model(data, precision = 4):
     """
     Generates a sinusoidal regression model from a given data set
 
@@ -27,7 +27,7 @@ def sinusoidal_model(data, precision):
     ----------
     data : list
         List of lists of numbers representing a collection of coordinate pairs
-    precision : int
+    precision : int, optional
         Maximum number of digits that can appear after the decimal place of the results
 
     Raises
@@ -149,8 +149,8 @@ def sinusoidal_model(data, precision):
 
     Examples
     --------
-    Generate a sinusoidal regression model for the data set [[1, 3], [2, 8], [3, 3], [4, -2], [5, 3], [6, 8], [7, 3], [8, -2], [9, 3], [10, 8]], then print its coefficients, roots, total accumulation over its interquartile range, and correlation (and round the results to four decimal places)
-        >>> model_perfect = sinusoidal_model([[1, 3], [2, 8], [3, 3], [4, -2], [5, 3], [6, 8], [7, 3], [8, -2], [9, 3], [10, 8]], 4)
+    Generate a sinusoidal regression model for the data set [[1, 3], [2, 8], [3, 3], [4, -2], [5, 3], [6, 8], [7, 3], [8, -2], [9, 3], [10, 8]], then print its coefficients, roots, total accumulation over its interquartile range, and correlation
+        >>> model_perfect = sinusoidal_model([[1, 3], [2, 8], [3, 3], [4, -2], [5, 3], [6, 8], [7, 3], [8, -2], [9, 3], [10, 8]])
         >>> print(model_perfect['constants'])
         [-5.0, 1.5708, 3.0, 3.0]
         >>> print(model_perfect['points']['roots'])
@@ -159,8 +159,8 @@ def sinusoidal_model(data, precision):
         11.8169
         >>> print(model_perfect['correlation'])
         1.0
-    Generate a sinusoidal regression model for the data set [[1, 32], [2, 25], [3, 14], [4, 23], [5, 39], [6, 45], [7, 42], [8, 49], [9, 36], [10, 33]], then print its coefficients, inflections, total accumulation over its range, and correlation (and round the results to four decimal places)
-        >>> model_agnostic = sinusoidal_model([[1, 32], [2, 25], [3, 14], [4, 23], [5, 39], [6, 45], [7, 42], [8, 49], [9, 36], [10, 33]], 4)
+    Generate a sinusoidal regression model for the data set [[1, 32], [2, 25], [3, 14], [4, 23], [5, 39], [6, 45], [7, 42], [8, 49], [9, 36], [10, 33]], then print its coefficients, inflections, total accumulation over its range, and correlation
+        >>> model_agnostic = sinusoidal_model([[1, 32], [2, 25], [3, 14], [4, 23], [5, 39], [6, 45], [7, 42], [8, 49], [9, 36], [10, 33]])
         >>> print(model_agnostic['constants'])
         [14.0875, 0.7119, -3.7531, 34.2915]
         >>> print(model_agnostic['points']['inflections'])

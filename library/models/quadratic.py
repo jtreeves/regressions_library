@@ -13,7 +13,7 @@ from library.analyses.mean_values import average_values
 from library.statistics.summary import five_number_summary
 from library.statistics.correlation import correlation_coefficient
 
-def quadratic_model(data, precision):
+def quadratic_model(data, precision = 4):
     """
     Generates a quadratic regression model from a given data set
 
@@ -21,7 +21,7 @@ def quadratic_model(data, precision):
     ----------
     data : list
         List of lists of numbers representing a collection of coordinate pairs
-    precision : int
+    precision : int, optional
         Maximum number of digits that can appear after the decimal place of the results
 
     Raises
@@ -119,8 +119,8 @@ def quadratic_model(data, precision):
 
     Examples
     --------
-    Generate a quadratic regression model for the data set [[1, 10], [2, 27], [3, 40], [4, 49], [5, 54], [6, 55], [7, 52], [8, 45], [9, 34], [10, 19]], then print its coefficients, roots, total accumulation over its interquartile range, and correlation (and round the results to four decimal places)
-        >>> model_perfect = quadratic_model([[1, 10], [2, 27], [3, 40], [4, 49], [5, 54], [6, 55], [7, 52], [8, 45], [9, 34], [10, 19]], 4)
+    Generate a quadratic regression model for the data set [[1, 10], [2, 27], [3, 40], [4, 49], [5, 54], [6, 55], [7, 52], [8, 45], [9, 34], [10, 19]], then print its coefficients, roots, total accumulation over its interquartile range, and correlation
+        >>> model_perfect = quadratic_model([[1, 10], [2, 27], [3, 40], [4, 49], [5, 54], [6, 55], [7, 52], [8, 45], [9, 34], [10, 19]])
         >>> print(model_perfect['constants'])
         [-2.0, 23.0, -11.0]
         >>> print(model_perfect['points']['roots'])
@@ -129,8 +129,8 @@ def quadratic_model(data, precision):
         254.1667
         >>> print(model_perfect['correlation'])
         1.0
-    Generate a quadratic regression model for the data set [[1, 32], [2, 25], [3, 14], [4, 23], [5, 39], [6, 45], [7, 42], [8, 49], [9, 36], [10, 33]], then print its coefficients, inflections, total accumulation over its range, and correlation (and round the results to four decimal places)
-        >>> model_agnostic = quadratic_model([[1, 32], [2, 25], [3, 14], [4, 23], [5, 39], [6, 45], [7, 42], [8, 49], [9, 36], [10, 33]], 4)
+    Generate a quadratic regression model for the data set [[1, 32], [2, 25], [3, 14], [4, 23], [5, 39], [6, 45], [7, 42], [8, 49], [9, 36], [10, 33]], then print its coefficients, inflections, total accumulation over its range, and correlation
+        >>> model_agnostic = quadratic_model([[1, 32], [2, 25], [3, 14], [4, 23], [5, 39], [6, 45], [7, 42], [8, 49], [9, 36], [10, 33]])
         >>> print(model_agnostic['constants'])
         [-0.3106, 5.3803, 16.1667]
         >>> print(model_agnostic['points']['inflections'])

@@ -3,10 +3,10 @@ from library.errors.scalars import positive_integer
 from library.statistics.rounding import rounded_value
 from library.vectors.dimension import single_dimension
 from .multiplication import matrix_product
-from .transpose import adjugate
+from .transpose import transposed_matrix
 from .inverse import inverse_matrix
 
-def system_solution(matrix_one, matrix_two, precision):
+def system_solution(matrix_one, matrix_two, precision = 4):
     """
     Solves a system of equations using matrices (independent matrix multiplied by resultant matrix equals dependent matrix)
 
@@ -16,7 +16,7 @@ def system_solution(matrix_one, matrix_two, precision):
         List of lists of numbers representing the independent matrix of a system of equations
     matrix_two : list
         List of lists of numbers representing the dependent matrix of a system of equations
-    precision : int
+    precision : int, optional
         Maximum number of digits that can appear after the decimal place of the results
 
     Raises
@@ -37,7 +37,7 @@ def system_solution(matrix_one, matrix_two, precision):
 
     See Also
     --------
-    :func:`~library.matrices.multiplication.matrix_product`, :func:`~library.matrices.transpose.adjugate`, :func:`~library.matrices.determinant.linear_determinant`, :func:`~library.matrices.inverse.inverse_matrix`
+    :func:`~library.matrices.multiplication.matrix_product`, :func:`~library.matrices.transpose.transposed_matrix`, :func:`~library.matrices.determinant.linear_determinant`, :func:`~library.matrices.inverse.inverse_matrix`
 
     Notes
     -----
@@ -50,18 +50,18 @@ def system_solution(matrix_one, matrix_two, precision):
 
     Examples
     --------
-    Solve the system that has an independent matrix of [[2, 3], [1, -1]] and a dependent matrix of [[5], [1]] (and round the results to four decimal places)
-        >>> solution_2values = system_solution([[2, 3], [1, -1]], [[5], [1]], 4)
+    Solve the system that has an independent matrix of [[2, 3], [1, -1]] and a dependent matrix of [[5], [1]]
+        >>> solution_2values = system_solution([[2, 3], [1, -1]], [[5], [1]])
         >>> print(solution_2values)
         [1.6, 0.6]
-    Solve the system that has an independent matrix of [[1, -2, 3], [-4, 5, -6], [7, -8, 9], [-10, 11, 12]] and a dependent matrix of [[2], [-3], [5], [-7]] (and round the results to four decimal places)
-        >>> solution_3values = system_solution([[1, -2, 3], [-4, 5, -6], [7, -8, 9], [-10, 11, 12]], [[2], [-3], [5], [-7]], 4)
+    Solve the system that has an independent matrix of [[1, -2, 3], [-4, 5, -6], [7, -8, 9], [-10, 11, 12]] and a dependent matrix of [[2], [-3], [5], [-7]]
+        >>> solution_3values = system_solution([[1, -2, 3], [-4, 5, -6], [7, -8, 9], [-10, 11, 12]], [[2], [-3], [5], [-7]])
         >>> print(solution_3values)
         [-0.8611, -1.3889, -0.0278]
     """
     compare_rows(matrix_one, matrix_two)
     positive_integer(precision)
-    transposition = adjugate(matrix_one)
+    transposition = transposed_matrix(matrix_one)
     product = matrix_product(transposition, matrix_one)
     inversion = inverse_matrix(product)
     second_product = matrix_product(inversion, transposition)

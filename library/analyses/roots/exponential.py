@@ -1,6 +1,6 @@
 from library.errors.scalars import two_scalars, positive_integer
 
-def exponential_roots(first_constant, second_constant, precision):
+def exponential_roots(first_constant, second_constant, precision = 4):
     """
     Calculates the roots of an exponential function
 
@@ -10,7 +10,7 @@ def exponential_roots(first_constant, second_constant, precision):
         Constant multiple of the original exponential function
     second_constant : int or float
         Base rate of variable of the original exponential function
-    precision : int
+    precision : int, optional
         Maximum number of digits that can appear after the decimal place of the resultant roots
 
     Raises
@@ -36,8 +36,8 @@ def exponential_roots(first_constant, second_constant, precision):
 
     Examples
     --------
-    Calculate the roots of an exponential function with coefficients 2 and 3 (and round roots to four decimal places)
-        >>> roots1 = exponential_roots(2, 3, 4)
+    Calculate the roots of an exponential function with coefficients 2 and 3 (and round roots to six decimal places)
+        >>> roots1 = exponential_roots(2, 3, 6)
         >>> print(roots1)
         [None]
     Calculate the roots of an exponential function with coefficients 157 and -259 (and round roots to ten decimal places)

@@ -1,7 +1,7 @@
 from library.errors.matrices import matrix_of_scalars, level
 from library.errors.scalars import positive_integer
 
-def single_dimension(matrix, scalar):
+def single_dimension(matrix, scalar = 1):
     """
     Extracts a column vector as a row vector from a matrix according to an integer corresponding to the column's position
 
@@ -9,7 +9,7 @@ def single_dimension(matrix, scalar):
     ----------
     matrix : list
         List containing other lists, where each inner list is a row and elements within those inner lists correspond to columns
-    scalar : int
+    scalar : int, optional
         Number corresponding to the column's position
 
     Raises

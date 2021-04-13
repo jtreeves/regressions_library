@@ -4,7 +4,7 @@ from library.errors.scalars import positive_integer
 from .criticals import critical_points
 from .intervals import sign_chart
 
-def inflection_points(equation_type, coefficients, derivative, precision):
+def inflection_points(equation_type, coefficients, derivative, precision = 4):
     """
     Calculates the inflection points of a specific function
 
@@ -16,7 +16,7 @@ def inflection_points(equation_type, coefficients, derivative, precision):
         Coefficients to use to generate the equation to investigate
     derivative : function
         Function of the second derivative to use for generating a list of critical points
-    precision : int
+    precision : int, optional
         Maximum number of digits that can appear after the decimal place of the results
 
     Raises
@@ -47,12 +47,12 @@ def inflection_points(equation_type, coefficients, derivative, precision):
 
     Examples
     --------
-    Calculate the inflection points of a cubic functions with coefficients 1, -15, 63, and -7 (and round the results to four decimal places)
-        >>> points_cubic = inflection_points('cubic', [1, -15, 63, -7], lambda x : 6 * x - 30, 4)
+    Calculate the inflection points of a cubic functions with coefficients 1, -15, 63, and -7
+        >>> points_cubic = inflection_points('cubic', [1, -15, 63, -7], lambda x : 6 * x - 30)
         >>> print(points_cubic)
         [5.0]
-    Calculate the inflection points of a sinusoidal functions with coefficients 2, 3, 5, and 7 (and round the results to four decimal places)
-        >>> points_sinusoidal = inflection_points('sinusoidal', [2, 3, 5, 7], lambda x : -18 * sin(3 * (x - 5)), 4)
+    Calculate the inflection points of a sinusoidal functions with coefficients 2, 3, 5, and 7
+        >>> points_sinusoidal = inflection_points('sinusoidal', [2, 3, 5, 7], lambda x : -18 * sin(3 * (x - 5)))
         >>> print(points_sinusoidal)
         [5, 6.0472, 7.0944, 8.1416, 9.1888, '5 + 1.0472k']
     """

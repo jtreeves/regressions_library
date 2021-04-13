@@ -1,6 +1,6 @@
 from library.errors.scalars import allow_none_scalar, positive_integer
 
-def rounded_value(number, precision):
+def rounded_value(number, precision = 4):
     """
     Rounds a number to a certain decimal place, but returns a non-zero result if the number being rounded is non-zero even if it would round to zero at that level of decimal precision; allows None as a possible input
 
@@ -8,7 +8,7 @@ def rounded_value(number, precision):
     ----------
     number : int or float
         Number to round
-    precision : int
+    precision : int, optional
         Maximum number of digits that can appear after the decimal place of the result
 
     Raises
@@ -58,14 +58,18 @@ def rounded_value(number, precision):
 
     Examples
     --------
-    Round the number 9.2157823956916472 to four decimal places
-        >>> number_normal = rounded_value(9.2157823956916472, 4)
+    Round the number 9.2157823956916472 to six decimal places
+        >>> number_normal = rounded_value(9.2157825956916472, 6)
         >>> print(number_normal)
-        9.2158
-    Round the number -0.00000003 to four decimal places
-        >>> number_abnormal = rounded_value(-0.00000003, 4)
+        9.215783
+    Round the number -0.00000003 to six decimal places
+        >>> number_abnormal = rounded_value(-0.00000003, 6)
         >>> print(number_abnormal)
-        -0.0001
+        -0.000001
+    Round the number 11.725371548561 to four decimal places (without providing a value for the precision argument)
+        >>> round_skip = rounded_value(11.725371548561)
+        >>> print(round_skip)
+        11.7254
     """
     allow_none_scalar(number)
     positive_integer(precision)

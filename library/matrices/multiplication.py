@@ -1,7 +1,7 @@
 from library.errors.scalars import scalar_value
 from library.errors.matrices import matrix_of_scalars, columns_rows
 from library.vectors.multiplication import dot_product
-from .transpose import adjugate
+from .transpose import transposed_matrix
 
 def scalar_product_matrix(matrix, scalar):
     """
@@ -86,7 +86,7 @@ def matrix_product(matrix_one, matrix_two):
 
     See Also
     --------
-    :func:`~library.vectors.multiplication.dot_product`, :func:`~library.matrices.transpose.adjugate`
+    :func:`~library.vectors.multiplication.dot_product`, :func:`~library.matrices.transpose.transposed_matrix`
 
     Notes
     -----
@@ -111,5 +111,5 @@ def matrix_product(matrix_one, matrix_two):
     for m in range(len(matrix_one)):
         result.append([])
         for n in range(len(matrix_two[0])):
-            result[m].append(dot_product(matrix_one[m], adjugate(matrix_two)[n]))
+            result[m].append(dot_product(matrix_one[m], transposed_matrix(matrix_two)[n]))
     return result

@@ -9,7 +9,7 @@ from .intercepts import intercept_points
 from .extrema import extrema_points
 from .inflections import inflection_points
 
-def key_coordinates(equation_type, coefficients, equation, first_derivative, second_derivative, precision):
+def key_coordinates(equation_type, coefficients, equation, first_derivative, second_derivative, precision = 4):
     """
     Calculates the key points of a specific function
 
@@ -25,7 +25,7 @@ def key_coordinates(equation_type, coefficients, equation, first_derivative, sec
         Function of the first derivative to use for generating a list of critical points
     second_derivative : function
         Function of the second derivative to use for generating a list of critical points
-    precision : int
+    precision : int, optional
         Maximum number of digits that can appear after the decimal place of the results
 
     Raises
@@ -64,8 +64,8 @@ def key_coordinates(equation_type, coefficients, equation, first_derivative, sec
 
     Examples
     --------
-    Calculate the key points of a cubic function with coefficients 1, -15, 63, and -7 (and round the results to four decimal places)
-        >>> points_cubic = key_coordinates('cubic', [1, -15, 63, -7], lambda x : x**3 - 15 * x**2 + 63 * x - 7, lambda x : 3 * x**2 - 30 * x + 63, lambda x : 6 * x - 30, 4)
+    Calculate the key points of a cubic function with coefficients 1, -15, 63, and -7
+        >>> points_cubic = key_coordinates('cubic', [1, -15, 63, -7], lambda x : x**3 - 15 * x**2 + 63 * x - 7, lambda x : 3 * x**2 - 30 * x + 63, lambda x : 6 * x - 30)
         >>> print(points_cubic['roots'])
         [[0.1142, 0]]
         >>> print(points_cubic['maxima'])
@@ -74,8 +74,8 @@ def key_coordinates(equation_type, coefficients, equation, first_derivative, sec
         [[7.0, 42.0]]
         >>> print(points_cubic['inflections'])
         [[5.0, 58.0]]
-    Calculate the key points of a sinusoidal function with coefficients 2, 3, 5, and 1 (and round the results to four decimal places)
-        >>> points_sinusoidal = key_coordinates('sinusoidal', [2, 3, 5, 1], lambda x : 2 * sin(3 * (x - 5)) + 1, lambda x : 6 * cos(3 * (x - 5)), lambda x : -18 * sin(3 * (x - 5)), 4)
+    Calculate the key points of a sinusoidal function with coefficients 2, 3, 5, and 1
+        >>> points_sinusoidal = key_coordinates('sinusoidal', [2, 3, 5, 1], lambda x : 2 * sin(3 * (x - 5)) + 1, lambda x : 6 * cos(3 * (x - 5)), lambda x : -18 * sin(3 * (x - 5)))
         >>> print(points_sinusoidal['roots'])
         [[4.8255, 0], [6.2217, 0], [6.9199, 0], [8.3161, 0], [9.0143, 0], [10.4105, 0], ['4.8255 + 2.0944k', 0], ['6.2217 + 2.0944k', 0]]
         >>> print(points_sinusoidal['maxima'])
@@ -159,7 +159,7 @@ def key_coordinates(equation_type, coefficients, equation, first_derivative, sec
     }
     return result
 
-def points_within_range(coordinates, minimum, maximum, interval, precision):
+def points_within_range(coordinates, minimum, maximum, interval, precision = 4):
     allow_none_matrix(coordinates, 'first')
     compare_scalars(minimum, maximum, 'second', 'third')
     scalar_value(interval, 'fourth')

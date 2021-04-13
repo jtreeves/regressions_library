@@ -26,7 +26,7 @@ def matrix_of_minors(matrix):
 
     See Also
     --------
-    :func:`~library.matrices.cofactors.matrix_of_cofactors`, :func:`~library.matrices.transpose.adjugate`, :func:`~library.matrices.determinant.linear_determinant`, :func:`~library.matrices.inverse.inverse_matrix`
+    :func:`~library.matrices.cofactors.matrix_of_cofactors`, :func:`~library.matrices.transpose.transposed_matrix`, :func:`~library.matrices.determinant.linear_determinant`, :func:`~library.matrices.inverse.inverse_matrix`
 
     Notes
     -----
