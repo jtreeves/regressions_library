@@ -1,22 +1,29 @@
-from library.errors.vectors import multitype_vector
+from library.errors.analyses import select_equations
+from library.errors.vectors import vector_of_scalars
+from library.errors.scalars import positive_integer
+from .intervals import sign_chart
 
-def minima_points(intervals):
+def minima_points(equation_type, coefficients, precision = 4):
     """
     Calculates the minima of a specific function
 
     Parameters
     ----------
-    intervals : list
-        Array containing the sign chart of the specific function's first derivative
+    equation_type : str
+        Name of the type of function for which the minima must be determined (e.g., 'linear', 'quadratic')
+    coefficients : list
+        Coefficients to use to generate the equation to investigate
+    precision : int, default=4
+        Maximum number of digits that can appear after the decimal place of the results
 
     Raises
     ------
-    TypeError
-        Argument must be a 1-dimensional list
     ValueError
-        First element of argument must be either 'constant', 'positive', or 'negative'
+        First argument must be either 'linear', 'quadratic', 'cubic', 'hyperbolic', 'exponential', 'logarithmic', 'logistic', or 'sinusoidal'
     TypeError
-        Second element of argument must be an integer or a float
+        Second argument must be a 1-dimensional list containing elements that are integers or floats
+    ValueError
+        Last argument must be a positive integer
 
     Returns
     -------
@@ -36,16 +43,19 @@ def minima_points(intervals):
     Examples
     --------
     Calculate the minima of a cubic function with coefficients 1, -15, 63, and -7
-        >>> points_cubic = minima_points(['positive', 3.0, 'negative', 7.0, 'positive'])
+        >>> points_cubic = minima_points('cubic', [1, -15, 63, -7])
         >>> print(points_cubic)
         [7.0]
     Calculate the minima of a sinusoidal function with coefficients 2, 3, 5, and 7
-        >>> points_sinusoidal = minima_points(['positive', 5.5236, 'negative', 6.5708, 'positive', 7.618, 'negative', 8.6652, 'positive', 9.7124, 'negative', '1.0472k'])
+        >>> points_sinusoidal = minima_points('sinusoidal', [2, 3, 5, 7])
         >>> print(points_sinusoidal)
         [6.5708, 8.6652, '1.0472k']
     """
-    multitype_vector(intervals)
+    select_equations(equation_type)
+    vector_of_scalars(coefficients, 'second')
+    positive_integer(precision)
     result = []
+    intervals = sign_chart(equation_type, coefficients, 1, precision)
     for i in range(len(intervals)):
         try:
             if intervals[i] == 'negative' and intervals[i + 2] == 'positive':

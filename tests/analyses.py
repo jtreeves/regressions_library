@@ -373,101 +373,101 @@ class TestIntercepts(unittest.TestCase):
 
 class TestMaxima(unittest.TestCase):
     def test_linear_maxima(self):
-        linear_maxima = maxima_points(first_linear_intervals)
+        linear_maxima = maxima_points('linear', coefficients[:2])
         self.assertEqual(linear_maxima, [None])
     
     def test_quadratic_maxima(self):
-        quadratic_maxima = maxima_points(first_quadratic_intervals)
+        quadratic_maxima = maxima_points('quadratic', coefficients[:3])
         self.assertEqual(quadratic_maxima, [None])
     
     def test_cubic_maxima(self):
-        cubic_maxima = maxima_points(first_cubic_intervals)
+        cubic_maxima = maxima_points('cubic', coefficients[:4])
         self.assertEqual(cubic_maxima, [None])
     
     def test_hyperbolic_maxima(self):
-        hyperbolic_maxima = maxima_points(first_hyperbolic_intervals)
+        hyperbolic_maxima = maxima_points('hyperbolic', coefficients[:2])
         self.assertEqual(hyperbolic_maxima, [None])
     
     def test_exponential_maxima(self):
-        exponential_maxima = maxima_points(first_exponential_intervals)
+        exponential_maxima = maxima_points('exponential', coefficients[:2])
         self.assertEqual(exponential_maxima, [None])
     
     def test_logarithmic_maxima(self):
-        logarithmic_maxima = maxima_points(first_logarithmic_intervals)
+        logarithmic_maxima = maxima_points('logarithmic', coefficients[:2])
         self.assertEqual(logarithmic_maxima, [None])
     
     def test_logistic_maxima(self):
-        logistic_maxima = maxima_points(first_logistic_intervals)
+        logistic_maxima = maxima_points('logistic', coefficients[:3])
         self.assertEqual(logistic_maxima, [None])
     
     def test_sinusoidal_maxima(self):
-        sinusoidal_maxima = maxima_points(first_sinusoidal_intervals)
+        sinusoidal_maxima = maxima_points('sinusoidal', coefficients[:4])
         self.assertEqual(sinusoidal_maxima, [5.5236, 7.618, 9.7124])
 
 class TestMinima(unittest.TestCase):
     def test_linear_minima(self):
-        linear_minima = minima_points(first_linear_intervals)
+        linear_minima = minima_points('linear', coefficients[:2])
         self.assertEqual(linear_minima, [None])
     
     def test_quadratic_minima(self):
-        quadratic_minima = minima_points(first_quadratic_intervals)
+        quadratic_minima = minima_points('quadratic', coefficients[:3])
         self.assertEqual(quadratic_minima, [-0.75])
     
     def test_cubic_minima(self):
-        cubic_minima = minima_points(first_cubic_intervals)
+        cubic_minima = minima_points('cubic', coefficients[:4])
         self.assertEqual(cubic_minima, [None])
     
     def test_hyperbolic_minima(self):
-        hyperbolic_minima = minima_points(first_hyperbolic_intervals)
+        hyperbolic_minima = minima_points('hyperbolic', coefficients[:2])
         self.assertEqual(hyperbolic_minima, [None])
     
     def test_exponential_minima(self):
-        exponential_minima = minima_points(first_exponential_intervals)
+        exponential_minima = minima_points('exponential', coefficients[:2])
         self.assertEqual(exponential_minima, [None])
     
     def test_logarithmic_minima(self):
-        logarithmic_minima = minima_points(first_logarithmic_intervals)
+        logarithmic_minima = minima_points('logarithmic', coefficients[:2])
         self.assertEqual(logarithmic_minima, [None])
     
     def test_logistic_minima(self):
-        logistic_minima = minima_points(first_logistic_intervals)
+        logistic_minima = minima_points('logistic', coefficients[:3])
         self.assertEqual(logistic_minima, [None])
     
     def test_sinusoidal_minima(self):
-        sinusoidal_minima = minima_points(first_sinusoidal_intervals)
+        sinusoidal_minima = minima_points('sinusoidal', coefficients[:4])
         self.assertEqual(sinusoidal_minima, [6.5708, 8.6652])
 
 class TestExtrema(unittest.TestCase):
     def test_linear_extrema(self):
-        linear_extrema = extrema_points('linear', coefficients[:2], linear_derivatives_object['first']['evaluation'])
+        linear_extrema = extrema_points('linear', coefficients[:2])
         self.assertEqual(linear_extrema, {'maxima': [None], 'minima': [None]})
     
     def test_quadratic_extrema(self):
-        quadratic_extrema = extrema_points('quadratic', coefficients[:3], quadratic_derivatives_object['first']['evaluation'])
+        quadratic_extrema = extrema_points('quadratic', coefficients[:3])
         self.assertEqual(quadratic_extrema, {'maxima': [None], 'minima': [-0.75]})
     
     def test_cubic_extrema(self):
-        cubic_extrema = extrema_points('cubic', coefficients[:4], cubic_derivatives_object['first']['evaluation'])
+        cubic_extrema = extrema_points('cubic', coefficients[:4])
         self.assertEqual(cubic_extrema, {'maxima': [None], 'minima': [None]})
     
     def test_hyperbolic_extrema(self):
-        hyperbolic_extrema = extrema_points('hyperbolic', coefficients[:2], hyperbolic_derivatives_object['first']['evaluation'])
+        hyperbolic_extrema = extrema_points('hyperbolic', coefficients[:2])
         self.assertEqual(hyperbolic_extrema, {'maxima': [None], 'minima': [None]})
     
     def test_exponential_extrema(self):
-        exponential_extrema = extrema_points('exponential', coefficients[:2], exponential_derivatives_object['first']['evaluation'])
+        exponential_extrema = extrema_points('exponential', coefficients[:2])
         self.assertEqual(exponential_extrema, {'maxima': [None], 'minima': [None]})
     
     def test_logarithmic_extrema(self):
-        logarithmic_extrema = extrema_points('logarithmic', coefficients[:2], logarithmic_derivatives_object['first']['evaluation'])
+        logarithmic_extrema = extrema_points('logarithmic', coefficients[:2])
         self.assertEqual(logarithmic_extrema, {'maxima': [None], 'minima': [None]})
     
     def test_logistic_extrema(self):
-        logistic_extrema = extrema_points('logistic', coefficients[:3], logistic_derivatives_object['first']['evaluation'])
+        logistic_extrema = extrema_points('logistic', coefficients[:3])
         self.assertEqual(logistic_extrema, {'maxima': [None], 'minima': [None]})
     
     def test_sinusoidal_extrema(self):
-        sinusoidal_extrema = extrema_points('sinusoidal', coefficients[:4], sinusoidal_derivatives_object['first']['evaluation'])
+        sinusoidal_extrema = extrema_points('sinusoidal', coefficients[:4])
         self.assertEqual(sinusoidal_extrema, {'maxima': [5.5236, 7.618, 9.7124, '1.0472k'], 'minima': [6.5708, 8.6652, '1.0472k']})
 
 class TestInflections(unittest.TestCase):
@@ -618,4 +618,4 @@ class TestAverages(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 139 tests in 0.018s ---------- OK ---------- #
+# ---------- Ran 139 tests in 0.019s ---------- OK ---------- #

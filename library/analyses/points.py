@@ -92,7 +92,7 @@ def key_coordinates(equation_type, coefficients, equation, first_derivative, sec
     callable_function(second_derivative, 'fifth')
     positive_integer(precision)
     intercepts_inputs = intercept_points(equation_type, coefficients, precision)
-    extrema_inputs = extrema_points(equation_type, coefficients, first_derivative, precision)
+    extrema_inputs = extrema_points(equation_type, coefficients, precision)
     maxima_inputs = extrema_inputs['maxima']
     minima_inputs = extrema_inputs['minima']
     inflections_inputs = inflection_points(equation_type, coefficients, second_derivative, precision)
