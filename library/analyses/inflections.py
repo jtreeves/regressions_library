@@ -1,10 +1,17 @@
-from library.errors.analyses import select_equations, callable_function
+from library.errors.analyses import select_equations
 from library.errors.vectors import vector_of_scalars
 from library.errors.scalars import positive_integer
-from .criticals import critical_points
+from .derivatives.linear import linear_derivatives
+from .derivatives.quadratic import quadratic_derivatives
+from .derivatives.cubic import cubic_derivatives
+from .derivatives.hyperbolic import hyperbolic_derivatives
+from .derivatives.exponential import exponential_derivatives
+from .derivatives.logarithmic import logarithmic_derivatives
+from .derivatives.logistic import logistic_derivatives
+from .derivatives.sinusoidal import sinusoidal_derivatives
 from .intervals import sign_chart
 
-def inflection_points(equation_type, coefficients, derivative, precision = 4):
+def inflection_points(equation_type, coefficients, precision = 4):
     """
     Calculates the inflection points of a specific function
 
@@ -14,8 +21,6 @@ def inflection_points(equation_type, coefficients, derivative, precision = 4):
         Name of the type of function for which inflections must be determined (e.g., 'linear', 'quadratic')
     coefficients : list
         Coefficients to use to generate the equation to investigate
-    derivative : function
-        Function of the second derivative to use for generating a list of critical points
     precision : int, default=4
         Maximum number of digits that can appear after the decimal place of the results
 
@@ -25,8 +30,6 @@ def inflection_points(equation_type, coefficients, derivative, precision = 4):
         First argument must be either 'linear', 'quadratic', 'cubic', 'hyperbolic', 'exponential', 'logarithmic', 'logistic', or 'sinusoidal'
     TypeError
         Second argument must be a 1-dimensional list containing elements that are integers or floats
-    TypeError
-        Third argument must be a callable function
     ValueError
         Last argument must be a positive integer
 
@@ -48,21 +51,36 @@ def inflection_points(equation_type, coefficients, derivative, precision = 4):
     Examples
     --------
     Calculate the inflection points of a cubic functions with coefficients 1, -15, 63, and -7
-        >>> points_cubic = inflection_points('cubic', [1, -15, 63, -7], lambda x : 6 * x - 30)
+        >>> points_cubic = inflection_points('cubic', [1, -15, 63, -7])
         >>> print(points_cubic)
         [5.0]
     Calculate the inflection points of a sinusoidal functions with coefficients 2, 3, 5, and 7
-        >>> points_sinusoidal = inflection_points('sinusoidal', [2, 3, 5, 7], lambda x : -18 * sin(3 * (x - 5)))
+        >>> points_sinusoidal = inflection_points('sinusoidal', [2, 3, 5, 7])
         >>> print(points_sinusoidal)
         [5, 6.0472, 7.0944, 8.1416, 9.1888, '5 + 1.0472k']
     """
     select_equations(equation_type)
     vector_of_scalars(coefficients, 'second')
-    callable_function(derivative, 'third')
     positive_integer(precision)
-    points = critical_points(equation_type, coefficients, 2, precision)
     intervals_set = sign_chart(equation_type, coefficients, 2, precision)
     result = []
+    derivative = lambda x : x
+    if equation_type == 'linear':
+        derivative = linear_derivatives(*coefficients)['second']['evaluation']
+    elif equation_type == 'quadratic':
+        derivative = quadratic_derivatives(*coefficients)['second']['evaluation']
+    elif equation_type == 'cubic':
+        derivative = cubic_derivatives(*coefficients)['second']['evaluation']
+    elif equation_type == 'hyperbolic':
+        derivative = hyperbolic_derivatives(*coefficients)['second']['evaluation']
+    elif equation_type == 'exponential':
+        derivative = exponential_derivatives(*coefficients)['second']['evaluation']
+    elif equation_type == 'logarithmic':
+        derivative = logarithmic_derivatives(*coefficients)['second']['evaluation']
+    elif equation_type == 'logistic':
+        derivative = logistic_derivatives(*coefficients)['second']['evaluation']
+    elif equation_type == 'sinusoidal':
+        derivative = sinusoidal_derivatives(*coefficients)['second']['evaluation']
     for i in range(len(intervals_set)):
         try:
             if (intervals_set[i] == 'positive' and intervals_set[i + 2] == 'negative') or (intervals_set[i] == 'negative' and intervals_set[i + 2] == 'positive'):
@@ -76,5 +94,5 @@ def inflection_points(equation_type, coefficients, derivative, precision = 4):
     if len(result) == 0:
         result.append(None)
     if equation_type == 'sinusoidal':
-        result.append(points[-1])
+        result.append(intervals_set[-1])
     return result

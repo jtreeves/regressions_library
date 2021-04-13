@@ -1,15 +1,23 @@
-from library.errors.analyses import select_equations, callable_function
+from library.errors.analyses import select_equations
 from library.errors.scalars import scalar_value, compare_scalars, positive_integer
 from library.errors.vectors import vector_of_scalars
 from library.errors.matrices import allow_none_matrix
 from library.statistics.rounding import rounded_value
 from library.statistics.sort import sorted_list
 from library.vectors.unify import unite_vectors
+from .equations.linear import linear_equation
+from .equations.quadratic import quadratic_equation
+from .equations.cubic import cubic_equation
+from .equations.hyperbolic import hyperbolic_equation
+from .equations.exponential import exponential_equation
+from .equations.logarithmic import logarithmic_equation
+from .equations.logistic import logistic_equation
+from .equations.sinusoidal import sinusoidal_equation
 from .intercepts import intercept_points
 from .extrema import extrema_points
 from .inflections import inflection_points
 
-def key_coordinates(equation_type, coefficients, equation, first_derivative, second_derivative, precision = 4):
+def key_coordinates(equation_type, coefficients, precision = 4):
     """
     Calculates the key points of a specific function
 
@@ -19,12 +27,6 @@ def key_coordinates(equation_type, coefficients, equation, first_derivative, sec
         Name of the type of function for which key points must be determined (e.g., 'linear', 'quadratic')
     coefficients : list
         Coefficients to use to generate the equation to investigate
-    equation : function
-        Function to use for evaluating the y-coordinates of each point
-    first_derivative : function
-        Function of the first derivative to use for generating a list of critical points
-    second_derivative : function
-        Function of the second derivative to use for generating a list of critical points
     precision : int, default=4
         Maximum number of digits that can appear after the decimal place of the results
 
@@ -34,8 +36,6 @@ def key_coordinates(equation_type, coefficients, equation, first_derivative, sec
         First argument must be either 'linear', 'quadratic', 'cubic', 'hyperbolic', 'exponential', 'logarithmic', 'logistic', or 'sinusoidal'
     TypeError
         Second argument must be a 1-dimensional list containing elements that are integers or floats
-    TypeError
-        Third, fourth, and fifth arguments must be callable functions
     ValueError
         Last argument must be a positive integer
 
@@ -65,7 +65,7 @@ def key_coordinates(equation_type, coefficients, equation, first_derivative, sec
     Examples
     --------
     Calculate the key points of a cubic function with coefficients 1, -15, 63, and -7
-        >>> points_cubic = key_coordinates('cubic', [1, -15, 63, -7], lambda x : x**3 - 15 * x**2 + 63 * x - 7, lambda x : 3 * x**2 - 30 * x + 63, lambda x : 6 * x - 30)
+        >>> points_cubic = key_coordinates('cubic', [1, -15, 63, -7])
         >>> print(points_cubic['roots'])
         [[0.1142, 0]]
         >>> print(points_cubic['maxima'])
@@ -75,7 +75,7 @@ def key_coordinates(equation_type, coefficients, equation, first_derivative, sec
         >>> print(points_cubic['inflections'])
         [[5.0, 58.0]]
     Calculate the key points of a sinusoidal function with coefficients 2, 3, 5, and 1
-        >>> points_sinusoidal = key_coordinates('sinusoidal', [2, 3, 5, 1], lambda x : 2 * sin(3 * (x - 5)) + 1, lambda x : 6 * cos(3 * (x - 5)), lambda x : -18 * sin(3 * (x - 5)))
+        >>> points_sinusoidal = key_coordinates('sinusoidal', [2, 3, 5, 1])
         >>> print(points_sinusoidal['roots'])
         [[4.8255, 0], [6.2217, 0], [6.9199, 0], [8.3161, 0], [9.0143, 0], [10.4105, 0], ['4.8255 + 2.0944k', 0], ['6.2217 + 2.0944k', 0]]
         >>> print(points_sinusoidal['maxima'])
@@ -87,15 +87,29 @@ def key_coordinates(equation_type, coefficients, equation, first_derivative, sec
     """
     select_equations(equation_type)
     vector_of_scalars(coefficients, 'second')
-    callable_function(equation, 'third')
-    callable_function(first_derivative, 'fourth')
-    callable_function(second_derivative, 'fifth')
     positive_integer(precision)
     intercepts_inputs = intercept_points(equation_type, coefficients, precision)
+    equation = lambda x : x
+    if equation_type == 'linear':
+        equation = linear_equation(*coefficients)
+    elif equation_type == 'quadratic':
+        equation = quadratic_equation(*coefficients)
+    elif equation_type == 'cubic':
+        equation = cubic_equation(*coefficients)
+    elif equation_type == 'hyperbolic':
+        equation = hyperbolic_equation(*coefficients)
+    elif equation_type == 'exponential':
+        equation = exponential_equation(*coefficients)
+    elif equation_type == 'logarithmic':
+        equation = logarithmic_equation(*coefficients)
+    elif equation_type == 'logistic':
+        equation = logistic_equation(*coefficients)
+    elif equation_type == 'sinusoidal':
+        equation = sinusoidal_equation(*coefficients)
     extrema_inputs = extrema_points(equation_type, coefficients, precision)
     maxima_inputs = extrema_inputs['maxima']
     minima_inputs = extrema_inputs['minima']
-    inflections_inputs = inflection_points(equation_type, coefficients, second_derivative, precision)
+    inflections_inputs = inflection_points(equation_type, coefficients, precision)
     intercepts_outputs = []
     maxima_outputs = []
     minima_outputs = []

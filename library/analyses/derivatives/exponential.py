@@ -52,6 +52,8 @@ def exponential_derivatives(first_constant, second_constant):
         142538.25837404432
     """
     two_scalars(first_constant, second_constant)
+    if second_constant < 0:
+        second_constant = 0.0001
     first_constants = [first_constant * log(second_constant), second_constant]
     def first_derivative(variable):
         evaluation = first_constants[0] * first_constants[1]**variable
@@ -60,6 +62,8 @@ def exponential_derivatives(first_constant, second_constant):
         'constants': first_constants,
         'evaluation': first_derivative
     }
+    if first_constants[1] < 0:
+        first_constants[1] = 0.0001
     second_constants = [first_constants[0] * log(first_constants[1]), first_constants[1]]
     def second_derivative(variable):
         evaluation = second_constants[0] * second_constants[1]**variable

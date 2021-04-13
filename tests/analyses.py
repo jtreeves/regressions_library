@@ -472,68 +472,68 @@ class TestExtrema(unittest.TestCase):
 
 class TestInflections(unittest.TestCase):
     def test_linear_inflections(self):
-        linear_inflections = inflection_points('linear', coefficients[:2], linear_derivatives_object['second']['evaluation'])
+        linear_inflections = inflection_points('linear', coefficients[:2])
         self.assertEqual(linear_inflections, [None])
     
     def test_quadratic_inflections(self):
-        quadratic_inflections = inflection_points('quadratic', coefficients[:3], quadratic_derivatives_object['second']['evaluation'])
+        quadratic_inflections = inflection_points('quadratic', coefficients[:3])
         self.assertEqual(quadratic_inflections, [None])
     
     def test_cubic_inflections(self):
-        cubic_inflections = inflection_points('cubic', coefficients, cubic_derivatives_object['second']['evaluation'])
+        cubic_inflections = inflection_points('cubic', coefficients[:4])
         self.assertEqual(cubic_inflections, [-0.5])
     
     def test_hyperbolic_inflections(self):
-        hyperbolic_inflections = inflection_points('hyperbolic', coefficients[:2], hyperbolic_derivatives_object['second']['evaluation'])
+        hyperbolic_inflections = inflection_points('hyperbolic', coefficients[:2])
         self.assertEqual(hyperbolic_inflections, [None])
     
     def test_exponential_inflections(self):
-        exponential_inflections = inflection_points('exponential', coefficients[:2], exponential_derivatives_object['second']['evaluation'])
+        exponential_inflections = inflection_points('exponential', coefficients[:2])
         self.assertEqual(exponential_inflections, [None])
     
     def test_logarithmic_inflections(self):
-        logarithmic_inflections = inflection_points('logarithmic', coefficients[:2], logarithmic_derivatives_object['second']['evaluation'])
+        logarithmic_inflections = inflection_points('logarithmic', coefficients[:2])
         self.assertEqual(logarithmic_inflections, [None])
     
     def test_logistic_inflections(self):
-        logistic_inflections = inflection_points('logistic', coefficients[:3], logistic_derivatives_object['second']['evaluation'])
+        logistic_inflections = inflection_points('logistic', coefficients[:3])
         self.assertEqual(logistic_inflections, [5])
     
     def test_sinusoidal_inflections(self):
-        sinusoidal_inflections = inflection_points('sinusoidal', coefficients[:4], sinusoidal_derivatives_object['second']['evaluation'])
+        sinusoidal_inflections = inflection_points('sinusoidal', coefficients[:4])
         self.assertEqual(sinusoidal_inflections, [5.0, 6.0472, 7.0944, 8.1416, 9.1888, '5.0 + 1.0472k'])
 
 class TestKeyPoints(unittest.TestCase):
     def test_linear_key_points(self):
-        linear_key_points = key_coordinates('linear', coefficients[:2], linear_function, linear_derivatives_object['first']['evaluation'], linear_derivatives_object['second']['evaluation'])
+        linear_key_points = key_coordinates('linear', coefficients[:2])
         self.assertEqual(linear_key_points, {'roots': [[-1.5, 0]], 'maxima': [None], 'minima': [None], 'inflections': [None]})
     
     def test_quadratic_key_points(self):
-        quadratic_key_points = key_coordinates('quadratic', coefficients[:3], quadratic_function, quadratic_derivatives_object['first']['evaluation'], quadratic_derivatives_object['second']['evaluation'])
+        quadratic_key_points = key_coordinates('quadratic', coefficients[:3])
         self.assertEqual(quadratic_key_points, {'roots': [None], 'maxima': [None], 'minima': [[-0.75, 3.875]], 'inflections': [None]})
     
     def test_cubic_key_points(self):
-        cubic_key_points = key_coordinates('cubic', coefficients, cubic_function, cubic_derivatives_object['first']['evaluation'], cubic_derivatives_object['second']['evaluation'])
+        cubic_key_points = key_coordinates('cubic', coefficients[:4])
         self.assertEqual(cubic_key_points, {'roots': [[-1.4455, 0]], 'maxima': [None], 'minima': [None], 'inflections': [[-0.5, 5.0]]})
     
     def test_hyperbolic_key_points(self):
-        hyperbolic_key_points = key_coordinates('hyperbolic', coefficients[:2], hyperbolic_function, hyperbolic_derivatives_object['first']['evaluation'], hyperbolic_derivatives_object['second']['evaluation'])
+        hyperbolic_key_points = key_coordinates('hyperbolic', coefficients[:2])
         self.assertEqual(hyperbolic_key_points, {'roots': [[-0.6667, 0]], 'maxima': [None], 'minima': [None], 'inflections': [None]})
     
     def test_exponential_key_points(self):
-        exponential_key_points = key_coordinates('exponential', coefficients[:2], exponential_function, exponential_derivatives_object['first']['evaluation'], exponential_derivatives_object['second']['evaluation'])
+        exponential_key_points = key_coordinates('exponential', coefficients[:2])
         self.assertEqual(exponential_key_points, {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [None]})
     
     def test_logarithmic_key_points(self):
-        logarithmic_key_points = key_coordinates('logarithmic', coefficients[:2], logarithmic_function, logarithmic_derivatives_object['first']['evaluation'], logarithmic_derivatives_object['second']['evaluation'])
+        logarithmic_key_points = key_coordinates('logarithmic', coefficients[:2])
         self.assertEqual(logarithmic_key_points, {'roots': [[0.2231, 0]], 'maxima': [None], 'minima': [None], 'inflections': [None]})
     
     def test_logistic_key_points(self):
-        logistic_key_points = key_coordinates('logistic', coefficients[:3], logistic_function, logistic_derivatives_object['first']['evaluation'], logistic_derivatives_object['second']['evaluation'])
+        logistic_key_points = key_coordinates('logistic', coefficients[:3])
         self.assertEqual(logistic_key_points, {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [[5, 1.0]]})
     
     def test_sinusoidal_key_points(self):
-        sinusoidal_key_points = key_coordinates('sinusoidal', coefficients, sinusoidal_function, sinusoidal_derivatives_object['first']['evaluation'], sinusoidal_derivatives_object['second']['evaluation'])
+        sinusoidal_key_points = key_coordinates('sinusoidal', coefficients[:4])
         self.assertEqual(sinusoidal_key_points, {'roots': [None], 'maxima': [[5.5236, 9.0], [7.618, 9.0], [9.7124, 9.0], ['5.5236 + 2.0944k', 9.0]], 'minima': [[6.5708, 5.0], [8.6652, 5.0], ['6.5708 + 2.0944k', 5.0]], 'inflections': [[5.0, 7.0], [6.0472, 7.0], [7.0944, 7.0], [8.1416, 7.0], [9.1888, 7.0001], ['5.0 + 1.0472k', 7.0]]})
 
 class TestPointsWithinRange(unittest.TestCase):
@@ -618,4 +618,4 @@ class TestAverages(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 139 tests in 0.019s ---------- OK ---------- #
+# ---------- Ran 139 tests in 0.018s ---------- OK ---------- #

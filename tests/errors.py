@@ -535,4 +535,4 @@ class TestSelectEquations(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 90 tests in 0.010s ---------- OK ---------- #
+# ---------- Ran 90 tests in 0.008s ---------- OK ---------- #
