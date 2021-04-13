@@ -5,12 +5,12 @@ def matrix_of_scalars(matrix, position):
         identifier = argument
     else:
         identifier = position + ' ' + argument
-    if not isinstance(matrix, (list, tuple)) or not isinstance(matrix[0], (list, tuple)) or isinstance(matrix[0][0], (list, tuple)):
-        raise TypeError(f'{identifier.capitalize()} must be a 2-dimensional list or tuple')
+    if not isinstance(matrix, list) or not isinstance(matrix[0], list) or isinstance(matrix[0][0], list):
+        raise TypeError(f'{identifier.capitalize()} must be a 2-dimensional list')
     if not isinstance(matrix[0][0], (int, float)):
         raise TypeError(f'Elements nested within {identifier} must be integers or floats')
     else:
-        return f'{identifier.capitalize()} is a 2-dimensional list or tuple containing elements that are integers or floats'
+        return f'{identifier.capitalize()} is a 2-dimensional list containing elements that are integers or floats'
 
 def square_matrix(matrix):
     matrix_of_scalars(matrix, 'first')
