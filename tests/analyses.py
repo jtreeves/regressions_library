@@ -171,23 +171,23 @@ class TestIntegrals(unittest.TestCase):
     def test_sinusoidal_integral_object(self):
         self.assertEqual(sinusoidal_integral_object['constants'], [-0.6666666666666666, 3, 5, 7])
 
-first_linear_critical_points = critical_points('linear', 1, coefficients[:2])
-first_quadratic_critical_points = critical_points('quadratic', 1, coefficients[:3])
-first_cubic_critical_points = critical_points('cubic', 1, coefficients)
-first_hyperbolic_critical_points = critical_points('hyperbolic', 1, coefficients[:2])
-first_exponential_critical_points = critical_points('exponential', 1, coefficients[:2])
-first_logarithmic_critical_points = critical_points('logarithmic', 1, coefficients[:2])
-first_logistic_critical_points = critical_points('logistic', 1, coefficients[:3])
-first_sinusoidal_critical_points = critical_points('sinusoidal', 1, coefficients)
+first_linear_critical_points = critical_points('linear', coefficients[:2], 1)
+first_quadratic_critical_points = critical_points('quadratic', coefficients[:3], 1)
+first_cubic_critical_points = critical_points('cubic', coefficients[:4], 1)
+first_hyperbolic_critical_points = critical_points('hyperbolic', coefficients[:2], 1)
+first_exponential_critical_points = critical_points('exponential', coefficients[:2], 1)
+first_logarithmic_critical_points = critical_points('logarithmic', coefficients[:2], 1)
+first_logistic_critical_points = critical_points('logistic', coefficients[:3], 1)
+first_sinusoidal_critical_points = critical_points('sinusoidal', coefficients[:4], 1)
 
-second_linear_critical_points = critical_points('linear', 2, coefficients[:2])
-second_quadratic_critical_points = critical_points('quadratic', 2, coefficients[:3])
-second_cubic_critical_points = critical_points('cubic', 2, coefficients)
-second_hyperbolic_critical_points = critical_points('hyperbolic', 2, coefficients[:2])
-second_exponential_critical_points = critical_points('exponential', 2, coefficients[:2])
-second_logarithmic_critical_points = critical_points('logarithmic', 2, coefficients[:2])
-second_logistic_critical_points = critical_points('logistic', 2, coefficients[:3])
-second_sinusoidal_critical_points = critical_points('sinusoidal', 2, coefficients)
+second_linear_critical_points = critical_points('linear', coefficients[:2], 2)
+second_quadratic_critical_points = critical_points('quadratic', coefficients[:3], 2)
+second_cubic_critical_points = critical_points('cubic', coefficients[:4], 2)
+second_hyperbolic_critical_points = critical_points('hyperbolic', coefficients[:2], 2)
+second_exponential_critical_points = critical_points('exponential', coefficients[:2], 2)
+second_logarithmic_critical_points = critical_points('logarithmic', coefficients[:2], 2)
+second_logistic_critical_points = critical_points('logistic', coefficients[:3], 2)
+second_sinusoidal_critical_points = critical_points('sinusoidal', coefficients[:4], 2)
 
 class TestCriticalPoints(unittest.TestCase):
     def test_first_linear_critical_points(self):
@@ -500,7 +500,7 @@ class TestInflections(unittest.TestCase):
         self.assertEqual(logistic_inflections, [5])
     
     def test_sinusoidal_inflections(self):
-        sinusoidal_inflections = inflection_points('sinusoidal', coefficients[:3], sinusoidal_derivatives_object['second']['evaluation'])
+        sinusoidal_inflections = inflection_points('sinusoidal', coefficients[:4], sinusoidal_derivatives_object['second']['evaluation'])
         self.assertEqual(sinusoidal_inflections, [5.0, 6.0472, 7.0944, 8.1416, 9.1888, '5.0 + 1.0472k'])
 
 class TestKeyPoints(unittest.TestCase):
@@ -618,4 +618,4 @@ class TestAverages(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 139 tests in 0.015s ---------- OK ---------- #
+# ---------- Ran 139 tests in 0.018s ---------- OK ---------- #

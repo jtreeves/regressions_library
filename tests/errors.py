@@ -127,27 +127,27 @@ class TestPositiveInteger(unittest.TestCase):
 class TestAllowNoneScalar(unittest.TestCase):
     def test_none_scalar_none(self):
         none_scalar_none = allow_none_scalar(none_scalar)
-        self.assertEqual(none_scalar_none, 'First argument is an integer, a float, or None')
+        self.assertEqual(none_scalar_none, 'Argument is an integer, a float, or None')
     
     def test_none_scalar_integer(self):
         none_scalar_integer = allow_none_scalar(good_integer)
-        self.assertEqual(none_scalar_integer, 'First argument is an integer, a float, or None')
+        self.assertEqual(none_scalar_integer, 'Argument is an integer, a float, or None')
     
     def test_none_scalar_float(self):
         none_scalar_float = allow_none_scalar(good_float)
-        self.assertEqual(none_scalar_float, 'First argument is an integer, a float, or None')
+        self.assertEqual(none_scalar_float, 'Argument is an integer, a float, or None')
     
     def test_none_scalar_string_raises(self):
         with self.assertRaises(Exception) as context:
             allow_none_scalar(bad_scalar)
         self.assertEqual(type(context.exception), TypeError)
-        self.assertEqual(str(context.exception), 'First argument must be an integer, a float, or None')
+        self.assertEqual(str(context.exception), 'Argument must be an integer, a float, or None')
     
-    def test_none_sclar_array_raises(self):
+    def test_none_scalar_array_raises(self):
         with self.assertRaises(Exception) as context:
             allow_none_scalar(choices)
         self.assertEqual(type(context.exception), TypeError)
-        self.assertEqual(str(context.exception), 'First argument must be an integer, a float, or None')
+        self.assertEqual(str(context.exception), 'Argument must be an integer, a float, or None')
 
 class TestCompareScalars(unittest.TestCase):
     def test_compare_scalars_less(self):
@@ -163,13 +163,13 @@ class TestCompareScalars(unittest.TestCase):
 class TestSelectIntegers(unittest.TestCase):
     def test_select_integers_included(self):
         select_integers_included = select_integers(5, choices)
-        self.assertEqual(select_integers_included, 'Third argument is one of the following integers: [4, 5, 6]')
+        self.assertEqual(select_integers_included, 'Argument is one of the following integers: [4, 5, 6]')
     
     def test_select_integers_excluded_raises(self):
         with self.assertRaises(Exception) as context:
             select_integers(1, choices)
         self.assertEqual(type(context.exception), ValueError)
-        self.assertEqual(str(context.exception), 'Third argument must be one of the following integers: [4, 5, 6]')
+        self.assertEqual(str(context.exception), 'Argument must be one of the following integers: [4, 5, 6]')
 
 class TestTwoScalars(unittest.TestCase):
     def test_two_scalars_integer_float(self):
@@ -535,4 +535,4 @@ class TestSelectEquations(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 90 tests in 0.008s ---------- OK ---------- #
+# ---------- Ran 90 tests in 0.010s ---------- OK ---------- #
