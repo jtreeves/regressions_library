@@ -1,5 +1,5 @@
 from math import log, exp, acos, pi
-from library.errors.analyses import callable_function, select_equations
+from library.errors.analyses import select_equations
 from library.errors.scalars import compare_scalars, positive_integer
 from library.errors.vectors import vector_of_scalars
 from library.statistics.sort import sorted_list
