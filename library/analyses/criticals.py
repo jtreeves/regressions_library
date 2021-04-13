@@ -9,7 +9,7 @@ from .roots.quadratic import quadratic_roots
 from .derivatives.quadratic import quadratic_derivatives
 from .derivatives.cubic import cubic_derivatives
 
-def critical_points(equation_type, derivative_level, coefficients, precision = 4):
+def critical_points(equation_type, coefficients, derivative_level, precision = 4):
     """
     Calculates the critical points of a specific function at a certain derivative level
 
@@ -17,10 +17,10 @@ def critical_points(equation_type, derivative_level, coefficients, precision = 4
     ----------
     equation_type : str
         Name of the type of function for which critical points must be determined (e.g., 'linear', 'quadratic')
-    derivative_level : int
-        Integer corresponding to which derivative to investigate for critical points (1 for the first derivative and 2 for the second derivative)
     coefficients : list
         Coefficients to use to generate the equation to investigate
+    derivative_level : int
+        Integer corresponding to which derivative to investigate for critical points (1 for the first derivative and 2 for the second derivative)
     precision : int, default=4
         Maximum number of digits that can appear after the decimal place of the results
 
@@ -28,10 +28,10 @@ def critical_points(equation_type, derivative_level, coefficients, precision = 4
     ------
     ValueError
         First argument must be either 'linear', 'quadratic', 'cubic', 'hyperbolic', 'exponential', 'logarithmic', 'logistic', or 'sinusoidal'
-    ValueError
-        Second argument must be one of the following integers: [1, 2]
     TypeError
-        Third argument must be a 1-dimensional list containing elements that are integers or floats
+        Second argument must be a 1-dimensional list containing elements that are integers or floats
+    ValueError
+        Third argument must be one of the following integers: [1, 2]
     ValueError
         Last argument must be a positive integer
 
@@ -53,17 +53,17 @@ def critical_points(equation_type, derivative_level, coefficients, precision = 4
     Examples
     --------
     Calulate the critical points of the second derivative of a cubic function with coefficients 2, 3, 5, and 7
-        >>> points_cubic = critical_points('cubic', 2, [2, 3, 5, 7])
+        >>> points_cubic = critical_points('cubic', [2, 3, 5, 7], 2)
         >>> print(points_cubic)
         [-0.5]
     Calulate the critical points of the first derivative of a sinusoidal function with coefficients 2, 3, 5, and 7
-        >>> points_sinusoidal = critical_points('sinusoidal', 1, [2, 3, 5, 7])
+        >>> points_sinusoidal = critical_points('sinusoidal', [2, 3, 5, 7], 1)
         >>> print(points_sinusoidal)
         [5.5236, 6.5708, 7.618, 8.6652, 9.7124, '5.5236 + 1.0472k']
     """
     select_equations(equation_type)
-    select_integers(derivative_level, [1, 2])
-    vector_of_scalars(coefficients, 'third')
+    vector_of_scalars(coefficients, 'second')
+    select_integers(derivative_level, [1, 2], 'third')
     positive_integer(precision)
     results = []
     if derivative_level == 1:

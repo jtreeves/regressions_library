@@ -1,4 +1,4 @@
-def scalar_value(scalar, position):
+def scalar_value(scalar, position = 'only'):
     identifier = ''
     argument = 'argument'
     if position == 'only':
@@ -39,20 +39,38 @@ def positive_integer(scalar):
     else:
         return 'Last argument is a positive integer'
 
-def whole_number(scalar, position):
+def whole_number(scalar, position = 'only'):
+    identifier = ''
+    argument = 'argument'
+    if position == 'only':
+        identifier = argument
+    else:
+        identifier = position + ' ' + argument
     if not isinstance(scalar, int) or not scalar >= 0:
-        raise ValueError(f'{position.capitalize()} argument must be a whole number')
+        raise ValueError(f'{identifier.capitalize()} must be a whole number')
     else:
-        return f'{position.capitalize()} argument is a whole number'
+        return f'{identifier.capitalize()} is a whole number'
 
-def select_integers(scalar, choices):
+def select_integers(scalar, choices, position = 'only'):
+    identifier = ''
+    argument = 'argument'
+    if position == 'only':
+        identifier = argument
+    else:
+        identifier = position + ' ' + argument
     if scalar not in choices:
-        raise ValueError(f'Second argument must be one of the following integers: {choices}')
+        raise ValueError(f'{identifier.capitalize()} must be one of the following integers: {choices}')
     else:
-        return f'Second argument is one of the following integers: {choices}'
+        return f'{identifier.capitalize()} is one of the following integers: {choices}'
 
-def allow_none_scalar(scalar):
-    if not isinstance(scalar, (int, float)) and scalar is not None:
-        raise TypeError('First argument must be an integer, a float, or None')
+def allow_none_scalar(scalar, position = 'only'):
+    identifier = ''
+    argument = 'argument'
+    if position == 'only':
+        identifier = argument
     else:
-        return 'First argument is an integer, a float, or None'
+        identifier = position + ' ' + argument
+    if not isinstance(scalar, (int, float)) and scalar is not None:
+        raise TypeError(f'{identifier.capitalize()} must be an integer, a float, or None')
+    else:
+        return f'{identifier.capitalize()} is an integer, a float, or None'

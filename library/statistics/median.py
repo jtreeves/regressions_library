@@ -45,7 +45,7 @@ def median_value(data):
         >>> print(median_odd)
         20
     """
-    vector_of_scalars(data, 'only')
+    vector_of_scalars(data)
     sorted_data = sorted_list(data)
     length = len(sorted_data)
     if length % 2 == 0:

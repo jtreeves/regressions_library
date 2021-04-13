@@ -48,7 +48,7 @@ def range_value(data):
         >>> print(range_odd)
         83
     """
-    vector_of_scalars(data, 'only')
+    vector_of_scalars(data)
     max_value = maximum_value(data)
     min_value = minimum_value(data)
     result = max_value - min_value

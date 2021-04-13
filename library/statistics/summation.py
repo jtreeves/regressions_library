@@ -42,7 +42,7 @@ def sum_value(data):
         >>> print(total2)
         0
     """
-    vector_of_scalars(data, 'only')
+    vector_of_scalars(data)
     result = 0
     for element in data:
         result += element

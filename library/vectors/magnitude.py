@@ -44,7 +44,7 @@ def vector_magnitude(vector):
         >>> print(magnitude_2d)
         3.605551275463989
     """
-    vector_of_scalars(vector, 'only')
+    vector_of_scalars(vector)
     squares = []
     for element in vector:
         squares.append(element**2)

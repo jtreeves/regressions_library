@@ -43,7 +43,7 @@ def matrix_of_cofactors(matrix):
         >>> print(matrix_2x2)
         [[2, -3], [-5, 7]]
     """
-    matrix_of_scalars(matrix, 'only')
+    matrix_of_scalars(matrix)
     result = []
     for m in range(len(matrix)):
         result.append([])

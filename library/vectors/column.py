@@ -39,7 +39,7 @@ def column_conversion(vector):
         >>> print(column_2d)
         [[-7], [5]]
     """
-    vector_of_scalars(vector, 'only')
+    vector_of_scalars(vector)
     result = []
     for element in vector:
         result.append([element])

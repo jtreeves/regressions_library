@@ -120,7 +120,7 @@ def half(data):
         >>> print(sections_long['lower'])
         [3, 6, 11]
     """
-    vector_of_scalars(data, 'only')
+    vector_of_scalars(data)
     sorted_data = sorted_list(data)
     result = partition(sorted_data)
     return result

@@ -45,7 +45,7 @@ def unit_vector(vector):
         >>> print(unit_2d)
         [0.8320502943378437, 0.5547001962252291]
     """
-    vector_of_scalars(vector, 'only')
+    vector_of_scalars(vector)
     magnitude = vector_magnitude(vector)
     reciprocal_magnitude = 1 / magnitude
     result = scalar_product_vector(vector, reciprocal_magnitude)

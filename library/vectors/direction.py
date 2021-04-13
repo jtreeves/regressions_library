@@ -51,7 +51,7 @@ def vector_direction(vector):
         >>> print(direction2['degree'])
         -74.74488129694222
     """
-    vector_of_scalars(vector, 'only')
+    vector_of_scalars(vector)
     length(vector, 2)
     ratio = vector[1] / vector[0]
     radian_measure = atan(ratio)

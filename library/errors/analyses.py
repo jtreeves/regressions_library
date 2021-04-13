@@ -1,4 +1,4 @@
-def callable_function(function, position):
+def callable_function(function, position = 'only'):
     identifier = ''
     argument = 'argument'
     if position == 'only':

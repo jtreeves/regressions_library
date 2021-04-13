@@ -163,13 +163,13 @@ class TestCompareScalars(unittest.TestCase):
 class TestSelectIntegers(unittest.TestCase):
     def test_select_integers_included(self):
         select_integers_included = select_integers(5, choices)
-        self.assertEqual(select_integers_included, 'Second argument is one of the following integers: [4, 5, 6]')
+        self.assertEqual(select_integers_included, 'Third argument is one of the following integers: [4, 5, 6]')
     
     def test_select_integers_excluded_raises(self):
         with self.assertRaises(Exception) as context:
             select_integers(1, choices)
         self.assertEqual(type(context.exception), ValueError)
-        self.assertEqual(str(context.exception), 'Second argument must be one of the following integers: [4, 5, 6]')
+        self.assertEqual(str(context.exception), 'Third argument must be one of the following integers: [4, 5, 6]')
 
 class TestTwoScalars(unittest.TestCase):
     def test_two_scalars_integer_float(self):

@@ -1,4 +1,4 @@
-def matrix_of_scalars(matrix, position):
+def matrix_of_scalars(matrix, position = 'only'):
     identifier = ''
     argument = 'argument'
     if position == 'only':
@@ -48,7 +48,7 @@ def columns_rows(matrix_one, matrix_two):
     else:
         return 'First list within first argument contains the same amount of elements as the amount of lists contained within second argument'
 
-def allow_none_matrix(matrix, position):
+def allow_none_matrix(matrix, position = 'only'):
     identifier = ''
     argument = 'argument'
     if position == 'only':

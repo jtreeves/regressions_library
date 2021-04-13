@@ -1,4 +1,4 @@
-def vector_of_scalars(vector, position):
+def vector_of_scalars(vector, position = 'only'):
     identifier = ''
     argument = 'argument'
     if position == 'only':
@@ -31,7 +31,7 @@ def multitype_vector(vector):
     else:
         return "Argument is a 1-dimensional list with an initial element of either 'constant', 'positive', or 'negative'; if it contains a second element, then its second element is an integer or a float"
 
-def allow_none_vector(vector, position):
+def allow_none_vector(vector, position = 'only'):
     identifier = ''
     argument = 'argument'
     if position == 'only':

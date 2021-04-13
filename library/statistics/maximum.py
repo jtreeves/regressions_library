@@ -43,7 +43,7 @@ def maximum_value(data):
         >>> print(maximum_odd)
         91
     """
-    vector_of_scalars(data, 'only')
+    vector_of_scalars(data)
     sorted_data = sorted_list(data)
     result = sorted_data[-1]
     return result

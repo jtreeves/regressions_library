@@ -42,7 +42,7 @@ def transposed_matrix(matrix):
         >>> print(matrix_2x2)
         [[2, 5], [3, 7]]
     """
-    matrix_of_scalars(matrix, 'only')
+    matrix_of_scalars(matrix)
     result = []
     for m in range(len(matrix[0])):
         result.append([])

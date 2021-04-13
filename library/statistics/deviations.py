@@ -93,7 +93,7 @@ def multiple_deviations(actual_array):
         >>> print(deviations_long)
         [-7.7942857142857145, -4.804285714285715, -3.5942857142857143, -11.774285714285714, -2.484285714285715, 8.755714285714287, 21.69571428571429]
     """
-    vector_of_scalars(actual_array, 'only')
+    vector_of_scalars(actual_array)
     results = []
     average = mean_value(actual_array)
     for element in actual_array:
