@@ -1,14 +1,6 @@
 from library.errors.analyses import select_equations
 from library.errors.vectors import vector_of_scalars
 from library.errors.scalars import positive_integer
-from .derivatives.linear import linear_derivatives
-from .derivatives.quadratic import quadratic_derivatives
-from .derivatives.cubic import cubic_derivatives
-from .derivatives.hyperbolic import hyperbolic_derivatives
-from .derivatives.exponential import exponential_derivatives
-from .derivatives.logarithmic import logarithmic_derivatives
-from .derivatives.logistic import logistic_derivatives
-from .derivatives.sinusoidal import sinusoidal_derivatives
 from .intervals import sign_chart
 
 def inflection_points(equation_type, coefficients, precision = 4):
@@ -64,31 +56,13 @@ def inflection_points(equation_type, coefficients, precision = 4):
     positive_integer(precision)
     intervals_set = sign_chart(equation_type, coefficients, 2, precision)
     result = []
-    derivative = lambda x : x
-    if equation_type == 'linear':
-        derivative = linear_derivatives(*coefficients)['second']['evaluation']
-    elif equation_type == 'quadratic':
-        derivative = quadratic_derivatives(*coefficients)['second']['evaluation']
-    elif equation_type == 'cubic':
-        derivative = cubic_derivatives(*coefficients)['second']['evaluation']
-    elif equation_type == 'hyperbolic':
-        derivative = hyperbolic_derivatives(*coefficients)['second']['evaluation']
-    elif equation_type == 'exponential':
-        derivative = exponential_derivatives(*coefficients)['second']['evaluation']
-    elif equation_type == 'logarithmic':
-        derivative = logarithmic_derivatives(*coefficients)['second']['evaluation']
-    elif equation_type == 'logistic':
-        derivative = logistic_derivatives(*coefficients)['second']['evaluation']
-    elif equation_type == 'sinusoidal':
-        derivative = sinusoidal_derivatives(*coefficients)['second']['evaluation']
+    if equation_type == 'hyperbolic':
+        result = [None]
+        return result
     for i in range(len(intervals_set)):
         try:
             if (intervals_set[i] == 'positive' and intervals_set[i + 2] == 'negative') or (intervals_set[i] == 'negative' and intervals_set[i + 2] == 'positive'):
-                try:
-                    derivative(intervals_set[i + 1])
-                    result.append(intervals_set[i + 1])
-                except ZeroDivisionError:
-                    break
+                result.append(intervals_set[i + 1])
         except IndexError:
             pass
     if len(result) == 0:
