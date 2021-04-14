@@ -82,66 +82,258 @@ class TestDerivatives(unittest.TestCase):
     def test_linear_first_derivative_constants(self):
         linear_first_derivative_constants = linear_derivatives(coefficients[0], coefficients[1])['first']['constants']
         self.assertEqual(linear_first_derivative_constants, [2])
+
+    def test_linear_first_derivative_evaluation_positive(self):
+        linear_first_derivative_evaluation_positive = linear_derivatives(coefficients[0], coefficients[1])['first']['evaluation'](1)
+        self.assertEqual(linear_first_derivative_evaluation_positive, 2.0)
+    
+    def test_linear_first_derivative_evaluation_zero(self):
+        linear_first_derivative_evaluation_zero = linear_derivatives(coefficients[0], coefficients[1])['first']['evaluation'](0)
+        self.assertEqual(linear_first_derivative_evaluation_zero, 2.0)
+    
+    def test_linear_first_derivative_evaluation_negative(self):
+        linear_first_derivative_evaluation_negative = linear_derivatives(coefficients[0], coefficients[1])['first']['evaluation'](-1)
+        self.assertEqual(linear_first_derivative_evaluation_negative, 2.0)
     
     def test_quadratic_first_derivative_constants(self):
         quadratic_first_derivative_constants = quadratic_derivatives(coefficients[0], coefficients[1], coefficients[2])['first']['constants']
         self.assertEqual(quadratic_first_derivative_constants, [4, 3])
     
+    def test_quadratic_first_derivative_evaluation_positive(self):
+        quadratic_first_derivative_evaluation_positive = quadratic_derivatives(coefficients[0], coefficients[1], coefficients[2])['first']['evaluation'](1)
+        self.assertEqual(quadratic_first_derivative_evaluation_positive, 7.0)
+    
+    def test_quadratic_first_derivative_evaluation_zero(self):
+        quadratic_first_derivative_evaluation_zero = quadratic_derivatives(coefficients[0], coefficients[1], coefficients[2])['first']['evaluation'](0)
+        self.assertEqual(quadratic_first_derivative_evaluation_zero, 3.0)
+    
+    def test_quadratic_first_derivative_evaluation_negative(self):
+        quadratic_first_derivative_evaluation_negative = quadratic_derivatives(coefficients[0], coefficients[1], coefficients[2])['first']['evaluation'](-1)
+        self.assertEqual(quadratic_first_derivative_evaluation_negative, -1.0)
+
     def test_cubic_first_derivative_constants(self):
         cubic_first_derivative_constants = cubic_derivatives(coefficients[0], coefficients[1], coefficients[2], coefficients[3])['first']['constants']
         self.assertEqual(cubic_first_derivative_constants, [6, 6, 5])
     
+    def test_cubic_first_derivative_evaluation_positive(self):
+        cubic_first_derivative_evaluation_positive = cubic_derivatives(coefficients[0], coefficients[1], coefficients[2], coefficients[3])['first']['evaluation'](1)
+        self.assertEqual(cubic_first_derivative_evaluation_positive, 17.0)
+    
+    def test_cubic_first_derivative_evaluation_zero(self):
+        cubic_first_derivative_evaluation_zero = cubic_derivatives(coefficients[0], coefficients[1], coefficients[2], coefficients[3])['first']['evaluation'](0)
+        self.assertEqual(cubic_first_derivative_evaluation_zero, 5.0)
+    
+    def test_cubic_first_derivative_evaluation_negative(self):
+        cubic_first_derivative_evaluation_negative = cubic_derivatives(coefficients[0], coefficients[1], coefficients[2], coefficients[3])['first']['evaluation'](-1)
+        self.assertEqual(cubic_first_derivative_evaluation_negative, 5.0)
+
     def test_hyperbolic_first_derivative_constants(self):
         hyperbolic_first_derivative_constants = hyperbolic_derivatives(coefficients[0], coefficients[1])['first']['constants']
         self.assertEqual(hyperbolic_first_derivative_constants, [-2])
     
+    def test_hyperbolic_first_derivative_evaluation_positive(self):
+        hyperbolic_first_derivative_evaluation_positive = hyperbolic_derivatives(coefficients[0], coefficients[1])['first']['evaluation'](1)
+        self.assertEqual(hyperbolic_first_derivative_evaluation_positive, -2.0)
+    
+    def test_hyperbolic_first_derivative_evaluation_zero(self):
+        hyperbolic_first_derivative_evaluation_zero = hyperbolic_derivatives(coefficients[0], coefficients[1])['first']['evaluation'](0)
+        self.assertEqual(hyperbolic_first_derivative_evaluation_zero, -200000000.0)
+    
+    def test_hyperbolic_first_derivative_evaluation_negative(self):
+        hyperbolic_first_derivative_evaluation_negative = hyperbolic_derivatives(coefficients[0], coefficients[1])['first']['evaluation'](-1)
+        self.assertEqual(hyperbolic_first_derivative_evaluation_negative, -2.0)
+
     def test_exponential_first_derivative_constants(self):
         exponential_first_derivative_constants = exponential_derivatives(coefficients[0], coefficients[1])['first']['constants']
         self.assertEqual(exponential_first_derivative_constants, [2.1972245773362196, 3])
+    
+    def test_exponential_first_derivative_evaluation_positive(self):
+        exponential_first_derivative_evaluation_positive = exponential_derivatives(coefficients[0], coefficients[1])['first']['evaluation'](1)
+        self.assertEqual(exponential_first_derivative_evaluation_positive, 6.591673732008658)
+    
+    def test_exponential_first_derivative_evaluation_zero(self):
+        exponential_first_derivative_evaluation_zero = exponential_derivatives(coefficients[0], coefficients[1])['first']['evaluation'](0)
+        self.assertEqual(exponential_first_derivative_evaluation_zero, 2.1972245773362196)
+    
+    def test_exponential_first_derivative_evaluation_negative(self):
+        exponential_first_derivative_evaluation_negative = exponential_derivatives(coefficients[0], coefficients[1])['first']['evaluation'](-1)
+        self.assertEqual(exponential_first_derivative_evaluation_negative, 0.7324081924454064)
     
     def test_logarithmic_first_derivative_constants(self):
         logarithmic_first_derivative_constants = logarithmic_derivatives(coefficients[0], coefficients[1])['first']['constants']
         self.assertEqual(logarithmic_first_derivative_constants, [2])
     
+    def test_logarithmic_first_derivative_evaluation_positive(self):
+        logarithmic_first_derivative_evaluation_positive = logarithmic_derivatives(coefficients[0], coefficients[1])['first']['evaluation'](1)
+        self.assertEqual(logarithmic_first_derivative_evaluation_positive, 2.0)
+    
+    def test_logarithmic_first_derivative_evaluation_zero(self):
+        logarithmic_first_derivative_evaluation_zero = logarithmic_derivatives(coefficients[0], coefficients[1])['first']['evaluation'](0)
+        self.assertEqual(logarithmic_first_derivative_evaluation_zero, 20000.0)
+    
+    def test_logarithmic_first_derivative_evaluation_negative(self):
+        logarithmic_first_derivative_evaluation_negative = logarithmic_derivatives(coefficients[0], coefficients[1])['first']['evaluation'](-1)
+        self.assertEqual(logarithmic_first_derivative_evaluation_negative, -2.0)
+    
     def test_logistic_first_derivative_constants(self):
         logistic_first_derivative_constants = logistic_derivatives(coefficients[0], coefficients[1], coefficients[2])['first']['constants']
         self.assertEqual(logistic_first_derivative_constants, [6, 3, 5])
     
+    def test_logistic_first_derivative_evaluation_positive(self):
+        logistic_first_derivative_evaluation_positive = logistic_derivatives(coefficients[0], coefficients[1], coefficients[2])['first']['evaluation'](1)
+        self.assertEqual(logistic_first_derivative_evaluation_positive, 3.6864821107999056e-05)
+    
+    def test_logistic_first_derivative_evaluation_zero(self):
+        logistic_first_derivative_evaluation_zero = logistic_derivatives(coefficients[0], coefficients[1], coefficients[2])['first']['evaluation'](0)
+        self.assertEqual(logistic_first_derivative_evaluation_zero, 1.8354128000967137e-06)
+    
+    def test_logistic_first_derivative_evaluation_negative(self):
+        logistic_first_derivative_evaluation_negative = logistic_derivatives(coefficients[0], coefficients[1], coefficients[2])['first']['evaluation'](-1)
+        self.assertEqual(logistic_first_derivative_evaluation_negative, 9.137987568484845e-08)
+
     def test_sinusoidal_first_derivative_constants(self):
         sinusoidal_first_derivative_constants = sinusoidal_derivatives(coefficients[0], coefficients[1], coefficients[2], coefficients[3])['first']['constants']
         self.assertEqual(sinusoidal_first_derivative_constants, [6, 3, 5])
     
+    def test_sinusoidal_first_derivative_evaluation_positive(self):
+        sinusoidal_first_derivative_evaluation_positive = sinusoidal_derivatives(coefficients[0], coefficients[1], coefficients[2], coefficients[3])['first']['evaluation'](1)
+        self.assertEqual(sinusoidal_first_derivative_evaluation_positive, 5.063123752394953)
+    
+    def test_sinusoidal_first_derivative_evaluation_zero(self):
+        sinusoidal_first_derivative_evaluation_zero = sinusoidal_derivatives(coefficients[0], coefficients[1], coefficients[2], coefficients[3])['first']['evaluation'](0)
+        self.assertEqual(sinusoidal_first_derivative_evaluation_zero, -4.558127477152928)
+    
+    def test_sinusoidal_first_derivative_evaluation_negative(self):
+        sinusoidal_first_derivative_evaluation_negative = sinusoidal_derivatives(coefficients[0], coefficients[1], coefficients[2], coefficients[3])['first']['evaluation'](-1)
+        self.assertEqual(sinusoidal_first_derivative_evaluation_negative, 3.961900249464481)
+
     def test_linear_second_derivative_constants(self):
         linear_second_derivative_constants = linear_derivatives(coefficients[0], coefficients[1])['second']['constants']
         self.assertEqual(linear_second_derivative_constants, [0])
+    
+    def test_linear_second_derivative_evaluation_positive(self):
+        linear_second_derivative_evaluation_positive = linear_derivatives(coefficients[0], coefficients[1])['second']['evaluation'](1)
+        self.assertEqual(linear_second_derivative_evaluation_positive, 0.0)
+    
+    def test_linear_second_derivative_evaluation_zero(self):
+        linear_second_derivative_evaluation_zero = linear_derivatives(coefficients[0], coefficients[1])['second']['evaluation'](0)
+        self.assertEqual(linear_second_derivative_evaluation_zero, 0.0)
+    
+    def test_linear_second_derivative_evaluation_negative(self):
+        linear_second_derivative_evaluation_negative = linear_derivatives(coefficients[0], coefficients[1])['second']['evaluation'](-1)
+        self.assertEqual(linear_second_derivative_evaluation_negative, 0.0)
     
     def test_quadratic_second_derivative_constants(self):
         quadratic_second_derivative_constants = quadratic_derivatives(coefficients[0], coefficients[1], coefficients[2])['second']['constants']
         self.assertEqual(quadratic_second_derivative_constants, [4])
     
+    def test_quadratic_second_derivative_evaluation_positive(self):
+        quadratic_second_derivative_evaluation_positive = quadratic_derivatives(coefficients[0], coefficients[1], coefficients[2])['second']['evaluation'](1)
+        self.assertEqual(quadratic_second_derivative_evaluation_positive, 4.0)
+    
+    def test_quadratic_second_derivative_evaluation_zero(self):
+        quadratic_second_derivative_evaluation_zero = quadratic_derivatives(coefficients[0], coefficients[1], coefficients[2])['second']['evaluation'](0)
+        self.assertEqual(quadratic_second_derivative_evaluation_zero, 4.0)
+    
+    def test_quadratic_second_derivative_evaluation_negative(self):
+        quadratic_second_derivative_evaluation_negative = quadratic_derivatives(coefficients[0], coefficients[1], coefficients[2])['second']['evaluation'](-1)
+        self.assertEqual(quadratic_second_derivative_evaluation_negative, 4.0)
+
     def test_cubic_second_derivative_constants(self):
         cubic_second_derivative_constants = cubic_derivatives(coefficients[0], coefficients[1], coefficients[2], coefficients[3])['second']['constants']
         self.assertEqual(cubic_second_derivative_constants, [12, 6])
     
+    def test_cubic_second_derivative_evaluation_positive(self):
+        cubic_second_derivative_evaluation_positive = cubic_derivatives(coefficients[0], coefficients[1], coefficients[2], coefficients[3])['second']['evaluation'](1)
+        self.assertEqual(cubic_second_derivative_evaluation_positive, 18.0)
+    
+    def test_cubic_second_derivative_evaluation_zero(self):
+        cubic_second_derivative_evaluation_zero = cubic_derivatives(coefficients[0], coefficients[1], coefficients[2], coefficients[3])['second']['evaluation'](0)
+        self.assertEqual(cubic_second_derivative_evaluation_zero, 6.0)
+    
+    def test_cubic_second_derivative_evaluation_negative(self):
+        cubic_second_derivative_evaluation_negative = cubic_derivatives(coefficients[0], coefficients[1], coefficients[2], coefficients[3])['second']['evaluation'](-1)
+        self.assertEqual(cubic_second_derivative_evaluation_negative, -6.0)
+
     def test_hyperbolic_second_derivative_constants(self):
         hyperbolic_second_derivative_constants = hyperbolic_derivatives(coefficients[0], coefficients[1])['second']['constants']
         self.assertEqual(hyperbolic_second_derivative_constants, [4])
     
+    def test_hyperbolic_second_derivative_evaluation_positive(self):
+        hyperbolic_second_derivative_evaluation_positive = hyperbolic_derivatives(coefficients[0], coefficients[1])['second']['evaluation'](1)
+        self.assertEqual(hyperbolic_second_derivative_evaluation_positive, 4.0)
+    
+    def test_hyperbolic_second_derivative_evaluation_zero(self):
+        hyperbolic_second_derivative_evaluation_zero = hyperbolic_derivatives(coefficients[0], coefficients[1])['second']['evaluation'](0)
+        self.assertEqual(hyperbolic_second_derivative_evaluation_zero, 3999999999999.9995)
+    
+    def test_hyperbolic_second_derivative_evaluation_negative(self):
+        hyperbolic_second_derivative_evaluation_negative = hyperbolic_derivatives(coefficients[0], coefficients[1])['second']['evaluation'](-1)
+        self.assertEqual(hyperbolic_second_derivative_evaluation_negative, -4.0)
+
     def test_exponential_second_derivative_constants(self):
         exponential_second_derivative_constants = exponential_derivatives(coefficients[0], coefficients[1])['second']['constants']
         self.assertEqual(exponential_second_derivative_constants, [2.413897921625164, 3])
+    
+    def test_exponential_second_derivative_evaluation_positive(self):
+        exponential_second_derivative_evaluation_positive = exponential_derivatives(coefficients[0], coefficients[1])['second']['evaluation'](1)
+        self.assertEqual(exponential_second_derivative_evaluation_positive, 7.241693764875492)
+    
+    def test_exponential_second_derivative_evaluation_zero(self):
+        exponential_second_derivative_evaluation_zero = exponential_derivatives(coefficients[0], coefficients[1])['second']['evaluation'](0)
+        self.assertEqual(exponential_second_derivative_evaluation_zero, 2.413897921625164)
+    
+    def test_exponential_second_derivative_evaluation_negative(self):
+        exponential_second_derivative_evaluation_negative = exponential_derivatives(coefficients[0], coefficients[1])['second']['evaluation'](-1)
+        self.assertEqual(exponential_second_derivative_evaluation_negative, 0.8046326405417213)
     
     def test_logarithmic_second_derivative_constants(self):
         logarithmic_second_derivative_constants = logarithmic_derivatives(coefficients[0], coefficients[1])['second']['constants']
         self.assertEqual(logarithmic_second_derivative_constants, [-2])
     
+    def test_logarithmic_second_derivative_evaluation_positive(self):
+        logarithmic_second_derivative_evaluation_positive = logarithmic_derivatives(coefficients[0], coefficients[1])['second']['evaluation'](1)
+        self.assertEqual(logarithmic_second_derivative_evaluation_positive, -2.0)
+    
+    def test_logarithmic_second_derivative_evaluation_zero(self):
+        logarithmic_second_derivative_evaluation_zero = logarithmic_derivatives(coefficients[0], coefficients[1])['second']['evaluation'](0)
+        self.assertEqual(logarithmic_second_derivative_evaluation_zero, -200000000.0)
+    
+    def test_logarithmic_second_derivative_evaluation_negative(self):
+        logarithmic_second_derivative_evaluation_negative = logarithmic_derivatives(coefficients[0], coefficients[1])['second']['evaluation'](-1)
+        self.assertEqual(logarithmic_second_derivative_evaluation_negative, -2.0)
+    
     def test_logistic_second_derivative_constants(self):
         logistic_second_derivative_constants = logistic_derivatives(coefficients[0], coefficients[1], coefficients[2])['second']['constants']
         self.assertEqual(logistic_second_derivative_constants, [18, 3, 5])
     
+    def test_logistic_second_derivative_evaluation_positive(self):
+        logistic_second_derivative_evaluation_positive = logistic_derivatives(coefficients[0], coefficients[1], coefficients[2])['second']['evaluation'](1)
+        self.assertEqual(logistic_second_derivative_evaluation_positive, 0.00011059310430061176)
+    
+    def test_logistic_second_derivative_evaluation_zero(self):
+        logistic_second_derivative_evaluation_zero = logistic_derivatives(coefficients[0], coefficients[1], coefficients[2])['second']['evaluation'](0)
+        self.assertEqual(logistic_second_derivative_evaluation_zero, 5.506235031548964e-06)
+    
+    def test_logistic_second_derivative_evaluation_negative(self):
+        logistic_second_derivative_evaluation_negative = logistic_derivatives(coefficients[0], coefficients[1], coefficients[2])['second']['evaluation'](-1)
+        self.assertEqual(logistic_second_derivative_evaluation_negative, 2.741396187042635e-07)
+
     def test_sinusoidal_second_derivative_constants(self):
         sinusoidal_second_derivative_constants = sinusoidal_derivatives(coefficients[0], coefficients[1], coefficients[2], coefficients[3])['second']['constants']
         self.assertEqual(sinusoidal_second_derivative_constants, [-18, 3, 5])
+
+    def test_sinusoidal_second_derivative_evaluation_positive(self):
+        sinusoidal_second_derivative_evaluation_positive = sinusoidal_derivatives(coefficients[0], coefficients[1], coefficients[2], coefficients[3])['second']['evaluation'](1)
+        self.assertEqual(sinusoidal_second_derivative_evaluation_positive, -9.65831252400783)
+    
+    def test_sinusoidal_second_derivative_evaluation_zero(self):
+        sinusoidal_second_derivative_evaluation_zero = sinusoidal_derivatives(coefficients[0], coefficients[1], coefficients[2], coefficients[3])['second']['evaluation'](0)
+        self.assertEqual(sinusoidal_second_derivative_evaluation_zero, 11.705181122828105)
+    
+    def test_sinusoidal_second_derivative_evaluation_negative(self):
+        sinusoidal_second_derivative_evaluation_negative = sinusoidal_derivatives(coefficients[0], coefficients[1], coefficients[2], coefficients[3])['second']['evaluation'](-1)
+        self.assertEqual(sinusoidal_second_derivative_evaluation_negative, -13.51777044189017)
 
 class TestIntegrals(unittest.TestCase):
     def test_linear_integral_object(self):
