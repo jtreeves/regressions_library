@@ -113,6 +113,12 @@ sinusoidal_set = [
     [10, 8]
 ]
 
+bad_set_string = 'data'
+bad_set_vector = [1]
+bad_set_buried_not_list = [[1], [2], 3]
+bad_set_buried_string = [[1], [2], ['three']]
+bad_set_short = [[1], [2], [3]]
+
 low_precision = 2
 high_precision = 6
 
@@ -216,6 +222,36 @@ class TestLinearModel(unittest.TestCase):
     def test_linear_model_high_correlation(self):
         self.assertEqual(linear_model_high['correlation'], 1.0)
 
+    def test_linear_model_string_raises(self):
+        with self.assertRaises(Exception) as context:
+            linear_model(bad_set_string)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'First argument must be a 2-dimensional list')
+    
+    def test_linear_model_vector_raises(self):
+        with self.assertRaises(Exception) as context:
+            linear_model(bad_set_vector)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'First argument must be a 2-dimensional list')
+    
+    def test_linear_model_buried_not_list_raises(self):
+        with self.assertRaises(Exception) as context:
+            linear_model(bad_set_buried_not_list)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'Elements within first argument must be lists')
+    
+    def test_linear_model_buried_string_raises(self):
+        with self.assertRaises(Exception) as context:
+            linear_model(bad_set_buried_string)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'Elements within lists within first argument must be integers or floats')
+    
+    def test_linear_model_short_raises(self):
+        with self.assertRaises(Exception) as context:
+            linear_model(bad_set_short)
+        self.assertEqual(type(context.exception), ValueError)
+        self.assertEqual(str(context.exception), 'First argument must contain at least 10 elements')
+
 quadratic_model_low = quadratic_model(quadratic_set, low_precision)
 quadratic_model_high = quadratic_model(quadratic_set, high_precision)
 
@@ -315,6 +351,36 @@ class TestQuadraticModel(unittest.TestCase):
     
     def test_quadratic_model_high_correlation(self):
         self.assertEqual(quadratic_model_high['correlation'], 1.0)
+    
+    def test_quadratic_model_string_raises(self):
+        with self.assertRaises(Exception) as context:
+            quadratic_model(bad_set_string)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'First argument must be a 2-dimensional list')
+    
+    def test_quadratic_model_vector_raises(self):
+        with self.assertRaises(Exception) as context:
+            quadratic_model(bad_set_vector)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'First argument must be a 2-dimensional list')
+    
+    def test_quadratic_model_buried_not_list_raises(self):
+        with self.assertRaises(Exception) as context:
+            quadratic_model(bad_set_buried_not_list)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'Elements within first argument must be lists')
+    
+    def test_quadratic_model_buried_string_raises(self):
+        with self.assertRaises(Exception) as context:
+            quadratic_model(bad_set_buried_string)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'Elements within lists within first argument must be integers or floats')
+    
+    def test_quadratic_model_short_raises(self):
+        with self.assertRaises(Exception) as context:
+            quadratic_model(bad_set_short)
+        self.assertEqual(type(context.exception), ValueError)
+        self.assertEqual(str(context.exception), 'First argument must contain at least 10 elements')
 
 cubic_model_low = cubic_model(cubic_set, low_precision)
 cubic_model_high = cubic_model(cubic_set, high_precision)
@@ -415,6 +481,36 @@ class TestCubicModel(unittest.TestCase):
     
     def test_cubic_model_high_correlation(self):
         self.assertEqual(cubic_model_high['correlation'], 1.0)
+    
+    def test_cubic_model_string_raises(self):
+        with self.assertRaises(Exception) as context:
+            cubic_model(bad_set_string)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'First argument must be a 2-dimensional list')
+    
+    def test_cubic_model_vector_raises(self):
+        with self.assertRaises(Exception) as context:
+            cubic_model(bad_set_vector)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'First argument must be a 2-dimensional list')
+    
+    def test_cubic_model_buried_not_list_raises(self):
+        with self.assertRaises(Exception) as context:
+            cubic_model(bad_set_buried_not_list)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'Elements within first argument must be lists')
+    
+    def test_cubic_model_buried_string_raises(self):
+        with self.assertRaises(Exception) as context:
+            cubic_model(bad_set_buried_string)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'Elements within lists within first argument must be integers or floats')
+    
+    def test_cubic_model_short_raises(self):
+        with self.assertRaises(Exception) as context:
+            cubic_model(bad_set_short)
+        self.assertEqual(type(context.exception), ValueError)
+        self.assertEqual(str(context.exception), 'First argument must contain at least 10 elements')
 
 hyperbolic_model_low = hyperbolic_model(hyperbolic_set, low_precision)
 hyperbolic_model_high = hyperbolic_model(hyperbolic_set, high_precision)
@@ -515,6 +611,36 @@ class TestHyperbolicModel(unittest.TestCase):
     
     def test_hyperbolic_model_high_correlation(self):
         self.assertEqual(hyperbolic_model_high['correlation'], 1.0)
+    
+    def test_hyperbolic_model_string_raises(self):
+        with self.assertRaises(Exception) as context:
+            hyperbolic_model(bad_set_string)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'First argument must be a 2-dimensional list')
+    
+    def test_hyperbolic_model_vector_raises(self):
+        with self.assertRaises(Exception) as context:
+            hyperbolic_model(bad_set_vector)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'First argument must be a 2-dimensional list')
+    
+    def test_hyperbolic_model_buried_not_list_raises(self):
+        with self.assertRaises(Exception) as context:
+            hyperbolic_model(bad_set_buried_not_list)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'Elements within first argument must be lists')
+    
+    def test_hyperbolic_model_buried_string_raises(self):
+        with self.assertRaises(Exception) as context:
+            hyperbolic_model(bad_set_buried_string)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'Elements within lists within first argument must be integers or floats')
+    
+    def test_hyperbolic_model_short_raises(self):
+        with self.assertRaises(Exception) as context:
+            hyperbolic_model(bad_set_short)
+        self.assertEqual(type(context.exception), ValueError)
+        self.assertEqual(str(context.exception), 'First argument must contain at least 10 elements')
 
 exponential_model_low = exponential_model(exponential_set, low_precision)
 exponential_model_high = exponential_model(exponential_set, high_precision)
@@ -615,6 +741,36 @@ class TestExponentialModel(unittest.TestCase):
     
     def test_exponential_model_high_correlation(self):
         self.assertEqual(exponential_model_high['correlation'], 1.0)
+    
+    def test_exponential_model_string_raises(self):
+        with self.assertRaises(Exception) as context:
+            exponential_model(bad_set_string)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'First argument must be a 2-dimensional list')
+    
+    def test_exponential_model_vector_raises(self):
+        with self.assertRaises(Exception) as context:
+            exponential_model(bad_set_vector)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'First argument must be a 2-dimensional list')
+    
+    def test_exponential_model_buried_not_list_raises(self):
+        with self.assertRaises(Exception) as context:
+            exponential_model(bad_set_buried_not_list)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'Elements within first argument must be lists')
+    
+    def test_exponential_model_buried_string_raises(self):
+        with self.assertRaises(Exception) as context:
+            exponential_model(bad_set_buried_string)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'Elements within lists within first argument must be integers or floats')
+    
+    def test_exponential_model_short_raises(self):
+        with self.assertRaises(Exception) as context:
+            exponential_model(bad_set_short)
+        self.assertEqual(type(context.exception), ValueError)
+        self.assertEqual(str(context.exception), 'First argument must contain at least 10 elements')
 
 logarithmic_model_low = logarithmic_model(logarithmic_set, low_precision)
 logarithmic_model_high = logarithmic_model(logarithmic_set, high_precision)
@@ -715,6 +871,36 @@ class TestLogarithmicModel(unittest.TestCase):
     
     def test_logarithmic_model_high_correlation(self):
         self.assertEqual(logarithmic_model_high['correlation'], 1.0)
+    
+    def test_linear_model_string_raises(self):
+        with self.assertRaises(Exception) as context:
+            linear_model(bad_set_string)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'First argument must be a 2-dimensional list')
+    
+    def test_logarithmic_model_vector_raises(self):
+        with self.assertRaises(Exception) as context:
+            logarithmic_model(bad_set_vector)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'First argument must be a 2-dimensional list')
+    
+    def test_logarithmic_model_buried_not_list_raises(self):
+        with self.assertRaises(Exception) as context:
+            logarithmic_model(bad_set_buried_not_list)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'Elements within first argument must be lists')
+    
+    def test_logarithmic_model_buried_string_raises(self):
+        with self.assertRaises(Exception) as context:
+            logarithmic_model(bad_set_buried_string)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'Elements within lists within first argument must be integers or floats')
+    
+    def test_logarithmic_model_short_raises(self):
+        with self.assertRaises(Exception) as context:
+            logarithmic_model(bad_set_short)
+        self.assertEqual(type(context.exception), ValueError)
+        self.assertEqual(str(context.exception), 'First argument must contain at least 10 elements')
 
 logistic_model_low = logistic_model(logistic_set, low_precision)
 logistic_model_high = logistic_model(logistic_set, high_precision)
@@ -816,6 +1002,36 @@ class TestLogisticModel(unittest.TestCase):
     def test_logistic_model_high_correlation(self):
         self.assertEqual(logistic_model_high['correlation'], 1.0)
 
+    def test_logistic_model_string_raises(self):
+        with self.assertRaises(Exception) as context:
+            logistic_model(bad_set_string)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'First argument must be a 2-dimensional list')
+    
+    def test_logistic_model_vector_raises(self):
+        with self.assertRaises(Exception) as context:
+            logistic_model(bad_set_vector)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'First argument must be a 2-dimensional list')
+    
+    def test_logistic_model_buried_not_list_raises(self):
+        with self.assertRaises(Exception) as context:
+            logistic_model(bad_set_buried_not_list)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'Elements within first argument must be lists')
+    
+    def test_logistic_model_buried_string_raises(self):
+        with self.assertRaises(Exception) as context:
+            logistic_model(bad_set_buried_string)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'Elements within lists within first argument must be integers or floats')
+    
+    def test_logistic_model_short_raises(self):
+        with self.assertRaises(Exception) as context:
+            logistic_model(bad_set_short)
+        self.assertEqual(type(context.exception), ValueError)
+        self.assertEqual(str(context.exception), 'First argument must contain at least 10 elements')
+
 sinusoidal_model_low = sinusoidal_model(sinusoidal_set, low_precision)
 sinusoidal_model_high = sinusoidal_model(sinusoidal_set, high_precision)
 
@@ -915,6 +1131,36 @@ class TestSinusoidalModel(unittest.TestCase):
     
     def test_sinusoidal_model_high_correlation(self):
         self.assertEqual(sinusoidal_model_high['correlation'], 1.0)
+    
+    def test_sinusoidal_model_string_raises(self):
+        with self.assertRaises(Exception) as context:
+            sinusoidal_model(bad_set_string)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'First argument must be a 2-dimensional list')
+    
+    def test_sinusoidal_model_vector_raises(self):
+        with self.assertRaises(Exception) as context:
+            sinusoidal_model(bad_set_vector)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'First argument must be a 2-dimensional list')
+    
+    def test_sinusoidal_model_buried_not_list_raises(self):
+        with self.assertRaises(Exception) as context:
+            sinusoidal_model(bad_set_buried_not_list)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'Elements within first argument must be lists')
+    
+    def test_sinusoidal_model_buried_string_raises(self):
+        with self.assertRaises(Exception) as context:
+            sinusoidal_model(bad_set_buried_string)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'Elements within lists within first argument must be integers or floats')
+    
+    def test_sinusoidal_model_short_raises(self):
+        with self.assertRaises(Exception) as context:
+            sinusoidal_model(bad_set_short)
+        self.assertEqual(type(context.exception), ValueError)
+        self.assertEqual(str(context.exception), 'First argument must contain at least 10 elements')
 
 if __name__ == '__main__':
     unittest.main()
