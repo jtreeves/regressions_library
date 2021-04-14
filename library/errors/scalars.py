@@ -1,10 +1,7 @@
+from .positions import argument_position
+
 def scalar_value(scalar, position = 'only'):
-    identifier = ''
-    argument = 'argument'
-    if position == 'only':
-        identifier = argument
-    else:
-        identifier = position + ' ' + argument
+    identifier = argument_position(position)
     if not isinstance(scalar, (int, float)):
         raise TypeError(f'{identifier.capitalize()} must be an integer or a float')
     else:
@@ -40,36 +37,21 @@ def positive_integer(scalar):
         return 'Last argument is a positive integer'
 
 def whole_number(scalar, position = 'only'):
-    identifier = ''
-    argument = 'argument'
-    if position == 'only':
-        identifier = argument
-    else:
-        identifier = position + ' ' + argument
+    identifier = argument_position(position)
     if not isinstance(scalar, int) or not scalar >= 0:
         raise ValueError(f'{identifier.capitalize()} must be a whole number')
     else:
         return f'{identifier.capitalize()} is a whole number'
 
 def select_integers(scalar, choices, position = 'only'):
-    identifier = ''
-    argument = 'argument'
-    if position == 'only':
-        identifier = argument
-    else:
-        identifier = position + ' ' + argument
+    identifier = argument_position(position)
     if scalar not in choices:
         raise ValueError(f'{identifier.capitalize()} must be one of the following integers: {choices}')
     else:
         return f'{identifier.capitalize()} is one of the following integers: {choices}'
 
 def allow_none_scalar(scalar, position = 'only'):
-    identifier = ''
-    argument = 'argument'
-    if position == 'only':
-        identifier = argument
-    else:
-        identifier = position + ' ' + argument
+    identifier = argument_position(position)
     if not isinstance(scalar, (int, float)) and scalar is not None:
         raise TypeError(f'{identifier.capitalize()} must be an integer, a float, or None')
     else:

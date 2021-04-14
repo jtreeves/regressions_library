@@ -1,9 +1,27 @@
 import unittest
 
+from library.errors.positions import argument_position
 from library.errors.scalars import scalar_value, two_scalars, three_scalars, four_scalars, compare_scalars, positive_integer, whole_number, select_integers, allow_none_scalar
-from library.errors.vectors import vector_of_scalars, compare_vectors, length, long_vector
-from library.errors.matrices import matrix_of_scalars, square_matrix, compare_rows, compare_columns, compare_matrices, columns_rows, allow_none_matrix, level
+from library.errors.vectors import confirm_vector, vector_of_scalars, compare_vectors, length, long_vector
+from library.errors.matrices import confirm_matrix, matrix_of_scalars, square_matrix, compare_rows, compare_columns, compare_matrices, columns_rows, allow_none_matrix, level
 from library.errors.analyses import select_equations
+
+class TestPosition(unittest.TestCase):
+    def test_position_none(self):
+        position_none = argument_position()
+        self.assertEqual(position_none, 'argument')
+    
+    def test_position_only(self):
+        position_only = argument_position('only')
+        self.assertEqual(position_only, 'argument')
+    
+    def test_position_first(self):
+        position_first = argument_position('first')
+        self.assertEqual(position_first, 'first argument')
+    
+    def test_position_second(self):
+        position_second = argument_position('second')
+        self.assertEqual(position_second, 'second argument')
 
 good_positive = 3
 good_whole = 0
@@ -218,9 +236,31 @@ good_multitype = ['positive', 1, 'negative']
 bad_multitype = ['positive', 'negative', 1]
 bad_vector_string = 'vector'
 bad_vector_buried_string = [1, 'two', 3]
+bad_vector_final_string = [1, 2, 3, 4, 5, 'six']
 bad_vector_nested =[[2], 3, 5]
 good_long_vector = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 better_long_vector = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+
+class TestConfirmVector(unittest.TestCase):
+    def test_confirm_vector_scalars(self):
+        confirm_vector_scalars = confirm_vector(first_vector)
+        self.assertEqual(confirm_vector_scalars, 'Argument is a 1-dimensional list')
+    
+    def test_confirm_vector_multitype(self):
+        confirm_vector_multitype = confirm_vector(good_multitype)
+        self.assertEqual(confirm_vector_multitype, 'Argument is a 1-dimensional list')
+    
+    def test_confirm_vector_string_raises(self):
+        with self.assertRaises(Exception) as context:
+            confirm_vector(bad_vector_string)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'Argument must be a 1-dimensional list')
+
+    def test_confirm_vector_nested_raises(self):
+        with self.assertRaises(Exception) as context:
+            confirm_vector(bad_vector_nested)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'Argument must be a 1-dimensional list')
 
 class TestVectorScalars(unittest.TestCase):
     def test_vector_scalars_3long(self):
@@ -231,18 +271,6 @@ class TestVectorScalars(unittest.TestCase):
         vector_scalars_4long = vector_of_scalars(longer_vector)
         self.assertEqual(vector_scalars_4long, 'Argument is a 1-dimensional list containing elements that are integers or floats')
     
-    def test_vector_scalars_nested_raises(self):
-        with self.assertRaises(Exception) as context:
-            vector_of_scalars(bad_vector_nested)
-        self.assertEqual(type(context.exception), TypeError)
-        self.assertEqual(str(context.exception), 'Argument must be a 1-dimensional list')
-    
-    def test_vector_scalars_string_raises(self):
-        with self.assertRaises(Exception) as context:
-            vector_of_scalars(bad_vector_string)
-        self.assertEqual(type(context.exception), TypeError)
-        self.assertEqual(str(context.exception), 'Argument must be a 1-dimensional list')
-    
     def test_vector_scalars_none_raises(self):
         with self.assertRaises(Exception) as context:
             vector_of_scalars(none_vector)
@@ -252,6 +280,18 @@ class TestVectorScalars(unittest.TestCase):
     def test_vector_scalars_multitype_raises(self):
         with self.assertRaises(Exception) as context:
             vector_of_scalars(good_multitype)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'Elements of argument must be integers or floats')
+    
+    def test_vector_scalars_buried_string_raises(self):
+        with self.assertRaises(Exception) as context:
+            vector_of_scalars(bad_vector_buried_string)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'Elements of argument must be integers or floats')
+    
+    def test_vector_scalars_final_string_raises(self):
+        with self.assertRaises(Exception) as context:
+            vector_of_scalars(bad_vector_final_string)
         self.assertEqual(type(context.exception), TypeError)
         self.assertEqual(str(context.exception), 'Elements of argument must be integers or floats')
 
@@ -313,41 +353,71 @@ large_square = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 matrix_points = [[1, 2], [3, 2], [5, 2], ['1 + 2k', 2]]
 bad_matrix_string = 'matrix'
 bad_matrix_buried_string = [['one', 2, 3], [4, 5, 6]]
+bad_matrix_last_string = [[1, 2, 3], [4, 5, 6], [7, 8, 'nine']]
 bad_matrix_vector = [1, 2, 3]
+bad_matrix_buried_not_vector = [[1, 2, 3], [4, 5, 6], 7, [8, 9]]
+bad_matrix_last_not_vector = [[1, 2, 3], [4, 5, 6], [7, 8], 9]
 bad_matrix_nested = [[[1], 2, 3], [4, 5, 6]]
+
+class TestConfirmMatrix(unittest.TestCase):
+    def test_confirm_matrix_scalars(self):
+        confirm_matrix_scalars = confirm_matrix(first_matrix)
+        self.assertEqual(confirm_matrix_scalars, 'Argument is a 2-dimensional list')
+    
+    def test_confirm_matrix_string(self):
+        confirm_matrix_string = confirm_matrix(bad_matrix_buried_string)
+        self.assertEqual(confirm_matrix_string, 'Argument is a 2-dimensional list')
+    
+    def test_confirm_matrix_string_raises(self):
+        with self.assertRaises(Exception) as context:
+            confirm_matrix(bad_matrix_string)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'Argument must be a 2-dimensional list')
+    
+    def test_confirm_matrix_vector_raises(self):
+        with self.assertRaises(Exception) as context:
+            confirm_matrix(bad_matrix_vector)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'Argument must be a 2-dimensional list')
+
+    def test_confirm_matrix_nested_raises(self):
+        with self.assertRaises(Exception) as context:
+            confirm_matrix(bad_matrix_nested)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'Argument must be a 2-dimensional list')
 
 class TestMatrixScalars(unittest.TestCase):
     def test_matrix_scalars_2x3(self):
         matrix_scalars_2x3 = matrix_of_scalars(first_matrix)
-        self.assertEqual(matrix_scalars_2x3, 'Argument is a 2-dimensional list containing elements that are integers or floats')
+        self.assertEqual(matrix_scalars_2x3, 'Argument is a 2-dimensional list containing nested elements that are integers or floats')
     
     def test_matrix_scalars_2x2(self):
         matrix_scalars_2x2 = matrix_of_scalars(small_square)
-        self.assertEqual(matrix_scalars_2x2, 'Argument is a 2-dimensional list containing elements that are integers or floats')
+        self.assertEqual(matrix_scalars_2x2, 'Argument is a 2-dimensional list containing nested elements that are integers or floats')
+
+    def test_matrix_scalars_buried_not_vector_raises(self):
+        with self.assertRaises(Exception) as context:
+            matrix_of_scalars(bad_matrix_buried_not_vector)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'Elements within argument must be lists')
+    
+    def test_matrix_scalars_last_not_vector_raises(self):
+        with self.assertRaises(Exception) as context:
+            matrix_of_scalars(bad_matrix_last_not_vector)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'Elements within argument must be lists')
     
     def test_matrix_scalars_buried_string_raises(self):
         with self.assertRaises(Exception) as context:
             matrix_of_scalars(bad_matrix_buried_string)
         self.assertEqual(type(context.exception), TypeError)
-        self.assertEqual(str(context.exception), 'Elements nested within argument must be integers or floats')
+        self.assertEqual(str(context.exception), 'Elements within lists within argument must be integers or floats')
     
-    def test_matrix_scalars_string_raises(self):
+    def test_matrix_scalars_last_string_raises(self):
         with self.assertRaises(Exception) as context:
-            matrix_of_scalars(bad_matrix_string)
+            matrix_of_scalars(bad_matrix_last_string)
         self.assertEqual(type(context.exception), TypeError)
-        self.assertEqual(str(context.exception), 'Argument must be a 2-dimensional list')
-    
-    def test_matrix_scalars_vector_raises(self):
-        with self.assertRaises(Exception) as context:
-            matrix_of_scalars(bad_matrix_vector)
-        self.assertEqual(type(context.exception), TypeError)
-        self.assertEqual(str(context.exception), 'Argument must be a 2-dimensional list')
-    
-    def test_matrix_scalars_nested_raises(self):
-        with self.assertRaises(Exception) as context:
-            matrix_of_scalars(bad_matrix_nested)
-        self.assertEqual(type(context.exception), TypeError)
-        self.assertEqual(str(context.exception), 'Argument must be a 2-dimensional list')
+        self.assertEqual(str(context.exception), 'Elements within lists within argument must be integers or floats')
 
 class TestSquareMatrix(unittest.TestCase):
     def test_square_matrix_2x2(self):
@@ -457,4 +527,4 @@ class TestSelectEquations(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 77 tests in 0.008s ---------- OK ---------- #
+# ---------- Ran 90 tests in 0.009s ---------- OK ---------- #

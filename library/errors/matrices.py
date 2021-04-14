@@ -1,16 +1,23 @@
-def matrix_of_scalars(matrix, position = 'only'):
-    identifier = ''
-    argument = 'argument'
-    if position == 'only':
-        identifier = argument
-    else:
-        identifier = position + ' ' + argument
+from .positions import argument_position
+
+def confirm_matrix(matrix, position = 'only'):
+    identifier = argument_position(position)
     if not isinstance(matrix, list) or not isinstance(matrix[0], list) or isinstance(matrix[0][0], list):
         raise TypeError(f'{identifier.capitalize()} must be a 2-dimensional list')
-    if not isinstance(matrix[0][0], (int, float)):
-        raise TypeError(f'Elements nested within {identifier} must be integers or floats')
     else:
-        return f'{identifier.capitalize()} is a 2-dimensional list containing elements that are integers or floats'
+        return f'{identifier.capitalize()} is a 2-dimensional list'
+
+def matrix_of_scalars(matrix, position = 'only'):
+    confirm_matrix(matrix, position)
+    identifier = argument_position(position)
+    for vector in matrix:
+        if not isinstance(vector, list):
+            raise TypeError(f'Elements within {identifier} must be lists')
+        for scalar in vector:
+            if not isinstance(scalar, (int, float)):
+                raise TypeError(f'Elements within lists within {identifier} must be integers or floats')
+    else:
+        return f'{identifier.capitalize()} is a 2-dimensional list containing nested elements that are integers or floats'
 
 def square_matrix(matrix):
     matrix_of_scalars(matrix, 'first')
@@ -49,12 +56,7 @@ def columns_rows(matrix_one, matrix_two):
         return 'First list within first argument contains the same amount of elements as the amount of lists contained within second argument'
 
 def allow_none_matrix(matrix, position = 'only'):
-    identifier = ''
-    argument = 'argument'
-    if position == 'only':
-        identifier = argument
-    else:
-        identifier = position + ' ' + argument
+    identifier = argument_position(position)
     if not isinstance(matrix, list):
         raise TypeError(f'{identifier.capitalize()} must be a list')
     if not isinstance(matrix[0], list) and matrix[0] is not None:
