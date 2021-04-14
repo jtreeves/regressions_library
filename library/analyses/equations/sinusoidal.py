@@ -1,5 +1,6 @@
 from math import sin
 from library.errors.scalars import four_scalars
+from library.errors.adjustments import no_zeroes
 
 def sinusoidal_equation(first_constant, second_constant, third_constant, fourth_constant):
     """
@@ -44,7 +45,8 @@ def sinusoidal_equation(first_constant, second_constant, third_constant, fourth_
         8.300575680314234
     """
     four_scalars(first_constant, second_constant, third_constant, fourth_constant)
+    coefficients = no_zeroes([first_constant, second_constant, third_constant, fourth_constant])
     def sinusoidal_evaluation(variable):
-        result = first_constant * sin(second_constant * (variable - third_constant)) + fourth_constant
+        result = coefficients[0] * sin(coefficients[1] * (variable - coefficients[2])) + coefficients[3]
         return result
     return sinusoidal_evaluation

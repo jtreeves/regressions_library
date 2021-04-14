@@ -1,6 +1,7 @@
 from library.errors.matrices import matrix_of_scalars
 from library.errors.vectors import long_vector
 from library.errors.scalars import positive_integer
+from library.errors.adjustments import no_zeroes
 from library.vectors.dimension import single_dimension
 from library.vectors.column import column_conversion
 from library.matrices.solve import system_solution
@@ -148,23 +149,27 @@ def hyperbolic_model(data, precision = 4):
     independent_matrix = []
     dependent_matrix = column_conversion(dependent_variable)
     for element in independent_variable:
-        independent_matrix.append([1 / element, 1])
+        if element == 0:
+            independent_matrix.append([10**precision, 1])
+        else:
+            independent_matrix.append([1 / element, 1])
     solution = system_solution(independent_matrix, dependent_matrix, precision)
-    equation = hyperbolic_equation(*solution)
-    derivative = hyperbolic_derivatives(*solution)
-    integral = hyperbolic_integral(*solution)['evaluation']
+    coefficients = no_zeroes(solution, precision)
+    equation = hyperbolic_equation(*coefficients)
+    derivative = hyperbolic_derivatives(*coefficients)
+    integral = hyperbolic_integral(*coefficients)['evaluation']
     first_derivative = derivative['first']['evaluation']
     second_derivative = derivative['second']['evaluation']
-    points = key_coordinates('hyperbolic', solution, precision)
+    points = key_coordinates('hyperbolic', coefficients, precision)
     five_numbers = five_number_summary(independent_variable, precision)
     min_value = five_numbers['minimum']
     max_value = five_numbers['maximum']
     q1 = five_numbers['q1']
     q3 = five_numbers['q3']
-    accumulated_range = accumulated_area('hyperbolic', solution, min_value, max_value, precision)
-    accumulated_iqr = accumulated_area('hyperbolic', solution, q1, q3, precision)
-    averages_range = average_values('hyperbolic', solution, min_value, max_value, precision)
-    averages_iqr = average_values('hyperbolic', solution, q1, q3, precision)
+    accumulated_range = accumulated_area('hyperbolic', coefficients, min_value, max_value, precision)
+    accumulated_iqr = accumulated_area('hyperbolic', coefficients, q1, q3, precision)
+    averages_range = average_values('hyperbolic', coefficients, min_value, max_value, precision)
+    averages_iqr = average_values('hyperbolic', coefficients, q1, q3, precision)
     predicted = []
     for element in independent_variable:
         predicted.append(equation(element))
@@ -189,7 +194,7 @@ def hyperbolic_model(data, precision = 4):
         'iqr': averages_iqr
     }
     result = {
-        'constants': solution,
+        'constants': coefficients,
         'evaluations': evaluations,
         'points': points,
         'accumulations': accumulations,

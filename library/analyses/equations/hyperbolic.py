@@ -1,4 +1,5 @@
 from library.errors.scalars import two_scalars
+from library.errors.adjustments import no_zeroes
 
 def hyperbolic_equation(first_constant, second_constant):
     """
@@ -39,7 +40,10 @@ def hyperbolic_equation(first_constant, second_constant):
         3.2
     """
     two_scalars(first_constant, second_constant)
+    coefficients = no_zeroes([first_constant, second_constant])
     def hyperbolic_evaluation(variable):
-        result = first_constant / variable + second_constant
+        if variable == 0:
+            variable = 0.0001
+        result = coefficients[0] / variable + coefficients[1]
         return result
     return hyperbolic_evaluation

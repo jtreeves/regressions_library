@@ -1,4 +1,5 @@
 from library.errors.scalars import two_scalars, positive_integer
+from library.errors.adjustments import no_zeroes
 
 def exponential_roots(first_constant, second_constant, precision = 4):
     """
@@ -47,5 +48,6 @@ def exponential_roots(first_constant, second_constant, precision = 4):
     """
     two_scalars(first_constant, second_constant)
     positive_integer(precision)
+    coefficients = no_zeroes([first_constant, second_constant], precision)
     root = [None]
     return root

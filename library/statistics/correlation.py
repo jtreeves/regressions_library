@@ -73,8 +73,10 @@ def correlation_coefficient(actuals, expecteds, precision = 4):
         squared_deviations.append(deviation**2)
     residual_sum = sum_value(squared_residuals)
     deviation_sum = sum_value(squared_deviations)
+    if deviation_sum == 0:
+        deviation_sum = 10**(-precision)
     ratio = residual_sum / deviation_sum
-    if ratio >= 1:
+    if ratio > 1:
         return 0.0
     else:
         result = (1 - ratio)**(1/2)

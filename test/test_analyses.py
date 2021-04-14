@@ -602,7 +602,7 @@ class TestAverages(unittest.TestCase):
     
     def test_exponential_averages(self):
         exponential_averages = average_values('exponential', coefficients[:2], 10, 20)
-        self.assertEqual(exponential_averages, {'average_value_derivative': 697345070.4, 'mean_values_derivative': [17.8185], 'average_value_integral': 634750837.5729, 'mean_values_integral': [17.8185]})
+        self.assertEqual(exponential_averages, {'average_value_derivative': 697345070.4, 'mean_values_derivative': [17.8185], 'average_value_integral': 634750837.5729, 'mean_values_integral': [19.4815]})
     
     def test_logarithmic_averages(self):
         logarithmic_averages = average_values('logarithmic', coefficients[:2], 10, 20)

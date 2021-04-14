@@ -1,4 +1,5 @@
 from library.errors.scalars import three_scalars
+from library.errors.adjustments import no_zeroes
 
 def quadratic_equation(first_constant, second_constant, third_constant):
     """
@@ -41,7 +42,8 @@ def quadratic_equation(first_constant, second_constant, third_constant):
         235
     """
     three_scalars(first_constant, second_constant, third_constant)
+    coefficients = no_zeroes([first_constant, second_constant, third_constant])
     def quadratic_evaluation(variable):
-        result = first_constant * variable**2 + second_constant * variable + third_constant
+        result = coefficients[0] * variable**2 + coefficients[1] * variable + coefficients[2]
         return result
     return quadratic_evaluation

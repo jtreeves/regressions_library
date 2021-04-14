@@ -50,7 +50,10 @@ def inverse_matrix(matrix):
         [[-0.07692307692307693, -0.3333333333333333, 0.20512820512820512], [-0.7692307692307692, 0.5, -0.11538461538461538], [0.6923076923076923, -0.16666666666666666, -0.01282051282051282]]
     """
     square_matrix(matrix)
-    determinant_reciprocal = 1 / linear_determinant(matrix)
+    determinant = linear_determinant(matrix)
+    if determinant == 0:
+        determinant = 0.0001
+    determinant_reciprocal = 1 / determinant
     transform = transposed_matrix(matrix_of_cofactors(matrix_of_minors(matrix)))
     result = scalar_product_matrix(transform, determinant_reciprocal)
     return result

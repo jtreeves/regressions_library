@@ -1,4 +1,5 @@
 from library.errors.scalars import three_scalars, positive_integer
+from library.errors.adjustments import no_zeroes
 
 def logistic_roots(first_constant, second_constant, third_constant, precision = 4):
     """
@@ -49,5 +50,6 @@ def logistic_roots(first_constant, second_constant, third_constant, precision = 
     """
     three_scalars(first_constant, second_constant, third_constant)
     positive_integer(precision)
+    coefficients = no_zeroes([first_constant, second_constant, third_constant], precision)
     root = [None]
     return root

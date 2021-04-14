@@ -1,4 +1,5 @@
 from library.errors.scalars import four_scalars
+from library.errors.adjustments import no_zeroes
 
 def cubic_equation(first_constant, second_constant, third_constant, fourth_constant):
     """
@@ -43,7 +44,8 @@ def cubic_equation(first_constant, second_constant, third_constant, fourth_const
         2357
     """
     four_scalars(first_constant, second_constant, third_constant, fourth_constant)
+    coefficients = no_zeroes([first_constant, second_constant, third_constant, fourth_constant])
     def cubic_evaluation(variable):
-        result = first_constant * variable**3 + second_constant * variable**2 + third_constant * variable + fourth_constant
+        result = coefficients[0] * variable**3 + coefficients[1] * variable**2 + coefficients[2] * variable + coefficients[3]
         return result
     return cubic_evaluation

@@ -1,5 +1,6 @@
 from math import log
 from library.errors.scalars import two_scalars
+from library.errors.adjustments import no_zeroes
 
 def logarithmic_integral(first_constant, second_constant):
     """
@@ -48,9 +49,12 @@ def logarithmic_integral(first_constant, second_constant):
         56.05170185988092
     """
     two_scalars(first_constant, second_constant)
-    constants = [first_constant, second_constant]
+    coefficients = no_zeroes([first_constant, second_constant])
+    constants = [coefficients[0], coefficients[1]]
     def logarithmic_evaluation(variable):
-        evaluation = constants[0] * variable * (log(variable) - 1) + constants[1] * variable
+        if variable == 0:
+            variable = 0.0001
+        evaluation = constants[0] * variable * (log(abs(variable)) - 1) + constants[1] * variable
         return evaluation
     results = {
         'constants': constants,

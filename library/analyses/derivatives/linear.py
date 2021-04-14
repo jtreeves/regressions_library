@@ -1,4 +1,5 @@
 from library.errors.scalars import two_scalars
+from library.errors.adjustments import no_zeroes
 
 def linear_derivatives(first_constant, second_constant):
     """
@@ -50,7 +51,8 @@ def linear_derivatives(first_constant, second_constant):
         0
     """
     two_scalars(first_constant, second_constant)
-    first_constants = [first_constant]
+    coefficients = no_zeroes([first_constant, second_constant])
+    first_constants = [coefficients[0]]
     def first_derivative(variable):
         evaluation = first_constants[0]
         return evaluation

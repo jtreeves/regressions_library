@@ -1,5 +1,6 @@
 from math import log
 from library.errors.scalars import two_scalars
+from library.errors.adjustments import no_zeroes
 
 def logarithmic_equation(first_constant, second_constant):
     """
@@ -40,7 +41,10 @@ def logarithmic_equation(first_constant, second_constant):
         7.605170185988092
     """
     two_scalars(first_constant, second_constant)
+    coefficients = no_zeroes([first_constant, second_constant])
     def logarithmic_evaluation(variable):
-        result = first_constant * log(variable) + second_constant 
+        if variable == 0:
+            variable = 0.0001
+        result = coefficients[0] * log(abs(variable)) + coefficients[1] 
         return result
     return logarithmic_evaluation

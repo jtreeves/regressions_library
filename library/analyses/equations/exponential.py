@@ -1,4 +1,5 @@
 from library.errors.scalars import two_scalars
+from library.errors.adjustments import no_zeroes
 
 def exponential_equation(first_constant, second_constant):
     """
@@ -39,7 +40,8 @@ def exponential_equation(first_constant, second_constant):
         118098
     """
     two_scalars(first_constant, second_constant)
+    coefficients = no_zeroes([first_constant, second_constant])
     def exponential_evaluation(variable):
-        result = first_constant * second_constant**variable
+        result = coefficients[0] * coefficients[1]**variable
         return result
     return exponential_evaluation

@@ -1,4 +1,5 @@
 from library.errors.scalars import two_scalars
+from library.errors.adjustments import no_zeroes
 
 def hyperbolic_derivatives(first_constant, second_constant):
     """
@@ -50,8 +51,11 @@ def hyperbolic_derivatives(first_constant, second_constant):
         0.004
     """
     two_scalars(first_constant, second_constant)
-    first_constants = [-1 * first_constant]
+    coefficients = no_zeroes([first_constant, second_constant])
+    first_constants = [-1 * coefficients[0]]
     def first_derivative(variable):
+        if variable == 0:
+            variable = 0.0001
         evaluation = first_constants[0] / variable**2
         return evaluation
     first_object = {
@@ -60,6 +64,8 @@ def hyperbolic_derivatives(first_constant, second_constant):
     }
     second_constants = [-2 * first_constants[0]]
     def second_derivative(variable):
+        if variable == 0:
+            variable = 0.0001
         evaluation = second_constants[0] / variable**3
         return evaluation
     second_object = {

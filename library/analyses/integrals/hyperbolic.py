@@ -1,5 +1,6 @@
 from math import log
 from library.errors.scalars import two_scalars
+from library.errors.adjustments import no_zeroes
 
 def hyperbolic_integral(first_constant, second_constant):
     """
@@ -47,8 +48,11 @@ def hyperbolic_integral(first_constant, second_constant):
         34.605170185988094
     """
     two_scalars(first_constant, second_constant)
-    constants = [first_constant, second_constant]
+    coefficients = no_zeroes([first_constant, second_constant])
+    constants = [coefficients[0], coefficients[1]]
     def hyperbolic_evaluation(variable):
+        if variable == 0:
+            variable = 0.0001
         evaluation = constants[0] * log(abs(variable)) + constants[1] * variable
         return evaluation
     results = {

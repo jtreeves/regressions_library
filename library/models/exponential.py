@@ -2,6 +2,7 @@ from math import log, exp
 from library.errors.matrices import matrix_of_scalars
 from library.errors.vectors import long_vector
 from library.errors.scalars import positive_integer
+from library.errors.adjustments import no_zeroes
 from library.vectors.dimension import single_dimension
 from library.vectors.column import column_conversion
 from library.matrices.solve import system_solution
@@ -160,7 +161,7 @@ def exponential_model(data, precision = 4):
         dependent_matrix.append([log(filtered_dependent[i])])
     solution = system_solution(independent_matrix, dependent_matrix, precision)
     constants = [exp(solution[1]), exp(solution[0])]
-    coefficients = [rounded_value(constants[0], precision), rounded_value(constants[1], precision)]
+    coefficients = no_zeroes(constants, precision)
     equation = exponential_equation(*coefficients)
     derivative = exponential_derivatives(*coefficients)
     integral = exponential_integral(*coefficients)['evaluation']

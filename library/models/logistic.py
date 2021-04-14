@@ -3,6 +3,7 @@ from scipy.optimize import curve_fit
 from library.errors.matrices import matrix_of_scalars
 from library.errors.vectors import long_vector
 from library.errors.scalars import positive_integer
+from library.errors.adjustments import no_zeroes
 from library.vectors.dimension import single_dimension
 from library.analyses.equations.logistic import logistic_equation
 from library.analyses.derivatives.logistic import logistic_derivatives
@@ -156,6 +157,8 @@ def logistic_model(data, precision = 4):
     dependent_max = max(dependent_variable)
     dependent_min = min(dependent_variable)
     dependent_range = dependent_max - dependent_min
+    if dependent_range == 0:
+        dependent_range = 1
     solution = []
     def logistic_fit(variable, first_constant, second_constant, third_constant):
         evaluation = first_constant / (1 + exp(-1 * second_constant * (variable - third_constant)))
@@ -166,24 +169,22 @@ def logistic_model(data, precision = 4):
     else:
         parameters, covariance = curve_fit(logistic_fit, independent_variable, dependent_variable, bounds=[(dependent_max - dependent_range, -inf, -inf), (dependent_max + dependent_range, 0, inf)])
         solution = list(parameters)
-    constants = []
-    for number in solution:
-        constants.append(rounded_value(number, precision))
-    equation = logistic_equation(*solution)
-    derivative = logistic_derivatives(*solution)
-    integral = logistic_integral(*solution)['evaluation']
+    coefficients = no_zeroes(solution, precision)
+    equation = logistic_equation(*coefficients)
+    derivative = logistic_derivatives(*coefficients)
+    integral = logistic_integral(*coefficients)['evaluation']
     first_derivative = derivative['first']['evaluation']
     second_derivative = derivative['second']['evaluation']
-    points = key_coordinates('logistic', solution, precision)
+    points = key_coordinates('logistic', coefficients, precision)
     five_numbers = five_number_summary(independent_variable, precision)
     min_value = five_numbers['minimum']
     max_value = five_numbers['maximum']
     q1 = five_numbers['q1']
     q3 = five_numbers['q3']
-    accumulated_range = accumulated_area('logistic', constants, min_value, max_value, precision)
-    accumulated_iqr = accumulated_area('logistic', constants, q1, q3, precision)
-    averages_range = average_values('logistic', solution, min_value, max_value, precision)
-    averages_iqr = average_values('logistic', solution, q1, q3, precision)
+    accumulated_range = accumulated_area('logistic', coefficients, min_value, max_value, precision)
+    accumulated_iqr = accumulated_area('logistic', coefficients, q1, q3, precision)
+    averages_range = average_values('logistic', coefficients, min_value, max_value, precision)
+    averages_iqr = average_values('logistic', coefficients, q1, q3, precision)
     predicted = []
     for element in independent_variable:
         predicted.append(equation(element))
@@ -208,7 +209,7 @@ def logistic_model(data, precision = 4):
         'iqr': averages_iqr
     }
     result = {
-        'constants': constants,
+        'constants': coefficients,
         'evaluations': evaluations,
         'points': points,
         'accumulations': accumulations,

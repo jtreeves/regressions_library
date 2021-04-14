@@ -1,4 +1,5 @@
 from library.errors.scalars import four_scalars
+from library.errors.adjustments import no_zeroes
 
 def cubic_derivatives(first_constant, second_constant, third_constant, fourth_constant):
     """
@@ -54,7 +55,8 @@ def cubic_derivatives(first_constant, second_constant, third_constant, fourth_co
         126
     """
     four_scalars(first_constant, second_constant, third_constant, fourth_constant)
-    first_constants = [3 * first_constant, 2 * second_constant, third_constant]
+    coefficients = no_zeroes([first_constant, second_constant, third_constant, fourth_constant])
+    first_constants = [3 * coefficients[0], 2 * coefficients[1], coefficients[2]]
     def first_derivative(variable):
         evaluation = first_constants[0] * variable**2 + first_constants[1] * variable + first_constants[2]
         return evaluation

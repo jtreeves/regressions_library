@@ -1,5 +1,6 @@
 from math import exp, log
 from library.errors.scalars import three_scalars
+from library.errors.adjustments import no_zeroes
 
 def logistic_integral(first_constant, second_constant, third_constant):
     """
@@ -50,7 +51,8 @@ def logistic_integral(first_constant, second_constant, third_constant):
         10.00000020393485
     """
     three_scalars(first_constant, second_constant, third_constant)
-    constants = [first_constant / second_constant, second_constant, third_constant]
+    coefficients = no_zeroes([first_constant, second_constant, third_constant])
+    constants = [coefficients[0] / coefficients[1], coefficients[1], coefficients[2]]
     def logistic_evaluation(variable):
         evaluation = constants[0] * log(abs(exp(constants[1] * (variable - constants[2])) + 1))
         return evaluation

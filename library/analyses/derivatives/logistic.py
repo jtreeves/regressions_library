@@ -1,5 +1,6 @@
 from math import exp
 from library.errors.scalars import three_scalars
+from library.errors.adjustments import no_zeroes
 
 def logistic_derivatives(first_constant, second_constant, third_constant):
     """
@@ -55,7 +56,8 @@ def logistic_derivatives(first_constant, second_constant, third_constant):
         -5.506235031548963e-06
     """
     three_scalars(first_constant, second_constant, third_constant)
-    first_constants = [first_constant * second_constant, second_constant, third_constant]
+    coefficients = no_zeroes([first_constant, second_constant, third_constant])
+    first_constants = [coefficients[0] * coefficients[1], coefficients[1], coefficients[2]]
     def first_derivative(variable):
         exponential = exp(-1 * first_constants[1] * (variable - first_constants[2]))
         evaluation = first_constants[0] * exponential * (1 + exponential)**(-2)

@@ -25,10 +25,10 @@ def four_scalars(scalar_one, scalar_two, scalar_three, scalar_four):
 def compare_scalars(scalar_one, scalar_two, position_one, position_two):
     scalar_value(scalar_one, position_one)
     scalar_value(scalar_two, position_two)
-    if scalar_one >= scalar_two:
-        raise ValueError(f'{position_one.capitalize()} argument must be less than {position_two} argument')
+    if scalar_one > scalar_two:
+        raise ValueError(f'{position_one.capitalize()} argument must be less than or equal to {position_two} argument')
     else:
-        return f'{position_one.capitalize()} argument is less than {position_two} argument'
+        return f'{position_one.capitalize()} argument is less than or equal to {position_two} argument'
 
 def positive_integer(scalar):
     if not isinstance(scalar, int) or not scalar > 0:

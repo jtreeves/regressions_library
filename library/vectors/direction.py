@@ -53,6 +53,8 @@ def vector_direction(vector):
     """
     vector_of_scalars(vector)
     length(vector, 2)
+    if vector[0] == 0:
+        vector[0] = 0.0001
     ratio = vector[1] / vector[0]
     radian_measure = atan(ratio)
     degree_measure = degrees(radian_measure)

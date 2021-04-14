@@ -97,6 +97,8 @@ def average_value_derivative(equation_type, coefficients, start, end, precision 
         equation = sinusoidal_equation(*coefficients)
     vertical_change = equation(end) - equation(start)
     horizontal_change = end - start
+    if horizontal_change == 0:
+        horizontal_change = 10**(-precision)
     ratio = vertical_change / horizontal_change
     result = rounded_value(ratio, precision)
     return result
@@ -161,6 +163,8 @@ def mean_values_derivative(equation_type, coefficients, start, end, precision = 
     positive_integer(precision)
     result = []
     average = average_value_derivative(equation_type, coefficients, start, end, precision)
+    if average == 0:
+        average = 10**(-precision)
     if equation_type == 'linear':
         result.append('All')
         return result
@@ -177,7 +181,9 @@ def mean_values_derivative(equation_type, coefficients, start, end, precision = 
         second_value = -1 * root
         result.extend([first_value, second_value])
     elif equation_type == 'exponential':
-        base_log = log(coefficients[1])
+        base_log = log(abs(coefficients[1]))
+        if base_log == 0:
+            base_log = 10**(-precision)
         numerator = log(average / (coefficients[0] * base_log))
         denominator = base_log
         value = numerator / denominator
@@ -369,6 +375,8 @@ def average_value_integral(equation_type, coefficients, start, end, precision = 
     positive_integer(precision)
     accumulated_value = accumulated_area(equation_type, coefficients, start, end, precision)
     change = end - start
+    if change == 0:
+        change = 10**(-precision)
     ratio = accumulated_value / change
     result = rounded_value(ratio, precision)
     return result
@@ -433,6 +441,8 @@ def mean_values_integral(equation_type, coefficients, start, end, precision = 4)
     positive_integer(precision)
     result = []
     average = average_value_integral(equation_type, coefficients, start, end, precision)
+    if average == 0:
+        average = 10**(-precision)
     if equation_type == 'linear':
         value = linear_roots(coefficients[0], coefficients[1] - average, precision)
         result = value
@@ -446,7 +456,12 @@ def mean_values_integral(equation_type, coefficients, start, end, precision = 4)
         value = hyperbolic_roots(coefficients[0], coefficients[1] - average, precision)
         result = value
     elif equation_type == 'exponential':
-        value = log(average / coefficients[0]) / log(coefficients[1])
+        numerator = average / coefficients[0]
+        denominator = log(abs(coefficients[1]))
+        if denominator == 0:
+            denominator = 10**(-precision)
+        ratio = numerator / denominator
+        value = log(abs(ratio))
         result.append(value)
     elif equation_type == 'logarithmic':
         value = logarithmic_roots(coefficients[0], coefficients[1] - average, precision)

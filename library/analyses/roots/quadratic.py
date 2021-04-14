@@ -1,4 +1,5 @@
 from library.errors.scalars import three_scalars, positive_integer
+from library.errors.adjustments import no_zeroes
 from library.statistics.sort import sorted_list
 from library.statistics.rounding import rounded_value
 
@@ -52,12 +53,11 @@ def quadratic_roots(first_constant, second_constant, third_constant, precision =
     """
     three_scalars(first_constant, second_constant, third_constant)
     positive_integer(precision)
+    coefficients = no_zeroes([first_constant, second_constant, third_constant], precision)
     roots = []
-    if first_constant == 0:
-        first_constant = 10**(-precision)
-    discriminant = second_constant**2 - 4 * first_constant * third_constant
-    first_root = (-1 * second_constant + discriminant**(1/2)) / (2 * first_constant)
-    second_root = (-1 * second_constant - discriminant**(1/2)) / (2 * first_constant)
+    discriminant = coefficients[1]**2 - 4 * coefficients[0] * coefficients[2]
+    first_root = (-1 * coefficients[1] + discriminant**(1/2)) / (2 * coefficients[0])
+    second_root = (-1 * coefficients[1] - discriminant**(1/2)) / (2 * coefficients[0])
     if first_root == second_root:
         roots.append(first_root)
     else:

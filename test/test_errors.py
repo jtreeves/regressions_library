@@ -1,6 +1,7 @@
 import unittest
 
 from library.errors.positions import argument_position
+from library.errors.adjustments import no_zeroes
 from library.errors.scalars import scalar_value, two_scalars, three_scalars, four_scalars, compare_scalars, positive_integer, whole_number, select_integers, allow_none_scalar
 from library.errors.vectors import confirm_vector, vector_of_scalars, compare_vectors, length, long_vector
 from library.errors.matrices import confirm_matrix, matrix_of_scalars, square_matrix, compare_rows, compare_columns, compare_matrices, columns_rows, allow_none_matrix, level
@@ -22,6 +23,32 @@ class TestPosition(unittest.TestCase):
     def test_position_second(self):
         position_second = argument_position('second')
         self.assertEqual(position_second, 'second argument')
+
+no_zeroes_list = [1, 2, 3]
+all_zeroes_list = [0, 0, 0]
+first_zero_list = [0, 1, 2]
+last_zero_list = [1, 2, 0]
+
+class TestNoZeroes(unittest.TestCase):
+    def test_no_zeroes_no0(self):
+        no_zeroes_no0 = no_zeroes(no_zeroes_list)
+        self.assertEqual(no_zeroes_no0, [1.0, 2.0, 3.0])
+    
+    def test_no_zeroes_all0(self):
+        no_zeroes_all0 = no_zeroes(all_zeroes_list)
+        self.assertEqual(no_zeroes_all0, [0.0001, 0.0001, 0.0001])
+    
+    def test_no_zeroes_first0(self):
+        no_zeroes_first0 = no_zeroes(first_zero_list)
+        self.assertEqual(no_zeroes_first0, [0.0001, 1.0, 2.0])
+    
+    def test_no_zeroes_last0(self):
+        no_zeroes_last0 = no_zeroes(last_zero_list)
+        self.assertEqual(no_zeroes_last0, [1.0, 2.0, 0.0001])
+    
+    def test_no_zeroes_all0_precision(self):
+        no_zeroes_all0 = no_zeroes(all_zeroes_list, 6)
+        self.assertEqual(no_zeroes_all0, [0.000001, 0.000001, 0.000001])
 
 good_positive = 3
 good_whole = 0
@@ -170,13 +197,17 @@ class TestAllowNoneScalar(unittest.TestCase):
 class TestCompareScalars(unittest.TestCase):
     def test_compare_scalars_less(self):
         compare_scalars_less = compare_scalars(good_integer, good_float, 'second', 'third')
-        self.assertEqual(compare_scalars_less, 'Second argument is less than third argument')
+        self.assertEqual(compare_scalars_less, 'Second argument is less than or equal to third argument')
+    
+    def test_compare_scalars_equal(self):
+        compare_scalars_equal = compare_scalars(good_integer, good_integer, 'second', 'third')
+        self.assertEqual(compare_scalars_equal, 'Second argument is less than or equal to third argument')
     
     def test_compare_scalars_more_raises(self):
         with self.assertRaises(Exception) as context:
             compare_scalars(good_float, good_integer, 'second', 'third')
         self.assertEqual(type(context.exception), ValueError)
-        self.assertEqual(str(context.exception), 'Second argument must be less than third argument')
+        self.assertEqual(str(context.exception), 'Second argument must be less than or equal to third argument')
 
 class TestSelectIntegers(unittest.TestCase):
     def test_select_integers_included(self):

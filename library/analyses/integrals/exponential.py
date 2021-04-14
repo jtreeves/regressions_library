@@ -1,5 +1,6 @@
 from math import log
 from library.errors.scalars import two_scalars
+from library.errors.adjustments import no_zeroes
 
 def exponential_integral(first_constant, second_constant):
     """
@@ -47,7 +48,10 @@ def exponential_integral(first_constant, second_constant):
         107497.43218617623
     """
     two_scalars(first_constant, second_constant)
-    constants = [first_constant / log(second_constant), second_constant]
+    coefficients = no_zeroes([first_constant, second_constant])
+    if coefficients[1] == 1:
+        coefficients[1] = 1.0001
+    constants = [coefficients[0] / log(abs(coefficients[1])), coefficients[1]]
     def exponential_evaluation(variable):
         evaluation = constants[0] * constants[1]**variable
         return evaluation

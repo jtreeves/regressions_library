@@ -4,6 +4,7 @@ from scipy.optimize import curve_fit
 from library.errors.matrices import matrix_of_scalars
 from library.errors.vectors import long_vector
 from library.errors.scalars import positive_integer
+from library.errors.adjustments import no_zeroes
 from library.vectors.dimension import single_dimension
 from library.vectors.unify import unite_vectors
 from library.analyses.equations.sinusoidal import sinusoidal_equation
@@ -181,6 +182,12 @@ def sinusoidal_model(data, precision = 4):
     dependent_max = max(dependent_variable)
     dependent_min = min(dependent_variable)
     dependent_range = dependent_max - dependent_min
+    if independent_range == 0:
+        independent_range = 1
+    if dependent_range == 0:
+        dependent_range = 1
+        dependent_min = 1
+        dependent_max = 2
     solution = []
     def sinusoidal_fit(variable, first_constant, second_constant, third_constant, fourth_constant):
         evaluation = first_constant * sin(second_constant * (variable - third_constant)) + fourth_constant
@@ -191,16 +198,14 @@ def sinusoidal_model(data, precision = 4):
     except RuntimeError:
         parameters, covariance = curve_fit(sinusoidal_fit, independent_variable, dependent_variable, bounds=[(dependent_range - 1, -independent_range, -independent_range, dependent_min), (dependent_range + 1, independent_range, independent_range, dependent_max)])
         solution = list(parameters)
-    constants = []
-    for number in solution:
-        constants.append(rounded_value(number, precision))
-    equation = sinusoidal_equation(*solution)
-    derivative = sinusoidal_derivatives(*solution)
-    integral = sinusoidal_integral(*solution)['evaluation']
+    coefficients = no_zeroes(solution, precision)
+    equation = sinusoidal_equation(*coefficients)
+    derivative = sinusoidal_derivatives(*coefficients)
+    integral = sinusoidal_integral(*coefficients)['evaluation']
     first_derivative = derivative['first']['evaluation']
     second_derivative = derivative['second']['evaluation']
-    points = key_coordinates('sinusoidal', solution, precision)
-    interval = 2 * abs(2 * pi / solution[1])
+    points = key_coordinates('sinusoidal', coefficients, precision)
+    interval = 2 * abs(2 * pi / coefficients[1])
     final_roots = points_within_range(points['roots'], independent_min, independent_max, interval, precision)
     final_maxima = points_within_range(points['maxima'], independent_min, independent_max, interval, precision)
     final_minima = points_within_range(points['minima'], independent_min, independent_max, interval, precision)
@@ -210,10 +215,10 @@ def sinusoidal_model(data, precision = 4):
     max_value = five_numbers['maximum']
     q1 = five_numbers['q1']
     q3 = five_numbers['q3']
-    accumulated_range = accumulated_area('sinusoidal', constants, min_value, max_value, precision)
-    accumulated_iqr = accumulated_area('sinusoidal', constants, q1, q3, precision)
-    averages_range = average_values('sinusoidal', solution, min_value, max_value, precision)
-    averages_iqr = average_values('sinusoidal', solution, q1, q3, precision)
+    accumulated_range = accumulated_area('sinusoidal', coefficients, min_value, max_value, precision)
+    accumulated_iqr = accumulated_area('sinusoidal', coefficients, q1, q3, precision)
+    averages_range = average_values('sinusoidal', coefficients, min_value, max_value, precision)
+    averages_iqr = average_values('sinusoidal', coefficients, q1, q3, precision)
     predicted = []
     for element in independent_variable:
         predicted.append(equation(element))
@@ -238,7 +243,7 @@ def sinusoidal_model(data, precision = 4):
         'iqr': averages_iqr
     }
     result = {
-        'constants': constants,
+        'constants': coefficients,
         'evaluations': evaluations,
         'points': points,
         'accumulations': accumulations,

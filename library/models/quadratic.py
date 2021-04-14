@@ -1,6 +1,7 @@
 from library.errors.matrices import matrix_of_scalars
 from library.errors.vectors import long_vector
 from library.errors.scalars import positive_integer
+from library.errors.adjustments import no_zeroes
 from library.vectors.dimension import single_dimension
 from library.vectors.column import column_conversion
 from library.matrices.solve import system_solution
@@ -150,21 +151,22 @@ def quadratic_model(data, precision = 4):
     for element in independent_variable:
         independent_matrix.append([element**2, element, 1])
     solution = system_solution(independent_matrix, dependent_matrix, precision)
-    equation = quadratic_equation(*solution)
-    derivative = quadratic_derivatives(*solution)
-    integral = quadratic_integral(*solution)['evaluation']
+    coefficients = no_zeroes(solution, precision)
+    equation = quadratic_equation(*coefficients)
+    derivative = quadratic_derivatives(*coefficients)
+    integral = quadratic_integral(*coefficients)['evaluation']
     first_derivative = derivative['first']['evaluation']
     second_derivative = derivative['second']['evaluation']
-    points = key_coordinates('quadratic', solution, precision)
+    points = key_coordinates('quadratic', coefficients, precision)
     five_numbers = five_number_summary(independent_variable, precision)
     min_value = five_numbers['minimum']
     max_value = five_numbers['maximum']
     q1 = five_numbers['q1']
     q3 = five_numbers['q3']
-    accumulated_range = accumulated_area('quadratic', solution, min_value, max_value, precision)
-    accumulated_iqr = accumulated_area('quadratic', solution, q1, q3, precision)
-    averages_range = average_values('quadratic', solution, min_value, max_value, precision)
-    averages_iqr = average_values('quadratic', solution, q1, q3, precision)
+    accumulated_range = accumulated_area('quadratic', coefficients, min_value, max_value, precision)
+    accumulated_iqr = accumulated_area('quadratic', coefficients, q1, q3, precision)
+    averages_range = average_values('quadratic', coefficients, min_value, max_value, precision)
+    averages_iqr = average_values('quadratic', coefficients, q1, q3, precision)
     predicted = []
     for element in independent_variable:
         predicted.append(equation(element))
@@ -189,7 +191,7 @@ def quadratic_model(data, precision = 4):
         'iqr': averages_iqr
     }
     result = {
-        'constants': solution,
+        'constants': coefficients,
         'evaluations': evaluations,
         'points': points,
         'accumulations': accumulations,

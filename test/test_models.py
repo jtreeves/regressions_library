@@ -118,6 +118,7 @@ bad_set_vector = [1]
 bad_set_buried_not_list = [[1], [2], 3]
 bad_set_buried_string = [[1], [2], ['three']]
 bad_set_short = [[1], [2], [3]]
+bad_set_zeroes = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
 
 low_precision = 2
 high_precision = 6
@@ -130,7 +131,7 @@ class TestLinearModel(unittest.TestCase):
         self.assertEqual(linear_model_low['constants'], [-3.0, 33.0])
     
     def test_linear_model_low_roots(self):
-        self.assertEqual(linear_model_low['points']['roots'], [[11.0, 0]])
+        self.assertEqual(linear_model_low['points']['roots'], [[11.0, 0.0]])
     
     def test_linear_model_low_maxima(self):
         self.assertEqual(linear_model_low['points']['maxima'], [None])
@@ -178,7 +179,7 @@ class TestLinearModel(unittest.TestCase):
         self.assertEqual(linear_model_high['constants'], [-3.0, 33.0])
     
     def test_linear_model_high_roots(self):
-        self.assertEqual(linear_model_high['points']['roots'], [[11.0, 0]])
+        self.assertEqual(linear_model_high['points']['roots'], [[11.0, 0.0]])
     
     def test_linear_model_high_maxima(self):
         self.assertEqual(linear_model_high['points']['maxima'], [None])
@@ -221,6 +222,10 @@ class TestLinearModel(unittest.TestCase):
     
     def test_linear_model_high_correlation(self):
         self.assertEqual(linear_model_high['correlation'], 1.0)
+    
+    def test_linear_model_zeroes(self):
+        linear_model_zeroes = linear_model(bad_set_zeroes)
+        self.assertEqual(linear_model_zeroes['constants'], [0.0001, 0.0001])
 
     def test_linear_model_string_raises(self):
         with self.assertRaises(Exception) as context:
@@ -260,7 +265,7 @@ class TestQuadraticModel(unittest.TestCase):
         self.assertEqual(quadratic_model_low['constants'], [-2.0, 23.0, -11.0])
     
     def test_quadratic_model_low_roots(self):
-        self.assertEqual(quadratic_model_low['points']['roots'], [[0.5, 0], [11.0, 0]])
+        self.assertEqual(quadratic_model_low['points']['roots'], [[0.5, 0.0], [11.0, 0.0]])
     
     def test_quadratic_model_low_maxima(self):
         self.assertEqual(quadratic_model_low['points']['maxima'], [[5.75, 55.12]])
@@ -308,7 +313,7 @@ class TestQuadraticModel(unittest.TestCase):
         self.assertEqual(quadratic_model_high['constants'], [-2.0, 23.0, -11.0])
     
     def test_quadratic_model_high_roots(self):
-        self.assertEqual(quadratic_model_high['points']['roots'], [[0.5, 0], [11.0, 0]])
+        self.assertEqual(quadratic_model_high['points']['roots'], [[0.5, 0.0], [11.0, 0.0]])
     
     def test_quadratic_model_high_maxima(self):
         self.assertEqual(quadratic_model_high['points']['maxima'], [[5.75, 55.125]])
@@ -352,6 +357,10 @@ class TestQuadraticModel(unittest.TestCase):
     def test_quadratic_model_high_correlation(self):
         self.assertEqual(quadratic_model_high['correlation'], 1.0)
     
+    def test_quadratic_model_zeroes(self):
+        quadratic_model_zeroes = quadratic_model(bad_set_zeroes)
+        self.assertEqual(quadratic_model_zeroes['constants'], [0.0001, 0.0001, 0.0001])
+
     def test_quadratic_model_string_raises(self):
         with self.assertRaises(Exception) as context:
             quadratic_model(bad_set_string)
@@ -390,7 +399,7 @@ class TestCubicModel(unittest.TestCase):
         self.assertEqual(cubic_model_low['constants'], [1.0, -15.0, 63.0, -7.0])
     
     def test_cubic_model_low_roots(self):
-        self.assertEqual(cubic_model_low['points']['roots'], [[0.11, 0]])
+        self.assertEqual(cubic_model_low['points']['roots'], [[0.11, 0.0]])
     
     def test_cubic_model_low_maxima(self):
         self.assertEqual(cubic_model_low['points']['maxima'], [[3.0, 74.0]])
@@ -438,7 +447,7 @@ class TestCubicModel(unittest.TestCase):
         self.assertEqual(cubic_model_high['constants'], [1.0, -15.0, 63.0, -7.0])
     
     def test_cubic_model_high_roots(self):
-        self.assertEqual(cubic_model_high['points']['roots'], [[0.114192, 0]])
+        self.assertEqual(cubic_model_high['points']['roots'], [[0.114192, 0.0]])
     
     def test_cubic_model_high_maxima(self):
         self.assertEqual(cubic_model_high['points']['maxima'], [[3.0, 74.0]])
@@ -482,6 +491,10 @@ class TestCubicModel(unittest.TestCase):
     def test_cubic_model_high_correlation(self):
         self.assertEqual(cubic_model_high['correlation'], 1.0)
     
+    def test_cubic_model_zeroes(self):
+        cubic_model_zeroes = cubic_model(bad_set_zeroes)
+        self.assertEqual(cubic_model_zeroes['constants'], [0.0001, 0.0001, 0.0001, 0.0001])
+
     def test_cubic_model_string_raises(self):
         with self.assertRaises(Exception) as context:
             cubic_model(bad_set_string)
@@ -520,7 +533,7 @@ class TestHyperbolicModel(unittest.TestCase):
         self.assertEqual(hyperbolic_model_low['constants'], [2520.0, -1.0])
     
     def test_hyperbolic_model_low_roots(self):
-        self.assertEqual(hyperbolic_model_low['points']['roots'], [[2520.0, 0]])
+        self.assertEqual(hyperbolic_model_low['points']['roots'], [[2520.0, 0.0]])
     
     def test_hyperbolic_model_low_maxima(self):
         self.assertEqual(hyperbolic_model_low['points']['maxima'], [None])
@@ -568,7 +581,7 @@ class TestHyperbolicModel(unittest.TestCase):
         self.assertEqual(hyperbolic_model_high['constants'], [2520.0, -1.0])
     
     def test_hyperbolic_model_high_roots(self):
-        self.assertEqual(hyperbolic_model_high['points']['roots'], [[2520.0, 0]])
+        self.assertEqual(hyperbolic_model_high['points']['roots'], [[2520.0, 0.0]])
     
     def test_hyperbolic_model_high_maxima(self):
         self.assertEqual(hyperbolic_model_high['points']['maxima'], [None])
@@ -612,6 +625,10 @@ class TestHyperbolicModel(unittest.TestCase):
     def test_hyperbolic_model_high_correlation(self):
         self.assertEqual(hyperbolic_model_high['correlation'], 1.0)
     
+    def test_hyperbolic_model_zeroes(self):
+        hyperbolic_model_zeroes = hyperbolic_model(bad_set_zeroes)
+        self.assertEqual(hyperbolic_model_zeroes['constants'], [0.0001, 0.0001])
+
     def test_hyperbolic_model_string_raises(self):
         with self.assertRaises(Exception) as context:
             hyperbolic_model(bad_set_string)
@@ -662,10 +679,10 @@ class TestExponentialModel(unittest.TestCase):
         self.assertEqual(exponential_model_low['points']['inflections'], [None])
     
     def test_exponential_model_low_accumulations_range(self):
-        self.assertEqual(exponential_model_low['accumulations']['range'], 4311.55)
+        self.assertEqual(exponential_model_low['accumulations']['range'], 4311.31)
     
     def test_exponential_model_low_accumulations_iqr(self):
-        self.assertEqual(exponential_model_low['accumulations']['iqr'], 1052.37)
+        self.assertEqual(exponential_model_low['accumulations']['iqr'], 1052.33)
     
     def test_exponential_model_low_averages_range_derivative_value(self):
         self.assertEqual(exponential_model_low['averages']['range']['average_value_derivative'], 323.98)
@@ -677,7 +694,7 @@ class TestExponentialModel(unittest.TestCase):
         self.assertEqual(exponential_model_low['averages']['range']['average_value_integral'], 470.81)
     
     def test_exponential_model_low_averages_range_integral_points(self):
-        self.assertEqual(exponential_model_low['averages']['range']['mean_values_integral'], [7.35])
+        self.assertEqual(exponential_model_low['averages']['range']['mean_values_integral'], [5.43])
     
     def test_exponential_model_low_averages_iqr_derivative_value(self):
         self.assertEqual(exponential_model_low['averages']['iqr']['average_value_derivative'], 142.83)
@@ -689,7 +706,7 @@ class TestExponentialModel(unittest.TestCase):
         self.assertEqual(exponential_model_low['averages']['iqr']['average_value_integral'], 207.57)
     
     def test_exponential_model_low_averages_iqr_integral_points(self):
-        self.assertEqual(exponential_model_low['averages']['iqr']['mean_values_integral'], [6.16])
+        self.assertEqual(exponential_model_low['averages']['iqr']['mean_values_integral'], [4.61])
     
     def test_exponential_model_low_correlation(self):
         self.assertEqual(exponential_model_low['correlation'], 1.0)
@@ -710,38 +727,42 @@ class TestExponentialModel(unittest.TestCase):
         self.assertEqual(exponential_model_high['points']['inflections'], [None])
     
     def test_exponential_model_high_accumulations_range(self):
-        self.assertEqual(exponential_model_high['accumulations']['range'], 4423.29487)
+        self.assertEqual(exponential_model_high['accumulations']['range'], 4423.302995)
     
     def test_exponential_model_high_accumulations_iqr(self):
-        self.assertEqual(exponential_model_high['accumulations']['iqr'], 1073.363498)
+        self.assertEqual(exponential_model_high['accumulations']['iqr'], 1073.36511)
     
     def test_exponential_model_high_averages_range_derivative_value(self):
-        self.assertEqual(exponential_model_high['averages']['range']['average_value_derivative'], 340.666553)
+        self.assertEqual(exponential_model_high['averages']['range']['average_value_derivative'], 340.666667)
     
     def test_exponential_model_high_averages_range_derivative_points(self):
         self.assertEqual(exponential_model_high['averages']['range']['mean_values_derivative'], [7.356021])
     
     def test_exponential_model_high_averages_range_integral_value(self):
-        self.assertEqual(exponential_model_high['averages']['range']['average_value_integral'], 491.477947)
+        self.assertEqual(exponential_model_high['averages']['range']['average_value_integral'], 491.478111)
     
     def test_exponential_model_high_averages_range_integral_points(self):
-        self.assertEqual(exponential_model_high['averages']['range']['mean_values_integral'], [7.356021])
+        self.assertEqual(exponential_model_high['averages']['range']['mean_values_integral'], [5.465318])
     
     def test_exponential_model_high_averages_iqr_derivative_value(self):
-        self.assertEqual(exponential_model_high['averages']['iqr']['average_value_derivative'], 148.79995)
+        self.assertEqual(exponential_model_high['averages']['iqr']['average_value_derivative'], 148.8)
     
     def test_exponential_model_high_averages_iqr_derivative_points(self):
         self.assertEqual(exponential_model_high['averages']['iqr']['mean_values_derivative'], [6.161035])
     
     def test_exponential_model_high_averages_iqr_integral_value(self):
-        self.assertEqual(exponential_model_high['averages']['iqr']['average_value_integral'], 214.672951)
+        self.assertEqual(exponential_model_high['averages']['iqr']['average_value_integral'], 214.673022)
     
     def test_exponential_model_high_averages_iqr_integral_points(self):
-        self.assertEqual(exponential_model_high['averages']['iqr']['mean_values_integral'], [6.161035])
+        self.assertEqual(exponential_model_high['averages']['iqr']['mean_values_integral'], [4.637017])
     
     def test_exponential_model_high_correlation(self):
         self.assertEqual(exponential_model_high['correlation'], 1.0)
     
+    def test_exponential_model_zeroes(self):
+        exponential_model_zeroes = exponential_model(bad_set_zeroes)
+        self.assertEqual(exponential_model_zeroes['constants'], [1.0, 1.0])
+
     def test_exponential_model_string_raises(self):
         with self.assertRaises(Exception) as context:
             exponential_model(bad_set_string)
@@ -780,7 +801,7 @@ class TestLogarithmicModel(unittest.TestCase):
         self.assertEqual(logarithmic_model_low['constants'], [3.0, 2.0])
     
     def test_logarithmic_model_low_roots(self):
-        self.assertEqual(logarithmic_model_low['points']['roots'], [[0.51, 0]])
+        self.assertEqual(logarithmic_model_low['points']['roots'], [[0.51, 0.0]])
     
     def test_logarithmic_model_low_maxima(self):
         self.assertEqual(logarithmic_model_low['points']['maxima'], [None])
@@ -828,7 +849,7 @@ class TestLogarithmicModel(unittest.TestCase):
         self.assertEqual(logarithmic_model_high['constants'], [3.000016, 1.999972])
     
     def test_logarithmic_model_high_roots(self):
-        self.assertEqual(logarithmic_model_high['points']['roots'], [[0.513424, 0]])
+        self.assertEqual(logarithmic_model_high['points']['roots'], [[0.513424, 0.0]])
     
     def test_logarithmic_model_high_maxima(self):
         self.assertEqual(logarithmic_model_high['points']['maxima'], [None])
@@ -840,38 +861,42 @@ class TestLogarithmicModel(unittest.TestCase):
         self.assertEqual(logarithmic_model_high['points']['inflections'], [None])
     
     def test_logarithmic_model_high_accumulations_range(self):
-        self.assertEqual(logarithmic_model_high['accumulations']['range'], 60.077525)
+        self.assertEqual(logarithmic_model_high['accumulations']['range'], 60.077553)
     
     def test_logarithmic_model_high_accumulations_iqr(self):
-        self.assertEqual(logarithmic_model_high['accumulations']['iqr'], 35.01908)
+        self.assertEqual(logarithmic_model_high['accumulations']['iqr'], 35.019086)
     
     def test_logarithmic_model_high_averages_range_derivative_value(self):
-        self.assertEqual(logarithmic_model_high['averages']['range']['average_value_derivative'], 0.767532)
+        self.assertEqual(logarithmic_model_high['averages']['range']['average_value_derivative'], 0.767528)
     
     def test_logarithmic_model_high_averages_range_derivative_points(self):
-        self.assertEqual(logarithmic_model_high['averages']['range']['mean_values_derivative'], [3.908653])
+        self.assertEqual(logarithmic_model_high['averages']['range']['mean_values_derivative'], [3.908673])
     
     def test_logarithmic_model_high_averages_range_integral_value(self):
-        self.assertEqual(logarithmic_model_high['averages']['range']['average_value_integral'], 6.675281)
+        self.assertEqual(logarithmic_model_high['averages']['range']['average_value_integral'], 6.675284)
     
     def test_logarithmic_model_high_averages_range_integral_points(self):
-        self.assertEqual(logarithmic_model_high['averages']['range']['mean_values_integral'], [4.751346])
+        self.assertEqual(logarithmic_model_high['averages']['range']['mean_values_integral'], [4.751351])
     
     def test_logarithmic_model_high_averages_iqr_derivative_value(self):
-        self.assertEqual(logarithmic_model_high['averages']['iqr']['average_value_derivative'], 0.588501)
+        self.assertEqual(logarithmic_model_high['averages']['iqr']['average_value_derivative'], 0.588498)
     
     def test_logarithmic_model_high_averages_iqr_derivative_points(self):
-        self.assertEqual(logarithmic_model_high['averages']['iqr']['mean_values_derivative'], [5.097725])
+        self.assertEqual(logarithmic_model_high['averages']['iqr']['mean_values_derivative'], [5.097751])
     
     def test_logarithmic_model_high_averages_iqr_integral_value(self):
-        self.assertEqual(logarithmic_model_high['averages']['iqr']['average_value_integral'], 7.003816)
+        self.assertEqual(logarithmic_model_high['averages']['iqr']['average_value_integral'], 7.003817)
     
     def test_logarithmic_model_high_averages_iqr_integral_points(self):
-        self.assertEqual(logarithmic_model_high['averages']['iqr']['mean_values_integral'], [5.301231])
+        self.assertEqual(logarithmic_model_high['averages']['iqr']['mean_values_integral'], [5.301233])
     
     def test_logarithmic_model_high_correlation(self):
         self.assertEqual(logarithmic_model_high['correlation'], 1.0)
     
+    def test_logarithmic_model_zeroes(self):
+        logarithmic_model_zeroes = logarithmic_model(bad_set_zeroes)
+        self.assertEqual(logarithmic_model_zeroes['constants'], [0.0001, 0.0001])
+
     def test_linear_model_string_raises(self):
         with self.assertRaises(Exception) as context:
             linear_model(bad_set_string)
@@ -979,7 +1004,7 @@ class TestLogisticModel(unittest.TestCase):
         self.assertEqual(logistic_model_high['averages']['range']['average_value_derivative'], 0.222221)
     
     def test_logistic_model_high_averages_range_derivative_points(self):
-        self.assertEqual(logistic_model_high['averages']['range']['mean_values_derivative'], [3.927573, 6.072427])
+        self.assertEqual(logistic_model_high['averages']['range']['mean_values_derivative'], [3.927574, 6.072426])
     
     def test_logistic_model_high_averages_range_integral_value(self):
         self.assertEqual(logistic_model_high['averages']['range']['average_value_integral'], 1.111111)
@@ -991,7 +1016,7 @@ class TestLogisticModel(unittest.TestCase):
         self.assertEqual(logistic_model_high['averages']['iqr']['average_value_derivative'], 0.398962)
     
     def test_logistic_model_high_averages_iqr_derivative_points(self):
-        self.assertEqual(logistic_model_high['averages']['iqr']['mean_values_derivative'], [4.145995, 5.854006])
+        self.assertEqual(logistic_model_high['averages']['iqr']['mean_values_derivative'], [4.145996, 5.854006])
     
     def test_logistic_model_high_averages_iqr_integral_value(self):
         self.assertEqual(logistic_model_high['averages']['iqr']['average_value_integral'], 1.199686)
@@ -1001,6 +1026,10 @@ class TestLogisticModel(unittest.TestCase):
     
     def test_logistic_model_high_correlation(self):
         self.assertEqual(logistic_model_high['correlation'], 1.0)
+
+    def test_logistic_model_zeroes(self):
+        logistic_model_zeroes = logistic_model(bad_set_zeroes)
+        self.assertEqual(logistic_model_zeroes['constants'], [0.0001, 1.0, 1.0])
 
     def test_logistic_model_string_raises(self):
         with self.assertRaises(Exception) as context:
@@ -1040,16 +1069,16 @@ class TestSinusoidalModel(unittest.TestCase):
         self.assertEqual(sinusoidal_model_low['constants'], [-5.0, 1.57, 3.0, 3.0])
     
     def test_sinusoidal_model_low_roots(self):
-        self.assertEqual(sinusoidal_model_low['points']['roots'], [[3.41, 0], [4.59, 0], [7.41, 0], [8.59, 0], ['3.41 + 4.0k', 0], ['4.59 + 4.0k', 0]])
+        self.assertEqual(sinusoidal_model_low['points']['roots'], [[3.41, 0.0], [4.59, 0.0], [7.41, 0.0], [8.59, 0.0], [11.41, 0.0], ['3.41 + 4.0k', 0.0], ['4.59 + 4.0k', 0.0]])
     
     def test_sinusoidal_model_low_maxima(self):
-        self.assertEqual(sinusoidal_model_low['points']['maxima'], [[6.0, 8.0], [10.0, 8.0], ['6.0 + 4.0k', 8.0]])
+        self.assertEqual(sinusoidal_model_low['points']['maxima'], [[6.0, 8.0], [10.0, 8.0], [14.0, 8.0], ['6.0 + 4.0k', 8.0]])
     
     def test_sinusoidal_model_low_minima(self):
-        self.assertEqual(sinusoidal_model_low['points']['minima'], [[4.0, -2.0], [8.0, -2.0], ['4.0 + 4.0k', -2.0]])
+        self.assertEqual(sinusoidal_model_low['points']['minima'], [[4.0, -2.0], [8.0, -2.0], [12.0, -2.0], ['4.0 + 4.0k', -2.0]])
     
     def test_sinusoidal_model_low_inflections(self):
-        self.assertEqual(sinusoidal_model_low['points']['inflections'], [[3.0, 3.0], [5.0, 3.0], [7.0, 3.0], [9.0, 3.0], ['3.0 + 2.0k', 3.0]])
+        self.assertEqual(sinusoidal_model_low['points']['inflections'], [[3.0, 3.0], [5.0, 3.0], [7.0, 3.0], [9.0, 3.0], [11.0, 3.0], ['3.0 + 2.0k', 3.0]])
     
     def test_sinusoidal_model_low_accumulations_range(self):
         self.assertEqual(sinusoidal_model_low['accumulations']['range'], 30.17)
@@ -1058,16 +1087,16 @@ class TestSinusoidalModel(unittest.TestCase):
         self.assertEqual(sinusoidal_model_low['accumulations']['iqr'], 11.83)
     
     def test_sinusoidal_model_low_averages_range_derivative_value(self):
-        self.assertEqual(sinusoidal_model_low['averages']['range']['average_value_derivative'], 0.56)
+        self.assertEqual(sinusoidal_model_low['averages']['range']['average_value_derivative'], 0.55)
     
     def test_sinusoidal_model_low_averages_range_derivative_points(self):
-        self.assertEqual(sinusoidal_model_low['averages']['range']['mean_values_derivative'], [4.05, 5.95, 8.05, 9.95, '4.05 + 4.0k', '5.95 + 4.0k'])
+        self.assertEqual(sinusoidal_model_low['averages']['range']['mean_values_derivative'], [4.05, 5.96, 8.05, 9.96, '4.05 + 4.0k', '5.96 + 4.0k'])
     
     def test_sinusoidal_model_low_averages_range_integral_value(self):
         self.assertEqual(sinusoidal_model_low['averages']['range']['average_value_integral'], 3.35)
     
     def test_sinusoidal_model_low_averages_range_integral_points(self):
-        self.assertEqual(sinusoidal_model_low['averages']['range']['mean_values_integral'], [2.96, 5.04, 6.96, 9.04, '2.96 + 4.0k', '5.04 + 4.0k'])
+        self.assertEqual(sinusoidal_model_low['averages']['range']['mean_values_integral'], [2.96, 5.05, 6.96, 9.05, '2.96 + 4.0k', '5.05 + 4.0k'])
     
     def test_sinusoidal_model_low_averages_iqr_derivative_value(self):
         self.assertEqual(sinusoidal_model_low['averages']['iqr']['average_value_derivative'], -1.0)
@@ -1076,7 +1105,7 @@ class TestSinusoidalModel(unittest.TestCase):
         self.assertEqual(sinusoidal_model_low['averages']['iqr']['mean_values_derivative'], [3.92, 6.08, 7.92, '3.92 + 4.0k', '6.08 + 4.0k'])
     
     def test_sinusoidal_model_low_averages_iqr_integral_value(self):
-        self.assertEqual(sinusoidal_model_low['averages']['iqr']['average_value_integral'], 2.36)
+        self.assertEqual(sinusoidal_model_low['averages']['iqr']['average_value_integral'], 2.37)
     
     def test_sinusoidal_model_low_averages_iqr_integral_points(self):
         self.assertEqual(sinusoidal_model_low['averages']['iqr']['mean_values_integral'], [3.08, 4.92, 7.08, '3.08 + 4.0k', '4.92 + 4.0k'])
@@ -1088,50 +1117,54 @@ class TestSinusoidalModel(unittest.TestCase):
         self.assertEqual(sinusoidal_model_high['constants'], [-5.0, 1.570796, 3.0, 3.0])
     
     def test_sinusoidal_model_high_roots(self):
-        self.assertEqual(sinusoidal_model_high['points']['roots'], [[3.409666, 0], [4.590334, 0], [7.409666, 0], [8.590334, 0], ['3.409666 + 4.0k', 0], ['4.590334 + 4.0k', 0]])
+        self.assertEqual(sinusoidal_model_high['points']['roots'], [[3.409666, 0.0], [4.590335, 0.0], [7.409667, 0.0], [8.590336, 0.0], ['3.409666 + 4.000001k', 0.0], ['4.590335 + 4.000001k', 0.0]])
     
     def test_sinusoidal_model_high_maxima(self):
-        self.assertEqual(sinusoidal_model_high['points']['maxima'], [[6.0, 8.0], [10.0, 8.0], ['6.0 + 4.0k', 8.0]])
+        self.assertEqual(sinusoidal_model_high['points']['maxima'], [[6.000001, 8.0], [10.000001, 8.0], [14.000001, 8.0], ['6.000001 + 4.0k', 8.0]])
     
     def test_sinusoidal_model_high_minima(self):
-        self.assertEqual(sinusoidal_model_high['points']['minima'], [[4.0, -2.0], [8.0, -2.0], ['4.0 + 4.0k', -2.0]])
+        self.assertEqual(sinusoidal_model_high['points']['minima'], [[4.0, -2.0], [8.0, -2.0], [12.0, -2.0], ['4.0 + 4.0k', -2.0]])
     
     def test_sinusoidal_model_high_inflections(self):
-        self.assertEqual(sinusoidal_model_high['points']['inflections'], [[3.0, 3.0], [5.0, 3.0], [7.0, 3.0], [9.0, 3.0], ['3.0 + 2.0k', 3.0]])
+        self.assertEqual(sinusoidal_model_high['points']['inflections'], [[3.0, 3.0], [5.0, 3.0], [7.0, 3.0], [9.0, 3.0], [11.0, 3.0], ['3.0 + 2.0k', 3.0]])
     
     def test_sinusoidal_model_high_accumulations_range(self):
-        self.assertEqual(sinusoidal_model_high['accumulations']['range'], 30.183092)
+        self.assertEqual(sinusoidal_model_high['accumulations']['range'], 30.183173)
     
     def test_sinusoidal_model_high_accumulations_iqr(self):
-        self.assertEqual(sinusoidal_model_high['accumulations']['iqr'], 11.816906)
+        self.assertEqual(sinusoidal_model_high['accumulations']['iqr'], 11.81685)
     
     def test_sinusoidal_model_high_averages_range_derivative_value(self):
-        self.assertEqual(sinusoidal_model_high['averages']['range']['average_value_derivative'], 0.555556)
+        self.assertEqual(sinusoidal_model_high['averages']['range']['average_value_derivative'], 0.55556)
     
     def test_sinusoidal_model_high_averages_range_derivative_points(self):
-        self.assertEqual(sinusoidal_model_high['averages']['range']['mean_values_derivative'], [4.045069, 5.954931, 8.045069, 9.954931, '4.045069 + 4.0k', '5.954931 + 4.0k'])
+        self.assertEqual(sinusoidal_model_high['averages']['range']['mean_values_derivative'], [4.04507, 5.954931, 8.045071, 9.954932, '4.04507 + 4.000001k', '5.954931 + 4.000001k'])
     
     def test_sinusoidal_model_high_averages_range_integral_value(self):
-        self.assertEqual(sinusoidal_model_high['averages']['range']['average_value_integral'], 3.353678)
+        self.assertEqual(sinusoidal_model_high['averages']['range']['average_value_integral'], 3.353686)
     
     def test_sinusoidal_model_high_averages_range_integral_points(self):
-        self.assertEqual(sinusoidal_model_high['averages']['range']['mean_values_integral'], [2.954931, 5.045069, 6.954931, 9.045069, '2.954931 + 4.0k', '5.045069 + 4.0k'])
+        self.assertEqual(sinusoidal_model_high['averages']['range']['mean_values_integral'], [2.95493, 5.045071, 6.954931, 9.045072, '2.95493 + 4.000001k', '5.045071 + 4.000001k'])
     
     def test_sinusoidal_model_high_averages_iqr_derivative_value(self):
         self.assertEqual(sinusoidal_model_high['averages']['iqr']['average_value_derivative'], -1.0)
     
     def test_sinusoidal_model_high_averages_iqr_derivative_points(self):
-        self.assertEqual(sinusoidal_model_high['averages']['iqr']['mean_values_derivative'], [3.918722, 6.081278, 7.918722, '3.918722 + 4.0k', '6.081278 + 4.0k'])
+        self.assertEqual(sinusoidal_model_high['averages']['iqr']['mean_values_derivative'], [3.918723, 6.081278, 7.918723, '3.918723 + 4.000001k', '6.081278 + 4.000001k'])
     
     def test_sinusoidal_model_high_averages_iqr_integral_value(self):
-        self.assertEqual(sinusoidal_model_high['averages']['iqr']['average_value_integral'], 2.36338)
+        self.assertEqual(sinusoidal_model_high['averages']['iqr']['average_value_integral'], 2.36337)
     
     def test_sinusoidal_model_high_averages_iqr_integral_points(self):
-        self.assertEqual(sinusoidal_model_high['averages']['iqr']['mean_values_integral'], [3.081278, 4.918722, 7.081278, '3.081278 + 4.0k', '4.918722 + 4.0k'])
+        self.assertEqual(sinusoidal_model_high['averages']['iqr']['mean_values_integral'], [3.081279, 4.918722, 7.08128, '3.081279 + 4.000001k', '4.918722 + 4.000001k'])
     
     def test_sinusoidal_model_high_correlation(self):
         self.assertEqual(sinusoidal_model_high['correlation'], 1.0)
     
+    def test_sinusoidal_model_zeroes(self):
+        sinusoidal_model_zeroes = sinusoidal_model(bad_set_zeroes)
+        self.assertEqual(sinusoidal_model_zeroes['constants'], [0.0001, 1.0, 0.0001, 1.0])
+
     def test_sinusoidal_model_string_raises(self):
         with self.assertRaises(Exception) as context:
             sinusoidal_model(bad_set_string)

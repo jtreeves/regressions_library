@@ -1,5 +1,6 @@
 from math import exp
 from library.errors.scalars import two_scalars, positive_integer
+from library.errors.adjustments import no_zeroes
 from library.statistics.rounding import rounded_value
 
 def logarithmic_roots(first_constant, second_constant, precision = 4):
@@ -48,7 +49,8 @@ def logarithmic_roots(first_constant, second_constant, precision = 4):
         [4.0552]
     """
     two_scalars(first_constant, second_constant)
-    positive_integer
-    root = exp(-1 * second_constant / first_constant)
+    positive_integer(precision)
+    coefficients = no_zeroes([first_constant, second_constant], precision)
+    root = exp(-1 * coefficients[1] / coefficients[0])
     result = [rounded_value(root, precision)]
     return result

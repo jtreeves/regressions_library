@@ -1,4 +1,5 @@
 from library.errors.scalars import three_scalars
+from library.errors.adjustments import no_zeroes
 
 def quadratic_derivatives(first_constant, second_constant, third_constant):
     """
@@ -52,7 +53,8 @@ def quadratic_derivatives(first_constant, second_constant, third_constant):
         4
     """
     three_scalars(first_constant, second_constant, third_constant)
-    first_constants = [2 * first_constant, second_constant]
+    coefficients = no_zeroes([first_constant, second_constant, third_constant])
+    first_constants = [2 * coefficients[0], coefficients[1]]
     def first_derivative(variable):
         evaluation = first_constants[0] * variable + first_constants[1]
         return evaluation

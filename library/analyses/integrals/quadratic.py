@@ -1,4 +1,5 @@
 from library.errors.scalars import three_scalars
+from library.errors.adjustments import no_zeroes
 
 def quadratic_integral(first_constant, second_constant, third_constant):
     """
@@ -48,7 +49,8 @@ def quadratic_integral(first_constant, second_constant, third_constant):
         866.6666666666666
     """
     three_scalars(first_constant, second_constant, third_constant)
-    constants = [(1/3) * first_constant, (1/2) * second_constant, third_constant]
+    coefficients = no_zeroes([first_constant, second_constant, third_constant])
+    constants = [(1/3) * coefficients[0], (1/2) * coefficients[1], coefficients[2]]
     def quadratic_evaluation(variable):
         evaluation = constants[0] * variable**3 + constants[1] * variable**2 + constants[2] * variable
         return evaluation

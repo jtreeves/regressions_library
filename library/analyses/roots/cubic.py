@@ -1,4 +1,5 @@
 from library.errors.scalars import four_scalars, positive_integer
+from library.errors.adjustments import no_zeroes
 from library.statistics.sort import sorted_list
 from library.statistics.rounding import rounded_value
 
@@ -61,10 +62,11 @@ def cubic_roots(first_constant, second_constant, third_constant, fourth_constant
     """
     four_scalars(first_constant, second_constant, third_constant, fourth_constant)
     positive_integer(precision)
+    coefficients = no_zeroes([first_constant, second_constant, third_constant, fourth_constant], precision)
     roots = []
     xi = (-1 + (-3)**(1/2)) / 2
-    delta_first = second_constant**2 - 3 * first_constant * third_constant
-    delta_second = 2 * second_constant**3 - 9 * first_constant * second_constant * third_constant + 27 * first_constant**2 * fourth_constant
+    delta_first = coefficients[1]**2 - 3 * coefficients[0] * coefficients[2]
+    delta_second = 2 * coefficients[1]**3 - 9 * coefficients[0] * coefficients[1] * coefficients[2] + 27 * coefficients[0]**2 * coefficients[3]
     discriminant = delta_second**2 - 4 * delta_first**3
     eta_first = ((delta_second + discriminant**(1/2)) / 2)**(1/3)
     eta_second = ((delta_second - discriminant**(1/2)) / 2)**(1/3)
@@ -73,9 +75,9 @@ def cubic_roots(first_constant, second_constant, third_constant, fourth_constant
         eta = eta_second
     else:
         eta = eta_first
-    first_root = (-1 / (3 * first_constant)) * (second_constant + eta * xi**0 + delta_first / (eta * xi**0))
-    second_root = (-1 / (3 * first_constant)) * (second_constant + eta * xi**1 + delta_first / (eta * xi**1))
-    third_root = (-1 / (3 * first_constant)) * (second_constant + eta * xi**2 + delta_first / (eta * xi**2))
+    first_root = (-1 / (3 * coefficients[0])) * (coefficients[1] + eta * xi**0 + delta_first / (eta * xi**0))
+    second_root = (-1 / (3 * coefficients[0])) * (coefficients[1] + eta * xi**1 + delta_first / (eta * xi**1))
+    third_root = (-1 / (3 * coefficients[0])) * (coefficients[1] + eta * xi**2 + delta_first / (eta * xi**2))
     first_real = first_root.real
     second_real = second_root.real
     third_real = third_root.real
@@ -85,13 +87,13 @@ def cubic_roots(first_constant, second_constant, third_constant, fourth_constant
     size_first_imag = (first_imag**2)**(1/2)
     size_second_imag = (second_imag**2)**(1/2)
     size_third_imag = (third_imag**2)**(1/2)
-    if size_first_imag < 0.0001:
+    if size_first_imag < 10**(-precision):
         first_root = first_real
         roots.append(first_root)
-    if size_second_imag < 0.0001:
+    if size_second_imag < 10**(-precision):
         second_root = second_real
         roots.append(second_root)
-    if size_third_imag < 0.0001:
+    if size_third_imag < 10**(-precision):
         third_root = third_real
         roots.append(third_root)
     unique_roots = list(set(roots))

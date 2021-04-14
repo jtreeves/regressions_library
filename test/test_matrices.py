@@ -19,6 +19,11 @@ second_2d = [
     [7, 3]
 ]
 
+zero_2d = [
+    [0, 0],
+    [0, 0]
+]
+
 first_3d = [
     [6, 1, 1],
     [4, -2, 5],
@@ -195,6 +200,10 @@ class TestInverse(unittest.TestCase):
     def test_inverse_4d(self):
         inverse_4d = inverse_matrix(first_4d)
         self.assertEqual(inverse_4d, [[0.07207207207207207, 0.05930930930930931, 0.0533033033033033, 0.009009009009009009], [-0.0075075075075075074, 0.1275025025025025, -0.02464964964964965, 0.06156156156156156], [-0.1036036036036036, 0.0762012012012012, 0.04316816816816817, 0.04954954954954955], [0.016516516516516516, -0.04717217217217217, 0.020895895895895897, 0.06456456456456457]])
+    
+    def test_inverse_zero(self):
+        inverse_zero = inverse_matrix(zero_2d)
+        self.assertEqual(inverse_zero, zero_2d)
 
 class TestSolveSystems(unittest.TestCase):
     def test_solve_2d(self):
@@ -208,4 +217,4 @@ class TestSolveSystems(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 32 tests in 0.009s ---------- OK ---------- #
+# ---------- Ran 34 tests in 0.016s ---------- OK ---------- #
