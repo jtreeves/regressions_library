@@ -1163,7 +1163,7 @@ class TestSinusoidalModel(unittest.TestCase):
     
     def test_sinusoidal_model_zeroes(self):
         sinusoidal_model_zeroes = sinusoidal_model(bad_set_zeroes)
-        self.assertEqual(sinusoidal_model_zeroes['constants'], [0.0001, 1.0, 0.0001, 1.0])
+        self.assertEqual(sinusoidal_model_zeroes['constants'], [0.0001, 1.0, 0.0001, 0.0001])
 
     def test_sinusoidal_model_string_raises(self):
         with self.assertRaises(Exception) as context:

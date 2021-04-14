@@ -186,8 +186,7 @@ def sinusoidal_model(data, precision = 4):
         independent_range = 1
     if dependent_range == 0:
         dependent_range = 1
-        dependent_min = 1
-        dependent_max = 2
+        dependent_max += 1
     solution = []
     def sinusoidal_fit(variable, first_constant, second_constant, third_constant, fourth_constant):
         evaluation = first_constant * sin(second_constant * (variable - third_constant)) + fourth_constant
