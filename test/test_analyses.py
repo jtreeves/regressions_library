@@ -46,37 +46,101 @@ from library.analyses.mean_values import average_values
 coefficients = [2, 3, 5, 7]
 
 class TestEquations(unittest.TestCase):
-    def test_linear_function(self):
-        linear_function = linear_equation(coefficients[0], coefficients[1])
-        self.assertEqual(linear_function(10), 23)
+    def test_linear_function_positive(self):
+        linear_function_positive = linear_equation(coefficients[0], coefficients[1])(1)
+        self.assertEqual(linear_function_positive, 5.0)
     
-    def test_quadratic_function(self):
-        quadratic_function = quadratic_equation(coefficients[0], coefficients[1], coefficients[2])
-        self.assertEqual(quadratic_function(10), 235)
+    def test_linear_function_zero(self):
+        linear_function_zero = linear_equation(coefficients[0], coefficients[1])(0)
+        self.assertEqual(linear_function_zero, 3.0)
     
-    def test_cubic_function(self):
-        cubic_function = cubic_equation(coefficients[0], coefficients[1], coefficients[2], coefficients[3])
-        self.assertEqual(cubic_function(10), 2357)
+    def test_linear_function_negative(self):
+        linear_function_negative = linear_equation(coefficients[0], coefficients[1])(-1)
+        self.assertEqual(linear_function_negative, 1.0)
     
-    def test_hyperbolic_function(self):
-        hyperbolic_function = hyperbolic_equation(coefficients[0], coefficients[1])
-        self.assertEqual(hyperbolic_function(10), 3.2)
+    def test_quadratic_function_positive(self):
+        quadratic_function_positive = quadratic_equation(coefficients[0], coefficients[1], coefficients[2])(1)
+        self.assertEqual(quadratic_function_positive, 10.0)
     
-    def test_exponential_function(self):
-        exponential_function = exponential_equation(coefficients[0], coefficients[1])
-        self.assertEqual(exponential_function(10), 118098)
+    def test_quadratic_function_zero(self):
+        quadratic_function_zero = quadratic_equation(coefficients[0], coefficients[1], coefficients[2])(0)
+        self.assertEqual(quadratic_function_zero, 5.0)
     
-    def test_logarithmic_function(self):
-        logarithmic_function = logarithmic_equation(coefficients[0], coefficients[1])
-        self.assertEqual(logarithmic_function(10), 7.605170185988092)
+    def test_quadratic_function_negative(self):
+        quadratic_function_negative = quadratic_equation(coefficients[0], coefficients[1], coefficients[2])(-1)
+        self.assertEqual(quadratic_function_negative, 4.0)
     
-    def test_logistic_function(self):
-        logistic_function = logistic_equation(coefficients[0], coefficients[1], coefficients[2])
-        self.assertEqual(logistic_function(10), 1.999999388195546)
+    def test_cubic_function_positive(self):
+        cubic_function_positive = cubic_equation(coefficients[0], coefficients[1], coefficients[2], coefficients[3])(1)
+        self.assertEqual(cubic_function_positive, 17.0)
     
-    def test_sinusoidal_function(self):
-        sinusoidal_function = sinusoidal_equation(coefficients[0], coefficients[1], coefficients[2], coefficients[3])
-        self.assertEqual(sinusoidal_function(10), 8.300575680314234)
+    def test_cubic_function_zero(self):
+        cubic_function_zero = cubic_equation(coefficients[0], coefficients[1], coefficients[2], coefficients[3])(0)
+        self.assertEqual(cubic_function_zero, 7.0)
+    
+    def test_cubic_function_negative(self):
+        cubic_function_negative = cubic_equation(coefficients[0], coefficients[1], coefficients[2], coefficients[3])(-1)
+        self.assertEqual(cubic_function_negative, 3.0)
+    
+    def test_hyperbolic_function_positive(self):
+        hyperbolic_function_positive = hyperbolic_equation(coefficients[0], coefficients[1])(1)
+        self.assertEqual(hyperbolic_function_positive, 5.0)
+    
+    def test_hyperbolic_function_zero(self):
+        hyperbolic_function_zero = hyperbolic_equation(coefficients[0], coefficients[1])(0)
+        self.assertEqual(hyperbolic_function_zero, 20003.0)
+    
+    def test_hyperbolic_function_negative(self):
+        hyperbolic_function_negative = hyperbolic_equation(coefficients[0], coefficients[1])(-1)
+        self.assertEqual(hyperbolic_function_negative, 1.0)
+    
+    def test_exponential_function_positive(self):
+        exponential_function_positive = exponential_equation(coefficients[0], coefficients[1])(1)
+        self.assertEqual(exponential_function_positive, 6.0)
+    
+    def test_exponential_function_zero(self):
+        exponential_function_zero = exponential_equation(coefficients[0], coefficients[1])(0)
+        self.assertEqual(exponential_function_zero, 2.0)
+    
+    def test_exponential_function_negative(self):
+        exponential_function_negative = exponential_equation(coefficients[0], coefficients[1])(-1)
+        self.assertEqual(exponential_function_negative, 0.6666666666666666)
+    
+    def test_logarithmic_function_positive(self):
+        logarithmic_function_positive = logarithmic_equation(coefficients[0], coefficients[1])(1)
+        self.assertEqual(logarithmic_function_positive, 3.0)
+    
+    def test_logarithmic_function_zero(self):
+        logarithmic_function_zero = logarithmic_equation(coefficients[0], coefficients[1])(0)
+        self.assertEqual(logarithmic_function_zero, -15.420680743952364)
+    
+    def test_logarithmic_function_negative(self):
+        logarithmic_function_negative = logarithmic_equation(coefficients[0], coefficients[1])(-1)
+        self.assertEqual(logarithmic_function_negative, 3.0)
+    
+    def test_logistic_function_positive(self):
+        logistic_function_positive = logistic_equation(coefficients[0], coefficients[1], coefficients[2])(1)
+        self.assertEqual(logistic_function_positive, 1.2288349204429436e-05)
+    
+    def test_logistic_function_zero(self):
+        logistic_function_zero = logistic_equation(coefficients[0], coefficients[1], coefficients[2])(0)
+        self.assertEqual(logistic_function_zero, 6.118044538512494e-07)
+    
+    def test_logistic_function_negative(self):
+        logistic_function_negative = logistic_equation(coefficients[0], coefficients[1], coefficients[2])(-1)
+        self.assertEqual(logistic_function_negative, 3.04599590255207e-08)
+    
+    def test_sinusoidal_function_positive(self):
+        sinusoidal_function_positive = sinusoidal_equation(coefficients[0], coefficients[1], coefficients[2], coefficients[3])(1)
+        self.assertEqual(sinusoidal_function_positive, 8.07314583600087)
+    
+    def test_sinusoidal_function_zero(self):
+        sinusoidal_function_zero = sinusoidal_equation(coefficients[0], coefficients[1], coefficients[2], coefficients[3])(0)
+        self.assertEqual(sinusoidal_function_zero, 5.699424319685766)
+    
+    def test_sinusoidal_function_negative(self):
+        sinusoidal_function_negative = sinusoidal_equation(coefficients[0], coefficients[1], coefficients[2], coefficients[3])(-1)
+        self.assertEqual(sinusoidal_function_negative, 8.501974493543353)
 
 class TestDerivatives(unittest.TestCase):
     def test_linear_first_derivative_constants(self):
