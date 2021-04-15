@@ -26,28 +26,38 @@ scalar_number = -3
 
 component_vector = component_form(first_point, second_point)
 
-class TestSimpleVector(unittest.TestCase):
-    def test_component_vector(self):
+class TestComponent(unittest.TestCase):
+    def test_component(self):
         self.assertEqual(component_vector, [3, 10])
-
-    def test_direction_vector(self):
-        direction_vector = vector_direction(component_vector)
-        self.assertEqual(direction_vector['degree'], 73.30075576600639)
     
-    def test_magnitude_vector(self):
-        magnitude_vector = vector_magnitude(component_vector)
-        self.assertEqual(magnitude_vector, 10.44030650891055)
-    
-    def test_unit_vector(self):
-        unit = unit_vector(component_vector)
-        self.assertEqual(unit, [0.2873478855663454, 0.9578262852211514])
+    def test_component_long(self):
+        component_long = component_form(first_vector, second_vector)
+        self.assertEqual(component_long, [-1, -12, 14, -15])
 
-class TestZeroes(unittest.TestCase):
+class TestDirection(unittest.TestCase):
+    def test_direction(self):
+        direction = vector_direction(component_vector)
+        self.assertEqual(direction['degree'], 73.30075576600639)
+
     def test_direction_zero(self):
         direction_zero = vector_direction([0, 1])
         self.assertEqual(direction_zero['degree'], 89.99427042206779)
+
+class TestMagnitude(unittest.TestCase):    
+    def test_magnitude_short(self):
+        magnitude_short = vector_magnitude(component_vector)
+        self.assertEqual(magnitude_short, 10.44030650891055)
     
-    def test_unit_vector(self):
+    def test_magnitude_long(self):
+        magnitude_long = vector_magnitude(first_vector)
+        self.assertEqual(magnitude_long, 16.703293088490067)
+
+class TestUnit(unittest.TestCase):    
+    def test_unit(self):
+        unit = unit_vector(component_vector)
+        self.assertEqual(unit, [0.2873478855663454, 0.9578262852211514])
+
+    def test_unit_zero(self):
         unit_zero = unit_vector([0, 0])
         self.assertEqual(unit_zero, [0.0, 0.0])
 
@@ -108,4 +118,4 @@ class TestDotProduct(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 18 tests in 0.002s ---------- OK ---------- #
+# ---------- Ran 20 tests in 0.003s ---------- OK ---------- #
