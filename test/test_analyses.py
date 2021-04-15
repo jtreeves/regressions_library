@@ -602,9 +602,17 @@ class TestCriticalPoints(unittest.TestCase):
         first_quadratic_critical_points = critical_points('quadratic', coefficients[:3], 1)
         self.assertEqual(first_quadratic_critical_points, [-0.75])
     
-    def test_first_cubic_critical_points(self):
-        first_cubic_critical_points = critical_points('cubic', coefficients[:4], 1)
-        self.assertEqual(first_cubic_critical_points, [None])
+    def test_first_cubic_critical_points_none(self):
+        first_cubic_critical_points_none = critical_points('cubic', coefficients[:4], 1)
+        self.assertEqual(first_cubic_critical_points_none, [None])
+    
+    def test_first_cubic_critical_points_one(self):
+        first_cubic_critical_points_one = critical_points('cubic', [1, 3, 3, 7], 1)
+        self.assertEqual(first_cubic_critical_points_one, [-1.0])
+    
+    def test_first_cubic_critical_points_two(self):
+        first_cubic_critical_points_two = critical_points('cubic', [2, -15, 36, 7], 1)
+        self.assertEqual(first_cubic_critical_points_two, [2.0, 3.0])
     
     def test_first_hyperbolic_critical_points(self):
         first_hyperbolic_critical_points = critical_points('hyperbolic', coefficients[:2], 1)
@@ -671,10 +679,18 @@ class TestIntervals(unittest.TestCase):
         first_quadratic_intervals = sign_chart('quadratic', coefficients[:3], 1)
         self.assertEqual(first_quadratic_intervals, ['negative', -0.75, 'positive'])
     
-    def test_first_cubic_intervals(self):
-        first_cubic_intervals = sign_chart('cubic', coefficients[:4], 1)
-        self.assertEqual(first_cubic_intervals, ['positive'])
+    def test_first_cubic_intervals_none(self):
+        first_cubic_intervals_none = sign_chart('cubic', coefficients[:4], 1)
+        self.assertEqual(first_cubic_intervals_none, ['positive'])
     
+    def test_first_cubic_intervals_one(self):
+        first_cubic_intervals_one = sign_chart('cubic', [1, 3, 3, 7], 1)
+        self.assertEqual(first_cubic_intervals_one, ['positive', -1.0, 'positive'])
+    
+    def test_first_cubic_intervals_two(self):
+        first_cubic_intervals_two = sign_chart('cubic', [2, -15, 36, 7], 1)
+        self.assertEqual(first_cubic_intervals_two, ['positive', 2.0, 'negative', 3.0, 'positive'])
+
     def test_first_hyperbolic_intervals(self):
         first_hyperbolic_intervals = sign_chart('hyperbolic', coefficients[:2], 1)
         self.assertEqual(first_hyperbolic_intervals, ['negative', 0, 'negative'])
@@ -833,9 +849,13 @@ class TestMaxima(unittest.TestCase):
         quadratic_maxima = maxima_points('quadratic', coefficients[:3])
         self.assertEqual(quadratic_maxima, [None])
     
-    def test_cubic_maxima(self):
-        cubic_maxima = maxima_points('cubic', coefficients[:4])
-        self.assertEqual(cubic_maxima, [None])
+    def test_cubic_maxima_none(self):
+        cubic_maxima_none = maxima_points('cubic', coefficients[:4])
+        self.assertEqual(cubic_maxima_none, [None])
+    
+    def test_cubic_maxima_one(self):
+        cubic_maxima_one = maxima_points('cubic', [2, -15, 36, 7])
+        self.assertEqual(cubic_maxima_one, [2.0])
     
     def test_hyperbolic_maxima(self):
         hyperbolic_maxima = maxima_points('hyperbolic', coefficients[:2])
@@ -868,9 +888,13 @@ class TestMinima(unittest.TestCase):
         quadratic_minima = minima_points('quadratic', coefficients[:3])
         self.assertEqual(quadratic_minima, [-0.75])
     
-    def test_cubic_minima(self):
-        cubic_minima = minima_points('cubic', coefficients[:4])
-        self.assertEqual(cubic_minima, [None])
+    def test_cubic_minima_none(self):
+        cubic_minima_none = minima_points('cubic', coefficients[:4])
+        self.assertEqual(cubic_minima_none, [None])
+    
+    def test_cubic_minima_one(self):
+        cubic_minima_one = minima_points('cubic', [2, -15, 36, 7])
+        self.assertEqual(cubic_minima_one, [3.0])
     
     def test_hyperbolic_minima(self):
         hyperbolic_minima = minima_points('hyperbolic', coefficients[:2])
@@ -1099,4 +1123,4 @@ class TestAverages(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 245 tests in 0.035s ---------- OK ---------- #
+# ---------- Ran 251 tests in 0.028s ---------- OK ---------- #
