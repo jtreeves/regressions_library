@@ -626,6 +626,8 @@ class TestCriticalPoints(unittest.TestCase):
         self.assertEqual(second_sinusoidal_critical_points, [5.0, 6.0472, 7.0944, 8.1416, 9.1888, '5.0 + 1.0472k'])
 
 class TestIntervals(unittest.TestCase):
+    maxDiff = None
+
     def test_first_linear_intervals(self):
         first_linear_intervals = sign_chart('linear', coefficients[:2], 1)
         self.assertEqual(first_linear_intervals, ['positive'])
@@ -691,6 +693,8 @@ class TestIntervals(unittest.TestCase):
         self.assertEqual(second_sinusoidal_intervals, ['positive', 5.0, 'negative', 6.0472, 'positive', 7.0944, 'negative', 8.1416, 'positive', 9.1888, 'negative', '5.0 + 1.0472k'])
 
 class TestRoots(unittest.TestCase):
+    maxDiff = None
+
     def test_linear_zeroes(self):
         linear_zeroes = linear_roots(coefficients[0], coefficients[1])
         self.assertEqual(linear_zeroes, [-1.5])
@@ -748,6 +752,8 @@ class TestRoots(unittest.TestCase):
         self.assertEqual(sinusoidal_zeroes_many_cross, [4.8255, 6.2217, 6.9199, 8.3161, 9.0143, 10.4105, '4.8255 + 2.0944k', '6.2217 + 2.0944k'])
 
 class TestIntercepts(unittest.TestCase):
+    maxDiff = None
+
     def test_linear_intercepts(self):
         linear_intercepts = intercept_points('linear', coefficients[:2])
         self.assertEqual(linear_intercepts, [-1.5])
@@ -781,6 +787,8 @@ class TestIntercepts(unittest.TestCase):
         self.assertEqual(sinusoidal_intercepts, [None])
 
 class TestMaxima(unittest.TestCase):
+    maxDiff = None
+
     def test_linear_maxima(self):
         linear_maxima = maxima_points('linear', coefficients[:2])
         self.assertEqual(linear_maxima, [None])
@@ -814,6 +822,8 @@ class TestMaxima(unittest.TestCase):
         self.assertEqual(sinusoidal_maxima, [5.5236, 7.618, 9.7124])
 
 class TestMinima(unittest.TestCase):
+    maxDiff = None
+
     def test_linear_minima(self):
         linear_minima = minima_points('linear', coefficients[:2])
         self.assertEqual(linear_minima, [None])
@@ -847,6 +857,8 @@ class TestMinima(unittest.TestCase):
         self.assertEqual(sinusoidal_minima, [6.5708, 8.6652])
 
 class TestExtrema(unittest.TestCase):
+    maxDiff = None
+
     def test_linear_extrema(self):
         linear_extrema = extrema_points('linear', coefficients[:2])
         self.assertEqual(linear_extrema, {'maxima': [None], 'minima': [None]})
@@ -880,6 +892,8 @@ class TestExtrema(unittest.TestCase):
         self.assertEqual(sinusoidal_extrema, {'maxima': [5.5236, 7.618, 9.7124, '1.0472k'], 'minima': [6.5708, 8.6652, '1.0472k']})
 
 class TestInflections(unittest.TestCase):
+    maxDiff = None
+
     def test_linear_inflections(self):
         linear_inflections = inflection_points('linear', coefficients[:2])
         self.assertEqual(linear_inflections, [None])
@@ -913,6 +927,8 @@ class TestInflections(unittest.TestCase):
         self.assertEqual(sinusoidal_inflections, [5.0, 6.0472, 7.0944, 8.1416, 9.1888, '5.0 + 1.0472k'])
 
 class TestKeyPoints(unittest.TestCase):
+    maxDiff = None
+
     def test_linear_key_points(self):
         linear_key_points = key_coordinates('linear', coefficients[:2])
         self.assertEqual(linear_key_points, {'roots': [[-1.5, 0]], 'maxima': [None], 'minima': [None], 'inflections': [None]})
@@ -946,6 +962,8 @@ class TestKeyPoints(unittest.TestCase):
         self.assertEqual(sinusoidal_key_points, {'roots': [None], 'maxima': [[5.5236, 9.0], [7.618, 9.0], [9.7124, 9.0], ['5.5236 + 2.0944k', 9.0]], 'minima': [[6.5708, 5.0], [8.6652, 5.0], ['6.5708 + 2.0944k', 5.0]], 'inflections': [[5.0, 7.0], [6.0472, 7.0], [7.0944, 7.0], [8.1416, 7.0], [9.1888, 7.0001], ['5.0 + 1.0472k', 7.0]]})
 
 class TestPointsWithinRange(unittest.TestCase):
+    maxDiff = None
+
     def test_points_in_range(self):
         good_range = points_within_range([[11, 1], [13, 1], [15, 1], [17, 1], [19, 1], ['1 + 2k', 1]], 11, 19, 8, 2)
         self.assertEqual(good_range, [[11.0, 1], [13.0, 1], [15.0, 1], [17.0, 1], [19.0, 1], ['11.0 + 2.0k', 1]])
@@ -992,6 +1010,8 @@ class TestAccumulation(unittest.TestCase):
         self.assertEqual(sinusoidal_accumulation, 69.1433)
 
 class TestAverages(unittest.TestCase):
+    maxDiff = None
+
     def test_linear_averages(self):
         linear_averages = average_values('linear', coefficients[:2], 10, 20)
         self.assertEqual(linear_averages, {'average_value_derivative': 2.0, 'mean_values_derivative': ['All'], 'average_value_integral': 33.0, 'mean_values_integral': [15.0]})
@@ -1012,6 +1032,18 @@ class TestAverages(unittest.TestCase):
         exponential_averages = average_values('exponential', coefficients[:2], 10, 20)
         self.assertEqual(exponential_averages, {'average_value_derivative': 697345070.4, 'mean_values_derivative': [17.8185], 'average_value_integral': 634750837.5729, 'mean_values_integral': [19.4815]})
     
+    def test_exponential_averages_unary_base(self):
+        exponential_averages_unary_base = average_values('exponential', [2, 1], 10, 20)
+        self.assertEqual(exponential_averages_unary_base, {'average_value_derivative': 0.0, 'mean_values_derivative': [None], 'average_value_integral': 2.003, 'mean_values_integral': [None]})
+    
+    def test_exponential_averages_negative_base(self):
+        exponential_averages_negative_base = average_values('exponential', [2, -3], 10, 20)
+        self.assertEqual(exponential_averages_negative_base, {'average_value_derivative': 697345070.4, 'mean_values_derivative': [17.8185], 'average_value_integral': 634750837.5729, 'mean_values_integral': [19.4815]})
+    
+    def test_exponential_averages_negative_lead(self):
+        exponential_averages_negative_lead = average_values('exponential', [-2, 3], 10, 20)
+        self.assertEqual(exponential_averages_negative_lead, {'average_value_derivative': -697345070.4, 'mean_values_derivative': [17.8185], 'average_value_integral': -634750837.5729, 'mean_values_integral': [19.4815]})
+    
     def test_logarithmic_averages(self):
         logarithmic_averages = average_values('logarithmic', coefficients[:2], 10, 20)
         self.assertEqual(logarithmic_averages, {'average_value_derivative': 0.1386, 'mean_values_derivative': [14.43], 'average_value_integral': 8.3778, 'mean_values_integral': [14.7155]})
@@ -1023,8 +1055,12 @@ class TestAverages(unittest.TestCase):
     def test_sinusoidal_averages(self):
         sinusoidal_averages = average_values('sinusoidal', coefficients[:4], 10, 20)
         self.assertEqual(sinusoidal_averages, {'average_value_derivative': 0.0401, 'mean_values_derivative': [10.7618, 11.8046, 12.8562, 13.899, 14.9506, 15.9933, '10.7618 + 2.0944k', '11.8046 + 2.0944k'], 'average_value_integral': 6.9143, 'mean_values_integral': [10.2503, 11.2689, 12.3447, 13.3633, 14.4391, 15.4577, 16.5335, 17.5521, 18.6279, 19.6465, '10.2503 + 2.0944k', '11.2689 + 2.0944k']})
+    
+    def test_averages_start_end(self):
+        averages_start_end = average_values('cubic', coefficients[:4], 1, 1)
+        self.assertEqual(averages_start_end, {'average_value_derivative': 0.0, 'mean_values_derivative': [None], 'average_value_integral': 0.0, 'mean_values_integral': [None]})
 
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 139 tests in 0.018s ---------- OK ---------- #
+# ---------- Ran 245 tests in 0.043s ---------- OK ---------- #
