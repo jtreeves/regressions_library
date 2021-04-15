@@ -1198,4 +1198,4 @@ class TestSinusoidalModel(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 256 tests in 0.018s ---------- OK ---------- #
+# ---------- Ran 304 tests in 0.062s ---------- OK ---------- #

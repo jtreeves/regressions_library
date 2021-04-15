@@ -1063,4 +1063,4 @@ class TestAverages(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 245 tests in 0.043s ---------- OK ---------- #
+# ---------- Ran 245 tests in 0.035s ---------- OK ---------- #
