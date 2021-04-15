@@ -57,8 +57,11 @@ def sinusoidal_derivatives(first_constant, second_constant, third_constant, four
         >>> print(derivatives['second']['evaluation'](10))
         -11.705181122828105
     """
+    # Handle input errors
     four_scalars(first_constant, second_constant, third_constant, fourth_constant)
     coefficients = no_zeroes([first_constant, second_constant, third_constant, fourth_constant])
+
+    # Create first derivative
     first_constants = [coefficients[0] * coefficients[1], coefficients[1], coefficients[2]]
     def first_derivative(variable):
         evaluation = first_constants[0] * cos(first_constants[1] * (variable - first_constants[2]))
@@ -67,6 +70,8 @@ def sinusoidal_derivatives(first_constant, second_constant, third_constant, four
         'constants': first_constants,
         'evaluation': first_derivative
     }
+
+    # Create second derivative
     second_constants = [-1 * first_constants[0] * first_constants[1], first_constants[1], first_constants[2]]
     def second_derivative(variable):
         evaluation = second_constants[0] * sin(second_constants[1] * (variable - second_constants[2]))
@@ -75,6 +80,8 @@ def sinusoidal_derivatives(first_constant, second_constant, third_constant, four
         'constants': second_constants,
         'evaluation': second_derivative
     }
+
+    # Create object to return
     results = {
         'first': first_object,
         'second': second_object

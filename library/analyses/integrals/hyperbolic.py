@@ -47,14 +47,22 @@ def hyperbolic_integral(first_constant, second_constant):
         >>> print(integral['evaluation'](10))
         34.605170185988094
     """
+    # Handle input errors
     two_scalars(first_constant, second_constant)
     coefficients = no_zeroes([first_constant, second_constant])
+
+    # Create constants
     constants = [coefficients[0], coefficients[1]]
+
+    # Create evaluation
     def hyperbolic_evaluation(variable):
+        # Circumvent logarithm of zero
         if variable == 0:
             variable = 0.0001
         evaluation = constants[0] * log(abs(variable)) + constants[1] * variable
         return evaluation
+    
+    # Create object to return
     results = {
         'constants': constants,
         'evaluation': hyperbolic_evaluation

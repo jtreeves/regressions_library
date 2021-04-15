@@ -55,8 +55,11 @@ def logistic_derivatives(first_constant, second_constant, third_constant):
         >>> print(derivatives['second']['evaluation'](10))
         -5.506235031548963e-06
     """
+    # Handle input errors
     three_scalars(first_constant, second_constant, third_constant)
     coefficients = no_zeroes([first_constant, second_constant, third_constant])
+
+    # Create first derivative
     first_constants = [coefficients[0] * coefficients[1], coefficients[1], coefficients[2]]
     def first_derivative(variable):
         exponential = exp(-1 * first_constants[1] * (variable - first_constants[2]))
@@ -66,6 +69,8 @@ def logistic_derivatives(first_constant, second_constant, third_constant):
         'constants': first_constants,
         'evaluation': first_derivative
     }
+
+    # Create second derivative
     second_constants = [first_constants[0] * first_constants[1], first_constants[1], first_constants[2]]
     def second_derivative(variable):
         exponential = exp(-1 * second_constants[1] * (variable - second_constants[2]))
@@ -75,6 +80,8 @@ def logistic_derivatives(first_constant, second_constant, third_constant):
         'constants': second_constants,
         'evaluation': second_derivative
     }
+    
+    # Create object to return
     results = {
         'first': first_object,
         'second': second_object

@@ -52,12 +52,19 @@ def sinusoidal_integral(first_constant, second_constant, third_constant, fourth_
         >>> print(integral['evaluation'](10))
         70.50645860857254
     """
+    # Handle input errors
     four_scalars(first_constant, second_constant, third_constant, fourth_constant)
     coefficients = no_zeroes([first_constant, second_constant, third_constant, fourth_constant])
+    
+    # Create constants
     constants = [-1 * coefficients[0] / coefficients[1], coefficients[1], coefficients[2], coefficients[3]]
+
+    # Create evaluation
     def sinusoidal_evaluation(variable):
         evaluation = constants[0] * cos(constants[1] * (variable - constants[2])) + constants[3] * variable
         return evaluation
+    
+    # Create object to return
     results = {
         'constants': constants,
         'evaluation': sinusoidal_evaluation

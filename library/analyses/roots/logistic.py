@@ -48,8 +48,11 @@ def logistic_roots(first_constant, second_constant, third_constant, precision = 
         >>> print(roots2)
         [None]
     """
+    # Handle input errors
     three_scalars(first_constant, second_constant, third_constant)
     positive_integer(precision)
     coefficients = no_zeroes([first_constant, second_constant, third_constant], precision)
+
+    # Create root
     root = [None]
     return root

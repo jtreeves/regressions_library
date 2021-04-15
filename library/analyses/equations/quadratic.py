@@ -41,8 +41,11 @@ def quadratic_equation(first_constant, second_constant, third_constant):
         >>> print(evaluation(10))
         235
     """
+    # Handle input errors
     three_scalars(first_constant, second_constant, third_constant)
     coefficients = no_zeroes([first_constant, second_constant, third_constant])
+
+    # Create evaluation
     def quadratic_evaluation(variable):
         result = coefficients[0] * variable**2 + coefficients[1] * variable + coefficients[2]
         return result

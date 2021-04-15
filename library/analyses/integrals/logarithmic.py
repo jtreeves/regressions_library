@@ -48,14 +48,22 @@ def logarithmic_integral(first_constant, second_constant):
         >>> print(integral['evaluation'](10))
         56.05170185988092
     """
+    # Handle input errors
     two_scalars(first_constant, second_constant)
     coefficients = no_zeroes([first_constant, second_constant])
+
+    # Create constants
     constants = [coefficients[0], coefficients[1]]
+
+    # Create evaluation
     def logarithmic_evaluation(variable):
+        # Circumvent logarithm of zero
         if variable == 0:
             variable = 0.0001
         evaluation = constants[0] * variable * (log(abs(variable)) - 1) + constants[1] * variable
         return evaluation
+    
+    # Create object to return
     results = {
         'constants': constants,
         'evaluation': logarithmic_evaluation

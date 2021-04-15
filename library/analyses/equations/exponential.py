@@ -39,8 +39,11 @@ def exponential_equation(first_constant, second_constant):
         >>> print(evaluation(10))
         118098
     """
+    # Handle input errors
     two_scalars(first_constant, second_constant)
     coefficients = no_zeroes([first_constant, second_constant])
+
+    # Create evaluation
     def exponential_evaluation(variable):
         result = coefficients[0] * coefficients[1]**variable
         return result

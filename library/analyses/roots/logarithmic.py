@@ -48,9 +48,14 @@ def logarithmic_roots(first_constant, second_constant, precision = 4):
         >>> print(roots2)
         [4.0552]
     """
+    # Handle input errors
     two_scalars(first_constant, second_constant)
     positive_integer(precision)
     coefficients = no_zeroes([first_constant, second_constant], precision)
+    
+    # Create root
     root = exp(-1 * coefficients[1] / coefficients[0])
+
+    # Round root
     result = [rounded_value(root, precision)]
     return result

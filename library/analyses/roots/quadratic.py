@@ -51,23 +51,38 @@ def quadratic_roots(first_constant, second_constant, third_constant, precision =
         >>> print(roots2)
         [2.3333]
     """
+    # Handle input errors
     three_scalars(first_constant, second_constant, third_constant)
     positive_integer(precision)
     coefficients = no_zeroes([first_constant, second_constant, third_constant], precision)
-    roots = []
+
+    # Create intermediary variable
     discriminant = coefficients[1]**2 - 4 * coefficients[0] * coefficients[2]
+
+    # Create roots
+    roots = []
     first_root = (-1 * coefficients[1] + discriminant**(1/2)) / (2 * coefficients[0])
     second_root = (-1 * coefficients[1] - discriminant**(1/2)) / (2 * coefficients[0])
+
+    # Eliminate duplicate roots
     if first_root == second_root:
         roots.append(first_root)
+    
+    # Eliminate complex roots
     else:
         if not isinstance(first_root, complex):
             roots.append(first_root)
         if not isinstance(second_root, complex):
             roots.append(second_root)
+    
+    # Handle no roots
     if not roots:
         roots = [None]
+    
+    # Sort roots
     sorted_roots = sorted_list(roots)
+    
+    # Round roots
     result = []
     for number in sorted_roots:
         result.append(rounded_value(number, precision))

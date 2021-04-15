@@ -50,10 +50,14 @@ def hyperbolic_derivatives(first_constant, second_constant):
         >>> print(derivatives['second']['evaluation'](10))
         0.004
     """
+    # Handle input errors
     two_scalars(first_constant, second_constant)
     coefficients = no_zeroes([first_constant, second_constant])
+
+    # Create first derivative
     first_constants = [-1 * coefficients[0]]
     def first_derivative(variable):
+        # Circumvent division by zero
         if variable == 0:
             variable = 0.0001
         evaluation = first_constants[0] / variable**2
@@ -62,8 +66,11 @@ def hyperbolic_derivatives(first_constant, second_constant):
         'constants': first_constants,
         'evaluation': first_derivative
     }
+
+    # Create second derivative
     second_constants = [-2 * first_constants[0]]
     def second_derivative(variable):
+        # Circumvent division by zero
         if variable == 0:
             variable = 0.0001
         evaluation = second_constants[0] / variable**3
@@ -72,6 +79,8 @@ def hyperbolic_derivatives(first_constant, second_constant):
         'constants': second_constants,
         'evaluation': second_derivative
     }
+
+    # Create object to return
     results = {
         'first': first_object,
         'second': second_object

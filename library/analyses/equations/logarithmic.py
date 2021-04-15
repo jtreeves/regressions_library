@@ -40,9 +40,13 @@ def logarithmic_equation(first_constant, second_constant):
         >>> print(evaluation(10))
         7.605170185988092
     """
+    # Handle input errors
     two_scalars(first_constant, second_constant)
     coefficients = no_zeroes([first_constant, second_constant])
+
+    # Create evaluation
     def logarithmic_evaluation(variable):
+        # Circumvent logarithm of zero
         if variable == 0:
             variable = 0.0001
         result = coefficients[0] * log(abs(variable)) + coefficients[1] 

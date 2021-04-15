@@ -43,8 +43,11 @@ def cubic_equation(first_constant, second_constant, third_constant, fourth_const
         >>> print(evaluation(10))
         2357
     """
+    # Handle input errors
     four_scalars(first_constant, second_constant, third_constant, fourth_constant)
     coefficients = no_zeroes([first_constant, second_constant, third_constant, fourth_constant])
+
+    # Create evaluation
     def cubic_evaluation(variable):
         result = coefficients[0] * variable**3 + coefficients[1] * variable**2 + coefficients[2] * variable + coefficients[3]
         return result

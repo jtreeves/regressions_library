@@ -47,14 +47,23 @@ def exponential_integral(first_constant, second_constant):
         >>> print(integral['evaluation'](10))
         107497.43218617623
     """
+    # Handle input errors
     two_scalars(first_constant, second_constant)
     coefficients = no_zeroes([first_constant, second_constant])
+
+    # Circumvent division by zero
     if coefficients[1] == 1:
         coefficients[1] = 1.0001
+    
+    # Create constants
     constants = [coefficients[0] / log(abs(coefficients[1])), coefficients[1]]
+
+    # Create evaluation
     def exponential_evaluation(variable):
         evaluation = constants[0] * constants[1]**variable
         return evaluation
+    
+    # Create object to return
     results = {
         'constants': constants,
         'evaluation': exponential_evaluation

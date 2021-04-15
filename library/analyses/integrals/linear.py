@@ -46,12 +46,19 @@ def linear_integral(first_constant, second_constant):
         >>> print(integral['evaluation'](10))
         130.0
     """
+    # Handle input errors
     two_scalars(first_constant, second_constant)
     coefficients = no_zeroes([first_constant, second_constant])
+
+    # Create constants
     constants = [(1/2) * coefficients[0], coefficients[1]]
+
+    # Create evaluation
     def linear_evaluation(variable):
         evaluation = constants[0] * variable**2 + constants[1] * variable
         return evaluation
+    
+    # Create object to return
     results = {
         'constants': constants,
         'evaluation': linear_evaluation

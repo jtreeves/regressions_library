@@ -52,8 +52,11 @@ def exponential_derivatives(first_constant, second_constant):
         >>> print(derivatives['second']['evaluation'](10))
         142538.25837404432
     """
+    # Handle input errors
     two_scalars(first_constant, second_constant)
     coefficients = no_zeroes([first_constant, second_constant])
+
+    # Create first derivative
     first_constants = [coefficients[0] * log(abs(coefficients[1])), coefficients[1]]
     def first_derivative(variable):
         evaluation = first_constants[0] * first_constants[1]**variable
@@ -62,6 +65,8 @@ def exponential_derivatives(first_constant, second_constant):
         'constants': first_constants,
         'evaluation': first_derivative
     }
+
+    # Create second derivative
     second_constants = [first_constants[0] * log(abs(first_constants[1])), first_constants[1]]
     def second_derivative(variable):
         evaluation = second_constants[0] * second_constants[1]**variable
@@ -70,6 +75,8 @@ def exponential_derivatives(first_constant, second_constant):
         'constants': second_constants,
         'evaluation': second_derivative
     }
+
+    # Create object to return
     results = {
         'first': first_object,
         'second': second_object

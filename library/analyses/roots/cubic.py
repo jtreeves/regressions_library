@@ -60,10 +60,12 @@ def cubic_roots(first_constant, second_constant, third_constant, fourth_constant
         >>> print(roots2)
         [-1.4455]
     """
+    # Handle input errors
     four_scalars(first_constant, second_constant, third_constant, fourth_constant)
     positive_integer(precision)
     coefficients = no_zeroes([first_constant, second_constant, third_constant, fourth_constant], precision)
-    roots = []
+
+    # Create intermediary variables
     xi = (-1 + (-3)**(1/2)) / 2
     delta_first = coefficients[1]**2 - 3 * coefficients[0] * coefficients[2]
     delta_second = 2 * coefficients[1]**3 - 9 * coefficients[0] * coefficients[1] * coefficients[2] + 27 * coefficients[0]**2 * coefficients[3]
@@ -75,18 +77,27 @@ def cubic_roots(first_constant, second_constant, third_constant, fourth_constant
         eta = eta_second
     else:
         eta = eta_first
+    
+    # Create roots
+    roots = []
     first_root = (-1 / (3 * coefficients[0])) * (coefficients[1] + eta * xi**0 + delta_first / (eta * xi**0))
     second_root = (-1 / (3 * coefficients[0])) * (coefficients[1] + eta * xi**1 + delta_first / (eta * xi**1))
     third_root = (-1 / (3 * coefficients[0])) * (coefficients[1] + eta * xi**2 + delta_first / (eta * xi**2))
+
+    # Identify real and imaginary components of complex roots
     first_real = first_root.real
     second_real = second_root.real
     third_real = third_root.real
     first_imag = first_root.imag
     second_imag = second_root.imag
     third_imag = third_root.imag
+
+    # Determine magnitudes of imaginary components
     size_first_imag = (first_imag**2)**(1/2)
     size_second_imag = (second_imag**2)**(1/2)
     size_third_imag = (third_imag**2)**(1/2)
+
+    # Eliminate roots with large imaginary components
     if size_first_imag < 10**(-precision):
         first_root = first_real
         roots.append(first_root)
@@ -96,10 +107,14 @@ def cubic_roots(first_constant, second_constant, third_constant, fourth_constant
     if size_third_imag < 10**(-precision):
         third_root = third_real
         roots.append(third_root)
+    
+    # Eliminate duplicate roots
     unique_roots = list(set(roots))
-    if not unique_roots:
-        unique_roots = [None]
+    
+    # Sort unique roots
     sorted_roots = sorted_list(unique_roots)
+
+    # Round roots
     result = []
     for number in sorted_roots:
         result.append(rounded_value(number, precision))

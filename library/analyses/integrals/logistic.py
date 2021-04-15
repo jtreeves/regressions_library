@@ -50,12 +50,19 @@ def logistic_integral(first_constant, second_constant, third_constant):
         >>> print(integral['evaluation'](10))
         10.00000020393485
     """
+    # Handle input errors
     three_scalars(first_constant, second_constant, third_constant)
     coefficients = no_zeroes([first_constant, second_constant, third_constant])
+
+    # Create constants
     constants = [coefficients[0] / coefficients[1], coefficients[1], coefficients[2]]
+
+    # Create evaluation
     def logistic_evaluation(variable):
         evaluation = constants[0] * log(abs(exp(constants[1] * (variable - constants[2])) + 1))
         return evaluation
+    
+    # Create object to return
     results = {
         'constants': constants,
         'evaluation': logistic_evaluation

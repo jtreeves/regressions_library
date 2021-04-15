@@ -42,8 +42,11 @@ def logistic_equation(first_constant, second_constant, third_constant):
         >>> print(evaluation(10))
         1.999999388195546
     """
+    # Handle input errors
     three_scalars(first_constant, second_constant, third_constant)
     coefficients = no_zeroes([first_constant, second_constant, third_constant])
+
+    # Create evaluation
     def logistic_evaluation(variable):
         result = coefficients[0] * (1 + exp(-1 * coefficients[1] * (variable - coefficients[2])))**(-1)
         return result

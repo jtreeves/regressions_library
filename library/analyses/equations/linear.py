@@ -39,8 +39,11 @@ def linear_equation(first_constant, second_constant):
         >>> print(evaluation(10))
         23
     """
+    # Handle input errors
     two_scalars(first_constant, second_constant)
     coefficients = no_zeroes([first_constant, second_constant])
+
+    # Create evaluation
     def linear_evaluation(variable):
         result = coefficients[0] * variable + coefficients[1]
         return result

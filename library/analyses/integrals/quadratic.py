@@ -48,12 +48,19 @@ def quadratic_integral(first_constant, second_constant, third_constant):
         >>> print(integral['evaluation'](10))
         866.6666666666666
     """
+    # Handle input errors
     three_scalars(first_constant, second_constant, third_constant)
     coefficients = no_zeroes([first_constant, second_constant, third_constant])
+
+    # Create constants
     constants = [(1/3) * coefficients[0], (1/2) * coefficients[1], coefficients[2]]
+
+    # Create evaluation
     def quadratic_evaluation(variable):
         evaluation = constants[0] * variable**3 + constants[1] * variable**2 + constants[2] * variable
         return evaluation
+    
+    # Create object to return
     results = {
         'constants': constants,
         'evaluation': quadratic_evaluation

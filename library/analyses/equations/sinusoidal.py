@@ -37,7 +37,7 @@ def sinusoidal_equation(first_constant, second_constant, third_constant, fourth_
 
         - Period of function: :math:`\\frac{2\\pi}{|b|}`
         - Amplitude of function: :math:`|a|`
-        
+
     - |sine_functions|
 
     Examples
@@ -48,8 +48,11 @@ def sinusoidal_equation(first_constant, second_constant, third_constant, fourth_
         >>> print(evaluation(10))
         8.300575680314234
     """
+    # Handle input errors
     four_scalars(first_constant, second_constant, third_constant, fourth_constant)
     coefficients = no_zeroes([first_constant, second_constant, third_constant, fourth_constant])
+
+    # Create evaluation
     def sinusoidal_evaluation(variable):
         result = coefficients[0] * sin(coefficients[1] * (variable - coefficients[2])) + coefficients[3]
         return result

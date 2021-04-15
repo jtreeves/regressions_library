@@ -39,9 +39,13 @@ def hyperbolic_equation(first_constant, second_constant):
         >>> print(evaluation(10))
         3.2
     """
+    # Handle input errors
     two_scalars(first_constant, second_constant)
     coefficients = no_zeroes([first_constant, second_constant])
+
+    # Create evaluation
     def hyperbolic_evaluation(variable):
+        # Circumvent division by zero
         if variable == 0:
             variable = 0.0001
         result = coefficients[0] / variable + coefficients[1]

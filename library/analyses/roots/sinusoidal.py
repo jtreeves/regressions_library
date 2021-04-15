@@ -57,41 +57,75 @@ def sinusoidal_roots(first_constant, second_constant, third_constant, fourth_con
         >>> print(roots2)
         [-3.5708, 2.7124, 8.9956, '-3.5708 + 6.2832k']
     """
+    # Handle input errors
     four_scalars(first_constant, second_constant, third_constant, fourth_constant)
     positive_integer(precision)
     coefficients = no_zeroes([first_constant, second_constant, third_constant, fourth_constant], precision)
+
+    # Create list for roots
     roots = []
+
+    # Identify key ratio
     ratio = -1 * coefficients[3] / coefficients[0]
+
+    # Handle no roots
     if ratio > 1 or ratio < -1:
         roots = [None]
+    
+    # Handle multiple roots
     else:
+        # Create intermediary variables
         radians = asin(ratio)
         periodic_radians = radians / coefficients[1]
+
+        # Handle roots that bounce on the x-axis
         if ratio == 1 or ratio == -1:
+            # Determine pertinent values
             periodic_unit = 2 * pi / coefficients[1]
             initial_value = coefficients[2] + periodic_radians
             first_value = initial_value + 1 * periodic_unit
             second_value = initial_value + 2 * periodic_unit
+
+            # Round pertinent values
             rounded_initial_value = rounded_value(initial_value, precision)
             rounded_periodic_unit = rounded_value(periodic_unit, precision)
+            
+            # Create general form
             general_form = str(rounded_initial_value) + ' + ' + str(rounded_periodic_unit) + 'k'
+            
+            # Store results in roots list
             roots = [initial_value, first_value, second_value, general_form]
+        
+        # Handle roots that cross the x-axis
         else:
+            # Determine pertinent values
             periodic_unit = 2 * pi / coefficients[1]
             initial_value = coefficients[2] + periodic_radians
             first_value = initial_value + 1 * periodic_unit
             second_value = initial_value + 2 * periodic_unit
+
+            # Round pertinent values
             rounded_initial_value = rounded_value(initial_value, precision)
             rounded_periodic_unit = rounded_value(periodic_unit, precision)
+            
+            # Create general form
             general_form = str(rounded_initial_value) + ' + ' + str(rounded_periodic_unit) + 'k'
+            
+            # Determine supplementary values
             alternative_initial_value = coefficients[2] + pi / coefficients[1] - periodic_radians
             alternative_first_value = alternative_initial_value + 1 * periodic_unit
             alternative_second_value = alternative_initial_value + 2 * periodic_unit
+
+            # Round supplementary value
             rounded_alternative_initial_value = rounded_value(alternative_initial_value, precision)
+
+            # Create general form for supplementary values
             alternative_general_form = str(rounded_alternative_initial_value) + ' + ' + str(rounded_periodic_unit) + 'k'
+            
+            # Store results in roots list
             roots = [initial_value, first_value, second_value, alternative_initial_value, alternative_first_value, alternative_second_value, general_form, alternative_general_form]
-    if not roots:
-        roots = [None]
+    
+    # Separate numerical roots, string roots, and None results
     numerical_roots = []
     other_roots = []
     for item in roots:
@@ -99,9 +133,15 @@ def sinusoidal_roots(first_constant, second_constant, third_constant, fourth_con
             numerical_roots.append(item)
         else:
             other_roots.append(item)
+    
+    # Sort numerical roots
     sorted_roots = sorted_list(numerical_roots)
+
+    # Round numerical roots
     rounded_roots = []
     for number in sorted_roots:
         rounded_roots.append(rounded_value(number, precision))
+    
+    # Combine numerical and non-numerical roots
     result = rounded_roots + other_roots
     return result
