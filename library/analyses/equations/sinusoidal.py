@@ -34,6 +34,10 @@ def sinusoidal_equation(first_constant, second_constant, third_constant, fourth_
     Notes
     -----
     - Standard form of a sinusoidal function: :math:`f(x) = a\\cdot{\\sin(b\\cdot(x - c))} + d`
+
+        - Period of function: :math:`\\frac{2\\pi}{|b|}`
+        - Amplitude of function: :math:`|a|`
+        
     - |sine_functions|
 
     Examples

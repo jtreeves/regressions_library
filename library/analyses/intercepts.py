@@ -44,9 +44,8 @@ def intercept_points(equation_type, coefficients, precision = 4):
 
     Notes
     -----
-    - Function to analyze: :math:`f(x)`
-    - Domain of the function: :math:`x_i = \\{ x_1, x_2, \\cdots, x_n \\}`
-    - X-intercepts (roots) of the function: :math:`x_r = \\{ r \\mid r \\in x_i and f(r) = 0 \\}`
+    - Domain of a function: :math:`x_i = \\{ x_1, x_2, \\cdots, x_n \\}`
+    - X-intercepts (roots) of the function: :math:`x_r = \\{ r \\mid r \\in x_i, f(r) = 0 \\}`
     - |intercepts|
 
     Examples

@@ -33,7 +33,7 @@ def exponential_roots(first_constant, second_constant, precision = 4):
     Notes
     -----
     - Standard form of a exponential function: :math:`f(x) = a\\cdot{b^x}`
-    - Exponential formula: `None`
+    - Exponential formula: :math:`x = \\varnothing`
 
     Examples
     --------

@@ -50,7 +50,7 @@ def accumulated_area(equation_type, coefficients, start, end, precision = 4):
 
     Notes
     -----
-    - Definite integral: :math:`\\int_{a}^{b} f(x) \\,dx = F(b) - F(a)`
+    - Definite integral of a function: :math:`\\int_{a}^{b} f(x) \\,dx = F(b) - F(a)`
     - |definite_integral|
     - |fundamental_theorem|
 

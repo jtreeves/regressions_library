@@ -37,7 +37,8 @@ def inflection_points(equation_type, coefficients, precision = 4):
 
     Notes
     -----
-    - Inflection points occur at x-coordinates where the sign of the second derivative changes from either 'positive' to 'negative' or 'negative' to 'positive'
+    - Critical points for the second derivative of a function: :math:`c_i = \\{ c_1, c_2, c_3,  \\cdots, c_{n-1}, c_n \\}`
+    - X-coordinates of the inflections of the function: :math:`x_{infl} = \\{ x \\mid x \\in c_i, \\left( f''(\\frac{c_{j-1} + c_j}{2}) < 0 \\cap f''(\\frac{c_j + c_{j+1}}{2}) > 0 \\right) \\\\ \\cup \\left( f''(\\frac{c_{j-1} + c_j}{2}) > 0 \\cap f''(\\frac{c_j + c_{j+1}}{2}) < 0 \\right) \\}`
     - |inflection_points|
 
     Examples

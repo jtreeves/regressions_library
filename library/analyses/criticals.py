@@ -47,10 +47,8 @@ def critical_points(equation_type, coefficients, derivative_level, precision = 4
 
     Notes
     -----
-    - Function to analyze: :math:`f(x)`
-    - Derivative of the function: :math:`f'(x)`
-    - Domain of the function: :math:`x_i = \\{ x_1, x_2, \\cdots, x_n \\}`
-    - Potential critical points of the derivative: :math:`x_c = \\{ c \\mid c \\in x_i \\cap f'(c) = 0 \\cup f'(c) \\nexists \\}`
+    - Domain of a function: :math:`x_i = \\{ x_1, x_2, \\cdots, x_n \\}`
+    - Potential critical points of the derivative of the function: :math:`x_c = \\{ c \\mid c \\in x_i, f'(c) = 0 \\cup f'(c) = \\varnothing \\}`
     - |critical_points|
 
     Examples

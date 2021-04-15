@@ -50,7 +50,15 @@ def sign_chart(equation_type, coefficients, derivative_level, precision = 4):
 
     Notes
     -----
-    - Sign charts for individual derivatives break up a function's domain into intervals demarcated by the critical points of that derivative, where each interval is noted as being either 'positive', 'negative', or 'constant' based on the values of that derivative during that interval
+    - Critical points for the derivative of a function: :math:`c_i = \\{ c_1, c_2, c_3,  \\cdots, c_{n-1}, c_n \\}`
+    - Midpoints and key values of the intervals demarcated by the critical points: :math:`m_i = \\{ c_1 - 1,  \\frac{c_1+c_2}{2}, \\frac{c_2+c_3}{2}, \\cdots, \\frac{c_{n-1}+c_n}{2}, c_n + 1 \\}`
+    - Values of the derivative within the intervals: :math:`v_i = \\{ v_1, v_2, v_3, v_4 \\cdots, v_{n-1}, v_n, v_{n+1} \\}`
+    - Sign chart: :math:`s = ( v_1, c_1, v_2, c_2, v_3, c_3, v_4, \\dots, v_{n-1}, c_{n-1}, v_n, c_n, v_{n+1} )`
+
+        - :math:`v_j = negative` if :math:`f'(m_j) < 0`
+        - :math:`v_j = constant` if :math:`f'(m_j) = 0`
+        - :math:`v_j = positve` if :math:`f'(m_j) > 0`
+
     - |intervals|
 
     Examples

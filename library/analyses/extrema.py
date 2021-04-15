@@ -41,7 +41,8 @@ def extrema_points(equation_type, coefficients, precision = 4):
 
     Notes
     -----
-    - Extrema occur at x-coordinates where the sign of the first derivative changes from either 'positive' to 'negative' (at which point, there is a maximum) or 'negative' to 'positive' (at which point, there is a minimum)
+    - Critical points for the derivative of a function: :math:`c_i = \\{ c_1, c_2, c_3,  \\cdots, c_{n-1}, c_n \\}`
+    - X-coordinates of the extrema of the function: :math:`x_{ext} = \\{ x \\mid x \\in c_i, \\left( f'(\\frac{c_{j-1} + c_j}{2}) < 0 \\cap f'(\\frac{c_j + c_{j+1}}{2}) > 0 \\right) \\\\ \\cup \\left( f'(\\frac{c_{j-1} + c_j}{2}) > 0 \\cap f'(\\frac{c_j + c_{j+1}}{2}) < 0 \\right) \\}`
     - |extrema_values|
 
     Examples
