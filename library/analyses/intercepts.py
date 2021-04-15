@@ -44,7 +44,9 @@ def intercept_points(equation_type, coefficients, precision = 4):
 
     Notes
     -----
-    - Intercepts occur at x-coordinates where the function equals 0; graphically, the curve crosses the x-axis at these points
+    - Function to analyze: :math:`f(x)`
+    - Domain of the function: :math:`x_i = \\{ x_1, x_2, \\cdots, x_n \\}`
+    - X-intercepts (roots) of the function: :math:`x_r = \\{ r \\mid r \\in x_i and f(r) = 0 \\}`
     - |intercepts|
 
     Examples
