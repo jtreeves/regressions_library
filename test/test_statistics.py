@@ -18,30 +18,34 @@ from library.statistics.correlation import correlation_coefficient
 even_set = [8, 2, 5, 9, 1, 3, 22, 11, 9, 13]
 odd_set = [7, 4, 6, 8, 2, 5, 25, 14, 8]
 compare_set = [5, 5, 5, 10, 1, 7, 22, 13, 8]
+counting_set = [1, 2, 3, 4, 5]
+identical_set = [1, 1, 1, 1, 1]
+approximate_set = [1.0001, 1.0001, 1.0001, 1.0001, 1.0001]
+extreme_set = [1, 13, 59, 134, 2892]
 dimension_set = [[2, 7], [1, 9], [5, 2], [3, 4], [4, 3], [8, 1], [2, 3], [7, 7], [1, 1], [5, 3]]
 
 normal_decimal = 6.817239833721
 extreme_decimal = 0.000000000000000000005782016894
 
-precision = 4
+low_precision = 2
 high_precision = 8
 
 class TestRounding(unittest.TestCase):
     def test_round_missing(self):
-        round_normal = rounded_value(normal_decimal)
-        self.assertEqual(round_normal, 6.8172)
+        round_missing = rounded_value(normal_decimal)
+        self.assertEqual(round_missing, 6.8172)
     
-    def test_round_normal(self):
-        round_normal = rounded_value(normal_decimal, precision)
-        self.assertEqual(round_normal, 6.8172)
+    def test_round_normal_low(self):
+        round_normal_low = rounded_value(normal_decimal, low_precision)
+        self.assertEqual(round_normal_low, 6.82)
 
     def test_round_normal_high(self):
         round_normal_high = rounded_value(normal_decimal, high_precision)
         self.assertEqual(round_normal_high, 6.81723983)
     
-    def test_round_extreme(self):
-        round_extreme = rounded_value(extreme_decimal, precision)
-        self.assertEqual(round_extreme, 0.0001)
+    def test_round_extreme_low(self):
+        round_extreme_low = rounded_value(extreme_decimal, low_precision)
+        self.assertEqual(round_extreme_low, 0.01)
     
     def test_round_extreme_high(self):
         round_extreme_high = rounded_value(extreme_decimal, high_precision) 
@@ -133,15 +137,15 @@ class TestMean(unittest.TestCase):
     
     def test_mean_odd(self):
         mean_odd = mean_value(odd_set)
-        self.assertAlmostEqual(mean_odd, 8.7778, 4)
+        self.assertEqual(mean_odd, 8.777777777777779)
 
 class TestFiveNumberSummary(unittest.TestCase):
     def test_five_even(self):
-        five_even = five_number_summary(even_set, precision)
+        five_even = five_number_summary(even_set)
         self.assertEqual(five_even, {'minimum': 1, 'q1': 3, 'median': 8.5, 'q3': 11, 'maximum': 22})
     
     def test_five_odd(self):
-        five_odd = five_number_summary(odd_set, precision)
+        five_odd = five_number_summary(odd_set)
         self.assertEqual(five_odd, {'minimum': 2, 'q1': 4.5, 'median': 7, 'q3': 11.0, 'maximum': 25})
 
 class TestRange(unittest.TestCase):
@@ -156,22 +160,39 @@ class TestRange(unittest.TestCase):
 class TestDeviations(unittest.TestCase):
     def test_deviations_even(self):
         deviations_even = multiple_deviations(even_set)
-        self.assertAlmostEqual(deviations_even[0], -0.3)
+        self.assertEqual(deviations_even, [-0.3000000000000007, -6.300000000000001, -3.3000000000000007, 0.6999999999999993, -7.300000000000001, -5.300000000000001, 13.7, 2.6999999999999993, 0.6999999999999993, 4.699999999999999])
     
     def test_deviations_odd(self):
         deviations_odd = multiple_deviations(odd_set)
-        self.assertAlmostEqual(deviations_odd[0], -1.7778, 4)
+        self.assertEqual(deviations_odd, [-1.7777777777777786, -4.777777777777779, -2.7777777777777786, -0.7777777777777786, -6.777777777777779, -3.7777777777777786, 16.22222222222222, 5.222222222222221, -0.7777777777777786])
+    
+    def test_deviations_extreme(self):
+        deviations_extreme = multiple_deviations(extreme_set)
+        self.assertEqual(deviations_extreme, [-618.8, -606.8, -560.8, -485.79999999999995, 2272.2])
 
-class TestComparisons(unittest.TestCase):
+class TestResiduals(unittest.TestCase):
     def test_residuals_compare(self):
         residuals_compare = multiple_residuals(odd_set, compare_set)
         self.assertEqual(residuals_compare, [2, -1, 1, -2, 1, -2, 3, 1, 0])
     
+    def test_residuals_extreme(self):
+        residuals_extreme = multiple_residuals(extreme_set, counting_set)
+        self.assertEqual(residuals_extreme, [0.0, 11.0, 56.0, 130.0, 2887.0])
+
+class TestCorrelation(unittest.TestCase):    
     def test_correlation_compare(self):
-        correlation_compare = correlation_coefficient(odd_set, compare_set, precision)
+        correlation_compare = correlation_coefficient(odd_set, compare_set)
         self.assertEqual(correlation_compare, 0.967)
+    
+    def test_correlation_deviation_zero(self):
+        correlation_deviation_zero = correlation_coefficient(identical_set, approximate_set)
+        self.assertEqual(correlation_deviation_zero, 0.9997)
+    
+    def test_correlation_ratio_over(self):
+        correlation_ratio_over = correlation_coefficient(extreme_set, identical_set)
+        self.assertEqual(correlation_ratio_over, 0.0)
 
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 33 tests in 0.004s ---------- OK ---------- #
+# ---------- Ran 37 tests in 0.005s ---------- OK ---------- #

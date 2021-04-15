@@ -32,15 +32,24 @@ class TestSimpleVector(unittest.TestCase):
 
     def test_direction_vector(self):
         direction_vector = vector_direction(component_vector)
-        self.assertAlmostEqual(direction_vector['degree'], 73.3008, 4)
+        self.assertEqual(direction_vector['degree'], 73.30075576600639)
     
     def test_magnitude_vector(self):
         magnitude_vector = vector_magnitude(component_vector)
-        self.assertAlmostEqual(magnitude_vector, 10.4403, 4)
+        self.assertEqual(magnitude_vector, 10.44030650891055)
     
     def test_unit_vector(self):
         unit = unit_vector(component_vector)
-        self.assertAlmostEqual(unit[0], 0.2873, 4)
+        self.assertEqual(unit, [0.2873478855663454, 0.9578262852211514])
+
+class TestZeroes(unittest.TestCase):
+    def test_direction_zero(self):
+        direction_zero = vector_direction([0, 1])
+        self.assertEqual(direction_zero['degree'], 89.99427042206779)
+    
+    def test_unit_vector(self):
+        unit_zero = unit_vector([0, 0])
+        self.assertEqual(unit_zero, [0.0, 0.0])
 
 class TestColumn(unittest.TestCase):
     def test_column_first(self):
@@ -99,4 +108,4 @@ class TestDotProduct(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 16 tests in 0.002s ---------- OK ---------- #
+# ---------- Ran 18 tests in 0.002s ---------- OK ---------- #
