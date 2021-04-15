@@ -126,6 +126,7 @@ agnostic_models = run_all(agnostic_set)
 class TestAgnosticModels(unittest.TestCase):
     maxDiff = None
 
+    # LINEAR MODEL
     def test_agnostic_models_linear_constants(self):
         self.assertEqual(agnostic_models['models']['linear']['constants'], [1.9636, 23.0])
     
@@ -141,6 +142,7 @@ class TestAgnosticModels(unittest.TestCase):
     def test_agnostic_models_linear_correlation(self):
         self.assertEqual(agnostic_models['models']['linear']['correlation'], 0.5516)
     
+    # QUADRATIC MODEL
     def test_agnostic_models_quadratic_constants(self):
         self.assertEqual(agnostic_models['models']['quadratic']['constants'], [-0.3106, 5.3803, 16.1667])
     
@@ -156,6 +158,7 @@ class TestAgnosticModels(unittest.TestCase):
     def test_agnostic_models_quadratic_correlation(self):
         self.assertEqual(agnostic_models['models']['quadratic']['correlation'], 0.5941)
     
+    # CUBIC MODEL
     def test_agnostic_models_cubic_constants(self):
         self.assertEqual(agnostic_models['models']['cubic']['constants'], [-0.3881, 6.0932, -24.155, 49.4667])
     
@@ -171,6 +174,7 @@ class TestAgnosticModels(unittest.TestCase):
     def test_agnostic_models_cubic_correlation(self):
         self.assertEqual(agnostic_models['models']['cubic']['correlation'], 0.8933)
     
+    # HYPERBOLIC MODEL
     def test_agnostic_models_hyperbolic_constants(self):
         self.assertEqual(agnostic_models['models']['hyperbolic']['constants'], [-13.5246, 37.7613])
     
@@ -186,6 +190,7 @@ class TestAgnosticModels(unittest.TestCase):
     def test_agnostic_models_hyperbolic_correlation(self):
         self.assertEqual(agnostic_models['models']['hyperbolic']['correlation'], 0.3479)
     
+    # EXPONENTIAL MODEL
     def test_agnostic_models_exponential_constants(self):
         self.assertEqual(agnostic_models['models']['exponential']['constants'], [22.1049, 1.0692])
     
@@ -201,6 +206,7 @@ class TestAgnosticModels(unittest.TestCase):
     def test_agnostic_models_exponential_correlation(self):
         self.assertEqual(agnostic_models['models']['exponential']['correlation'], 0.5069)
     
+    # LOGARITHMIC MODEL
     def test_agnostic_models_logarithmic_constants(self):
         self.assertEqual(agnostic_models['models']['logarithmic']['constants'], [7.4791, 22.5032])
     
@@ -216,6 +222,7 @@ class TestAgnosticModels(unittest.TestCase):
     def test_agnostic_models_logarithmic_correlation(self):
         self.assertEqual(agnostic_models['models']['logarithmic']['correlation'], 0.5086)
     
+    # LOGISTIC MODEL
     def test_agnostic_models_logistic_constants(self):
         self.assertEqual(agnostic_models['models']['logistic']['constants'], [43.983, 0.3076, 0.9746])
     
@@ -231,6 +238,7 @@ class TestAgnosticModels(unittest.TestCase):
     def test_agnostic_models_logistic_correlation(self):
         self.assertEqual(agnostic_models['models']['logistic']['correlation'], 0.5875)
     
+    # SINUSOIDAL MODEL
     def test_agnostic_models_sinusoidal_constants(self):
         self.assertEqual(agnostic_models['models']['sinusoidal']['constants'], [14.0875, 0.7119, -3.7531, 34.2915])
     
@@ -246,6 +254,7 @@ class TestAgnosticModels(unittest.TestCase):
     def test_agnostic_models_sinusoidal_correlation(self):
         self.assertEqual(agnostic_models['models']['sinusoidal']['correlation'], 0.9264)
     
+    # COMPARATIVE ANALYSIS
     def test_agnostic_statistics(self):
         self.assertEqual(agnostic_models['statistics'], {'minimum': 1, 'maximum': 10, 'q1': 3, 'q3': 8, 'mean': 5.5, 'median': 5.5})
     
@@ -257,6 +266,7 @@ linear_models = run_all(linear_set)
 class TestLinearModels(unittest.TestCase):
     maxDiff = None
 
+    # LINEAR MODEL
     def test_linear_models_linear_constants(self):
         self.assertEqual(linear_models['models']['linear']['constants'], [-3.0, 33.0])
     
@@ -272,6 +282,7 @@ class TestLinearModels(unittest.TestCase):
     def test_linear_models_linear_correlation(self):
         self.assertEqual(linear_models['models']['linear']['correlation'], 1.0)
     
+    # QUADRATIC MODEL
     def test_linear_models_quadratic_constants(self):
         self.assertEqual(linear_models['models']['quadratic']['constants'], [-0.0001, -3.0, 33.0])
     
@@ -287,6 +298,7 @@ class TestLinearModels(unittest.TestCase):
     def test_linear_models_quadratic_correlation(self):
         self.assertEqual(linear_models['models']['quadratic']['correlation'], 1.0)
     
+    # CUBIC MODEL
     def test_linear_models_cubic_constants(self):
         self.assertEqual(linear_models['models']['cubic']['constants'], [-0.0001, -0.0001, -3.0, 33.0])
     
@@ -302,6 +314,7 @@ class TestLinearModels(unittest.TestCase):
     def test_linear_models_cubic_correlation(self):
         self.assertEqual(linear_models['models']['cubic']['correlation'], 1.0)
     
+    # HYPERBOLIC MODEL
     def test_linear_models_hyperbolic_constants(self):
         self.assertEqual(linear_models['models']['hyperbolic']['constants'], [26.49, 8.7412])
     
@@ -317,6 +330,7 @@ class TestLinearModels(unittest.TestCase):
     def test_linear_models_hyperbolic_correlation(self):
         self.assertEqual(linear_models['models']['hyperbolic']['correlation'], 0.8086)
     
+    # EXPONENTIAL MODEL
     def test_linear_models_exponential_constants(self):
         self.assertEqual(linear_models['models']['exponential']['constants'], [48.2454, 0.7942])
     
@@ -332,6 +346,7 @@ class TestLinearModels(unittest.TestCase):
     def test_linear_models_exponential_correlation(self):
         self.assertEqual(linear_models['models']['exponential']['correlation'], 0.9222)
     
+    # LOGARITHMIC MODEL
     def test_linear_models_logarithmic_constants(self):
         self.assertEqual(linear_models['models']['logarithmic']['constants'], [-11.7921, 34.3113])
     
@@ -347,6 +362,7 @@ class TestLinearModels(unittest.TestCase):
     def test_linear_models_logarithmic_correlation(self):
         self.assertEqual(linear_models['models']['logarithmic']['correlation'], 0.9517)
     
+    # LOGISTIC MODEL
     def test_linear_models_logistic_constants(self):
         self.assertEqual(linear_models['models']['logistic']['constants'], [34.8519, -0.402, 5.1708])
     
@@ -362,6 +378,7 @@ class TestLinearModels(unittest.TestCase):
     def test_linear_models_logistic_correlation(self):
         self.assertEqual(linear_models['models']['logistic']['correlation'], 0.9974)
     
+    # SINUSOIDAL MODEL
     def test_linear_models_sinusoidal_constants(self):
         self.assertEqual(linear_models['models']['sinusoidal']['constants'], [3.6953, 1.8762, 3.8255, 16.5])
     
@@ -377,6 +394,7 @@ class TestLinearModels(unittest.TestCase):
     def test_linear_models_sinusoidal_correlation(self):
         self.assertEqual(linear_models['models']['sinusoidal']['correlation'], 0.3046)
     
+    # COMPARATIVE ANALYSIS
     def test_linear_statistics(self):
         self.assertEqual(linear_models['statistics'], {'minimum': 1, 'maximum': 10, 'q1': 3, 'q3': 8, 'mean': 5.5, 'median': 5.5})
     
@@ -388,6 +406,7 @@ quadratic_models = run_all(quadratic_set)
 class TestQuadraticModels(unittest.TestCase):
     maxDiff = None
 
+    # LINEAR MODEL
     def test_quadratic_models_linear_constants(self):
         self.assertEqual(quadratic_models['models']['linear']['constants'], [1.0, 33.0])
     
@@ -403,6 +422,7 @@ class TestQuadraticModels(unittest.TestCase):
     def test_quadratic_models_linear_correlation(self):
         self.assertEqual(quadratic_models['models']['linear']['correlation'], 0.1939)
     
+    # QUADRATIC MODEL
     def test_quadratic_models_quadratic_constants(self):
         self.assertEqual(quadratic_models['models']['quadratic']['constants'], [-2.0, 23.0, -11.0])
     
@@ -418,6 +438,7 @@ class TestQuadraticModels(unittest.TestCase):
     def test_quadratic_models_quadratic_correlation(self):
         self.assertEqual(quadratic_models['models']['quadratic']['correlation'], 1.0)
     
+    # CUBIC MODEL
     def test_quadratic_models_cubic_constants(self):
         self.assertEqual(quadratic_models['models']['cubic']['constants'], [-0.0001, -2.0, 23.0, -11.0])
     
@@ -433,6 +454,7 @@ class TestQuadraticModels(unittest.TestCase):
     def test_quadratic_models_cubic_correlation(self):
         self.assertEqual(quadratic_models['models']['cubic']['correlation'], 1.0)
     
+    # HYPERBOLIC MODEL
     def test_quadratic_models_hyperbolic_constants(self):
         self.assertEqual(quadratic_models['models']['hyperbolic']['constants'], [-36.1101, 49.0765])
     
@@ -448,6 +470,7 @@ class TestQuadraticModels(unittest.TestCase):
     def test_quadratic_models_hyperbolic_correlation(self):
         self.assertEqual(quadratic_models['models']['hyperbolic']['correlation'], 0.6412)
     
+    # EXPONENTIAL MODEL
     def test_quadratic_models_exponential_constants(self):
         self.assertEqual(quadratic_models['models']['exponential']['constants'], [26.2561, 1.0509])
     
@@ -463,6 +486,7 @@ class TestQuadraticModels(unittest.TestCase):
     def test_quadratic_models_exponential_correlation(self):
         self.assertEqual(quadratic_models['models']['exponential']['correlation'], 0.0)
     
+    # LOGARITHMIC MODEL
     def test_quadratic_models_logarithmic_constants(self):
         self.assertEqual(quadratic_models['models']['logarithmic']['constants'], [9.8723, 23.5885])
     
@@ -478,6 +502,7 @@ class TestQuadraticModels(unittest.TestCase):
     def test_quadratic_models_logarithmic_correlation(self):
         self.assertEqual(quadratic_models['models']['logarithmic']['correlation'], 0.4634)
     
+    # LOGISTIC MODEL
     def test_quadratic_models_logistic_constants(self):
         self.assertEqual(quadratic_models['models']['logistic']['constants'], [43.9519, 1.9163, 1.7096])
     
@@ -493,6 +518,7 @@ class TestQuadraticModels(unittest.TestCase):
     def test_quadratic_models_logistic_correlation(self):
         self.assertEqual(quadratic_models['models']['logistic']['correlation'], 0.7235)
     
+    # SINUSOIDAL MODEL
     def test_quadratic_models_sinusoidal_constants(self):
         self.assertEqual(quadratic_models['models']['sinusoidal']['constants'], [-45.0, 0.3267, -8.6568, 10.9862])
     
@@ -508,6 +534,7 @@ class TestQuadraticModels(unittest.TestCase):
     def test_quadratic_models_sinusoidal_correlation(self):
         self.assertEqual(quadratic_models['models']['sinusoidal']['correlation'], 0.9983)
     
+    # COMPARATIVE ANALYSIS
     def test_quadratic_statistics(self):
         self.assertEqual(quadratic_models['statistics'], {'minimum': 1, 'maximum': 10, 'q1': 3, 'q3': 8, 'mean': 5.5, 'median': 5.5})
     
@@ -519,6 +546,7 @@ cubic_models = run_all(cubic_set)
 class TestCubicModels(unittest.TestCase):
     maxDiff = None
 
+    # LINEAR MODEL
     def test_cubic_models_linear_constants(self):
         self.assertEqual(cubic_models['models']['linear']['constants'], [3.4, 45.8])
     
@@ -534,6 +562,7 @@ class TestCubicModels(unittest.TestCase):
     def test_cubic_models_linear_correlation(self):
         self.assertEqual(cubic_models['models']['linear']['correlation'], 0.427)
     
+    # QUADRATIC MODEL
     def test_cubic_models_quadratic_constants(self):
         self.assertEqual(cubic_models['models']['quadratic']['constants'], [1.5, -13.1, 78.8])
     
@@ -549,6 +578,7 @@ class TestCubicModels(unittest.TestCase):
     def test_cubic_models_quadratic_correlation(self):
         self.assertEqual(cubic_models['models']['quadratic']['correlation'], 0.6399)
     
+    # CUBIC MODEL
     def test_cubic_models_cubic_constants(self):
         self.assertEqual(cubic_models['models']['cubic']['constants'], [1.0, -15.0, 63.0, -7.0])
     
@@ -564,6 +594,7 @@ class TestCubicModels(unittest.TestCase):
     def test_cubic_models_cubic_correlation(self):
         self.assertEqual(cubic_models['models']['cubic']['correlation'], 1.0)
     
+    # HYPERBOLIC MODEL
     def test_cubic_models_hyperbolic_constants(self):
         self.assertEqual(cubic_models['models']['hyperbolic']['constants'], [-28.0701, 72.7217])
     
@@ -579,6 +610,7 @@ class TestCubicModels(unittest.TestCase):
     def test_cubic_models_hyperbolic_correlation(self):
         self.assertEqual(cubic_models['models']['hyperbolic']['correlation'], 0.3228)
     
+    # EXPONENTIAL MODEL
     def test_cubic_models_exponential_constants(self):
         self.assertEqual(cubic_models['models']['exponential']['constants'], [49.0824, 1.0408])
     
@@ -594,6 +626,7 @@ class TestCubicModels(unittest.TestCase):
     def test_cubic_models_exponential_correlation(self):
         self.assertEqual(cubic_models['models']['exponential']['correlation'], 0.4088)
     
+    # LOGARITHMIC MODEL
     def test_cubic_models_logarithmic_constants(self):
         self.assertEqual(cubic_models['models']['logarithmic']['constants'], [11.6113, 46.9618])
     
@@ -609,6 +642,7 @@ class TestCubicModels(unittest.TestCase):
     def test_cubic_models_logarithmic_correlation(self):
         self.assertEqual(cubic_models['models']['logarithmic']['correlation'], 0.3531)
     
+    # LOGISTIC MODEL
     def test_cubic_models_logistic_constants(self):
         self.assertEqual(cubic_models['models']['logistic']['constants'], [204.0, 0.0836, 14.9001])
     
@@ -624,6 +658,7 @@ class TestCubicModels(unittest.TestCase):
     def test_cubic_models_logistic_correlation(self):
         self.assertEqual(cubic_models['models']['logistic']['correlation'], 0.4433)
     
+    # SINUSOIDAL MODEL
     def test_cubic_models_sinusoidal_constants(self):
         self.assertEqual(cubic_models['models']['sinusoidal']['constants'], [-26.6739, 0.9479, -1.5548, 62.2016])
     
@@ -639,6 +674,7 @@ class TestCubicModels(unittest.TestCase):
     def test_cubic_models_sinusoidal_correlation(self):
         self.assertEqual(cubic_models['models']['sinusoidal']['correlation'], 0.8205)
     
+    # COMPARATIVE ANALYSIS
     def test_cubic_statistics(self):
         self.assertEqual(cubic_models['statistics'], {'minimum': 1, 'maximum': 10, 'q1': 3, 'q3': 8, 'mean': 5.5, 'median': 5.5})
     
@@ -650,6 +686,7 @@ hyperbolic_models = run_all(hyperbolic_set)
 class TestHyperbolicModels(unittest.TestCase):
     maxDiff = None
 
+    # LINEAR MODEL
     def test_hyperbolic_models_linear_constants(self):
         self.assertEqual(hyperbolic_models['models']['linear']['constants'], [-186.6121, 1763.4667])
     
@@ -665,6 +702,7 @@ class TestHyperbolicModels(unittest.TestCase):
     def test_hyperbolic_models_linear_correlation(self):
         self.assertEqual(hyperbolic_models['models']['linear']['correlation'], 0.8086)
     
+    # QUADRATIC MODEL
     def test_hyperbolic_models_quadratic_constants(self):
         self.assertEqual(hyperbolic_models['models']['quadratic']['constants'], [45.0417, -682.0705, 2754.3833])
     
@@ -680,6 +718,7 @@ class TestHyperbolicModels(unittest.TestCase):
     def test_hyperbolic_models_quadratic_correlation(self):
         self.assertEqual(hyperbolic_models['models']['quadratic']['correlation'], 0.9475)
     
+    # CUBIC MODEL
     def test_hyperbolic_models_cubic_constants(self):
         self.assertEqual(hyperbolic_models['models']['cubic']['constants'], [-10.4474, 217.4231, -1477.1144, 3650.7667])
     
@@ -695,6 +734,7 @@ class TestHyperbolicModels(unittest.TestCase):
     def test_hyperbolic_models_cubic_correlation(self):
         self.assertEqual(hyperbolic_models['models']['cubic']['correlation'], 0.9871)
     
+    # HYPERBOLIC MODEL
     def test_hyperbolic_models_hyperbolic_constants(self):
         self.assertEqual(hyperbolic_models['models']['hyperbolic']['constants'], [2520.0, -1.0])
     
@@ -710,6 +750,7 @@ class TestHyperbolicModels(unittest.TestCase):
     def test_hyperbolic_models_hyperbolic_correlation(self):
         self.assertEqual(hyperbolic_models['models']['hyperbolic']['correlation'], 1.0)
     
+    # EXPONENTIAL MODEL
     def test_hyperbolic_models_exponential_constants(self):
         self.assertEqual(hyperbolic_models['models']['exponential']['constants'], [1975.941, 0.7939])
     
@@ -725,6 +766,7 @@ class TestHyperbolicModels(unittest.TestCase):
     def test_hyperbolic_models_exponential_correlation(self):
         self.assertEqual(hyperbolic_models['models']['exponential']['correlation'], 0.8821)
     
+    # LOGARITHMIC MODEL
     def test_hyperbolic_models_logarithmic_constants(self):
         self.assertEqual(hyperbolic_models['models']['logarithmic']['constants'], [-902.4723, 2100.2313])
     
@@ -740,6 +782,7 @@ class TestHyperbolicModels(unittest.TestCase):
     def test_hyperbolic_models_logarithmic_correlation(self):
         self.assertEqual(hyperbolic_models['models']['logarithmic']['correlation'], 0.9468)
     
+    # LOGISTIC MODEL
     def test_hyperbolic_models_logistic_constants(self):
         self.assertEqual(hyperbolic_models['models']['logistic']['constants'], [4787.0, -0.5355, 0.6592])
     
@@ -755,6 +798,7 @@ class TestHyperbolicModels(unittest.TestCase):
     def test_hyperbolic_models_logistic_correlation(self):
         self.assertEqual(hyperbolic_models['models']['logistic']['correlation'], 0.9428)
     
+    # SINUSOIDAL MODEL
     def test_hyperbolic_models_sinusoidal_constants(self):
         self.assertEqual(hyperbolic_models['models']['sinusoidal']['constants'], [448.548, 1.1869, -0.0788, 746.6978])
     
@@ -770,6 +814,7 @@ class TestHyperbolicModels(unittest.TestCase):
     def test_hyperbolic_models_sinusoidal_correlation(self):
         self.assertEqual(hyperbolic_models['models']['sinusoidal']['correlation'], 0.4914)
     
+    # COMPARATIVE ANALYSIS
     def test_hyperbolic_statistics(self):
         self.assertEqual(hyperbolic_models['statistics'], {'minimum': 1, 'maximum': 10, 'q1': 3, 'q3': 8, 'mean': 5.5, 'median': 5.5})
     
@@ -781,6 +826,7 @@ exponential_models = run_all(exponential_set)
 class TestExponentialModels(unittest.TestCase):
     maxDiff = None
 
+    # LINEAR MODEL
     def test_exponential_models_linear_constants(self):
         self.assertEqual(exponential_models['models']['linear']['constants'], [261.1273, -822.4])
     
@@ -796,6 +842,7 @@ class TestExponentialModels(unittest.TestCase):
     def test_exponential_models_linear_correlation(self):
         self.assertEqual(exponential_models['models']['linear']['correlation'], 0.7988)
     
+    # QUADRATIC MODEL
     def test_exponential_models_quadratic_constants(self):
         self.assertEqual(exponential_models['models']['quadratic']['constants'], [69.4091, -502.3727, 704.6])
     
@@ -811,6 +858,7 @@ class TestExponentialModels(unittest.TestCase):
     def test_exponential_models_quadratic_correlation(self):
         self.assertEqual(exponential_models['models']['quadratic']['correlation'], 0.9626)
     
+    # CUBIC MODEL
     def test_exponential_models_cubic_constants(self):
         self.assertEqual(exponential_models['models']['cubic']['constants'], [13.5641, -154.3986, 529.8555, -459.2])
     
@@ -826,6 +874,7 @@ class TestExponentialModels(unittest.TestCase):
     def test_exponential_models_cubic_correlation(self):
         self.assertEqual(exponential_models['models']['cubic']['correlation'], 0.9956)
     
+    # HYPERBOLIC MODEL
     def test_exponential_models_hyperbolic_constants(self):
         self.assertEqual(exponential_models['models']['hyperbolic']['constants'], [-1569.4534, 1073.4879])
     
@@ -841,6 +890,7 @@ class TestExponentialModels(unittest.TestCase):
     def test_exponential_models_hyperbolic_correlation(self):
         self.assertEqual(exponential_models['models']['hyperbolic']['correlation'], 0.4397)
     
+    # EXPONENTIAL MODEL
     def test_exponential_models_exponential_constants(self):
         self.assertEqual(exponential_models['models']['exponential']['constants'], [3.0, 1.9999])
     
@@ -856,6 +906,7 @@ class TestExponentialModels(unittest.TestCase):
     def test_exponential_models_exponential_correlation(self):
         self.assertEqual(exponential_models['models']['exponential']['correlation'], 1.0)
     
+    # LOGARITHMIC MODEL
     def test_exponential_models_logarithmic_constants(self):
         self.assertEqual(exponential_models['models']['logarithmic']['constants'], [852.2441, -673.4647])
     
@@ -871,6 +922,7 @@ class TestExponentialModels(unittest.TestCase):
     def test_exponential_models_logarithmic_correlation(self):
         self.assertEqual(exponential_models['models']['logarithmic']['correlation'], 0.6312)
     
+    # LOGISTIC MODEL
     def test_exponential_models_logistic_constants(self):
         self.assertEqual(exponential_models['models']['logistic']['constants'], [6138.0, 0.9655, 10.0383])
     
@@ -886,6 +938,7 @@ class TestExponentialModels(unittest.TestCase):
     def test_exponential_models_logistic_correlation(self):
         self.assertEqual(exponential_models['models']['logistic']['correlation'], 0.9983)
     
+    # SINUSOIDAL MODEL
     def test_exponential_models_sinusoidal_constants(self):
         self.assertEqual(exponential_models['models']['sinusoidal']['constants'], [3065.0, 0.1022, 9.0, 1641.6143])
     
@@ -901,6 +954,7 @@ class TestExponentialModels(unittest.TestCase):
     def test_exponential_models_sinusoidal_correlation(self):
         self.assertEqual(exponential_models['models']['sinusoidal']['correlation'], 0.8194)
     
+    # COMPARATIVE ANALYSIS
     def test_exponential_statistics(self):
         self.assertEqual(exponential_models['statistics'], {'minimum': 1, 'maximum': 10, 'q1': 3, 'q3': 8, 'mean': 5.5, 'median': 5.5})
     
@@ -912,6 +966,7 @@ logarithmic_models = run_all(logarithmic_set)
 class TestLogarithmicModels(unittest.TestCase):
     maxDiff = None
 
+    # LINEAR MODEL
     def test_logarithmic_models_linear_constants(self):
         self.assertEqual(logarithmic_models['models']['linear']['constants'], [0.6912, 2.7296])
     
@@ -927,6 +982,7 @@ class TestLogarithmicModels(unittest.TestCase):
     def test_logarithmic_models_linear_correlation(self):
         self.assertEqual(logarithmic_models['models']['linear']['correlation'], 0.9517)
     
+    # QUADRATIC MODEL
     def test_logarithmic_models_quadratic_constants(self):
         self.assertEqual(logarithmic_models['models']['quadratic']['constants'], [-0.0816, 1.5891, 0.9338])
     
@@ -942,6 +998,7 @@ class TestLogarithmicModels(unittest.TestCase):
     def test_logarithmic_models_quadratic_correlation(self):
         self.assertEqual(logarithmic_models['models']['quadratic']['correlation'], 0.9932)
     
+    # CUBIC MODEL
     def test_logarithmic_models_cubic_constants(self):
         self.assertEqual(logarithmic_models['models']['cubic']['constants'], [0.0127, -0.2911, 2.5553, -0.1555])
     
@@ -957,6 +1014,7 @@ class TestLogarithmicModels(unittest.TestCase):
     def test_logarithmic_models_cubic_correlation(self):
         self.assertEqual(logarithmic_models['models']['cubic']['correlation'], 0.999)
     
+    # HYPERBOLIC MODEL
     def test_logarithmic_models_hyperbolic_constants(self):
         self.assertEqual(logarithmic_models['models']['hyperbolic']['constants'], [-7.5094, 8.7308])
     
@@ -972,6 +1030,7 @@ class TestLogarithmicModels(unittest.TestCase):
     def test_logarithmic_models_hyperbolic_correlation(self):
         self.assertEqual(logarithmic_models['models']['hyperbolic']['correlation'], 0.9468)
     
+    # EXPONENTIAL MODEL
     def test_logarithmic_models_exponential_constants(self):
         self.assertEqual(logarithmic_models['models']['exponential']['constants'], [2.9406, 1.1403])
     
@@ -987,6 +1046,7 @@ class TestLogarithmicModels(unittest.TestCase):
     def test_logarithmic_models_exponential_correlation(self):
         self.assertEqual(logarithmic_models['models']['exponential']['correlation'], 0.8554)
     
+    # LOGARITHMIC MODEL
     def test_logarithmic_models_logarithmic_constants(self):
         self.assertEqual(logarithmic_models['models']['logarithmic']['constants'], [3.0, 2.0])
     
@@ -1002,6 +1062,7 @@ class TestLogarithmicModels(unittest.TestCase):
     def test_logarithmic_models_logarithmic_correlation(self):
         self.assertEqual(logarithmic_models['models']['logarithmic']['correlation'], 1.0)
     
+    # LOGISTIC MODEL
     def test_logarithmic_models_logistic_constants(self):
         self.assertEqual(logarithmic_models['models']['logistic']['constants'], [8.6892, 0.5704, 2.5092])
     
@@ -1017,6 +1078,7 @@ class TestLogarithmicModels(unittest.TestCase):
     def test_logarithmic_models_logistic_correlation(self):
         self.assertEqual(logarithmic_models['models']['logistic']['correlation'], 0.9898)
     
+    # SINUSOIDAL MODEL
     def test_logarithmic_models_sinusoidal_constants(self):
         self.assertEqual(logarithmic_models['models']['sinusoidal']['constants'], [-1.3224, 1.2013, 0.1451, 6.5218])
     
@@ -1032,6 +1094,7 @@ class TestLogarithmicModels(unittest.TestCase):
     def test_logarithmic_models_sinusoidal_correlation(self):
         self.assertEqual(logarithmic_models['models']['sinusoidal']['correlation'], 0.4601)
     
+    # COMPARATIVE ANALYSIS
     def test_logarithmic_statistics(self):
         self.assertEqual(logarithmic_models['statistics'], {'minimum': 1, 'maximum': 10, 'q1': 3, 'q3': 8, 'mean': 5.5, 'median': 5.5})
     
@@ -1043,6 +1106,7 @@ logistic_models = run_all(logistic_set)
 class TestLogisticModels(unittest.TestCase):
     maxDiff = None
 
+    # LINEAR MODEL
     def test_logistic_models_linear_constants(self):
         self.assertEqual(logistic_models['models']['linear']['constants'], [0.2944, -0.5193])
     
@@ -1058,6 +1122,7 @@ class TestLogisticModels(unittest.TestCase):
     def test_logistic_models_linear_correlation(self):
         self.assertEqual(logistic_models['models']['linear']['correlation'], 0.9163)
     
+    # QUADRATIC MODEL
     def test_logistic_models_quadratic_constants(self):
         self.assertEqual(logistic_models['models']['quadratic']['constants'], [-0.0148, 0.4567, -0.8438])
     
@@ -1073,6 +1138,7 @@ class TestLogisticModels(unittest.TestCase):
     def test_logistic_models_quadratic_correlation(self):
         self.assertEqual(logistic_models['models']['quadratic']['correlation'], 0.9236)
     
+    # CUBIC MODEL
     def test_logistic_models_cubic_constants(self):
         self.assertEqual(logistic_models['models']['cubic']['constants'], [-0.0162, 0.2531, -0.7789, 0.5493])
     
@@ -1088,6 +1154,7 @@ class TestLogisticModels(unittest.TestCase):
     def test_logistic_models_cubic_correlation(self):
         self.assertEqual(logistic_models['models']['cubic']['correlation'], 0.9739)
     
+    # HYPERBOLIC MODEL
     def test_logistic_models_hyperbolic_constants(self):
         self.assertEqual(logistic_models['models']['hyperbolic']['constants'], [-2.4884, 1.8288])
     
@@ -1103,6 +1170,7 @@ class TestLogisticModels(unittest.TestCase):
     def test_logistic_models_hyperbolic_correlation(self):
         self.assertEqual(logistic_models['models']['hyperbolic']['correlation'], 0.7092)
     
+    # EXPONENTIAL MODEL
     def test_logistic_models_exponential_constants(self):
         self.assertEqual(logistic_models['models']['exponential']['constants'], [0.0001, 3.5891])
     
@@ -1118,6 +1186,7 @@ class TestLogisticModels(unittest.TestCase):
     def test_logistic_models_exponential_correlation(self):
         self.assertEqual(logistic_models['models']['exponential']['correlation'], 0.0)
     
+    # LOGARITHMIC MODEL
     def test_logistic_models_logarithmic_constants(self):
         self.assertEqual(logistic_models['models']['logarithmic']['constants'], [1.155, -0.6445])
     
@@ -1133,6 +1202,7 @@ class TestLogisticModels(unittest.TestCase):
     def test_logistic_models_logarithmic_correlation(self):
         self.assertEqual(logistic_models['models']['logarithmic']['correlation'], 0.8703)
     
+    # LOGISTIC MODEL
     def test_logistic_models_logistic_constants(self):
         self.assertEqual(logistic_models['models']['logistic']['constants'], [2.0, 3.0, 5.0])
     
@@ -1148,6 +1218,7 @@ class TestLogisticModels(unittest.TestCase):
     def test_logistic_models_logistic_correlation(self):
         self.assertEqual(logistic_models['models']['logistic']['correlation'], 1.0)
     
+    # SINUSOIDAL MODEL
     def test_logistic_models_sinusoidal_constants(self):
         self.assertEqual(logistic_models['models']['sinusoidal']['constants'], [-1.1746, 0.5011, -1.1199, 1.0508])
     
@@ -1163,6 +1234,7 @@ class TestLogisticModels(unittest.TestCase):
     def test_logistic_models_sinusoidal_correlation(self):
         self.assertEqual(logistic_models['models']['sinusoidal']['correlation'], 0.9789)
     
+    # COMPARATIVE ANALYSIS
     def test_logistic_statistics(self):
         self.assertEqual(logistic_models['statistics'], {'minimum': 1, 'maximum': 10, 'q1': 3, 'q3': 8, 'mean': 5.5, 'median': 5.5})
     
@@ -1174,6 +1246,7 @@ sinusoidal_models = run_all(sinusoidal_set)
 class TestSinusoidalModels(unittest.TestCase):
     maxDiff = None
 
+    # LINEAR MODEL
     def test_sinusoidal_models_linear_constants(self):
         self.assertEqual(sinusoidal_models['models']['linear']['constants'], [0.0303, 3.3333])
     
@@ -1189,6 +1262,7 @@ class TestSinusoidalModels(unittest.TestCase):
     def test_sinusoidal_models_linear_correlation(self):
         self.assertEqual(sinusoidal_models['models']['linear']['correlation'], 0.0249)
     
+    # QUADRATIC MODEL
     def test_sinusoidal_models_quadratic_constants(self):
         self.assertEqual(sinusoidal_models['models']['quadratic']['constants'], [0.1515, -1.6364, 6.6667])
     
@@ -1204,6 +1278,7 @@ class TestSinusoidalModels(unittest.TestCase):
     def test_sinusoidal_models_quadratic_correlation(self):
         self.assertEqual(sinusoidal_models['models']['quadratic']['correlation'], 0.3155)
     
+    # CUBIC MODEL
     def test_sinusoidal_models_cubic_constants(self):
         self.assertEqual(sinusoidal_models['models']['cubic']['constants'], [0.0466, -0.6177, 1.9114, 2.6667])
     
@@ -1219,6 +1294,7 @@ class TestSinusoidalModels(unittest.TestCase):
     def test_sinusoidal_models_cubic_correlation(self):
         self.assertEqual(sinusoidal_models['models']['cubic']['correlation'], 0.3929)
     
+    # HYPERBOLIC MODEL
     def test_sinusoidal_models_hyperbolic_constants(self):
         self.assertEqual(sinusoidal_models['models']['hyperbolic']['constants'], [0.7138, 3.2909])
     
@@ -1234,6 +1310,7 @@ class TestSinusoidalModels(unittest.TestCase):
     def test_sinusoidal_models_hyperbolic_correlation(self):
         self.assertEqual(sinusoidal_models['models']['hyperbolic']['correlation'], 0.0536)
     
+    # EXPONENTIAL MODEL
     def test_sinusoidal_models_exponential_constants(self):
         self.assertEqual(sinusoidal_models['models']['exponential']['constants'], [0.9234, 0.8984])
     
@@ -1249,6 +1326,7 @@ class TestSinusoidalModels(unittest.TestCase):
     def test_sinusoidal_models_exponential_correlation(self):
         self.assertEqual(sinusoidal_models['models']['exponential']['correlation'], 0.0)
     
+    # LOGARITHMIC MODEL
     def test_sinusoidal_models_logarithmic_constants(self):
         self.assertEqual(sinusoidal_models['models']['logarithmic']['constants'], [-0.1951, 3.7947])
     
@@ -1264,6 +1342,7 @@ class TestSinusoidalModels(unittest.TestCase):
     def test_sinusoidal_models_logarithmic_correlation(self):
         self.assertEqual(sinusoidal_models['models']['logarithmic']['correlation'], 0.0388)
     
+    # LOGISTIC MODEL
     def test_sinusoidal_models_logistic_constants(self):
         self.assertEqual(sinusoidal_models['models']['logistic']['constants'], [3.5, 6.2649, -14.3299])
     
@@ -1279,6 +1358,7 @@ class TestSinusoidalModels(unittest.TestCase):
     def test_sinusoidal_models_logistic_correlation(self):
         self.assertEqual(sinusoidal_models['models']['logistic']['correlation'], 0.0)
     
+    # SINUSOIDAL MODEL
     def test_sinusoidal_models_sinusoidal_constants(self):
         self.assertEqual(sinusoidal_models['models']['sinusoidal']['constants'], [-5.0, 1.5708, 3.0, 3.0])
     
@@ -1294,6 +1374,7 @@ class TestSinusoidalModels(unittest.TestCase):
     def test_sinusoidal_models_sinusoidal_correlation(self):
         self.assertEqual(sinusoidal_models['models']['sinusoidal']['correlation'], 1.0)
     
+    # COMPARATIVE ANALYSIS
     def test_sinusoidal_statistics(self):
         self.assertEqual(sinusoidal_models['statistics'], {'minimum': 1, 'maximum': 10, 'q1': 3, 'q3': 8, 'mean': 5.5, 'median': 5.5})
     
@@ -1305,6 +1386,7 @@ large_models = run_all(large_set)
 class TestLargeModels(unittest.TestCase):
     maxDiff = None
 
+    # LINEAR MODEL
     def test_large_models_linear_constants(self):
         self.assertEqual(large_models['models']['linear']['constants'], [0.4934, 414.5401])
     
@@ -1320,6 +1402,7 @@ class TestLargeModels(unittest.TestCase):
     def test_large_models_linear_correlation(self):
         self.assertEqual(large_models['models']['linear']['correlation'], 0.1013)
     
+    # QUADRATIC MODEL
     def test_large_models_quadratic_constants(self):
         self.assertEqual(large_models['models']['quadratic']['constants'], [-0.007, 2.5668, 265.4919])
     
@@ -1335,6 +1418,7 @@ class TestLargeModels(unittest.TestCase):
     def test_large_models_quadratic_correlation(self):
         self.assertEqual(large_models['models']['quadratic']['correlation'], 0.1071)
     
+    # CUBIC MODEL
     def test_large_models_cubic_constants(self):
         self.assertEqual(large_models['models']['cubic']['constants'], [0.0005, -0.2204, 33.8099, -1226.1398])
     
@@ -1350,6 +1434,7 @@ class TestLargeModels(unittest.TestCase):
     def test_large_models_cubic_correlation(self):
         self.assertEqual(large_models['models']['cubic']['correlation'], 0.0)
     
+    # HYPERBOLIC MODEL
     def test_large_models_hyperbolic_constants(self):
         self.assertEqual(large_models['models']['hyperbolic']['constants'], [-10786.2465, 563.019])
     
@@ -1365,6 +1450,7 @@ class TestLargeModels(unittest.TestCase):
     def test_large_models_hyperbolic_correlation(self):
         self.assertEqual(large_models['models']['hyperbolic']['correlation'], 0.1082)
     
+    # EXPONENTIAL MODEL
     def test_large_models_exponential_constants(self):
         self.assertEqual(large_models['models']['exponential']['constants'], [407.8094, 1.0009])
     
@@ -1380,6 +1466,7 @@ class TestLargeModels(unittest.TestCase):
     def test_large_models_exponential_correlation(self):
         self.assertEqual(large_models['models']['exponential']['correlation'], 0.0)
     
+    # LOGARITHMIC MODEL
     def test_large_models_logarithmic_constants(self):
         self.assertEqual(large_models['models']['logarithmic']['constants'], [74.0076, 118.997])
     
@@ -1395,6 +1482,7 @@ class TestLargeModels(unittest.TestCase):
     def test_large_models_logarithmic_correlation(self):
         self.assertEqual(large_models['models']['logarithmic']['correlation'], 0.1047)
     
+    # LOGISTIC MODEL
     def test_large_models_logistic_constants(self):
         self.assertEqual(large_models['models']['logistic']['constants'], [488.2, 1.0, 1.0])
     
@@ -1410,6 +1498,7 @@ class TestLargeModels(unittest.TestCase):
     def test_large_models_logistic_correlation(self):
         self.assertEqual(large_models['models']['logistic']['correlation'], 0.0)
     
+    # SINUSOIDAL MODEL
     def test_large_models_sinusoidal_constants(self):
         self.assertEqual(large_models['models']['sinusoidal']['constants'], [32.3199, 1.0085, 1.8848, 488.9635])
     
@@ -1425,6 +1514,7 @@ class TestLargeModels(unittest.TestCase):
     def test_large_models_sinusoidal_correlation(self):
         self.assertEqual(large_models['models']['sinusoidal']['correlation'], 0.1727)
     
+    # COMPARATIVE ANALYSIS
     def test_large_statistics(self):
         self.assertEqual(large_models['statistics'], {'minimum': 100, 'maximum': 198, 'q1': 125.0, 'q3': 170.5, 'mean': 149.29, 'median': 151.5})
     

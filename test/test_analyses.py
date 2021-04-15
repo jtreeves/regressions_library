@@ -46,6 +46,7 @@ from library.analyses.mean_values import average_values
 coefficients = [2, 3, 5, 7]
 
 class TestEquations(unittest.TestCase):
+    # LINEAR EVALUATIONS
     def test_linear_function_positive(self):
         linear_function_positive = linear_equation(coefficients[0], coefficients[1])(1)
         self.assertEqual(linear_function_positive, 5.0)
@@ -58,6 +59,7 @@ class TestEquations(unittest.TestCase):
         linear_function_negative = linear_equation(coefficients[0], coefficients[1])(-1)
         self.assertEqual(linear_function_negative, 1.0)
     
+    # QUADRATIC EVALUATIONS
     def test_quadratic_function_positive(self):
         quadratic_function_positive = quadratic_equation(coefficients[0], coefficients[1], coefficients[2])(1)
         self.assertEqual(quadratic_function_positive, 10.0)
@@ -70,6 +72,7 @@ class TestEquations(unittest.TestCase):
         quadratic_function_negative = quadratic_equation(coefficients[0], coefficients[1], coefficients[2])(-1)
         self.assertEqual(quadratic_function_negative, 4.0)
     
+    # CUBIC EVALUATIONS
     def test_cubic_function_positive(self):
         cubic_function_positive = cubic_equation(coefficients[0], coefficients[1], coefficients[2], coefficients[3])(1)
         self.assertEqual(cubic_function_positive, 17.0)
@@ -82,6 +85,7 @@ class TestEquations(unittest.TestCase):
         cubic_function_negative = cubic_equation(coefficients[0], coefficients[1], coefficients[2], coefficients[3])(-1)
         self.assertEqual(cubic_function_negative, 3.0)
     
+    # HYPERBOLIC EVALUATIONS
     def test_hyperbolic_function_positive(self):
         hyperbolic_function_positive = hyperbolic_equation(coefficients[0], coefficients[1])(1)
         self.assertEqual(hyperbolic_function_positive, 5.0)
@@ -94,6 +98,7 @@ class TestEquations(unittest.TestCase):
         hyperbolic_function_negative = hyperbolic_equation(coefficients[0], coefficients[1])(-1)
         self.assertEqual(hyperbolic_function_negative, 1.0)
     
+    # EXPONENTIAL EVALUATIONS
     def test_exponential_function_positive(self):
         exponential_function_positive = exponential_equation(coefficients[0], coefficients[1])(1)
         self.assertEqual(exponential_function_positive, 6.0)
@@ -106,6 +111,7 @@ class TestEquations(unittest.TestCase):
         exponential_function_negative = exponential_equation(coefficients[0], coefficients[1])(-1)
         self.assertEqual(exponential_function_negative, 0.6666666666666666)
     
+    # LOGARITHMIC EVALUATIONS
     def test_logarithmic_function_positive(self):
         logarithmic_function_positive = logarithmic_equation(coefficients[0], coefficients[1])(1)
         self.assertEqual(logarithmic_function_positive, 3.0)
@@ -118,6 +124,7 @@ class TestEquations(unittest.TestCase):
         logarithmic_function_negative = logarithmic_equation(coefficients[0], coefficients[1])(-1)
         self.assertEqual(logarithmic_function_negative, 3.0)
     
+    # LOGISTIC EVALUATIONS
     def test_logistic_function_positive(self):
         logistic_function_positive = logistic_equation(coefficients[0], coefficients[1], coefficients[2])(1)
         self.assertEqual(logistic_function_positive, 1.2288349204429436e-05)
@@ -130,6 +137,7 @@ class TestEquations(unittest.TestCase):
         logistic_function_negative = logistic_equation(coefficients[0], coefficients[1], coefficients[2])(-1)
         self.assertEqual(logistic_function_negative, 3.04599590255207e-08)
     
+    # SINUSOIDAL EVALUATIONS
     def test_sinusoidal_function_positive(self):
         sinusoidal_function_positive = sinusoidal_equation(coefficients[0], coefficients[1], coefficients[2], coefficients[3])(1)
         self.assertEqual(sinusoidal_function_positive, 8.07314583600087)
@@ -143,6 +151,7 @@ class TestEquations(unittest.TestCase):
         self.assertEqual(sinusoidal_function_negative, 8.501974493543353)
 
 class TestDerivatives(unittest.TestCase):
+    # LINEAR FIRST DERIVATIVE
     def test_linear_first_derivative_constants(self):
         linear_first_derivative_constants = linear_derivatives(coefficients[0], coefficients[1])['first']['constants']
         self.assertEqual(linear_first_derivative_constants, [2])
@@ -159,6 +168,7 @@ class TestDerivatives(unittest.TestCase):
         linear_first_derivative_evaluation_negative = linear_derivatives(coefficients[0], coefficients[1])['first']['evaluation'](-1)
         self.assertEqual(linear_first_derivative_evaluation_negative, 2.0)
     
+    # QUADRATIC FIRST DERIVATIVE
     def test_quadratic_first_derivative_constants(self):
         quadratic_first_derivative_constants = quadratic_derivatives(coefficients[0], coefficients[1], coefficients[2])['first']['constants']
         self.assertEqual(quadratic_first_derivative_constants, [4, 3])
@@ -175,6 +185,7 @@ class TestDerivatives(unittest.TestCase):
         quadratic_first_derivative_evaluation_negative = quadratic_derivatives(coefficients[0], coefficients[1], coefficients[2])['first']['evaluation'](-1)
         self.assertEqual(quadratic_first_derivative_evaluation_negative, -1.0)
 
+    # CUBIC FIRST DERIVATIVE
     def test_cubic_first_derivative_constants(self):
         cubic_first_derivative_constants = cubic_derivatives(coefficients[0], coefficients[1], coefficients[2], coefficients[3])['first']['constants']
         self.assertEqual(cubic_first_derivative_constants, [6, 6, 5])
@@ -191,6 +202,7 @@ class TestDerivatives(unittest.TestCase):
         cubic_first_derivative_evaluation_negative = cubic_derivatives(coefficients[0], coefficients[1], coefficients[2], coefficients[3])['first']['evaluation'](-1)
         self.assertEqual(cubic_first_derivative_evaluation_negative, 5.0)
 
+    # HYPERBOLIC FIRST DERIVATIVE
     def test_hyperbolic_first_derivative_constants(self):
         hyperbolic_first_derivative_constants = hyperbolic_derivatives(coefficients[0], coefficients[1])['first']['constants']
         self.assertEqual(hyperbolic_first_derivative_constants, [-2])
@@ -207,6 +219,7 @@ class TestDerivatives(unittest.TestCase):
         hyperbolic_first_derivative_evaluation_negative = hyperbolic_derivatives(coefficients[0], coefficients[1])['first']['evaluation'](-1)
         self.assertEqual(hyperbolic_first_derivative_evaluation_negative, -2.0)
 
+    # EXPONENTIAL FIRST DERIVATIVE
     def test_exponential_first_derivative_constants(self):
         exponential_first_derivative_constants = exponential_derivatives(coefficients[0], coefficients[1])['first']['constants']
         self.assertEqual(exponential_first_derivative_constants, [2.1972245773362196, 3])
@@ -223,6 +236,7 @@ class TestDerivatives(unittest.TestCase):
         exponential_first_derivative_evaluation_negative = exponential_derivatives(coefficients[0], coefficients[1])['first']['evaluation'](-1)
         self.assertEqual(exponential_first_derivative_evaluation_negative, 0.7324081924454064)
     
+    # LOGARITHMIC FIRST DERIVATIVE
     def test_logarithmic_first_derivative_constants(self):
         logarithmic_first_derivative_constants = logarithmic_derivatives(coefficients[0], coefficients[1])['first']['constants']
         self.assertEqual(logarithmic_first_derivative_constants, [2])
@@ -239,6 +253,7 @@ class TestDerivatives(unittest.TestCase):
         logarithmic_first_derivative_evaluation_negative = logarithmic_derivatives(coefficients[0], coefficients[1])['first']['evaluation'](-1)
         self.assertEqual(logarithmic_first_derivative_evaluation_negative, -2.0)
     
+    # LOGISTIC FIRST DERIVATIVE
     def test_logistic_first_derivative_constants(self):
         logistic_first_derivative_constants = logistic_derivatives(coefficients[0], coefficients[1], coefficients[2])['first']['constants']
         self.assertEqual(logistic_first_derivative_constants, [6, 3, 5])
@@ -255,6 +270,7 @@ class TestDerivatives(unittest.TestCase):
         logistic_first_derivative_evaluation_negative = logistic_derivatives(coefficients[0], coefficients[1], coefficients[2])['first']['evaluation'](-1)
         self.assertEqual(logistic_first_derivative_evaluation_negative, 9.137987568484845e-08)
 
+    # SINUSOIDAL FIRST DERIVATIVE
     def test_sinusoidal_first_derivative_constants(self):
         sinusoidal_first_derivative_constants = sinusoidal_derivatives(coefficients[0], coefficients[1], coefficients[2], coefficients[3])['first']['constants']
         self.assertEqual(sinusoidal_first_derivative_constants, [6, 3, 5])
@@ -271,6 +287,7 @@ class TestDerivatives(unittest.TestCase):
         sinusoidal_first_derivative_evaluation_negative = sinusoidal_derivatives(coefficients[0], coefficients[1], coefficients[2], coefficients[3])['first']['evaluation'](-1)
         self.assertEqual(sinusoidal_first_derivative_evaluation_negative, 3.961900249464481)
 
+    # LINEAR SECOND DERIVATIVE
     def test_linear_second_derivative_constants(self):
         linear_second_derivative_constants = linear_derivatives(coefficients[0], coefficients[1])['second']['constants']
         self.assertEqual(linear_second_derivative_constants, [0])
@@ -287,6 +304,7 @@ class TestDerivatives(unittest.TestCase):
         linear_second_derivative_evaluation_negative = linear_derivatives(coefficients[0], coefficients[1])['second']['evaluation'](-1)
         self.assertEqual(linear_second_derivative_evaluation_negative, 0.0)
     
+    # QUADRATIC SECOND DERIVATIVE
     def test_quadratic_second_derivative_constants(self):
         quadratic_second_derivative_constants = quadratic_derivatives(coefficients[0], coefficients[1], coefficients[2])['second']['constants']
         self.assertEqual(quadratic_second_derivative_constants, [4])
@@ -303,6 +321,7 @@ class TestDerivatives(unittest.TestCase):
         quadratic_second_derivative_evaluation_negative = quadratic_derivatives(coefficients[0], coefficients[1], coefficients[2])['second']['evaluation'](-1)
         self.assertEqual(quadratic_second_derivative_evaluation_negative, 4.0)
 
+    # CUBIC SECOND DERIVATIVE
     def test_cubic_second_derivative_constants(self):
         cubic_second_derivative_constants = cubic_derivatives(coefficients[0], coefficients[1], coefficients[2], coefficients[3])['second']['constants']
         self.assertEqual(cubic_second_derivative_constants, [12, 6])
@@ -319,6 +338,7 @@ class TestDerivatives(unittest.TestCase):
         cubic_second_derivative_evaluation_negative = cubic_derivatives(coefficients[0], coefficients[1], coefficients[2], coefficients[3])['second']['evaluation'](-1)
         self.assertEqual(cubic_second_derivative_evaluation_negative, -6.0)
 
+    # HYPERBOLIC SECOND DERIVATIVE
     def test_hyperbolic_second_derivative_constants(self):
         hyperbolic_second_derivative_constants = hyperbolic_derivatives(coefficients[0], coefficients[1])['second']['constants']
         self.assertEqual(hyperbolic_second_derivative_constants, [4])
@@ -335,6 +355,7 @@ class TestDerivatives(unittest.TestCase):
         hyperbolic_second_derivative_evaluation_negative = hyperbolic_derivatives(coefficients[0], coefficients[1])['second']['evaluation'](-1)
         self.assertEqual(hyperbolic_second_derivative_evaluation_negative, -4.0)
 
+    # EXPONENTIAL SECOND DERIVATIVE
     def test_exponential_second_derivative_constants(self):
         exponential_second_derivative_constants = exponential_derivatives(coefficients[0], coefficients[1])['second']['constants']
         self.assertEqual(exponential_second_derivative_constants, [2.413897921625164, 3])
@@ -351,6 +372,7 @@ class TestDerivatives(unittest.TestCase):
         exponential_second_derivative_evaluation_negative = exponential_derivatives(coefficients[0], coefficients[1])['second']['evaluation'](-1)
         self.assertEqual(exponential_second_derivative_evaluation_negative, 0.8046326405417213)
     
+    # LOGARITHMIC SECOND DERIVATIVE
     def test_logarithmic_second_derivative_constants(self):
         logarithmic_second_derivative_constants = logarithmic_derivatives(coefficients[0], coefficients[1])['second']['constants']
         self.assertEqual(logarithmic_second_derivative_constants, [-2])
@@ -367,6 +389,7 @@ class TestDerivatives(unittest.TestCase):
         logarithmic_second_derivative_evaluation_negative = logarithmic_derivatives(coefficients[0], coefficients[1])['second']['evaluation'](-1)
         self.assertEqual(logarithmic_second_derivative_evaluation_negative, -2.0)
     
+    # LOGISTIC SECOND DERIVATIVE
     def test_logistic_second_derivative_constants(self):
         logistic_second_derivative_constants = logistic_derivatives(coefficients[0], coefficients[1], coefficients[2])['second']['constants']
         self.assertEqual(logistic_second_derivative_constants, [18, 3, 5])
@@ -383,6 +406,7 @@ class TestDerivatives(unittest.TestCase):
         logistic_second_derivative_evaluation_negative = logistic_derivatives(coefficients[0], coefficients[1], coefficients[2])['second']['evaluation'](-1)
         self.assertEqual(logistic_second_derivative_evaluation_negative, 2.741396187042635e-07)
 
+    # SINUSOIDAL SECOND DERIVATIVE
     def test_sinusoidal_second_derivative_constants(self):
         sinusoidal_second_derivative_constants = sinusoidal_derivatives(coefficients[0], coefficients[1], coefficients[2], coefficients[3])['second']['constants']
         self.assertEqual(sinusoidal_second_derivative_constants, [-18, 3, 5])
@@ -400,6 +424,7 @@ class TestDerivatives(unittest.TestCase):
         self.assertEqual(sinusoidal_second_derivative_evaluation_negative, -13.51777044189017)
 
 class TestIntegrals(unittest.TestCase):
+    # LINEAR INTEGRAL
     def test_linear_integral_constants(self):
         linear_integral_constants = linear_integral(coefficients[0], coefficients[1])['constants']
         self.assertEqual(linear_integral_constants, [1.0, 3.0])
@@ -420,6 +445,7 @@ class TestIntegrals(unittest.TestCase):
         linear_integral_evaluation_negative = linear_integral(coefficients[0], coefficients[1])['evaluation'](-1)
         self.assertEqual(linear_integral_evaluation_negative, -2.0)
     
+    # QUADRATIC INTEGRAL
     def test_quadratic_integral_constants(self):
         quadratic_integral_constants = quadratic_integral(coefficients[0], coefficients[1], coefficients[2])['constants']
         self.assertEqual(quadratic_integral_constants, [0.6666666666666666, 1.5, 5.0])
@@ -440,6 +466,7 @@ class TestIntegrals(unittest.TestCase):
         quadratic_integral_evaluation_negative = quadratic_integral(coefficients[0], coefficients[1], coefficients[2])['evaluation'](-1)
         self.assertEqual(quadratic_integral_evaluation_negative, -4.166666666666667)
     
+    # CUBIC INTEGRAL
     def test_cubic_integral_constants(self):
         cubic_integral_constants = cubic_integral(coefficients[0], coefficients[1], coefficients[2], coefficients[3])['constants']
         self.assertEqual(cubic_integral_constants, [0.5, 1.0, 2.5, 7.0])
@@ -460,6 +487,7 @@ class TestIntegrals(unittest.TestCase):
         cubic_integral_evaluation_negative = cubic_integral(coefficients[0], coefficients[1], coefficients[2], coefficients[3])['evaluation'](-1)
         self.assertEqual(cubic_integral_evaluation_negative, -5.0)
     
+    # HYPERBOLIC INTEGRAL
     def test_hyperbolic_integral_constants(self):
         hyperbolic_integral_constants = hyperbolic_integral(coefficients[0], coefficients[1])['constants']
         self.assertEqual(hyperbolic_integral_constants, [2.0, 3.0])
@@ -480,6 +508,7 @@ class TestIntegrals(unittest.TestCase):
         hyperbolic_integral_evaluation_negative = hyperbolic_integral(coefficients[0], coefficients[1])['evaluation'](-1)
         self.assertEqual(hyperbolic_integral_evaluation_negative, -3.0)
     
+    # EXPONENTIAL INTEGRAL
     def test_exponential_integral_constants(self):
         exponential_integral_constants = exponential_integral(coefficients[0], coefficients[1])['constants']
         self.assertEqual(exponential_integral_constants, [1.8204784532536746, 3.0])
@@ -500,6 +529,7 @@ class TestIntegrals(unittest.TestCase):
         exponential_integral_evaluation_negative = exponential_integral(coefficients[0], coefficients[1])['evaluation'](-1)
         self.assertEqual(exponential_integral_evaluation_negative, 0.6068261510845582)
     
+    # LOGARITHMIC INTEGRAL
     def test_logarithmic_integral_constants(self):
         logarithmic_integral_constants = logarithmic_integral(coefficients[0], coefficients[1])['constants']
         self.assertEqual(logarithmic_integral_constants, [2.0, 3.0])
@@ -520,6 +550,7 @@ class TestIntegrals(unittest.TestCase):
         logarithmic_integral_evaluation_negative = logarithmic_integral(coefficients[0], coefficients[1])['evaluation'](-1)
         self.assertEqual(logarithmic_integral_evaluation_negative, -1.0)
     
+    # LOGISTIC INTEGRAL
     def test_logistic_integral_constants(self):
         logistic_integral_constants = logistic_integral(coefficients[0], coefficients[1], coefficients[2])['constants']
         self.assertEqual(logistic_integral_constants, [0.6666666666666666, 3.0, 5.0])
@@ -540,6 +571,7 @@ class TestIntegrals(unittest.TestCase):
         logistic_integral_evaluation_negative = logistic_integral(coefficients[0], coefficients[1], coefficients[2])['evaluation'](-1)
         self.assertEqual(logistic_integral_evaluation_negative, 1.015331973722202e-08)
     
+    # SINUSOIDAL INTEGRAL
     def test_sinusoidal_integral_constants(self):
         sinusoidal_integral_constants = sinusoidal_integral(coefficients[0], coefficients[1], coefficients[2], coefficients[3])['constants']
         self.assertEqual(sinusoidal_integral_constants, [-0.6666666666666666, 3.0, 5.0, 7.0])
@@ -561,6 +593,7 @@ class TestIntegrals(unittest.TestCase):
         self.assertEqual(sinusoidal_integral_evaluation_negative, -7.440211138829387)
 
 class TestCriticalPoints(unittest.TestCase):
+    # FIRST DERIVATIVE CRITICAL POINTS
     def test_first_linear_critical_points(self):
         first_linear_critical_points = critical_points('linear', coefficients[:2], 1)
         self.assertEqual(first_linear_critical_points, [None])
@@ -593,6 +626,7 @@ class TestCriticalPoints(unittest.TestCase):
         first_sinusoidal_critical_points = critical_points('sinusoidal', coefficients[:4], 1)
         self.assertEqual(first_sinusoidal_critical_points, [5.5236, 6.5708, 7.618, 8.6652, 9.7124, '5.5236 + 1.0472k'])
     
+    # SECOND DERIVATIVE CRITICAL POINTS
     def test_second_linear_critical_points(self):
         second_linear_critical_points = critical_points('linear', coefficients[:2], 2)
         self.assertEqual(second_linear_critical_points, [None])
@@ -628,6 +662,7 @@ class TestCriticalPoints(unittest.TestCase):
 class TestIntervals(unittest.TestCase):
     maxDiff = None
 
+    # FIRST DERIVATIVE SIGN CHARTS
     def test_first_linear_intervals(self):
         first_linear_intervals = sign_chart('linear', coefficients[:2], 1)
         self.assertEqual(first_linear_intervals, ['positive'])
@@ -660,6 +695,7 @@ class TestIntervals(unittest.TestCase):
         first_sinusoidal_intervals = sign_chart('sinusoidal', coefficients[:4], 1)
         self.assertEqual(first_sinusoidal_intervals, ['positive', 5.5236, 'negative', 6.5708, 'positive', 7.618, 'negative', 8.6652, 'positive', 9.7124, 'negative', '5.5236 + 1.0472k'])
     
+    # SECOND DERIVATIVE SIGN CHARTS
     def test_second_linear_intervals(self):
         second_linear_intervals = sign_chart('linear', coefficients[:2], 2)
         self.assertEqual(second_linear_intervals, ['constant'])
