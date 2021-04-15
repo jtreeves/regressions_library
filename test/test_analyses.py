@@ -695,13 +695,29 @@ class TestRoots(unittest.TestCase):
         linear_zeroes = linear_roots(coefficients[0], coefficients[1])
         self.assertEqual(linear_zeroes, [-1.5])
     
-    def test_quadratic_zeroes(self):
-        quadratic_zeroes = quadratic_roots(coefficients[0], coefficients[1], coefficients[2])
-        self.assertEqual(quadratic_zeroes, [None])
+    def test_quadratic_zeroes_none(self):
+        quadratic_zeroes_none = quadratic_roots(coefficients[0], coefficients[1], coefficients[2])
+        self.assertEqual(quadratic_zeroes_none, [None])
     
-    def test_cubic_zeroes(self):
-        cubic_zeroes = cubic_roots(coefficients[0], coefficients[1], coefficients[2], coefficients[3])
-        self.assertEqual(cubic_zeroes, [-1.4455])
+    def test_quadratic_zeroes_one(self):
+        quadratic_zeroes_one = quadratic_roots(1, -2, 1)
+        self.assertEqual(quadratic_zeroes_one, [1.0])
+    
+    def test_quadratic_zeroes_two(self):
+        quadratic_zeroes_two = quadratic_roots(1, -5, 6)
+        self.assertEqual(quadratic_zeroes_two, [2.0, 3.0])
+    
+    def test_cubic_zeroes_one(self):
+        cubic_zeroes_one = cubic_roots(coefficients[0], coefficients[1], coefficients[2], coefficients[3])
+        self.assertEqual(cubic_zeroes_one, [-1.4455])
+    
+    def test_cubic_zeroes_two(self):
+        cubic_zeroes_two = cubic_roots(1, -4, 5, -2)
+        self.assertEqual(cubic_zeroes_two, [1.0, 2.0])
+    
+    def test_cubic_zeroes_three(self):
+        cubic_zeroes_three = cubic_roots(1, -10, 31, -30)
+        self.assertEqual(cubic_zeroes_three, [2.0, 3.0, 5.0])
     
     def test_hyperbolic_zeroes(self):
         hyperbolic_zeroes = hyperbolic_roots(coefficients[0], coefficients[1])
@@ -719,9 +735,17 @@ class TestRoots(unittest.TestCase):
         logistic_zeroes = logistic_roots(coefficients[0], coefficients[1], coefficients[2])
         self.assertEqual(logistic_zeroes, [None])
     
-    def test_sinusoidal_zeroes(self):
-        sinusoidal_zeroes = sinusoidal_roots(coefficients[0], coefficients[1], coefficients[2], coefficients[3])
-        self.assertEqual(sinusoidal_zeroes, [None])
+    def test_sinusoidal_zeroes_none(self):
+        sinusoidal_zeroes_none = sinusoidal_roots(coefficients[0], coefficients[1], coefficients[2], coefficients[3])
+        self.assertEqual(sinusoidal_zeroes_none, [None])
+    
+    def test_sinusoidal_zeroes_many_bounce(self):
+        sinusoidal_zeroes_many_bounce = sinusoidal_roots(2, 3, 5, 2)
+        self.assertEqual(sinusoidal_zeroes_many_bounce, [4.4764, 6.5708, 8.6652, '4.4764 + 2.0944k'])
+    
+    def test_sinusoidal_zeroes_many_cross(self):
+        sinusoidal_zeroes_many_cross = sinusoidal_roots(2, 3, 5, 1)
+        self.assertEqual(sinusoidal_zeroes_many_cross, [4.8255, 6.2217, 6.9199, 8.3161, 9.0143, 10.4105, '4.8255 + 2.0944k', '6.2217 + 2.0944k'])
 
 class TestIntercepts(unittest.TestCase):
     def test_linear_intercepts(self):

@@ -67,18 +67,7 @@ def sinusoidal_roots(first_constant, second_constant, third_constant, fourth_con
     else:
         radians = asin(ratio)
         periodic_radians = radians / coefficients[1]
-        if ratio == 0:
-            periodic_unit = pi / coefficients[1]
-            initial_value = coefficients[2] + periodic_radians
-            first_value = initial_value + 1 * periodic_unit
-            second_value = initial_value + 2 * periodic_unit
-            third_value = initial_value + 3 * periodic_unit
-            fourth_value = initial_value + 4 * periodic_unit
-            rounded_initial_value = rounded_value(initial_value, precision)
-            rounded_periodic_unit = rounded_value(periodic_unit, precision)
-            general_form = str(rounded_initial_value) + ' + ' + str(rounded_periodic_unit) + 'k'
-            roots = [initial_value, first_value, second_value, third_value, fourth_value, general_form]
-        elif ratio == 1 or ratio == -1:
+        if ratio == 1 or ratio == -1:
             periodic_unit = 2 * pi / coefficients[1]
             initial_value = coefficients[2] + periodic_radians
             first_value = initial_value + 1 * periodic_unit
