@@ -59,9 +59,12 @@ def intercept_points(equation_type, coefficients, precision = 4):
         >>> print(points_sinusoidal)
         [-3.5708, 2.7124, 8.9956, '-3.5708 + 6.2832k']
     """
+    # Handle input errors
     select_equations(equation_type)
     vector_of_scalars(coefficients, 'second')
     positive_integer(precision)
+
+    # Determine intercepts based on equation type
     result = []
     if equation_type == 'linear':
         result = linear_roots(*coefficients, precision)

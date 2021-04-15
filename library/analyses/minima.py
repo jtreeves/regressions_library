@@ -52,17 +52,24 @@ def minima_points(equation_type, coefficients, precision = 4):
         >>> print(points_sinusoidal)
         [6.5708, 8.6652, '1.0472k']
     """
+    # Handle input errors
     select_equations(equation_type)
     vector_of_scalars(coefficients, 'second')
     positive_integer(precision)
-    result = []
+    
+    # Create sign chart
     intervals = sign_chart(equation_type, coefficients, 1, precision)
+    
+    # Determine minima
+    result = []
     for i in range(len(intervals)):
         try:
             if intervals[i] == 'negative' and intervals[i + 2] == 'positive':
                 result.append(intervals[i + 1])
         except IndexError:
             pass
+    
+    # Handle no minima
     if len(result) == 0:
         result.append(None)
     return result

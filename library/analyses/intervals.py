@@ -72,11 +72,13 @@ def sign_chart(equation_type, coefficients, derivative_level, precision = 4):
         >>> print(chart_sinusoidal)
         ['positive', 5, 'negative', 6.0472, 'positive', 7.0944, 'negative', 8.1416, 'positive', 9.1888, 'negative', '5 + 1.0472k']
     """
+    # Handle input errors
     select_equations(equation_type)
     vector_of_scalars(coefficients, 'second')
     select_integers(derivative_level, [1, 2], 'third')
     positive_integer(precision)
-    result = []
+
+    # Create first and second derivatives based on equation type
     both_derivatives = {}
     if equation_type == 'linear':
         both_derivatives = linear_derivatives(*coefficients)
@@ -94,23 +96,38 @@ def sign_chart(equation_type, coefficients, derivative_level, precision = 4):
         both_derivatives = logistic_derivatives(*coefficients)
     elif equation_type == 'sinusoidal':
         both_derivatives = sinusoidal_derivatives(*coefficients)
+    
+    # Grab specific derivative evaluation based on derivative level
     derivative = lambda x : x
     if derivative_level == 1:
         derivative = both_derivatives['first']['evaluation']
     elif derivative_level == 2:
         derivative = both_derivatives['second']['evaluation']
+    
+    # Create critical points for specific derivative
     points = critical_points(equation_type, coefficients, derivative_level, precision)
+    
+    # Create sign chart for specific derivative
+    result = []
+
+    # Handle no critical points
     if points[0] == None:
+        # Test an arbitrary number
         if derivative(10) > 0:
             result = ['positive']
         elif derivative(10) < 0:
             result = ['negative']
         else:
             result = ['constant']
+    
+    # Handle exactly one critical point
     elif len(points) == 1:
+        # Generate numbers to test
         turning_point = points[0]
         before = turning_point - 1
         after = turning_point + 1
+
+        # Test numbers
         if derivative(before) > 0:
             before = 'positive'
         elif derivative(before) < 0:
@@ -119,14 +136,21 @@ def sign_chart(equation_type, coefficients, derivative_level, precision = 4):
             after = 'positive'
         elif derivative(after) < 0:
             after = 'negative'
+        
+        # Store sign chart
         result = [before, turning_point, after]
+    
+    # Handle exactly two critical points
     elif len(points) == 2:
+        # Generate numbers to test
         sorted_points = sorted_list(points)
         first_point = sorted_points[0]
         second_point = sorted_points[1]
         middle = (first_point + second_point) / 2
         before = first_point - 1
         after = second_point + 1
+
+        # Test numbers
         if derivative(before) > 0:
             before = 'positive'
         elif derivative(before) < 0:
@@ -139,8 +163,13 @@ def sign_chart(equation_type, coefficients, derivative_level, precision = 4):
             after = 'positive'
         elif derivative(after) < 0:
             after = 'negative'
+        
+        # Store sign chart
         result = [before, first_point, middle, second_point, after]
+    
+    # Handle more than two critical points
     else:
+        # Generate numbers to test
         numerical_points = []
         other_points = []
         for item in points:
@@ -158,11 +187,15 @@ def sign_chart(equation_type, coefficients, derivative_level, precision = 4):
         between_fourth_last = sorted_points[3] + halved_difference
         after_last = sorted_points[4] + halved_difference
         test_points = [before_first, between_first_second, between_second_third, between_third_fourth, between_fourth_last, after_last]
+
+        # Test numbers
         signs = []
         for point in test_points:
             if derivative(point) > 0:
                 signs.append('positive')
             elif derivative(point) < 0:
                 signs.append('negative')
+        
+        # Store sign chart
         result = [signs[0], sorted_points[0], signs[1], sorted_points[1], signs[2], sorted_points[2], signs[3], sorted_points[3], signs[4], sorted_points[4], signs[5], *other_points]
     return result

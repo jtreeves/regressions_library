@@ -85,10 +85,12 @@ def key_coordinates(equation_type, coefficients, precision = 4):
         >>> print(points_sinusoidal['inflections'])
         [[5, 1.0], [6.0472, 1.0], [7.0944, 1.0], [8.1416, 1.0], [9.1888, 1.0001], ['5 + 1.0472k', 1.0]]
     """
+    # Handle input errors
     select_equations(equation_type)
     vector_of_scalars(coefficients, 'second')
     positive_integer(precision)
-    intercepts_inputs = intercept_points(equation_type, coefficients, precision)
+
+    # Create equations for evaluating inputs (based on equation type)
     equation = lambda x : x
     if equation_type == 'linear':
         equation = linear_equation(*coefficients)
@@ -106,65 +108,100 @@ def key_coordinates(equation_type, coefficients, precision = 4):
         equation = logistic_equation(*coefficients)
     elif equation_type == 'sinusoidal':
         equation = sinusoidal_equation(*coefficients)
+    
+    # Create lists of inputs
+    intercepts_inputs = intercept_points(equation_type, coefficients, precision)
     extrema_inputs = extrema_points(equation_type, coefficients, precision)
     maxima_inputs = extrema_inputs['maxima']
     minima_inputs = extrema_inputs['minima']
     inflections_inputs = inflection_points(equation_type, coefficients, precision)
+
+    # Create empty lists for outputs
     intercepts_outputs = []
     maxima_outputs = []
     minima_outputs = []
     inflections_outputs = []
+
+    # Create empty lists for final coordinate pairs
     intercepts_coordinates = []
     maxima_coordinates = []
     minima_coordinates = []
     inflections_coordinates = []
+
+    # Generate coordinate pairs for all x-intercepts
     if intercepts_inputs[0] == None:
+        # Handle no intercepts
         intercepts_coordinates = [None]
     else:
+        # Fill outputs list with zeroes
         for intercept in intercepts_inputs:
             intercepts_outputs.append(0.0)
+        # Unite inputs and outputs for intercepts into single list
         intercepts_coordinates = unite_vectors(intercepts_inputs, intercepts_outputs)
+    
+    # Generate coordinate pairs for all maxima
     if maxima_inputs[0] == None:
+        # Handle no maxima
         maxima_coordinates = [None]
     else:
+        # Fill outputs list with maxima value at each input
         for i in range(len(maxima_inputs)):
+            # Handle general case
             if isinstance(maxima_inputs[i], (int, float)):
                 output = equation(maxima_inputs[i])
                 rounded_output = rounded_value(output, precision)
                 maxima_outputs.append(rounded_output)
+            # Handle sinusoidal case
             else:
                 periodic_unit = 2 * float(maxima_inputs[i][:-1])
                 initial_value = maxima_inputs[0]
                 general_form = str(initial_value) + ' + ' + str(periodic_unit) + 'k'
                 maxima_inputs[i] = general_form
                 maxima_outputs.append(maxima_outputs[0])
+        # Unite inputs and outputs for maxima into single list
         maxima_coordinates = unite_vectors(maxima_inputs, maxima_outputs)
+    
+    # Generate coordinate pairs for all minima
     if minima_inputs[0] == None:
+        # Handle no minima
         minima_coordinates = [None]
     else:
+        # Fill outputs list with minima value at each input
         for i in range(len(minima_inputs)):
+            # Handle general case
             if isinstance(minima_inputs[i], (int, float)):
                 output = equation(minima_inputs[i])
                 rounded_output = rounded_value(output, precision)
                 minima_outputs.append(rounded_output)
+            # Handle sinusoidal case
             else:
                 periodic_unit = 2 * float(minima_inputs[i][:-1])
                 initial_value = minima_inputs[0]
                 general_form = str(initial_value) + ' + ' + str(periodic_unit) + 'k'
                 minima_inputs[i] = general_form
                 minima_outputs.append(minima_outputs[0])
+        # Unite inputs and outputs for minima into single list
         minima_coordinates = unite_vectors(minima_inputs, minima_outputs)
+    
+    # Generate coordinate pairs for all points of inflection
     if inflections_inputs[0] == None:
+        # Handle no inflections
         inflections_coordinates = [None]
     else:
+        # Fill outputs list with inflection value at each input
         for inflection in inflections_inputs:
+            # Handle general case
             if isinstance(inflection, (int, float)):
                 output = equation(inflection)
                 rounded_output = rounded_value(output, precision)
                 inflections_outputs.append(rounded_output)
+            # Handle sinusoidal case
             else:
                 inflections_outputs.append(inflections_outputs[0])
+        # Unite inputs and outputs for inflections into single list
         inflections_coordinates = unite_vectors(inflections_inputs, inflections_outputs)
+    
+    # Create object to return
     result = {
         'roots': intercepts_coordinates,
         'maxima': maxima_coordinates,
@@ -174,22 +211,33 @@ def key_coordinates(equation_type, coefficients, precision = 4):
     return result
 
 def points_within_range(coordinates, minimum, maximum, interval, precision = 4):
+    # Handle input errors
     allow_none_matrix(coordinates, 'first')
     compare_scalars(minimum, maximum, 'second', 'third')
     scalar_value(interval, 'fourth')
     positive_integer(precision)
+
+    # Determine list of points within a given range
     final_points = []
+
+    # Handle general case
     if coordinates[0] is not None:
+        # Grab general forms
         general_points = []
         for point in coordinates:
             if isinstance(point[0], str):
                 general_points.append(point[0])
+        
+        # Generate options for inputs
         optional_points = []
         for point in general_points:
+            # Grab initial value and periodic unit
             initial_value_index = point.find(' + ')
             initial_value = float(point[:initial_value_index])
             periodic_unit_index = initial_value_index + 3
             periodic_unit = float(point[periodic_unit_index:-1])
+            
+            # Increase or decrease initial value to fit into range
             if periodic_unit > 0:
                 while initial_value > maximum:
                     initial_value -= periodic_unit
@@ -200,14 +248,22 @@ def points_within_range(coordinates, minimum, maximum, interval, precision = 4):
                     initial_value += periodic_unit
                 while initial_value < minimum:
                     initial_value -= periodic_unit
+            
+            # Generate additional values within range
             first_value = initial_value + 1 * periodic_unit
             second_value = initial_value + 2 * periodic_unit
             third_value = initial_value + 3 * periodic_unit
             fourth_value = initial_value + 4 * periodic_unit
             rounded_initial_value = rounded_value(initial_value, precision)
             rounded_periodic_unit = rounded_value(periodic_unit, precision)
+            
+            # Generate general form of input
             general_form = str(rounded_initial_value) + ' + ' + str(rounded_periodic_unit) + 'k'
+            
+            # Store inputs
             optional_points += [initial_value, first_value, second_value, third_value, fourth_value, general_form]
+        
+        # Separate numerical inputs from string inputs
         numerical_points = []
         other_points = []
         for point in optional_points:
@@ -215,11 +271,19 @@ def points_within_range(coordinates, minimum, maximum, interval, precision = 4):
                 numerical_points.append(point)
             else:
                 other_points.append(point)
+        
+        # Sort numerical inputs
         sorted_points = sorted_list(numerical_points)
+
+        # Reduce numerical inputs to within a given range
         selected_points = [x for x in sorted_points if x >= sorted_points[0] and x <= sorted_points[0] + interval]
+        
+        # Round numerical inputs
         rounded_points = []
         for point in selected_points:
             rounded_points.append(rounded_value(point, precision))
+        
+        # Sort string inputs
         sorted_other_points = []
         if len(other_points) > 0:
             if len(other_points) == 1:
@@ -233,11 +297,19 @@ def points_within_range(coordinates, minimum, maximum, interval, precision = 4):
                     sorted_other_points = other_points
                 else:
                     sorted_other_points = [other_points[1], other_points[0]]
+        
+        # Combine numerical and string inputs
         input_points = rounded_points + sorted_other_points
+        
+        # Generate outputs
         output_points = []
         for point in input_points:
             output_points.append(coordinates[0][1])
+        
+        # Unite inputs and outputs into single list
         final_points = unite_vectors(input_points, output_points)
+    
+    # Handle no points
     else:
         final_points = coordinates
     return final_points

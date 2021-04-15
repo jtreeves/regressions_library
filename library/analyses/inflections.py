@@ -52,22 +52,33 @@ def inflection_points(equation_type, coefficients, precision = 4):
         >>> print(points_sinusoidal)
         [5, 6.0472, 7.0944, 8.1416, 9.1888, '5 + 1.0472k']
     """
+    # Handle input errors
     select_equations(equation_type)
     vector_of_scalars(coefficients, 'second')
     positive_integer(precision)
+
+    # Create sign chart
     intervals_set = sign_chart(equation_type, coefficients, 2, precision)
-    result = []
+
+    # Handle hyperbolic case
     if equation_type == 'hyperbolic':
         result = [None]
         return result
+    
+    # Determine inflections
+    result = []
     for i in range(len(intervals_set)):
         try:
             if (intervals_set[i] == 'positive' and intervals_set[i + 2] == 'negative') or (intervals_set[i] == 'negative' and intervals_set[i + 2] == 'positive'):
                 result.append(intervals_set[i + 1])
         except IndexError:
             pass
-    if len(result) == 0:
-        result.append(None)
+    
+    # Handle sinusoidal case
     if equation_type == 'sinusoidal':
         result.append(intervals_set[-1])
+
+    # Handle no inflections
+    if len(result) == 0:
+        result.append(None)
     return result

@@ -60,23 +60,39 @@ def extrema_points(equation_type, coefficients, precision = 4):
         >>> print(points_sinusoidal['minima'])
         [6.5708, 8.6652, '1.0472k']
     """
+    # Handle input errors
     select_equations(equation_type)
     vector_of_scalars(coefficients, 'second')
     positive_integer(precision)
-    result = {}
+    
+    # Determine maxima and minima
     max_points = maxima_points(equation_type, coefficients, precision)
     min_points = minima_points(equation_type, coefficients, precision)
+    
+    # Create object to return
+    result = {}
+
+    # Handle sinusoidal case
     if equation_type == 'sinusoidal':
+        # Recreate sign chart
         intervals_set = sign_chart('sinusoidal', coefficients, 1, precision)
+
+        # Grab general form
         general_form = intervals_set[-1]
+
+        # Extract periodic unit as string
         periodic_unit_index = general_form.find(' + ') + 3
         periodic_unit = general_form[periodic_unit_index:]
+
+        # Append periodic unit as final element of each list
         max_extended = max_points + [periodic_unit]
         min_extended = min_points + [periodic_unit]
         result = {
             'maxima': max_extended,
             'minima': min_extended
         }
+    
+    # Handle all other cases
     else:
         result = {
             'maxima': max_points,

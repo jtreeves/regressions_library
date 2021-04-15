@@ -65,10 +65,13 @@ def accumulated_area(equation_type, coefficients, start, end, precision = 4):
         >>> print(area_cubic)
         312570.0
     """
+    # Handle input errors
     select_equations(equation_type)
     vector_of_scalars(coefficients, 'second')
     compare_scalars(start, end, 'third', 'fourth')
     positive_integer(precision)
+
+    # Create indefinite integral based on equation type
     integral = lambda x : x
     if equation_type == 'linear':
         integral = linear_integral(*coefficients)['evaluation']
@@ -86,6 +89,10 @@ def accumulated_area(equation_type, coefficients, start, end, precision = 4):
         integral = logistic_integral(*coefficients)['evaluation']
     elif equation_type == 'sinusoidal':
         integral = sinusoidal_integral(*coefficients)['evaluation']
+    
+    # Evaluate definite integral
     area = integral(end) - integral(start)
+
+    # Round evaluation
     result = rounded_value(area, precision)
     return result
