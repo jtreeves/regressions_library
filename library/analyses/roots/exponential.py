@@ -54,3 +54,11 @@ def exponential_roots(first_constant, second_constant, precision = 4):
     # Create root
     root = [None]
     return root
+
+def exponential_roots_first_derivative(first_constant, second_constant, precision = 4):
+    root = [None]
+    return root
+
+def exponential_roots_second_derivative(first_constant, second_constant, precision = 4):
+    root = [None]
+    return root

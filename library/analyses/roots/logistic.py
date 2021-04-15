@@ -1,5 +1,6 @@
 from library.errors.scalars import three_scalars, positive_integer
 from library.errors.adjustments import no_zeroes
+from library.statistics.rounding import rounded_value
 
 def logistic_roots(first_constant, second_constant, third_constant, precision = 4):
     """
@@ -55,4 +56,12 @@ def logistic_roots(first_constant, second_constant, third_constant, precision = 
 
     # Create root
     root = [None]
+    return root
+
+def logistic_roots_first_derivative(first_constant, second_constant, third_constant, precision = 4):
+    root = [None]
+    return root
+
+def logistic_roots_second_derivative(first_constant, second_constant, third_constant, precision = 4):
+    root = [rounded_value(third_constant)]
     return root

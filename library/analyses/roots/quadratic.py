@@ -2,6 +2,8 @@ from library.errors.scalars import three_scalars, positive_integer
 from library.errors.adjustments import no_zeroes
 from library.statistics.sort import sorted_list
 from library.statistics.rounding import rounded_value
+from library.analyses.derivatives.quadratic import quadratic_derivatives
+from .linear import linear_roots
 
 def quadratic_roots(first_constant, second_constant, third_constant, precision = 4):
     """
@@ -87,3 +89,12 @@ def quadratic_roots(first_constant, second_constant, third_constant, precision =
     for number in sorted_roots:
         result.append(rounded_value(number, precision))
     return result
+
+def quadratic_roots_first_derivative(first_constant, second_constant, third_constant, precision = 4):
+    constants = quadratic_derivatives(first_constant, second_constant, third_constant)['first']['constants']
+    roots = linear_roots(*constants, precision)
+    return roots
+
+def quadratic_roots_second_derivative(first_constant, second_constant, third_constant, precision = 4):
+    root = [None]
+    return root

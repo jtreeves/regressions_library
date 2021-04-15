@@ -59,3 +59,11 @@ def linear_roots(first_constant, second_constant, precision = 4):
     # Round root
     result = [rounded_value(root, precision)]
     return result
+
+def linear_roots_first_derivative(first_constant, second_constant, precision = 4):
+    root = [None]
+    return root
+
+def linear_roots_second_derivative(first_constant, second_constant, precision = 4):
+    root = [None]
+    return root

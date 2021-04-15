@@ -58,3 +58,11 @@ def hyperbolic_roots(first_constant, second_constant, precision = 4):
     # Round root
     result = [rounded_value(root, precision)]
     return result
+
+def hyperbolic_roots_first_derivative(first_constant, second_constant, precision = 4):
+    root = [0.0]
+    return root
+
+def hyperbolic_roots_second_derivative(first_constant, second_constant, precision = 4):
+    root = [0.0]
+    return root

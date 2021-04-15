@@ -1,13 +1,14 @@
-from math import pi
 from library.errors.scalars import select_integers, positive_integer
 from library.errors.vectors import vector_of_scalars
 from library.errors.analyses import select_equations
-from library.statistics.sort import sorted_list
-from library.statistics.rounding import rounded_value
-from .roots.linear import linear_roots
-from .roots.quadratic import quadratic_roots
-from .derivatives.quadratic import quadratic_derivatives
-from .derivatives.cubic import cubic_derivatives
+from .roots.linear import linear_roots_first_derivative, linear_roots_second_derivative
+from .roots.quadratic import quadratic_roots_first_derivative, quadratic_roots_second_derivative
+from .roots.cubic import cubic_roots_first_derivative, cubic_roots_second_derivative
+from .roots.hyperbolic import hyperbolic_roots_first_derivative, hyperbolic_roots_second_derivative
+from .roots.exponential import exponential_roots_first_derivative, exponential_roots_second_derivative
+from .roots.logarithmic import logarithmic_roots_first_derivative, logarithmic_roots_second_derivative
+from .roots.logistic import logistic_roots_first_derivative, logistic_roots_second_derivative
+from .roots.sinusoidal import sinusoidal_roots_first_derivative, sinusoidal_roots_second_derivative
 
 def critical_points(equation_type, coefficients, derivative_level, precision = 4):
     """
@@ -62,74 +63,50 @@ def critical_points(equation_type, coefficients, derivative_level, precision = 4
         >>> print(points_sinusoidal)
         [5.5236, 6.5708, 7.618, 8.6652, 9.7124, '5.5236 + 1.0472k']
     """
+    # Handle input errors
     select_equations(equation_type)
     vector_of_scalars(coefficients, 'second')
     select_integers(derivative_level, [1, 2], 'third')
     positive_integer(precision)
+
+    # Create list to return
     results = []
+
+    # Determine critical points for first derivative based on equation type
     if derivative_level == 1:
         if equation_type == 'linear':
-            results = [None]
+            results = linear_roots_first_derivative(*coefficients, precision)
         elif equation_type == 'quadratic':
-            constants = quadratic_derivatives(coefficients[0], coefficients[1], coefficients[2])['first']['constants']
-            results = linear_roots(constants[0], constants[1], precision)
+            results = quadratic_roots_first_derivative(*coefficients, precision)
         elif equation_type == 'cubic':
-            constants = cubic_derivatives(coefficients[0], coefficients[1], coefficients[2], coefficients[3])['first']['constants']
-            results = quadratic_roots(constants[0], constants[1], constants[2], precision)
+            results = cubic_roots_first_derivative(*coefficients, precision)
         elif equation_type == 'hyperbolic':
-            results = [0]
+            results = hyperbolic_roots_first_derivative(*coefficients, precision)
         elif equation_type == 'exponential':
-            results = [None]
+            results = exponential_roots_first_derivative(*coefficients, precision)
         elif equation_type == 'logarithmic':
-            results = [None]
+            results = logarithmic_roots_first_derivative(*coefficients, precision)
         elif equation_type == 'logistic':
-            results = [None]
+            results = logistic_roots_first_derivative(*coefficients, precision)
         elif equation_type == 'sinusoidal':
-            periodic_unit = pi / coefficients[1]
-            initial_value = coefficients[2] + pi / (2 * coefficients[1])
-            first_value = initial_value + 1 * periodic_unit
-            second_value = initial_value + 2 * periodic_unit
-            third_value = initial_value + 3 * periodic_unit
-            fourth_value = initial_value + 4 * periodic_unit
-            values = [initial_value, first_value, second_value, third_value, fourth_value]
-            sorted_values = sorted_list(values)
-            rounded_values = []
-            for number in sorted_values:
-                rounded_values.append(rounded_value(number, precision))
-            rounded_periodic_unit = rounded_value(periodic_unit, precision)
-            rounded_initial_value = rounded_value(initial_value, precision)
-            general_form = str(rounded_initial_value) + ' + ' + str(rounded_periodic_unit) + 'k'
-            results = [*rounded_values, general_form]
+            results = sinusoidal_roots_first_derivative(*coefficients, precision)
+    
+    # Determine critical points for second derivative based on equation type
     elif derivative_level == 2:
         if equation_type == 'linear':
-            results = [None]
+            results = linear_roots_second_derivative(*coefficients, precision)
         elif equation_type == 'quadratic':
-            results = [None]
+            results = quadratic_roots_second_derivative(*coefficients, precision)
         elif equation_type == 'cubic':
-            constants = cubic_derivatives(coefficients[0], coefficients[1], coefficients[2], coefficients[3])['second']['constants']
-            results = linear_roots(constants[0], constants[1], precision)
+            results = cubic_roots_second_derivative(*coefficients, precision)
         elif equation_type == 'hyperbolic':
-            results = [0]
+            results = hyperbolic_roots_second_derivative(*coefficients, precision)
         elif equation_type == 'exponential':
-            results = [None]
+            results = exponential_roots_second_derivative(*coefficients, precision)
         elif equation_type == 'logarithmic':
-            results = [None]
+            results = logarithmic_roots_second_derivative(*coefficients, precision)
         elif equation_type == 'logistic':
-            results = [rounded_value(coefficients[2], precision)]
+            results = logistic_roots_second_derivative(*coefficients, precision)
         elif equation_type == 'sinusoidal':
-            periodic_unit = pi / coefficients[1]
-            initial_value = coefficients[2]
-            first_value = initial_value + 1 * periodic_unit
-            second_value = initial_value + 2 * periodic_unit
-            third_value = initial_value + 3 * periodic_unit
-            fourth_value = initial_value + 4 * periodic_unit
-            values = [initial_value, first_value, second_value, third_value, fourth_value]
-            sorted_values = sorted_list(values)
-            rounded_values = []
-            for number in sorted_values:
-                rounded_values.append(rounded_value(number, precision))
-            rounded_periodic_unit = rounded_value(periodic_unit, precision)
-            rounded_initial_value = rounded_value(initial_value, precision)
-            general_form = str(rounded_initial_value) + ' + ' + str(rounded_periodic_unit) + 'k'
-            results = [*rounded_values, general_form]
+            results = sinusoidal_roots_second_derivative(*coefficients, precision)
     return results
