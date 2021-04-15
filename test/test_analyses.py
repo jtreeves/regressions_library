@@ -400,37 +400,165 @@ class TestDerivatives(unittest.TestCase):
         self.assertEqual(sinusoidal_second_derivative_evaluation_negative, -13.51777044189017)
 
 class TestIntegrals(unittest.TestCase):
-    def test_linear_integral_object(self):
-        linear_integral_object = linear_integral(coefficients[0], coefficients[1])
-        self.assertEqual(linear_integral_object['constants'], [1.0, 3])
+    def test_linear_integral_constants(self):
+        linear_integral_constants = linear_integral(coefficients[0], coefficients[1])['constants']
+        self.assertEqual(linear_integral_constants, [1.0, 3.0])
     
-    def test_quadratic_integral_object(self):
-        quadratic_integral_object = quadratic_integral(coefficients[0], coefficients[1], coefficients[2])
-        self.assertEqual(quadratic_integral_object['constants'], [0.6666666666666666, 1.5, 5])
+    def test_linear_integral_constants_ones(self):
+        linear_integral_constants_ones = linear_integral(1, 1)['constants']
+        self.assertEqual(linear_integral_constants_ones, [0.5, 1.0])
     
-    def test_cubic_integral_object(self):
-        cubic_integral_object = cubic_integral(coefficients[0], coefficients[1], coefficients[2], coefficients[3])
-        self.assertEqual(cubic_integral_object['constants'], [0.5, 1.0, 2.5, 7])
+    def test_linear_integral_evaluation_positive(self):
+        linear_integral_evaluation_positive = linear_integral(coefficients[0], coefficients[1])['evaluation'](1)
+        self.assertEqual(linear_integral_evaluation_positive, 4.0)
     
-    def test_hyperbolic_integral_object(self):
-        hyperbolic_integral_object = hyperbolic_integral(coefficients[0], coefficients[1])
-        self.assertEqual(hyperbolic_integral_object['constants'], [2, 3])
+    def test_linear_integral_evaluation_zero(self):
+        linear_integral_evaluation_zero = linear_integral(coefficients[0], coefficients[1])['evaluation'](0)
+        self.assertEqual(linear_integral_evaluation_zero, 0.0)
     
-    def test_exponential_integral_object(self):
-        exponential_integral_object = exponential_integral(coefficients[0], coefficients[1])
-        self.assertEqual(exponential_integral_object['constants'], [1.8204784532536746, 3])
+    def test_linear_integral_evaluation_negative(self):
+        linear_integral_evaluation_negative = linear_integral(coefficients[0], coefficients[1])['evaluation'](-1)
+        self.assertEqual(linear_integral_evaluation_negative, -2.0)
     
-    def test_logarithmic_integral_object(self):
-        logarithmic_integral_object = logarithmic_integral(coefficients[0], coefficients[1])
-        self.assertEqual(logarithmic_integral_object['constants'], [2, 3])
+    def test_quadratic_integral_constants(self):
+        quadratic_integral_constants = quadratic_integral(coefficients[0], coefficients[1], coefficients[2])['constants']
+        self.assertEqual(quadratic_integral_constants, [0.6666666666666666, 1.5, 5.0])
     
-    def test_logistic_integral_object(self):
-        logistic_integral_object = logistic_integral(coefficients[0], coefficients[1], coefficients[2])
-        self.assertEqual(logistic_integral_object['constants'], [0.6666666666666666, 3, 5])
+    def test_quadratic_integral_constants_ones(self):
+        quadratic_integral_constants_ones = quadratic_integral(1, 1, 1)['constants']
+        self.assertEqual(quadratic_integral_constants_ones, [0.3333333333333333, 0.5, 1.0])
     
-    def test_sinusoidal_integral_object(self):
-        sinusoidal_integral_object = sinusoidal_integral(coefficients[0], coefficients[1], coefficients[2], coefficients[3])
-        self.assertEqual(sinusoidal_integral_object['constants'], [-0.6666666666666666, 3, 5, 7])
+    def test_quadratic_integral_evaluation_positive(self):
+        quadratic_integral_evaluation_positive = quadratic_integral(coefficients[0], coefficients[1], coefficients[2])['evaluation'](1)
+        self.assertEqual(quadratic_integral_evaluation_positive, 7.166666666666666)
+    
+    def test_quadratic_integral_evaluation_zero(self):
+        quadratic_integral_evaluation_zero = quadratic_integral(coefficients[0], coefficients[1], coefficients[2])['evaluation'](0)
+        self.assertEqual(quadratic_integral_evaluation_zero, 0.0)
+    
+    def test_quadratic_integral_evaluation_negative(self):
+        quadratic_integral_evaluation_negative = quadratic_integral(coefficients[0], coefficients[1], coefficients[2])['evaluation'](-1)
+        self.assertEqual(quadratic_integral_evaluation_negative, -4.166666666666667)
+    
+    def test_cubic_integral_constants(self):
+        cubic_integral_constants = cubic_integral(coefficients[0], coefficients[1], coefficients[2], coefficients[3])['constants']
+        self.assertEqual(cubic_integral_constants, [0.5, 1.0, 2.5, 7.0])
+    
+    def test_cubic_integral_constants_ones(self):
+        cubic_integral_constants_ones = cubic_integral(1, 1, 1, 1)['constants']
+        self.assertEqual(cubic_integral_constants_ones, [0.25, 0.3333333333333333, 0.5, 1.0])
+    
+    def test_cubic_integral_evaluation_positive(self):
+        cubic_integral_evaluation_positive = cubic_integral(coefficients[0], coefficients[1], coefficients[2], coefficients[3])['evaluation'](1)
+        self.assertEqual(cubic_integral_evaluation_positive, 11.0)
+    
+    def test_cubic_integral_evaluation_zero(self):
+        cubic_integral_evaluation_zero = cubic_integral(coefficients[0], coefficients[1], coefficients[2], coefficients[3])['evaluation'](0)
+        self.assertEqual(cubic_integral_evaluation_zero, 0.0)
+    
+    def test_cubic_integral_evaluation_negative(self):
+        cubic_integral_evaluation_negative = cubic_integral(coefficients[0], coefficients[1], coefficients[2], coefficients[3])['evaluation'](-1)
+        self.assertEqual(cubic_integral_evaluation_negative, -5.0)
+    
+    def test_hyperbolic_integral_constants(self):
+        hyperbolic_integral_constants = hyperbolic_integral(coefficients[0], coefficients[1])['constants']
+        self.assertEqual(hyperbolic_integral_constants, [2.0, 3.0])
+    
+    def test_hyperbolic_integral_constants_ones(self):
+        hyperbolic_integral_constants_ones = hyperbolic_integral(1, 1)['constants']
+        self.assertEqual(hyperbolic_integral_constants_ones, [1.0, 1.0])
+    
+    def test_hyperbolic_integral_evaluation_positive(self):
+        hyperbolic_integral_evaluation_positive = hyperbolic_integral(coefficients[0], coefficients[1])['evaluation'](1)
+        self.assertEqual(hyperbolic_integral_evaluation_positive, 3.0)
+    
+    def test_hyperbolic_integral_evaluation_zero(self):
+        hyperbolic_integral_evaluation_zero = hyperbolic_integral(coefficients[0], coefficients[1])['evaluation'](0)
+        self.assertEqual(hyperbolic_integral_evaluation_zero, -18.420380743952364)
+    
+    def test_hyperbolic_integral_evaluation_negative(self):
+        hyperbolic_integral_evaluation_negative = hyperbolic_integral(coefficients[0], coefficients[1])['evaluation'](-1)
+        self.assertEqual(hyperbolic_integral_evaluation_negative, -3.0)
+    
+    def test_exponential_integral_constants(self):
+        exponential_integral_constants = exponential_integral(coefficients[0], coefficients[1])['constants']
+        self.assertEqual(exponential_integral_constants, [1.8204784532536746, 3.0])
+    
+    def test_exponential_integral_constants_ones(self):
+        exponential_integral_constants_ones = exponential_integral(1, 1)['constants']
+        self.assertEqual(exponential_integral_constants_ones, [10000.499991668185, 1.0001])
+    
+    def test_exponential_integral_evaluation_positive(self):
+        exponential_integral_evaluation_positive = exponential_integral(coefficients[0], coefficients[1])['evaluation'](1)
+        self.assertEqual(exponential_integral_evaluation_positive, 5.461435359761024)
+    
+    def test_exponential_integral_evaluation_zero(self):
+        exponential_integral_evaluation_zero = exponential_integral(coefficients[0], coefficients[1])['evaluation'](0)
+        self.assertEqual(exponential_integral_evaluation_zero, 1.8204784532536746)
+    
+    def test_exponential_integral_evaluation_negative(self):
+        exponential_integral_evaluation_negative = exponential_integral(coefficients[0], coefficients[1])['evaluation'](-1)
+        self.assertEqual(exponential_integral_evaluation_negative, 0.6068261510845582)
+    
+    def test_logarithmic_integral_constants(self):
+        logarithmic_integral_constants = logarithmic_integral(coefficients[0], coefficients[1])['constants']
+        self.assertEqual(logarithmic_integral_constants, [2.0, 3.0])
+    
+    def test_logarithmic_integral_constants_ones(self):
+        logarithmic_integral_constants_ones = logarithmic_integral(1, 1)['constants']
+        self.assertEqual(logarithmic_integral_constants_ones, [1.0, 1.0])
+    
+    def test_logarithmic_integral_evaluation_positive(self):
+        logarithmic_integral_evaluation_positive = logarithmic_integral(coefficients[0], coefficients[1])['evaluation'](1)
+        self.assertEqual(logarithmic_integral_evaluation_positive, 1.0)
+    
+    def test_logarithmic_integral_evaluation_zero(self):
+        logarithmic_integral_evaluation_zero = logarithmic_integral(coefficients[0], coefficients[1])['evaluation'](0)
+        self.assertEqual(logarithmic_integral_evaluation_zero, -0.0017420680743952363)
+    
+    def test_logarithmic_integral_evaluation_negative(self):
+        logarithmic_integral_evaluation_negative = logarithmic_integral(coefficients[0], coefficients[1])['evaluation'](-1)
+        self.assertEqual(logarithmic_integral_evaluation_negative, -1.0)
+    
+    def test_logistic_integral_constants(self):
+        logistic_integral_constants = logistic_integral(coefficients[0], coefficients[1], coefficients[2])['constants']
+        self.assertEqual(logistic_integral_constants, [0.6666666666666666, 3.0, 5.0])
+    
+    def test_logistic_integral_constants_ones(self):
+        logistic_integral_constants_ones = logistic_integral(1, 1, 1)['constants']
+        self.assertEqual(logistic_integral_constants_ones, [1.0, 1.0, 1.0])
+    
+    def test_logistic_integral_evaluation_positive(self):
+        logistic_integral_evaluation_positive = logistic_integral(coefficients[0], coefficients[1], coefficients[2])['evaluation'](1)
+        self.assertEqual(logistic_integral_evaluation_positive, 4.096128985164955e-06)
+    
+    def test_logistic_integral_evaluation_zero(self):
+        logistic_integral_evaluation_zero = logistic_integral(coefficients[0], coefficients[1], coefficients[2])['evaluation'](0)
+        self.assertEqual(logistic_integral_evaluation_zero, 2.0393484919817015e-07)
+    
+    def test_logistic_integral_evaluation_negative(self):
+        logistic_integral_evaluation_negative = logistic_integral(coefficients[0], coefficients[1], coefficients[2])['evaluation'](-1)
+        self.assertEqual(logistic_integral_evaluation_negative, 1.015331973722202e-08)
+    
+    def test_sinusoidal_integral_constants(self):
+        sinusoidal_integral_constants = sinusoidal_integral(coefficients[0], coefficients[1], coefficients[2], coefficients[3])['constants']
+        self.assertEqual(sinusoidal_integral_constants, [-0.6666666666666666, 3.0, 5.0, 7.0])
+    
+    def test_sinusoidal_integral_constants_ones(self):
+        sinusoidal_integral_constants_ones = sinusoidal_integral(1, 1, 1, 1)['constants']
+        self.assertEqual(sinusoidal_integral_constants_ones, [-1.0, 1.0, 1.0, 1.0])
+    
+    def test_sinusoidal_integral_evaluation_positive(self):
+        sinusoidal_integral_evaluation_positive = sinusoidal_integral(coefficients[0], coefficients[1], coefficients[2], coefficients[3])['evaluation'](1)
+        self.assertEqual(sinusoidal_integral_evaluation_positive, 6.437430694178339)
+    
+    def test_sinusoidal_integral_evaluation_zero(self):
+        sinusoidal_integral_evaluation_zero = sinusoidal_integral(coefficients[0], coefficients[1], coefficients[2], coefficients[3])['evaluation'](0)
+        self.assertEqual(sinusoidal_integral_evaluation_zero, 0.5064586085725474)
+    
+    def test_sinusoidal_integral_evaluation_negative(self):
+        sinusoidal_integral_evaluation_negative = sinusoidal_integral(coefficients[0], coefficients[1], coefficients[2], coefficients[3])['evaluation'](-1)
+        self.assertEqual(sinusoidal_integral_evaluation_negative, -7.440211138829387)
 
 class TestCriticalPoints(unittest.TestCase):
     def test_first_linear_critical_points(self):
