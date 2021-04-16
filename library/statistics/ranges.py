@@ -53,3 +53,17 @@ def range_value(data):
     min_value = minimum_value(data)
     result = max_value - min_value
     return float(result)
+
+def shift_into_range(initial_value, periodic_unit, minimum, maximum):
+    alternative_initial_value = initial_value
+    if periodic_unit > 0:
+        while alternative_initial_value > maximum:
+            alternative_initial_value -= periodic_unit
+        while alternative_initial_value < minimum:
+            alternative_initial_value += periodic_unit
+    else:
+        while alternative_initial_value > maximum:
+            alternative_initial_value += periodic_unit
+        while alternative_initial_value < minimum:
+            alternative_initial_value -= periodic_unit
+    return alternative_initial_value

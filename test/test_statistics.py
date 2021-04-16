@@ -10,7 +10,7 @@ from library.statistics.quartiles import quartile_value
 from library.statistics.median import median_value
 from library.statistics.mean import mean_value
 from library.statistics.summary import five_number_summary
-from library.statistics.ranges import range_value
+from library.statistics.ranges import range_value, shift_into_range
 from library.statistics.deviations import multiple_deviations
 from library.statistics.residuals import multiple_residuals
 from library.statistics.correlation import correlation_coefficient
@@ -156,6 +156,63 @@ class TestRange(unittest.TestCase):
     def test_range_odd(self):
         range_odd = range_value(odd_set)
         self.assertEqual(range_odd, 23)
+
+class TestShiftIntoRange(unittest.TestCase):
+    def test_shift_range_within_positive(self):
+        shift_range_within_positive = shift_into_range(11, 2, 10, 20)
+        self.assertEqual(shift_range_within_positive, 11)
+    
+    def test_shift_range_at_min_positive(self):
+        shift_range_at_min_positive = shift_into_range(10, 2, 10, 20)
+        self.assertEqual(shift_range_at_min_positive, 10)
+    
+    def test_shift_range_at_max_positive(self):
+        shift_range_at_max_positive = shift_into_range(20, 2, 10, 20)
+        self.assertEqual(shift_range_at_max_positive, 20)
+    
+    def test_shift_range_below_positive(self):
+        shift_range_below_positive = shift_into_range(1, 2, 10, 20)
+        self.assertEqual(shift_range_below_positive, 11)
+    
+    def test_shift_range_above_positive(self):
+        shift_range_above_positive = shift_into_range(31, 2, 10, 20)
+        self.assertEqual(shift_range_above_positive, 19)
+    
+    def test_shift_range_unfit_above_positive(self):
+        shift_range_unfit_above_positive = shift_into_range(31, 30, 10, 20)
+        self.assertEqual(shift_range_unfit_above_positive, 31)
+    
+    def test_shift_range_unfit_below_positive(self):
+        shift_range_unfit_below_positive = shift_into_range(1, 30, 10, 20)
+        self.assertEqual(shift_range_unfit_below_positive, 31)
+    
+    def test_shift_range_within_negative(self):
+        shift_range_within_negative = shift_into_range(11, -2, 10, 20)
+        self.assertEqual(shift_range_within_negative, 11)
+    
+    def test_shift_range_at_min_negative(self):
+        shift_range_at_min_negative = shift_into_range(10, -2, 10, 20)
+        self.assertEqual(shift_range_at_min_negative, 10)
+    
+    def test_shift_range_at_max_negative(self):
+        shift_range_at_max_negative = shift_into_range(20, -2, 10, 20)
+        self.assertEqual(shift_range_at_max_negative, 20)
+    
+    def test_shift_range_below_negative(self):
+        shift_range_below_negative = shift_into_range(1, -2, 10, 20)
+        self.assertEqual(shift_range_below_negative, 11)
+    
+    def test_shift_range_above_negative(self):
+        shift_range_above_negative = shift_into_range(31, -2, 10, 20)
+        self.assertEqual(shift_range_above_negative, 19)
+    
+    def test_shift_range_unfit_above_negative(self):
+        shift_range_unfit_above_negative = shift_into_range(31, -30, 10, 20)
+        self.assertEqual(shift_range_unfit_above_negative, 31)
+    
+    def test_shift_range_unfit_below_negative(self):
+        shift_range_unfit_below_negative = shift_into_range(1, -30, 10, 20)
+        self.assertEqual(shift_range_unfit_below_negative, 31)
 
 class TestDeviations(unittest.TestCase):
     def test_deviations_even(self):

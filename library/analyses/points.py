@@ -4,6 +4,7 @@ from library.errors.vectors import vector_of_scalars
 from library.errors.matrices import allow_none_matrix
 from library.statistics.rounding import rounded_value
 from library.statistics.sort import sorted_list
+from library.statistics.ranges import shift_into_range
 from library.vectors.unify import unite_vectors
 from .equations.linear import linear_equation
 from .equations.quadratic import quadratic_equation
@@ -242,30 +243,21 @@ def generalized_points_within_range(coordinates, minimum, maximum, precision = 4
         periodic_unit = float(point[periodic_unit_index:-1])
         
         # Increase or decrease initial value to fit into range
-        if periodic_unit > 0:
-            while initial_value > maximum:
-                initial_value -= periodic_unit
-            while initial_value < minimum:
-                initial_value += periodic_unit
-        else:
-            while initial_value > maximum:
-                initial_value += periodic_unit
-            while initial_value < minimum:
-                initial_value -= periodic_unit
+        alternative_initial_value = shift_into_range(initial_value, periodic_unit, minimum, maximum)
         
         # Generate additional values within range
-        first_value = initial_value + 1 * periodic_unit
-        second_value = initial_value + 2 * periodic_unit
-        third_value = initial_value + 3 * periodic_unit
-        fourth_value = initial_value + 4 * periodic_unit
-        rounded_initial_value = rounded_value(initial_value, precision)
+        first_value = alternative_initial_value + 1 * periodic_unit
+        second_value = alternative_initial_value + 2 * periodic_unit
+        third_value = alternative_initial_value + 3 * periodic_unit
+        fourth_value = alternative_initial_value + 4 * periodic_unit
+        rounded_alternative_initial_value = rounded_value(alternative_initial_value, precision)
         rounded_periodic_unit = rounded_value(periodic_unit, precision)
         
         # Generate general form of input
-        general_form = str(rounded_initial_value) + ' + ' + str(rounded_periodic_unit) + 'k'
+        general_form = str(rounded_alternative_initial_value) + ' + ' + str(rounded_periodic_unit) + 'k'
         
         # Store inputs
-        optional_points += [initial_value, first_value, second_value, third_value, fourth_value, general_form]
+        optional_points += [alternative_initial_value, first_value, second_value, third_value, fourth_value, general_form]
     
     # Separate numerical inputs from string inputs
     numerical_points = []
@@ -334,30 +326,21 @@ def generalized_coordinates_within_range(coordinates, minimum, maximum, interval
             periodic_unit = float(point[periodic_unit_index:-1])
             
             # Increase or decrease initial value to fit into range
-            if periodic_unit > 0:
-                while initial_value > maximum:
-                    initial_value -= periodic_unit
-                while initial_value < minimum:
-                    initial_value += periodic_unit
-            else:
-                while initial_value > maximum:
-                    initial_value += periodic_unit
-                while initial_value < minimum:
-                    initial_value -= periodic_unit
+            alternative_initial_value = shift_into_range(initial_value, periodic_unit, minimum, maximum)
             
             # Generate additional values within range
-            first_value = initial_value + 1 * periodic_unit
-            second_value = initial_value + 2 * periodic_unit
-            third_value = initial_value + 3 * periodic_unit
-            fourth_value = initial_value + 4 * periodic_unit
-            rounded_initial_value = rounded_value(initial_value, precision)
+            first_value = alternative_initial_value + 1 * periodic_unit
+            second_value = alternative_initial_value + 2 * periodic_unit
+            third_value = alternative_initial_value + 3 * periodic_unit
+            fourth_value = alternative_initial_value + 4 * periodic_unit
+            rounded_alternative_initial_value = rounded_value(alternative_initial_value, precision)
             rounded_periodic_unit = rounded_value(periodic_unit, precision)
             
             # Generate general form of input
-            general_form = str(rounded_initial_value) + ' + ' + str(rounded_periodic_unit) + 'k'
+            general_form = str(rounded_alternative_initial_value) + ' + ' + str(rounded_periodic_unit) + 'k'
             
             # Store inputs
-            optional_points += [initial_value, first_value, second_value, third_value, fourth_value, general_form]
+            optional_points += [alternative_initial_value, first_value, second_value, third_value, fourth_value, general_form]
         
         # Separate numerical inputs from string inputs
         numerical_points = []
