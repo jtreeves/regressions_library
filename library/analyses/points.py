@@ -19,6 +19,67 @@ from .intercepts import intercept_points
 from .extrema import extrema_points
 from .inflections import inflection_points
 
+def coordinate_pairs(equation_type, coefficients, inputs, point_type = 'point', precision = 4):
+    # Create equations for evaluating inputs (based on equation type)
+    equation = lambda x : x
+    if equation_type == 'linear':
+        equation = linear_equation(*coefficients)
+    elif equation_type == 'quadratic':
+        equation = quadratic_equation(*coefficients)
+    elif equation_type == 'cubic':
+        equation = cubic_equation(*coefficients)
+    elif equation_type == 'hyperbolic':
+        equation = hyperbolic_equation(*coefficients)
+    elif equation_type == 'exponential':
+        equation = exponential_equation(*coefficients)
+    elif equation_type == 'logarithmic':
+        equation = logarithmic_equation(*coefficients)
+    elif equation_type == 'logistic':
+        equation = logistic_equation(*coefficients)
+    elif equation_type == 'sinusoidal':
+        equation = sinusoidal_equation(*coefficients)
+
+    # Round inputs
+    rounded_inputs = []
+    for point in inputs:
+        if isinstance(point, (int, float)):
+            rounded_inputs.append(rounded_value(point, precision))
+        else:
+            rounded_inputs.append(point)
+
+    # Create empty lists
+    outputs = []
+    coordinates = []
+    
+    # Handle no points
+    if rounded_inputs[0] == None:
+        coordinates.append(None)
+    
+    # Fill outputs list with output value at each input
+    else:
+        for value in rounded_inputs:
+            # Circumvent inaccurate rounding
+            if point_type == 'intercepts':
+                outputs.append(0.0)
+            
+            # Evaluate function at inputs
+            else:
+                # Evaluate numerical inputs
+                if isinstance(value, (int, float)):
+                    output = equation(value)
+                    rounded_output = rounded_value(output, precision)
+                    outputs.append(rounded_output)
+                
+                # Handle non-numerical inputs
+                else:
+                    outputs.append(outputs[0])
+
+        # Unite inputs and outputs for maxima into single list
+        coordinates.extend(unite_vectors(rounded_inputs, outputs))
+    
+    # Return final coordinate pairs
+    return coordinates
+
 def key_coordinates(equation_type, coefficients, precision = 4):
     """
     Calculates the key points of a specific function
@@ -91,25 +152,6 @@ def key_coordinates(equation_type, coefficients, precision = 4):
     select_equations(equation_type)
     vector_of_scalars(coefficients, 'second')
     positive_integer(precision)
-
-    # Create equations for evaluating inputs (based on equation type)
-    equation = lambda x : x
-    if equation_type == 'linear':
-        equation = linear_equation(*coefficients)
-    elif equation_type == 'quadratic':
-        equation = quadratic_equation(*coefficients)
-    elif equation_type == 'cubic':
-        equation = cubic_equation(*coefficients)
-    elif equation_type == 'hyperbolic':
-        equation = hyperbolic_equation(*coefficients)
-    elif equation_type == 'exponential':
-        equation = exponential_equation(*coefficients)
-    elif equation_type == 'logarithmic':
-        equation = logarithmic_equation(*coefficients)
-    elif equation_type == 'logistic':
-        equation = logistic_equation(*coefficients)
-    elif equation_type == 'sinusoidal':
-        equation = sinusoidal_equation(*coefficients)
     
     # Create lists of inputs
     intercepts_inputs = intercept_points(equation_type, coefficients, precision)
@@ -118,90 +160,17 @@ def key_coordinates(equation_type, coefficients, precision = 4):
     minima_inputs = extrema_inputs['minima']
     inflections_inputs = inflection_points(equation_type, coefficients, precision)
 
-    # Create empty lists for outputs
-    intercepts_outputs = []
-    maxima_outputs = []
-    minima_outputs = []
-    inflections_outputs = []
-
-    # Create empty lists for final coordinate pairs
-    intercepts_coordinates = []
-    maxima_coordinates = []
-    minima_coordinates = []
-    inflections_coordinates = []
-
     # Generate coordinate pairs for all x-intercepts
-    if intercepts_inputs[0] == None:
-        # Handle no intercepts
-        intercepts_coordinates = [None]
-    else:
-        # Fill outputs list with zeroes
-        for intercept in intercepts_inputs:
-            intercepts_outputs.append(0.0)
-        # Unite inputs and outputs for intercepts into single list
-        intercepts_coordinates = unite_vectors(intercepts_inputs, intercepts_outputs)
+    intercepts_coordinates = coordinate_pairs(equation_type, coefficients, intercepts_inputs, 'intercepts', precision)
     
     # Generate coordinate pairs for all maxima
-    if maxima_inputs[0] == None:
-        # Handle no maxima
-        maxima_coordinates = [None]
-    else:
-        # Fill outputs list with maxima value at each input
-        for i in range(len(maxima_inputs)):
-            # Handle general case
-            if isinstance(maxima_inputs[i], (int, float)):
-                output = equation(maxima_inputs[i])
-                rounded_output = rounded_value(output, precision)
-                maxima_outputs.append(rounded_output)
-            # Handle sinusoidal case
-            else:
-                periodic_unit = 2 * float(maxima_inputs[i][:-1])
-                initial_value = maxima_inputs[0]
-                general_form = str(initial_value) + ' + ' + str(periodic_unit) + 'k'
-                maxima_inputs[i] = general_form
-                maxima_outputs.append(maxima_outputs[0])
-        # Unite inputs and outputs for maxima into single list
-        maxima_coordinates = unite_vectors(maxima_inputs, maxima_outputs)
+    maxima_coordinates = coordinate_pairs(equation_type, coefficients, maxima_inputs, 'maxima', precision)
     
     # Generate coordinate pairs for all minima
-    if minima_inputs[0] == None:
-        # Handle no minima
-        minima_coordinates = [None]
-    else:
-        # Fill outputs list with minima value at each input
-        for i in range(len(minima_inputs)):
-            # Handle general case
-            if isinstance(minima_inputs[i], (int, float)):
-                output = equation(minima_inputs[i])
-                rounded_output = rounded_value(output, precision)
-                minima_outputs.append(rounded_output)
-            # Handle sinusoidal case
-            else:
-                periodic_unit = 2 * float(minima_inputs[i][:-1])
-                initial_value = minima_inputs[0]
-                general_form = str(initial_value) + ' + ' + str(periodic_unit) + 'k'
-                minima_inputs[i] = general_form
-                minima_outputs.append(minima_outputs[0])
-        # Unite inputs and outputs for minima into single list
-        minima_coordinates = unite_vectors(minima_inputs, minima_outputs)
+    minima_coordinates = coordinate_pairs(equation_type, coefficients, minima_inputs, 'minima', precision)
     
     # Generate coordinate pairs for all points of inflection
-    if inflections_inputs[0] == None:
-        # Handle no inflections
-        inflections_coordinates = [None]
-    else:
-        # Fill outputs list with inflection value at each input
-        for inflection in inflections_inputs:
-            # Handle general case
-            if isinstance(inflection, (int, float)):
-                output = equation(inflection)
-                rounded_output = rounded_value(output, precision)
-                inflections_outputs.append(rounded_output)
-            # Handle sinusoidal case
-            else:
-                inflections_outputs.append(inflections_outputs[0])
-        # Unite inputs and outputs for inflections into single list
-        inflections_coordinates = unite_vectors(inflections_inputs, inflections_outputs)
+    inflections_coordinates = coordinate_pairs(equation_type, coefficients, inflections_inputs, 'inflections', precision)
     
     # Create object to return
     result = {

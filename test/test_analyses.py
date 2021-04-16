@@ -39,7 +39,7 @@ from library.analyses.maxima import maxima_points
 from library.analyses.minima import minima_points
 from library.analyses.extrema import extrema_points
 from library.analyses.inflections import inflection_points
-from library.analyses.points import key_coordinates, points_within_range, generalized_points_within_range, generalized_coordinates_within_range
+from library.analyses.points import coordinate_pairs, key_coordinates, points_within_range, generalized_points_within_range, generalized_coordinates_within_range
 from library.analyses.accumulation import accumulated_area
 from library.analyses.mean_values import average_values
 
@@ -1161,7 +1161,7 @@ class TestExtrema(unittest.TestCase):
     
     def test_sinusoidal_extrema(self):
         sinusoidal_extrema = extrema_points('sinusoidal', coefficients[:4])
-        self.assertEqual(sinusoidal_extrema, {'maxima': [5.5236, 7.618, 9.7124, '1.0472k'], 'minima': [6.5708, 8.6652, '1.0472k']})
+        self.assertEqual(sinusoidal_extrema, {'maxima': [5.5236, 7.618, 9.7124, '5.5236 + 2.0944k'], 'minima': [6.5708, 8.6652, '6.5708 + 2.0944k']})
 
 class TestInflections(unittest.TestCase):
     maxDiff = None
@@ -1197,6 +1197,61 @@ class TestInflections(unittest.TestCase):
     def test_sinusoidal_inflections(self):
         sinusoidal_inflections = inflection_points('sinusoidal', coefficients[:4])
         self.assertEqual(sinusoidal_inflections, [5.0, 6.0472, 7.0944, 8.1416, 9.1888, '5.0 + 1.0472k'])
+
+class TestCoordinatePairs(unittest.TestCase):
+    maxDiff = None
+
+    def test_coordinate_pairs_linear(self):
+        coordinate_pairs_linear = coordinate_pairs('linear', coefficients[:2], [1, 2, 3, 4])
+        self.assertEqual(coordinate_pairs_linear, [[1.0, 5.0], [2.0, 7.0], [3.0, 9.0], [4.0, 11.0]])
+    
+    def test_coordinate_pairs_quadratic(self):
+        coordinate_pairs_quadratic = coordinate_pairs('quadratic', coefficients[:3], [1, 2, 3, 4])
+        self.assertEqual(coordinate_pairs_quadratic, [[1.0, 10.0], [2.0, 19.0], [3.0, 32.0], [4.0, 49.0]])
+    
+    def test_coordinate_pairs_cubic(self):
+        coordinate_pairs_cubic = coordinate_pairs('cubic', coefficients[:4], [1, 2, 3, 4])
+        self.assertEqual(coordinate_pairs_cubic, [[1.0, 17.0], [2.0, 45.0], [3.0, 103.0], [4.0, 203.0]])
+    
+    def test_coordinate_pairs_hyperbolic(self):
+        coordinate_pairs_hyperbolic = coordinate_pairs('hyperbolic', coefficients[:2], [1, 2, 3, 4])
+        self.assertEqual(coordinate_pairs_hyperbolic, [[1.0, 5.0], [2.0, 4.0], [3.0, 3.6667], [4.0, 3.5]])
+    
+    def test_coordinate_pairs_exponential(self):
+        coordinate_pairs_exponential = coordinate_pairs('exponential', coefficients[:2], [1, 2, 3, 4])
+        self.assertEqual(coordinate_pairs_exponential, [[1.0, 6.0], [2.0, 18.0], [3.0, 54.0], [4.0, 162.0]])
+    
+    def test_coordinate_pairs_logarithmic(self):
+        coordinate_pairs_logarithmic = coordinate_pairs('logarithmic', coefficients[:2], [1, 2, 3, 4])
+        self.assertEqual(coordinate_pairs_logarithmic, [[1.0, 3.0], [2.0, 4.3863], [3.0, 5.1972], [4.0, 5.7726]])
+    
+    def test_coordinate_pairs_logistic(self):
+        coordinate_pairs_logistic = coordinate_pairs('logistic', coefficients[:3], [1, 2, 3, 4])
+        self.assertEqual(coordinate_pairs_logistic, [[1.0, 0.0001], [2.0, 0.0002], [3.0, 0.0049], [4.0, 0.0949]])
+    
+    def test_coordinate_pairs_sinusoidal(self):
+        coordinate_pairs_sinusoidal = coordinate_pairs('sinusoidal', coefficients[:4], [1, 2, 3, 4])
+        self.assertEqual(coordinate_pairs_sinusoidal, [[1.0, 8.0731], [2.0, 6.1758], [3.0, 7.5588], [4.0, 6.7178]])
+    
+    def test_coordinate_pairs_sinusoidal_mixed(self):
+        coordinate_pairs_sinusoidal_mixed = coordinate_pairs('sinusoidal', coefficients[:4], [1, 2, 3, 4, '1 + 1k'])
+        self.assertEqual(coordinate_pairs_sinusoidal_mixed,  [[1.0, 8.0731], [2.0, 6.1758], [3.0, 7.5588], [4.0, 6.7178], ['1 + 1k', 8.0731]])
+    
+    def test_coordinate_pairs_sinusoidal_mixed_intercepts(self):
+        coordinate_pairs_sinusoidal_mixed_intercepts = coordinate_pairs('sinusoidal', coefficients[:4], [1, 2, 3, 4, '1 + 1k'], 'intercepts')
+        self.assertEqual(coordinate_pairs_sinusoidal_mixed_intercepts, [[1.0, 0.0], [2.0, 0.0], [3.0, 0.0], [4.0, 0.0], ['1 + 1k', 0.0]])
+    
+    def test_coordinate_pairs_sinusoidal_mixed_inflections(self):
+        coordinate_pairs_sinusoidal_mixed_inflections = coordinate_pairs('sinusoidal', coefficients[:4], [1, 2, 3, 4, '1 + 1k'], 'inflections')
+        self.assertEqual(coordinate_pairs_sinusoidal_mixed_inflections,  [[1.0, 8.0731], [2.0, 6.1758], [3.0, 7.5588], [4.0, 6.7178], ['1 + 1k', 8.0731]])
+    
+    def test_coordinate_pairs_sinusoidal_mixed_maxima(self):
+        coordinate_pairs_sinusoidal_mixed_maxima = coordinate_pairs('sinusoidal', coefficients[:4], [1, 2, 3, 4, '1 + 1k'], 'maxima')
+        self.assertEqual(coordinate_pairs_sinusoidal_mixed_maxima, [[1.0, 8.0731], [2.0, 6.1758], [3.0, 7.5588], [4.0, 6.7178], ['1 + 1k', 8.0731]])
+    
+    def test_coordinate_pairs_sinusoidal_mixed_minima(self):
+        coordinate_pairs_sinusoidal_mixed_minima = coordinate_pairs('sinusoidal', coefficients[:4], [1, 2, 3, 4, '1 + 1k'], 'minima')
+        self.assertEqual(coordinate_pairs_sinusoidal_mixed_minima, [[1.0, 8.0731], [2.0, 6.1758], [3.0, 7.5588], [4.0, 6.7178], ['1 + 1k', 8.0731]])
 
 class TestKeyPoints(unittest.TestCase):
     maxDiff = None

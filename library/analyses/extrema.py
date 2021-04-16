@@ -1,6 +1,7 @@
 from library.errors.analyses import select_equations
 from library.errors.vectors import vector_of_scalars
 from library.errors.scalars import positive_integer
+from library.statistics.rounding import rounded_value
 from .maxima import maxima_points
 from .minima import minima_points
 from .intervals import sign_chart
@@ -82,11 +83,15 @@ def extrema_points(equation_type, coefficients, precision = 4):
 
         # Extract periodic unit as string
         periodic_unit_index = general_form.find(' + ') + 3
-        periodic_unit = general_form[periodic_unit_index:]
+        periodic_unit = 2 * float(general_form[periodic_unit_index:-1])
+        rounded_periodic_unit = rounded_value(periodic_unit, precision)
+
+        max_general_form = str(max_points[0]) + ' + ' + str(rounded_periodic_unit) + 'k'
+        min_general_form = str(min_points[0]) + ' + ' + str(rounded_periodic_unit) + 'k'
 
         # Append periodic unit as final element of each list
-        max_extended = max_points + [periodic_unit]
-        min_extended = min_points + [periodic_unit]
+        max_extended = max_points + [max_general_form]
+        min_extended = min_points + [min_general_form]
         result = {
             'maxima': max_extended,
             'minima': min_extended
