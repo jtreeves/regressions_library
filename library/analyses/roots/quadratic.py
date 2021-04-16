@@ -98,3 +98,11 @@ def quadratic_roots_first_derivative(first_constant, second_constant, third_cons
 def quadratic_roots_second_derivative(first_constant, second_constant, third_constant, precision = 4):
     root = [None]
     return root
+
+def quadratic_roots_initial_value(first_constant, second_constant, third_constant, intial_value, precision = 4):
+    roots = quadratic_roots(first_constant, second_constant, third_constant - intial_value, precision)
+    return roots
+
+def quadratic_roots_derivative_initial_value(first_constant, second_constant, third_constant, intial_value, precision = 4):
+    roots = linear_roots(2 * first_constant, second_constant - initial_value, precision)
+    return roots
