@@ -2,6 +2,7 @@ from math import exp
 from library.errors.scalars import two_scalars, positive_integer
 from library.errors.adjustments import no_zeroes
 from library.statistics.rounding import rounded_value
+from .hyperbolic import hyperbolic_roots
 
 def logarithmic_roots(first_constant, second_constant, precision = 4):
     """
@@ -67,3 +68,11 @@ def logarithmic_roots_first_derivative(first_constant, second_constant, precisio
 def logarithmic_roots_second_derivative(first_constant, second_constant, precision = 4):
     root = [None]
     return root
+
+def logarithmic_roots_initial_value(first_constant, second_constant, initial_value, precision = 4):
+    roots = logarithmic_roots(first_constant, second_constant - initial_value, precision)
+    return roots
+
+def logarithmic_roots_derivative_initial_value(first_constant, second_constant, initial_value, precision = 4):
+    roots = hyperbolic_roots(first_constant, -1 * initial_value, precision)
+    return roots

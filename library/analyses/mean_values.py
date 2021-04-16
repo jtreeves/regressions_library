@@ -1,9 +1,15 @@
-from math import log, exp, acos, pi
 from library.errors.analyses import select_equations
 from library.errors.scalars import compare_scalars, positive_integer
 from library.errors.vectors import vector_of_scalars
-from library.statistics.sort import sorted_list
 from library.statistics.rounding import rounded_value
+from .roots.linear import linear_roots_initial_value, linear_roots_derivative_initial_value
+from .roots.quadratic import quadratic_roots_initial_value, quadratic_roots_derivative_initial_value
+from .roots.cubic import cubic_roots_initial_value, cubic_roots_derivative_initial_value
+from .roots.hyperbolic import hyperbolic_roots_initial_value, hyperbolic_roots_derivative_initial_value
+from .roots.exponential import exponential_roots_initial_value, exponential_roots_derivative_initial_value
+from .roots.logarithmic import logarithmic_roots_initial_value, logarithmic_roots_derivative_initial_value
+from .roots.logistic import logistic_roots_initial_value, logistic_roots_derivative_initial_value
+from .roots.sinusoidal import sinusoidal_roots_initial_value, sinusoidal_roots_derivative_initial_value
 from .equations.linear import linear_equation
 from .equations.quadratic import quadratic_equation
 from .equations.cubic import cubic_equation
@@ -12,21 +18,7 @@ from .equations.exponential import exponential_equation
 from .equations.logarithmic import logarithmic_equation
 from .equations.logistic import logistic_equation
 from .equations.sinusoidal import sinusoidal_equation
-from .roots.linear import linear_roots
-from .roots.quadratic import quadratic_roots
-from .roots.cubic import cubic_roots
-from .roots.hyperbolic import hyperbolic_roots
-from .roots.logarithmic import logarithmic_roots
-from .roots.sinusoidal import sinusoidal_roots
 from .accumulation import accumulated_area
-from .roots.initials.linear import linear_roots_initial_value, linear_roots_derivative_initial_value
-from .roots.initials.quadratic import quadratic_roots_initial_value, quadratic_roots_derivative_initial_value
-from .roots.initials.cubic import cubic_roots_initial_value, cubic_roots_derivative_initial_value
-from .roots.initials.hyperbolic import hyperbolic_roots_initial_value, hyperbolic_roots_derivative_initial_value
-from .roots.initials.exponential import exponential_roots_initial_value, exponential_roots_derivative_initial_value
-from .roots.initials.logarithmic import logarithmic_roots_initial_value, logarithmic_roots_derivative_initial_value
-from .roots.initials.logistic import logistic_roots_initial_value, logistic_roots_derivative_initial_value
-from .roots.initials.sinusoidal import sinusoidal_roots_initial_value, sinusoidal_roots_derivative_initial_value
 from .points import single_points_within_range, generic_points_within_range
 
 def average_value_derivative(equation_type, coefficients, start, end, precision = 4):

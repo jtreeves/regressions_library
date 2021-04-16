@@ -66,3 +66,18 @@ def hyperbolic_roots_first_derivative(first_constant, second_constant, precision
 def hyperbolic_roots_second_derivative(first_constant, second_constant, precision = 4):
     root = [0.0]
     return root
+
+def hyperbolic_roots_initial_value(first_constant, second_constant, initial_value, precision = 4):
+    roots = hyperbolic_roots(first_constant, second_constant - initial_value, precision)
+    return roots
+
+def hyperbolic_roots_derivative_initial_value(first_constant, second_constant, initial_value, precision = 4):
+    root = []
+    ratio = -1 * first_constant / initial_value
+    if ratio < 0:
+        root.append(None)
+    else:
+        radical = ratio**(1/2)
+        rounded_radical = rounded_value(radical, precision)
+        root.append(rounded_radical)
+    return root
