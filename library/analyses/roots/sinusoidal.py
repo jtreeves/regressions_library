@@ -1,7 +1,7 @@
 from math import asin, acos, pi
 from library.errors.scalars import four_scalars, positive_integer
 from library.errors.adjustments import no_zeroes
-from library.statistics.sort import sorted_list
+from library.statistics.sort import sorted_list, sorted_strings
 from library.statistics.rounding import rounded_value
 from library.analyses.derivatives.sinusoidal import sinusoidal_derivatives
 
@@ -133,18 +133,7 @@ def sinusoidal_roots(first_constant, second_constant, third_constant, fourth_con
         rounded_roots.append(rounded_value(number, precision))
     
     # Sort other_roots
-    sorted_other_roots = []
-    if len(other_roots) == 1:
-        sorted_other_roots = other_roots
-    else:
-        first_index = other_roots[0].find(' + ') - 1
-        first_value = float(other_roots[0][:first_index])
-        second_index = other_roots[1].find(' + ') - 1
-        second_value = float(other_roots[1][:second_index])
-        if first_value < second_value:
-            sorted_other_roots = other_roots
-        else:
-            sorted_other_roots = [other_roots[1], other_roots[0]]
+    sorted_other_roots = sorted_strings(other_roots)
 
     # Combine numerical and non-numerical roots
     result = rounded_roots + sorted_other_roots
@@ -240,18 +229,7 @@ def sinusoidal_roots_derivative_initial_value(first_constant, second_constant, t
             rounded_roots.append(rounded_value(number, precision))
         
         # Sort other_roots
-        sorted_other_roots = []
-        if len(other_roots) == 1:
-            sorted_other_roots = other_roots
-        else:
-            first_index = other_roots[0].find(' + ') - 1
-            first_value = float(other_roots[0][:first_index])
-            second_index = other_roots[1].find(' + ') - 1
-            second_value = float(other_roots[1][:second_index])
-            if first_value < second_value:
-                sorted_other_roots = other_roots
-            else:
-                sorted_other_roots = [other_roots[1], other_roots[0]]
+        sorted_other_roots = sorted_strings(other_roots)
 
         # Combine numerical and non-numerical roots
         final_roots = rounded_roots + sorted_other_roots

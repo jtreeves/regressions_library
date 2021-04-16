@@ -3,7 +3,7 @@ from library.errors.scalars import scalar_value, compare_scalars, positive_integ
 from library.errors.vectors import vector_of_scalars
 from library.errors.matrices import allow_none_matrix
 from library.statistics.rounding import rounded_value
-from library.statistics.sort import sorted_list
+from library.statistics.sort import sorted_list, sorted_strings
 from library.statistics.ranges import shift_into_range
 from library.vectors.unify import unite_vectors
 from .equations.linear import linear_equation
@@ -288,19 +288,7 @@ def generalized_points_within_range(points, minimum, maximum, precision = 4):
         rounded_points.append(rounded_value(point, precision))
     
     # Sort string inputs
-    sorted_other_points = []
-    if len(other_points) > 0:
-        if len(other_points) == 1:
-            sorted_other_points = other_points
-        else:
-            first_index = other_points[0].find(' + ') - 1
-            first_value = float(other_points[0][:first_index])
-            second_index = other_points[1].find(' + ') - 1
-            second_value = float(other_points[1][:second_index])
-            if first_value < second_value:
-                sorted_other_points = other_points
-            else:
-                sorted_other_points = [other_points[1], other_points[0]]
+    sorted_other_points = sorted_strings(other_points)
     
     # Combine numerical and string inputs
     input_points = rounded_points + sorted_other_points

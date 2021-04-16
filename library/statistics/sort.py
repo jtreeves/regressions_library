@@ -113,3 +113,18 @@ def sorted_dimension(data, dimension = 1):
         more = sorted_dimension(more, dimension)
         result = less + pivots + more
         return result
+    
+def sorted_strings(data):
+    sorted_data = []
+    if len(data) == 1:
+        sorted_data = data
+    else:
+        first_index = data[0].find(' + ')
+        first_value = float(data[0][:first_index])
+        second_index = data[1].find(' + ')
+        second_value = float(data[1][:second_index])
+        if first_value < second_value:
+            sorted_data = data
+        else:
+            sorted_data = [data[1], data[0]]
+    return sorted_data

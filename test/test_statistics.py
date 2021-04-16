@@ -2,7 +2,7 @@ import unittest
 
 from library.statistics.rounding import rounded_value
 from library.statistics.summation import sum_value
-from library.statistics.sort import sorted_list, sorted_dimension
+from library.statistics.sort import sorted_list, sorted_dimension, sorted_strings
 from library.statistics.halve import half, half_dimension
 from library.statistics.minimum import minimum_value
 from library.statistics.maximum import maximum_value
@@ -23,6 +23,8 @@ identical_set = [1, 1, 1, 1, 1]
 approximate_set = [1.0001, 1.0001, 1.0001, 1.0001, 1.0001]
 extreme_set = [1, 13, 59, 134, 2892]
 dimension_set = [[2, 7], [1, 9], [5, 2], [3, 4], [4, 3], [8, 1], [2, 3], [7, 7], [1, 1], [5, 3]]
+strings_ordered = ['2 + 3k', '4 + 3k']
+strings_unordered = ['4 + 3k', '2 + 3k']
 
 normal_decimal = 6.817239833721
 extreme_decimal = 0.000000000000000000005782016894
@@ -72,6 +74,14 @@ class TestSort(unittest.TestCase):
     def test_sort_dimension(self):
         dimension_sort = sorted_dimension(dimension_set, 1)
         self.assertEqual(dimension_sort, [[1, 9], [1, 1], [2, 7], [2, 3], [3, 4], [4, 3], [5, 2], [5, 3], [7, 7], [8, 1]])
+    
+    def test_sort_strings_ordered(self):
+        sort_strings_ordered = sorted_strings(strings_ordered)
+        self.assertEqual(sort_strings_ordered, strings_ordered)
+    
+    def test_sort_strings_unordered(self):
+        sort_strings_unordered = sorted_strings(strings_unordered)
+        self.assertEqual(sort_strings_unordered, strings_ordered)
 
 class TestHalve(unittest.TestCase):
     def test_halve_even(self):
