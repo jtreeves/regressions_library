@@ -39,7 +39,7 @@ from library.analyses.maxima import maxima_points
 from library.analyses.minima import minima_points
 from library.analyses.extrema import extrema_points
 from library.analyses.inflections import inflection_points
-from library.analyses.points import key_coordinates, points_within_range
+from library.analyses.points import key_coordinates, generalized_coordinates_within_range
 from library.analyses.accumulation import accumulated_area
 from library.analyses.mean_values import average_values
 
@@ -1021,19 +1021,19 @@ class TestKeyPoints(unittest.TestCase):
         sinusoidal_key_points = key_coordinates('sinusoidal', coefficients[:4])
         self.assertEqual(sinusoidal_key_points, {'roots': [None], 'maxima': [[5.5236, 9.0], [7.618, 9.0], [9.7124, 9.0], ['5.5236 + 2.0944k', 9.0]], 'minima': [[6.5708, 5.0], [8.6652, 5.0], ['6.5708 + 2.0944k', 5.0]], 'inflections': [[5.0, 7.0], [6.0472, 7.0], [7.0944, 7.0], [8.1416, 7.0], [9.1888, 7.0001], ['5.0 + 1.0472k', 7.0]]})
 
-class TestPointsWithinRange(unittest.TestCase):
+class TestGeneralizedCoordinatesWithinRange(unittest.TestCase):
     maxDiff = None
 
     def test_points_in_range(self):
-        good_range = points_within_range([[11, 1], [13, 1], [15, 1], [17, 1], [19, 1], ['1 + 2k', 1]], 11, 19, 8, 2)
+        good_range = generalized_coordinates_within_range([[11, 1], [13, 1], [15, 1], [17, 1], [19, 1], ['1 + 2k', 1]], 11, 19, 8, 2)
         self.assertEqual(good_range, [[11.0, 1], [13.0, 1], [15.0, 1], [17.0, 1], [19.0, 1], ['11.0 + 2.0k', 1]])
     
     def test_points_not_in_range(self):
-        bad_range = points_within_range([[11, 1], [13, 1], [15, 1], [17, 1], [19, 1], ['1 + 2k', 1]], 50, 60, 5, 2)
+        bad_range = generalized_coordinates_within_range([[11, 1], [13, 1], [15, 1], [17, 1], [19, 1], ['1 + 2k', 1]], 50, 60, 5, 2)
         self.assertEqual(bad_range, [[51.0, 1], [53.0, 1], [55.0, 1], ['51.0 + 2.0k', 1]])
     
     def test_no_points(self):
-        no_points = points_within_range([None], 50, 60, 5, 2)
+        no_points = generalized_coordinates_within_range([None], 50, 60, 5, 2)
         self.assertEqual(no_points, [None])
 
 class TestAccumulation(unittest.TestCase):
