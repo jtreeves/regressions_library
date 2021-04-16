@@ -1090,19 +1090,19 @@ class TestAverages(unittest.TestCase):
     
     def test_exponential_averages(self):
         exponential_averages = average_values('exponential', coefficients[:2], 10, 20)
-        self.assertEqual(exponential_averages, {'average_value_derivative': 697345070.4, 'mean_values_derivative': [17.8185], 'average_value_integral': 634750837.5729, 'mean_values_integral': [19.4815]})
+        self.assertEqual(exponential_averages, {'average_value_derivative': 697345070.4, 'mean_values_derivative': [17.8185], 'average_value_integral': 634750837.5729, 'mean_values_integral': [17.8185]})
     
     def test_exponential_averages_unary_base(self):
         exponential_averages_unary_base = average_values('exponential', [2, 1], 10, 20)
-        self.assertEqual(exponential_averages_unary_base, {'average_value_derivative': 0.0, 'mean_values_derivative': [None], 'average_value_integral': 2.003, 'mean_values_integral': [None]})
+        self.assertEqual(exponential_averages_unary_base, {'average_value_derivative': 0.0, 'mean_values_derivative': [None], 'average_value_integral': 2.003, 'mean_values_integral': [14.9888]})
     
     def test_exponential_averages_negative_base(self):
         exponential_averages_negative_base = average_values('exponential', [2, -3], 10, 20)
-        self.assertEqual(exponential_averages_negative_base, {'average_value_derivative': 697345070.4, 'mean_values_derivative': [17.8185], 'average_value_integral': 634750837.5729, 'mean_values_integral': [19.4815]})
+        self.assertEqual(exponential_averages_negative_base, {'average_value_derivative': 697345070.4, 'mean_values_derivative': [17.8185], 'average_value_integral': 634750837.5729, 'mean_values_integral': [17.8185]})
     
     def test_exponential_averages_negative_lead(self):
         exponential_averages_negative_lead = average_values('exponential', [-2, 3], 10, 20)
-        self.assertEqual(exponential_averages_negative_lead, {'average_value_derivative': -697345070.4, 'mean_values_derivative': [17.8185], 'average_value_integral': -634750837.5729, 'mean_values_integral': [19.4815]})
+        self.assertEqual(exponential_averages_negative_lead, {'average_value_derivative': -697345070.4, 'mean_values_derivative': [17.8185], 'average_value_integral': -634750837.5729, 'mean_values_integral': [17.8185]})
     
     def test_logarithmic_averages(self):
         logarithmic_averages = average_values('logarithmic', coefficients[:2], 10, 20)
@@ -1114,7 +1114,7 @@ class TestAverages(unittest.TestCase):
     
     def test_sinusoidal_averages(self):
         sinusoidal_averages = average_values('sinusoidal', coefficients[:4], 10, 20)
-        self.assertEqual(sinusoidal_averages, {'average_value_derivative': 0.0401, 'mean_values_derivative': [10.7618, 11.8046, 12.8562, 13.899, 14.9506, 15.9933, '10.7618 + 2.0944k', '11.8046 + 2.0944k'], 'average_value_integral': 6.9143, 'mean_values_integral': [10.2503, 11.2689, 12.3447, 13.3633, 14.4391, 15.4577, 16.5335, 17.5521, 18.6279, 19.6465, '10.2503 + 2.0944k', '11.2689 + 2.0944k']})
+        self.assertEqual(sinusoidal_averages, {'average_value_derivative': 0.0401, 'mean_values_derivative': [10.7618, 11.8046, 12.8562, 13.899, 14.9506, 15.9934, 17.045, 18.0878, 19.1394, '10.7618 + 2.0944k', '11.8046 + 2.0944k'], 'average_value_integral': 6.9143, 'mean_values_integral': [10.2503, 11.2689, 12.3447, 13.3633, 14.4391, 15.4577, 16.5335, 17.5521, 18.6279, 19.6465, '10.2503 + 2.0944k', '11.2689 + 2.0944k']})
     
     def test_averages_start_end(self):
         averages_start_end = average_values('cubic', coefficients[:4], 1, 1)

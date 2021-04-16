@@ -27,6 +27,7 @@ from .roots.initials.exponential import exponential_roots_initial_value, exponen
 from .roots.initials.logarithmic import logarithmic_roots_initial_value, logarithmic_roots_derivative_initial_value
 from .roots.initials.logistic import logistic_roots_initial_value, logistic_roots_derivative_initial_value
 from .roots.initials.sinusoidal import sinusoidal_roots_initial_value, sinusoidal_roots_derivative_initial_value
+from .points import single_points_within_range, generic_points_within_range
 
 def average_value_derivative(equation_type, coefficients, start, end, precision = 4):
     """
@@ -175,152 +176,22 @@ def mean_values_derivative(equation_type, coefficients, start, end, precision = 
         average = 10**(-precision)
     if equation_type == 'linear':
         result = linear_roots_derivative_initial_value(*coefficients, average, precision)
-        return result
     elif equation_type == 'quadratic':
         result = quadratic_roots_derivative_initial_value(*coefficients, average, precision)
     elif equation_type == 'cubic':
-        values = quadratic_roots(3 * coefficients[0], 2 * coefficients[1], coefficients[2] - average, precision)
-        result = values
+        result = cubic_roots_derivative_initial_value(*coefficients, average, precision)
     elif equation_type == 'hyperbolic':
-        ratio = -1 * coefficients[0] / average
-        root = ratio ** (1/2)
-        first_value = root
-        second_value = -1 * root
-        result.extend([first_value, second_value])
+        result = hyperbolic_roots_derivative_initial_value(*coefficients, average, precision)
     elif equation_type == 'exponential':
-        base_log = log(abs(coefficients[1]))
-        if base_log == 0:
-            base_log = 10**(-precision)
-        numerator = log(average / (coefficients[0] * base_log))
-        denominator = base_log
-        value = numerator / denominator
-        result.append(value)
+        result = exponential_roots_derivative_initial_value(*coefficients, average, precision)
     elif equation_type == 'logarithmic':
-        value = hyperbolic_roots(coefficients[0], -1 * average, precision)
-        result = value
+        result = logarithmic_roots_derivative_initial_value(*coefficients, average, precision)
     elif equation_type == 'logistic':
-        quadratic_values = quadratic_roots(average, 2 * average - coefficients[0] * coefficients[1], average, precision)
-        if quadratic_values[0] == None:
-            result = [None]
-            return result
-        else:
-            values = []
-            for value in quadratic_values:
-                if value <= 0:
-                    values.append(coefficients[2] - log(10**(-precision)) / coefficients[1])
-                else:
-                    values.append(coefficients[2] - log(value) / coefficients[1])
-            result = values
+        result = logistic_roots_derivative_initial_value(*coefficients, average, precision)
     elif equation_type == 'sinusoidal':
-        ratio = average / (coefficients[0] * coefficients[1])
-        radians = acos(ratio)
-        periodic_radians = radians / coefficients[1]
-        if ratio == 0:
-            periodic_unit = pi / coefficients[1]
-            initial_value = coefficients[2] + periodic_radians
-            if periodic_unit > 0:
-                while initial_value > end:
-                    initial_value -= periodic_unit
-                while initial_value < start:
-                    initial_value += periodic_unit
-            else:
-                while initial_value > end:
-                    initial_value += periodic_unit
-                while initial_value < start:
-                    initial_value -= periodic_unit
-            first_value = initial_value + 1 * periodic_unit
-            second_value = initial_value + 2 * periodic_unit
-            third_value = initial_value + 3 * periodic_unit
-            fourth_value = initial_value + 4 * periodic_unit
-            rounded_initial_value = rounded_value(initial_value, precision)
-            rounded_periodic_unit = rounded_value(periodic_unit, precision)
-            general_form = str(rounded_initial_value) + ' + ' + str(rounded_periodic_unit) + 'k'
-            result = [initial_value, first_value, second_value, third_value, fourth_value, general_form]
-        elif ratio == 1 or ratio == -1:
-            periodic_unit = 2 * pi / coefficients[1]
-            initial_value = coefficients[2] + periodic_radians
-            if periodic_unit > 0:
-                while initial_value > end:
-                    initial_value -= periodic_unit
-                while initial_value < start:
-                    initial_value += periodic_unit
-            else:
-                while initial_value > end:
-                    initial_value += periodic_unit
-                while initial_value < start:
-                    initial_value -= periodic_unit
-            first_value = initial_value + 1 * periodic_unit
-            second_value = initial_value + 2 * periodic_unit
-            rounded_initial_value = rounded_value(initial_value, precision)
-            rounded_periodic_unit = rounded_value(periodic_unit, precision)
-            general_form = str(rounded_initial_value) + ' + ' + str(rounded_periodic_unit) + 'k'
-            result = [initial_value, first_value, second_value, general_form]
-        else:
-            periodic_unit = 2 * pi / coefficients[1]
-            initial_value = coefficients[2] + periodic_radians
-            if periodic_unit > 0:
-                while initial_value > end:
-                    initial_value -= periodic_unit
-                while initial_value < start:
-                    initial_value += periodic_unit
-            else:
-                while initial_value > end:
-                    initial_value += periodic_unit
-                while initial_value < start:
-                    initial_value -= periodic_unit
-            first_value = initial_value + 1 * periodic_unit
-            second_value = initial_value + 2 * periodic_unit
-            rounded_initial_value = rounded_value(initial_value, precision)
-            rounded_periodic_unit = rounded_value(periodic_unit, precision)
-            general_form = str(rounded_initial_value) + ' + ' + str(rounded_periodic_unit) + 'k'
-            alternative_initial_value = coefficients[2] + 2 * pi / coefficients[1] - periodic_radians
-            if periodic_unit > 0:
-                while alternative_initial_value > end:
-                    alternative_initial_value -= periodic_unit
-                while alternative_initial_value < start:
-                    alternative_initial_value += periodic_unit
-            else:
-                while alternative_initial_value > end:
-                    alternative_initial_value += periodic_unit
-                while alternative_initial_value < start:
-                    alternative_initial_value -= periodic_unit
-            alternative_first_value = alternative_initial_value + 1 * periodic_unit
-            alternative_second_value = alternative_initial_value + 2 * periodic_unit
-            rounded_alternative_initial_value = rounded_value(alternative_initial_value, precision)
-            alternative_general_form = str(rounded_alternative_initial_value) + ' + ' + str(rounded_periodic_unit) + 'k'
-            result = [initial_value, first_value, second_value, alternative_initial_value, alternative_first_value, alternative_second_value, general_form, alternative_general_form]
-    if not result:
-        result = [None]
-        return result
-    numerical_results = []
-    other_results = []
-    for item in result:
-        if isinstance(item, (int, float)):
-            numerical_results.append(item)
-        else:
-            other_results.append(item)
-    selected_results = [x for x in numerical_results if x > start and x < end]
-    if not selected_results:
-        final = [None]
-        return final
-    sorted_results = sorted_list(selected_results)
-    rounded_results = []
-    for number in sorted_results:
-        rounded_results.append(rounded_value(number, precision))
-    sorted_other_results = []
-    if len(other_results) > 0:
-        if len(other_results) == 1:
-            sorted_other_results = other_results
-        else:
-            first_index = other_results[0].find(' + ') - 1
-            first_value = float(other_results[0][:first_index])
-            second_index = other_results[1].find(' + ') - 1
-            second_value = float(other_results[1][:second_index])
-            if first_value < second_value:
-                sorted_other_results = other_results
-            else:
-                sorted_other_results = [other_results[1], other_results[0]]
-    final_result = rounded_results + sorted_other_results
+        options = sinusoidal_roots_derivative_initial_value(*coefficients, average, precision)
+        result = single_points_within_range(options, start, end, precision)
+    final_result = generic_points_within_range(result, start, end)
     return final_result
 
 def average_value_integral(equation_type, coefficients, start, end, precision = 4):
@@ -451,98 +322,23 @@ def mean_values_integral(equation_type, coefficients, start, end, precision = 4)
     if average == 0:
         average = 10**(-precision)
     if equation_type == 'linear':
-        value = linear_roots(coefficients[0], coefficients[1] - average, precision)
-        result = value
+        result = linear_roots_initial_value(*coefficients, average, precision)
     elif equation_type == 'quadratic':
-        values = quadratic_roots(coefficients[0], coefficients[1], coefficients[2] - average, precision)
-        result = values
+        result = quadratic_roots_initial_value(*coefficients, average, precision)
     elif equation_type == 'cubic':
-        values = cubic_roots(coefficients[0], coefficients[1], coefficients[2], coefficients[3] - average, precision)
-        result = values
+        result = cubic_roots_initial_value(*coefficients, average, precision)
     elif equation_type == 'hyperbolic':
-        value = hyperbolic_roots(coefficients[0], coefficients[1] - average, precision)
-        result = value
+        result = hyperbolic_roots_initial_value(*coefficients, average, precision)
     elif equation_type == 'exponential':
-        numerator = average / coefficients[0]
-        denominator = log(abs(coefficients[1]))
-        if denominator == 0:
-            denominator = 10**(-precision)
-        ratio = numerator / denominator
-        value = log(abs(ratio))
-        result.append(value)
+        result = exponential_roots_initial_value(*coefficients, average, precision)
     elif equation_type == 'logarithmic':
-        value = logarithmic_roots(coefficients[0], coefficients[1] - average, precision)
-        result = value
+        result = logarithmic_roots_initial_value(*coefficients, average, precision)
     elif equation_type == 'logistic':
-        ratio = coefficients[0] / average
-        if ratio <= 1:
-            pass
-        else:
-            value = coefficients[2] - log(ratio - 1) / coefficients[1]
-            result.append(value)
+        result = logistic_roots_initial_value(*coefficients, average, precision)
     elif equation_type == 'sinusoidal':
-        values = sinusoidal_roots(coefficients[0], coefficients[1], coefficients[2], coefficients[3] - average, precision)
-        general_forms = []
-        for value in values:
-            if isinstance(value, str):
-                general_forms.append(value)
-        options = []
-        for form in general_forms:
-            initial_value_index = form.find(' + ')
-            initial_value = float(form[:initial_value_index])
-            periodic_unit_index = initial_value_index + 3
-            periodic_unit = float(form[periodic_unit_index:-1])
-            if periodic_unit > 0:
-                while initial_value > end:
-                    initial_value -= periodic_unit
-                while initial_value < start:
-                    initial_value += periodic_unit
-            else:
-                while initial_value > end:
-                    initial_value += periodic_unit
-                while initial_value < start:
-                    initial_value -= periodic_unit
-            first_value = initial_value + 1 * periodic_unit
-            second_value = initial_value + 2 * periodic_unit
-            third_value = initial_value + 3 * periodic_unit
-            fourth_value = initial_value + 4 * periodic_unit
-            rounded_initial_value = rounded_value(initial_value, precision)
-            rounded_periodic_unit = rounded_value(periodic_unit, precision)
-            general_form = str(rounded_initial_value) + ' + ' + str(rounded_periodic_unit) + 'k'
-            options += [initial_value, first_value, second_value, third_value, fourth_value, general_form]
-        result = options
-    if not result:
-        result = [None]
-        return result
-    numerical_results = []
-    other_results = []
-    for item in result:
-        if isinstance(item, (int, float)):
-            numerical_results.append(item)
-        else:
-            other_results.append(item)
-    selected_results = [x for x in numerical_results if x > start and x < end]
-    if not selected_results:
-        final = [None]
-        return final
-    sorted_results = sorted_list(selected_results)
-    rounded_results = []
-    for number in sorted_results:
-        rounded_results.append(rounded_value(number, precision))
-    sorted_other_results = []
-    if len(other_results) > 0:
-        if len(other_results) == 1:
-            sorted_other_results = other_results
-        else:
-            first_index = other_results[0].find(' + ') - 1
-            first_value = float(other_results[0][:first_index])
-            second_index = other_results[1].find(' + ') - 1
-            second_value = float(other_results[1][:second_index])
-            if first_value < second_value:
-                sorted_other_results = other_results
-            else:
-                sorted_other_results = [other_results[1], other_results[0]]
-    final_result = rounded_results + sorted_other_results
+        options = sinusoidal_roots_initial_value(*coefficients, average, precision)
+        result = single_points_within_range(options, start, end, precision)
+    final_result = generic_points_within_range(result, start, end)
     return final_result
 
 def average_values(equation_type, coefficients, start, end, precision = 4):

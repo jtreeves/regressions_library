@@ -313,3 +313,99 @@ def points_within_range(coordinates, minimum, maximum, interval, precision = 4):
     else:
         final_points = coordinates
     return final_points
+
+def single_points_within_range(coordinates, minimum, maximum, precision = 4):
+    general_points = []
+    for point in coordinates:
+        if isinstance(point, str):
+            general_points.append(point)
+    
+    # Generate options for inputs
+    optional_points = []
+    for point in general_points:
+        # Grab initial value and periodic unit
+        initial_value_index = point.find(' + ')
+        initial_value = float(point[:initial_value_index])
+        periodic_unit_index = initial_value_index + 3
+        periodic_unit = float(point[periodic_unit_index:-1])
+        
+        # Increase or decrease initial value to fit into range
+        if periodic_unit > 0:
+            while initial_value > maximum:
+                initial_value -= periodic_unit
+            while initial_value < minimum:
+                initial_value += periodic_unit
+        else:
+            while initial_value > maximum:
+                initial_value += periodic_unit
+            while initial_value < minimum:
+                initial_value -= periodic_unit
+        
+        # Generate additional values within range
+        first_value = initial_value + 1 * periodic_unit
+        second_value = initial_value + 2 * periodic_unit
+        third_value = initial_value + 3 * periodic_unit
+        fourth_value = initial_value + 4 * periodic_unit
+        rounded_initial_value = rounded_value(initial_value, precision)
+        rounded_periodic_unit = rounded_value(periodic_unit, precision)
+        
+        # Generate general form of input
+        general_form = str(rounded_initial_value) + ' + ' + str(rounded_periodic_unit) + 'k'
+        
+        # Store inputs
+        optional_points += [initial_value, first_value, second_value, third_value, fourth_value, general_form]
+    
+    # Separate numerical inputs from string inputs
+    numerical_points = []
+    other_points = []
+    for point in optional_points:
+        if isinstance(point, (int, float)):
+            numerical_points.append(point)
+        else:
+            other_points.append(point)
+    
+    # Sort numerical inputs
+    sorted_points = sorted_list(numerical_points)
+
+    # Reduce numerical inputs to within a given range
+    selected_points = [x for x in sorted_points if x >= minimum and x <= maximum]
+    
+    # Round numerical inputs
+    rounded_points = []
+    for point in selected_points:
+        rounded_points.append(rounded_value(point, precision))
+    
+    # Sort string inputs
+    sorted_other_points = []
+    if len(other_points) > 0:
+        if len(other_points) == 1:
+            sorted_other_points = other_points
+        else:
+            first_index = other_points[0].find(' + ') - 1
+            first_value = float(other_points[0][:first_index])
+            second_index = other_points[1].find(' + ') - 1
+            second_value = float(other_points[1][:second_index])
+            if first_value < second_value:
+                sorted_other_points = other_points
+            else:
+                sorted_other_points = [other_points[1], other_points[0]]
+    
+    # Combine numerical and string inputs
+    input_points = rounded_points + sorted_other_points
+    return input_points
+
+def generic_points_within_range(points, start, end):
+    numerical_results = []
+    other_results = []
+    for item in points:
+        if isinstance(item, (int, float)):
+            numerical_results.append(item)
+        else:
+            other_results.append(item)
+    selected_results = [x for x in numerical_results if x > start and x < end]
+    final_results = []
+    if not selected_results and not other_results:
+        final_results.append(None)
+    else:
+        final_results.extend(selected_results + other_results)
+    return final_results

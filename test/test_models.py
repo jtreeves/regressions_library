@@ -707,7 +707,7 @@ class TestExponentialModel(unittest.TestCase):
         self.assertEqual(exponential_model_low['averages']['range']['average_value_integral'], 470.81)
     
     def test_exponential_model_low_averages_range_integral_points(self):
-        self.assertEqual(exponential_model_low['averages']['range']['mean_values_integral'], [5.43])
+        self.assertEqual(exponential_model_low['averages']['range']['mean_values_integral'], [7.35])
     
     def test_exponential_model_low_averages_iqr_derivative_value(self):
         self.assertEqual(exponential_model_low['averages']['iqr']['average_value_derivative'], 142.83)
@@ -719,7 +719,7 @@ class TestExponentialModel(unittest.TestCase):
         self.assertEqual(exponential_model_low['averages']['iqr']['average_value_integral'], 207.57)
     
     def test_exponential_model_low_averages_iqr_integral_points(self):
-        self.assertEqual(exponential_model_low['averages']['iqr']['mean_values_integral'], [4.61])
+        self.assertEqual(exponential_model_low['averages']['iqr']['mean_values_integral'], [6.16])
     
     def test_exponential_model_low_correlation(self):
         self.assertEqual(exponential_model_low['correlation'], 1.0)
@@ -756,7 +756,7 @@ class TestExponentialModel(unittest.TestCase):
         self.assertEqual(exponential_model_high['averages']['range']['average_value_integral'], 491.478111)
     
     def test_exponential_model_high_averages_range_integral_points(self):
-        self.assertEqual(exponential_model_high['averages']['range']['mean_values_integral'], [5.465318])
+        self.assertEqual(exponential_model_high['averages']['range']['mean_values_integral'], [7.356021])
     
     def test_exponential_model_high_averages_iqr_derivative_value(self):
         self.assertEqual(exponential_model_high['averages']['iqr']['average_value_derivative'], 148.8)
@@ -768,7 +768,7 @@ class TestExponentialModel(unittest.TestCase):
         self.assertEqual(exponential_model_high['averages']['iqr']['average_value_integral'], 214.673022)
     
     def test_exponential_model_high_averages_iqr_integral_points(self):
-        self.assertEqual(exponential_model_high['averages']['iqr']['mean_values_integral'], [4.637017])
+        self.assertEqual(exponential_model_high['averages']['iqr']['mean_values_integral'], [6.161035])
     
     def test_exponential_model_high_correlation(self):
         self.assertEqual(exponential_model_high['correlation'], 1.0)
@@ -1173,7 +1173,7 @@ class TestSinusoidalModel(unittest.TestCase):
         self.assertEqual(sinusoidal_model_high['averages']['iqr']['average_value_derivative'], -1.0)
     
     def test_sinusoidal_model_high_averages_iqr_derivative_points(self):
-        self.assertEqual(sinusoidal_model_high['averages']['iqr']['mean_values_derivative'], [3.918723, 6.081278, 7.918723, '3.918723 + 4.000001k', '6.081278 + 4.000001k'])
+        self.assertEqual(sinusoidal_model_high['averages']['iqr']['mean_values_derivative'], [3.918723, 6.081278, 7.918724, '3.918723 + 4.000001k', '6.081278 + 4.000001k'])
     
     def test_sinusoidal_model_high_averages_iqr_integral_value(self):
         self.assertEqual(sinusoidal_model_high['averages']['iqr']['average_value_integral'], 2.36337)
