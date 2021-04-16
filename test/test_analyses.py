@@ -1268,7 +1268,7 @@ class TestGeneralizedCoordinatesWithinRange(unittest.TestCase):
     
     def test_generalized_coordinates_not_in_range(self):
         generalized_coordinates_not_in_range = generalized_coordinates_within_range([[11, 1], [13, 1], [15, 1], [17, 1], [19, 1], ['1 + 2k', 1]], 50, 60, 5)
-        self.assertEqual(generalized_coordinates_not_in_range, [[51.0, 1], [53.0, 1], [55.0, 1], ['51.0 + 2.0k', 1]])
+        self.assertEqual(generalized_coordinates_not_in_range, [[51.0, 1], [53.0, 1], [55.0, 1], [57.0, 1], [59.0, 1], ['51.0 + 2.0k', 1]])
     
     def test_generalized_coordinates_none(self):
         generalized_coordinates_none = generalized_coordinates_within_range([None], 50, 60, 5)

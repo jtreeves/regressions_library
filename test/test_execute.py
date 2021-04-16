@@ -243,7 +243,7 @@ class TestAgnosticModels(unittest.TestCase):
         self.assertEqual(agnostic_models['models']['sinusoidal']['constants'], [14.0875, 0.7119, -3.7531, 34.2915])
     
     def test_agnostic_models_sinusoidal_points(self):
-        self.assertEqual(agnostic_models['models']['sinusoidal']['points'], {'roots': [None], 'maxima': [[7.2794, 48.379], [16.1054, 48.379], ['7.2794 + 8.826k', 48.379]], 'minima': [[2.8664, 20.204], [11.6924, 20.204], ['2.8664 + 8.826k', 20.204]], 'inflections': [[5.0729, 34.2915], [9.4859, 34.2915], [13.8989, 34.2915], [18.3119, 34.2915], ['5.0729 + 4.413k', 34.2915]]})
+        self.assertEqual(agnostic_models['models']['sinusoidal']['points'], {'roots': [None], 'maxima': [[7.2794, 48.379], ['7.2794 + 8.826k', 48.379]], 'minima': [[2.8664, 20.204], ['2.8664 + 8.826k', 20.204]], 'inflections': [[5.0729, 34.2915], [9.4859, 34.2915], ['5.0729 + 4.413k', 34.2915]]})
     
     def test_agnostic_models_sinusoidal_accumulations(self):
         self.assertEqual(agnostic_models['models']['sinusoidal']['accumulations'], {'range': 307.8897, 'iqr': 183.0504})
@@ -383,7 +383,7 @@ class TestLinearModels(unittest.TestCase):
         self.assertEqual(linear_models['models']['sinusoidal']['constants'], [3.6953, 1.8762, 3.8255, 16.5])
     
     def test_linear_models_sinusoidal_points(self):
-        self.assertEqual(linear_models['models']['sinusoidal']['points'], {'roots': [None], 'maxima': [[4.6627, 20.1953], [8.0115, 20.1953], [11.3603, 20.1953], ['4.6627 + 3.3488k', 20.1953]], 'minima': [[6.3372, 12.8047], [9.686, 12.8047], [13.0348, 12.8047], ['6.3372 + 3.3488k', 12.8047]], 'inflections': [[3.8255, 16.5], [5.4999, 16.5], [7.1743, 16.5], [8.8487, 16.5], [10.5231, 16.5], ['3.8255 + 1.6744k', 16.5]]})
+        self.assertEqual(linear_models['models']['sinusoidal']['points'], {'roots': [None], 'maxima': [[4.6627, 20.1953], [8.0115, 20.1953], ['4.6627 + 3.3488k', 20.1953]], 'minima': [[6.3372, 12.8047], [9.686, 12.8047], ['6.3372 + 3.3488k', 12.8047]], 'inflections': [[3.8255, 16.5], [5.4999, 16.5], [7.1743, 16.5], [8.8487, 16.5], ['3.8255 + 1.6744k', 16.5]]})
     
     def test_linear_models_sinusoidal_accumulations(self):
         self.assertEqual(linear_models['models']['sinusoidal']['accumulations'], {'range': 148.4997, 'iqr': 82.5004})
@@ -523,7 +523,7 @@ class TestQuadraticModels(unittest.TestCase):
         self.assertEqual(quadratic_models['models']['sinusoidal']['constants'], [-45.0, 0.3267, -8.6568, 10.9862])
     
     def test_quadratic_models_sinusoidal_points(self):
-        self.assertEqual(quadratic_models['models']['sinusoidal']['points'], {'roots': [[11.3304, 0.0], [19.4367, 0.0], [30.5627, 0.0], [38.669, 0.0], ['11.3304 + 19.2323k', 0.0], ['19.4367 + 19.2323k', 0.0]], 'maxima': [[5.7674, 55.9862], [24.9996, 55.9862], [44.2318, 55.9862], ['5.7674 + 19.2322k', 55.9862]], 'minima': [[15.3835, -34.0138], [34.6157, -34.0138], [53.8479, -34.0138], ['15.3835 + 19.2322k', -34.0138]], 'inflections': [[10.5754, 10.9862], [20.1915, 10.9862], [29.8076, 10.9862], [39.4237, 10.9862], [49.0398, 10.9862], ['10.5754 + 9.6161k', 10.9862]]})
+        self.assertEqual(quadratic_models['models']['sinusoidal']['points'], {'roots': [['11.3304 + 19.2323k', 0.0], ['19.4367 + 19.2323k', 0.0]], 'maxima': [[5.7674, 55.9862], ['5.7674 + 19.2322k', 55.9862]], 'minima': [['15.3835 + 19.2322k', -34.0138]], 'inflections': [['10.5754 + 9.6161k', 10.9862]]})
     
     def test_quadratic_models_sinusoidal_accumulations(self):
         self.assertEqual(quadratic_models['models']['sinusoidal']['accumulations'], {'range': 371.9185, 'iqr': 254.9709})
@@ -663,7 +663,7 @@ class TestCubicModels(unittest.TestCase):
         self.assertEqual(cubic_models['models']['sinusoidal']['constants'], [-26.6739, 0.9479, -1.5548, 62.2016])
     
     def test_cubic_models_sinusoidal_points(self):
-        self.assertEqual(cubic_models['models']['sinusoidal']['points'], {'roots': [None], 'maxima': [[3.4166, 88.8755], [10.0452, 88.8755], ['3.4166 + 6.6286k', 88.8755]], 'minima': [[6.7309, 35.5277], [13.3595, 35.5277], ['6.7309 + 6.6286k', 35.5277]], 'inflections': [[1.7595, 62.2016], [5.0738, 62.2016], [8.3881, 62.2016], [11.7024, 62.2016], ['1.7595 + 3.3143k', 62.2016]]})
+        self.assertEqual(cubic_models['models']['sinusoidal']['points'], {'roots': [None], 'maxima': [[3.4166, 88.8755], ['3.4166 + 6.6286k', 88.8755]], 'minima': [[6.7309, 35.5277], ['6.7309 + 6.6286k', 35.5277]], 'inflections': [[1.7595, 62.2016], [5.0738, 62.2016], [8.3881, 62.2016], ['1.7595 + 3.3143k', 62.2016]]})
     
     def test_cubic_models_sinusoidal_accumulations(self):
         self.assertEqual(cubic_models['models']['sinusoidal']['accumulations'], {'range': 579.7687, 'iqr': 295.5756})
@@ -803,7 +803,7 @@ class TestHyperbolicModels(unittest.TestCase):
         self.assertEqual(hyperbolic_models['models']['sinusoidal']['constants'], [448.548, 1.1869, -0.0788, 746.6978])
     
     def test_hyperbolic_models_sinusoidal_points(self):
-        self.assertEqual(hyperbolic_models['models']['sinusoidal']['points'], {'roots': [None], 'maxima': [[1.2446, 1195.2458], [6.5384, 1195.2458], ['1.2446 + 5.2938k', 1195.2458]], 'minima': [[3.8915, 298.1498], [9.1853, 298.1498], ['3.8915 + 5.2938k', 298.1498]], 'inflections': [[2.5681, 746.6978], [5.215, 746.6978], [7.8619, 746.6978], [10.5088, 746.6978], ['2.5681 + 2.6469k', 746.6978]]})
+        self.assertEqual(hyperbolic_models['models']['sinusoidal']['points'], {'roots': [None], 'maxima': [[1.2446, 1195.2458], [6.5384, 1195.2458], ['1.2446 + 5.2938k', 1195.2458]], 'minima': [[3.8915, 298.1498], [9.1853, 298.1498], ['3.8915 + 5.2938k', 298.1498]], 'inflections': [[2.5681, 746.6978], [5.215, 746.6978], [7.8619, 746.6978], ['2.5681 + 2.6469k', 746.6978]]})
     
     def test_hyperbolic_models_sinusoidal_accumulations(self):
         self.assertEqual(hyperbolic_models['models']['sinusoidal']['accumulations'], {'range': 6517.3946, 'iqr': 3777.0004})
@@ -943,7 +943,7 @@ class TestExponentialModels(unittest.TestCase):
         self.assertEqual(exponential_models['models']['sinusoidal']['constants'], [3065.0, 0.1022, 9.0, 1641.6143])
     
     def test_exponential_models_sinusoidal_points(self):
-        self.assertEqual(exponential_models['models']['sinusoidal']['points'], {'roots': [[3.4695, 0.0], [45.2702, 0.0], [64.9488, 0.0], [106.7495, 0.0], [126.4281, 0.0], ['3.4695 + 61.4793k', 0.0], ['45.2702 + 61.4793k', 0.0]], 'maxima': [[24.3698, 4706.6143], [85.8492, 4706.6143], ['24.3698 + 61.4794k', 4706.6143]], 'minima': [[55.1095, -1423.3857], [116.5889, -1423.3857], ['55.1095 + 61.4794k', -1423.3857]], 'inflections': [[9.0, 1641.6143], [39.7397, 1641.6143], [70.4794, 1641.6143], [101.2191, 1641.6143], ['9.0 + 30.7397k', 1641.6143]]})
+        self.assertEqual(exponential_models['models']['sinusoidal']['points'], {'roots': [[3.4695, 0.0], ['3.4695 + 61.4793k', 0.0], ['45.2702 + 61.4793k', 0.0]], 'maxima': [['24.3698 + 61.4794k', 4706.6143]], 'minima': [['55.1095 + 61.4794k', -1423.3857]], 'inflections': [[9.0, 1641.6143], ['9.0 + 30.7397k', 1641.6143]]})
     
     def test_exponential_models_sinusoidal_accumulations(self):
         self.assertEqual(exponential_models['models']['sinusoidal']['accumulations'], {'range': 5453.3259, 'iqr': 2900.6589})
@@ -1083,7 +1083,7 @@ class TestLogarithmicModels(unittest.TestCase):
         self.assertEqual(logarithmic_models['models']['sinusoidal']['constants'], [-1.3224, 1.2013, 0.1451, 6.5218])
     
     def test_logarithmic_models_sinusoidal_points(self):
-        self.assertEqual(logarithmic_models['models']['sinusoidal']['points'], {'roots': [None], 'maxima': [[4.0678, 7.8442], [9.2982, 7.8442], ['4.0678 + 5.2304k', 7.8442]], 'minima': [[1.4527, 5.1994], [6.6831, 5.1994], ['1.4527 + 5.2304k', 5.1994]], 'inflections': [[2.7603, 6.5218], [5.3755, 6.5218], [7.9907, 6.5218], [10.6059, 6.5218], ['2.7603 + 2.6152k', 6.5218]]})
+        self.assertEqual(logarithmic_models['models']['sinusoidal']['points'], {'roots': [None], 'maxima': [[4.0678, 7.8442], [9.2982, 7.8442], ['4.0678 + 5.2304k', 7.8442]], 'minima': [[1.4527, 5.1994], [6.6831, 5.1994], ['1.4527 + 5.2304k', 5.1994]], 'inflections': [[2.7603, 6.5218], [5.3755, 6.5218], [7.9907, 6.5218], ['2.7603 + 2.6152k', 6.5218]]})
     
     def test_logarithmic_models_sinusoidal_accumulations(self):
         self.assertEqual(logarithmic_models['models']['sinusoidal']['accumulations'], {'range': 58.9486, 'iqr': 32.5637})
@@ -1223,7 +1223,7 @@ class TestLogisticModels(unittest.TestCase):
         self.assertEqual(logistic_models['models']['sinusoidal']['constants'], [-1.1746, 0.5011, -1.1199, 1.0508])
     
     def test_logistic_models_sinusoidal_points(self):
-        self.assertEqual(logistic_models['models']['sinusoidal']['points'], {'roots': [[1.0903, 0.0], [2.9393, 0.0], [13.6291, 0.0], [15.4781, 0.0], ['1.0903 + 12.5388k', 0.0], ['2.9393 + 12.5388k', 0.0]], 'maxima': [[8.2842, 2.2254], [20.823, 2.2254], ['8.2842 + 12.5388k', 2.2254]], 'minima': [[2.0148, -0.1238], [14.5536, -0.1238], ['2.0148 + 12.5388k', -0.1238]], 'inflections': [[5.1495, 1.0508], [11.4189, 1.0508], [17.6883, 1.0508], [23.9577, 1.0508], ['5.1495 + 6.2694k', 1.0508]]})
+        self.assertEqual(logistic_models['models']['sinusoidal']['points'], {'roots': [[1.0903, 0.0], [2.9393, 0.0], ['1.0903 + 12.5388k', 0.0], ['2.9393 + 12.5388k', 0.0]], 'maxima': [[8.2842, 2.2254], ['8.2842 + 12.5388k', 2.2254]], 'minima': [[2.0148, -0.1238], ['2.0148 + 12.5388k', -0.1238]], 'inflections': [[5.1495, 1.0508], ['5.1495 + 6.2694k', 1.0508]]})
     
     def test_logistic_models_sinusoidal_accumulations(self):
         self.assertEqual(logistic_models['models']['sinusoidal']['accumulations'], {'range': 10.092, 'iqr': 6.0321})
@@ -1503,7 +1503,7 @@ class TestLargeModels(unittest.TestCase):
         self.assertEqual(large_models['models']['sinusoidal']['constants'], [32.3199, 1.0085, 1.8848, 488.9635])
     
     def test_large_models_sinusoidal_points(self):
-        self.assertEqual(large_models['models']['sinusoidal']['points'], {'roots': [None], 'maxima': [[103.1256, 521.2834], [109.3558, 521.2834], [115.586, 521.2834], ['103.1256 + 6.2302k', 521.2834]], 'minima': [[100.0105, 456.6436], [106.2407, 456.6436], [112.4709, 456.6436], ['100.0105 + 6.2302k', 456.6436]], 'inflections': [[101.568, 488.9635], [104.6831, 488.9635], [107.7982, 488.9635], [110.9133, 488.9635], [114.0284, 488.9635], ['101.568 + 3.1151k', 488.9635]]})
+        self.assertEqual(large_models['models']['sinusoidal']['points'], {'roots': [None], 'maxima': [[103.1256, 521.2834], [109.3558, 521.2834], [115.586, 521.2834], [121.8162, 521.2834], [128.0464, 521.2834], ['103.1256 + 6.2302k', 521.2834]], 'minima': [[100.0105, 456.6436], [106.2407, 456.6436], [112.4709, 456.6436], [118.7011, 456.6436], [124.9313, 456.6436], ['100.0105 + 6.2302k', 456.6436]], 'inflections': [[101.568, 488.9635], [104.6831, 488.9635], [107.7982, 488.9635], [110.9133, 488.9635], [114.0284, 488.9635], ['101.568 + 3.1151k', 488.9635]]})
     
     def test_large_models_sinusoidal_accumulations(self):
         self.assertEqual(large_models['models']['sinusoidal']['accumulations'], {'range': 47949.813, 'iqr': 22220.5541})
