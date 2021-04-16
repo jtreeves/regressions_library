@@ -81,15 +81,16 @@ def extrema_points(equation_type, coefficients, precision = 4):
         # Grab general form
         general_form = intervals_set[-1]
 
-        # Extract periodic unit as string
+        # Extract periodic unit
         periodic_unit_index = general_form.find(' + ') + 3
         periodic_unit = 2 * float(general_form[periodic_unit_index:-1])
         rounded_periodic_unit = rounded_value(periodic_unit, precision)
 
+        # Create general forms for max and min
         max_general_form = str(max_points[0]) + ' + ' + str(rounded_periodic_unit) + 'k'
         min_general_form = str(min_points[0]) + ' + ' + str(rounded_periodic_unit) + 'k'
 
-        # Append periodic unit as final element of each list
+        # Append general form as final element of each list
         max_extended = max_points + [max_general_form]
         min_extended = min_points + [min_general_form]
         result = {
