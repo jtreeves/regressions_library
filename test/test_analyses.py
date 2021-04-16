@@ -8,14 +8,14 @@ from library.analyses.equations.exponential import exponential_equation
 from library.analyses.equations.logarithmic import logarithmic_equation
 from library.analyses.equations.logistic import logistic_equation
 from library.analyses.equations.sinusoidal import sinusoidal_equation
-from library.analyses.roots.linear import linear_roots
-from library.analyses.roots.quadratic import quadratic_roots
-from library.analyses.roots.cubic import cubic_roots
-from library.analyses.roots.hyperbolic import hyperbolic_roots
-from library.analyses.roots.exponential import exponential_roots
-from library.analyses.roots.logarithmic import logarithmic_roots
-from library.analyses.roots.logistic import logistic_roots
-from library.analyses.roots.sinusoidal import sinusoidal_roots
+from library.analyses.roots.linear import linear_roots, linear_roots_first_derivative, linear_roots_second_derivative, linear_roots_initial_value, linear_roots_derivative_initial_value
+from library.analyses.roots.quadratic import quadratic_roots, quadratic_roots_first_derivative, quadratic_roots_second_derivative, quadratic_roots_initial_value, quadratic_roots_derivative_initial_value
+from library.analyses.roots.cubic import cubic_roots, cubic_roots_first_derivative, cubic_roots_second_derivative, cubic_roots_initial_value, cubic_roots_derivative_initial_value
+from library.analyses.roots.hyperbolic import hyperbolic_roots, hyperbolic_roots_first_derivative, hyperbolic_roots_second_derivative, hyperbolic_roots_initial_value, hyperbolic_roots_derivative_initial_value
+from library.analyses.roots.exponential import exponential_roots, exponential_roots_first_derivative, exponential_roots_second_derivative, exponential_roots_initial_value, exponential_roots_derivative_initial_value
+from library.analyses.roots.logarithmic import logarithmic_roots, logarithmic_roots_first_derivative, logarithmic_roots_second_derivative, logarithmic_roots_initial_value, logarithmic_roots_derivative_initial_value
+from library.analyses.roots.logistic import logistic_roots, logistic_roots_first_derivative, logistic_roots_second_derivative, logistic_roots_initial_value, logistic_roots_derivative_initial_value
+from library.analyses.roots.sinusoidal import sinusoidal_roots, sinusoidal_roots_first_derivative, sinusoidal_roots_second_derivative, sinusoidal_roots_initial_value, sinusoidal_roots_derivative_initial_value
 from library.analyses.derivatives.linear import linear_derivatives
 from library.analyses.derivatives.quadratic import quadratic_derivatives
 from library.analyses.derivatives.cubic import cubic_derivatives
@@ -747,10 +747,32 @@ class TestIntervals(unittest.TestCase):
 class TestRoots(unittest.TestCase):
     maxDiff = None
 
+    # LINEAR ROOTS
     def test_linear_zeroes(self):
         linear_zeroes = linear_roots(coefficients[0], coefficients[1])
         self.assertEqual(linear_zeroes, [-1.5])
     
+    def test_linear_zeroes_first_derivative(self):
+        linear_zeroes_first_derivative = linear_roots_first_derivative(coefficients[0], coefficients[1])
+        self.assertEqual(linear_zeroes_first_derivative, [None])
+    
+    def test_linear_zeroes_second_derivative(self):
+        linear_zeroes_second_derivative = linear_roots_second_derivative(coefficients[0], coefficients[1])
+        self.assertEqual(linear_zeroes_second_derivative, [None])
+    
+    def test_linear_zeroes_initial_value(self):
+        linear_zeroes_initial_value = linear_roots_initial_value(coefficients[0], coefficients[1], 10)
+        self.assertEqual(linear_zeroes_initial_value, [3.5])
+    
+    def test_linear_zeroes_derivative_initial_value_all(self):
+        linear_zeroes_derivative_initial_value_all = linear_roots_derivative_initial_value(coefficients[0], coefficients[1], 2)
+        self.assertEqual(linear_zeroes_derivative_initial_value_all, ['All'])
+    
+    def test_linear_zeroes_derivative_initial_value_none(self):
+        linear_zeroes_derivative_initial_value_none = linear_roots_derivative_initial_value(coefficients[0], coefficients[1], 10)
+        self.assertEqual(linear_zeroes_derivative_initial_value_none, [None])
+    
+    # QUADRATIC ROOTS
     def test_quadratic_zeroes_none(self):
         quadratic_zeroes_none = quadratic_roots(coefficients[0], coefficients[1], coefficients[2])
         self.assertEqual(quadratic_zeroes_none, [None])
@@ -762,7 +784,32 @@ class TestRoots(unittest.TestCase):
     def test_quadratic_zeroes_two(self):
         quadratic_zeroes_two = quadratic_roots(1, -5, 6)
         self.assertEqual(quadratic_zeroes_two, [2.0, 3.0])
+
+    def test_quadratic_zeroes_first_derivative(self):
+        quadratic_zeroes_first_derivative = quadratic_roots_first_derivative(coefficients[0], coefficients[1], coefficients[2])
+        self.assertEqual(quadratic_zeroes_first_derivative, [-0.75])
     
+    def test_quadratic_zeroes_second_derivative(self):
+        quadratic_zeroes_second_derivative = quadratic_roots_second_derivative(coefficients[0], coefficients[1], coefficients[2])
+        self.assertEqual(quadratic_zeroes_second_derivative, [None])
+    
+    def test_quadratic_zeroes_initial_value_none(self):
+        quadratic_zeroes_initial_value_none = quadratic_roots_initial_value(coefficients[0], coefficients[1], coefficients[2], -10)
+        self.assertEqual(quadratic_zeroes_initial_value_none, [None])
+    
+    def test_quadratic_zeroes_initial_value_one(self):
+        quadratic_zeroes_initial_value_one = quadratic_roots_initial_value(1, 2, 2, 1)
+        self.assertEqual(quadratic_zeroes_initial_value_one, [-1.0])
+    
+    def test_quadratic_zeroes_initial_value_two(self):
+        quadratic_zeroes_initial_value_two = quadratic_roots_initial_value(coefficients[0], coefficients[1], coefficients[2], 10)
+        self.assertEqual(quadratic_zeroes_initial_value_two, [-2.5, 1.0])
+    
+    def test_quadratic_zeroes_derivative_initial_value(self):
+        quadratic_zeroes_derivative_initial_value = quadratic_roots_derivative_initial_value(coefficients[0], coefficients[1], coefficients[2], 10)
+        self.assertEqual(quadratic_zeroes_derivative_initial_value, [1.75])
+
+    # CUBIC ROOTS
     def test_cubic_zeroes_one(self):
         cubic_zeroes_one = cubic_roots(coefficients[0], coefficients[1], coefficients[2], coefficients[3])
         self.assertEqual(cubic_zeroes_one, [-1.4455])
@@ -774,23 +821,156 @@ class TestRoots(unittest.TestCase):
     def test_cubic_zeroes_three(self):
         cubic_zeroes_three = cubic_roots(1, -10, 31, -30)
         self.assertEqual(cubic_zeroes_three, [2.0, 3.0, 5.0])
+
+    def test_cubic_zeroes_first_derivative_none(self):
+        cubic_zeroes_first_derivative_none = cubic_roots_first_derivative(coefficients[0], coefficients[1], coefficients[2], coefficients[3])
+        self.assertEqual(cubic_zeroes_first_derivative_none, [None])
+
+    def test_cubic_zeroes_first_derivative_one(self):
+        cubic_zeroes_first_derivative_one = cubic_roots_first_derivative(3, 3, 1, 7)
+        self.assertEqual(cubic_zeroes_first_derivative_one, [-0.3333])
     
+    def test_cubic_zeroes_first_derivative_two(self):
+        cubic_zeroes_first_derivative_two = cubic_roots_first_derivative(2, 7, 3, 5)
+        self.assertEqual(cubic_zeroes_first_derivative_two, [-2.0946, -0.2387])
+    
+    def test_cubic_zeroes_second_derivative(self):
+        cubic_zeroes_second_derivative = cubic_roots_second_derivative(coefficients[0], coefficients[1], coefficients[2], coefficients[3])
+        self.assertEqual(cubic_zeroes_second_derivative, [-0.5])
+    
+    def test_cubic_zeroes_initial_value_one(self):
+        cubic_zeroes_initial_value_one = cubic_roots_initial_value(coefficients[0], coefficients[1], coefficients[2], coefficients[3], 10)
+        self.assertEqual(cubic_zeroes_initial_value_one, [0.4455])
+    
+    def test_cubic_zeroes_initial_value_two(self):
+        cubic_zeroes_initial_value_two = cubic_roots_initial_value(1, -4, 5, 7, 9)
+        self.assertEqual(cubic_zeroes_initial_value_two, [1.0, 2.0])
+    
+    def test_cubic_zeroes_initial_value_three(self):
+        cubic_zeroes_initial_value_three = cubic_roots_initial_value(1, -10, 31, -20, 10)
+        self.assertEqual(cubic_zeroes_initial_value_three, [2.0, 3.0, 5.0])
+
+    def test_cubic_zeroes_derivative_initial_value_none(self):
+        cubic_zeroes_derivative_initial_value_none = cubic_roots_derivative_initial_value(7, 2, 5, 3, -10)
+        self.assertEqual(cubic_zeroes_derivative_initial_value_none, [None])
+
+    def test_cubic_zeroes_derivative_initial_value_one(self):
+        cubic_zeroes_derivative_initial_value_one = cubic_roots_derivative_initial_value(3, 3, 11, 1, 10)
+        self.assertEqual(cubic_zeroes_derivative_initial_value_one, [-0.3333])
+    
+    def test_cubic_zeroes_derivative_initial_value_two(self):
+        cubic_zeroes_derivative_initial_value_two = cubic_roots_derivative_initial_value(coefficients[0], coefficients[1], coefficients[2], coefficients[3], 10)
+        self.assertEqual(cubic_zeroes_derivative_initial_value_two, [-1.5408, 0.5408])
+
+    # HYPERBOLIC ROOTS
     def test_hyperbolic_zeroes(self):
         hyperbolic_zeroes = hyperbolic_roots(coefficients[0], coefficients[1])
         self.assertEqual(hyperbolic_zeroes, [-0.6667])
     
+    def test_hyperbolic_zeroes_first_derivative(self):
+        hyperbolic_zeroes_first_derivative = hyperbolic_roots_first_derivative(coefficients[0], coefficients[1])
+        self.assertEqual(hyperbolic_zeroes_first_derivative, [0.0])
+    
+    def test_hyperbolic_zeroes_second_derivative(self):
+        hyperbolic_zeroes_second_derivative = hyperbolic_roots_second_derivative(coefficients[0], coefficients[1])
+        self.assertEqual(hyperbolic_zeroes_second_derivative, [0.0])
+    
+    def test_hyperbolic_zeroes_initial_value(self):
+        hyperbolic_zeroes_initial_value = hyperbolic_roots_initial_value(coefficients[0], coefficients[1], 10)
+        self.assertEqual(hyperbolic_zeroes_initial_value, [0.2857])
+    
+    def test_hyperbolic_zeroes_derivative_initial_value_none(self):
+        hyperbolic_zeroes_derivative_initial_value_none = hyperbolic_roots_derivative_initial_value(coefficients[0], coefficients[1], 10)
+        self.assertEqual(hyperbolic_zeroes_derivative_initial_value_none, [None])
+    
+    def test_hyperbolic_zeroes_derivative_initial_value_one(self):
+        hyperbolic_zeroes_derivative_initial_value_one = hyperbolic_roots_derivative_initial_value(coefficients[0], coefficients[1], -10)
+        self.assertEqual(hyperbolic_zeroes_derivative_initial_value_one, [0.4472])
+
+    # EXPONENTIAL ROOTS
     def test_exponential_zeroes(self):
         exponential_zeroes = exponential_roots(coefficients[0], coefficients[1])
         self.assertEqual(exponential_zeroes, [None])
     
+    def test_exponential_zeroes_first_derivative(self):
+        exponential_zeroes_first_derivative = exponential_roots_first_derivative(coefficients[0], coefficients[1])
+        self.assertEqual(exponential_zeroes_first_derivative, [None])
+    
+    def test_exponential_zeroes_second_derivative(self):
+        exponential_zeroes_second_derivative = exponential_roots_second_derivative(coefficients[0], coefficients[1])
+        self.assertEqual(exponential_zeroes_second_derivative, [None])
+    
+    def test_exponential_zeroes_initial_value(self):
+        exponential_zeroes_initial_value = exponential_roots_initial_value(coefficients[0], coefficients[1], 10)
+        self.assertEqual(exponential_zeroes_initial_value, [1.465])
+    
+    def test_exponential_zeroes_initial_value_log1(self):
+        exponential_zeroes_initial_value_log1 = exponential_roots_initial_value(2, 1, 10)
+        self.assertEqual(exponential_zeroes_initial_value_log1, [16094.3791])
+    
+    def test_exponential_zeroes_derivative_initial_value(self):
+        exponential_zeroes_derivative_initial_value = exponential_roots_derivative_initial_value(coefficients[0], coefficients[1], 10)
+        self.assertEqual(exponential_zeroes_derivative_initial_value, [1.3794])
+    
+    def test_exponential_zeroes_derivative_initial_value_log1(self):
+        exponential_zeroes_derivative_initial_value_log1 = exponential_roots_derivative_initial_value(2, 1, -10)
+        self.assertEqual(exponential_zeroes_derivative_initial_value_log1, [108197.7828])
+
+    # LOGARITHMIC ROOTS
     def test_logarithmic_zeroes(self):
         logarithmic_zeroes = logarithmic_roots(coefficients[0], coefficients[1])
         self.assertEqual(logarithmic_zeroes, [0.2231])
     
+    def test_logarithmic_zeroes_first_derivative(self):
+        logarithmic_zeroes_first_derivative = logarithmic_roots_first_derivative(coefficients[0], coefficients[1])
+        self.assertEqual(logarithmic_zeroes_first_derivative, [None])
+    
+    def test_logarithmic_zeroes_second_derivative(self):
+        logarithmic_zeroes_second_derivative = logarithmic_roots_second_derivative(coefficients[0], coefficients[1])
+        self.assertEqual(logarithmic_zeroes_second_derivative, [None])
+    
+    def test_logarithmic_zeroes_initial_value(self):
+        logarithmic_zeroes_initial_value = logarithmic_roots_initial_value(coefficients[0], coefficients[1], 10)
+        self.assertEqual(logarithmic_zeroes_initial_value, [33.1155])
+    
+    def test_logarithmic_zeroes_derivative_initial_value(self):
+        logarithmic_zeroes_derivative_initial_value = logarithmic_roots_derivative_initial_value(coefficients[0], coefficients[1], 10)
+        self.assertEqual(logarithmic_zeroes_derivative_initial_value, [0.2])
+    
+    # LOGISTIC ROOTS
     def test_logistic_zeroes(self):
         logistic_zeroes = logistic_roots(coefficients[0], coefficients[1], coefficients[2])
         self.assertEqual(logistic_zeroes, [None])
     
+    def test_logistic_zeroes_first_derivative(self):
+        logistic_zeroes_first_derivative = logistic_roots_first_derivative(coefficients[0], coefficients[1], coefficients[2])
+        self.assertEqual(logistic_zeroes_first_derivative, [None])
+    
+    def test_logistic_zeroes_second_derivative(self):
+        logistic_zeroes_second_derivative = logistic_roots_second_derivative(coefficients[0], coefficients[1], coefficients[2])
+        self.assertEqual(logistic_zeroes_second_derivative, [5.0])
+    
+    def test_logistic_zeroes_initial_value(self):
+        logistic_zeroes_initial_value = logistic_roots_initial_value(coefficients[0], coefficients[1], coefficients[2], 10)
+        self.assertEqual(logistic_zeroes_initial_value, [5.0744])
+    
+    def test_logistic_zeroes_initial_value_log0(self):
+        logistic_zeroes_initial_value_log0 = logistic_roots_initial_value(1, 2, 3, 1)
+        self.assertEqual(logistic_zeroes_initial_value_log0, [7.6052])
+    
+    def test_logistic_zeroes_derivative_initial_value_none(self):
+        logistic_zeroes_derivative_initial_value_none = logistic_roots_derivative_initial_value(coefficients[0], coefficients[1], coefficients[2], 10)
+        self.assertEqual(logistic_zeroes_derivative_initial_value_none, [None])
+    
+    def test_logistic_zeroes_derivative_initial_value_one(self):
+        logistic_zeroes_derivative_initial_value_one = logistic_roots_derivative_initial_value(1, 4, 2, 1)
+        self.assertEqual(logistic_zeroes_derivative_initial_value_one, [2.0])
+    
+    def test_logistic_zeroes_derivative_initial_value_two(self):
+        logistic_zeroes_derivative_initial_value_two = logistic_roots_derivative_initial_value(7, 5, 3, 2)
+        self.assertEqual(logistic_zeroes_derivative_initial_value_two, [2.4527, 3.5473])
+
+    # SINUSOIDAL ROOTS
     def test_sinusoidal_zeroes_none(self):
         sinusoidal_zeroes_none = sinusoidal_roots(coefficients[0], coefficients[1], coefficients[2], coefficients[3])
         self.assertEqual(sinusoidal_zeroes_none, [None])
@@ -802,6 +982,38 @@ class TestRoots(unittest.TestCase):
     def test_sinusoidal_zeroes_many_cross(self):
         sinusoidal_zeroes_many_cross = sinusoidal_roots(2, 3, 5, 1)
         self.assertEqual(sinusoidal_zeroes_many_cross, [4.8255, 6.2217, 6.9199, 8.3161, 9.0143, 10.4105, '4.8255 + 2.0944k', '6.2217 + 2.0944k'])
+
+    def test_sinusoidal_zeroes_first_derivative(self):
+        sinusoidal_zeroes_first_derivative = sinusoidal_roots_first_derivative(coefficients[0], coefficients[1], coefficients[2], coefficients[3])
+        self.assertEqual(sinusoidal_zeroes_first_derivative, [5.5236, 6.5708, 7.618, 8.6652, 9.7124, '5.5236 + 1.0472k'])
+    
+    def test_sinusoidal_zeroes_second_derivative(self):
+        sinusoidal_zeroes_second_derivative = sinusoidal_roots_second_derivative(coefficients[0], coefficients[1], coefficients[2], coefficients[3])
+        self.assertEqual(sinusoidal_zeroes_second_derivative, [5.0, 6.0472, 7.0944, 8.1416, 9.1888, '5.0 + 1.0472k'])
+    
+    def test_sinusoidal_zeroes_initial_value_none(self):
+        sinusoidal_zeroes_initial_value_none = sinusoidal_roots_initial_value(coefficients[0], coefficients[1], coefficients[2], coefficients[3], 10)
+        self.assertEqual(sinusoidal_zeroes_initial_value_none, [None])
+
+    def test_sinusoidal_zeroes_initial_value_many_bounce(self):
+        sinusoidal_zeroes_initial_value_many_bounce = sinusoidal_roots_initial_value(2, 3, 5, 9, 7)
+        self.assertEqual(sinusoidal_zeroes_initial_value_many_bounce, [4.4764, 6.5708, 8.6652, '4.4764 + 2.0944k'])
+    
+    def test_sinusoidal_zeroes_initial_value_many_cross(self):
+        sinusoidal_zeroes_initial_value_many_cross = sinusoidal_roots_initial_value(7, 5, 3, 4, 2)
+        self.assertEqual(sinusoidal_zeroes_initial_value_many_cross, [2.942, 3.6863, 4.1987, 4.9429, 5.4553, 6.1995, '2.942 + 1.2566k', '3.6863 + 1.2566k'])
+    
+    def test_sinusoidal_zeroes_derivative_initial_value_none(self):
+        sinusoidal_zeroes_derivative_initial_value_none = sinusoidal_roots_derivative_initial_value(coefficients[0], coefficients[1], coefficients[2], coefficients[3], 10)
+        self.assertEqual(sinusoidal_zeroes_derivative_initial_value_none, [None])
+    
+    def test_sinusoidal_zeroes_derivative_initial_value_many_bounce(self):
+        sinusoidal_zeroes_derivative_initial_value_many_bounce = sinusoidal_roots_derivative_initial_value(1, 1, 2, 3, 1)
+        self.assertEqual(sinusoidal_zeroes_derivative_initial_value_many_bounce, [2.0, 8.2832, 14.5664, '2.0 + 6.2832k'])
+    
+    def test_sinusoidal_zeroes_derivative_initial_value_many_cross(self):
+        sinusoidal_zeroes_derivative_initial_value_many_cross = sinusoidal_roots_derivative_initial_value(7, 5, 3, 4, 2)
+        self.assertEqual(sinusoidal_zeroes_derivative_initial_value_many_cross, [3.3027, 3.9539, 4.5594, 5.2105, 5.816, 6.4672, '3.3027 + 1.2566k', '3.9539 + 1.2566k'])
 
 class TestIntercepts(unittest.TestCase):
     maxDiff = None

@@ -88,13 +88,8 @@ def logistic_roots_derivative_initial_value(first_constant, second_constant, thi
         final_roots.append(None)
     else:
         for intermediary in intermediary_roots:
-            if intermediary == 0:
-                root = third_constant - log(10**(-precision)) / second_constant
-                rounded_root = rounded_value(root, precision)
-                final_roots.append(rounded_root)
-            else:
-                root = third_constant - log(abs(intermediary)) / second_constant
-                rounded_root = rounded_value(root, precision)
-                final_roots.append(rounded_root)
+            root = third_constant - log(abs(intermediary)) / second_constant
+            rounded_root = rounded_value(root, precision)
+            final_roots.append(rounded_root)
     sorted_roots = sorted_list(final_roots)
     return sorted_roots
