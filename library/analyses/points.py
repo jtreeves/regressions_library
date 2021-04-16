@@ -218,7 +218,7 @@ def points_within_range(points, start, end):
             numerical_results.append(point)
         else:
             other_results.append(point)
-    selected_results = [x for x in numerical_results if x > start and x < end]
+    selected_results = [x for x in numerical_results if x >= start and x <= end]
     final_results = []
     if not selected_results and not other_results:
         final_results.append(None)
