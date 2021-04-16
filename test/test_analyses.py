@@ -1251,13 +1251,21 @@ class TestPointsWithinRange(unittest.TestCase):
 class TestGeneralizedPointsWithinRange(unittest.TestCase):
     maxDiff = None
 
-    def test_generalized_points_in_range(self):
-        generalized_points_in_range = generalized_points_within_range([11, 13, 15, 17, 19, '1 + 2k'], 11, 19)
-        self.assertEqual(generalized_points_in_range, [11.0, 13.0, 15.0, 17.0, 19.0, '11.0 + 2.0k'])
+    def test_generalized_points_in_range_1d(self):
+        generalized_points_in_range_1d = generalized_points_within_range([11, 13, 15, 17, 19, '1 + 2k'], 11, 19)
+        self.assertEqual(generalized_points_in_range_1d, [11.0, 13.0, 15.0, 17.0, 19.0, '11.0 + 2.0k'])
     
-    def test_generalized_points_not_in_range(self):
-        generalized_points_not_in_range = generalized_points_within_range([11, 13, 15, 17, 19, '1 + 2k'], 50, 60)
-        self.assertEqual(generalized_points_not_in_range, [51.0, 53.0, 55.0, 57.0, 59.0, '51.0 + 2.0k'])
+    def test_generalized_points_not_in_range_1d(self):
+        generalized_points_not_in_range_1d = generalized_points_within_range([11, 13, 15, 17, 19, '1 + 2k'], 50, 60)
+        self.assertEqual(generalized_points_not_in_range_1d, [51.0, 53.0, 55.0, 57.0, 59.0, '51.0 + 2.0k'])
+    
+    def test_generalized_points_in_range_2d(self):
+        generalized_points_in_range_2d = generalized_points_within_range([[11, 1], [13, 1], [15, 1], [17, 1], [19, 1], ['1 + 2k', 1]], 11, 19)
+        self.assertEqual(generalized_points_in_range_2d, [11.0, 13.0, 15.0, 17.0, 19.0, '11.0 + 2.0k'])
+    
+    def test_generalized_points_not_in_range_2d(self):
+        generalized_points_not_in_range_2d = generalized_points_within_range([[11, 1], [13, 1], [15, 1], [17, 1], [19, 1], ['1 + 2k', 1]], 50, 60)
+        self.assertEqual(generalized_points_not_in_range_2d, [51.0, 53.0, 55.0, 57.0, 59.0, '51.0 + 2.0k'])
 
 class TestGeneralizedCoordinatesWithinRange(unittest.TestCase):
     maxDiff = None
