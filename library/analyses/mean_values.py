@@ -19,6 +19,14 @@ from .roots.hyperbolic import hyperbolic_roots
 from .roots.logarithmic import logarithmic_roots
 from .roots.sinusoidal import sinusoidal_roots
 from .accumulation import accumulated_area
+from .roots.initials.linear import linear_roots_initial_value, linear_roots_derivative_initial_value
+from .roots.initials.quadratic import quadratic_roots_initial_value, quadratic_roots_derivative_initial_value
+from .roots.initials.cubic import cubic_roots_initial_value, cubic_roots_derivative_initial_value
+from .roots.initials.hyperbolic import hyperbolic_roots_initial_value, hyperbolic_roots_derivative_initial_value
+from .roots.initials.exponential import exponential_roots_initial_value, exponential_roots_derivative_initial_value
+from .roots.initials.logarithmic import logarithmic_roots_initial_value, logarithmic_roots_derivative_initial_value
+from .roots.initials.logistic import logistic_roots_initial_value, logistic_roots_derivative_initial_value
+from .roots.initials.sinusoidal import sinusoidal_roots_initial_value, sinusoidal_roots_derivative_initial_value
 
 def average_value_derivative(equation_type, coefficients, start, end, precision = 4):
     """
@@ -166,11 +174,10 @@ def mean_values_derivative(equation_type, coefficients, start, end, precision = 
     if average == 0:
         average = 10**(-precision)
     if equation_type == 'linear':
-        result.append('All')
+        result = linear_roots_derivative_initial_value(*coefficients, average, precision)
         return result
     elif equation_type == 'quadratic':
-        value = linear_roots(2 * coefficients[0], coefficients[1] -  average, precision)
-        result = value
+        result = quadratic_roots_derivative_initial_value(*coefficients, average, precision)
     elif equation_type == 'cubic':
         values = quadratic_roots(3 * coefficients[0], 2 * coefficients[1], coefficients[2] - average, precision)
         result = values

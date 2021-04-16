@@ -67,15 +67,3 @@ def linear_roots_first_derivative(first_constant, second_constant, precision = 4
 def linear_roots_second_derivative(first_constant, second_constant, precision = 4):
     root = [None]
     return root
-
-def linear_roots_initial_value(first_constant, second_constant, intial_value, precision = 4):
-    roots = linear_roots(first_constant, second_constant - intial_value, precision)
-    return roots
-
-def linear_roots_derivative_initial_value(first_constant, second_constant, intial_value, precision = 4):
-    roots = []
-    if initial_value == first_constant:
-        roots = ['All']
-    else:
-        roots = [None]
-    return roots
