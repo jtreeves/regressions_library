@@ -2,7 +2,7 @@ from library.errors.analyses import select_equations
 from library.errors.scalars import scalar_value, compare_scalars, positive_integer
 from library.errors.vectors import vector_of_scalars
 from library.errors.matrices import allow_none_matrix
-from library.statistics.rounding import rounded_value
+from library.statistics.rounding import rounded_value, rounded_list
 from library.statistics.sort import sorted_list, sorted_strings
 from library.statistics.ranges import shift_into_range
 from library.vectors.unify import unite_vectors
@@ -245,9 +245,7 @@ def generalized_points_within_range(points, minimum, maximum, precision = 4):
     selected_points = [x for x in sorted_points if x >= minimum and x <= maximum]
     
     # Round numerical inputs
-    rounded_points = []
-    for point in selected_points:
-        rounded_points.append(rounded_value(point, precision))
+    rounded_points = rounded_list(selected_points, precision)
     
     # Sort string inputs
     sorted_other_points = sorted_strings(other_points)

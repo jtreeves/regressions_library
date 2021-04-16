@@ -1,7 +1,7 @@
 from library.errors.scalars import four_scalars, positive_integer
 from library.errors.adjustments import no_zeroes
 from library.statistics.sort import sorted_list
-from library.statistics.rounding import rounded_value
+from library.statistics.rounding import rounded_value, rounded_list
 from library.analyses.derivatives.cubic import cubic_derivatives
 from .quadratic import quadratic_roots
 from .linear import linear_roots
@@ -118,9 +118,7 @@ def cubic_roots(first_constant, second_constant, third_constant, fourth_constant
     sorted_roots = sorted_list(unique_roots)
 
     # Round roots
-    result = []
-    for number in sorted_roots:
-        result.append(rounded_value(number, precision))
+    result = rounded_list(sorted_roots, precision)
     return result
 
 def cubic_roots_first_derivative(first_constant, second_constant, third_constant, fourth_constant, precision = 4):

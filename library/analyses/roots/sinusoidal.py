@@ -2,7 +2,7 @@ from math import asin, acos, pi
 from library.errors.scalars import four_scalars, positive_integer
 from library.errors.adjustments import no_zeroes
 from library.statistics.sort import sorted_list, sorted_strings
-from library.statistics.rounding import rounded_value
+from library.statistics.rounding import rounded_value, rounded_list
 from library.vectors.separate import separate_elements
 from library.analyses.derivatives.sinusoidal import sinusoidal_derivatives
 
@@ -125,9 +125,7 @@ def sinusoidal_roots(first_constant, second_constant, third_constant, fourth_con
     sorted_roots = sorted_list(numerical_roots)
 
     # Round numerical roots
-    rounded_roots = []
-    for number in sorted_roots:
-        rounded_roots.append(rounded_value(number, precision))
+    rounded_roots = rounded_list(sorted_roots, precision)
     
     # Sort other_roots
     sorted_other_roots = sorted_strings(other_roots)
@@ -146,13 +144,11 @@ def sinusoidal_roots_first_derivative(first_constant, second_constant, third_con
     fourth_value = initial_value + 4 * periodic_unit
     values = [initial_value, first_value, second_value, third_value, fourth_value]
     sorted_values = sorted_list(values)
-    rounded_values = []
-    for number in sorted_values:
-        rounded_values.append(rounded_value(number, precision))
+    rounded_roots = rounded_list(sorted_values, precision)
     rounded_periodic_unit = rounded_value(periodic_unit, precision)
     rounded_initial_value = rounded_value(initial_value, precision)
     general_form = str(rounded_initial_value) + ' + ' + str(rounded_periodic_unit) + 'k'
-    roots = [*rounded_values, general_form]
+    roots = [*rounded_roots, general_form]
     return roots
 
 def sinusoidal_roots_second_derivative(first_constant, second_constant, third_constant, fourth_constant, precision = 4):
@@ -165,13 +161,11 @@ def sinusoidal_roots_second_derivative(first_constant, second_constant, third_co
     fourth_value = initial_value + 4 * periodic_unit
     values = [initial_value, first_value, second_value, third_value, fourth_value]
     sorted_values = sorted_list(values)
-    rounded_values = []
-    for number in sorted_values:
-        rounded_values.append(rounded_value(number, precision))
+    rounded_roots = rounded_list(sorted_values, precision)
     rounded_periodic_unit = rounded_value(periodic_unit, precision)
     rounded_initial_value = rounded_value(initial_value, precision)
     general_form = str(rounded_initial_value) + ' + ' + str(rounded_periodic_unit) + 'k'
-    roots = [*rounded_values, general_form]
+    roots = [*rounded_roots, general_form]
     return roots
 
 def sinusoidal_roots_initial_value(first_constant, second_constant, third_constant, fourth_constant, initial_value, precision = 4):
@@ -217,9 +211,7 @@ def sinusoidal_roots_derivative_initial_value(first_constant, second_constant, t
         sorted_roots = sorted_list(numerical_roots)
 
         # Round numerical roots
-        rounded_roots = []
-        for number in sorted_roots:
-            rounded_roots.append(rounded_value(number, precision))
+        rounded_roots = rounded_list(sorted_roots, precision)
         
         # Sort other_roots
         sorted_other_roots = sorted_strings(other_roots)

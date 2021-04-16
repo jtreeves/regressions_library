@@ -1,6 +1,6 @@
 import unittest
 
-from library.statistics.rounding import rounded_value
+from library.statistics.rounding import rounded_value, rounded_list
 from library.statistics.summation import sum_value
 from library.statistics.sort import sorted_list, sorted_dimension, sorted_strings
 from library.statistics.halve import half, half_dimension
@@ -52,6 +52,10 @@ class TestRounding(unittest.TestCase):
     def test_round_extreme_high(self):
         round_extreme_high = rounded_value(extreme_decimal, high_precision) 
         self.assertEqual(round_extreme_high, 1e-08)
+    
+    def test_rounded_list(self):
+        rounded_list_main = rounded_list([3.12718492, 2.17729, 54.21, 8.9999222222, 3.9274826, 115.28191], 6)
+        self.assertEqual(rounded_list_main, [3.127185, 2.17729, 54.21, 8.999922, 3.927483, 115.28191])
 
 class TestSummation(unittest.TestCase):
     def test_sum_even(self):

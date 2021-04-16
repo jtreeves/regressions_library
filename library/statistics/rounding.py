@@ -81,3 +81,9 @@ def rounded_value(number, precision = 4):
         return -10**(-precision)
     else:
         return float(round(number, precision))
+    
+def rounded_list(numbers, precision = 4):
+    results = []
+    for number in numbers:
+        results.append(rounded_value(number, precision))
+    return results

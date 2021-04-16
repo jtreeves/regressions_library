@@ -2,6 +2,7 @@ from library.errors.analyses import select_equations
 from library.errors.vectors import vector_of_scalars
 from library.errors.scalars import select_integers, positive_integer
 from library.statistics.sort import sorted_list
+from library.vectors.separate import separate_elements
 from .derivatives.linear import linear_derivatives
 from .derivatives.quadratic import quadratic_derivatives
 from .derivatives.cubic import cubic_derivatives
@@ -169,14 +170,12 @@ def sign_chart(equation_type, coefficients, derivative_level, precision = 4):
     
     # Handle more than two critical points
     else:
+        # Separate numerical inputs from string inputs
+        separated_points = separate_elements(points)
+        numerical_points = separated_points['numerical']
+        other_points = separated_points['other']
+        
         # Generate numbers to test
-        numerical_points = []
-        other_points = []
-        for item in points:
-            if isinstance(item, (int, float)):
-                numerical_points.append(item)
-            else:
-                other_points.append(item)
         sorted_points = sorted_list(numerical_points)
         difference = sorted_points[1] - sorted_points[0]
         halved_difference = difference / 2
