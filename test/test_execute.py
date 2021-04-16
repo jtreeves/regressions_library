@@ -121,6 +121,13 @@ sinusoidal_set = [
 
 large_set = [[169, 423], [122, 391], [178, 555], [131, 284], [120, 520], [179, 558], [164, 265], [167, 338], [198, 445], [139, 402], [183, 725], [133, 470], [156, 573], [159, 325], [121, 653], [118, 358], [122, 633], [167, 487], [161, 453], [194, 488], [170, 517], [124, 377], [191, 310], [194, 398], [173, 744], [166, 389], [113, 583], [109, 380], [126, 668], [144, 491], [107, 533], [188, 355], [147, 553], [169, 497], [121, 606], [132, 373], [111, 554], [173, 669], [177, 483], [122, 340], [171, 286], [108, 681], [139, 502], [115, 339], [174, 396], [134, 625], [147, 435], [146, 555], [147, 656], [126, 354], [155, 679], [181, 629], [149, 417], [119, 374], [102, 422], [112, 292], [108, 464], [109, 559], [112, 635], [159, 518], [180, 304], [185, 567], [165, 299], [160, 337], [133, 730], [193, 374], [164, 537], [172, 592], [173, 660], [186, 290], [170, 670], [192, 687], [154, 596], [154, 464], [125, 383], [193, 559], [155, 586], [149, 406], [131, 590], [127, 339], [163, 378], [145, 254], [156, 395], [166, 355], [189, 661], [133, 685], [168, 685], [190, 736], [145, 564], [125, 470], [129, 541], [133, 439], [162, 486], [125, 387], [183, 596], [135, 733], [106, 329], [100, 279], [102, 439], [162, 454]]
 
+bad_set_string = 'data'
+bad_set_vector = [1]
+bad_set_buried_not_list = [[1], [2], 3]
+bad_set_buried_string = [[1], [2], ['three']]
+bad_set_short = [[1], [2], [3]]
+bad_set_zeroes = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
+
 agnostic_models = run_all(agnostic_set)
 
 class TestAgnosticModels(unittest.TestCase):
@@ -1520,6 +1527,41 @@ class TestLargeModels(unittest.TestCase):
     
     def test_large_optimal(self):
         self.assertEqual(large_models['optimal']['option'], 'sinusoidal')
+
+class TestEdgeCases(unittest.TestCase):
+    def test_run_all_zeroes(self):
+        run_all_zeroes = run_all(bad_set_zeroes)
+        self.assertEqual(run_all_zeroes['optimal']['option'], 'logistic')
+
+    def test_run_all_string_raises(self):
+        with self.assertRaises(Exception) as context:
+            run_all(bad_set_string)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'First argument must be a 2-dimensional list')
+    
+    def test_run_all_vector_raises(self):
+        with self.assertRaises(Exception) as context:
+            run_all(bad_set_vector)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'First argument must be a 2-dimensional list')
+    
+    def test_run_all_buried_not_list_raises(self):
+        with self.assertRaises(Exception) as context:
+            run_all(bad_set_buried_not_list)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'Elements within first argument must be lists')
+    
+    def test_run_all_buried_string_raises(self):
+        with self.assertRaises(Exception) as context:
+            run_all(bad_set_buried_string)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'Elements within lists within first argument must be integers or floats')
+    
+    def test_run_all_short_raises(self):
+        with self.assertRaises(Exception) as context:
+            run_all(bad_set_short)
+        self.assertEqual(type(context.exception), ValueError)
+        self.assertEqual(str(context.exception), 'First argument must contain at least 10 elements')
 
 if __name__ == '__main__':
     unittest.main()
