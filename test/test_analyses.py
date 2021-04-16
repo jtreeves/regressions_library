@@ -977,11 +977,11 @@ class TestRoots(unittest.TestCase):
     
     def test_sinusoidal_zeroes_many_bounce(self):
         sinusoidal_zeroes_many_bounce = sinusoidal_roots(2, 3, 5, 2)
-        self.assertEqual(sinusoidal_zeroes_many_bounce, [4.4764, 6.5708, 8.6652, '4.4764 + 2.0944k'])
+        self.assertEqual(sinusoidal_zeroes_many_bounce, [4.4764, 6.5708, 8.6652, 10.7596, 12.854, '4.4764 + 2.0944k'])
     
     def test_sinusoidal_zeroes_many_cross(self):
         sinusoidal_zeroes_many_cross = sinusoidal_roots(2, 3, 5, 1)
-        self.assertEqual(sinusoidal_zeroes_many_cross, [4.8255, 6.2217, 6.9199, 8.3161, 9.0143, 10.4105, '4.8255 + 2.0944k', '6.2217 + 2.0944k'])
+        self.assertEqual(sinusoidal_zeroes_many_cross, [4.8255, 6.2217, 6.9199, 8.3161, 9.0143, 10.4105, 11.1087, 12.5049, 13.203, 14.5993, '4.8255 + 2.0944k', '6.2217 + 2.0944k'])
 
     def test_sinusoidal_zeroes_first_derivative(self):
         sinusoidal_zeroes_first_derivative = sinusoidal_roots_first_derivative(coefficients[0], coefficients[1], coefficients[2], coefficients[3])
@@ -997,11 +997,11 @@ class TestRoots(unittest.TestCase):
 
     def test_sinusoidal_zeroes_initial_value_many_bounce(self):
         sinusoidal_zeroes_initial_value_many_bounce = sinusoidal_roots_initial_value(2, 3, 5, 9, 7)
-        self.assertEqual(sinusoidal_zeroes_initial_value_many_bounce, [4.4764, 6.5708, 8.6652, '4.4764 + 2.0944k'])
+        self.assertEqual(sinusoidal_zeroes_initial_value_many_bounce, [4.4764, 6.5708, 8.6652, 10.7596, 12.854, '4.4764 + 2.0944k'])
     
     def test_sinusoidal_zeroes_initial_value_many_cross(self):
         sinusoidal_zeroes_initial_value_many_cross = sinusoidal_roots_initial_value(7, 5, 3, 4, 2)
-        self.assertEqual(sinusoidal_zeroes_initial_value_many_cross, [2.942, 3.6863, 4.1987, 4.9429, 5.4553, 6.1995, '2.942 + 1.2566k', '3.6863 + 1.2566k'])
+        self.assertEqual(sinusoidal_zeroes_initial_value_many_cross, [2.942, 3.6863, 4.1987, 4.9429, 5.4553, 6.1995, 6.712, 7.4562, 7.9686, 8.7128, '2.942 + 1.2566k', '3.6863 + 1.2566k'])
     
     def test_sinusoidal_zeroes_derivative_initial_value_none(self):
         sinusoidal_zeroes_derivative_initial_value_none = sinusoidal_roots_derivative_initial_value(coefficients[0], coefficients[1], coefficients[2], coefficients[3], 10)
@@ -1009,11 +1009,11 @@ class TestRoots(unittest.TestCase):
     
     def test_sinusoidal_zeroes_derivative_initial_value_many_bounce(self):
         sinusoidal_zeroes_derivative_initial_value_many_bounce = sinusoidal_roots_derivative_initial_value(1, 1, 2, 3, 1)
-        self.assertEqual(sinusoidal_zeroes_derivative_initial_value_many_bounce, [2.0, 8.2832, 14.5664, '2.0 + 6.2832k'])
+        self.assertEqual(sinusoidal_zeroes_derivative_initial_value_many_bounce, [2.0, 8.2832, 14.5664, 20.8496, 27.1327, '2.0 + 6.2832k'])
     
     def test_sinusoidal_zeroes_derivative_initial_value_many_cross(self):
         sinusoidal_zeroes_derivative_initial_value_many_cross = sinusoidal_roots_derivative_initial_value(7, 5, 3, 4, 2)
-        self.assertEqual(sinusoidal_zeroes_derivative_initial_value_many_cross, [3.3027, 3.9539, 4.5594, 5.2105, 5.816, 6.4672, '3.3027 + 1.2566k', '3.9539 + 1.2566k'])
+        self.assertEqual(sinusoidal_zeroes_derivative_initial_value_many_cross, [3.3027, 3.9539, 4.5594, 5.2105, 5.816, 6.4672, 7.0726, 7.7238, 8.3293, 8.9805, '3.3027 + 1.2566k', '3.9539 + 1.2566k'])
 
 class TestIntercepts(unittest.TestCase):
     maxDiff = None

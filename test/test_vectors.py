@@ -7,6 +7,7 @@ from library.vectors.unit import unit_vector
 from library.vectors.column import column_conversion
 from library.vectors.dimension import single_dimension
 from library.vectors.separate import separate_elements
+from library.vectors.generate import generate_elements
 from library.vectors.unify import unite_vectors
 from library.vectors.addition import vector_sum
 from library.vectors.multiplication import scalar_product_vector, dot_product
@@ -100,6 +101,15 @@ class TestSeparate(unittest.TestCase):
     def test_separate_none(self):
         separate_none = separate_elements([None])
         self.assertEqual(separate_none, {'numerical': [], 'other': [None]})
+
+class TestGenerate(unittest.TestCase):
+    def test_generate_ints(self):
+        generate_ints = generate_elements(2, 3)
+        self.assertEqual(generate_ints, [2.0, 5.0, 8.0, 11.0, 14.0, '2.0 + 3.0k'])
+    
+    def test_generate_floats(self):
+        generate_floats = generate_elements(7.81259217, 3.12748261)
+        self.assertEqual(generate_floats, [7.8126, 10.9401, 14.0676, 17.195, 20.3225, '7.8126 + 3.1275k'])
 
 class TestUnify(unittest.TestCase):
     def test_unify_first(self):

@@ -7,6 +7,7 @@ from library.statistics.sort import sorted_list, sorted_strings
 from library.statistics.ranges import shift_into_range
 from library.vectors.unify import unite_vectors
 from library.vectors.separate import separate_elements
+from library.vectors.generate import generate_elements
 from .equations.linear import linear_equation
 from .equations.quadratic import quadratic_equation
 from .equations.cubic import cubic_equation
@@ -220,18 +221,8 @@ def generalized_points_within_range(points, minimum, maximum, precision = 4):
         alternative_initial_value = shift_into_range(initial_value, periodic_unit, minimum, maximum)
         
         # Generate additional values within range
-        first_value = alternative_initial_value + 1 * periodic_unit
-        second_value = alternative_initial_value + 2 * periodic_unit
-        third_value = alternative_initial_value + 3 * periodic_unit
-        fourth_value = alternative_initial_value + 4 * periodic_unit
-        rounded_alternative_initial_value = rounded_value(alternative_initial_value, precision)
-        rounded_periodic_unit = rounded_value(periodic_unit, precision)
-        
-        # Generate general form of input
-        general_form = str(rounded_alternative_initial_value) + ' + ' + str(rounded_periodic_unit) + 'k'
-        
-        # Store inputs
-        optional_points += [alternative_initial_value, first_value, second_value, third_value, fourth_value, general_form]
+        generated_elements = generate_elements(alternative_initial_value, periodic_unit, precision)
+        optional_points += generated_elements
     
     # Separate numerical inputs from string inputs
     separated_points = separate_elements(optional_points)

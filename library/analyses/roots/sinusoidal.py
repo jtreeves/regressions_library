@@ -3,6 +3,7 @@ from library.errors.scalars import four_scalars, positive_integer
 from library.errors.adjustments import no_zeroes
 from library.statistics.sort import sorted_list, sorted_strings
 from library.statistics.rounding import rounded_value, rounded_list
+from library.vectors.generate import generate_elements
 from library.vectors.separate import separate_elements
 from library.analyses.derivatives.sinusoidal import sinusoidal_derivatives
 
@@ -83,18 +84,7 @@ def sinusoidal_roots(first_constant, second_constant, third_constant, fourth_con
         # Determine pertinent values
         periodic_unit = 2 * pi / coefficients[1]
         initial_value = coefficients[2] + periodic_radians
-        first_value = initial_value + 1 * periodic_unit
-        second_value = initial_value + 2 * periodic_unit
-
-        # Round pertinent values
-        rounded_initial_value = rounded_value(initial_value, precision)
-        rounded_periodic_unit = rounded_value(periodic_unit, precision)
-        
-        # Create general form
-        general_form = str(rounded_initial_value) + ' + ' + str(rounded_periodic_unit) + 'k'
-        
-        # Store results in roots list
-        roots = [initial_value, first_value, second_value, general_form]
+        roots = generate_elements(initial_value, periodic_unit, precision)
         
         # Handle roots that bounce on the x-axis
         if ratio == 1 or ratio == -1:
@@ -104,17 +94,10 @@ def sinusoidal_roots(first_constant, second_constant, third_constant, fourth_con
         else:
             # Determine supplementary values
             alternative_initial_value = coefficients[2] + pi / coefficients[1] - periodic_radians
-            alternative_first_value = alternative_initial_value + 1 * periodic_unit
-            alternative_second_value = alternative_initial_value + 2 * periodic_unit
-
-            # Round supplementary value
-            rounded_alternative_initial_value = rounded_value(alternative_initial_value, precision)
-
-            # Create general form for supplementary values
-            alternative_general_form = str(rounded_alternative_initial_value) + ' + ' + str(rounded_periodic_unit) + 'k'
+            generated_elements = generate_elements(alternative_initial_value, periodic_unit, precision)
             
             # Add additional results to roots list
-            roots.extend([alternative_initial_value, alternative_first_value, alternative_second_value, alternative_general_form])
+            roots.extend(generated_elements)
     
     # Separate numerical roots, string roots, and None results
     separated_roots = separate_elements(roots)
@@ -138,35 +121,15 @@ def sinusoidal_roots_first_derivative(first_constant, second_constant, third_con
     constants = sinusoidal_derivatives(first_constant, second_constant, third_constant, fourth_constant)['first']['constants']
     periodic_unit = pi / constants[1]
     initial_value = constants[2] + pi / (2 * constants[1])
-    first_value = initial_value + 1 * periodic_unit
-    second_value = initial_value + 2 * periodic_unit
-    third_value = initial_value + 3 * periodic_unit
-    fourth_value = initial_value + 4 * periodic_unit
-    values = [initial_value, first_value, second_value, third_value, fourth_value]
-    sorted_values = sorted_list(values)
-    rounded_roots = rounded_list(sorted_values, precision)
-    rounded_periodic_unit = rounded_value(periodic_unit, precision)
-    rounded_initial_value = rounded_value(initial_value, precision)
-    general_form = str(rounded_initial_value) + ' + ' + str(rounded_periodic_unit) + 'k'
-    roots = [*rounded_roots, general_form]
-    return roots
+    generated_elements = generate_elements(initial_value, periodic_unit, precision)
+    return generated_elements
 
 def sinusoidal_roots_second_derivative(first_constant, second_constant, third_constant, fourth_constant, precision = 4):
     constants = sinusoidal_derivatives(first_constant, second_constant, third_constant, fourth_constant)['second']['constants']
     periodic_unit = pi / constants[1]
     initial_value = constants[2]
-    first_value = initial_value + 1 * periodic_unit
-    second_value = initial_value + 2 * periodic_unit
-    third_value = initial_value + 3 * periodic_unit
-    fourth_value = initial_value + 4 * periodic_unit
-    values = [initial_value, first_value, second_value, third_value, fourth_value]
-    sorted_values = sorted_list(values)
-    rounded_roots = rounded_list(sorted_values, precision)
-    rounded_periodic_unit = rounded_value(periodic_unit, precision)
-    rounded_initial_value = rounded_value(initial_value, precision)
-    general_form = str(rounded_initial_value) + ' + ' + str(rounded_periodic_unit) + 'k'
-    roots = [*rounded_roots, general_form]
-    return roots
+    generated_elements = generate_elements(initial_value, periodic_unit, precision)
+    return generated_elements
 
 def sinusoidal_roots_initial_value(first_constant, second_constant, third_constant, fourth_constant, initial_value, precision = 4):
     roots = sinusoidal_roots(first_constant, second_constant, third_constant, fourth_constant - initial_value, precision)
@@ -186,21 +149,13 @@ def sinusoidal_roots_derivative_initial_value(first_constant, second_constant, t
             periodic_radians = radians / second_constant
             periodic_unit = 2 * pi / second_constant
             initial = third_constant + periodic_radians
-            first_value = initial + 1 * periodic_unit
-            second_value = initial + 2 * periodic_unit
-            rounded_periodic_unit = rounded_value(periodic_unit, precision)
-            rounded_initial = rounded_value(initial, precision)
-            general_form = str(rounded_initial) + ' + ' + str(rounded_periodic_unit) + 'k'
-            roots = [initial, first_value, second_value, general_form]
+            roots = generate_elements(initial, periodic_unit, precision)
             if ratio == 1 or ratio == -1:
                 pass
             else:
                 alternative_initial = third_constant + periodic_unit - periodic_radians
-                alternative_first_value = alternative_initial + 1 * periodic_unit
-                alternative_second_value = alternative_initial + 2 * periodic_unit
-                rounded_alternative_initial = rounded_value(alternative_initial, precision)
-                alternative_general_form = str(rounded_alternative_initial) + ' + ' + str(rounded_periodic_unit) + 'k'
-                roots.extend([alternative_initial, alternative_first_value, alternative_second_value, alternative_general_form])
+                generated_elements = generate_elements(alternative_initial, periodic_unit, precision)
+                roots.extend(generated_elements)
         
         # Separate numerical roots, string roots, and None results
         separated_roots = separate_elements(roots)
