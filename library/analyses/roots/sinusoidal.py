@@ -3,6 +3,7 @@ from library.errors.scalars import four_scalars, positive_integer
 from library.errors.adjustments import no_zeroes
 from library.statistics.sort import sorted_list, sorted_strings
 from library.statistics.rounding import rounded_value
+from library.vectors.separate import separate_elements
 from library.analyses.derivatives.sinusoidal import sinusoidal_derivatives
 
 def sinusoidal_roots(first_constant, second_constant, third_constant, fourth_constant, precision = 4):
@@ -116,13 +117,9 @@ def sinusoidal_roots(first_constant, second_constant, third_constant, fourth_con
             roots.extend([alternative_initial_value, alternative_first_value, alternative_second_value, alternative_general_form])
     
     # Separate numerical roots, string roots, and None results
-    numerical_roots = []
-    other_roots = []
-    for item in roots:
-        if isinstance(item, (int, float)):
-            numerical_roots.append(item)
-        else:
-            other_roots.append(item)
+    separated_roots = separate_elements(roots)
+    numerical_roots = separated_roots['numerical']
+    other_roots = separated_roots['other']
     
     # Sort numerical roots
     sorted_roots = sorted_list(numerical_roots)
@@ -212,13 +209,9 @@ def sinusoidal_roots_derivative_initial_value(first_constant, second_constant, t
                 roots.extend([alternative_initial, alternative_first_value, alternative_second_value, alternative_general_form])
         
         # Separate numerical roots, string roots, and None results
-        numerical_roots = []
-        other_roots = []
-        for item in roots:
-            if isinstance(item, (int, float)):
-                numerical_roots.append(item)
-            else:
-                other_roots.append(item)
+        separated_roots = separate_elements(roots)
+        numerical_roots = separated_roots['numerical']
+        other_roots = separated_roots['other']
         
         # Sort numerical roots
         sorted_roots = sorted_list(numerical_roots)

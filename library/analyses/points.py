@@ -6,6 +6,7 @@ from library.statistics.rounding import rounded_value
 from library.statistics.sort import sorted_list, sorted_strings
 from library.statistics.ranges import shift_into_range
 from library.vectors.unify import unite_vectors
+from library.vectors.separate import separate_elements
 from .equations.linear import linear_equation
 from .equations.quadratic import quadratic_equation
 from .equations.cubic import cubic_equation
@@ -211,14 +212,10 @@ def key_coordinates(equation_type, coefficients, precision = 4):
     }
     return result
 
-def points_within_range(points, start, end):
-    numerical_results = []
-    other_results = []
-    for point in points:
-        if isinstance(point, (int, float)):
-            numerical_results.append(point)
-        else:
-            other_results.append(point)
+def points_within_range(points, start, end):    
+    separated_results = separate_elements(points)
+    numerical_results = separated_results['numerical']
+    other_results = separated_results['other']
     selected_results = [x for x in numerical_results if x >= start and x <= end]
     final_results = []
     if not selected_results and not other_results:
@@ -268,14 +265,10 @@ def generalized_points_within_range(points, minimum, maximum, precision = 4):
         optional_points += [alternative_initial_value, first_value, second_value, third_value, fourth_value, general_form]
     
     # Separate numerical inputs from string inputs
-    numerical_points = []
-    other_points = []
-    for point in optional_points:
-        if isinstance(point, (int, float)):
-            numerical_points.append(point)
-        else:
-            other_points.append(point)
-    
+    separated_points = separate_elements(optional_points)
+    numerical_points = separated_points['numerical']
+    other_points = separated_points['other']
+
     # Sort numerical inputs
     sorted_points = sorted_list(numerical_points)
 

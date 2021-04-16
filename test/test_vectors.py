@@ -6,6 +6,7 @@ from library.vectors.magnitude import vector_magnitude
 from library.vectors.unit import unit_vector
 from library.vectors.column import column_conversion
 from library.vectors.dimension import single_dimension
+from library.vectors.separate import separate_elements
 from library.vectors.unify import unite_vectors
 from library.vectors.addition import vector_sum
 from library.vectors.multiplication import scalar_product_vector, dot_product
@@ -21,6 +22,10 @@ nested_vector = [
     [5, 9], 
     [2, 8]
 ]
+
+string_vector = ['one', 'two', 'three']
+
+mixed_vector = [1, 'two', 3, 'four', 5]
 
 scalar_number = -3
 
@@ -78,6 +83,23 @@ class TestDimension(unittest.TestCase):
     def test_dimension_second(self):
         dimension_second = single_dimension(nested_vector, 2)
         self.assertEqual(dimension_second, [4, 9, 8])
+
+class TestSeparate(unittest.TestCase):
+    def test_separate_all_numbers(self):
+        separate_all_numbers = separate_elements(first_vector)
+        self.assertEqual(separate_all_numbers, {'numerical': first_vector, 'other': []})
+    
+    def test_separate_all_strings(self):
+        separate_all_strings = separate_elements(string_vector)
+        self.assertEqual(separate_all_strings, {'numerical': [], 'other': string_vector})
+    
+    def test_separate_mixed(self):
+        separate_mixed = separate_elements(mixed_vector)
+        self.assertEqual(separate_mixed, {'numerical': [1, 3, 5], 'other': ['two', 'four']})
+    
+    def test_separate_none(self):
+        separate_none = separate_elements([None])
+        self.assertEqual(separate_none, {'numerical': [], 'other': [None]})
 
 class TestUnify(unittest.TestCase):
     def test_unify_first(self):
