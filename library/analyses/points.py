@@ -21,6 +21,65 @@ from .extrema import extrema_points
 from .inflections import inflection_points
 
 def coordinate_pairs(equation_type, coefficients, inputs, point_type = 'point', precision = 4):
+    """
+    Creates a list of coordinate pairs from a set of inputs
+
+    Parameters
+    ----------
+    equation_type : str
+        Name of the type of function for which coordinate pairs must be determined (e.g., 'linear', 'quadratic')
+    coefficients : list
+        Coefficients to use to generate the equation to investigate
+    inputs : list
+        X-coordinates to use to generate the y-coordinates for each coordinate pair
+    point_type : str, default='point'
+        Name of the type of point that describes all points which must be generated (e.g., 'intercepts', 'maxima')
+    precision : int, default=4
+        Maximum number of digits that can appear after the decimal place of the results
+
+    Raises
+    ------
+    ValueError
+        First argument must be either 'linear', 'quadratic', 'cubic', 'hyperbolic', 'exponential', 'logarithmic', 'logistic', or 'sinusoidal'
+    TypeError
+        Second argument must be a 1-dimensional list containing elements that are integers or floats
+    TypeError
+        Third argument must be a 1-dimensional list containing elements that are integers, floats, strings, or None
+    ValueError
+        Fourth argument must be either 'point', 'intercepts', 'maxima', 'minima', or 'inflections'
+    ValueError
+        Last argument must be a positive integer
+        
+    Returns
+    -------
+    points : list
+        List containing lists of coordinate pairs, in which the second element of the inner lists are floats and the first elements of the inner lists are either floats or strings (the latter for general forms); may return a list of None if inputs list contained None
+
+    See Also
+    --------
+    :func:`~library.vectors.generate.generate_elements`, :func:`~library.vectors.unify.unite_vectors`
+
+    Notes
+    -----
+    - Set of x-coordinates of points: :math:`x_i = \\{ x_1, x_2, \\cdots, x_n \\}`
+    - Set of y-coordinates of points: :math:`y_i = \\{ y_1, y_2, \\cdots, y_n \\}`
+    - Set of coordinate pairs of points: :math:`p_i = \\{ (x_1, y_1), (x_2, y_2), \\cdots, (x_n, y_n) \\}`
+
+    Examples
+    --------
+    Generate a list of coordinate pairs for a cubic function with coefficients 2, 3, 5, and 7 based off x-coordinates of 1, 2, 3, and 4
+        >>> points_cubic = coordinate_pairs('cubic', [2, 3, 5, 7], [1, 2, 3, 4])
+        >>> print(points_cubic)
+        [[1.0, 17.0], [2.0, 45.0], [3.0, 103.0], [4.0, 203.0]]
+    Generate a list of coordinate pairs for a sinusoidal function with coefficients 2, 3, 5, and 7 based off x-coordinates of 1, 2, 3, and 4
+        >>> points_sinusoidal = coordinate_pairs('sinusoidal', [2, 3, 5, 7], [1, 2, 3, 4])
+        >>> print(points_sinusoidal)
+        [[1.0, 8.0731], [2.0, 6.1758], [3.0, 7.5588], [4.0, 6.7178]]
+    Generate a list of coordinate pairs for a quadratic function with coefficients 1, -5, and 6 based off x-coordinates of 2 and 3 (given that the resultant coordinates will be x-intercepts)
+        >>> points_quadratic = coordinate_pairs('quadratic', [1, -5, 6], [2, 3], 'intercepts')
+        >>> print(points_quadratic)
+        [[2.0, 0.0], [3.0, 0.0]]
+    """
     # Handle input errors
     select_equations(equation_type)
     vector_of_scalars(coefficients, 'second')
