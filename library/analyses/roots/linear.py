@@ -1,4 +1,4 @@
-from library.errors.scalars import two_scalars, positive_integer
+from library.errors.scalars import two_scalars, three_scalars, positive_integer
 from library.errors.adjustments import no_zeroes
 from library.statistics.rounding import rounded_value
 
@@ -61,18 +61,26 @@ def linear_roots(first_constant, second_constant, precision = 4):
     return result
 
 def linear_roots_first_derivative(first_constant, second_constant, precision = 4):
+    two_scalars(first_constant, second_constant)
+    positive_integer(precision)
     root = [None]
     return root
 
 def linear_roots_second_derivative(first_constant, second_constant, precision = 4):
+    two_scalars(first_constant, second_constant)
+    positive_integer(precision)
     root = [None]
     return root
 
 def linear_roots_initial_value(first_constant, second_constant, initial_value, precision = 4):
+    three_scalars(first_constant, second_constant, initial_value)
+    positive_integer(precision)
     roots = linear_roots(first_constant, second_constant - initial_value, precision)
     return roots
 
 def linear_roots_derivative_initial_value(first_constant, second_constant, initial_value, precision = 4):
+    three_scalars(first_constant, second_constant, initial_value)
+    positive_integer(precision)
     roots = []
     if initial_value == first_constant:
         roots = ['All']

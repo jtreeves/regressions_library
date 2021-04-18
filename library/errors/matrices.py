@@ -70,6 +70,17 @@ def allow_none_matrix(matrix, position = 'only'):
     else:
         return f'{identifier.capitalize()} is either a 1-dimensional list that contains None or a 2-dimensional list containing lists in which the first nested list contains integers or floats and the last nested list begins with a string'
 
+def allow_vector_matrix(matrix, position = 'only'):
+    identifier = argument_position(position)
+    if not isinstance(matrix, list):
+        raise TypeError(f'{identifier.capitalize()} must be a list')
+    if not isinstance(matrix[0], (list, int, float, str)) and matrix[0] is not None:
+        raise TypeError(f'Elements of {identifier} must lists, integers, floats, strings, or None')
+    if len(matrix) > 1 and isinstance(matrix[0], list) and isinstance(matrix[0][0], list):
+        raise TypeError(f'{identifier.capitalize()} cannot be more than a 2-dimensional list')
+    else:
+        return f'{identifier.capitalize()} is a list containing lists, integers, floats, strings, or None'
+
 def level(matrix, scalar):
     if not scalar <= len(matrix[0]):
         raise ValueError('Last argument must be less than or equal to the length of the nested lists within the first argument')

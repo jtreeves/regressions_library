@@ -1,4 +1,5 @@
 from library.errors.scalars import allow_none_scalar, positive_integer
+from library.errors.vectors import allow_none_vector
 
 def rounded_value(number, precision = 4):
     """
@@ -83,6 +84,8 @@ def rounded_value(number, precision = 4):
         return float(round(number, precision))
     
 def rounded_list(numbers, precision = 4):
+    allow_none_vector(numbers, 'first')
+    positive_integer(precision)
     results = []
     for number in numbers:
         results.append(rounded_value(number, precision))

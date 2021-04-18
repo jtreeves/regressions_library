@@ -10,7 +10,7 @@ from library.vectors.unify import unite_vectors
 from library.analyses.equations.sinusoidal import sinusoidal_equation
 from library.analyses.derivatives.sinusoidal import sinusoidal_derivatives
 from library.analyses.integrals.sinusoidal import sinusoidal_integral
-from library.analyses.points import key_coordinates, generalized_coordinates_within_range
+from library.analyses.points import key_coordinates, shifted_coordinates_within_range
 from library.analyses.accumulation import accumulated_area
 from library.analyses.mean_values import average_values
 from library.statistics.halve import half_dimension
@@ -204,10 +204,10 @@ def sinusoidal_model(data, precision = 4):
     first_derivative = derivative['first']['evaluation']
     second_derivative = derivative['second']['evaluation']
     points = key_coordinates('sinusoidal', coefficients, precision)
-    final_roots = generalized_coordinates_within_range(points['roots'], independent_min, independent_max, precision)
-    final_maxima = generalized_coordinates_within_range(points['maxima'], independent_min, independent_max, precision)
-    final_minima = generalized_coordinates_within_range(points['minima'], independent_min, independent_max, precision)
-    final_inflections = generalized_coordinates_within_range(points['inflections'], independent_min, independent_max, precision)
+    final_roots = shifted_coordinates_within_range(points['roots'], independent_min, independent_max, precision)
+    final_maxima = shifted_coordinates_within_range(points['maxima'], independent_min, independent_max, precision)
+    final_minima = shifted_coordinates_within_range(points['minima'], independent_min, independent_max, precision)
+    final_inflections = shifted_coordinates_within_range(points['inflections'], independent_min, independent_max, precision)
     five_numbers = five_number_summary(independent_variable, precision)
     min_value = five_numbers['minimum']
     max_value = five_numbers['maximum']

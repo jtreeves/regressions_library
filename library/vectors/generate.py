@@ -1,7 +1,10 @@
+from library.errors.scalars import two_scalars, positive_integer
 from library.statistics.sort import sorted_list
 from library.statistics.rounding import rounded_value, rounded_list
 
 def generate_elements(initial_value, periodic_unit, precision = 4):
+    two_scalars(initial_value, periodic_unit)
+    positive_integer(precision)
     first_value = initial_value + 1 * periodic_unit
     second_value = initial_value + 2 * periodic_unit
     third_value = initial_value + 3 * periodic_unit

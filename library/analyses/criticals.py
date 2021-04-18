@@ -90,7 +90,7 @@ def critical_points(equation_type, coefficients, derivative_level, precision = 4
             results = logistic_roots_first_derivative(*coefficients, precision)
         elif equation_type == 'sinusoidal':
             results = sinusoidal_roots_first_derivative(*coefficients, precision)
-    
+
     # Determine critical points for second derivative based on equation type
     elif derivative_level == 2:
         if equation_type == 'linear':

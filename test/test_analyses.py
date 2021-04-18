@@ -39,7 +39,7 @@ from library.analyses.maxima import maxima_points
 from library.analyses.minima import minima_points
 from library.analyses.extrema import extrema_points
 from library.analyses.inflections import inflection_points
-from library.analyses.points import coordinate_pairs, key_coordinates, points_within_range, generalized_points_within_range, generalized_coordinates_within_range
+from library.analyses.points import coordinate_pairs, key_coordinates, points_within_range, shifted_points_within_range, shifted_coordinates_within_range
 from library.analyses.accumulation import accumulated_area
 from library.analyses.mean_values import average_values
 
@@ -1303,39 +1303,39 @@ class TestPointsWithinRange(unittest.TestCase):
         points_range_none = points_within_range([11, 13, 15, 17, 19], 50, 60)
         self.assertEqual(points_range_none, [None])
 
-class TestGeneralizedPointsWithinRange(unittest.TestCase):
+class TestShiftedPointsWithinRange(unittest.TestCase):
     maxDiff = None
 
-    def test_generalized_points_in_range_1d(self):
-        generalized_points_in_range_1d = generalized_points_within_range([11, 13, 15, 17, 19, '1 + 2k'], 11, 19)
-        self.assertEqual(generalized_points_in_range_1d, [11.0, 13.0, 15.0, 17.0, 19.0, '11.0 + 2.0k'])
+    def test_shifted_points_in_range_1d(self):
+        shifted_points_in_range_1d = shifted_points_within_range([11, 13, 15, 17, 19, '1 + 2k'], 11, 19)
+        self.assertEqual(shifted_points_in_range_1d, [11.0, 13.0, 15.0, 17.0, 19.0, '11.0 + 2.0k'])
     
-    def test_generalized_points_not_in_range_1d(self):
-        generalized_points_not_in_range_1d = generalized_points_within_range([11, 13, 15, 17, 19, '1 + 2k'], 50, 60)
-        self.assertEqual(generalized_points_not_in_range_1d, [51.0, 53.0, 55.0, 57.0, 59.0, '51.0 + 2.0k'])
+    def test_shifted_points_not_in_range_1d(self):
+        shifted_points_not_in_range_1d = shifted_points_within_range([11, 13, 15, 17, 19, '1 + 2k'], 50, 60)
+        self.assertEqual(shifted_points_not_in_range_1d, [51.0, 53.0, 55.0, 57.0, 59.0, '51.0 + 2.0k'])
     
-    def test_generalized_points_in_range_2d(self):
-        generalized_points_in_range_2d = generalized_points_within_range([[11, 1], [13, 1], [15, 1], [17, 1], [19, 1], ['1 + 2k', 1]], 11, 19)
-        self.assertEqual(generalized_points_in_range_2d, [11.0, 13.0, 15.0, 17.0, 19.0, '11.0 + 2.0k'])
+    def test_shifted_points_in_range_2d(self):
+        shifted_points_in_range_2d = shifted_points_within_range([[11, 1], [13, 1], [15, 1], [17, 1], [19, 1], ['1 + 2k', 1]], 11, 19)
+        self.assertEqual(shifted_points_in_range_2d, [11.0, 13.0, 15.0, 17.0, 19.0, '11.0 + 2.0k'])
     
-    def test_generalized_points_not_in_range_2d(self):
-        generalized_points_not_in_range_2d = generalized_points_within_range([[11, 1], [13, 1], [15, 1], [17, 1], [19, 1], ['1 + 2k', 1]], 50, 60)
-        self.assertEqual(generalized_points_not_in_range_2d, [51.0, 53.0, 55.0, 57.0, 59.0, '51.0 + 2.0k'])
+    def test_shifted_points_not_in_range_2d(self):
+        shifted_points_not_in_range_2d = shifted_points_within_range([[11, 1], [13, 1], [15, 1], [17, 1], [19, 1], ['1 + 2k', 1]], 50, 60)
+        self.assertEqual(shifted_points_not_in_range_2d, [51.0, 53.0, 55.0, 57.0, 59.0, '51.0 + 2.0k'])
 
-class TestGeneralizedCoordinatesWithinRange(unittest.TestCase):
+class TestShiftedCoordinatesWithinRange(unittest.TestCase):
     maxDiff = None
 
-    def test_generalized_coordinates_in_range(self):
-        generalized_coordinates_in_range = generalized_coordinates_within_range([[11, 1], [13, 1], [15, 1], [17, 1], [19, 1], ['1 + 2k', 1]], 11, 19, 8)
-        self.assertEqual(generalized_coordinates_in_range, [[11.0, 1], [13.0, 1], [15.0, 1], [17.0, 1], [19.0, 1], ['11.0 + 2.0k', 1]])
+    def test_shifted_coordinates_in_range(self):
+        shifted_coordinates_in_range = shifted_coordinates_within_range([[11, 1], [13, 1], [15, 1], [17, 1], [19, 1], ['1 + 2k', 1]], 11, 19, 8)
+        self.assertEqual(shifted_coordinates_in_range, [[11.0, 1], [13.0, 1], [15.0, 1], [17.0, 1], [19.0, 1], ['11.0 + 2.0k', 1]])
     
-    def test_generalized_coordinates_not_in_range(self):
-        generalized_coordinates_not_in_range = generalized_coordinates_within_range([[11, 1], [13, 1], [15, 1], [17, 1], [19, 1], ['1 + 2k', 1]], 50, 60, 5)
-        self.assertEqual(generalized_coordinates_not_in_range, [[51.0, 1], [53.0, 1], [55.0, 1], [57.0, 1], [59.0, 1], ['51.0 + 2.0k', 1]])
+    def test_shifted_coordinates_not_in_range(self):
+        shifted_coordinates_not_in_range = shifted_coordinates_within_range([[11, 1], [13, 1], [15, 1], [17, 1], [19, 1], ['1 + 2k', 1]], 50, 60, 5)
+        self.assertEqual(shifted_coordinates_not_in_range, [[51.0, 1], [53.0, 1], [55.0, 1], [57.0, 1], [59.0, 1], ['51.0 + 2.0k', 1]])
     
-    def test_generalized_coordinates_none(self):
-        generalized_coordinates_none = generalized_coordinates_within_range([None], 50, 60, 5)
-        self.assertEqual(generalized_coordinates_none, [None])
+    def test_shifted_coordinates_none(self):
+        shifted_coordinates_none = shifted_coordinates_within_range([None], 50, 60, 5)
+        self.assertEqual(shifted_coordinates_none, [None])
 
 class TestAccumulation(unittest.TestCase):
     def test_linear_accumulation(self):
@@ -1424,4 +1424,4 @@ class TestAverages(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 322 tests in 0.126s ---------- OK ---------- #
+# ---------- Ran 322 tests in 0.040s ---------- OK ---------- #

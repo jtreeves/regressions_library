@@ -1,4 +1,5 @@
 from library.errors.vectors import vector_of_scalars
+from library.errors.scalars import four_scalars, compare_scalars
 from .maximum import maximum_value
 from .minimum import minimum_value
 
@@ -55,6 +56,8 @@ def range_value(data):
     return float(result)
 
 def shift_into_range(initial_value, periodic_unit, minimum, maximum):
+    four_scalars(initial_value, periodic_unit, minimum, maximum)
+    compare_scalars(minimum, maximum, 'third', 'fourth')
     alternative_initial_value = initial_value
     if periodic_unit > 0:
         while alternative_initial_value > maximum:

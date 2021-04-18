@@ -2,10 +2,10 @@ import unittest
 
 from library.errors.positions import argument_position
 from library.errors.adjustments import no_zeroes
-from library.errors.scalars import scalar_value, two_scalars, three_scalars, four_scalars, compare_scalars, positive_integer, whole_number, select_integers, allow_none_scalar
-from library.errors.vectors import confirm_vector, vector_of_scalars, compare_vectors, length, long_vector
-from library.errors.matrices import confirm_matrix, matrix_of_scalars, square_matrix, compare_rows, compare_columns, compare_matrices, columns_rows, allow_none_matrix, level
-from library.errors.analyses import select_equations
+from library.errors.scalars import scalar_value, two_scalars, three_scalars, four_scalars, five_scalars, compare_scalars, positive_integer, whole_number, select_integers, allow_none_scalar
+from library.errors.vectors import confirm_vector, vector_of_scalars, vector_of_strings, compare_vectors, allow_none_vector, length, long_vector
+from library.errors.matrices import confirm_matrix, matrix_of_scalars, square_matrix, compare_rows, compare_columns, compare_matrices, columns_rows, allow_none_matrix, allow_vector_matrix, level
+from library.errors.analyses import select_equations, select_points
 
 class TestPosition(unittest.TestCase):
     def test_position_none(self):
@@ -259,10 +259,22 @@ class TestFourScalars(unittest.TestCase):
         self.assertEqual(type(context.exception), TypeError)
         self.assertEqual(str(context.exception), 'Fourth argument must be an integer or a float')
 
+class TestFiveScalars(unittest.TestCase):
+    def test_five_scalars_integer_float_whole_positive(self):
+        five_scalars_integer_float_whole_positive = five_scalars(good_integer, good_float, good_whole, good_positive, good_integer)
+        self.assertEqual(five_scalars_integer_float_whole_positive, 'First, second, third, fourth, and fifth arguments are all integers or floats')
+    
+    def test_five_scalars_integer_float_whole_string_raises(self):
+        with self.assertRaises(Exception) as context:
+            five_scalars(good_integer, good_float, good_whole, good_positive, bad_scalar)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'Fifth argument must be an integer or a float')
+
 first_vector = [2, 3, 5]
 second_vector = [7, 11, 13]
 longer_vector = [1, 2, 3, 4]
 none_vector = [None]
+vector_strings = ['1 + 2k', '2 + 2k']
 good_multitype = ['positive', 1, 'negative']
 bad_multitype = ['positive', 'negative', 1]
 bad_vector_string = 'vector'
@@ -326,6 +338,21 @@ class TestVectorScalars(unittest.TestCase):
         self.assertEqual(type(context.exception), TypeError)
         self.assertEqual(str(context.exception), 'Elements of argument must be integers or floats')
 
+class TestVectorStrings(unittest.TestCase):
+    def test_vector_strings_normal(self):
+        vector_strings_normal = vector_of_strings(vector_strings)
+        self.assertEqual(vector_strings_normal, 'Argument is a 1-dimensional list containing elements that are strings or None')
+    
+    def test_vector_strings_none(self):
+        vector_strings_none = vector_of_strings(none_vector)
+        self.assertEqual(vector_strings_none, 'Argument is a 1-dimensional list containing elements that are strings or None')
+    
+    def test_vector_strings_nested_raises(self):
+        with self.assertRaises(Exception) as context:
+            allow_none_vector(bad_vector_nested)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'Elements of argument must be integers, floats, strings, or None')
+
 class TestLength(unittest.TestCase):
     def test_length_4_4_integers(self):
         length_4_4_integers = length(longer_vector, 4)
@@ -361,6 +388,25 @@ class TestCompareVectors(unittest.TestCase):
             compare_vectors(first_vector, longer_vector)
         self.assertEqual(type(context.exception), ValueError)
         self.assertEqual(str(context.exception), 'Both arguments must contain the same number of elements')
+
+class TestAllowNoneVector(unittest.TestCase):
+    def test_allow_none_vector_scalars(self):
+        allow_none_vector_scalars = allow_none_vector(first_vector)
+        self.assertEqual(allow_none_vector_scalars, 'Elements of argument are integers, floats, strings, or None')
+    
+    def test_allow_none_vector_strings(self):
+        allow_none_vector_strings = allow_none_vector(vector_strings)
+        self.assertEqual(allow_none_vector_strings, 'Elements of argument are integers, floats, strings, or None')
+    
+    def test_allow_none_vector_none(self):
+        allow_none_vector_none = allow_none_vector(none_vector)
+        self.assertEqual(allow_none_vector_none, 'Elements of argument are integers, floats, strings, or None')
+    
+    def test_allow_none_vector_scalars_raises(self):
+        with self.assertRaises(Exception) as context:
+            vector_of_strings(first_vector)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'Elements of argument must be strings or None')
 
 class TestLongVector(unittest.TestCase):
     def test_long_vector_10(self):
@@ -530,6 +576,25 @@ class TestAllowNoneMatrix(unittest.TestCase):
         self.assertEqual(type(context.exception), TypeError)
         self.assertEqual(str(context.exception), 'If the first element of argument is not None, then the last element must be a list with a first element that is a string')
 
+class TestAllowVectorMatrix(unittest.TestCase):
+    def test_allow_vector_matrix_matrix(self):
+        allow_vector_matrix_matrix = allow_vector_matrix(first_matrix)
+        self.assertEqual(allow_vector_matrix_matrix, 'Argument is a list containing lists, integers, floats, strings, or None')
+    
+    def test_allow_vector_matrix_vector(self):
+        allow_vector_matrix_vector = allow_vector_matrix(good_long_vector)
+        self.assertEqual(allow_vector_matrix_vector, 'Argument is a list containing lists, integers, floats, strings, or None')
+    
+    def test_allow_vector_matrix_none(self):
+        allow_vector_matrix_none = allow_vector_matrix(none_vector)
+        self.assertEqual(allow_vector_matrix_none, 'Argument is a list containing lists, integers, floats, strings, or None')
+
+    def test_allow_vector_matrix_nested_raises(self):
+        with self.assertRaises(Exception) as context:
+            allow_vector_matrix(bad_matrix_nested)
+        self.assertEqual(type(context.exception), TypeError)
+        self.assertEqual(str(context.exception), 'Argument cannot be more than a 2-dimensional list')
+
 class TestLevel(unittest.TestCase):
     def test_level_2x3_2(self):
         level_2x2_2 = level(first_matrix, 2)
@@ -546,8 +611,8 @@ bad_equation = 'rational'
 
 class TestSelectEquations(unittest.TestCase):
     def test_select_equations_included(self):
-        select_equations_multiply = select_equations(good_equation)
-        self.assertEqual(select_equations_multiply, "First argument is either 'linear', 'quadratic', 'cubic', 'hyperbolic', 'exponential', 'logarithmic', 'logistic', or 'sinusoidal'")
+        select_equations_multiple = select_equations(good_equation)
+        self.assertEqual(select_equations_multiple, "First argument is either 'linear', 'quadratic', 'cubic', 'hyperbolic', 'exponential', 'logarithmic', 'logistic', or 'sinusoidal'")
     
     def test_select_equations_excluded_raises(self):
         with self.assertRaises(Exception) as context:
@@ -555,7 +620,21 @@ class TestSelectEquations(unittest.TestCase):
         self.assertEqual(type(context.exception), ValueError)
         self.assertEqual(str(context.exception), "First argument must be either 'linear', 'quadratic', 'cubic', 'hyperbolic', 'exponential', 'logarithmic', 'logistic', or 'sinusoidal'")
 
+good_points = 'intercepts'
+bad_points = 'criticals'
+
+class TestSelectPoints(unittest.TestCase):
+    def test_select_points_included(self):
+        select_points_multiple = select_points(good_points)
+        self.assertEqual(select_points_multiple, "Argument is either 'point', 'intercepts', 'maxima', 'minima', or 'inflections'")
+    
+    def test_select_points_excluded_raises(self):
+        with self.assertRaises(Exception) as context:
+            select_points(bad_points)
+        self.assertEqual(type(context.exception), ValueError)
+        self.assertEqual(str(context.exception), "Argument must be either 'point', 'intercepts', 'maxima', 'minima', or 'inflections'")
+
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 96 tests in 0.012s ---------- OK ---------- #
+# ---------- Ran 111 tests in 0.009s ---------- OK ---------- #

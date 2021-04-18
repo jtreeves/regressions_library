@@ -1,5 +1,5 @@
 from math import log
-from library.errors.scalars import three_scalars, positive_integer
+from library.errors.scalars import three_scalars, four_scalars, positive_integer
 from library.errors.adjustments import no_zeroes
 from library.statistics.sort import sorted_list
 from library.statistics.rounding import rounded_value
@@ -62,14 +62,20 @@ def logistic_roots(first_constant, second_constant, third_constant, precision = 
     return root
 
 def logistic_roots_first_derivative(first_constant, second_constant, third_constant, precision = 4):
+    three_scalars(first_constant, second_constant, third_constant)
+    positive_integer(precision)
     root = [None]
     return root
 
 def logistic_roots_second_derivative(first_constant, second_constant, third_constant, precision = 4):
+    three_scalars(first_constant, second_constant, third_constant)
+    positive_integer(precision)
     root = [rounded_value(third_constant)]
     return root
 
 def logistic_roots_initial_value(first_constant, second_constant, third_constant, initial_value, precision = 4):
+    four_scalars(first_constant, second_constant, third_constant, initial_value)
+    positive_integer(precision)
     log_argument = first_constant / initial_value - 1
     if log_argument == 0:
         log_argument = 10**(-precision)
@@ -82,6 +88,8 @@ def logistic_roots_initial_value(first_constant, second_constant, third_constant
     return final_roots
 
 def logistic_roots_derivative_initial_value(first_constant, second_constant, third_constant, initial_value, precision = 4):
+    four_scalars(first_constant, second_constant, third_constant, initial_value)
+    positive_integer(precision)
     intermediary_roots = quadratic_roots(initial_value, 2 * initial_value - first_constant * second_constant, initial_value, precision)
     final_roots = []
     if intermediary_roots[0] == None:

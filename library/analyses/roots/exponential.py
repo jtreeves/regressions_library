@@ -1,5 +1,5 @@
 from math import log
-from library.errors.scalars import two_scalars, positive_integer
+from library.errors.scalars import two_scalars, three_scalars, positive_integer
 from library.errors.adjustments import no_zeroes
 from library.statistics.rounding import rounded_value
 
@@ -58,14 +58,20 @@ def exponential_roots(first_constant, second_constant, precision = 4):
     return root
 
 def exponential_roots_first_derivative(first_constant, second_constant, precision = 4):
+    two_scalars(first_constant, second_constant)
+    positive_integer(precision)
     root = [None]
     return root
 
 def exponential_roots_second_derivative(first_constant, second_constant, precision = 4):
+    two_scalars(first_constant, second_constant)
+    positive_integer(precision)
     root = [None]
     return root
 
 def exponential_roots_initial_value(first_constant, second_constant, initial_value, precision = 4):
+    three_scalars(first_constant, second_constant, initial_value)
+    positive_integer(precision)
     denominator = log(abs(second_constant))
     if denominator == 0:
         denominator = 10**(-precision)
@@ -76,6 +82,8 @@ def exponential_roots_initial_value(first_constant, second_constant, initial_val
     return root
 
 def exponential_roots_derivative_initial_value(first_constant, second_constant, initial_value, precision = 4):
+    three_scalars(first_constant, second_constant, initial_value)
+    positive_integer(precision)
     denominator = log(abs(second_constant))
     if denominator == 0:
         denominator = 10**(-precision)

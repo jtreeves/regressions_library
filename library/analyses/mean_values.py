@@ -19,7 +19,7 @@ from .equations.logarithmic import logarithmic_equation
 from .equations.logistic import logistic_equation
 from .equations.sinusoidal import sinusoidal_equation
 from .accumulation import accumulated_area
-from .points import points_within_range, generalized_points_within_range
+from .points import points_within_range, shifted_points_within_range
 
 def average_value_derivative(equation_type, coefficients, start, end, precision = 4):
     """
@@ -182,7 +182,7 @@ def mean_values_derivative(equation_type, coefficients, start, end, precision = 
         result = logistic_roots_derivative_initial_value(*coefficients, average, precision)
     elif equation_type == 'sinusoidal':
         options = sinusoidal_roots_derivative_initial_value(*coefficients, average, precision)
-        result = generalized_points_within_range(options, start, end, precision)
+        result = shifted_points_within_range(options, start, end, precision)
     final_result = points_within_range(result, start, end)
     return final_result
 
@@ -329,7 +329,7 @@ def mean_values_integral(equation_type, coefficients, start, end, precision = 4)
         result = logistic_roots_initial_value(*coefficients, average, precision)
     elif equation_type == 'sinusoidal':
         options = sinusoidal_roots_initial_value(*coefficients, average, precision)
-        result = generalized_points_within_range(options, start, end, precision)
+        result = shifted_points_within_range(options, start, end, precision)
     final_result = points_within_range(result, start, end)
     return final_result
 

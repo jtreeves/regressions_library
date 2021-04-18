@@ -1,5 +1,5 @@
 from math import asin, acos, pi
-from library.errors.scalars import four_scalars, positive_integer
+from library.errors.scalars import four_scalars, five_scalars, positive_integer
 from library.errors.adjustments import no_zeroes
 from library.statistics.sort import sorted_list, sorted_strings
 from library.statistics.rounding import rounded_value, rounded_list
@@ -118,6 +118,8 @@ def sinusoidal_roots(first_constant, second_constant, third_constant, fourth_con
     return result
 
 def sinusoidal_roots_first_derivative(first_constant, second_constant, third_constant, fourth_constant, precision = 4):
+    four_scalars(first_constant, second_constant, third_constant, fourth_constant)
+    positive_integer(precision)
     constants = sinusoidal_derivatives(first_constant, second_constant, third_constant, fourth_constant)['first']['constants']
     periodic_unit = pi / constants[1]
     initial_value = constants[2] + pi / (2 * constants[1])
@@ -125,6 +127,8 @@ def sinusoidal_roots_first_derivative(first_constant, second_constant, third_con
     return generated_elements
 
 def sinusoidal_roots_second_derivative(first_constant, second_constant, third_constant, fourth_constant, precision = 4):
+    four_scalars(first_constant, second_constant, third_constant, fourth_constant)
+    positive_integer(precision)
     constants = sinusoidal_derivatives(first_constant, second_constant, third_constant, fourth_constant)['second']['constants']
     periodic_unit = pi / constants[1]
     initial_value = constants[2]
@@ -132,10 +136,14 @@ def sinusoidal_roots_second_derivative(first_constant, second_constant, third_co
     return generated_elements
 
 def sinusoidal_roots_initial_value(first_constant, second_constant, third_constant, fourth_constant, initial_value, precision = 4):
+    five_scalars(first_constant, second_constant, third_constant, fourth_constant, initial_value)
+    positive_integer(precision)
     roots = sinusoidal_roots(first_constant, second_constant, third_constant, fourth_constant - initial_value, precision)
     return roots
 
 def sinusoidal_roots_derivative_initial_value(first_constant, second_constant, third_constant, fourth_constant, initial_value, precision = 4):
+    five_scalars(first_constant, second_constant, third_constant, fourth_constant, initial_value)
+    positive_integer(precision)
     ratio = initial_value / (first_constant * second_constant)
     final_roots = []
     if ratio > 1 or ratio < -1:

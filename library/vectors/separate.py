@@ -1,4 +1,7 @@
+from library.errors.vectors import allow_none_vector
+
 def separate_elements(vector):
+    allow_none_vector(vector)
     numerical_elements = []
     other_elements = []
     for element in vector:

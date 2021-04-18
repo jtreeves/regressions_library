@@ -16,6 +16,15 @@ def vector_of_scalars(vector, position = 'only'):
     else:
         return f'{identifier.capitalize()} is a 1-dimensional list containing elements that are integers or floats'
 
+def vector_of_strings(vector, position = 'only'):
+    confirm_vector(vector, position)
+    identifier = argument_position(position)
+    for string in vector:
+        if not isinstance(string, str) and string is not None:
+            raise TypeError(f'Elements of {identifier} must be strings or None')
+    else:
+        return f'{identifier.capitalize()} is a 1-dimensional list containing elements that are strings or None'
+
 def compare_vectors(vector_one, vector_two):
     confirm_vector(vector_one, 'first')
     confirm_vector(vector_two, 'second')
@@ -23,6 +32,16 @@ def compare_vectors(vector_one, vector_two):
         raise ValueError('Both arguments must contain the same number of elements')
     else:
         return 'Both arguments contain the same number of elements'
+
+def allow_none_vector(vector, position = 'only'):
+    identifier = argument_position(position)
+    if not isinstance(vector, list):
+        raise TypeError(f'{identifier.capitalize()} must be a 1-dimensional list')
+    for element in vector:
+        if not isinstance(element, (int, float, str)) and element is not None:
+            raise TypeError(f'Elements of {identifier} must be integers, floats, strings, or None')
+    else:
+        return f'Elements of {identifier} are integers, floats, strings, or None'
 
 def length(vector, size):
     if not len(vector) == size:

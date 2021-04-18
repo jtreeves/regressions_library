@@ -22,6 +22,11 @@ def four_scalars(scalar_one, scalar_two, scalar_three, scalar_four):
     scalar_value(scalar_four, 'fourth')
     return 'First, second, third, and fourth arguments are all integers or floats'
 
+def five_scalars(scalar_one, scalar_two, scalar_three, scalar_four, scalar_five):
+    four_scalars(scalar_one, scalar_two, scalar_three, scalar_four)
+    scalar_value(scalar_five, 'fifth')
+    return 'First, second, third, fourth, and fifth arguments are all integers or floats'
+
 def compare_scalars(scalar_one, scalar_two, position_one, position_two):
     scalar_value(scalar_one, position_one)
     scalar_value(scalar_two, position_two)

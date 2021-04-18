@@ -1,4 +1,4 @@
-from library.errors.scalars import four_scalars, positive_integer
+from library.errors.scalars import four_scalars, five_scalars, positive_integer
 from library.errors.adjustments import no_zeroes
 from library.statistics.sort import sorted_list
 from library.statistics.rounding import rounded_value, rounded_list
@@ -122,19 +122,27 @@ def cubic_roots(first_constant, second_constant, third_constant, fourth_constant
     return result
 
 def cubic_roots_first_derivative(first_constant, second_constant, third_constant, fourth_constant, precision = 4):
+    four_scalars(first_constant, second_constant, third_constant, fourth_constant)
+    positive_integer(precision)
     constants = cubic_derivatives(first_constant, second_constant, third_constant, fourth_constant)['first']['constants']
     roots = quadratic_roots(*constants, precision)
     return roots
 
 def cubic_roots_second_derivative(first_constant, second_constant, third_constant, fourth_constant, precision = 4):
+    four_scalars(first_constant, second_constant, third_constant, fourth_constant)
+    positive_integer(precision)
     constants = cubic_derivatives(first_constant, second_constant, third_constant, fourth_constant)['second']['constants']
     roots = linear_roots(*constants, precision)
     return roots
 
 def cubic_roots_initial_value(first_constant, second_constant, third_constant, fourth_constant, initial_value, precision = 4):
+    five_scalars(first_constant, second_constant, third_constant, fourth_constant, initial_value)
+    positive_integer(precision)
     roots = cubic_roots(first_constant, second_constant, third_constant, fourth_constant - initial_value, precision)
     return roots
 
 def cubic_roots_derivative_initial_value(first_constant, second_constant, third_constant, fourth_constant, initial_value, precision = 4):
+    five_scalars(first_constant, second_constant, third_constant, fourth_constant, initial_value)
+    positive_integer(precision)
     roots = quadratic_roots(3 * first_constant, 2 * second_constant, third_constant - initial_value, precision)
     return roots

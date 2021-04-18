@@ -1,3 +1,5 @@
+from library.errors.vectors import vector_of_strings
+
 def sorted_list(data):
     """
     Sorts all elements in a data set in increasing order
@@ -115,6 +117,7 @@ def sorted_dimension(data, dimension = 1):
         return result
     
 def sorted_strings(data):
+    vector_of_strings(data)
     sorted_data = []
     if len(data) == 1:
         sorted_data = data

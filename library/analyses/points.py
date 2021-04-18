@@ -1,7 +1,7 @@
-from library.errors.analyses import select_equations
+from library.errors.analyses import select_equations, select_points
 from library.errors.scalars import scalar_value, compare_scalars, positive_integer
-from library.errors.vectors import vector_of_scalars
-from library.errors.matrices import allow_none_matrix
+from library.errors.vectors import vector_of_scalars, allow_none_vector
+from library.errors.matrices import allow_none_matrix, allow_vector_matrix
 from library.statistics.rounding import rounded_value, rounded_list
 from library.statistics.sort import sorted_list, sorted_strings
 from library.statistics.ranges import shift_into_range
@@ -21,6 +21,11 @@ from .extrema import extrema_points
 from .inflections import inflection_points
 
 def coordinate_pairs(equation_type, coefficients, inputs, point_type = 'point', precision = 4):
+    select_equations(equation_type)
+    vector_of_scalars(coefficients, 'second')
+    allow_none_vector(inputs, 'third')
+    select_points(point_type, 'fourth')
+    positive_integer(precision)
     # Create equations for evaluating inputs (based on equation type)
     equation = lambda x : x
     if equation_type == 'linear':
@@ -182,7 +187,9 @@ def key_coordinates(equation_type, coefficients, precision = 4):
     }
     return result
 
-def points_within_range(points, start, end):    
+def points_within_range(points, start, end):
+    allow_none_vector(points, 'first')
+    compare_scalars(start, end, 'second', 'third')
     separated_results = separate_elements(points)
     numerical_results = separated_results['numerical']
     other_results = separated_results['other']
@@ -194,7 +201,10 @@ def points_within_range(points, start, end):
         final_results.extend(selected_results + other_results)
     return final_results
 
-def generalized_points_within_range(points, minimum, maximum, precision = 4):
+def shifted_points_within_range(points, minimum, maximum, precision = 4):
+    allow_vector_matrix(points, 'first')
+    compare_scalars(minimum, maximum, 'second', 'third')
+    positive_integer(precision)
     # Grab general points
     general_points = []
     for point in points:
@@ -245,7 +255,7 @@ def generalized_points_within_range(points, minimum, maximum, precision = 4):
     input_points = rounded_points + sorted_other_points
     return input_points
 
-def generalized_coordinates_within_range(coordinates, minimum, maximum, precision = 4):
+def shifted_coordinates_within_range(coordinates, minimum, maximum, precision = 4):
     # Handle input errors
     allow_none_matrix(coordinates, 'first')
     compare_scalars(minimum, maximum, 'second', 'third')
@@ -257,7 +267,7 @@ def generalized_coordinates_within_range(coordinates, minimum, maximum, precisio
     # Handle general case
     if coordinates[0] is not None:
         # Generate inputs
-        input_points = generalized_points_within_range(coordinates, minimum, maximum, precision)
+        input_points = shifted_points_within_range(coordinates, minimum, maximum, precision)
         
         # Generate outputs
         output_points = []
