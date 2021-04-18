@@ -49,11 +49,22 @@ def inverse_matrix(matrix):
         >>> print(inverse_3x3)
         [[-0.07692307692307693, -0.3333333333333333, 0.20512820512820512], [-0.7692307692307692, 0.5, -0.11538461538461538], [0.6923076923076923, -0.16666666666666666, -0.01282051282051282]]
     """
+    # Handle input errors
     square_matrix(matrix)
+
+    # Determine determinant of matrix
     determinant = linear_determinant(matrix)
+
+    # Circumvent division by zero
     if determinant == 0:
         determinant = 0.0001
+    
+    # Calculate reciprocal of determinant
     determinant_reciprocal = 1 / determinant
-    transform = transposed_matrix(matrix_of_cofactors(matrix_of_minors(matrix)))
-    result = scalar_product_matrix(transform, determinant_reciprocal)
+    
+    # Create adjugate of original matrix by transposing its cofactors
+    adjugate = transposed_matrix(matrix_of_cofactors(matrix_of_minors(matrix)))
+
+    # Generate inverse matrix by multiplying adjugate by reciprocal
+    result = scalar_product_matrix(adjugate, determinant_reciprocal)
     return result

@@ -46,10 +46,21 @@ def matrix_of_minors(matrix):
         >>> print(matrix_3x3)
         [[6, -60, -54], [-26, -39, -13], [-16, -9, 1]]
     """
+    # Handle input errors
     square_matrix(matrix)
+
+    # Create list to return
     result = []
+
+    # Iterate over outer lists of input
     for m in range(len(matrix)):
+        # Create new lists inside list to return
         result.append([])
+
+        # Iterate over inner lists of input
         for n in range(len(matrix[0])):
+            # Store determinants in inner lists of return
             result[m].append(linear_determinant(inner_determinant(matrix, m, n)))
+    
+    # Return result
     return result

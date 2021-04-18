@@ -2,19 +2,30 @@ from library.errors.matrices import square_matrix
 from library.errors.scalars import whole_number
 
 def inner_determinant(matrix, row, column):
+    # Handle input errors
     square_matrix(matrix)
     whole_number(row, 'second')
     whole_number(column, 'third')
-    result = []
+
+    # Create intermediary dictionary and list to return
     storage = {}
+    result = []
+
+    # Iterate over outer lists of input
     for m in range(len(matrix)):
         if m != row:
             storage[m] = []
+
+            # Iterate over inner lists of input
             for n in range(len(matrix[0])):
                 if n!= column:
                     storage[m].append(matrix[m][n])
+    
+    # Iterate over keys in dictionary
     for key in storage:
         result.append(storage[key])
+    
+    # Return result
     return result
 
 def linear_determinant(matrix, result = 0):
@@ -62,21 +73,34 @@ def linear_determinant(matrix, result = 0):
         >>> print(determinant_3x3)
         -78
     """
+    # Handle input errors
     square_matrix(matrix)
     whole_number(result, 'second')
+
+    # Handle base case
     if len(matrix) == 1:
-        result += matrix[0][0]
+        result += float(matrix[0][0])
         return result
+    
+    # Handle recursive case
     else:
+        # Create intermediary variables
         alternating = []
         minors = []
         leads = matrix[0]
+
+        # Iterate over first inner list of input
         for i in range(len(leads)):
             minors.append(inner_determinant(matrix, 0, i))
             if i % 2 == 0:
                 alternating.append(leads[i])
             else:
                 alternating.append(-1 * leads[i])
+        
+        # Iterate over alternating
         for j in range(len(alternating)):
             result += alternating[j] * linear_determinant(minors[j])
-    return float(result)
+    
+    # Convert result to float
+    floated_result = float(result)
+    return floated_result

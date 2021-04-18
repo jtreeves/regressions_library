@@ -42,10 +42,21 @@ def transposed_matrix(matrix):
         >>> print(matrix_2x2)
         [[2, 5], [3, 7]]
     """
+    # Handle input errors
     matrix_of_scalars(matrix)
+
+    # Create list to return
     result = []
+
+    # Iterate over inner lists of input
     for m in range(len(matrix[0])):
+        # Create new lists inside list to return
         result.append([])
+
+        # Iterate over outer lists of input
         for n in range(len(matrix)):
+            # Store elements previously at inner-outer, now at outer-inner
             result[m].append(matrix[n][m])
+    
+    # Return result
     return result

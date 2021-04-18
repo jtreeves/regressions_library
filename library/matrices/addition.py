@@ -49,10 +49,21 @@ def matrix_sum(matrix_one, matrix_two):
         >>> print(matrix_2x2)
         [[6, 7], [4, 3]]
     """
+    # Handle input errors
     compare_matrices(matrix_one, matrix_two)
+
+    # Create list to return
     result = []
+
+    # Iterate over outer lists of input
     for m in range(len(matrix_one)):
+        # Create new lists inside list to return
         result.append([])
+
+        # Iterate over inner lists of input
         for n in range(len(matrix_one[0])):
+            # Store sums in inner lists of return
             result[m].append(matrix_one[m][n] + matrix_two[m][n])
+    
+    # Return result
     return result

@@ -50,13 +50,24 @@ def scalar_product_matrix(matrix, scalar):
         >>> print(matrix_2x2)
         [[15, -21], [-9, 24]]
     """
+    # Handle input errors
     matrix_of_scalars(matrix, 'first')
     scalar_value(scalar, 'second')
+
+    # Create list to return
     result = []
+
+    # Iterate over outer lists of input
     for m in range(len(matrix)):
+        # Create new lists inside list to return
         result.append([])
+
+        # Iterate over inner lists of input
         for n in range(len(matrix[0])):
+            # Store products in inner lists of return
             result[m].append(matrix[m][n] * scalar)
+    
+    # Return result
     return result
 
 def matrix_product(matrix_one, matrix_two):
@@ -106,10 +117,21 @@ def matrix_product(matrix_one, matrix_two):
         >>> print(matrix_2x4)
         [[38, 44, 50, 56], [83, 98, 113, 128]]
     """
+    # Handle input errors
     columns_rows(matrix_one, matrix_two)
+
+    # Create list to return
     result = []
+
+    # Iterate over outer lists of input
     for m in range(len(matrix_one)):
+        # Create new lists inside list to return
         result.append([])
+
+        # Iterate over inner lists of input
         for n in range(len(matrix_two[0])):
+            # Store dot products in inner lists of return
             result[m].append(dot_product(matrix_one[m], transposed_matrix(matrix_two)[n]))
+    
+    # Return result
     return result

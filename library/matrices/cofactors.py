@@ -43,20 +43,38 @@ def matrix_of_cofactors(matrix):
         >>> print(matrix_2x2)
         [[2, -3], [-5, 7]]
     """
+    # Handle input errors
     matrix_of_scalars(matrix)
+
+    # Create list to return
     result = []
+
+    # Iterate over outer lists of input
     for m in range(len(matrix)):
+        # Create new lists inside list to return
         result.append([])
+
         if m % 2 == 0:
+            # Iterate over inner lists of input
             for n in range(len(matrix[0])):
+                # Handle even-even indexed elements
                 if n % 2 == 0:
                     result[m].append(matrix[m][n])
+                
+                # Handle even-odd indexed elements
                 else:
                     result[m].append(-1 * matrix[m][n])
+        
         else:
+            # Iterate over inner lists of input
             for n in range(len(matrix[0])):
+                # Handle odd-even indexed elements
                 if n % 2 == 0:
                     result[m].append(-1 * matrix[m][n])
+                
+                # Handle odd-odd indexed elements
                 else:
                     result[m].append(matrix[m][n])
+    
+    # Return result
     return result

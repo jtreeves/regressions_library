@@ -1,6 +1,6 @@
 from library.errors.matrices import compare_rows
 from library.errors.scalars import positive_integer
-from library.statistics.rounding import rounded_value
+from library.statistics.rounding import rounded_list
 from library.vectors.dimension import single_dimension
 from .multiplication import matrix_product
 from .transpose import transposed_matrix
@@ -59,15 +59,20 @@ def system_solution(matrix_one, matrix_two, precision = 4):
         >>> print(solution_3values)
         [-0.8611, -1.3889, -0.0278]
     """
+    # Handle input errors
     compare_rows(matrix_one, matrix_two)
     positive_integer(precision)
+
+    # Transpose, multiply, invert, multiply, then multiply again
     transposition = transposed_matrix(matrix_one)
     product = matrix_product(transposition, matrix_one)
     inversion = inverse_matrix(product)
     second_product = matrix_product(inversion, transposition)
     solution_column = matrix_product(second_product, matrix_two)
+
+    # Convert solution from a column vector into a row vector
     solution = single_dimension(solution_column, 1)
-    result = []
-    for number in solution:
-        result.append(rounded_value(number, precision))
+
+    # Round result
+    result = rounded_list(solution, precision)
     return result
