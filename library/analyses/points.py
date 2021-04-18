@@ -284,7 +284,7 @@ def points_within_range(points, start, end):
     - Initial set of points: :math:`p_i = \\{ p_1, p_2, \\cdots, p_n \\}`
     - Lower bound of range: :math:`b_l`
     - Upper bound of range: :math:`b_u`
-    - Adjusted set of points within range: :math:`r_i = \\{ r \\mid r \\in p_i, r \\geq b_l, r \\leq b_u`
+    - Adjusted set of points within range: :math:`r_i = \\{ r \\mid r \\in p_i, r \\geq b_l, r \\leq b_u \\}`
 
     Examples
     --------

@@ -63,7 +63,7 @@ def system_solution(matrix_one, matrix_two, precision = 4):
     compare_rows(matrix_one, matrix_two)
     positive_integer(precision)
 
-    # Transpose, multiply, invert, multiply, then multiply again
+    # Multiply inverse of first matrix by second matrix
     transposition = transposed_matrix(matrix_one)
     product = matrix_product(transposition, matrix_one)
     inversion = inverse_matrix(product)

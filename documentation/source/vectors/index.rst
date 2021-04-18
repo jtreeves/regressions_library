@@ -7,6 +7,8 @@ Vectors
     pages/column
     pages/dimension
     pages/unify
+    pages/separate
+    pages/generate
     pages/components
     pages/addition
     pages/multiplication
