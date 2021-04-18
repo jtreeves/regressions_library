@@ -64,11 +64,62 @@ def range_value(data):
     return result
 
 def shift_into_range(initial_value, periodic_unit, minimum, maximum):
+    """
+    Adjusts an intial value to one within a particular range by increasing or decreasing its value by a specified unit
+
+    Parameters
+    ----------
+    initial_value : int, float
+        Starting value to adjust to fit into a range
+    periodic_unit : int, float
+        Unit by which the initial value should be incrementally increased or decreased to fit into a range
+    minimum : int, float
+        Lower bound of range into which the initial value must be adjusted (final value should be greater than or equal to minimum)
+    maximum : int, float
+        Upper bound of range into which the initial value must be adjusted (final value should be less than or equal to maximum)
+
+    Raises
+    ------
+    TypeError
+        Arguments must be integers or floats
+
+    Returns
+    -------
+    final_value : float
+        Value within range that only differs from the initial value by a an integral multiple of the periodic unit
+
+    See Also
+    --------
+    :func:`~library.analyses.points.shifted_points_within_range`, :func:`~library.analyses.mean_values.mean_values_derivative`, :func:`~library.analyses.mean_values.mean_values_integral`
+
+    Notes
+    -----
+    - Initial value: :math:`v_i`
+    - Periodic unit: :math:`\\lambda`
+    - Lower bound of range: :math:`b_l`
+    - Upper bound of range: :math:`b_u`
+    - Set of all values derived from initial value and periodic unit: :math:`g = \\{ v \\mid v = v_i + \\lambda\\cdot{k} \\}`
+
+        - :math:`k \\in \\mathbb{Z}`
+    
+    - Final value: :math:`v_f \\geq b_l \\cap v_f \\leq b_u \\cap v_f \\in g`
+
+    Examples
+    --------
+    Adjust the number 7 to a value between 20 and 30, based on a periodic unit of 8
+        >>> final_value_int = shift_into_range(7, 8, 20, 30)
+        >>> print(final_value_int)
+        23.0
+    Adjust the number 524.62 to a value between 138.29 and 213.86, based on a periodic unit of 23.91
+        >>> final_value_float = shift_into_range(524.62, 23.91, 138.29, 213.86)
+        >>> print(final_value_float)
+        213.78999999999974
+    """
     # Handle input errors
     four_scalars(initial_value, periodic_unit, minimum, maximum)
     compare_scalars(minimum, maximum, 'third', 'fourth')
 
-    # Set input value to return value
+    # Set input value to alternative value
     alternative_initial_value = initial_value
     
     # Handle positive periodic units
@@ -86,10 +137,11 @@ def shift_into_range(initial_value, periodic_unit, minimum, maximum):
         # Decrease value till below maximum
         while alternative_initial_value > maximum:
             alternative_initial_value += periodic_unit
-            
+
         # Increase value till above minimum
         while alternative_initial_value < minimum:
             alternative_initial_value -= periodic_unit
-    
-    # Return final value
-    return alternative_initial_value
+
+    # Convert final value to float
+    final_value = float(alternative_initial_value)
+    return final_value
