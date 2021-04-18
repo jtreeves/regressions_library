@@ -61,23 +61,38 @@ def correlation_coefficient(actuals, expecteds, precision = 4):
         >>> print(correlation_long)
         0.9011
     """
+    # Handle input errors
     compare_vectors(actuals, expecteds)
     positive_integer(precision)
-    residual_array = multiple_residuals(actuals, expecteds)
-    deviation_array = multiple_deviations(actuals)
+
+    # Determine residuals and deviations between actuals and expecteds
+    residuals = multiple_residuals(actuals, expecteds)
+    deviations = multiple_deviations(actuals)
+
+    # Square residuals and deviations
     squared_residuals = []
-    for residual in residual_array:
+    for residual in residuals:
         squared_residuals.append(residual**2)
     squared_deviations = []
-    for deviation in deviation_array:
+    for deviation in deviations:
         squared_deviations.append(deviation**2)
+    
+    # Calculate the sums of the squares of the residuals and deviations
     residual_sum = sum_value(squared_residuals)
     deviation_sum = sum_value(squared_deviations)
+
+    # Circumvent division by zero
     if deviation_sum == 0:
         deviation_sum = 10**(-precision)
+    
+    # Calculate key ratio
     ratio = residual_sum / deviation_sum
+    
+    # Handle no solution
     if ratio > 1:
         return 0.0
+    
+    # Handle general case
     else:
         result = (1 - ratio)**(1/2)
         return rounded_value(result, precision)

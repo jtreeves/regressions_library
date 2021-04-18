@@ -45,9 +45,16 @@ def median_value(data):
         >>> print(median_odd)
         20
     """
+    # Handle input errors
     vector_of_scalars(data)
+
+    # Sort input
     sorted_data = sorted_list(data)
+
+    # Determine length of input
     length = len(sorted_data)
+
+    # Handle an even amount of elements
     if length % 2 == 0:
         upper_index = int(length / 2)
         lower_index = int(upper_index - 1)
@@ -55,6 +62,8 @@ def median_value(data):
         lower_value = sorted_data[lower_index]
         result = (upper_value + lower_value) / 2
         return result
+    
+    # Handle an odd amount of elements
     else:
         index = int(floor(length / 2))
         result = sorted_data[index]

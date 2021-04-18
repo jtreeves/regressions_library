@@ -85,18 +85,25 @@ def five_number_summary(data, precision = 4):
         >>> print(summary_odd['minimum'])
         8
     """
+    # Handle input errors
     vector_of_scalars(data, 'first')
     positive_integer(precision)
+
+    # Calculate all values used in five-number summary
     min_value = minimum_value(data)
-    rounded_min = rounded_value(min_value, precision)
-    max_value = maximum_value(data)
-    rounded_max = rounded_value(max_value, precision)
     q1 = quartile_value(data, 1)
-    rounded_q1 = rounded_value(q1, precision)
-    q3 = quartile_value(data, 3)
-    rounded_q3 = rounded_value(q3, precision)
     median = median_value(data)
+    q3 = quartile_value(data, 3)
+    max_value = maximum_value(data)
+
+    # Round all values
+    rounded_min = rounded_value(min_value, precision)
+    rounded_q1 = rounded_value(q1, precision)
     rounded_med = rounded_value(median, precision)
+    rounded_q3 = rounded_value(q3, precision)
+    rounded_max = rounded_value(max_value, precision)
+    
+    # Package values in single dictionary to return
     result = {
         'minimum': rounded_min,
         'q1': rounded_q1,

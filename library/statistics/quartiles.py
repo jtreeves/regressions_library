@@ -68,14 +68,27 @@ def quartile_value(data, q):
         >>> print(quartile3)
         76.5
     """
+    # Handle input errors
     vector_of_scalars(data, 'first')
     select_integers(q, [1, 2, 3])
+
+    # Split input in half
     halved_data = half(data)
-    result = ''
+
+    # Create number to return
+    result = 0
+
+    # Determine Q2 by taking the median of all elements
     if q == 2:
         result = median_value(data)
+    
+    # Determine Q1 by taking the median of the lower half of elements
     elif q == 1:
         result = median_value(halved_data['lower'])
+    
+    # Determine Q3 by taking the median of the upper half of elements
     elif q == 3:
         result = median_value(halved_data['upper'])
+    
+    # Return result
     return result

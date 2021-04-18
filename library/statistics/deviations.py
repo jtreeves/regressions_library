@@ -45,10 +45,16 @@ def single_deviation(actual, mean):
         >>> print(deviation_large)
         25.799999999999997
     """
+    # Handle input errors
     scalar_value(actual, 'first')
     scalar_value(mean, 'second')
-    result = actual - mean
-    return float(result)
+
+    # Calcuate difference between actual and mean
+    difference = actual - mean
+
+    # Convert difference to float
+    result = float(difference)
+    return result
 
 def multiple_deviations(actual_array):
     """
@@ -93,9 +99,19 @@ def multiple_deviations(actual_array):
         >>> print(deviations_long)
         [-7.7942857142857145, -4.804285714285715, -3.5942857142857143, -11.774285714285714, -2.484285714285715, 8.755714285714287, 21.69571428571429]
     """
+    # Handle input errors
     vector_of_scalars(actual_array)
+
+    # Create list to return
     results = []
+
+    # Calculate mean of input
     average = mean_value(actual_array)
+
+    # Iterate over input
     for element in actual_array:
+        # Store deviation of each element in list to return
         results.append(single_deviation(element, average))
+    
+    # Return results
     return results

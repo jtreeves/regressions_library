@@ -48,17 +48,26 @@ def partition(data):
         >>> print(sections_long['lower'])
         [11, 3, 52]
     """
+    # Determine length of input
     length = len(data)
+
+    # Create intermediary lists
     upper = []
     lower = []
+
+    # Handle an even amount of elements
     if length % 2 == 0:
         index = int(length / 2)
         upper = data[index:]
         lower = data[:index]
+    
+    # Handle an odd amount of elements
     else:
         index = int(floor(length / 2))
         upper = data[index + 1:]
         lower = data[:index]
+    
+    # Package both lists in single dictionary to return
     result = {
         'upper': upper,
         'lower': lower
@@ -120,8 +129,13 @@ def half(data):
         >>> print(sections_long['lower'])
         [3, 6, 11]
     """
+    # Handle input errors
     vector_of_scalars(data)
+
+    # Sort input
     sorted_data = sorted_list(data)
+
+    # Partition sorted data
     result = partition(sorted_data)
     return result
 
@@ -184,8 +198,13 @@ def half_dimension(data, dimension = 1):
         >>> print(sections_3d['lower'])
         [[3, 7, 1], [2, 15, 3]]
     """
+    # Handle input errors
     matrix_of_scalars(data, 'first')
     positive_integer(dimension)
+
+    # Sort input according to a provided dimension
     sorted_data = sorted_dimension(data, dimension)
+
+    # Partition sorted input
     result = partition(sorted_data)
     return result

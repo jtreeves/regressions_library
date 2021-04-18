@@ -38,22 +38,39 @@ def sorted_list(data):
         >>> print(order2)
         [3, 6, 11, 21, 25, 25, 52]
     """
+    # Create intermediary lists
     pivots = []
     less = []
     more = []
+
+    # Handle base case
     if len(data) <= 1:
         return data
+    
+    # Handle recursive case
     else:
+        # Set pivot
         pivot = data[0]
+
+        # Iterate over input
         for i in data:
+            # Store values below pivot in less list
             if i < pivot:
                 less.append(i)
+            
+            # Store values above pivot in more list
             elif i > pivot:
                 more.append(i)
+            
+            # Store values equal to pivot in pivots list
             else:
                 pivots.append(i)
+        
+        # Sort intermediary lists
         less = sorted_list(less)
         more = sorted_list(more)
+
+        # Create final list to return
         result = less + pivots + more
         return result
 
@@ -97,37 +114,68 @@ def sorted_dimension(data, dimension = 1):
         >>> print(order2)
         [[9, 2, 4], [1, 3, 5], [6, 1, 8]]
     """
+    # Create intermediary lists
     pivots = []
     less = []
     more = []
+
+    # Handle base case
     if len(data) <= 1:
         return data
+    
+    # Handle recursive case
     else:
+        # Set pivot
         pivot = data[0][dimension - 1]
+
+        # Iterate over list
         for i in data:
+            # Store values below pivot in less list
             if i[dimension - 1] < pivot:
                 less.append(i)
+            
+            # Store values above pivot in more list
             elif i[dimension - 1] > pivot:
                 more.append(i)
+            
+            # Store values equal to pivot in pivots list
             else:
                 pivots.append(i)
+        
+        # Sort intermediary lists
         less = sorted_dimension(less, dimension)
         more = sorted_dimension(more, dimension)
+
+        # Create final list to return
         result = less + pivots + more
         return result
     
 def sorted_strings(data):
+    # Handle input errors
     vector_of_strings(data)
+
+    # Create list to return
     sorted_data = []
+
+    # Handle single entry requiring no sorting
     if len(data) == 1:
         sorted_data = data
+    
+    # Handle general case of two entries
     else:
+        # Determine values of strings
         first_index = data[0].find(' + ')
         first_value = float(data[0][:first_index])
         second_index = data[1].find(' + ')
         second_value = float(data[1][:second_index])
+        
+        # Set return list to initial list if already sorted
         if first_value < second_value:
             sorted_data = data
+        
+        # Set return list to inversion of initial list if not already sorted
         else:
             sorted_data = [data[1], data[0]]
+    
+    # Return result
     return sorted_data

@@ -43,6 +43,18 @@ def mean_value(data):
         >>> print(mean_odd)
         39.888888888888886
     """
+    # Handle input errors
     vector_of_scalars(data)
-    result = sum_value(data) / len(data)
-    return float(result)
+
+    # Calculate sum of all elements in input
+    sum_of_data = sum_value(data)
+
+    # Determine length of input
+    length_of_data = len(data)
+
+    # Calculate average
+    average = sum_of_data / length_of_data
+
+    # Convert average to float
+    result = float(average)
+    return result

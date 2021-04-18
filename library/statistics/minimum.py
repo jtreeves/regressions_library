@@ -43,7 +43,12 @@ def minimum_value(data):
         >>> print(minimum_odd)
         8
     """
+    # Handle input errors
     vector_of_scalars(data)
+
+    # Sort input
     sorted_data = sorted_list(data)
+
+    # Grab first element of sorted input
     result = sorted_data[0]
     return result

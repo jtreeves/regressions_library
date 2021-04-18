@@ -42,8 +42,17 @@ def sum_value(data):
         >>> print(total2)
         0
     """
+    # Handle input errors
     vector_of_scalars(data)
+
+    # Create number to return
     result = 0
+
+    # Iterate over input
     for element in data:
+        # Add each element from input to number to return
         result += element
-    return float(result)
+    
+    # Convert number to float
+    floated_result = float(result)
+    return floated_result

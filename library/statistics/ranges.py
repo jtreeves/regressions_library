@@ -49,24 +49,47 @@ def range_value(data):
         >>> print(range_odd)
         83
     """
+    # Handle input errors
     vector_of_scalars(data)
+
+    # Determine maximum and minimum of input
     max_value = maximum_value(data)
     min_value = minimum_value(data)
-    result = max_value - min_value
-    return float(result)
+
+    # Calculate difference between maximum and minimum
+    difference = max_value - min_value
+
+    # Convert difference to float
+    result = float(difference)
+    return result
 
 def shift_into_range(initial_value, periodic_unit, minimum, maximum):
+    # Handle input errors
     four_scalars(initial_value, periodic_unit, minimum, maximum)
     compare_scalars(minimum, maximum, 'third', 'fourth')
+
+    # Set input value to return value
     alternative_initial_value = initial_value
+    
+    # Handle positive periodic units
     if periodic_unit > 0:
+        # Decrease value till below maximum
         while alternative_initial_value > maximum:
             alternative_initial_value -= periodic_unit
+
+        # Increase value till above minimum
         while alternative_initial_value < minimum:
             alternative_initial_value += periodic_unit
+    
+    # Handle negative periodic units
     else:
+        # Decrease value till below maximum
         while alternative_initial_value > maximum:
             alternative_initial_value += periodic_unit
+            
+        # Increase value till above minimum
         while alternative_initial_value < minimum:
             alternative_initial_value -= periodic_unit
+    
+    # Return final value
     return alternative_initial_value

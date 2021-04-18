@@ -72,21 +72,38 @@ def rounded_value(number, precision = 4):
         >>> print(round_skip)
         11.7254
     """
+    # Handle input errors
     allow_none_scalar(number)
     positive_integer(precision)
+
+    # Handle None value
     if number == None:
         return None
+    
+    # Circumvent rounding to zero with small positive numbers
     elif number < 10**(-precision) and number > 0:
         return 10**(-precision)
+
+    # Circumvent rounding to zero with small negative numbers
     elif number > -10**(-precision) and number < 0:
         return -10**(-precision)
+    
+    # Handle general case
     else:
         return float(round(number, precision))
     
 def rounded_list(numbers, precision = 4):
+    # Handle input errors
     allow_none_vector(numbers, 'first')
     positive_integer(precision)
+
+    # Create list to return
     results = []
+
+    # Iterate over input
     for number in numbers:
+        # Store rounded values of input in list to return
         results.append(rounded_value(number, precision))
+    
+    # Return results
     return results

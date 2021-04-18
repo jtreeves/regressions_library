@@ -44,10 +44,16 @@ def single_residual(actual, expected):
         >>> print(residual_large)
         -13.700000000000001
     """
+    # Handle input errors
     scalar_value(actual, 'first')
     scalar_value(expected, 'second')
-    result = actual - expected
-    return float(result)
+
+    # Calculate difference between inputs
+    difference = actual - expected
+
+    # Convert difference to float
+    result = float(difference)
+    return result
 
 def multiple_residuals(actual_array, expected_array):
     """
@@ -96,8 +102,16 @@ def multiple_residuals(actual_array, expected_array):
         >>> print(residuals_long)
         [-3.4700000000000006, -0.4300000000000006, -0.8200000000000003, 3.9800000000000004, 0.17999999999999972]
     """
+    # Handle input errors
     compare_vectors(actual_array, expected_array)
+
+    # Create list to return
     results = []
+
+    # Iterate over inputs
     for i in range(len(actual_array)):
+        # Store residuals of corresponding elements in list to return
         results.append(single_residual(actual_array[i], expected_array[i]))
+    
+    # Return results
     return results
