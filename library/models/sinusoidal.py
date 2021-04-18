@@ -171,59 +171,92 @@ def sinusoidal_model(data, precision = 4):
         >>> print(model_agnostic['correlation'])
         0.9264
     """
+    # Handle input errors
     matrix_of_scalars(data, 'first')
     long_vector(data)
     positive_integer(precision)
+
+    # Store independent and dependent variable values separately
     independent_variable = single_dimension(data, 1)
     dependent_variable = single_dimension(data, 2)
+
+    # Determine key values for bounds
     independent_max = max(independent_variable)
     independent_min = min(independent_variable)
     independent_range = independent_max - independent_min
     dependent_max = max(dependent_variable)
     dependent_min = min(dependent_variable)
     dependent_range = dependent_max - dependent_min
+
+    # Circumvent errors with bounds
     if independent_range == 0:
         independent_range = 1
     if dependent_range == 0:
         dependent_range = 1
         dependent_max += 1
-    solution = []
+
+    # Create function to guide model generation
     def sinusoidal_fit(variable, first_constant, second_constant, third_constant, fourth_constant):
         evaluation = first_constant * sin(second_constant * (variable - third_constant)) + fourth_constant
         return evaluation
+    
+    # Create list to store coefficients of generated equation
+    solution = []
+    
+    # Handle normal case
     try:
+        # Generate model
         parameters, covariance = curve_fit(sinusoidal_fit, independent_variable, dependent_variable, bounds=[(-dependent_range, -inf, -independent_range, dependent_min), (dependent_range, inf, independent_range, dependent_max)])
         solution = list(parameters)
+    
+    # Narrow bounds in event of runtime error
     except RuntimeError:
+        # Regenerate model within tighter parameters
         parameters, covariance = curve_fit(sinusoidal_fit, independent_variable, dependent_variable, bounds=[(dependent_range - 1, -independent_range, -independent_range, dependent_min), (dependent_range + 1, independent_range, independent_range, dependent_max)])
         solution = list(parameters)
+    
+    # Eliminate zeroes from solution
     coefficients = no_zeroes(solution, precision)
+
+    # Generate evaluations for function, derivative, and integral
     equation = sinusoidal_equation(*coefficients)
-    derivative = sinusoidal_derivatives(*coefficients)
+    derivative = sinusoidal_derivatives(*coefficients)['first']['evaluation']
     integral = sinusoidal_integral(*coefficients)['evaluation']
-    first_derivative = derivative['first']['evaluation']
-    second_derivative = derivative['second']['evaluation']
+
+    # Determine key points of graph
     points = key_coordinates('sinusoidal', coefficients, precision)
     final_roots = shifted_coordinates_within_range(points['roots'], independent_min, independent_max, precision)
     final_maxima = shifted_coordinates_within_range(points['maxima'], independent_min, independent_max, precision)
     final_minima = shifted_coordinates_within_range(points['minima'], independent_min, independent_max, precision)
     final_inflections = shifted_coordinates_within_range(points['inflections'], independent_min, independent_max, precision)
+
+    # Generate values for lower and upper bounds
     five_numbers = five_number_summary(independent_variable, precision)
     min_value = five_numbers['minimum']
     max_value = five_numbers['maximum']
     q1 = five_numbers['q1']
     q3 = five_numbers['q3']
+
+    # Calculate accumulations
     accumulated_range = accumulated_area('sinusoidal', coefficients, min_value, max_value, precision)
     accumulated_iqr = accumulated_area('sinusoidal', coefficients, q1, q3, precision)
+
+    # Determine average values and their points
     averages_range = average_values('sinusoidal', coefficients, min_value, max_value, precision)
     averages_iqr = average_values('sinusoidal', coefficients, q1, q3, precision)
+
+    # Create list of predicted outputs
     predicted = []
     for element in independent_variable:
         predicted.append(equation(element))
+    
+    # Calculate correlation coefficient for model
     accuracy = correlation_coefficient(dependent_variable, predicted, precision)
+
+    # Package preceding results in multiple dictionaries
     evaluations = {
         'equation': equation,
-        'derivative': first_derivative,
+        'derivative': derivative,
         'integral': integral
     }
     points = {
@@ -240,6 +273,8 @@ def sinusoidal_model(data, precision = 4):
         'range': averages_range,
         'iqr': averages_iqr
     }
+
+    # Package all dictionaries in single dictionary to return
     result = {
         'constants': coefficients,
         'evaluations': evaluations,

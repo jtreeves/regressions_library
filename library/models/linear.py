@@ -141,39 +141,65 @@ def linear_model(data, precision = 4):
         >>> print(model_agnostic['correlation'])
         0.5516
     """
+    # Handle input errors
     matrix_of_scalars(data, 'first')
     long_vector(data)
     positive_integer(precision)
+
+    # Store independent and dependent variable values separately
     independent_variable = single_dimension(data, 1)
     dependent_variable = single_dimension(data, 2)
+
+    # Create matrices for independent and dependent variables
     independent_matrix = []
     dependent_matrix = column_conversion(dependent_variable)
+
+    # Iterate over inputted data
     for element in independent_variable:
+        # Store linear and constant evaluations of original independent elements together as lists within independent matrix
         independent_matrix.append([element, 1])
+    
+    # Solve system of equations
     solution = system_solution(independent_matrix, dependent_matrix, precision)
+
+    # Eliminate zeroes from solution
     coefficients = no_zeroes(solution, precision)
+
+    # Generate evaluations for function, derivatives, and integral
     equation = linear_equation(*coefficients)
-    derivative = linear_derivatives(*coefficients)
+    derivative = linear_derivatives(*coefficients)['first']['evaluation']
     integral = linear_integral(*coefficients)['evaluation']
-    first_derivative = derivative['first']['evaluation']
-    second_derivative = derivative['second']['evaluation']
+
+    # Determine key points of graph
     points = key_coordinates('linear', coefficients, precision)
+
+    # Generate values for lower and upper bounds
     five_numbers = five_number_summary(independent_variable, precision)
     min_value = five_numbers['minimum']
     max_value = five_numbers['maximum']
     q1 = five_numbers['q1']
     q3 = five_numbers['q3']
+
+    # Calculate accumulations
     accumulated_range = accumulated_area('linear', coefficients, min_value, max_value, precision)
     accumulated_iqr = accumulated_area('linear', coefficients, q1, q3, precision)
+
+    # Determine average values and their points
     averages_range = average_values('linear', coefficients, min_value, max_value, precision)
     averages_iqr = average_values('linear', coefficients, q1, q3, precision)
+
+    # Create list of predicted outputs
     predicted = []
     for element in independent_variable:
         predicted.append(equation(element))
+    
+    # Calculate correlation coefficient for model
     accuracy = correlation_coefficient(dependent_variable, predicted, precision)
+
+    # Package preceding results in multiple dictionaries
     evaluations = {
         'equation': equation,
-        'derivative': first_derivative,
+        'derivative': derivative,
         'integral': integral
     }
     points = {
@@ -190,6 +216,8 @@ def linear_model(data, precision = 4):
         'range': averages_range,
         'iqr': averages_iqr
     }
+
+    # Package all dictionaries in single dictionary to return
     result = {
         'constants': coefficients,
         'evaluations': evaluations,

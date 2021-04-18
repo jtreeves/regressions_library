@@ -143,47 +143,79 @@ def exponential_model(data, precision = 4):
         >>> print(model_agnostic['correlation'])
         0.5069
     """
+    # Handle input errors
     matrix_of_scalars(data, 'first')
     long_vector(data)
     positive_integer(precision)
+    
+    # Store independent and dependent variable values separately
     independent_variable = single_dimension(data, 1)
     dependent_variable = single_dimension(data, 2)
+
+    # Filter dependent variable to clean data
     filtered_dependent = []
     for element in dependent_variable:
+        # Circumvent logarithm of zero or negative values
         if element <= 0:
             filtered_dependent.append(10**(-precision))
+        
+        # Handle general case
         else:
             filtered_dependent.append(element)
+    
+    # Create matrices for independent and dependent variables
     independent_matrix = []
     dependent_matrix = []
+    
+    # Iterate over inputted data
     for i in range(len(data)):
+        # Store linear and constant evaluations of original independent elements together as lists within independent matrix
         independent_matrix.append([independent_variable[i], 1])
+        # Store logarithmic evaluations of original dependent elements as lists within dependent matrix
         dependent_matrix.append([log(filtered_dependent[i])])
+    
+    # Solve system of equations
     solution = system_solution(independent_matrix, dependent_matrix, precision)
     constants = [exp(solution[1]), exp(solution[0])]
+    
+    # Eliminate zeroes from solution
     coefficients = no_zeroes(constants, precision)
+    
+    # Generate evaluations for function, derivatives, and integral
     equation = exponential_equation(*coefficients)
-    derivative = exponential_derivatives(*coefficients)
+    derivative = exponential_derivatives(*coefficients)['first']['evaluation']
     integral = exponential_integral(*coefficients)['evaluation']
-    first_derivative = derivative['first']['evaluation']
-    second_derivative = derivative['second']['evaluation']
+    
+    # Determine key points of graph
     points = key_coordinates('exponential', solution, precision)
+    
+    # Generate values for lower and upper bounds
     five_numbers = five_number_summary(independent_variable, precision)
     min_value = five_numbers['minimum']
     max_value = five_numbers['maximum']
     q1 = five_numbers['q1']
     q3 = five_numbers['q3']
+    
+    # Calculate accumulations
     accumulated_range = accumulated_area('exponential', constants, min_value, max_value, precision)
     accumulated_iqr = accumulated_area('exponential', constants, q1, q3, precision)
+    
+    # Determine average values and their points
     averages_range = average_values('exponential', coefficients, min_value, max_value, precision)
     averages_iqr = average_values('exponential', coefficients, q1, q3, precision)
+    
+    # Create list of predicted outputs
     predicted = []
     for element in independent_variable:
         predicted.append(equation(element))
+    
+    # Calculate correlation coefficient for model
     accuracy = correlation_coefficient(dependent_variable, predicted, precision)
+    
+    # Package preceding results in multiple dictionaries
     evaluations = {
         'equation': equation,
-        'derivative': first_derivative,
+        'derivative': derivative,
         'integral': integral
     }
     points = {
@@ -200,6 +232,8 @@ def exponential_model(data, precision = 4):
         'range': averages_range,
         'iqr': averages_iqr
     }
+    
+    # Package all dictionaries in single dictionary to return
     result = {
         'constants': coefficients,
         'evaluations': evaluations,

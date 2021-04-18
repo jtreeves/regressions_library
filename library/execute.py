@@ -1,4 +1,5 @@
 from .errors.matrices import matrix_of_scalars
+from .errors.vectors import long_vector
 from .errors.scalars import positive_integer
 from .models.linear import linear_model
 from .models.quadratic import quadratic_model
@@ -146,9 +147,15 @@ def run_all(data, precision = 4):
         >>> print(results_large['optimal']['option'])
         'sinusoidal'
     """
+    # Handle input errors
     matrix_of_scalars(data, 'first')
+    long_vector(data)
     positive_integer(precision)
+
+    # Grab values of independent variable
     independent_variable = single_dimension(data, 1)
+
+    # Generate all eight key regression models
     models = {
         'linear': linear_model(data, precision),
         'quadratic': quadratic_model(data, precision),
@@ -159,6 +166,8 @@ def run_all(data, precision = 4):
         'logistic': logistic_model(data, precision),
         'sinusoidal': sinusoidal_model(data, precision)
     }
+
+    # Determine key statistical values for independent variable
     statistics = {
         'minimum': minimum_value(independent_variable),
         'maximum': maximum_value(independent_variable),
@@ -167,6 +176,8 @@ def run_all(data, precision = 4):
         'mean': mean_value(independent_variable),
         'median': median_value(independent_variable)
     }
+
+    # Grab correlations of all previously generated models
     correlations = {
         'linear': models['linear']['correlation'],
         'quadratic': models['quadratic']['correlation'],
@@ -177,11 +188,15 @@ def run_all(data, precision = 4):
         'logistic': models['logistic']['correlation'],
         'sinusoidal': models['sinusoidal']['correlation']
     }
+
+    # Determine model with highest correlation
     best = max(correlations, key=correlations.get)
     optimal = {
         'option': best,
         'correlation': correlations[best]
     }
+
+    # Package preceding results in single dictionary to return
     result = {
         'models': models,
         'statistics': statistics,

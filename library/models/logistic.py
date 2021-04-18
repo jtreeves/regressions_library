@@ -144,11 +144,16 @@ def logistic_model(data, precision = 4):
         >>> print(model_agnostic['correlation'])
         0.5875
     """
+    # Handle input errors
     matrix_of_scalars(data, 'first')
     long_vector(data)
     positive_integer(precision)
+
+    # Store independent and dependent variable values separately
     independent_variable = single_dimension(data, 1)
     dependent_variable = single_dimension(data, 2)
+
+    # Determine key values for bounds
     halved_data = half_dimension(data, 1)
     dependent_lower = single_dimension(halved_data['lower'], 2)
     dependent_upper = single_dimension(halved_data['upper'], 2)
@@ -157,41 +162,69 @@ def logistic_model(data, precision = 4):
     dependent_max = max(dependent_variable)
     dependent_min = min(dependent_variable)
     dependent_range = dependent_max - dependent_min
+
+    # Circumvent error with bounds
     if dependent_range == 0:
         dependent_range = 1
-    solution = []
+    
+    # Create function to guide model generation
     def logistic_fit(variable, first_constant, second_constant, third_constant):
         evaluation = first_constant / (1 + exp(-1 * second_constant * (variable - third_constant)))
         return evaluation
+    
+    # Create list to store coefficients of generated equation
+    solution = []
+    
+    # Handle normal case where values appear to increase in the set
     if mean_upper >= mean_lower:
+        # Generate model
         parameters, covariance = curve_fit(logistic_fit, independent_variable, dependent_variable, bounds=[(dependent_max - dependent_range, 0, -inf), (dependent_max + dependent_range, inf, inf)])
         solution = list(parameters)
+    
+    # Handle case where values do not appear to increase in the set
     else:
+        # Generate model with inverted negative infinity and zero values
         parameters, covariance = curve_fit(logistic_fit, independent_variable, dependent_variable, bounds=[(dependent_max - dependent_range, -inf, -inf), (dependent_max + dependent_range, 0, inf)])
         solution = list(parameters)
+    
+    # Eliminate zeroes from solution
     coefficients = no_zeroes(solution, precision)
+
+    # Generate evaluations for function, derivative, and integral
     equation = logistic_equation(*coefficients)
-    derivative = logistic_derivatives(*coefficients)
+    derivative = logistic_derivatives(*coefficients)['first']['evaluation']
     integral = logistic_integral(*coefficients)['evaluation']
-    first_derivative = derivative['first']['evaluation']
-    second_derivative = derivative['second']['evaluation']
+
+    # Determine key points of graph
     points = key_coordinates('logistic', coefficients, precision)
+
+    # Generate values for lower and upper bounds
     five_numbers = five_number_summary(independent_variable, precision)
     min_value = five_numbers['minimum']
     max_value = five_numbers['maximum']
     q1 = five_numbers['q1']
     q3 = five_numbers['q3']
+
+    # Calculate accumulations
     accumulated_range = accumulated_area('logistic', coefficients, min_value, max_value, precision)
     accumulated_iqr = accumulated_area('logistic', coefficients, q1, q3, precision)
+
+    # Determine average values and their points
     averages_range = average_values('logistic', coefficients, min_value, max_value, precision)
     averages_iqr = average_values('logistic', coefficients, q1, q3, precision)
+
+    # Create list of predicted outputs
     predicted = []
     for element in independent_variable:
         predicted.append(equation(element))
+    
+    # Calculate correlation coefficient for model
     accuracy = correlation_coefficient(dependent_variable, predicted, precision)
+
+    # Package preceding results in multiple dictionaries
     evaluations = {
         'equation': equation,
-        'derivative': first_derivative,
+        'derivative': derivative,
         'integral': integral
     }
     points = {
@@ -208,6 +241,8 @@ def logistic_model(data, precision = 4):
         'range': averages_range,
         'iqr': averages_iqr
     }
+
+    # Package all dictionaries in single dictionary to return
     result = {
         'constants': coefficients,
         'evaluations': evaluations,
