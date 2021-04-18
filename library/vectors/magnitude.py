@@ -44,10 +44,20 @@ def vector_magnitude(vector):
         >>> print(magnitude_2d)
         3.605551275463989
     """
+    # Handle input errors
     vector_of_scalars(vector)
+
+    # Create intermediary list
     squares = []
+
+    # Iterate over input
     for element in vector:
+        # Store squares of each element in intermediary list
         squares.append(element**2)
+    
+    # Add all squares in list
     sum_squares = sum_value(squares)
+
+    # Take the square root of the sum of all squares
     result = sum_squares**(1/2)
     return result

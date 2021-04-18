@@ -51,13 +51,24 @@ def vector_direction(vector):
         >>> print(direction2['degree'])
         -74.74488129694222
     """
+    # Handle input errors
     vector_of_scalars(vector)
     length(vector, 2)
+
+    # Circumvent division by zero
     if vector[0] == 0:
         vector[0] = 0.0001
+    
+    # Create intermediary variable
     ratio = vector[1] / vector[0]
+    
+    # Determine direction in radians
     radian_measure = atan(ratio)
+
+    # Convert radians into degrees
     degree_measure = degrees(radian_measure)
+    
+    # Package both measures in single dictionary
     result = {
         'radian': radian_measure,
         'degree': degree_measure

@@ -46,10 +46,18 @@ def single_dimension(matrix, scalar = 1):
         >>> print(vector_1c)
         [3, 1]
     """
+    # Handle input errors
     matrix_of_scalars(matrix, 'first')
     positive_integer(scalar)
     level(matrix, scalar)
+
+    # Create list to return
     result = []
+
+    # Iterate over input
     for element in matrix:
+        # Store all elements at given dimension in list to return
         result.append(element[scalar - 1])
+    
+    # Return result
     return result

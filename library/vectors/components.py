@@ -49,6 +49,9 @@ def component_form(initial_point, terminal_point):
         >>> print(components_2d)
         [8, -19]
     """
+    # Handle input errors
     compare_vectors(initial_point, terminal_point)
+
+    # Determine difference between terminal point and initial point
     result = vector_sum(terminal_point, scalar_product_vector(initial_point, -1))
     return result

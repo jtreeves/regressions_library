@@ -39,8 +39,16 @@ def column_conversion(vector):
         >>> print(column_2d)
         [[-7], [5]]
     """
+    # Handle input errors
     vector_of_scalars(vector)
+
+    # Create list to return
     result = []
+
+    # Iterate over input
     for element in vector:
+        # Store elements as lists within list to return
         result.append([element])
+    
+    # Return result
     return result

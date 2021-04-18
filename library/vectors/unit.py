@@ -45,10 +45,19 @@ def unit_vector(vector):
         >>> print(unit_2d)
         [0.8320502943378437, 0.5547001962252291]
     """
+    # Handle input errors
     vector_of_scalars(vector)
+
+    # Determine magnitude of input
     magnitude = vector_magnitude(vector)
+
+    # Circumvent division by zero
     if magnitude == 0:
         magnitude = 0.0001
+    
+    # Calculate reciprocal of magnitude
     reciprocal_magnitude = 1 / magnitude
+
+    # Multiply input by the reciprocal of its magnitude
     result = scalar_product_vector(vector, reciprocal_magnitude)
     return result

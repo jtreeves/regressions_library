@@ -46,11 +46,22 @@ def unite_vectors(vector_one, vector_two):
         >>> print(matrix_2x2)
         [[-5, 3], [12, -7]]
     """
+    # Handle input errors
     compare_vectors(vector_one, vector_two)
+
+    # Create list to return
     result = []
+
+    # Handle no solution
     if vector_one[0] == None:
         result.append(None)
+    
+    # Handle general case
     else:
+        # Iterate over inputs
         for i in range(len(vector_one)):
+            # Store corresponding elements from inputs as lists within list to return
             result.append([vector_one[i], vector_two[i]])
+    
+    # Return result
     return result

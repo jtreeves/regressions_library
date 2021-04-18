@@ -47,8 +47,16 @@ def vector_sum(vector_one, vector_two):
         >>> print(vector_2d)
         [-2, 5]
     """
+    # Handle input errors
     compare_vectors(vector_one, vector_two)
+
+    # Create list to return
     result = []
+
+    # Iterate over first input
     for i in range(len(vector_one)):
+        # Store sums of corresponding vector elements in result
         result.append(vector_one[i] + vector_two[i])
+    
+    # Return result
     return result

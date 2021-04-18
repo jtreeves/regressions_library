@@ -48,11 +48,19 @@ def scalar_product_vector(vector, scalar):
         >>> print(product_2d)
         [-15, 36]
     """
+    # Handle input errors
     vector_of_scalars(vector, 'first')
     scalar_value(scalar, 'second')
+
+    # Create list to return
     result = []
+
+    # Iterate over input
     for element in vector:
+        # Store products in list to return
         result.append(element * scalar)
+    
+    # Return result
     return result
 
 def dot_product(vector_one, vector_two):
@@ -102,8 +110,17 @@ def dot_product(vector_one, vector_two):
         >>> print(product_2d)
         -99
     """
+    # Handle input errors
     compare_vectors(vector_one, vector_two)
+
+    # Create intermediary number
     result = 0
+
+    # Iterate over inputs
     for i in range(len(vector_one)):
+        # Add products of corresponding elements from inputs to intermediary number
         result += vector_one[i] * vector_two[i]
-    return float(result)
+    
+    # Convert number to float
+    floated_result = float(result)
+    return floated_result
