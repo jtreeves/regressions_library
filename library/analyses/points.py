@@ -249,6 +249,54 @@ def key_coordinates(equation_type, coefficients, precision = 4):
     return result
 
 def points_within_range(points, start, end):
+    """
+    Eliminates all values from a set of points that fall below a lower bound or above an upper bound
+
+    Parameters
+    ----------
+    points : list
+        Set of points to narrow down to only those within a certain range
+    start : int, float
+        Lower bound of range into which the initial value must be adjusted (final value should be greater than or equal to start)
+    end : int, float
+        Upper bound of range into which the initial value must be adjusted (final value should be less than or equal to end)
+
+    Raises
+    ------
+    TypeError
+        First argument must be a 1-dimensional list containing elements that are integers, floats, strings, or None
+    TypeError
+        Second and third arguments must be integers or floats
+    ValueError
+        Second argument must be less than or equal to third argument
+
+    Returns
+    -------
+    selected_points : list
+        List of all values from original list that fall within specified range; may return a list of None if no points from the original list fall within range or if original list only contained None
+
+    See Also
+    --------
+    :func:`~library.vectors.separate.separate_elements`, :func:`~library.statistics.ranges.shift_into_range`, :func:`~library.analyses.mean_values.mean_values_derivative`, :func:`~library.analyses.mean_values.mean_values_integral`
+
+    Notes
+    -----
+    - Initial set of points: :math:`p_i = \\{ p_1, p_2, \\cdots, p_n \\}`
+    - Lower bound of range: :math:`b_l`
+    - Upper bound of range: :math:`b_u`
+    - Adjusted set of points within range: :math:`r_i = \\{ r \\mid r \\in p_i, r \\geq b_l, r \\leq b_u`
+
+    Examples
+    --------
+    Eliminate all points above 19 or below 6 in the set [1, 5, 6, 7, 18, 20, 50, 127]
+        >>> selected_points_int = points_within_range([1, 5, 6, 7, 18, 20, 50, 127], 6, 19)
+        >>> print(selected_points_int)
+        [6, 7, 18]
+    Eliminate all points above 243.7821 or below 198.1735 in the set [542.1234, 237.9109, -129.3214, 199.4321, 129.3214]
+        >>> selected_points_float = points_within_range([542.1234, 237.9109, -129.3214, 199.4321, 129.3214], 198.1735, 243.7821)
+        >>> print(selected_points_float)
+        [237.9109, 199.4321]
+    """
     # Handle input errors
     allow_none_vector(points, 'first')
     compare_scalars(start, end, 'second', 'third')

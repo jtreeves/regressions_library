@@ -37,6 +37,8 @@ def accumulated_area(equation_type, coefficients, start, end, precision = 4):
     TypeError
         Third and fourth arguments must be integers or floats
     ValueError
+        Third argument must be less than or equal to fourth argument
+    ValueError
         Last argument must be a positive integer
 
     Returns

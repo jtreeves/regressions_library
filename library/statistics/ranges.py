@@ -82,6 +82,8 @@ def shift_into_range(initial_value, periodic_unit, minimum, maximum):
     ------
     TypeError
         Arguments must be integers or floats
+    ValueError
+        Third argument must be less than or equal to fourth argument
 
     Returns
     -------

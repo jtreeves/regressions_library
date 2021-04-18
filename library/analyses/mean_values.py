@@ -47,6 +47,8 @@ def average_value_derivative(equation_type, coefficients, start, end, precision 
     TypeError
         Third and fourth arguments must be integers or floats
     ValueError
+        Third argument must be less than or equal to fourth argument
+    ValueError
         Last argument must be a positive integer
 
     Returns
@@ -138,6 +140,8 @@ def mean_values_derivative(equation_type, coefficients, start, end, precision = 
         Second argument must be a 1-dimensional list containing elements that are integers or floats
     TypeError
         Third and fourth arguments must be integers or floats
+    ValueError
+        Third argument must be less than or equal to fourth argument
     ValueError
         Last argument must be a positive integer
 
@@ -232,6 +236,8 @@ def average_value_integral(equation_type, coefficients, start, end, precision = 
     TypeError
         Third and fourth arguments must be integers or floats
     ValueError
+        Third argument must be less than or equal to fourth argument
+    ValueError
         Last argument must be a positive integer
 
     Returns
@@ -310,6 +316,8 @@ def mean_values_integral(equation_type, coefficients, start, end, precision = 4)
         Second argument must be a 1-dimensional list containing elements that are integers or floats
     TypeError
         Third and fourth arguments must be integers or floats
+    ValueError
+        Third argument must be less than or equal to fourth argument
     ValueError
         Last argument must be a positive integer
 
@@ -403,6 +411,8 @@ def average_values(equation_type, coefficients, start, end, precision = 4):
         Second argument must be a 1-dimensional list containing elements that are integers or floats
     TypeError
         Third and fourth arguments must be integers or floats
+    ValueError
+        Third argument must be less than or equal to fourth argument
     ValueError
         Last argument must be a positive integer
 
