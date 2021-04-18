@@ -10,9 +10,9 @@ def exponential_roots(first_constant, second_constant, precision = 4):
     Parameters
     ----------
     first_constant : int or float
-        Constant multiple of the original exponential function
+        Constant multiple of the original exponential function; if zero, it will be converted to a small, non-zero decimal value (e.g., 0.0001)
     second_constant : int or float
-        Base rate of variable of the original exponential function
+        Base rate of variable of the original exponential function; if zero, it will be converted to a small, non-zero decimal value (e.g., 0.0001)
     precision : int, default=4
         Maximum number of digits that can appear after the decimal place of the resultant roots
 
@@ -25,7 +25,7 @@ def exponential_roots(first_constant, second_constant, precision = 4):
 
     Returns
     -------
-    roots : list
+    roots : list of float
         List of the x-coordinates of all of the x-intercepts of the original function; if the function never crosses the x-axis, then it will return a list of `None`
 
     See Also
@@ -39,13 +39,17 @@ def exponential_roots(first_constant, second_constant, precision = 4):
 
     Examples
     --------
-    Calculate the roots of an exponential function with coefficients 2 and 3 (and round roots to six decimal places)
-        >>> roots1 = exponential_roots(2, 3, 6)
-        >>> print(roots1)
+    Calculate the roots of an exponential function with coefficients 2 and 3
+        >>> roots_first = exponential_roots(2, 3)
+        >>> print(roots_first)
         [None]
-    Calculate the roots of an exponential function with coefficients 157 and -259 (and round roots to ten decimal places)
-        >>> roots2 = exponential_roots(257, -259, 10)
-        >>> print(roots2)
+    Calculate the roots of an exponential function with coefficients -2 and 3
+        >>> roots_second = exponential_roots(-2, 3)
+        >>> print(roots_second)
+        [None]
+    Calculate the roots of an exponential function with all inputs set to 0
+        >>> roots_zeroes = exponential_roots(0, 0)
+        >>> print(roots_zeroes)
         [None]
     """
     # Handle input errors

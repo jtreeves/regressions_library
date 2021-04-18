@@ -14,13 +14,13 @@ def sinusoidal_roots(first_constant, second_constant, third_constant, fourth_con
     Parameters
     ----------
     first_constant : int or float
-        Vertical stretch factor of the original sine function
+        Vertical stretch factor of the original sine function; if zero, it will be converted to a small, non-zero decimal value (e.g., 0.0001)
     second_constant : int or float
-        Horizontal stretch factor of the original sine function
+        Horizontal stretch factor of the original sine function; if zero, it will be converted to a small, non-zero decimal value (e.g., 0.0001)
     third_constant : int or float
-        Horizontal shift of the original sine function
+        Horizontal shift of the original sine function; if zero, it will be converted to a small, non-zero decimal value (e.g., 0.0001)
     fourth_constant : int or float
-        Vertical shift of the original sine function
+        Vertical shift of the original sine function; if zero, it will be converted to a small, non-zero decimal value (e.g., 0.0001)
     precision : int, default=4
         Maximum number of digits that can appear after the decimal place of the resultant roots
 
@@ -33,7 +33,7 @@ def sinusoidal_roots(first_constant, second_constant, third_constant, fourth_con
 
     Returns
     -------
-    roots : list
+    roots : list of float or str
         List of the x-coordinates of the initial x-intercepts within two periods of the original function in float format, along with the general forms in string format that can be used to determine all other x-intercepts by plugging in any integer value for 'k' and evaluating; if the function never crosses the x-axis, then it will return a list of `None`
 
     See Also
@@ -51,14 +51,18 @@ def sinusoidal_roots(first_constant, second_constant, third_constant, fourth_con
 
     Examples
     --------
-    Calculate the roots of a sinusoidal function with coefficients 2, 3, 5, and 1
-        >>> roots1 = sinusoidal_roots(2, 3, 5, 1)
-        >>> print(roots1)
-        [4.8255, 6.2217, 6.9199, 8.3161, 9.0143, 10.4105, '4.8255 + 2.0944k', '6.2217 + 2.0944k']
-    Calculate the roots of a sinusoidal function with coefficients 3, 1, -2, and 3
-        >>> roots2 = sinusoidal_roots(3, 1, -2, 3)
-        >>> print(roots2)
-        [-3.5708, 2.7124, 8.9956, '-3.5708 + 6.2832k']
+    Calculate the roots of a sinusoidal function with coefficients 2, 3, 5, and 7
+        >>> roots_first = sinusoidal_roots(2, 3, 5, 7)
+        >>> print(roots_first)
+        [None]
+    Calculate the roots of a sinusoidal function with coefficients 7, -5, -3, and 2
+        >>> roots_second = sinusoidal_roots(7, -5, -3, 2)
+        >>> print(roots_second)
+        [-8.7128, -7.9686, -7.4562, -6.712, -6.1995, -5.4553, -4.9429, -4.1987, -3.6863, -2.942, '-3.6863 + -1.2566k', '-2.942 + -1.2566k']
+    Calculate the roots of a sinusoidal function with all inputs set to 0
+        >>> roots_zeroes = sinusoidal_roots(0, 0, 0, 0)
+        >>> print(roots_zeroes)
+        [-15707.9632, 47123.8899, 109955.743, 172787.596, 235619.4491, '-15707.9632 + 62831.8531k']
     """
     # Handle input errors
     four_scalars(first_constant, second_constant, third_constant, fourth_constant)

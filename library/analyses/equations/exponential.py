@@ -1,25 +1,30 @@
-from library.errors.scalars import two_scalars
+from library.errors.scalars import two_scalars, positive_integer
 from library.errors.adjustments import no_zeroes
+from library.statistics.rounding import rounded_value
 
-def exponential_equation(first_constant, second_constant):
+def exponential_equation(first_constant, second_constant, precision = 4):
     """
     Generates an exponential function to provide evaluations at variable inputs
 
     Parameters
     ----------
     first_constant : int or float
-        Constant multiple of the resultant exponential function
+        Constant multiple of the resultant exponential function; if zero, it will be converted to a small, non-zero decimal value (e.g., 0.0001)
     second_constant : int or float
-        Base rate of variable of the resultant exponential function
+        Base rate of variable of the resultant exponential function; if zero, it will be converted to a small, non-zero decimal value (e.g., 0.0001)
+    precision : int, default=4
+        Maximum number of digits that can appear after the decimal place of the resultant roots
 
     Raises
     ------
     TypeError
-        Arguments must be integers or floats
+        First two arguments must be integers or floats
+    ValueError
+        Last argument must be a positive integer
 
     Returns
     -------
-    evaluation : function
+    evaluation : func
         Function for evaluating an exponential equation when passed any integer or float argument
     
     See Also
@@ -33,18 +38,27 @@ def exponential_equation(first_constant, second_constant):
 
     Examples
     --------
-    Create an exponential function with coefficients 2 and 3
-        >>> evaluation = exponential_equation(2, 3)
-    Print the evaluation of the function at an input of 10
-        >>> print(evaluation(10))
-        118098
+    Create an exponential function with coefficients 2 and 3, then evaluate it at 10
+        >>> evaluation_first = exponential_equation(2, 3)
+        >>> print(evaluation_first(10))
+        118098.0
+    Create an exponential function with coefficients -2 and 3, then evaluate it at 10
+        >>> evaluation_second = exponential_equation(-2, 3)
+        >>> print(evaluation_second(10))
+        -118098.0
+    Create an exponential function with all inputs set to 0, then evaluate it at 10
+        >>> evaluation_zero = exponential_equation(0, 0)
+        >>> print(evaluation_zero(10))
+        0.0001
     """
     # Handle input errors
     two_scalars(first_constant, second_constant)
-    coefficients = no_zeroes([first_constant, second_constant])
+    positive_integer(precision)
+    coefficients = no_zeroes([first_constant, second_constant], precision)
 
     # Create evaluation
     def exponential_evaluation(variable):
-        result = coefficients[0] * coefficients[1]**variable
+        evaluation = coefficients[0] * coefficients[1]**variable
+        result = rounded_value(evaluation, precision)
         return result
     return exponential_evaluation

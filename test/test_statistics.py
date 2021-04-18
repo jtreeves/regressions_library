@@ -266,4 +266,4 @@ class TestCorrelation(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 54 tests in 0.010s ---------- OK ---------- #
+# ---------- Ran 54 tests in 0.005s ---------- OK ---------- #

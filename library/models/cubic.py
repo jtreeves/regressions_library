@@ -184,9 +184,9 @@ def cubic_model(data, precision = 4):
     coefficients = no_zeroes(solution, precision)
 
     # Generate evaluations for function, derivative, and integral
-    equation = cubic_equation(*coefficients)
-    derivative = cubic_derivatives(*coefficients)['first']['evaluation']
-    integral = cubic_integral(*coefficients)['evaluation']
+    equation = cubic_equation(*coefficients, precision)
+    derivative = cubic_derivatives(*coefficients, precision)['first']['evaluation']
+    integral = cubic_integral(*coefficients, precision)['evaluation']
 
     # Determine key points of graph
     points = key_coordinates('cubic', coefficients, precision)

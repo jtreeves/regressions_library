@@ -178,9 +178,9 @@ def logarithmic_model(data, precision = 4):
     coefficients = no_zeroes(solution, precision)
 
     # Generate evaluations for function, derivatives, and integral
-    equation = logarithmic_equation(*coefficients)
-    derivative = logarithmic_derivatives(*coefficients)['first']['evaluation']
-    integral = logarithmic_integral(*coefficients)['evaluation']
+    equation = logarithmic_equation(*coefficients, precision)
+    derivative = logarithmic_derivatives(*coefficients, precision)['first']['evaluation']
+    integral = logarithmic_integral(*coefficients, precision)['evaluation']
     
     # Determine key points of graph
     points = key_coordinates('logarithmic', coefficients, precision)

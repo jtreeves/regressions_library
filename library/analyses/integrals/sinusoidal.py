@@ -1,32 +1,37 @@
 from math import cos
-from library.errors.scalars import four_scalars
+from library.errors.scalars import four_scalars, positive_integer
 from library.errors.adjustments import no_zeroes
+from library.statistics.rounding import rounded_value, rounded_list
 
-def sinusoidal_integral(first_constant, second_constant, third_constant, fourth_constant):
+def sinusoidal_integral(first_constant, second_constant, third_constant, fourth_constant, precision = 4):
     """
     Generates the integral of a sinusoidal function
 
     Parameters
     ----------
     first_constant : int or float
-        Vertical stretch factor of the original sine function
+        Vertical stretch factor of the original sine function; if zero, it will be converted to a small, non-zero decimal value (e.g., 0.0001)
     second_constant : int or float
-        Horizontal stretch factor of the original sine function
+        Horizontal stretch factor of the original sine function; if zero, it will be converted to a small, non-zero decimal value (e.g., 0.0001)
     third_constant : int or float
-        Horizontal shift of the original sine function
+        Horizontal shift of the original sine function; if zero, it will be converted to a small, non-zero decimal value (e.g., 0.0001)
     fourth_constant : int or float
-        Vertical shift of the original sine function
+        Vertical shift of the original sine function; if zero, it will be converted to a small, non-zero decimal value (e.g., 0.0001)
+    precision : int, default=4
+        Maximum number of digits that can appear after the decimal place of the resultant roots
 
     Raises
     ------
     TypeError
-        Arguments must be integers or floats
+        First four arguments must be integers or floats
+    ValueError
+        Last argument must be a positive integer
 
     Returns
     -------
-    integral['constants'] : list
+    integral['constants'] : list of float
         Coefficients of the resultant integral
-    integral['evaluation'] : function
+    integral['evaluation'] : func
         Function for evaluating the resultant integral at any float or integer argument
 
     See Also
@@ -43,26 +48,33 @@ def sinusoidal_integral(first_constant, second_constant, third_constant, fourth_
 
     Examples
     --------
-    Generate the integral of a sinusoidal function with coefficients 2, 3, 5, and 7
-        >>> integral = sinusoidal_integral(2, 3, 5, 7)
-    Print the coefficients of the integral
-        >>> print(integral['constants'])
-        [-0.6666666666666666, 3, 5, 7]
-    Print the evaluation of the integral at an input of 10
-        >>> print(integral['evaluation'](10))
-        70.50645860857254
+    Generate the integral of a sinusoidal function with coefficients 2, 3, 5, and 7, then display its coefficients
+        >>> integral_constants = sinusoidal_integral(2, 3, 5, 7)
+        >>> print(integral_constants['constants'])
+        [-0.6667, 3.0, 5.0, 7.0]
+    Generate the integral of a sinusoidal function with coefficients 7, -5, -3, and 2, then evaluate its integral at 10
+        >>> integral_evaluation = sinusoidal_integral(7, -5, -3, 2)
+        >>> print(integral_evaluation['evaluation'](10))
+        19.2126
+    Generate the integral of a sinusoidal function with all inputs set to 0, then display its coefficients
+        >>> integral_zeroes = sinusoidal_integral(0, 0, 0, 0)
+        >>> print(integral_zeroes['constants'])
+        [-1.0, 0.0001, 0.0001, 0.0001]
     """
     # Handle input errors
     four_scalars(first_constant, second_constant, third_constant, fourth_constant)
-    coefficients = no_zeroes([first_constant, second_constant, third_constant, fourth_constant])
+    positive_integer(precision)
+    coefficients = no_zeroes([first_constant, second_constant, third_constant, fourth_constant], precision)
     
     # Create constants
-    constants = [-1 * coefficients[0] / coefficients[1], coefficients[1], coefficients[2], coefficients[3]]
+    integral_coefficients = [-1 * coefficients[0] / coefficients[1], coefficients[1], coefficients[2], coefficients[3]]
+    constants = rounded_list(integral_coefficients, precision)
 
     # Create evaluation
     def sinusoidal_evaluation(variable):
         evaluation = constants[0] * cos(constants[1] * (variable - constants[2])) + constants[3] * variable
-        return evaluation
+        rounded_evaluation = rounded_value(evaluation, precision)
+        return rounded_evaluation
     
     # Package constants and evaluation in single dictionary
     results = {

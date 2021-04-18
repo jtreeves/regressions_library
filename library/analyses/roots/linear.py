@@ -9,9 +9,9 @@ def linear_roots(first_constant, second_constant, precision = 4):
     Parameters
     ----------
     first_constant : int or float
-        Coefficient of the linear term of the original linear function
+        Coefficient of the linear term of the original linear function; if zero, it will be converted to a small, non-zero decimal value (e.g., 0.0001)
     second_constant : int or float
-        Coefficient of the constant term of the original linear function
+        Coefficient of the constant term of the original linear function; if zero, it will be converted to a small, non-zero decimal value (e.g., 0.0001)
     precision : int, default=4
         Maximum number of digits that can appear after the decimal place of the resultant roots
 
@@ -24,7 +24,7 @@ def linear_roots(first_constant, second_constant, precision = 4):
 
     Returns
     -------
-    roots : list
+    roots : list of float
         List of the x-coordinates of all of the x-intercepts of the original function
 
     See Also
@@ -40,13 +40,17 @@ def linear_roots(first_constant, second_constant, precision = 4):
     Examples
     --------
     Calculate the roots of a linear function with coefficients 2 and 3
-        >>> roots1 = linear_roots(2, 3)
-        >>> print(roots1)
+        >>> roots_first = linear_roots(2, 3)
+        >>> print(roots_first)
         [-1.5]
-    Calculate the roots of a linear function with coefficients 7 and -5
-        >>> roots2 = linear_roots(7, -5)
-        >>> print(roots2)
-        [0.7143]
+    Calculate the roots of a linear function with coefficients -2 and 3
+        >>> roots_second = linear_roots(-2, 3)
+        >>> print(roots_second)
+        [1.5]
+    Calculate the roots of a linear function with all inputs set to 0
+        >>> roots_zeroes = linear_roots(0, 0)
+        >>> print(roots_zeroes)
+        [-1.0]
     """
     # Handle input errors
     two_scalars(first_constant, second_constant)

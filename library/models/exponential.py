@@ -182,9 +182,9 @@ def exponential_model(data, precision = 4):
     coefficients = no_zeroes(constants, precision)
     
     # Generate evaluations for function, derivatives, and integral
-    equation = exponential_equation(*coefficients)
-    derivative = exponential_derivatives(*coefficients)['first']['evaluation']
-    integral = exponential_integral(*coefficients)['evaluation']
+    equation = exponential_equation(*coefficients, precision)
+    derivative = exponential_derivatives(*coefficients, precision)['first']['evaluation']
+    integral = exponential_integral(*coefficients, precision)['evaluation']
     
     # Determine key points of graph
     points = key_coordinates('exponential', solution, precision)

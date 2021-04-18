@@ -90,21 +90,21 @@ def coordinate_pairs(equation_type, coefficients, inputs, point_type = 'point', 
     # Create equations for evaluating inputs (based on equation type)
     equation = lambda x : x
     if equation_type == 'linear':
-        equation = linear_equation(*coefficients)
+        equation = linear_equation(*coefficients, precision)
     elif equation_type == 'quadratic':
-        equation = quadratic_equation(*coefficients)
+        equation = quadratic_equation(*coefficients, precision)
     elif equation_type == 'cubic':
-        equation = cubic_equation(*coefficients)
+        equation = cubic_equation(*coefficients, precision)
     elif equation_type == 'hyperbolic':
-        equation = hyperbolic_equation(*coefficients)
+        equation = hyperbolic_equation(*coefficients, precision)
     elif equation_type == 'exponential':
-        equation = exponential_equation(*coefficients)
+        equation = exponential_equation(*coefficients, precision)
     elif equation_type == 'logarithmic':
-        equation = logarithmic_equation(*coefficients)
+        equation = logarithmic_equation(*coefficients, precision)
     elif equation_type == 'logistic':
-        equation = logistic_equation(*coefficients)
+        equation = logistic_equation(*coefficients, precision)
     elif equation_type == 'sinusoidal':
-        equation = sinusoidal_equation(*coefficients)
+        equation = sinusoidal_equation(*coefficients, precision)
 
     # Round inputs
     rounded_inputs = []

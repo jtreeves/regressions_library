@@ -11,9 +11,9 @@ def logarithmic_roots(first_constant, second_constant, precision = 4):
     Parameters
     ----------
     first_constant : int or float
-        Coefficient of the logarithmic term of the original logarithmic function
+        Coefficient of the logarithmic term of the original logarithmic function; if zero, it will be converted to a small, non-zero decimal value (e.g., 0.0001)
     second_constant : int or float
-        Coefficient of the constant term of the original logarithmic function
+        Coefficient of the constant term of the original logarithmic function; if zero, it will be converted to a small, non-zero decimal value (e.g., 0.0001)
     precision : int, default=4
         Maximum number of digits that can appear after the decimal place of the resultant roots
 
@@ -26,7 +26,7 @@ def logarithmic_roots(first_constant, second_constant, precision = 4):
 
     Returns
     -------
-    roots : list
+    roots : list of float
         List of the x-coordinates of all of the x-intercepts of the original function
 
     See Also
@@ -41,13 +41,17 @@ def logarithmic_roots(first_constant, second_constant, precision = 4):
     Examples
     --------
     Calculate the roots of a logarithmic function with coefficients 2 and 3
-        >>> roots1 = logarithmic_roots(2, 3)
-        >>> print(roots1)
+        >>> roots_first = logarithmic_roots(2, 3)
+        >>> print(roots_first)
         [0.2231]
-    Calculate the roots of a logarithmic function with coefficients 5 and -7
-        >>> roots2 = logarithmic_roots(5, -7)
-        >>> print(roots2)
-        [4.0552]
+    Calculate the roots of a logarithmic function with coefficients -2 and 3
+        >>> roots_second = logarithmic_roots(-2, 3)
+        >>> print(roots_second)
+        [4.4817]
+    Calculate the roots of a logarithmic function with all inputs set to 0
+        >>> roots_zeroes = logarithmic_roots(0, 0)
+        >>> print(roots_zeroes)
+        [0.3679]
     """
     # Handle input errors
     two_scalars(first_constant, second_constant)

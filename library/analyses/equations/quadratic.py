@@ -1,27 +1,32 @@
-from library.errors.scalars import three_scalars
+from library.errors.scalars import three_scalars, positive_integer
 from library.errors.adjustments import no_zeroes
+from library.statistics.rounding import rounded_value
 
-def quadratic_equation(first_constant, second_constant, third_constant):
+def quadratic_equation(first_constant, second_constant, third_constant, precision = 4):
     """
     Generates a quadratic function to provide evaluations at variable inputs
 
     Parameters
     ----------
     first_constant : int or float
-        Coefficient of the quadratic term of the resultant quadratic function
+        Coefficient of the quadratic term of the resultant quadratic function; if zero, it will be converted to a small, non-zero decimal value (e.g., 0.0001)
     second_constant : int or float
-        Coefficient of the linear term of the resultant quadratic function
+        Coefficient of the linear term of the resultant quadratic function; if zero, it will be converted to a small, non-zero decimal value (e.g., 0.0001)
     third_constant : int or float
-        Coefficient of the constant term of the resultant quadratic function
+        Coefficient of the constant term of the resultant quadratic function; if zero, it will be converted to a small, non-zero decimal value (e.g., 0.0001)
+    precision : int, default=4
+        Maximum number of digits that can appear after the decimal place of the resultant roots
 
     Raises
     ------
     TypeError
-        Arguments must be integers or floats
+        First three arguments must be integers or floats
+    ValueError
+        Last argument must be a positive integer
 
     Returns
     -------
-    evaluation : function
+    evaluation : func
         Function for evaluating a quadratic equation when passed any integer or float argument
 
     See Also
@@ -35,18 +40,27 @@ def quadratic_equation(first_constant, second_constant, third_constant):
 
     Examples
     --------
-    Create a quadratic function with coefficients 2, 3, and 5
-        >>> evaluation = quadratic_equation(2, 3, 5)
-    Print the evaluation of the function at an input of 10
-        >>> print(evaluation(10))
-        235
+    Create a quadratic function with coefficients 2, 3, and 5, then evaluate it at 10
+        >>> evaluation_first = quadratic_equation(2, 3, 5)
+        >>> print(evaluation_first(10))
+        235.0
+    Create a quadratic function with coefficients 7, -5, and 3, then evaluate it at 10
+        >>> evaluation_second = quadratic_equation(7, -5, 3)
+        >>> print(evaluation_second(10))
+        653.0
+    Create a quadratic function with all inputs set to 0, then evaluate it at 10
+        >>> evaluation_zero = quadratic_equation(0, 0, 0)
+        >>> print(evaluation_zero(10))
+        0.0111
     """
     # Handle input errors
     three_scalars(first_constant, second_constant, third_constant)
-    coefficients = no_zeroes([first_constant, second_constant, third_constant])
+    positive_integer(precision)
+    coefficients = no_zeroes([first_constant, second_constant, third_constant], precision)
 
     # Create evaluation
     def quadratic_evaluation(variable):
-        result = coefficients[0] * variable**2 + coefficients[1] * variable + coefficients[2]
+        evaluation = coefficients[0] * variable**2 + coefficients[1] * variable + coefficients[2]
+        result = rounded_value(evaluation, precision)
         return result
     return quadratic_evaluation

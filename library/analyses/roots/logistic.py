@@ -12,11 +12,11 @@ def logistic_roots(first_constant, second_constant, third_constant, precision = 
     Parameters
     ----------
     first_constant : int or float
-        Carrying capacity of the original logistic function
+        Carrying capacity of the original logistic function; if zero, it will be converted to a small, non-zero decimal value (e.g., 0.0001)
     second_constant : int or float
-        Growth rate of the original logistic function
+        Growth rate of the original logistic function; if zero, it will be converted to a small, non-zero decimal value (e.g., 0.0001)
     third_constant : int or float
-        Value of the sigmoid's midpoint of the original logistic function
+        Value of the sigmoid's midpoint of the original logistic function; if zero, it will be converted to a small, non-zero decimal value (e.g., 0.0001)
     precision : int, default=4
         Maximum number of digits that can appear after the decimal place of the resultant roots
 
@@ -29,7 +29,7 @@ def logistic_roots(first_constant, second_constant, third_constant, precision = 
 
     Returns
     -------
-    roots : list
+    roots : list of float
         List of the x-coordinates of all of the x-intercepts of the original function; if the function never crosses the x-axis, then it will return a list of `None`
 
     See Also
@@ -43,13 +43,17 @@ def logistic_roots(first_constant, second_constant, third_constant, precision = 
 
     Examples
     --------
-    Calculate the roots of a logistic function with coefficients 2, 3, and 5 (and round roots to six decimal places)
-        >>> roots1 = logistic_roots(2, 3, 5, 6)
-        >>> print(roots1)
+    Calculate the roots of a logistic function with coefficients 2, 3, and 5
+        >>> roots_first = logistic_roots(2, 3, 5)
+        >>> print(roots_first)
         [None]
-    Calculate the roots of a logistic function with coefficients 135, 246, and 43 (and round roots to ten decimal places)
-        >>> roots2 = logistic_roots(135, 246, 43, 10)
-        >>> print(roots2)
+    Calculate the roots of a logistic function with coefficients 100, 5, and 11
+        >>> roots_second = logistic_roots(100, 5, 11)
+        >>> print(roots_second)
+        [None]
+    Calculate the roots of a logistic function with all inputs set to 0
+        >>> roots_zeroes = logistic_roots(0, 0, 0)
+        >>> print(roots_zeroes)
         [None]
     """
     # Handle input errors

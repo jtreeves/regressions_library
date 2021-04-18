@@ -637,4 +637,4 @@ class TestSelectPoints(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 111 tests in 0.009s ---------- OK ---------- #
+# ---------- Ran 111 tests in 0.013s ---------- OK ---------- #

@@ -173,9 +173,9 @@ def hyperbolic_model(data, precision = 4):
     coefficients = no_zeroes(solution, precision)
 
     # Generate evaluations for function, derivatives, and integral
-    equation = hyperbolic_equation(*coefficients)
-    derivative = hyperbolic_derivatives(*coefficients)['first']['evaluation']
-    integral = hyperbolic_integral(*coefficients)['evaluation']
+    equation = hyperbolic_equation(*coefficients, precision)
+    derivative = hyperbolic_derivatives(*coefficients, precision)['first']['evaluation']
+    integral = hyperbolic_integral(*coefficients, precision)['evaluation']
 
     # Determine key points of graph
     points = key_coordinates('hyperbolic', coefficients, precision)

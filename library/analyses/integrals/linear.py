@@ -1,27 +1,32 @@
-from library.errors.scalars import two_scalars
+from library.errors.scalars import two_scalars, positive_integer
 from library.errors.adjustments import no_zeroes
+from library.statistics.rounding import rounded_value, rounded_list
 
-def linear_integral(first_constant, second_constant):
+def linear_integral(first_constant, second_constant, precision = 4):
     """
     Generates the integral of a linear function
 
     Parameters
     ----------
     first_constant : int or float
-        Coefficient of the linear term of the original linear function
+        Coefficient of the linear term of the original linear function; if zero, it will be converted to a small, non-zero decimal value (e.g., 0.0001)
     second_constant : int or float
-        Coefficient of the constant term of the original linear function
+        Coefficient of the constant term of the original linear function; if zero, it will be converted to a small, non-zero decimal value (e.g., 0.0001)
+    precision : int, default=4
+        Maximum number of digits that can appear after the decimal place of the resultant roots
 
     Raises
     ------
     TypeError
-        Arguments must be integers or floats
+        First two arguments must be integers or floats
+    ValueError
+        Last argument must be a positive integer
 
     Returns
     -------
-    integral['constants'] : list
+    integral['constants'] : list of float
         Coefficients of the resultant integral
-    integral['evaluation'] : function
+    integral['evaluation'] : func
         Function for evaluating the resultant integral at any float or integer argument
 
     See Also
@@ -37,26 +42,33 @@ def linear_integral(first_constant, second_constant):
 
     Examples
     --------
-    Generate the integral of a linear function with coefficients 2 and 3
-        >>> integral = linear_integral(2, 3)
-    Print the coefficients of the integral
-        >>> print(integral['constants'])
-        [1.0, 3]
-    Print the evaluation of the integral at an input of 10
-        >>> print(integral['evaluation'](10))
-        130.0
+    Generate the integral of a linear function with coefficients 2 and 3, then display its coefficients
+        >>> integral_constants = linear_integral(2, 3)
+        >>> print(integral_constants['constants'])
+        [1.0, 3.0]
+    Generate the integral of a linear function with coefficients -2 and 3, then evaluate its integral at 10
+        >>> integral_evaluation = linear_integral(-2, 3)
+        >>> print(integral_evaluation['evaluation'](10))
+        -70.0
+    Generate the integral of a linear function with all inputs set to 0, then display its coefficients
+        >>> integral_zeroes = linear_integral(0, 0)
+        >>> print(integral_zeroes['constants'])
+        [0.0001, 0.0001]
     """
     # Handle input errors
     two_scalars(first_constant, second_constant)
-    coefficients = no_zeroes([first_constant, second_constant])
+    positive_integer(precision)
+    coefficients = no_zeroes([first_constant, second_constant], precision)
 
     # Create constants
-    constants = [(1/2) * coefficients[0], coefficients[1]]
+    integral_coefficients = [(1/2) * coefficients[0], coefficients[1]]
+    constants = rounded_list(integral_coefficients, precision)
 
     # Create evaluation
     def linear_evaluation(variable):
         evaluation = constants[0] * variable**2 + constants[1] * variable
-        return evaluation
+        rounded_evaluation = rounded_value(evaluation, precision)
+        return rounded_evaluation
     
     # Package constants and evaluation in single dictionary
     results = {

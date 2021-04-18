@@ -166,9 +166,9 @@ def linear_model(data, precision = 4):
     coefficients = no_zeroes(solution, precision)
 
     # Generate evaluations for function, derivatives, and integral
-    equation = linear_equation(*coefficients)
-    derivative = linear_derivatives(*coefficients)['first']['evaluation']
-    integral = linear_integral(*coefficients)['evaluation']
+    equation = linear_equation(*coefficients, precision)
+    derivative = linear_derivatives(*coefficients, precision)['first']['evaluation']
+    integral = linear_integral(*coefficients, precision)['evaluation']
 
     # Determine key points of graph
     points = key_coordinates('linear', coefficients, precision)

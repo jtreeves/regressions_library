@@ -1,28 +1,33 @@
 from math import exp
-from library.errors.scalars import three_scalars
+from library.errors.scalars import three_scalars, positive_integer
 from library.errors.adjustments import no_zeroes
+from library.statistics.rounding import rounded_value
 
-def logistic_equation(first_constant, second_constant, third_constant):
+def logistic_equation(first_constant, second_constant, third_constant, precision = 4):
     """
     Generates a logistic function to provide evaluations at variable inputs
 
     Parameters
     ----------
     first_constant : int or float
-        Carrying capacity of the resultant logistic function
+        Carrying capacity of the resultant logistic function; if zero, it will be converted to a small, non-zero decimal value (e.g., 0.0001)
     second_constant : int or float
-        Growth rate of the resultant logistic function
+        Growth rate of the resultant logistic function; if zero, it will be converted to a small, non-zero decimal value (e.g., 0.0001)
     third_constant : int or float
-        Value of the sigmoid's midpoint of the resultant logistic function
+        Value of the sigmoid's midpoint of the resultant logistic function; if zero, it will be converted to a small, non-zero decimal value (e.g., 0.0001)
+    precision : int, default=4
+        Maximum number of digits that can appear after the decimal place of the resultant roots
 
     Raises
     ------
     TypeError
-        Arguments must be integers or floats
+        First three arguments must be integers or floats
+    ValueError
+        Last argument must be a positive integer
 
     Returns
     -------
-    evaluation : function
+    evaluation : func
         Function for evaluating a logistic equation when passed any integer or float argument
 
     See Also
@@ -36,18 +41,27 @@ def logistic_equation(first_constant, second_constant, third_constant):
 
     Examples
     --------
-    Create a logistic function with coefficients 2, 3, and 5
-        >>> evaluation = logistic_equation(2, 3, 5)
-    Print the evaluation of the function at an input of 10
-        >>> print(evaluation(10))
-        1.999999388195546
+    Create a logistic function with coefficients 2, 3, and 5, then evaluate it at 10
+        >>> evaluation_first = logistic_equation(2, 3, 5)
+        >>> print(evaluation_first(10))
+        2.0
+    Create a logistic function with coefficients 100, 5, and 11, then evaluate it at 10
+        >>> evaluation_second = logistic_equation(100, 5, 11)
+        >>> print(evaluation_second(10))
+        0.6693
+    Create a logistic function with all inputs set to 0, then evaluate it at 10
+        >>> evaluation_zero = logistic_equation(0, 0, 0)
+        >>> print(evaluation_zero(10))
+        0.0001
     """
     # Handle input errors
     three_scalars(first_constant, second_constant, third_constant)
-    coefficients = no_zeroes([first_constant, second_constant, third_constant])
+    positive_integer(precision)
+    coefficients = no_zeroes([first_constant, second_constant, third_constant], precision)
 
     # Create evaluation
     def logistic_evaluation(variable):
-        result = coefficients[0] * (1 + exp(-1 * coefficients[1] * (variable - coefficients[2])))**(-1)
+        evaluation = coefficients[0] * (1 + exp(-1 * coefficients[1] * (variable - coefficients[2])))**(-1)
+        result = rounded_value(evaluation, precision)
         return result
     return logistic_evaluation

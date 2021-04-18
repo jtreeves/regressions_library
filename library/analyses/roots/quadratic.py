@@ -12,11 +12,11 @@ def quadratic_roots(first_constant, second_constant, third_constant, precision =
     Parameters
     ----------
     first_constant : int or float
-        Coefficient of the quadratic term of the original quadratic function
+        Coefficient of the quadratic term of the original quadratic function; if zero, it will be converted to a small, non-zero decimal value (e.g., 0.0001)
     second_constant : int or float
-        Coefficient of the linear term of the original quadratic function
+        Coefficient of the linear term of the original quadratic function; if zero, it will be converted to a small, non-zero decimal value (e.g., 0.0001)
     third_constant : int or float
-        Coefficient of the constant term of the original quadratic function
+        Coefficient of the constant term of the original quadratic function; if zero, it will be converted to a small, non-zero decimal value (e.g., 0.0001)
     precision : int, default=4
         Maximum number of digits that can appear after the decimal place of the resultant roots
 
@@ -29,7 +29,7 @@ def quadratic_roots(first_constant, second_constant, third_constant, precision =
 
     Returns
     -------
-    roots : list
+    roots : list of float
         List of the x-coordinates of all of the x-intercepts of the original function; if the function never crosses the x-axis, then it will return a list of `None`
 
     See Also
@@ -44,14 +44,18 @@ def quadratic_roots(first_constant, second_constant, third_constant, precision =
 
     Examples
     --------
-    Calculate the roots of a quadratic function with coefficients 10, 7, and -15
-        >>> roots1 = quadratic_roots(10, 7, -15)
-        >>> print(roots1)
-        [-5.0, 1.5]
-    Calculate the roots of a quadratic function with coefficients 9, -42, and 49
-        >>> roots2 = quadratic_roots(9, -42, 49)
-        >>> print(roots2)
-        [2.3333]
+    Calculate the roots of a quadratic function with coefficients 2, 7, and 5
+        >>> roots_first = quadratic_roots(2, 7, 5)
+        >>> print(roots_first)
+        [-2.5, -1.0]
+    Calculate the roots of a quadratic function with coefficients 2, -5, and 3
+        >>> roots_second = quadratic_roots(2, -5, 3)
+        >>> print(roots_second)
+        [1.0, 1.5]
+    Calculate the roots of a quadratic function with all inputs set to 0
+        >>> roots_zeroes = quadratic_roots(0, 0, 0)
+        >>> print(roots_zeroes)
+        [None]
     """
     # Handle input errors
     three_scalars(first_constant, second_constant, third_constant)

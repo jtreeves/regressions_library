@@ -1,31 +1,35 @@
-from library.errors.scalars import two_scalars
+from library.errors.scalars import two_scalars, positive_integer
 from library.errors.adjustments import no_zeroes
 
-def linear_derivatives(first_constant, second_constant):
+def linear_derivatives(first_constant, second_constant, precision = 4):
     """
     Calculates the first and second derivatives of a linear function
 
     Parameters
     ----------
     first_constant : int or float
-        Coefficient of the linear term of the original linear function
+        Coefficient of the linear term of the original linear function; if zero, it will be converted to a small, non-zero decimal value (e.g., 0.0001)
     second_constant : int or float
-        Coefficient of the constant term of the original linear function
+        Coefficient of the constant term of the original linear function; if zero, it will be converted to a small, non-zero decimal value (e.g., 0.0001)
+    precision : int, default=4
+        Maximum number of digits that can appear after the decimal place of the resultant roots
 
     Raises
     ------
     TypeError
-        Arguments must be integers or floats
+        First two arguments must be integers or floats
+    ValueError
+        Last argument must be a positive integer
 
     Returns
     -------
-    derivatives['first']['constants'] : list
+    derivatives['first']['constants'] : list of float
         Coefficients of the resultant first derivative
-    derivatives['first']['evaluation'] : function
+    derivatives['first']['evaluation'] : func
         Function for evaluating the resultant first derivative at any float or integer argument
-    derivatives['second']['constants'] : list
+    derivatives['second']['constants'] : list of float
         Coefficients of the resultant second derivative
-    derivatives['second']['evaluation'] : function
+    derivatives['second']['evaluation'] : func
         Function for evaluating the resultant second derivative at any float or integer argument
 
     See Also
@@ -41,18 +45,29 @@ def linear_derivatives(first_constant, second_constant):
 
     Examples
     --------
-    Generate the derivatives of a linear function with coefficients 2 and 3
-        >>> derivatives = linear_derivatives(2, 3)
-    Print the coefficients of the first derivative
-        >>> print(derivatives['first']['constants'])
-        [2]
-    Print the evaluation of the second derivative at an input of 10
-        >>> print(derivatives['second']['evaluation'](10))
-        0
+    Generate the derivatives of a linear function with coefficients 2 and 3, then display the coefficients of its first and second derivatives
+        >>> derivatives_constants = linear_derivatives(2, 3)
+        >>> print(derivatives_constants['first']['constants'])
+        [2.0]
+        >>> print(derivatives_constants['second']['constants'])
+        [0.0]
+    Generate the derivatives of a linear function with coefficients -2 and 3, then evaluate its first and second derivatives at 10
+        >>> derivatives_evaluation = linear_derivatives(-2, 3)
+        >>> print(derivatives_evaluation['first']['evaluation'](10))
+        -2.0
+        >>> print(derivatives_evaluation['second']['evaluation'](10))
+        0.0
+    Generate the derivatives of a linear function with all inputs set to 0, then display the coefficients of its first and second derivatives
+        >>> derivatives_zeroes = linear_derivatives(0, 0)
+        >>> print(derivatives_zeroes['first']['constants'])
+        [0.0001]
+        >>> print(derivatives_zeroes['second']['constants'])
+        [0.0]
     """
     # Handle input errors
     two_scalars(first_constant, second_constant)
-    coefficients = no_zeroes([first_constant, second_constant])
+    positive_integer(precision)
+    coefficients = no_zeroes([first_constant, second_constant], precision)
 
     # Creat first derivative
     first_constants = [coefficients[0]]
@@ -65,7 +80,7 @@ def linear_derivatives(first_constant, second_constant):
     }
 
     # Create second derivative
-    second_constants = [0]
+    second_constants = [0.0]
     def second_derivative(variable):
         evaluation = second_constants[0]
         return evaluation

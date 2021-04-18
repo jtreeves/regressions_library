@@ -13,13 +13,13 @@ def cubic_roots(first_constant, second_constant, third_constant, fourth_constant
     Parameters
     ----------
     first_constant : int or float
-        Coefficient of the cubic term of the original cubic function
+        Coefficient of the cubic term of the original cubic function; if zero, it will be converted to a small, non-zero decimal value (e.g., 0.0001)
     second_constant : int or float
-        Coefficient of the quadratic term of the original cubic function
+        Coefficient of the quadratic term of the original cubic function; if zero, it will be converted to a small, non-zero decimal value (e.g., 0.0001)
     third_constant : int or float
-        Coefficient of the linear term of the original cubic function
+        Coefficient of the linear term of the original cubic function; if zero, it will be converted to a small, non-zero decimal value (e.g., 0.0001)
     fourth_constant : int or float
-        Coefficient of the constant term of the original cubic function
+        Coefficient of the constant term of the original cubic function; if zero, it will be converted to a small, non-zero decimal value (e.g., 0.0001)
     precision : int, default=4
         Maximum number of digits that can appear after the decimal place of the resultant roots
 
@@ -32,7 +32,7 @@ def cubic_roots(first_constant, second_constant, third_constant, fourth_constant
 
     Returns
     -------
-    roots : list
+    roots : list of float
         List of the x-coordinates of all of the x-intercepts of the original function
 
     See Also
@@ -54,14 +54,18 @@ def cubic_roots(first_constant, second_constant, third_constant, fourth_constant
 
     Examples
     --------
-    Calculate the roots of a cubic function with coefficients 1, -15, 66, and -80
-        >>> roots1 = cubic_roots(1, -15, 66, -80)
-        >>> print(roots1)
-        [2.0, 5.0, 8.0]
     Calculate the roots of a cubic function with coefficients 2, 3, 5, and 7
-        >>> roots2 = cubic_roots(2, 3, 5, 7)
-        >>> print(roots2)
+        >>> roots_first = cubic_roots(2, 3, 5, 7)
+        >>> print(roots_first)
         [-1.4455]
+    Calculate the roots of a cubic function with coefficients 7, -5, -3, and 2
+        >>> roots_second = cubic_roots(7, -5, -3, 2)
+        >>> print(roots_second)
+        [-0.6431, 0.551, 0.8064]
+    Calculate the roots of a cubic function with all inputs set to 0
+        >>> roots_zeroes = cubic_roots(0, 0, 0, 0)
+        >>> print(roots_zeroes)
+        [-1.0]
     """
     # Handle input errors
     four_scalars(first_constant, second_constant, third_constant, fourth_constant)

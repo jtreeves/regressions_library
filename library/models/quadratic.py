@@ -166,9 +166,9 @@ def quadratic_model(data, precision = 4):
     coefficients = no_zeroes(solution, precision)
 
     # Generate evaluations for function, derivative, and integral
-    equation = quadratic_equation(*coefficients)
-    derivative = quadratic_derivatives(*coefficients)['first']['evaluation']
-    integral = quadratic_integral(*coefficients)['evaluation']
+    equation = quadratic_equation(*coefficients, precision)
+    derivative = quadratic_derivatives(*coefficients, precision)['first']['evaluation']
+    integral = quadratic_integral(*coefficients, precision)['evaluation']
     
     # Determine key points of graph
     points = key_coordinates('quadratic', coefficients, precision)

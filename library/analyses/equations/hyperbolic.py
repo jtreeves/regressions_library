@@ -1,26 +1,31 @@
-from library.errors.scalars import two_scalars
+from library.errors.scalars import two_scalars, positive_integer
 from library.errors.adjustments import no_zeroes
+from library.statistics.rounding import rounded_value
 
-def hyperbolic_equation(first_constant, second_constant):
+def hyperbolic_equation(first_constant, second_constant, precision = 4):
     """
     Generates a hyperbolic function to provide evaluations at variable inputs
 
     Parameters
     ----------
     first_constant : int or float
-        Coefficient of the reciprocal variable of the resultant hyperbolic function
+        Coefficient of the reciprocal variable of the resultant hyperbolic function; if zero, it will be converted to a small, non-zero decimal value (e.g., 0.0001)
     second_constant : int or float
-        Coefficient of the constant term of the resultant hyperbolic function
+        Coefficient of the constant term of the resultant hyperbolic function; if zero, it will be converted to a small, non-zero decimal value (e.g., 0.0001)
+    precision : int, default=4
+        Maximum number of digits that can appear after the decimal place of the resultant roots
 
     Raises
     ------
     TypeError
-        Arguments must be integers or floats
+        First two arguments must be integers or floats
+    ValueError
+        Last argument must be a positive integer
 
     Returns
     -------
-    evaluation : function
-        Function for evaluating a hyperbolic equation when passed any integer or float argument
+    evaluation : func
+        Function for evaluating a hyperbolic equation when passed any integer or float argument; if zero inputted as argument, it will be converted to a small, non-zero decimal value (e.g., 0.0001)
 
     See Also
     --------
@@ -33,21 +38,30 @@ def hyperbolic_equation(first_constant, second_constant):
 
     Examples
     --------
-    Create a hyperbolic function with coefficients 2 and 3
-        >>> evaluation = hyperbolic_equation(2, 3)
-    Print the evaluation of the function at an input of 10
-        >>> print(evaluation(10))
+    Create a hyperbolic function with coefficients 2 and 3, then evaluate it at 10
+        >>> evaluation_first = hyperbolic_equation(2, 3)
+        >>> print(evaluation_first(10))
         3.2
+    Create a hyperbolic function with coefficients -2 and 3, then evaluate it at 10
+        >>> evaluation_second = hyperbolic_equation(-2, 3)
+        >>> print(evaluation_second(10))
+        2.8
+    Create a hyperbolic function with all inputs set to 0, then evaluate it at 10
+        >>> evaluation_zero = hyperbolic_equation(0, 0)
+        >>> print(evaluation_zero(10))
+        0.0001
     """
     # Handle input errors
     two_scalars(first_constant, second_constant)
-    coefficients = no_zeroes([first_constant, second_constant])
+    positive_integer(precision)
+    coefficients = no_zeroes([first_constant, second_constant], precision)
 
     # Create evaluation
     def hyperbolic_evaluation(variable):
         # Circumvent division by zero
         if variable == 0:
-            variable = 0.0001
-        result = coefficients[0] / variable + coefficients[1]
+            variable = 10**(-precision)
+        evaluation = coefficients[0] / variable + coefficients[1]
+        result = rounded_value(evaluation, precision)
         return result
     return hyperbolic_evaluation

@@ -76,21 +76,21 @@ def accumulated_area(equation_type, coefficients, start, end, precision = 4):
     # Create indefinite integral based on equation type
     integral = lambda x : x
     if equation_type == 'linear':
-        integral = linear_integral(*coefficients)['evaluation']
+        integral = linear_integral(*coefficients, precision)['evaluation']
     elif equation_type == 'quadratic':
-        integral = quadratic_integral(*coefficients)['evaluation']
+        integral = quadratic_integral(*coefficients, precision)['evaluation']
     elif equation_type == 'cubic':
-        integral = cubic_integral(*coefficients)['evaluation']
+        integral = cubic_integral(*coefficients, precision)['evaluation']
     elif equation_type == 'hyperbolic':
-        integral = hyperbolic_integral(*coefficients)['evaluation']
+        integral = hyperbolic_integral(*coefficients, precision)['evaluation']
     elif equation_type == 'exponential':
-        integral = exponential_integral(*coefficients)['evaluation']
+        integral = exponential_integral(*coefficients, precision)['evaluation']
     elif equation_type == 'logarithmic':
-        integral = logarithmic_integral(*coefficients)['evaluation']
+        integral = logarithmic_integral(*coefficients, precision)['evaluation']
     elif equation_type == 'logistic':
-        integral = logistic_integral(*coefficients)['evaluation']
+        integral = logistic_integral(*coefficients, precision)['evaluation']
     elif equation_type == 'sinusoidal':
-        integral = sinusoidal_integral(*coefficients)['evaluation']
+        integral = sinusoidal_integral(*coefficients, precision)['evaluation']
     
     # Evaluate definite integral
     area = integral(end) - integral(start)

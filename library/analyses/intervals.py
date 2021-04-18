@@ -82,21 +82,21 @@ def sign_chart(equation_type, coefficients, derivative_level, precision = 4):
     # Create first and second derivatives based on equation type
     both_derivatives = {}
     if equation_type == 'linear':
-        both_derivatives = linear_derivatives(*coefficients)
+        both_derivatives = linear_derivatives(*coefficients, precision)
     elif equation_type == 'quadratic':
-        both_derivatives = quadratic_derivatives(*coefficients)
+        both_derivatives = quadratic_derivatives(*coefficients, precision)
     elif equation_type == 'cubic':
-        both_derivatives = cubic_derivatives(*coefficients)
+        both_derivatives = cubic_derivatives(*coefficients, precision)
     elif equation_type == 'hyperbolic':
-        both_derivatives = hyperbolic_derivatives(*coefficients)
+        both_derivatives = hyperbolic_derivatives(*coefficients, precision)
     elif equation_type == 'exponential':
-        both_derivatives = exponential_derivatives(*coefficients)
+        both_derivatives = exponential_derivatives(*coefficients, precision)
     elif equation_type == 'logarithmic':
-        both_derivatives = logarithmic_derivatives(*coefficients)
+        both_derivatives = logarithmic_derivatives(*coefficients, precision)
     elif equation_type == 'logistic':
-        both_derivatives = logistic_derivatives(*coefficients)
+        both_derivatives = logistic_derivatives(*coefficients, precision)
     elif equation_type == 'sinusoidal':
-        both_derivatives = sinusoidal_derivatives(*coefficients)
+        both_derivatives = sinusoidal_derivatives(*coefficients, precision)
     
     # Grab specific derivative evaluation based on derivative level
     derivative = lambda x : x

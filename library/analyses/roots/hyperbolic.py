@@ -9,9 +9,9 @@ def hyperbolic_roots(first_constant, second_constant, precision = 4):
     Parameters
     ----------
     first_constant : int or float
-        Coefficient of the reciprocal variable of the original hyperbolic function
+        Coefficient of the reciprocal variable of the original hyperbolic function; if zero, it will be converted to a small, non-zero decimal value (e.g., 0.0001)
     second_constant : int or float
-        Coefficient of the constant term of the original hyperbolic function
+        Coefficient of the constant term of the original hyperbolic function; if zero, it will be converted to a small, non-zero decimal value (e.g., 0.0001)
     precision : int, default=4
         Maximum number of digits that can appear after the decimal place of the resultant roots
 
@@ -24,7 +24,7 @@ def hyperbolic_roots(first_constant, second_constant, precision = 4):
 
     Returns
     -------
-    roots : list
+    roots : list of float
         List of the x-coordinates of all of the x-intercepts of the original function; if the function never crosses the x-axis, then it will return a list of `None`
 
     See Also
@@ -39,13 +39,17 @@ def hyperbolic_roots(first_constant, second_constant, precision = 4):
     Examples
     --------
     Calculate the roots of a hyperbolic function with coefficients 2 and 3
-        >>> roots1 = hyperbolic_roots(2, 3)
-        >>> print(roots1)
+        >>> roots_first = hyperbolic_roots(2, 3)
+        >>> print(roots_first)
         [-0.6667]
-    Calculate the roots of a hyperbolic function with coefficients 5 and 7
-        >>> roots2 = hyperbolic_roots(5, 7)
-        >>> print(roots2)
-        [-0.7143]
+    Calculate the roots of a hyperbolic function with coefficients -2 and 3
+        >>> roots_second = hyperbolic_roots(-2, 3)
+        >>> print(roots_second)
+        [0.6667]
+    Calculate the roots of a hyperbolic function with all inputs set to 0
+        >>> roots_zeroes = hyperbolic_roots(0, 0)
+        >>> print(roots_zeroes)
+        [-1.0]
     """
     # Handle input errors
     two_scalars(first_constant, second_constant)

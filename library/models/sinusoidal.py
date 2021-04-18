@@ -219,9 +219,9 @@ def sinusoidal_model(data, precision = 4):
     coefficients = no_zeroes(solution, precision)
 
     # Generate evaluations for function, derivative, and integral
-    equation = sinusoidal_equation(*coefficients)
-    derivative = sinusoidal_derivatives(*coefficients)['first']['evaluation']
-    integral = sinusoidal_integral(*coefficients)['evaluation']
+    equation = sinusoidal_equation(*coefficients, precision)
+    derivative = sinusoidal_derivatives(*coefficients, precision)['first']['evaluation']
+    integral = sinusoidal_integral(*coefficients, precision)['evaluation']
 
     # Determine key points of graph
     points = key_coordinates('sinusoidal', coefficients, precision)

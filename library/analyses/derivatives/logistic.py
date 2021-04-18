@@ -1,34 +1,39 @@
 from math import exp
-from library.errors.scalars import three_scalars
+from library.errors.scalars import three_scalars, positive_integer
 from library.errors.adjustments import no_zeroes
+from library.statistics.rounding import rounded_value, rounded_list
 
-def logistic_derivatives(first_constant, second_constant, third_constant):
+def logistic_derivatives(first_constant, second_constant, third_constant, precision = 4):
     """
     Calculates the first and second derivatives of a logistic function
 
     Parameters
     ----------
     first_constant : int or float
-        Carrying capacity of the original logistic function
+        Carrying capacity of the original logistic function; if zero, it will be converted to a small, non-zero decimal value (e.g., 0.0001)
     second_constant : int or float
-        Growth rate of the original logistic function
+        Growth rate of the original logistic function; if zero, it will be converted to a small, non-zero decimal value (e.g., 0.0001)
     third_constant : int or float
-        Value of the sigmoid's midpoint of the original logistic function
+        Value of the sigmoid's midpoint of the original logistic function; if zero, it will be converted to a small, non-zero decimal value (e.g., 0.0001)
+    precision : int, default=4
+        Maximum number of digits that can appear after the decimal place of the resultant roots
 
     Raises
     ------
     TypeError
-        Arguments must be integers or floats
+        First three arguments must be integers or floats
+    ValueError
+        Last argument must be a positive integer
 
     Returns
     -------
-    derivatives['first']['constants'] : list
+    derivatives['first']['constants'] : list of float
         Coefficients of the resultant first derivative
-    derivatives['first']['evaluation'] : function
+    derivatives['first']['evaluation'] : func
         Function for evaluating the resultant first derivative at any float or integer argument
-    derivatives['second']['constants'] : list
+    derivatives['second']['constants'] : list of float
         Coefficients of the resultant second derivative
-    derivatives['second']['evaluation'] : function
+    derivatives['second']['evaluation'] : func
         Function for evaluating the resultant second derivative at any float or integer argument
 
     See Also
@@ -46,36 +51,51 @@ def logistic_derivatives(first_constant, second_constant, third_constant):
 
     Examples
     --------
-    Generate the derivatives of a logistic function with coefficients 2, 3, and 5
-        >>> derivatives = logistic_derivatives(2, 3, 5)
-    Print the coefficients of the first derivative
-        >>> print(derivatives['first']['constants'])
-        [6, 3, 5]
-    Print the evaluation of the second derivative at an input of 10
-        >>> print(derivatives['second']['evaluation'](10))
-        -5.506235031548963e-06
+    Generate the derivatives of a logistic function with coefficients 2, 3, and 5, then display the coefficients of its first and second derivatives
+        >>> derivatives_constants = logistic_derivatives(2, 3, 5)
+        >>> print(derivatives_constants['first']['constants'])
+        [6.0, 3.0, 5.0]
+        >>> print(derivatives_constants['second']['constants'])
+        [18.0, 3.0, 5.0]
+    Generate the derivatives of a logistic function with coefficients 100, 5, and 11, then evaluate its first and second derivatives at 10
+        >>> derivatives_evaluation = logistic_derivatives(100, 5, 11)
+        >>> print(derivatives_evaluation['first']['evaluation'](10))
+        3.324
+        >>> print(derivatives_evaluation['second']['evaluation'](10))
+        16.3977
+    Generate the derivatives of a logistic function with all inputs set to 0, then display the coefficients of its first and second derivatives
+        >>> derivatives_zeroes = logistic_derivatives(0, 0, 0)
+        >>> print(derivatives_zeroes['first']['constants'])
+        [0.0001, 0.0001, 0.0001]
+        >>> print(derivatives_zeroes['second']['constants'])
+        [0.0001, 0.0001, 0.0001]
     """
     # Handle input errors
     three_scalars(first_constant, second_constant, third_constant)
-    coefficients = no_zeroes([first_constant, second_constant, third_constant])
+    positive_integer(precision)
+    coefficients = no_zeroes([first_constant, second_constant, third_constant], precision)
 
     # Create first derivative
-    first_constants = [coefficients[0] * coefficients[1], coefficients[1], coefficients[2]]
+    first_coefficients = [coefficients[0] * coefficients[1], coefficients[1], coefficients[2]]
+    first_constants = rounded_list(first_coefficients, precision)
     def first_derivative(variable):
         exponential = exp(-1 * first_constants[1] * (variable - first_constants[2]))
         evaluation = first_constants[0] * exponential * (1 + exponential)**(-2)
-        return evaluation
+        rounded_evaluation = rounded_value(evaluation, precision)
+        return rounded_evaluation
     first_dictionary = {
         'constants': first_constants,
         'evaluation': first_derivative
     }
 
     # Create second derivative
-    second_constants = [first_constants[0] * first_constants[1], first_constants[1], first_constants[2]]
+    second_coefficients = [first_constants[0] * first_constants[1], first_constants[1], first_constants[2]]
+    second_constants = rounded_list(second_coefficients, precision)
     def second_derivative(variable):
         exponential = exp(-1 * second_constants[1] * (variable - second_constants[2]))
         evaluation = second_constants[0] * exponential * (1 + exponential)**(-2) * (2 * exponential / (1 + exponential) - 1)
-        return evaluation
+        rounded_evaluation = rounded_value(evaluation, precision)
+        return rounded_evaluation
     second_dictionary = {
         'constants': second_constants,
         'evaluation': second_derivative

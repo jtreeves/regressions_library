@@ -191,9 +191,9 @@ def logistic_model(data, precision = 4):
     coefficients = no_zeroes(solution, precision)
 
     # Generate evaluations for function, derivative, and integral
-    equation = logistic_equation(*coefficients)
-    derivative = logistic_derivatives(*coefficients)['first']['evaluation']
-    integral = logistic_integral(*coefficients)['evaluation']
+    equation = logistic_equation(*coefficients, precision)
+    derivative = logistic_derivatives(*coefficients, precision)['first']['evaluation']
+    integral = logistic_integral(*coefficients, precision)['evaluation']
 
     # Determine key points of graph
     points = key_coordinates('logistic', coefficients, precision)
