@@ -62,7 +62,7 @@ def logistic_integral(first_constant, second_constant, third_constant):
         evaluation = constants[0] * log(abs(exp(constants[1] * (variable - constants[2])) + 1))
         return evaluation
     
-    # Create object to return
+    # Package constants and evaluation in single dictionary
     results = {
         'constants': constants,
         'evaluation': logistic_evaluation

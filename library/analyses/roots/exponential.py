@@ -52,40 +52,83 @@ def exponential_roots(first_constant, second_constant, precision = 4):
     two_scalars(first_constant, second_constant)
     positive_integer(precision)
     coefficients = no_zeroes([first_constant, second_constant], precision)
+
+    # Create list to return
+    result = []
     
-    # Create root
-    root = [None]
-    return root
+    # Determine root
+    root = None
+
+    # Return result
+    result.append(root)
+    return result
 
 def exponential_roots_first_derivative(first_constant, second_constant, precision = 4):
+    # Handle input errors
     two_scalars(first_constant, second_constant)
     positive_integer(precision)
-    root = [None]
-    return root
+
+    # Create list to return
+    result = []
+    
+    # Determine root of first derivative
+    root = None
+
+    # Return result
+    result.append(root)
+    return result
 
 def exponential_roots_second_derivative(first_constant, second_constant, precision = 4):
+    # Handle input errors
     two_scalars(first_constant, second_constant)
     positive_integer(precision)
-    root = [None]
-    return root
+
+    # Create list to return
+    result = []
+    
+    # Determine root of second derivative
+    root = None
+
+    # Return result
+    result.append(root)
+    return result
 
 def exponential_roots_initial_value(first_constant, second_constant, initial_value, precision = 4):
+    # Handle input errors
     three_scalars(first_constant, second_constant, initial_value)
     positive_integer(precision)
+
+    # Create list to return
+    result = []
+
+    # Create intermediary variables
+    numerator = log(abs(initial_value / first_constant))
     denominator = log(abs(second_constant))
+
+    # Circumvent division by zero
     if denominator == 0:
         denominator = 10**(-precision)
-    numerator = log(abs(initial_value / first_constant))
+
+    # Determine root given an initial value
     ratio = numerator / denominator
+
+    # Round root
     rounded_ratio = rounded_value(ratio, precision)
-    root = [rounded_ratio]
-    return root
+
+    # Return result
+    result.append(rounded_ratio)
+    return result
 
 def exponential_roots_derivative_initial_value(first_constant, second_constant, initial_value, precision = 4):
+    # Handle input errors
     three_scalars(first_constant, second_constant, initial_value)
     positive_integer(precision)
+
+    # Circumvent division by zero
     denominator = log(abs(second_constant))
     if denominator == 0:
         denominator = 10**(-precision)
-    roots = exponential_roots_initial_value(first_constant * denominator, second_constant, initial_value, precision)
-    return roots
+
+    # Determine root of derivative given an initial value
+    result = exponential_roots_initial_value(first_constant * denominator, second_constant, initial_value, precision)
+    return result

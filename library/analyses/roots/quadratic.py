@@ -58,11 +58,14 @@ def quadratic_roots(first_constant, second_constant, third_constant, precision =
     positive_integer(precision)
     coefficients = no_zeroes([first_constant, second_constant, third_constant], precision)
 
+    # Create intermediary list and list to return
+    roots = []
+    result = []
+
     # Create intermediary variable
     discriminant = coefficients[1]**2 - 4 * coefficients[0] * coefficients[2]
 
     # Create roots
-    roots = []
     first_root = (-1 * coefficients[1] + discriminant**(1/2)) / (2 * coefficients[0])
     second_root = (-1 * coefficients[1] - discriminant**(1/2)) / (2 * coefficients[0])
 
@@ -79,36 +82,59 @@ def quadratic_roots(first_constant, second_constant, third_constant, precision =
     
     # Handle no roots
     if not roots:
-        roots = [None]
+        roots.append(None)
     
     # Sort roots
     sorted_roots = sorted_list(roots)
     
     # Round roots
-    result = rounded_list(sorted_roots, precision)
+    rounded_roots = rounded_list(sorted_roots, precision)
+
+    # Return result
+    result.extend(rounded_roots)
     return result
 
 def quadratic_roots_first_derivative(first_constant, second_constant, third_constant, precision = 4):
+    # Handle input errors
     three_scalars(first_constant, second_constant, third_constant)
     positive_integer(precision)
+
+    # Generate coefficients of first derivative
     constants = quadratic_derivatives(first_constant, second_constant, third_constant)['first']['constants']
-    roots = linear_roots(*constants, precision)
-    return roots
+
+    # Determine roots of first derivative
+    result = linear_roots(*constants, precision)
+    return result
 
 def quadratic_roots_second_derivative(first_constant, second_constant, third_constant, precision = 4):
+    # Handle input errors
     three_scalars(first_constant, second_constant, third_constant)
     positive_integer(precision)
-    root = [None]
-    return root
+    
+    # Create list to return
+    result = []
+    
+    # Determine root
+    root = None
+
+    # Return result
+    result.append(root)
+    return result
 
 def quadratic_roots_initial_value(first_constant, second_constant, third_constant, initial_value, precision = 4):
+    # Handle input errors
     four_scalars(first_constant, second_constant, third_constant, initial_value)
     positive_integer(precision)
-    roots = quadratic_roots(first_constant, second_constant, third_constant - initial_value, precision)
-    return roots
+
+    # Determine roots given an initial value
+    result = quadratic_roots(first_constant, second_constant, third_constant - initial_value, precision)
+    return result
 
 def quadratic_roots_derivative_initial_value(first_constant, second_constant, third_constant, initial_value, precision = 4):
+    # Handle input errors
     four_scalars(first_constant, second_constant, third_constant, initial_value)
     positive_integer(precision)
-    roots = linear_roots(2 * first_constant, second_constant - initial_value, precision)
-    return roots
+
+    # Determine roots of derivative given an initial value
+    result = linear_roots(2 * first_constant, second_constant - initial_value, precision)
+    return result

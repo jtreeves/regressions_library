@@ -118,31 +118,50 @@ def cubic_roots(first_constant, second_constant, third_constant, fourth_constant
     sorted_roots = sorted_list(unique_roots)
 
     # Round roots
-    result = rounded_list(sorted_roots, precision)
+    rounded_roots = rounded_list(sorted_roots, precision)
+
+    # Return result
+    result = rounded_roots
     return result
 
 def cubic_roots_first_derivative(first_constant, second_constant, third_constant, fourth_constant, precision = 4):
+    # Handle input errors
     four_scalars(first_constant, second_constant, third_constant, fourth_constant)
     positive_integer(precision)
+
+    # Generate coefficients of first derivative
     constants = cubic_derivatives(first_constant, second_constant, third_constant, fourth_constant)['first']['constants']
-    roots = quadratic_roots(*constants, precision)
-    return roots
+
+    # Determine roots of first derivative
+    result = quadratic_roots(*constants, precision)
+    return result
 
 def cubic_roots_second_derivative(first_constant, second_constant, third_constant, fourth_constant, precision = 4):
+    # Handle input errors
     four_scalars(first_constant, second_constant, third_constant, fourth_constant)
     positive_integer(precision)
+
+    # Generate coefficients of second derivative
     constants = cubic_derivatives(first_constant, second_constant, third_constant, fourth_constant)['second']['constants']
-    roots = linear_roots(*constants, precision)
-    return roots
+
+    # Determine roots of second derivative
+    result = linear_roots(*constants, precision)
+    return result
 
 def cubic_roots_initial_value(first_constant, second_constant, third_constant, fourth_constant, initial_value, precision = 4):
+    # Handle input errors
     five_scalars(first_constant, second_constant, third_constant, fourth_constant, initial_value)
     positive_integer(precision)
-    roots = cubic_roots(first_constant, second_constant, third_constant, fourth_constant - initial_value, precision)
-    return roots
+
+    # Determine roots given an initial value
+    result = cubic_roots(first_constant, second_constant, third_constant, fourth_constant - initial_value, precision)
+    return result
 
 def cubic_roots_derivative_initial_value(first_constant, second_constant, third_constant, fourth_constant, initial_value, precision = 4):
+    # Handle input errors
     five_scalars(first_constant, second_constant, third_constant, fourth_constant, initial_value)
     positive_integer(precision)
-    roots = quadratic_roots(3 * first_constant, 2 * second_constant, third_constant - initial_value, precision)
-    return roots
+
+    # Determine roots of derivative given an initial value
+    result = quadratic_roots(3 * first_constant, 2 * second_constant, third_constant - initial_value, precision)
+    return result

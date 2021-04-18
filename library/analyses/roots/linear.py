@@ -53,37 +53,73 @@ def linear_roots(first_constant, second_constant, precision = 4):
     positive_integer(precision)
     coefficients = no_zeroes([first_constant, second_constant], precision)
     
-    # Create root
+    # Create list to return
+    result = []
+
+    # Determine root
     root = -1 * coefficients[1] / coefficients[0]
 
     # Round root
-    result = [rounded_value(root, precision)]
+    rounded_root = rounded_value(root, precision)
+
+    # Return result
+    result.append(rounded_root)
     return result
 
 def linear_roots_first_derivative(first_constant, second_constant, precision = 4):
+    # Handle input errors
     two_scalars(first_constant, second_constant)
     positive_integer(precision)
-    root = [None]
-    return root
+
+    # Create list to return
+    result = []
+
+    # Determine root of first derivative
+    root = None
+
+    # Return result
+    result.append(root)
+    return result
 
 def linear_roots_second_derivative(first_constant, second_constant, precision = 4):
+    # Handle input errors
     two_scalars(first_constant, second_constant)
     positive_integer(precision)
-    root = [None]
-    return root
+
+    # Create list to return
+    result = []
+
+    # Determine root of second derivative
+    root = None
+
+    # Return result
+    result.append(root)
+    return result
 
 def linear_roots_initial_value(first_constant, second_constant, initial_value, precision = 4):
+    # Handle input errors
     three_scalars(first_constant, second_constant, initial_value)
     positive_integer(precision)
-    roots = linear_roots(first_constant, second_constant - initial_value, precision)
-    return roots
+
+    # Determine roots given an initial value
+    result = linear_roots(first_constant, second_constant - initial_value, precision)
+    return result
 
 def linear_roots_derivative_initial_value(first_constant, second_constant, initial_value, precision = 4):
+    # Handle input errors
     three_scalars(first_constant, second_constant, initial_value)
     positive_integer(precision)
-    roots = []
+
+    # Create list to return
+    result = []
+
+    # Handle general case
     if initial_value == first_constant:
-        roots = ['All']
+        result.append('All')
+    
+    # Handle exception
     else:
-        roots = [None]
-    return roots
+        result.append(None)
+    
+    # Return result
+    return result

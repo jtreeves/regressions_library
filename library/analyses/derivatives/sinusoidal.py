@@ -66,7 +66,7 @@ def sinusoidal_derivatives(first_constant, second_constant, third_constant, four
     def first_derivative(variable):
         evaluation = first_constants[0] * cos(first_constants[1] * (variable - first_constants[2]))
         return evaluation
-    first_object = {
+    first_dictionary = {
         'constants': first_constants,
         'evaluation': first_derivative
     }
@@ -76,14 +76,14 @@ def sinusoidal_derivatives(first_constant, second_constant, third_constant, four
     def second_derivative(variable):
         evaluation = second_constants[0] * sin(second_constants[1] * (variable - second_constants[2]))
         return evaluation
-    second_object = {
+    second_dictionary = {
         'constants': second_constants,
         'evaluation': second_derivative
     }
 
-    # Create object to return
+    # Package both derivatives in single dictionary
     results = {
-        'first': first_object,
-        'second': second_object
+        'first': first_dictionary,
+        'second': second_dictionary
     }
     return results

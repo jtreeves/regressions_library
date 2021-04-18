@@ -118,48 +118,87 @@ def sinusoidal_roots(first_constant, second_constant, third_constant, fourth_con
     return result
 
 def sinusoidal_roots_first_derivative(first_constant, second_constant, third_constant, fourth_constant, precision = 4):
+    # Handle input errors
     four_scalars(first_constant, second_constant, third_constant, fourth_constant)
     positive_integer(precision)
+
+    # Generate coefficients of first derivative
     constants = sinusoidal_derivatives(first_constant, second_constant, third_constant, fourth_constant)['first']['constants']
+
+    # Create intermediary variables
     periodic_unit = pi / constants[1]
     initial_value = constants[2] + pi / (2 * constants[1])
-    generated_elements = generate_elements(initial_value, periodic_unit, precision)
-    return generated_elements
+
+    # Generate roots based on criteria
+    generated_roots = generate_elements(initial_value, periodic_unit, precision)
+
+    # Return result
+    result = generated_roots
+    return result
 
 def sinusoidal_roots_second_derivative(first_constant, second_constant, third_constant, fourth_constant, precision = 4):
+    # Handle input errors
     four_scalars(first_constant, second_constant, third_constant, fourth_constant)
     positive_integer(precision)
+
+    # Generate coefficients of second derivative
     constants = sinusoidal_derivatives(first_constant, second_constant, third_constant, fourth_constant)['second']['constants']
+
+    # Create intermediary variables
     periodic_unit = pi / constants[1]
     initial_value = constants[2]
-    generated_elements = generate_elements(initial_value, periodic_unit, precision)
-    return generated_elements
+
+    # Generate roots based on criteria
+    generated_roots = generate_elements(initial_value, periodic_unit, precision)
+
+    # Return result
+    result = generated_roots
+    return result
 
 def sinusoidal_roots_initial_value(first_constant, second_constant, third_constant, fourth_constant, initial_value, precision = 4):
+    # Handle input errors
     five_scalars(first_constant, second_constant, third_constant, fourth_constant, initial_value)
     positive_integer(precision)
-    roots = sinusoidal_roots(first_constant, second_constant, third_constant, fourth_constant - initial_value, precision)
-    return roots
+
+    # Determine roots given an initial value
+    result = sinusoidal_roots(first_constant, second_constant, third_constant, fourth_constant - initial_value, precision)
+    return result
 
 def sinusoidal_roots_derivative_initial_value(first_constant, second_constant, third_constant, fourth_constant, initial_value, precision = 4):
+    # Handle input errors
     five_scalars(first_constant, second_constant, third_constant, fourth_constant, initial_value)
     positive_integer(precision)
+
+    # Create intermediary list and list to return
+    roots = []
+    result = []
+
+    # Identify key ratio
     ratio = initial_value / (first_constant * second_constant)
-    final_roots = []
+
+    # Handle no roots
     if ratio > 1 or ratio < -1:
-        final_roots = [None]
+        result.append(None)
+    
+    # Handle multiple roots
     else:
-        roots = []
+        # Handle case in which initial value is zero
         if ratio == 0:
             roots = sinusoidal_roots_first_derivative(first_constant, second_constant, third_constant, fourth_constant, precision)
+        
+        # Handle general case
         else:
             radians = acos(ratio)
             periodic_radians = radians / second_constant
             periodic_unit = 2 * pi / second_constant
             initial = third_constant + periodic_radians
             roots = generate_elements(initial, periodic_unit, precision)
+
+            # Handle roots that bounce on the x-axis
             if ratio == 1 or ratio == -1:
                 pass
+
+            # Handle roots that cross the x-axis
             else:
                 alternative_initial = third_constant + periodic_unit - periodic_radians
                 generated_elements = generate_elements(alternative_initial, periodic_unit, precision)
@@ -180,5 +219,7 @@ def sinusoidal_roots_derivative_initial_value(first_constant, second_constant, t
         sorted_other_roots = sorted_strings(other_roots)
 
         # Combine numerical and non-numerical roots
-        final_roots = rounded_roots + sorted_other_roots
-    return final_roots
+        result.extend(rounded_roots + sorted_other_roots)
+    
+    # Return result
+    return result

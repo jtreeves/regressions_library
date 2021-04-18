@@ -64,7 +64,7 @@ def sinusoidal_integral(first_constant, second_constant, third_constant, fourth_
         evaluation = constants[0] * cos(constants[1] * (variable - constants[2])) + constants[3] * variable
         return evaluation
     
-    # Create object to return
+    # Package constants and evaluation in single dictionary
     results = {
         'constants': constants,
         'evaluation': sinusoidal_evaluation

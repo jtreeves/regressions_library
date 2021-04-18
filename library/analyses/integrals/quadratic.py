@@ -60,7 +60,7 @@ def quadratic_integral(first_constant, second_constant, third_constant):
         evaluation = constants[0] * variable**3 + constants[1] * variable**2 + constants[2] * variable
         return evaluation
     
-    # Create object to return
+    # Package constants and evaluation in single dictionary
     results = {
         'constants': constants,
         'evaluation': quadratic_evaluation

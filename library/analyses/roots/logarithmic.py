@@ -53,34 +53,64 @@ def logarithmic_roots(first_constant, second_constant, precision = 4):
     two_scalars(first_constant, second_constant)
     positive_integer(precision)
     coefficients = no_zeroes([first_constant, second_constant], precision)
+
+    # Create list to return
+    result = []
     
-    # Create root
+    # Determine root
     root = exp(-1 * coefficients[1] / coefficients[0])
 
     # Round root
-    result = [rounded_value(root, precision)]
+    rounded_root = rounded_value(root, precision)
+
+    # Return result
+    result.append(rounded_root)
     return result
 
 def logarithmic_roots_first_derivative(first_constant, second_constant, precision = 4):
+    # Handle input errors
     two_scalars(first_constant, second_constant)
     positive_integer(precision)
-    root = [None]
-    return root
+
+    # Create list to return
+    result = []
+    
+    # Determine root
+    root = None
+
+    # Return result
+    result.append(root)
+    return result
 
 def logarithmic_roots_second_derivative(first_constant, second_constant, precision = 4):
+    # Handle input errors
     two_scalars(first_constant, second_constant)
     positive_integer(precision)
-    root = [None]
-    return root
+
+    # Create list to return
+    result = []
+    
+    # Determine root
+    root = None
+
+    # Return result
+    result.append(root)
+    return result
 
 def logarithmic_roots_initial_value(first_constant, second_constant, initial_value, precision = 4):
+    # Handle input errors
     three_scalars(first_constant, second_constant, initial_value)
     positive_integer(precision)
-    roots = logarithmic_roots(first_constant, second_constant - initial_value, precision)
-    return roots
+
+    # Determine roots given an initial value
+    result = logarithmic_roots(first_constant, second_constant - initial_value, precision)
+    return result
 
 def logarithmic_roots_derivative_initial_value(first_constant, second_constant, initial_value, precision = 4):
+    # Handle input errors
     three_scalars(first_constant, second_constant, initial_value)
     positive_integer(precision)
-    roots = hyperbolic_roots(first_constant, -1 * initial_value, precision)
-    return roots
+
+    # Determine roots of derivative given an initial value
+    result = hyperbolic_roots(first_constant, -1 * initial_value, precision)
+    return result

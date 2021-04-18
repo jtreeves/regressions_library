@@ -57,47 +57,102 @@ def logistic_roots(first_constant, second_constant, third_constant, precision = 
     positive_integer(precision)
     coefficients = no_zeroes([first_constant, second_constant, third_constant], precision)
 
-    # Create root
-    root = [None]
-    return root
+    # Create list to return
+    result = []
+
+    # Determine root
+    root = None
+
+    # Return result
+    result.append(root)
+    return result
 
 def logistic_roots_first_derivative(first_constant, second_constant, third_constant, precision = 4):
+    # Handle input errors
     three_scalars(first_constant, second_constant, third_constant)
     positive_integer(precision)
-    root = [None]
-    return root
+    
+    # Create list to return
+    result = []
+
+    # Determine root of first derivative
+    root = None
+
+    # Return result
+    result.append(root)
+    return result
 
 def logistic_roots_second_derivative(first_constant, second_constant, third_constant, precision = 4):
+    # Handle input errors
     three_scalars(first_constant, second_constant, third_constant)
     positive_integer(precision)
-    root = [rounded_value(third_constant)]
-    return root
+
+    # Create list to return
+    result = []
+
+    # Determine root of second derivative
+    root = rounded_value(third_constant)
+
+    # Return root
+    result.append(root)
+    return result
 
 def logistic_roots_initial_value(first_constant, second_constant, third_constant, initial_value, precision = 4):
+    # Handle input errors
     four_scalars(first_constant, second_constant, third_constant, initial_value)
     positive_integer(precision)
+
+    # Create list to return
+    result = []
+    
+    # Create pivot variable
     log_argument = first_constant / initial_value - 1
+
+    # Circumvent logarithm of zero
     if log_argument == 0:
         log_argument = 10**(-precision)
+
+    # Create intermediary variables
     numerator = log(abs(log_argument))
     denominator = second_constant
     ratio = numerator / denominator
+
+    # Determine root given an initial value
     root = third_constant - ratio
+
+    # Round root
     rounded_root = rounded_value(root, precision)
-    final_roots = [rounded_root]
-    return final_roots
+
+    # Return result
+    result.append(rounded_root)
+    return result
 
 def logistic_roots_derivative_initial_value(first_constant, second_constant, third_constant, initial_value, precision = 4):
+    # Handle input errors
     four_scalars(first_constant, second_constant, third_constant, initial_value)
     positive_integer(precision)
+
+    # Create intermediary list and list to return
+    roots = []
+    result = []
+
+    # Determine quadratic roots of derivative given an initial value
     intermediary_roots = quadratic_roots(initial_value, 2 * initial_value - first_constant * second_constant, initial_value, precision)
-    final_roots = []
+
+    # Handle no roots
     if intermediary_roots[0] == None:
-        final_roots.append(None)
+        roots.append(None)
+    
+    # Convert quadratic roots using logarithms
     else:
         for intermediary in intermediary_roots:
             root = third_constant - log(abs(intermediary)) / second_constant
             rounded_root = rounded_value(root, precision)
-            final_roots.append(rounded_root)
-    sorted_roots = sorted_list(final_roots)
-    return sorted_roots
+            roots.append(rounded_root)
+    
+    # Sort roots
+    sorted_roots = sorted_list(roots)
+
+    # Return result
+    result.extend(sorted_roots)
+    return result

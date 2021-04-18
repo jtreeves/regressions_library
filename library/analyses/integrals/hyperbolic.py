@@ -62,7 +62,7 @@ def hyperbolic_integral(first_constant, second_constant):
         evaluation = constants[0] * log(abs(variable)) + constants[1] * variable
         return evaluation
     
-    # Create object to return
+    # Package constants and evaluation in single dictionary
     results = {
         'constants': constants,
         'evaluation': hyperbolic_evaluation

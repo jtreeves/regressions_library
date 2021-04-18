@@ -21,11 +21,13 @@ from .extrema import extrema_points
 from .inflections import inflection_points
 
 def coordinate_pairs(equation_type, coefficients, inputs, point_type = 'point', precision = 4):
+    # Handle input errors
     select_equations(equation_type)
     vector_of_scalars(coefficients, 'second')
     allow_none_vector(inputs, 'third')
     select_points(point_type, 'fourth')
     positive_integer(precision)
+
     # Create equations for evaluating inputs (based on equation type)
     equation = lambda x : x
     if equation_type == 'linear':
@@ -178,7 +180,7 @@ def key_coordinates(equation_type, coefficients, precision = 4):
     # Generate coordinate pairs for all points of inflection
     inflections_coordinates = coordinate_pairs(equation_type, coefficients, inflections_inputs, 'inflections', precision)
     
-    # Create object to return
+    # Create dictionary to return
     result = {
         'roots': intercepts_coordinates,
         'maxima': maxima_coordinates,
@@ -188,23 +190,38 @@ def key_coordinates(equation_type, coefficients, precision = 4):
     return result
 
 def points_within_range(points, start, end):
+    # Handle input errors
     allow_none_vector(points, 'first')
     compare_scalars(start, end, 'second', 'third')
+
+    # Separate numerical results from string results
     separated_results = separate_elements(points)
     numerical_results = separated_results['numerical']
     other_results = separated_results['other']
+
+    # Eliminate numerical results outside of range
     selected_results = [x for x in numerical_results if x >= start and x <= end]
+
+    # Create list to return
     final_results = []
+
+    # Handle no results
     if not selected_results and not other_results:
         final_results.append(None)
+    
+    # Handle general case
     else:
         final_results.extend(selected_results + other_results)
+    
+    # Return results
     return final_results
 
 def shifted_points_within_range(points, minimum, maximum, precision = 4):
+    # Handle input errors
     allow_vector_matrix(points, 'first')
     compare_scalars(minimum, maximum, 'second', 'third')
     positive_integer(precision)
+
     # Grab general points
     general_points = []
     for point in points:
@@ -252,8 +269,8 @@ def shifted_points_within_range(points, minimum, maximum, precision = 4):
     sorted_other_points = sorted_strings(other_points)
     
     # Combine numerical and string inputs
-    input_points = rounded_points + sorted_other_points
-    return input_points
+    result = rounded_points + sorted_other_points
+    return result
 
 def shifted_coordinates_within_range(coordinates, minimum, maximum, precision = 4):
     # Handle input errors
@@ -261,8 +278,8 @@ def shifted_coordinates_within_range(coordinates, minimum, maximum, precision = 
     compare_scalars(minimum, maximum, 'second', 'third')
     positive_integer(precision)
 
-    # Determine list of points within a given range
-    final_points = []
+    # Create list to return
+    result = []
 
     # Handle general case
     if coordinates[0] is not None:
@@ -275,9 +292,11 @@ def shifted_coordinates_within_range(coordinates, minimum, maximum, precision = 
             output_points.append(coordinates[0][1])
         
         # Unite inputs and outputs into single list
-        final_points = unite_vectors(input_points, output_points)
+        result = unite_vectors(input_points, output_points)
     
     # Handle no points
     else:
-        final_points = coordinates
-    return final_points
+        result = coordinates
+    
+    # Return result
+    return result

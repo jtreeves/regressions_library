@@ -51,41 +51,77 @@ def hyperbolic_roots(first_constant, second_constant, precision = 4):
     two_scalars(first_constant, second_constant)
     positive_integer(precision)
     coefficients = no_zeroes([first_constant, second_constant], precision)
+
+    # Create list to return
+    result = []
     
-    # Create root
+    # Determine root
     root = -1 * coefficients[0] / coefficients[1]
 
     # Round root
-    result = [rounded_value(root, precision)]
+    rounded_root = rounded_value(root, precision)
+
+    # Return result
+    result.append(rounded_root)
     return result
 
 def hyperbolic_roots_first_derivative(first_constant, second_constant, precision = 4):
+    # Handle input errors
     two_scalars(first_constant, second_constant)
     positive_integer(precision)
-    root = [0.0]
-    return root
+
+    # Create list to return
+    result = []
+
+    # Determine root of first derivative
+    root = 0.0
+
+    # Return result
+    result.append(root)
+    return result
 
 def hyperbolic_roots_second_derivative(first_constant, second_constant, precision = 4):
+    # Handle input errors
     two_scalars(first_constant, second_constant)
     positive_integer(precision)
-    root = [0.0]
-    return root
+
+    # Create list to return
+    result = []
+
+    # Determine root of second derivative
+    root = 0.0
+
+    # Return result
+    result.append(root)
+    return result
 
 def hyperbolic_roots_initial_value(first_constant, second_constant, initial_value, precision = 4):
+    # Handle input errors
     three_scalars(first_constant, second_constant, initial_value)
     positive_integer(precision)
-    roots = hyperbolic_roots(first_constant, second_constant - initial_value, precision)
-    return roots
+
+    # Determine roots given an initial value
+    result = hyperbolic_roots(first_constant, second_constant - initial_value, precision)
+    return result
 
 def hyperbolic_roots_derivative_initial_value(first_constant, second_constant, initial_value, precision = 4):
+    # Handle input errors
     three_scalars(first_constant, second_constant, initial_value)
     positive_integer(precision)
-    root = []
+
+    # Create list to return
+    result = []
+
+    # Create intermediary variable
     ratio = -1 * first_constant / initial_value
+
+    # Handle no roots
     if ratio < 0:
-        root.append(None)
+        result.append(None)
+    
+    # Determine roots of derivative given an initial value
     else:
         radical = ratio**(1/2)
         rounded_radical = rounded_value(radical, precision)
-        root.append(rounded_radical)
-    return root
+        result.append(rounded_radical)
+    return result

@@ -63,7 +63,7 @@ def exponential_integral(first_constant, second_constant):
         evaluation = constants[0] * constants[1]**variable
         return evaluation
     
-    # Create object to return
+    # Package constants and evaluation in single dictionary
     results = {
         'constants': constants,
         'evaluation': exponential_evaluation

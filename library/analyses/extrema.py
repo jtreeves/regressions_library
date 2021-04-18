@@ -70,7 +70,7 @@ def extrema_points(equation_type, coefficients, precision = 4):
     max_points = maxima_points(equation_type, coefficients, precision)
     min_points = minima_points(equation_type, coefficients, precision)
     
-    # Create object to return
+    # Create dictionary to return
     result = {}
 
     # Handle sinusoidal case

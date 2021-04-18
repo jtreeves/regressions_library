@@ -63,7 +63,7 @@ def logarithmic_integral(first_constant, second_constant):
         evaluation = constants[0] * variable * (log(abs(variable)) - 1) + constants[1] * variable
         return evaluation
     
-    # Create object to return
+    # Package constants and evaluation in single dictionary
     results = {
         'constants': constants,
         'evaluation': logarithmic_evaluation

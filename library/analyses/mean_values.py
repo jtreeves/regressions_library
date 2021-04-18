@@ -75,10 +75,13 @@ def average_value_derivative(equation_type, coefficients, start, end, precision 
         >>> print(average_sinusoidal)
         0.0401
     """
+    # Handle input errors
     select_equations(equation_type)
     vector_of_scalars(coefficients, 'second')
     compare_scalars(start, end, 'third', 'fourth')
     positive_integer(precision)
+
+    # Create equation based on equation type
     equation = lambda x : x
     if equation_type == 'linear':
         equation = linear_equation(*coefficients)
@@ -96,10 +99,16 @@ def average_value_derivative(equation_type, coefficients, start, end, precision 
         equation = logistic_equation(*coefficients)
     elif equation_type == 'sinusoidal':
         equation = sinusoidal_equation(*coefficients)
+    
+    # Create intermediary variables
     vertical_change = equation(end) - equation(start)
     horizontal_change = end - start
+    
+    # Circumvent division by zero
     if horizontal_change == 0:
         horizontal_change = 10**(-precision)
+    
+    # Determine average slope
     ratio = vertical_change / horizontal_change
     result = rounded_value(ratio, precision)
     return result
@@ -158,14 +167,23 @@ def mean_values_derivative(equation_type, coefficients, start, end, precision = 
         >>> print(points_sinusoidal)
         [10.7618, 11.8046, 12.8562, 13.899, 14.9506, 15.9933, '10.7618 + 2.0944k', '11.8046 + 2.0944k']
     """
+    # Handle input errors
     select_equations(equation_type)
     vector_of_scalars(coefficients, 'second')
     compare_scalars(start, end, 'third', 'fourth')
     positive_integer(precision)
+
+    # Create list to return
     result = []
+
+    # Determine average rate of change over interval
     average = average_value_derivative(equation_type, coefficients, start, end, precision)
+
+    # Circumvent division by zero
     if average == 0:
         average = 10**(-precision)
+
+    # Determine points satisfying theorem based on equation type
     if equation_type == 'linear':
         result = linear_roots_derivative_initial_value(*coefficients, average, precision)
     elif equation_type == 'quadratic':
@@ -183,6 +201,8 @@ def mean_values_derivative(equation_type, coefficients, start, end, precision = 
     elif equation_type == 'sinusoidal':
         options = sinusoidal_roots_derivative_initial_value(*coefficients, average, precision)
         result = shifted_points_within_range(options, start, end, precision)
+    
+    # Eliminate points outside of interval
     final_result = points_within_range(result, start, end)
     return final_result
 
@@ -239,16 +259,30 @@ def average_value_integral(equation_type, coefficients, start, end, precision = 
         >>> print(average_sinusoidal)
         6.9143
     """
+    # Handle input errors
     select_equations(equation_type)
     vector_of_scalars(coefficients, 'second')
     compare_scalars(start, end, 'third', 'fourth')
     positive_integer(precision)
+
+    # Determine accumulated value of function over interval
     accumulated_value = accumulated_area(equation_type, coefficients, start, end, precision)
+
+    # Create intermediary variable
     change = end - start
+
+    # Circumvent division by zero
     if change == 0:
         change = 10**(-precision)
+    
+    # Determine average value of function over interval
     ratio = accumulated_value / change
-    result = rounded_value(ratio, precision)
+
+    # Round value
+    rounded_ratio = rounded_value(ratio, precision)
+
+    # Return result
+    result = rounded_ratio
     return result
 
 def mean_values_integral(equation_type, coefficients, start, end, precision = 4):
@@ -305,14 +339,23 @@ def mean_values_integral(equation_type, coefficients, start, end, precision = 4)
         >>> print(points_sinusoidal)
         [10.2503, 11.2689, 12.3447, 13.3633, 14.4391, 15.4577, 16.5335, 17.5521, 18.6279, 19.6465, '10.2503 + 2.0944k', '11.2689 + 2.0944k']
     """
+    # Handle input errors
     select_equations(equation_type)
     vector_of_scalars(coefficients, 'second')
     compare_scalars(start, end, 'third', 'fourth')
     positive_integer(precision)
+
+    # Create list to return
     result = []
+
+    # Determine average value of function over interval
     average = average_value_integral(equation_type, coefficients, start, end, precision)
+
+    # Circumvent division by zero
     if average == 0:
         average = 10**(-precision)
+    
+    # Determine points satisfying theorem based on equation type
     if equation_type == 'linear':
         result = linear_roots_initial_value(*coefficients, average, precision)
     elif equation_type == 'quadratic':
@@ -330,6 +373,8 @@ def mean_values_integral(equation_type, coefficients, start, end, precision = 4)
     elif equation_type == 'sinusoidal':
         options = sinusoidal_roots_initial_value(*coefficients, average, precision)
         result = shifted_points_within_range(options, start, end, precision)
+    
+    # Eliminate points outside of interval
     final_result = points_within_range(result, start, end)
     return final_result
 
@@ -404,14 +449,19 @@ def average_values(equation_type, coefficients, start, end, precision = 4):
         >>> print(averages_sinusoidal['mean_values_integral'])
         [10.2503, 11.2689, 12.3447, 13.3633, 14.4391, 15.4577, 16.5335, 17.5521, 18.6279, 19.6465, '10.2503 + 2.0944k', '11.2689 + 2.0944k']
     """
+    # Handle input errors
     select_equations(equation_type)
     vector_of_scalars(coefficients, 'second')
     compare_scalars(start, end, 'third', 'fourth')
     positive_integer(precision)
+
+    # Determine various mean values
     derivative_value = average_value_derivative(equation_type, coefficients, start, end, precision)
     derivative_inputs = mean_values_derivative(equation_type, coefficients, start, end, precision)
     integral_value = average_value_integral(equation_type, coefficients, start, end, precision)
     integral_inputs = mean_values_integral(equation_type, coefficients, start, end, precision)
+
+    # Package all values in single dictionary
     results = {
         'average_value_derivative': derivative_value,
         'mean_values_derivative': derivative_inputs,
