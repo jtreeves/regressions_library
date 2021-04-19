@@ -62,7 +62,7 @@ def multiple_deviations(actual_array):
 
     Parameters
     ----------
-    actual_array : list
+    actual_array : list of int or float
         List containing the actual values observed from a data set
 
     Raises
@@ -74,7 +74,7 @@ def multiple_deviations(actual_array):
 
     Returns
     -------
-    deviations : list
+    deviations : list of float
         List of differences between the actual values and the mean value for all elements from the original list
 
     See Also

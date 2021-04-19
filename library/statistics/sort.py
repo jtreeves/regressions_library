@@ -6,12 +6,12 @@ def sorted_list(data):
 
     Parameters
     ----------
-    data : list
+    data : list of int or float
         List of numbers to analyze
 
     Returns
     -------
-    order : list
+    order : list of int or float
         List of all elements from a data set sorted in increasing order
 
     See Also
@@ -30,12 +30,12 @@ def sorted_list(data):
     Examples
     --------
     Sort the set [5, 2, 9, 8]
-        >>> order1 = sorted_list([5, 2, 9, 8])
-        >>> print(order1)
+        >>> order_1 = sorted_list([5, 2, 9, 8])
+        >>> print(order_1)
         [2, 5, 8, 9]
     Sort the set [11, 3, 52, 25, 21, 25, 6]
-        >>> order2 = sorted_list([11, 3, 52, 25, 21, 25, 6])
-        >>> print(order2)
+        >>> order_2 = sorted_list([11, 3, 52, 25, 21, 25, 6])
+        >>> print(order_2)
         [3, 6, 11, 21, 25, 25, 52]
     """
     # Create intermediary lists
@@ -80,14 +80,14 @@ def sorted_dimension(data, dimension = 1):
 
     Parameters
     ----------
-    data : list
+    data : list of lists of int or float
         List of lists of numbers to analyze
     dimension: int, default=1
         Number representing the dimension to use for sorting
 
     Returns
     -------
-    order : list
+    order : list of lists of int or float
         List of lists of numbers sorted in increasing order, based on only one dimension of the nested list
 
     See Also
@@ -106,12 +106,12 @@ def sorted_dimension(data, dimension = 1):
     Examples
     --------
     Sort the set [[1, 3, 5], [9, 2, 4], [6, 1, 8]] according to its second dimension
-        >>> order1 = sorted_dimension([[1, 3, 5], [9, 2, 4], [6, 1, 8]], 2)
-        >>> print(order1)
+        >>> order_1 = sorted_dimension([[1, 3, 5], [9, 2, 4], [6, 1, 8]], 2)
+        >>> print(order_1)
         [[6, 1, 8], [9, 2, 4], [1, 3, 5]]
     Sort the set [[1, 3, 5], [9, 2, 4], [6, 1, 8]] according to its third dimension
-        >>> order2 = sorted_dimension([[1, 3, 5], [9, 2, 4], [6, 1, 8]], 3)
-        >>> print(order2)
+        >>> order_2 = sorted_dimension([[1, 3, 5], [9, 2, 4], [6, 1, 8]], 3)
+        >>> print(order_2)
         [[9, 2, 4], [1, 3, 5], [6, 1, 8]]
     """
     # Create intermediary lists
@@ -149,7 +149,7 @@ def sorted_dimension(data, dimension = 1):
         # Create final list to return
         result = less + pivots + more
         return result
-    
+
 def sorted_strings(data):
     # Handle input errors
     vector_of_strings(data)

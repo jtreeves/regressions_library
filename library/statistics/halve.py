@@ -10,14 +10,14 @@ def partition(data):
 
     Parameters
     ----------
-    data : list
+    data : list of int or float
         List of numbers to analyze
 
     Returns
     -------
-    sections['upper'] : list
+    sections['upper'] : list of int or float
         List of all elements from the upper half of a data set
-    sections['lower'] : list
+    sections['lower'] : list of int or float
         List of all elements from the lower half of a data set
 
     See Also
@@ -80,7 +80,7 @@ def half(data):
 
     Parameters
     ----------
-    data : list
+    data : list of int or float
         List of numbers to analyze
     
     Raises
@@ -92,9 +92,9 @@ def half(data):
 
     Returns
     -------
-    sections['upper'] : list
+    sections['upper'] : list of int or float
         List of all elements from the upper half of a sorted data set
-    sections['lower'] : list
+    sections['lower'] : list of int or float
         List of all elements from the lower half of a sorted data set
 
     See Also
@@ -145,7 +145,7 @@ def half_dimension(data, dimension = 1):
 
     Parameters
     ----------
-    data : list
+    data : list of lists of int or float
         List of lists of numbers to analyze
     dimension : int, default=1
         Number indicating by which element of the nested lists to sort
@@ -161,9 +161,9 @@ def half_dimension(data, dimension = 1):
 
     Returns
     -------
-    sections['upper'] : list
+    sections['upper'] : list of lists of int or float
         List of all elements from the upper half of a data set, sorted according to the elements occupying a provided position
-    sections['lower'] : list
+    sections['lower'] : list of lists of int or float
         List of all elements from the lower half of a data set, sorted according to the elements occupying a provided position
 
     See Also

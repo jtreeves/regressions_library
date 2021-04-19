@@ -9,7 +9,7 @@ def range_value(data):
 
     Parameters
     ----------
-    data : list
+    data : list of int or float
         List of numbers to analyze
 
     Raises
@@ -43,11 +43,11 @@ def range_value(data):
     Determine the range of the set [21, 53, 3, 68, 43, 9, 72, 19, 20, 1]
         >>> range_even = range_value([21, 53, 3, 68, 43, 9, 72, 19, 20, 1])
         >>> print(range_even)
-        71
+        71.0
     Determine the range of the set [12, 81, 13, 8, 42, 72, 91, 20, 20]
         >>> range_odd = range_value([12, 81, 13, 8, 42, 72, 91, 20, 20])
         >>> print(range_odd)
-        83
+        83.0
     """
     # Handle input errors
     vector_of_scalars(data)
@@ -69,13 +69,13 @@ def shift_into_range(initial_value, periodic_unit, minimum, maximum):
 
     Parameters
     ----------
-    initial_value : int, float
+    initial_value : int or float
         Starting value to adjust to fit into a range
-    periodic_unit : int, float
+    periodic_unit : int or float
         Unit by which the initial value should be incrementally increased or decreased to fit into a range
-    minimum : int, float
+    minimum : int or float
         Lower bound of range into which the initial value must be adjusted (final value should be greater than or equal to minimum)
-    maximum : int, float
+    maximum : int or float
         Upper bound of range into which the initial value must be adjusted (final value should be less than or equal to maximum)
 
     Raises

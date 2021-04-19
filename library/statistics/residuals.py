@@ -61,9 +61,9 @@ def multiple_residuals(actual_array, expected_array):
 
     Parameters
     ----------
-    actual_array : list
+    actual_array : list of int or float
         List containing the actual values observed from a data set
-    expected_array : list
+    expected_array : list of int or float
         List containing the expected values predicted for a data set
 
     Raises
@@ -77,7 +77,7 @@ def multiple_residuals(actual_array, expected_array):
 
     Returns
     -------
-    residuals : list
+    residuals : list of float
         Differences between the actual values and the expected values
 
     See Also

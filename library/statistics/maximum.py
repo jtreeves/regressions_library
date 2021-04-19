@@ -7,7 +7,7 @@ def maximum_value(data):
 
     Parameters
     ----------
-    data : list
+    data : list of int or float
         List of numbers to analyze
 
     Raises

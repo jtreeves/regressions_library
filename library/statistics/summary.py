@@ -12,7 +12,7 @@ def five_number_summary(data, precision = 4):
 
     Parameters
     ----------
-    data : list
+    data : list of int or float
         List of numbers to analyze
     precision : int, default=4
         Maximum number of digits that can appear after the decimal place of the result
@@ -28,15 +28,15 @@ def five_number_summary(data, precision = 4):
 
     Returns
     -------
-    summary['minimum'] : int or float
+    summary['minimum'] : float
         Smallest value from the data set
-    summary['q1'] : int or float
+    summary['q1'] : float
         First quartile of the data set, below which 25% of the data fall
-    summary['median'] : int or float
+    summary['median'] : float
         Middle value of the data set, splitting the data evenly in half
-    summary['q3'] : int or float
+    summary['q3'] : float
         Third quartile of the data set, above which 25% of the data fall
-    summary['maximum'] : int or float
+    summary['maximum'] : float
         Largest value from the data set
 
     See Also
@@ -75,15 +75,15 @@ def five_number_summary(data, precision = 4):
     Determine the five number summary of the set [21, 53, 3, 68, 43, 9, 72, 19, 20, 1]
         >>> summary_even = five_number_summary([21, 53, 3, 68, 43, 9, 72, 19, 20, 1])
         >>> print(summary_even['q1'])
-        9
+        9.0
         >>> print(summary_even['maximum'])
-        72
+        72.0
     Determine the five number summary of the set [12, 81, 13, 8, 42, 72, 91, 20, 20]
         >>> summary_odd = five_number_summary([12, 81, 13, 8, 42, 72, 91, 20, 20])
         >>> print(summary_odd['q3'])
         76.5
         >>> print(summary_odd['minimum'])
-        8
+        8.0
     """
     # Handle input errors
     vector_of_scalars(data, 'first')

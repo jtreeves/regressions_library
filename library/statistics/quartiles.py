@@ -9,7 +9,7 @@ def quartile_value(data, q):
 
     Parameters
     ----------
-    data : list
+    data : list of int or float
         List of numbers to analyze
     q : int
         Number determining which quartile to provide
@@ -60,12 +60,12 @@ def quartile_value(data, q):
     Examples
     --------
     Determine the first quartile of the set [21, 53, 3, 68, 43, 9, 72, 19, 20, 1]
-        >>> quartile1 = quartile_value([21, 53, 3, 68, 43, 9, 72, 19, 20, 1], 1)
-        >>> print(quartile1)
+        >>> quartile_1 = quartile_value([21, 53, 3, 68, 43, 9, 72, 19, 20, 1], 1)
+        >>> print(quartile_1)
         9
     Determine the third quartile of the set [12, 81, 13, 8, 42, 72, 91, 20, 20]
-        >>> quartile3 = quartile_value([12, 81, 13, 8, 42, 72, 91, 20, 20], 3)
-        >>> print(quartile3)
+        >>> quartile_3 = quartile_value([12, 81, 13, 8, 42, 72, 91, 20, 20], 3)
+        >>> print(quartile_3)
         76.5
     """
     # Handle input errors

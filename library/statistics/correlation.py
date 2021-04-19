@@ -11,9 +11,9 @@ def correlation_coefficient(actuals, expecteds, precision = 4):
 
     Parameters
     ----------
-    actuals : list
+    actuals : list of int or float
         List containing the actual values observed from a data set
-    expecteds : list
+    expecteds : list of int or float
         List containing the expected values for a data set based on a predictive model
     precision : int, default=4
         Maximum number of digits that can appear after the decimal place of the result

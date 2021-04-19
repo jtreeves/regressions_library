@@ -6,7 +6,7 @@ def sum_value(data):
 
     Parameters
     ----------
-    data : list
+    data : list of int or float
         List of numbers
 
     Raises
@@ -34,13 +34,13 @@ def sum_value(data):
     Examples
     --------
     Find the total sum of all values in the array [2, 3, 5, 7]
-        >>> total1 = sum_value([2, 3, 5, 7])
-        >>> print(total1)
-        17
+        >>> total_1 = sum_value([2, 3, 5, 7])
+        >>> print(total_1)
+        17.0
     Find the total sum of all values in the array [1, -1, 1, -1]
-        >>> total2 = sum_value([1, -1, 1, -1])
-        >>> print(total2)
-        0
+        >>> total_2 = sum_value([1, -1, 1, -1])
+        >>> print(total_2)
+        0.0
     """
     # Handle input errors
     vector_of_scalars(data)

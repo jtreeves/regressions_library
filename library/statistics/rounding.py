@@ -66,7 +66,7 @@ def rounded_value(number, precision = 4):
     Round the number -0.00000003 to six decimal places
         >>> number_abnormal = rounded_value(-0.00000003, 6)
         >>> print(number_abnormal)
-        -0.000001
+        -1e-6
     Round the number 11.725371548561 to four decimal places (without providing a value for the precision argument)
         >>> round_skip = rounded_value(11.725371548561)
         >>> print(round_skip)
@@ -91,7 +91,7 @@ def rounded_value(number, precision = 4):
     # Handle general case
     else:
         return float(round(number, precision))
-    
+
 def rounded_list(numbers, precision = 4):
     # Handle input errors
     allow_none_vector(numbers, 'first')
