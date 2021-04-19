@@ -19,7 +19,7 @@ def accumulated_area(equation_type, coefficients, start, end, precision = 4):
     ----------
     equation_type : str
         Name of the type of function for which the definite integral must be evaluated (e.g., 'linear', 'quadratic')
-    coefficients : list
+    coefficients : list of int or float
         Coefficients of the original function to integrate
     start : int or float
         Value of the x-coordinate of the first point to use for evaluating the definite integral
@@ -44,7 +44,7 @@ def accumulated_area(equation_type, coefficients, start, end, precision = 4):
     Returns
     -------
     area : float
-        Definite integral of the original equation, evaluated between two points
+        Definite integral of the original equation, evaluated between two points; if start and end values are identical, then definite integral will be zero
 
     See Also
     --------

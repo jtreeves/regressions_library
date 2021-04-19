@@ -18,7 +18,7 @@ def critical_points(equation_type, coefficients, derivative_level, precision = 4
     ----------
     equation_type : str
         Name of the type of function for which critical points must be determined (e.g., 'linear', 'quadratic')
-    coefficients : list
+    coefficients : list of int or float
         Coefficients to use to generate the equation to investigate
     derivative_level : int
         Integer corresponding to which derivative to investigate for critical points (1 for the first derivative and 2 for the second derivative)
@@ -38,8 +38,8 @@ def critical_points(equation_type, coefficients, derivative_level, precision = 4
 
     Returns
     -------
-    points : list
-        Values of the x-coordinates at which the original function's derivative either crosses the x-axis or does not exist; if the function is sinusoidal, then only five results within a two period interval will be listed, but a general form will also be included; if the derivative has no critical points, then it will return a list of `None`
+    points : list of float or str
+        Values of the x-coordinates at which the original function's derivative either crosses the x-axis or does not exist; if the function is sinusoidal, then only five results within a two-period interval will be listed, but a general form will also be included; if the derivative has no critical points, then it will return a list of `None`
 
     See Also
     --------

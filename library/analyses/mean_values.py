@@ -29,7 +29,7 @@ def average_value_derivative(equation_type, coefficients, start, end, precision 
     ----------
     equation_type : str
         Name of the type of function for which the definite integral must be evaluated (e.g., 'linear', 'quadratic')
-    coefficients : list
+    coefficients : list of int or float
         Coefficients of the original function to use for evaluating the average rate of change
     start : int or float
         Value of the x-coordinate of the first point to use for evaluating the rate of change
@@ -54,7 +54,7 @@ def average_value_derivative(equation_type, coefficients, start, end, precision 
     Returns
     -------
     average : float
-        Slope of a function between two points
+        Slope of a function between two points; if start and end values are identical, then slope will be zero
 
     See Also
     --------
@@ -123,7 +123,7 @@ def mean_values_derivative(equation_type, coefficients, start, end, precision = 
     ----------
     equation_type : str
         Name of the type of function for which an average value must be determined (e.g., 'linear', 'quadratic')
-    coefficients : list
+    coefficients : list of int or float
         Coefficients to use to generate the equation to investigate
     start : int or float
         Value of the x-coordinate of the first point to use for evaluating the rate of change; all results must be greater than this value
@@ -147,8 +147,8 @@ def mean_values_derivative(equation_type, coefficients, start, end, precision = 
 
     Returns
     -------
-    points : list
-        Values of the x-coordinates within the specified interval at which the original function has an instantaneous rate of change equal to its average rate of change over that entire interval; if the function is sinusoidal, then only the initial results within at most a two period interval within the specified interval will be listed, but general forms will also be included (however, their results may be outside the specified interval); if the algorithm cannot determine any values, then it will return a list of `None`
+    points : list of float or str
+        Values of the x-coordinates within the specified interval at which the original function has an instantaneous rate of change equal to its average rate of change over that entire interval; if the function is sinusoidal, then only the initial results within at most a four-period interval within the specified interval will be listed, but general forms will also be included (however, their results may be outside the specified interval); if the algorithm cannot determine any values, then it will return a list of `None`
 
     See Also
     --------
@@ -169,7 +169,7 @@ def mean_values_derivative(equation_type, coefficients, start, end, precision = 
     Generate a list of all the x-coordinates whose instantaneous rates of change equal the function's average rate of change for a cubic function with coefficients 2, 3, 5, and 7 between end points of 10 and 20
         >>> points_sinusoidal = mean_values_derivative('sinusoidal', [2, 3, 5, 7], 10, 20)
         >>> print(points_sinusoidal)
-        [10.7618, 11.8046, 12.8562, 13.899, 14.9506, 15.9933, '10.7618 + 2.0944k', '11.8046 + 2.0944k']
+        [10.7618, 11.8046, 12.8562, 13.899, 14.9506, 15.9934, 17.045, 18.0878, 19.1394, '10.7618 + 2.0944k', '11.8046 + 2.0944k']
     """
     # Handle input errors
     select_equations(equation_type)
@@ -218,7 +218,7 @@ def average_value_integral(equation_type, coefficients, start, end, precision = 
     ----------
     equation_type : str
         Name of the type of function for which the definite integral must be evaluated (e.g., 'linear', 'quadratic')
-    coefficients : list
+    coefficients : list of int or float
         Coefficients of the original function to integrate
     start : int or float
         Value of the x-coordinate of the first point to use for evaluating the average value
@@ -243,7 +243,7 @@ def average_value_integral(equation_type, coefficients, start, end, precision = 
     Returns
     -------
     average : float
-        Average value of the function between two points
+        Average value of the function between two points; if start and end values are identical, then average value will be zero
 
     See Also
     --------
@@ -299,7 +299,7 @@ def mean_values_integral(equation_type, coefficients, start, end, precision = 4)
     ----------
     equation_type : str
         Name of the type of function for which an average value must be determined (e.g., 'linear', 'quadratic')
-    coefficients : list
+    coefficients : list of int or float
         Coefficients of the origianl function under investigation
     start : int or float
         Value of the x-coordinate of the first point to use for evaluating the average value; all results must be greater than this value
@@ -323,8 +323,8 @@ def mean_values_integral(equation_type, coefficients, start, end, precision = 4)
 
     Returns
     -------
-    points : list
-        Values of the x-coordinates within the specified interval at which the original function has a value equal to its average value over that entire interval; if the function is sinusoidal, then only the initial results within at most a two period interval within the specified interval will be listed, but general forms will also be included (however, their results may be outside the specified interval); if the algorithm cannot determine any values, then it will return a list of `None`
+    points : list of float or str
+        Values of the x-coordinates within the specified interval at which the original function has a value equal to its average value over that entire interval; if the function is sinusoidal, then only the initial results within at most a four-period interval within the specified interval will be listed, but general forms will also be included (however, their results may be outside the specified interval); if the algorithm cannot determine any values, then it will return a list of `None`
 
     See Also
     --------
@@ -394,7 +394,7 @@ def average_values(equation_type, coefficients, start, end, precision = 4):
     ----------
     equation_type : str
         Name of the type of function for which average values must be determined (e.g., 'linear', 'quadratic')
-    coefficients : list
+    coefficients : list of int or float
         Coefficients of the origianl function under investigation
     start : int or float
         Value of the x-coordinate of the first point to use for evaluating the average values; results within lists must be greater than this value
@@ -420,12 +420,12 @@ def average_values(equation_type, coefficients, start, end, precision = 4):
     -------
     averages['average_value_derivative'] : float
         Slope of a function between two points
-    averages['mean_values_derivative'] : list
-        Values of the x-coordinates within the specified interval at which the original function has a value equal to its average value over that entire interval; if the function is sinusoidal, then only the initial results within at most a two period interval within the specified interval will be listed, but general forms will also be included (however, their results may be outside the specified interval); if the algorithm cannot determine any values, then it will return a list of `None`
+    averages['mean_values_derivative'] : list of float or str
+        Values of the x-coordinates within the specified interval at which the original function has a value equal to its average value over that entire interval; if the function is sinusoidal, then only the initial results within at most a four-period interval within the specified interval will be listed, but general forms will also be included (however, their results may be outside the specified interval); if the algorithm cannot determine any values, then it will return a list of `None`
     averages['average_value_integral'] : float
         Average value of the function between two points
-    averages['mean_values_integral'] : list
-        Values of the x-coordinates within the specified interval at which the original function has a value equal to its average value over that entire interval; if the function is sinusoidal, then only the initial results within at most a two period interval within the specified interval will be listed, but general forms will also be included (however, their results may be outside the specified interval); if the algorithm cannot determine any values, then it will return a list of `None`
+    averages['mean_values_integral'] : list of float or str
+        Values of the x-coordinates within the specified interval at which the original function has a value equal to its average value over that entire interval; if the function is sinusoidal, then only the initial results within at most a four-period interval within the specified interval will be listed, but general forms will also be included (however, their results may be outside the specified interval); if the algorithm cannot determine any values, then it will return a list of `None`
 
     See Also
     --------
@@ -453,7 +453,7 @@ def average_values(equation_type, coefficients, start, end, precision = 4):
         >>> print(averages_sinusoidal['average_value_derivative'])
         0.0401
         >>> print(averages_sinusoidal['mean_values_derivative'])
-        [10.7618, 11.8046, 12.8562, 13.899, 14.9506, 15.9933, '10.7618 + 2.0944k', '11.8046 + 2.0944k']
+        [10.7618, 11.8046, 12.8562, 13.899, 14.9506, 15.9934, 17.045, 18.0878, 19.1394, '10.7618 + 2.0944k', '11.8046 + 2.0944k']
         >>> print(averages_sinusoidal['average_value_integral'])
         6.9143
         >>> print(averages_sinusoidal['mean_values_integral'])

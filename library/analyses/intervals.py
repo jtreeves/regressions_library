@@ -21,7 +21,7 @@ def sign_chart(equation_type, coefficients, derivative_level, precision = 4):
     ----------
     equation_type : str
         Name of the type of function for which the sign chart must be constructed (e.g., 'linear', 'quadratic')
-    coefficients : list
+    coefficients : list of int or float
         Coefficients to use to generate the equation to investigate
     derivative_level : int
         Integer corresponding to which derivative to investigate for sign chart (1 for the first derivative and 2 for the second derivative)
@@ -41,8 +41,8 @@ def sign_chart(equation_type, coefficients, derivative_level, precision = 4):
 
     Returns
     -------
-    chart : list
-        Strings describing the sign (e.g., 'positive', 'negative') of the derivative between its critical points; as a result, its elements will alternate between strings (indicating the signs) and floats (indicating the end points); if the function is sinusoidal, then only the initial results within a two period interval will be listed, but a general form to determine other end points will also be included
+    chart : list of str and float
+        Strings describing the sign (e.g., 'positive', 'negative') of the derivative between its critical points; as a result, its elements will alternate between strings (indicating the signs) and floats (indicating the end points); if the function is sinusoidal, then only the initial results within a two-period interval will be listed, but a general form to determine other end points will also be included
 
     See Also
     --------
@@ -71,7 +71,7 @@ def sign_chart(equation_type, coefficients, derivative_level, precision = 4):
     Create the sign chart for the second derivative of a sinusoidal function with coefficients 2, 3, 5, and 7
         >>> chart_sinusoidal = sign_chart('sinusoidal', [2, 3, 5, 7], 2)
         >>> print(chart_sinusoidal)
-        ['positive', 5, 'negative', 6.0472, 'positive', 7.0944, 'negative', 8.1416, 'positive', 9.1888, 'negative', '5 + 1.0472k']
+        ['positive', 5.0, 'negative', 6.0472, 'positive', 7.0944, 'negative', 8.1416, 'positive', 9.1888, 'negative', '5.0 + 1.0472k']
     """
     # Handle input errors
     select_equations(equation_type)

@@ -14,7 +14,7 @@ def extrema_points(equation_type, coefficients, precision = 4):
     ----------
     equation_type : str
         Name of the type of function for which extrema must be determined (e.g., 'linear', 'quadratic')
-    coefficients : list
+    coefficients : list of int or float
         Coefficients to use to generate the equation to investigate
     precision : int, default=4
         Maximum number of digits that can appear after the decimal place of the results
@@ -30,10 +30,10 @@ def extrema_points(equation_type, coefficients, precision = 4):
 
     Returns
     -------
-    points['maxima'] : list
-        Values of the x-coordinates at which the original function has a relative maximum; if the function is sinusoidal, then only two or three results within a two period interval will be listed, but a general form will also be included; if the function has no maxima, then it will return a list of `None`
-    points['minima'] : list
-        Values of the x-coordinates at which the original function has a relative minimum; if the function is sinusoidal, then only two or three results within a two period interval will be listed, but a general form will also be included; if the function has no minima, then it will return a list of `None`
+    points['maxima'] : list of float or str
+        Values of the x-coordinates at which the original function has a relative maximum; if the function is sinusoidal, then only two or three results within a two-period interval will be listed, but a general form will also be included; if the function has no maxima, then it will return a list of `None`
+    points['minima'] : list of float or str
+        Values of the x-coordinates at which the original function has a relative minimum; if the function is sinusoidal, then only two or three results within a two-period interval will be listed, but a general form will also be included; if the function has no minima, then it will return a list of `None`
 
     See Also
     --------
@@ -57,9 +57,9 @@ def extrema_points(equation_type, coefficients, precision = 4):
     Calulate the extrema of a sinusoidal function with coefficients 2, 3, 5, and 7
         >>> points_sinusoidal = extrema_points('sinusoidal', [2, 3, 5, 7])
         >>> print(points_sinusoidal['maxima'])
-        [5.5236, 7.618, 9.7124, '1.0472k']
+        [5.5236, 7.618, 9.7124, '5.5236 + 2.0944k']
         >>> print(points_sinusoidal['minima'])
-        [6.5708, 8.6652, '1.0472k']
+        [6.5708, 8.6652, '6.5708 + 2.0944k']
     """
     # Handle input errors
     select_equations(equation_type)

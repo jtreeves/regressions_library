@@ -11,7 +11,7 @@ def inflection_points(equation_type, coefficients, precision = 4):
     ----------
     equation_type : str
         Name of the type of function for which inflections must be determined (e.g., 'linear', 'quadratic')
-    coefficients : list
+    coefficients : list of int or float
         Coefficients to use to generate the equation to investigate
     precision : int, default=4
         Maximum number of digits that can appear after the decimal place of the results
@@ -27,8 +27,8 @@ def inflection_points(equation_type, coefficients, precision = 4):
 
     Returns
     -------
-    points : list
-        Values of the x-coordinates at which the original function has an inflection point; if the function is sinusoidal, then only five results within a two period interval will be listed, but a general form will also be included; if the function has no inflection points, then it will return a list of `None`
+    points : list of float or str
+        Values of the x-coordinates at which the original function has an inflection point; if the function is sinusoidal, then only five results within a two-period interval will be listed, but a general form will also be included; if the function has no inflection points, then it will return a list of `None`
 
     See Also
     --------
@@ -50,7 +50,7 @@ def inflection_points(equation_type, coefficients, precision = 4):
     Calculate the inflection points of a sinusoidal functions with coefficients 2, 3, 5, and 7
         >>> points_sinusoidal = inflection_points('sinusoidal', [2, 3, 5, 7])
         >>> print(points_sinusoidal)
-        [5, 6.0472, 7.0944, 8.1416, 9.1888, '5 + 1.0472k']
+        [5.0, 6.0472, 7.0944, 8.1416, 9.1888, '5.0 + 1.0472k']
     """
     # Handle input errors
     select_equations(equation_type)

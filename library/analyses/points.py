@@ -28,9 +28,9 @@ def coordinate_pairs(equation_type, coefficients, inputs, point_type = 'point', 
     ----------
     equation_type : str
         Name of the type of function for which coordinate pairs must be determined (e.g., 'linear', 'quadratic')
-    coefficients : list
+    coefficients : list of int or float
         Coefficients to use to generate the equation to investigate
-    inputs : list
+    inputs : list of int or float or str
         X-coordinates to use to generate the y-coordinates for each coordinate pair
     point_type : str, default='point'
         Name of the type of point that describes all points which must be generated (e.g., 'intercepts', 'maxima')
@@ -52,7 +52,7 @@ def coordinate_pairs(equation_type, coefficients, inputs, point_type = 'point', 
         
     Returns
     -------
-    points : list
+    points : list of float or str
         List containing lists of coordinate pairs, in which the second element of the inner lists are floats and the first elements of the inner lists are either floats or strings (the latter for general forms); may return a list of None if inputs list contained None
 
     See Also
@@ -155,7 +155,7 @@ def key_coordinates(equation_type, coefficients, precision = 4):
     ----------
     equation_type : str
         Name of the type of function for which key points must be determined (e.g., 'linear', 'quadratic')
-    coefficients : list
+    coefficients : list of int or float
         Coefficients to use to generate the equation to investigate
     precision : int, default=4
         Maximum number of digits that can appear after the decimal place of the results
@@ -171,14 +171,14 @@ def key_coordinates(equation_type, coefficients, precision = 4):
 
     Returns
     -------
-    points['roots'] : list
-        List containing two-element lists for each point; first elements of those lists will be the value of the x-coordinate at which the original function has a root; second elements of those lists will be 0; if the function is sinusoidal, then only the initial results within a two period interval will be listed, but general forms will also be included; if the function has no roots, then it will return a list of `None`
-    points['maxima'] : list
-        List containing two-element lists for each point; first elements of those lists will be the value of the x-coordinate at which the original function has a relative maximum; second elements of those lists will be the y-coordinate of that maximum; if the function is sinusoidal, then only the initial results within a two period interval will be listed, but a general form will also be included; if the function has no maxima, then it will return a list of `None`
-    points['minima'] : list
-        List containing two-element lists for each point; first elements of those lists will be the value of the x-coordinate at which the original function has a relative minimum; second elements of those lists will be the y-coordinate of that minimum; if the function is sinusoidal, then only the initial results within a two period interval will be listed, but a general form will also be included; if the function has no minima, then it will return a list of `None`
-    points['inflections'] : list
-        List containing two-element lists for each point; first elements of those lists will be the value of the x-coordinate at which the original function has an inflection; second elements of those lists will be the y-coordinate of that inflection; if the function is sinusoidal, then only the initial results within a two period interval will be listed, but a general form will also be included; if the function has no inflection points, then it will return a list of `None`
+    points['roots'] : list of float or str
+        List containing two-element lists for each point; first elements of those lists will be the value of the x-coordinate at which the original function has a root; second elements of those lists will be 0; if the function is sinusoidal, then only the initial results within a four-period interval will be listed, but general forms will also be included; if the function has no roots, then it will return a list of `None`
+    points['maxima'] : list of float or str
+        List containing two-element lists for each point; first elements of those lists will be the value of the x-coordinate at which the original function has a relative maximum; second elements of those lists will be the y-coordinate of that maximum; if the function is sinusoidal, then only the initial results within a two-period interval will be listed, but a general form will also be included; if the function has no maxima, then it will return a list of `None`
+    points['minima'] : list of float or str
+        List containing two-element lists for each point; first elements of those lists will be the value of the x-coordinate at which the original function has a relative minimum; second elements of those lists will be the y-coordinate of that minimum; if the function is sinusoidal, then only the initial results within a two-period interval will be listed, but a general form will also be included; if the function has no minima, then it will return a list of `None`
+    points['inflections'] : list of float or str
+        List containing two-element lists for each point; first elements of those lists will be the value of the x-coordinate at which the original function has an inflection; second elements of those lists will be the y-coordinate of that inflection; if the function is sinusoidal, then only the initial results within a two-period interval will be listed, but a general form will also be included; if the function has no inflection points, then it will return a list of `None`
 
     See Also
     --------
@@ -197,7 +197,7 @@ def key_coordinates(equation_type, coefficients, precision = 4):
     Calculate the key points of a cubic function with coefficients 1, -15, 63, and -7
         >>> points_cubic = key_coordinates('cubic', [1, -15, 63, -7])
         >>> print(points_cubic['roots'])
-        [[0.1142, 0]]
+        [[0.1142, 0.0]]
         >>> print(points_cubic['maxima'])
         [[3.0, 74.0]]
         >>> print(points_cubic['minima'])
@@ -207,13 +207,13 @@ def key_coordinates(equation_type, coefficients, precision = 4):
     Calculate the key points of a sinusoidal function with coefficients 2, 3, 5, and 1
         >>> points_sinusoidal = key_coordinates('sinusoidal', [2, 3, 5, 1])
         >>> print(points_sinusoidal['roots'])
-        [[4.8255, 0], [6.2217, 0], [6.9199, 0], [8.3161, 0], [9.0143, 0], [10.4105, 0], ['4.8255 + 2.0944k', 0], ['6.2217 + 2.0944k', 0]]
+        [[4.8255, 0.0], [6.2217, 0.0], [6.9199, 0.0], [8.3161, 0.0], [9.0143, 0.0], [10.4105, 0.0], [11.1087, 0.0], [12.5049, 0.0], [13.203, 0.0], [14.5993, 0.0], ['4.8255 + 2.0944k', 0.0], ['6.2217 + 2.0944k', 0.0]]
         >>> print(points_sinusoidal['maxima'])
         [[5.5236, 3.0], [7.618, 3.0], [9.7124, 3.0], ['5.5236 + 2.0944k', 3.0]]
         >>> print(points_sinusoidal['minima'])
         [[6.5708, -1.0], [8.6652, -1.0], ['6.5708 + 2.0944k', -1.0]]
         >>> print(points_sinusoidal['inflections'])
-        [[5, 1.0], [6.0472, 1.0], [7.0944, 1.0], [8.1416, 1.0], [9.1888, 1.0001], ['5 + 1.0472k', 1.0]]
+        [[5.0, 1.0], [6.0472, 1.0], [7.0944, 1.0], [8.1416, 1.0], [9.1888, 1.0001], ['5.0 + 1.0472k', 1.0]]
     """
     # Handle input errors
     select_equations(equation_type)
@@ -254,11 +254,11 @@ def points_within_range(points, start, end):
 
     Parameters
     ----------
-    points : list
+    points : list of int or float or str
         Set of points to narrow down to only those within a certain range
-    start : int, float
+    start : int or float
         Lower bound of range into which the initial value must be adjusted (final value should be greater than or equal to start)
-    end : int, float
+    end : int or float
         Upper bound of range into which the initial value must be adjusted (final value should be less than or equal to end)
 
     Raises
@@ -272,7 +272,7 @@ def points_within_range(points, start, end):
 
     Returns
     -------
-    selected_points : list
+    selected_points : list of int or float or str
         List of all values from original list that fall within specified range; may return a list of None if no points from the original list fall within range or if original list only contained None
 
     See Also
