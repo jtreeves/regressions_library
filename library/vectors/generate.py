@@ -8,9 +8,9 @@ def generate_elements(initial_value, periodic_unit, precision = 4):
 
     Parameters
     ----------
-    initial_value : int, float
+    initial_value : int or float
         Starting value to adjust to fit into a range
-    periodic_unit : int, float
+    periodic_unit : int or float
         Unit by which the initial value should be incrementally increased or decreased to fit into a range
     precision : int, default=4
         Upper bound of range into which the initial value must be adjusted (final value should be less than or equal to maximum)
@@ -24,7 +24,7 @@ def generate_elements(initial_value, periodic_unit, precision = 4):
 
     Returns
     -------
-    generated_vector : list
+    generated_vector : list of float
         Vector containing five numerical values, each a set incremenent apart from one another, and a string value representing the general form of all numerical elements in the vector as well as any additional numerical elements that could be generated from it in the future
 
     See Also

@@ -8,9 +8,9 @@ def component_form(initial_point, terminal_point):
 
     Parameters
     ----------
-    initial_point : list
+    initial_point : list of int or float
         List of numbers representing a point
-    terminal_point : list
+    terminal_point : list of int or float
         List of numbers representing a point
 
     Raises
@@ -24,7 +24,7 @@ def component_form(initial_point, terminal_point):
 
     Returns
     -------
-    components : list
+    components : list of int or float
         List in which each element is the difference of the corresponding elements from the input points (specifically, the change from the initial point to the terminal point)
 
     See Also

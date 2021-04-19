@@ -8,7 +8,7 @@ def unit_vector(vector):
 
     Parameters
     ----------
-    vector : list
+    vector : list of int or float
         List of numbers representing a vector
 
     Raises
@@ -20,7 +20,7 @@ def unit_vector(vector):
 
     Returns
     -------
-    unit : list
+    unit : list of float
         Vector with a magnitue of 1 in the same direction as the original vector
 
     See Also

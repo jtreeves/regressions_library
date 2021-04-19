@@ -6,7 +6,7 @@ def column_conversion(vector):
 
     Parameters
     ----------
-    vector : list
+    vector : list of int or float
         List of numbers representing a vector
 
     Raises
@@ -16,7 +16,7 @@ def column_conversion(vector):
 
     Returns
     -------
-    column : list
+    column : list of lists of int or float
         List in which each element is a list containing an element from the input vector
 
     See Also

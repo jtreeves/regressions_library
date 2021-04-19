@@ -7,7 +7,7 @@ def vector_direction(vector):
 
     Parameters
     ----------
-    vector : list
+    vector : list of int or float
         List of two numbers representing a vector, in which the first number is the horizontal component and the second is the vertical component
 
     Raises
@@ -39,16 +39,16 @@ def vector_direction(vector):
     Examples
     --------
     Determine the direction of a vector with a component form of [7, 5]
-        >>> direction1 = vector_direction([7, 5])
-        >>> print(direction1['radian'])
+        >>> direction_positive = vector_direction([7, 5])
+        >>> print(direction_positive['radian'])
         0.6202494859828215
-        >>> print(direction1['degree'])
+        >>> print(direction_positive['degree'])
         35.53767779197438
     Determine the direction of a vector with a component form of [-3, 11]
-        >>> direction2 = vector_direction([-3, 11])
-        >>> print(direction2['radian'])
+        >>> direction_negative = vector_direction([-3, 11])
+        >>> print(direction_negative['radian'])
         -1.3045442776439713
-        >>> print(direction2['degree'])
+        >>> print(direction_negative['degree'])
         -74.74488129694222
     """
     # Handle input errors

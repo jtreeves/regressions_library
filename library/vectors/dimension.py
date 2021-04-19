@@ -7,7 +7,7 @@ def single_dimension(matrix, scalar = 1):
 
     Parameters
     ----------
-    matrix : list
+    matrix : list of lists of int or float
         List containing other lists, where each inner list is a row and elements within those inner lists correspond to columns
     scalar : int, default=1
         Number corresponding to the column's position
@@ -23,7 +23,7 @@ def single_dimension(matrix, scalar = 1):
 
     Returns
     -------
-    vector : list
+    vector : list of int or float
         List containing only integers or floats
 
     See Also

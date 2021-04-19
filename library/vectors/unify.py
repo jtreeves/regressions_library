@@ -6,9 +6,9 @@ def unite_vectors(vector_one, vector_two):
 
     Parameters
     ----------
-    vector_one : list
+    vector_one : list of int or float
         List of numbers representing a vector
-    vector_two : list
+    vector_two : list of int or float
         List of numbers representing a vector
 
     Raises
@@ -22,7 +22,7 @@ def unite_vectors(vector_one, vector_two):
 
     Returns
     -------
-    matrix : list
+    matrix : list of lists of int or float
         List containing lists; length of outer list will equal lengths of supplied vectors; length of inner lists will equal two
 
     See Also

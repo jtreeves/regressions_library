@@ -6,7 +6,7 @@ def separate_elements(vector):
 
     Parameters
     ----------
-    vector : list
+    vector : list of int or float or str
         List containing elements of various types: integers, floats, strings, or None
 
     Raises
@@ -16,9 +16,9 @@ def separate_elements(vector):
 
     Returns
     -------
-    separate_vectors['numerical'] : list
+    separate_vectors['numerical'] : list of int or float
         List containing only the integer or float elements from the input vector; may be an empty list if input vector contained no integer or float elements
-    separate_vectors['other'] : list
+    separate_vectors['other'] : list of str
         List containing only the string or None elements from the input vector; may be an empty list if input vector contained no string elements and did not merely contain None
 
     See Also

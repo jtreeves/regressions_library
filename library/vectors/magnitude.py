@@ -7,7 +7,7 @@ def vector_magnitude(vector):
 
     Parameters
     ----------
-    vector : list
+    vector : list of int or float
         List of numbers representing a vector
 
     Raises

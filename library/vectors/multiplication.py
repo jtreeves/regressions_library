@@ -7,7 +7,7 @@ def scalar_product_vector(vector, scalar):
 
     Parameters
     ----------
-    vector : list
+    vector : list of int or float
         List of numbers representing a vector
     scalar : int or float
         Number representing a scalar
@@ -23,7 +23,7 @@ def scalar_product_vector(vector, scalar):
 
     Returns
     -------
-    product : list
+    product : list of int or float
         List of numbers in which each element is the product of the scalar factor and the corresponding element from the input vector
 
     See Also
@@ -40,11 +40,11 @@ def scalar_product_vector(vector, scalar):
     Examples
     --------
     Multiply [1, 2, 3] and -2
-        >>> product_3d = scalar_product([1, 2, 3], -2)
+        >>> product_3d = scalar_product_vector([1, 2, 3], -2)
         >>> print(product_3d)
         [-2, -4, -6]
     Multiply [-5, 12] and 3
-        >>> product_2d = scalar_product([-5, 12], 3)
+        >>> product_2d = scalar_product_vector([-5, 12], 3)
         >>> print(product_2d)
         [-15, 36]
     """
@@ -69,9 +69,9 @@ def dot_product(vector_one, vector_two):
 
     Parameters
     ----------
-    vector_one : list
+    vector_one : list of int or float
         List of numbers representing a vector
-    vector_two : list
+    vector_two : list of int or float
         List of numbers representing a vector
 
     Raises
@@ -104,11 +104,11 @@ def dot_product(vector_one, vector_two):
     Multiply [1, 2, 3] and [4, 5, 6]
         >>> product_3d = dot_product([1, 2, 3], [4, 5, 6])
         >>> print(product_3d)
-        32
+        32.0
     Multiply [-5, 12] and [3, -7]
         >>> product_2d = dot_product([-5, 12], [3, -7])
         >>> print(product_2d)
-        -99
+        -99.0
     """
     # Handle input errors
     compare_vectors(vector_one, vector_two)

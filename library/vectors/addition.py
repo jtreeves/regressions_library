@@ -6,9 +6,9 @@ def vector_sum(vector_one, vector_two):
 
     Parameters
     ----------
-    vector_one : list
+    vector_one : list of int or float
         List of numbers representing a vector
-    vector_two : list
+    vector_two : list of int or float
         List of numbers representing a vector
 
     Raises
@@ -22,7 +22,7 @@ def vector_sum(vector_one, vector_two):
 
     Returns
     -------
-    vector : list
+    vector : list of int or float
         List in which each element is the sum of the corresponding elements from the input vectors
 
     See Also
