@@ -7,7 +7,7 @@ def matrix_of_minors(matrix):
 
     Parameters
     ----------
-    matrix : list
+    matrix : list of lists of int or float
         List of lists of numbers representing a matrix
 
     Raises
@@ -21,7 +21,7 @@ def matrix_of_minors(matrix):
     
     Returns
     -------
-    matrix : list
+    matrix : list of lists of float
         List of lists in which each inner element is a determinant of a subsection of the original matrix
 
     See Also
@@ -40,11 +40,11 @@ def matrix_of_minors(matrix):
     Create the matrix of minors for [[1, 2], [3, 4]]
         >>> matrix_2x2 = matrix_of_minors([[1, 2], [3, 4]])
         >>> print(matrix_2x2)
-        [[4, 3], [2, 1]]
+        [[4.0, 3.0], [2.0, 1.0]]
     Create the matrix of minors for [[2, 3, 5], [7, 11, 13], [17, 19, 23]]
         >>> matrix_3x3 = matrix_of_minors([[2, 3, 5], [7, 11, 13], [17, 19, 23]])
         >>> print(matrix_3x3)
-        [[6, -60, -54], [-26, -39, -13], [-16, -9, 1]]
+        [[6.0, -60.0, -54.0], [-26.0, -39.0, -13.0], [-16.0, -9.0, 1.0]]
     """
     # Handle input errors
     square_matrix(matrix)

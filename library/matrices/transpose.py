@@ -6,7 +6,7 @@ def transposed_matrix(matrix):
 
     Parameters
     ----------
-    matrix : list
+    matrix : list of lists of int or float
         List of lists of numbers representing a matrix
 
     Raises
@@ -18,7 +18,7 @@ def transposed_matrix(matrix):
     
     Returns
     -------
-    matrix : list
+    matrix : list of lists of int or float
         List of lists in which each inner element occupies the row that correspond's to the column it occupied in the original matrix and the column that correspond's to the row it occupied in the original matrix
 
     See Also

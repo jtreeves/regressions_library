@@ -12,9 +12,9 @@ def system_solution(matrix_one, matrix_two, precision = 4):
 
     Parameters
     ----------
-    matrix_one : list
+    matrix_one : list of lists of int or float
         List of lists of numbers representing the independent matrix of a system of equations
-    matrix_two : list
+    matrix_two : list of lists of int or float
         List of lists of numbers representing the dependent matrix of a system of equations
     precision : int, default=4
         Maximum number of digits that can appear after the decimal place of the results
@@ -32,7 +32,7 @@ def system_solution(matrix_one, matrix_two, precision = 4):
     
     Returns
     -------
-    solution : list
+    solution : list of float
         Row vector of coefficients that if expressed as a column vector would satisfy the equation
 
     See Also

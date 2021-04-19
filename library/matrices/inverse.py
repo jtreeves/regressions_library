@@ -11,7 +11,7 @@ def inverse_matrix(matrix):
 
     Parameters
     ----------
-    matrix : list
+    matrix : list of lists of int or float
         List of lists of numbers representing a matrix
 
     Raises
@@ -25,8 +25,8 @@ def inverse_matrix(matrix):
     
     Returns
     -------
-    inverse : list
-        List of lists corresponding to the inverse of the original matrix
+    inverse : list of lists of float
+        List of lists corresponding to the inverse of the original matrix; if original matrix has a determinant of zero, then 0.0001 will be used as its determinant, ensuring a result
 
     See Also
     --------

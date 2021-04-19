@@ -6,9 +6,9 @@ def matrix_sum(matrix_one, matrix_two):
 
     Parameters
     ----------
-    matrix_one : list
+    matrix_one : list of lists of int or float
         List of lists of numbers representing a matrix
-    matrix_two : list
+    matrix_two : list of lists of int or float
         List of lists of numbers representing a matrix
 
     Raises
@@ -24,7 +24,7 @@ def matrix_sum(matrix_one, matrix_two):
 
     Returns
     -------
-    matrix : list
+    matrix : list of lists of int or float
         List of lists in which each inner element is the sum of the corresponding elements from the input matrices
     
     See Also
@@ -43,7 +43,7 @@ def matrix_sum(matrix_one, matrix_two):
     Add [[1, 2, 3], [4, 5, 6]] and [[2, 3, 5], [7, 11, 13]]
         >>> matrix_2x3 = matrix_sum([[1, 2, 3], [4, 5, 6]], [[2, 3, 5], [7, 11, 13]])
         >>> print(matrix_2x3)
-        [[3, 5, 8], [11, 15, 19]]
+        [[3, 5, 8], [11, 16, 19]]
     Add [[-2, 5], [7, -1]] and [[8, 2], [-3, 4]]
         >>> matrix_2x2 = matrix_sum([[-2, 5], [7, -1]], [[8, 2], [-3, 4]])
         >>> print(matrix_2x2)

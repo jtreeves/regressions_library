@@ -6,7 +6,7 @@ def matrix_of_cofactors(matrix):
 
     Parameters
     ----------
-    matrix : list
+    matrix : list of lists of int or float
         List of lists of numbers representing a matrix
 
     Raises
@@ -18,7 +18,7 @@ def matrix_of_cofactors(matrix):
     
     Returns
     -------
-    matrix : list
+    matrix : list of lists of int or float
         List of lists in which each inner element alternates being positive or negative versions of the corresponding element from the original matrix
 
     See Also

@@ -9,7 +9,7 @@ def scalar_product_matrix(matrix, scalar):
 
     Parameters
     ----------
-    matrix : list
+    matrix : list of lists of int or float
         List of lists of numbers representing a matrix
     scalar : int or float
         Number representing a scalar
@@ -25,7 +25,7 @@ def scalar_product_matrix(matrix, scalar):
 
     Returns
     -------
-    matrix : list
+    matrix : list of lists of int or float
         List of lists in which each inner element is the product of the corresponding element from the input matrix and the scalar value
 
     See Also
@@ -42,11 +42,11 @@ def scalar_product_matrix(matrix, scalar):
     Examples
     --------
     Multiply [[1, 2, 3], [4, 5, 6]] and -2
-        >>> matrix_2x3 = scalar_product([[1, 2, 3], [4, 5, 6]], -2)
+        >>> matrix_2x3 = scalar_product_matrix([[1, 2, 3], [4, 5, 6]], -2)
         >>> print(matrix_2x3)
         [[-2, -4, -6], [-8, -10, -12]]
     Multiply [[5, -7], [-3, 8]] and 3
-        >>> matrix_2x2 = scalar_product([[5, -7], [-3, 8]], 3)
+        >>> matrix_2x2 = scalar_product_matrix([[5, -7], [-3, 8]], 3)
         >>> print(matrix_2x2)
         [[15, -21], [-9, 24]]
     """
@@ -76,9 +76,9 @@ def matrix_product(matrix_one, matrix_two):
 
     Parameters
     ----------
-    matrix_one : list
+    matrix_one : list of lists of int or float
         List of lists of numbers representing a matrix
-    matrix_two : list
+    matrix_two : list of lists of int or float
         List of lists of numbers representing a matrix
 
     Raises
@@ -92,7 +92,7 @@ def matrix_product(matrix_one, matrix_two):
 
     Returns
     -------
-    matrix : list
+    matrix : list of lists of float
         List of lists in which each inner element is the dot product of the first matrix's row vector corresponding to that element's row position and the second matrix's column vector corresponding to that element's column position; resultant matrix will have the same number of rows as the first matrix and the same number of columns as the second matrix
 
     See Also
@@ -111,11 +111,11 @@ def matrix_product(matrix_one, matrix_two):
     Multiply [[1, 2, 3], [4, 5, 6]] and [[2, 3], [5, 7], [11, 13]]
         >>> matrix_2x2 = matrix_product([[1, 2, 3], [4, 5, 6]], [[2, 3], [5, 7], [11, 13]])
         >>> print(matrix_2x2)
-        [[45, 56], [99, 125]]
+        [[45.0, 56.0], [99.0, 125.0]]
     Multiply [[1, 2, 3], [4, 5, 6]] and [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]]
         >>> matrix_2x4 = matrix_product([[1, 2, 3], [4, 5, 6]], [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]])
         >>> print(matrix_2x4)
-        [[38, 44, 50, 56], [83, 98, 113, 128]]
+        [[38.0, 44.0, 50.0, 56.0], [83.0, 98.0, 113.0, 128.0]]
     """
     # Handle input errors
     columns_rows(matrix_one, matrix_two)
