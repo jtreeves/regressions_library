@@ -20,7 +20,7 @@ def quadratic_model(data, precision = 4):
 
     Parameters
     ----------
-    data : list
+    data : list of lists of int or float
         List of lists of numbers representing a collection of coordinate pairs
     precision : int, default=4
         Maximum number of digits that can appear after the decimal place of the results
@@ -38,21 +38,21 @@ def quadratic_model(data, precision = 4):
 
     Returns
     -------
-    model['constants'] : list
+    model['constants'] : list of float
         Coefficients of the resultant quadratic model; the first element is the coefficient of the quadratic term, the second element is the coefficient of the linear term, and the third element is the coefficient of the constant term
-    model['evaluations']['equation'] : function
+    model['evaluations']['equation'] : func
         Function that evaluates the equation of the quadratic model at a given numeric input (e.g., model['evaluations']['equation'](10) would evaluate the equation of the quadratic model when the independent variable is 10)
-    model['evaluations']['derivative'] : function
+    model['evaluations']['derivative'] : func
         Function that evaluates the first derivative of the quadratic model at a given numeric input (e.g., model['evaluations']['derivative'](10) would evaluate the first derivative of the quadratic model when the independent variable is 10)
-    model['evaluations']['integral'] : function
+    model['evaluations']['integral'] : func
         Function that evaluates the integral of the quadratic model at a given numeric input (e.g., model['evaluations']['integral'](10) would evaluate the integral of the quadratic model when the independent variable is 10)
-    model['points']['roots'] : list
+    model['points']['roots'] : list of lists of float
         List of lists of numbers representing the coordinate pairs of all the x-intercepts of the quadratic model (will contain either one or two points, or `None`)
-    model['points']['maxima'] : list
+    model['points']['maxima'] : list of lists of float
         List of lists of numbers representing the coordinate pairs of all the maxima of the quadratic model (will contain either `None` or one point)
-    model['points']['minima'] : list
+    model['points']['minima'] : list of lists of float
         List of lists of numbers representing the coordinate pairs of all the minima of the quadratic model (will contain either `None` or one point)
-    model['points']['inflections'] : list
+    model['points']['inflections'] : list of lists of float
         List of lists of numbers representing the coordinate pairs of all the inflection points of the quadratic model (will always be `None`)
     model['accumulations']['range'] : float
         Total area under the curve represented by the quadratic model between the smallest independent coordinate originally provided and the largest independent coordinate originally provided (i.e., over the range)
@@ -60,19 +60,19 @@ def quadratic_model(data, precision = 4):
         Total area under the curve represented by the quadratic model between the first and third quartiles of all the independent coordinates originally provided (i.e., over the interquartile range)
     model['averages']['range']['average_value_derivative'] : float
         Average rate of change of the curve represented by the quadratic model between the smallest independent coordinate originally provided and the largest independent coordinate originally provided
-    model['averages']['range']['mean_values_derivative'] : list
+    model['averages']['range']['mean_values_derivative'] : list of float
         All points between the smallest independent coordinate originally provided and the largest independent coordinate originally provided where their instantaneous rate of change equals the function's average rate of change over that interval
     model['averages']['range']['average_value_integral'] : float
         Average value of the curve represented by the quadratic model between the smallest independent coordinate originally provided and the largest independent coordinate originally provided
-    model['averages']['range']['mean_values_integral'] : list
+    model['averages']['range']['mean_values_integral'] : list of float
         All points between the smallest independent coordinate originally provided and the largest independent coordinate originally provided where their value equals the function's average value over that interval
     model['averages']['iqr']['average_value_derivative'] : float
         Average rate of change of the curve represented by the quadratic model between the first and third quartiles of all the independent coordinates originally provided
-    model['averages']['iqr']['mean_values_derivative'] : list
+    model['averages']['iqr']['mean_values_derivative'] : list of float
         All points between the first and third quartiles of all the independent coordinates originally provided where their instantaneous rate of change equals the function's average rate of change over that interval
     model['averages']['iqr']['average_value_integral'] : float
         Average value of the curve represented by the quadratic model between the first and third quartiles of all the independent coordinates originally provided
-    model['averages']['iqr']['mean_values_integral'] : list
+    model['averages']['iqr']['mean_values_integral'] : list of float
         All points between the first and third quartiles of all the independent coordinates originally provided where their value equals the function's average value over that interval
     model['correlation'] : float
         Correlation coefficient indicating how well the model fits the original data set (values range between 0.0, implying no fit, and 1.0, implying a perfect fit)
@@ -125,9 +125,9 @@ def quadratic_model(data, precision = 4):
         >>> print(model_perfect['constants'])
         [-2.0, 23.0, -11.0]
         >>> print(model_perfect['points']['roots'])
-        [[0.5, 0], [11.0, 0]]
+        [[0.5, 0], [11.0, 0.0]]
         >>> print(model_perfect['accumulations']['iqr'])
-        254.1667
+        254.1505
         >>> print(model_perfect['correlation'])
         1.0
     Generate a quadratic regression model for the data set [[1, 32], [2, 25], [3, 14], [4, 23], [5, 39], [6, 45], [7, 42], [8, 49], [9, 36], [10, 33]], then print its coefficients, inflections, total accumulation over its range, and correlation
@@ -137,7 +137,7 @@ def quadratic_model(data, precision = 4):
         >>> print(model_agnostic['points']['inflections'])
         [None]
         >>> print(model_agnostic['accumulations']['range'])
-        308.3953
+        308.4336
         >>> print(model_agnostic['correlation'])
         0.5941
     """
