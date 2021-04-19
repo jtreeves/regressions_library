@@ -22,7 +22,7 @@ def run_all(data, precision = 4):
 
     Parameters
     ----------
-    data : list
+    data : list of lists of int or float
         List of lists of numbers representing a collection of coordinate pairs
     precision : int, default=4
         Maximum number of digits that can appear after the decimal place of the results
@@ -131,7 +131,7 @@ def run_all(data, precision = 4):
         >>> print(results_large['models']['quadratic']['constants'])
         [-0.007, 2.5668, 265.4919]
         >>> print(results_large['models']['cubic']['constants'])
-        [0.0005, -0.2204, 33.8099, -1226.1397]
+        [0.0005, -0.2204, 33.8099, -1226.1398]
         >>> print(results_large['models']['hyperbolic']['constants'])
         [-10786.2465, 563.019]
         >>> print(results_large['models']['exponential']['constants'])
