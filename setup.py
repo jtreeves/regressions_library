@@ -10,7 +10,7 @@ setup(
     description='Generate regression models from data',
     packages=['library'],
     include_package_data=True,
-    long_description=open('README.md').read(),
+    long_description=open('PYPI.md').read(),
     long_description_content_type='text/markdown',
     classifiers=[
         'License :: OSI Approved :: MIT License',
