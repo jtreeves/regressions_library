@@ -12,6 +12,10 @@ setup(
     include_package_data=True,
     long_description=open('PYPI.md').read(),
     long_description_content_type='text/markdown',
+    project_urls={
+        'Documentation': 'https://regressions.readthedocs.io/en/latest/',
+        'Source': 'https://github.com/jtreeves/regressions_library'
+    },
     classifiers=[
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 3',
