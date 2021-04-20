@@ -1,6 +1,6 @@
 # Regressions Library
 
-A collection of algorithms for fitting data to different functional models by using matrices. This [library](https://github.com/jtreeves/regressions_library) will be made publically available after it is uploaded to Python's database of libraries. It contains all the code for determining regression equations, as well as the code for evaluating said regressions and presenting their results in a raw format. The published version on PyPI is available [here](https://pypi.org/project/regressions/).
+The regressions library is a collection of Python algorithms for fitting data to different functional models by using linear algebra and machine learning. It can generate the following eight key regression models based on any data set: linear, quadratic, cubic, hyperbolic, exponential, logarithmic, logistic, and sinusoidal. For each model, it outputs the constants of the equation, notable graphical points, and the correlation coefficient, among other useful details. It is publicly available for download on the Python Package Index (PyPI), and its complete documentation is hosted on Read the Docs. To learn more about downloading the library, view its [PyPI page](https://pypi.org/project/regressions/). To learn more about how to use it, view its [documentation](https://regressions.readthedocs.io/en/latest/).
 
 **Contents**
 1. [Requirements](https://github.com/jtreeves/regressions_library#requirements)
@@ -28,6 +28,25 @@ git clone https://github.com/jtreeves/regressions_library.git
 ```
 
 ## Features
+
+- Regression models for eight key types of functions
+    - Linear
+    - Quadratic
+    - Cubic
+    - Hyperbolic
+    - Exponential
+    - Logarithmic
+    - Logistic
+    - Sinusoidal
+- Correlation coefficients for each regression model generated
+- List of key points associated with each regression model generated
+    - Roots
+    - Extrema
+    - Inflection points
+- Systems solved using linear algebra and machine learning
+- Extensive documentation for various use cases
+- 1276 test cases to ensure accuracy of results
+- Error handling to stop users from inputting improper argument types and circumvent issues like division by zero
 
 ## Code Examples
 
@@ -113,3 +132,7 @@ def correlation_coefficient(actuals, expecteds, precision = 4):
 ```
 
 ## Future Goals
+
+- Increase precision of results
+- Include more types of regression models in results
+- Include more graphical analysis in results
