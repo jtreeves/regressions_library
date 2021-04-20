@@ -5,4 +5,4 @@ Execute
     :maxdepth: 2
 
     pages/run
-    pages/usage
+    pages/use
