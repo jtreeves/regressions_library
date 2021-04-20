@@ -1,6 +1,6 @@
 Introduction
 ============
-
+Update to introduction section.
 This is a library containing regression algorithms.
 
 Motivation

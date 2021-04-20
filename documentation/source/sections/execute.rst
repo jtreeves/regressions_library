@@ -1,5 +1,7 @@
 Execute
 -------
+Information about execute function.
+
 .. automodule:: library.execute
     :members:
 
