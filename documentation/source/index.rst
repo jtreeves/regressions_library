@@ -12,7 +12,6 @@ Regressions Library Documentation
     
     introduction/index
     execute/index
-    execute
     models/index
     analyses/index
     statistics/index
