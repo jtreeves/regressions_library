@@ -1,5 +1,5 @@
-Cubic Equations
----------------
+Cubic Equation
+--------------
 .. automodule:: library.analyses.equations.cubic
     :members:
 

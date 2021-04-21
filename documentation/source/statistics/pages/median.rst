@@ -1,5 +1,5 @@
-Median
-------
+Median of Data Set
+------------------
 .. automodule:: library.statistics.median
     :members:
 

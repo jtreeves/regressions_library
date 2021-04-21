@@ -1,5 +1,5 @@
-Inverse
--------
+Inverse of Matrix
+-----------------
 .. automodule:: library.matrices.inverse
     :members:
 

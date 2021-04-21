@@ -1,5 +1,5 @@
-Components
-----------
+Component Form of Vector
+------------------------
 .. automodule:: library.vectors.components
     :members:
 

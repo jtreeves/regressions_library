@@ -1,5 +1,5 @@
-Equations
-=========
+Equations of Functions
+======================
 
 .. toctree::
     :maxdepth: 2

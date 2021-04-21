@@ -1,5 +1,5 @@
-Intercepts
-----------
+Intercepts of Graph
+-------------------
 .. automodule:: library.analyses.intercepts
     :members:
 

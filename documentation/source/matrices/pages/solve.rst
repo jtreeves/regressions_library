@@ -1,5 +1,5 @@
-Solve
------
+Solve Systems with Matrices
+---------------------------
 .. automodule:: library.matrices.solve
     :members:
 

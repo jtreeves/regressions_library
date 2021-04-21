@@ -1,5 +1,5 @@
-Logarithmic Equations
----------------------
+Logarithmic Equation
+--------------------
 .. automodule:: library.analyses.equations.logarithmic
     :members:
 

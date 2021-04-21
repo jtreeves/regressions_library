@@ -1,5 +1,5 @@
-Magnitude
----------
+Magnitude of Vector
+-------------------
 .. automodule:: library.vectors.magnitude
     :members:
 

@@ -1,5 +1,5 @@
-Rounding
---------
+Round a Number
+--------------
 .. automodule:: library.statistics.rounding
     :members:
 

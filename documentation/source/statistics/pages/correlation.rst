@@ -1,5 +1,5 @@
-Correlation
------------
+Correlation Coefficient of Model
+--------------------------------
 .. automodule:: library.statistics.correlation
     :members:
 

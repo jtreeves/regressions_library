@@ -1,5 +1,5 @@
-Summation
----------
+Summation of All Numbers
+------------------------
 .. automodule:: library.statistics.summation
     :members:
 

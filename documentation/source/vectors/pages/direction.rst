@@ -1,5 +1,5 @@
-Direction
----------
+Direction of Vector
+-------------------
 .. automodule:: library.vectors.direction
     :members:
 

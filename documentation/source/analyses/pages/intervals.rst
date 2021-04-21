@@ -1,5 +1,5 @@
-Intervals
----------
+Sign Charts of Derivatives
+--------------------------
 .. automodule:: library.analyses.intervals
     :members:
 

@@ -1,5 +1,5 @@
-Unit
-----
+Unit Vector
+-----------
 .. automodule:: library.vectors.unit
     :members:
 

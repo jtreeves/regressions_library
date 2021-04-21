@@ -1,5 +1,5 @@
-Exponential Equations
----------------------
+Exponential Equation
+--------------------
 .. automodule:: library.analyses.equations.exponential
     :members:
 

@@ -1,5 +1,5 @@
-Accumulation
-------------
+Accumulation of Function
+------------------------
 .. automodule:: library.analyses.accumulation
     :members:
 

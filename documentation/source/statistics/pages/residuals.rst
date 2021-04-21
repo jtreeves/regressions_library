@@ -1,5 +1,5 @@
-Residuals
----------
+Residuals of Data Set
+---------------------
 .. automodule:: library.statistics.residuals
     :members:
 

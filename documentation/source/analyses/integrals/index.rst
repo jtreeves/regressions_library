@@ -1,5 +1,5 @@
-Integrals
-=========
+Integrals of Functions
+======================
 
 .. toctree::
     :maxdepth: 3

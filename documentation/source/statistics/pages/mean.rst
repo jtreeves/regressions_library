@@ -1,5 +1,5 @@
-Mean
-----
+Mean of Data Set
+----------------
 .. automodule:: library.statistics.mean
     :members:
 

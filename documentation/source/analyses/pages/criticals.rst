@@ -1,5 +1,5 @@
-Critical Values
----------------
+Critical Values of Derivatives
+------------------------------
 .. automodule:: library.analyses.criticals
     :members:
 

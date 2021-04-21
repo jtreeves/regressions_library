@@ -1,4 +1,4 @@
-Column
-------
+Column Vector
+-------------
 .. automodule:: library.vectors.column
     :members:

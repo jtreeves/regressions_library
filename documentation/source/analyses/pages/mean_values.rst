@@ -1,5 +1,5 @@
-Mean Values
------------
+Mean Values of Function
+-----------------------
 .. automodule:: library.analyses.mean_values
     :members:
 

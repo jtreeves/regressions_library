@@ -1,5 +1,5 @@
-Determinant
------------
+Determinant of Matrix
+---------------------
 .. automodule:: library.matrices.determinant
     :members:
 

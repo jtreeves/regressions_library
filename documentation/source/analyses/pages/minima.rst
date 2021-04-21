@@ -1,5 +1,5 @@
-Minima
-------
+Minima of Graph
+---------------
 .. automodule:: library.analyses.minima
     :members:
 

@@ -1,5 +1,5 @@
-Logistic Equations
-------------------
+Logistic Equation
+-----------------
 .. automodule:: library.analyses.equations.logistic
     :members:
 

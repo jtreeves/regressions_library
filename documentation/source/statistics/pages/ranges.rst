@@ -1,5 +1,5 @@
-Ranges
-------
+Range of Data Set
+-----------------
 .. automodule:: library.statistics.ranges
     :members:
 

@@ -1,5 +1,5 @@
-Extrema
--------
+Extrema of Graph
+----------------
 .. automodule:: library.analyses.extrema
     :members:
 

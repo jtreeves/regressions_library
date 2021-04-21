@@ -4,11 +4,11 @@ Vectors
 .. toctree::
     :maxdepth: 2
 
-    pages/column
-    pages/dimension
-    pages/unify
-    pages/separate
     pages/generate
+    pages/separate
+    pages/unify
+    pages/dimension
+    pages/column
     pages/components
     pages/addition
     pages/multiplication

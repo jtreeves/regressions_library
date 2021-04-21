@@ -1,5 +1,5 @@
-Points
-------
+Points on Graph
+---------------
 .. automodule:: library.analyses.points
     :members:
 

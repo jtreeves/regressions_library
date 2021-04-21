@@ -1,5 +1,5 @@
-Quadratic Equations
--------------------
+Quadratic Equation
+------------------
 .. automodule:: library.analyses.equations.quadratic
     :members:
 

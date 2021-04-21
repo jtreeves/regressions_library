@@ -1,5 +1,5 @@
-Transpose
----------
+Transpose a Matrix
+------------------
 .. automodule:: library.matrices.transpose
     :members:
 

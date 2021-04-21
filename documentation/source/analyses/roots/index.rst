@@ -1,5 +1,5 @@
-Roots
-======
+Roots of Functions
+==================
 
 .. toctree::
     :maxdepth: 2

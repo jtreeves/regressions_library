@@ -1,5 +1,5 @@
-Cofactors
----------
+Matrix of Cofactors
+-------------------
 .. automodule:: library.matrices.cofactors
     :members:
 

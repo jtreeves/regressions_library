@@ -1,5 +1,5 @@
-Quartiles
----------
+Quartiles of Data Set
+---------------------
 .. automodule:: library.statistics.quartiles
     :members:
 

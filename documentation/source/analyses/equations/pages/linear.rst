@@ -1,5 +1,5 @@
-Linear Equations
-----------------
+Linear Equation
+---------------
 .. automodule:: library.analyses.equations.linear
     :members:
 

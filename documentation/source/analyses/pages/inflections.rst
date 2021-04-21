@@ -1,5 +1,5 @@
-Inflection Points
------------------
+Inflection Points of Graph
+--------------------------
 .. automodule:: library.analyses.inflections
     :members:
 

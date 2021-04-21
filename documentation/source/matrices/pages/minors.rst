@@ -1,5 +1,5 @@
-Minors
-------
+Matrix of Minors
+----------------
 .. automodule:: library.matrices.minors
     :members:
 

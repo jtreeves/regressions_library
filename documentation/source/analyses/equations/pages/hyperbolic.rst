@@ -1,5 +1,5 @@
-Hyperbolic Equations
---------------------
+Hyperbolic Equation
+-------------------
 .. automodule:: library.analyses.equations.hyperbolic
     :members:
 

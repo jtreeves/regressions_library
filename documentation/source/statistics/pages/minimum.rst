@@ -1,5 +1,5 @@
-Minimum
--------
+Minimum of Data Set
+-------------------
 .. automodule:: library.statistics.minimum
     :members:
 

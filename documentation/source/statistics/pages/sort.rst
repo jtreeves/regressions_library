@@ -1,5 +1,5 @@
-Sort
-----
+Sort a Data Set
+---------------
 .. automodule:: library.statistics.sort
     :members:
 

@@ -1,5 +1,5 @@
-Summary
--------
+Five-Number Summary
+-------------------
 .. automodule:: library.statistics.summary
     :members:
 

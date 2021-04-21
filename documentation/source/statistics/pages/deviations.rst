@@ -1,5 +1,5 @@
-Deviations
-----------
+Deviations of Data Set
+----------------------
 .. automodule:: library.statistics.deviations
     :members:
 

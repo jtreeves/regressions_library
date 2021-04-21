@@ -1,5 +1,5 @@
-Sinusoidal Equations
---------------------
+Sinusoidal Equation
+-------------------
 .. automodule:: library.analyses.equations.sinusoidal
     :members:
 

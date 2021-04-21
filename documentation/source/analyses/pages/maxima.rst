@@ -1,5 +1,5 @@
-Maxima
-------
+Maxima of Graph
+---------------
 .. automodule:: library.analyses.maxima
     :members:
 

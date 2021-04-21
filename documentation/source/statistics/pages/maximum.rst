@@ -1,5 +1,5 @@
-Maximum
--------
+Maximum of Data Set
+-------------------
 .. automodule:: library.statistics.maximum
     :members:
 

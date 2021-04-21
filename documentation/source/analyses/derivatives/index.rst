@@ -1,5 +1,5 @@
-Derivatives
-===========
+Derivatives of Functions
+========================
 
 .. toctree::
     :maxdepth: 3
