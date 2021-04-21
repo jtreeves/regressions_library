@@ -19,7 +19,7 @@ pip3 install regressions
 ## Usage
 
 ```python
-from regressions import run_all # Import function to generate all models
+from regressions.execute import run_all # Import function to generate all models
 
 data_set = [[1, 32], [2, 25], [3, 14], [4, 23], [5, 39], [6, 45], [7, 42], [8, 49], [9, 36], [10, 33]] # Create data set to test
 results = run_all(data_set) # Generate all models for data set
