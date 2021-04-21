@@ -1,26 +1,3 @@
-Introduction
-============
-
-Description
------------
-A description of the library.
-
-Inspiration
------------
-The inspiration for the library.
-
-Requirements
-------------
-What is required to use the library.
-
-Installation
-------------
-How to install the library.
-
-.. code-block::
-
-    pip3 install regressions
-
 Usage
 -----
 Notes on general usage of the library.
@@ -56,12 +33,12 @@ View Results
 
     print(vector_product) # 32
 
-Examples
---------
+Specific Examples
+*****************
 Some specific examples of using the library.
 
 Weather
-*******
+^^^^^^^
 Average monthly highs in Atlanta
 
 ========= ===========
@@ -129,7 +106,7 @@ Draw conclusions from the results:
     The monthly high temperatures in Atlanta follow a strong sinusoidal pattern, since the correlation coefficient of its sinusoidal model is so close to 1. However, this model implies that the length of a period for Atlanta's weather is closer to 10 months than it is to 12 months (which it should be, since the period should be 1 year).
 
 Disease
-*******
+^^^^^^^
 Total deaths in the US from COVID-19 by month in 2020
 
 ========= ============
@@ -196,7 +173,7 @@ Draw conclusions from the results:
     The total deaths from COVID-19 in the US follow a strong logistic pattern, since the correlation coefficient of its logistic model is so close to 1. However, this model implies that October 2020 was a turning point, which would mean that monthly deaths should have been decreasing in November and December (in fact, December experienced the most deaths out of any of the months in the table).
 
 Profits
-*******
+^^^^^^^
 Total annual profits of a fictional company based on how many units of a product it produces per year
 
 ===== ========
