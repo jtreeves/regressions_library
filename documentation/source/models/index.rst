@@ -12,3 +12,4 @@ Models
     pages/logarithmic
     pages/logistic
     pages/sinusoidal
+    pages/execute
