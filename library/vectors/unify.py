@@ -37,6 +37,8 @@ def unite_vectors(vector_one, vector_two):
 
     Examples
     --------
+    Import `unite_vectors` function from `regressions` library
+        >>> from regressions.vectors.unify import unite_vectors
     Unite [1, 2, 3] and [4, 5, 6]
         >>> matrix_3x2 = unite_vectors([1, 2, 3], [4, 5, 6])
         >>> print(matrix_2x3)

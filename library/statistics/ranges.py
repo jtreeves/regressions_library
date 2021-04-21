@@ -40,6 +40,8 @@ def range_value(data):
 
     Examples
     --------
+    Import `range_value` function from `regressions` library
+        >>> from regressions.statistics.ranges import range_value
     Determine the range of the set [21, 53, 3, 68, 43, 9, 72, 19, 20, 1]
         >>> range_even = range_value([21, 53, 3, 68, 43, 9, 72, 19, 20, 1])
         >>> print(range_even)
@@ -108,6 +110,8 @@ def shift_into_range(initial_value, periodic_unit, minimum, maximum):
 
     Examples
     --------
+    Import `shift_into_range` function from `regressions` library
+        >>> from regressions.statistics.ranges import shift_into_range
     Adjust the number 7 to a value between 20 and 30, based on a periodic unit of 8
         >>> final_value_int = shift_into_range(7, 8, 20, 30)
         >>> print(final_value_int)

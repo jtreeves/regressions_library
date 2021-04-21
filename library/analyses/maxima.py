@@ -43,6 +43,8 @@ def maxima_points(equation_type, coefficients, precision = 4):
 
     Examples
     --------
+    Import `maxima_points` function from `regressions` library
+        >>> from regressions.analyses.maxima import maxima_points
     Calculate the maxima of a cubic function with coefficients 1, -15, 63, and -7
         >>> points_cubic = maxima_points('cubic', [1, -15, 63, -7])
         >>> print(points_cubic)

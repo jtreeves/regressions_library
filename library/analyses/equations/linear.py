@@ -38,6 +38,8 @@ def linear_equation(first_constant, second_constant, precision = 4):
 
     Examples
     --------
+    Import `linear_equation` function from `regressions` library
+        >>> from regressions.analyses.equations.linear import linear_equation
     Create a linear function with coefficients 2 and 3, then evaluate it at 10
         >>> evaluation_first = linear_equation(2, 3)
         >>> print(evaluation_first(10))

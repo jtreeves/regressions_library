@@ -37,6 +37,8 @@ def matrix_of_minors(matrix):
 
     Examples
     --------
+    Import `matrix_of_minors` function from `regressions` library
+        >>> from regressions.matrices.minors import matrix_of_minors
     Create the matrix of minors for [[1, 2], [3, 4]]
         >>> matrix_2x2 = matrix_of_minors([[1, 2], [3, 4]])
         >>> print(matrix_2x2)

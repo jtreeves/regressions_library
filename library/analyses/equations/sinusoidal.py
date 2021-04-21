@@ -47,6 +47,8 @@ def sinusoidal_equation(first_constant, second_constant, third_constant, fourth_
 
     Examples
     --------
+    Import `sinusoidal_equation` function from `regressions` library
+        >>> from regressions.analyses.equations.sinusoidal import sinusoidal_equation
     Create a sinusoidal function with coefficients 2, 3, 5, and 7, then evaluate it at 10
         >>> evaluation_first = sinusoidal_equation(2, 3, 5, 7)
         >>> print(evaluation_first(10))

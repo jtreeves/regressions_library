@@ -123,6 +123,8 @@ def logistic_model(data, precision = 4):
 
     Examples
     --------
+    Import `logistic_model` function from `regressions` library
+        >>> from regressions.models.logistic import logistic_model
     Generate a logistic regression model for the data set [[1, 0.0000122], [2, 0.000247], [3, 0.004945], [4, 0.094852], [5, 1.0], [6, 1.905148], [7, 1.995055], [8, 1.999753], [9, 1.999988], [10, 1.999999]], then print its coefficients, roots, total accumulation over its interquartile range, and correlation
         >>> model_perfect = logistic_model([[1, 0.0000122], [2, 0.000247], [3, 0.004945], [4, 0.094852], [5, 1.0], [6, 1.905148], [7, 1.995055], [8, 1.999753], [9, 1.999988], [10, 1.999999]])
         >>> print(model_perfect['constants'])

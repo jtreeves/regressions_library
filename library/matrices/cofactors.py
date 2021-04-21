@@ -34,6 +34,8 @@ def matrix_of_cofactors(matrix):
 
     Examples
     --------
+    Import `matrix_of_cofactors` function from `regressions` library
+        >>> from regressions.matrices.cofactors import matrix_of_cofactors
     Create the matrix of cofactors for [[1, 2, 3], [4, 5, 6]]
         >>> matrix_3x2 = matrix_of_cofactors([[1, 2, 3], [4, 5, 6]])
         >>> print(matrix_3x2)

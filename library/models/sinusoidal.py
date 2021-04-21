@@ -150,6 +150,8 @@ def sinusoidal_model(data, precision = 4):
 
     Examples
     --------
+    Import `sinusoidal_model` function from `regressions` library
+        >>> from regressions.models.sinusoidal import sinusoidal_model
     Generate a sinusoidal regression model for the data set [[1, 3], [2, 8], [3, 3], [4, -2], [5, 3], [6, 8], [7, 3], [8, -2], [9, 3], [10, 8]], then print its coefficients, roots, total accumulation over its interquartile range, and correlation
         >>> model_perfect = sinusoidal_model([[1, 3], [2, 8], [3, 3], [4, -2], [5, 3], [6, 8], [7, 3], [8, -2], [9, 3], [10, 8]])
         >>> print(model_perfect['constants'])

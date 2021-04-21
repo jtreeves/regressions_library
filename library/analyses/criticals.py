@@ -54,6 +54,8 @@ def critical_points(equation_type, coefficients, derivative_level, precision = 4
 
     Examples
     --------
+    Import `critical_points` function from `regressions` library
+        >>> from regressions.analyses.criticals import critical_points
     Calulate the critical points of the second derivative of a cubic function with coefficients 2, 3, 5, and 7
         >>> points_cubic = critical_points('cubic', [2, 3, 5, 7], 2)
         >>> print(points_cubic)

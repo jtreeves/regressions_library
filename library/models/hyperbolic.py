@@ -120,6 +120,8 @@ def hyperbolic_model(data, precision = 4):
 
     Examples
     --------
+    Import `hyperbolic_model` function from `regressions` library
+        >>> from regressions.models.hyperbolic import hyperbolic_model
     Generate a hyperbolic regression model for the data set [[1, 2519], [2, 1259], [3, 839], [4, 629], [5, 503], [6, 419], [7, 359], [8, 314], [9, 279], [10, 251]], then print its coefficients, roots, total accumulation over its interquartile range, and correlation
         >>> model_perfect = hyperbolic_model([[1, 2519], [2, 1259], [3, 839], [4, 629], [5, 503], [6, 419], [7, 359], [8, 314], [9, 279], [10, 251]])
         >>> print(model_perfect['constants'])

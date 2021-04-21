@@ -29,6 +29,8 @@ def sorted_list(data):
 
     Examples
     --------
+    Import `sorted_list` function from `regressions` library
+        >>> from regressions.statistics.sort import sorted_list
     Sort the set [5, 2, 9, 8]
         >>> order_1 = sorted_list([5, 2, 9, 8])
         >>> print(order_1)
@@ -105,6 +107,8 @@ def sorted_dimension(data, dimension = 1):
 
     Examples
     --------
+    Import `sorted_dimension` function from `regressions` library
+        >>> from regressions.statistics.sort import sorted_dimension
     Sort the set [[1, 3, 5], [9, 2, 4], [6, 1, 8]] according to its second dimension
         >>> order_1 = sorted_dimension([[1, 3, 5], [9, 2, 4], [6, 1, 8]], 2)
         >>> print(order_1)

@@ -120,6 +120,8 @@ def linear_model(data, precision = 4):
 
     Examples
     --------
+    Import `linear_model` function from `regressions` library
+        >>> from regressions.models.linear import linear_model
     Generate a linear regression model for the data set [[1, 30], [2, 27], [3, 24], [4, 21], [5, 18], [6, 15], [7, 12], [8, 9], [9, 6], [10, 3]], then print its coefficients, roots, total accumulation over its interquartile range, and correlation
         >>> model_perfect = linear_model([[1, 30], [2, 27], [3, 24], [4, 21], [5, 18], [6, 15], [7, 12], [8, 9], [9, 6], [10, 3]])
         >>> print(model_perfect['constants'])

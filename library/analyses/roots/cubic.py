@@ -54,6 +54,8 @@ def cubic_roots(first_constant, second_constant, third_constant, fourth_constant
 
     Examples
     --------
+    Import `cubic_roots` function from `regressions` library
+        >>> from regressions.analyses.roots.cubic import cubic_roots
     Calculate the roots of a cubic function with coefficients 2, 3, 5, and 7
         >>> roots_first = cubic_roots(2, 3, 5, 7)
         >>> print(roots_first)

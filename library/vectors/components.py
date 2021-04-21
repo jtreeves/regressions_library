@@ -40,6 +40,8 @@ def component_form(initial_point, terminal_point):
 
     Examples
     --------
+    Import `component_form` function from `regressions` library
+        >>> from regressions.vectors.components import component_form
     Determine the component form of a vector with an initial point of [1, 2, 3] and a terminal point of [4, 5, 6]
         >>> components_3d = component_form([1, 2, 3], [4, 5, 6])
         >>> print(components_3d)

@@ -40,6 +40,8 @@ def logarithmic_roots(first_constant, second_constant, precision = 4):
 
     Examples
     --------
+    Import `logarithmic_roots` function from `regressions` library
+        >>> from regressions.analyses.roots.logarithmic import logarithmic_roots
     Calculate the roots of a logarithmic function with coefficients 2 and 3
         >>> roots_first = logarithmic_roots(2, 3)
         >>> print(roots_first)

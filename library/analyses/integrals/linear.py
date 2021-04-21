@@ -42,6 +42,8 @@ def linear_integral(first_constant, second_constant, precision = 4):
 
     Examples
     --------
+    Import `linear_integral` function from `regressions` library
+        >>> from regressions.analyses.integrals.linear import linear_integral
     Generate the integral of a linear function with coefficients 2 and 3, then display its coefficients
         >>> integral_constants = linear_integral(2, 3)
         >>> print(integral_constants['constants'])

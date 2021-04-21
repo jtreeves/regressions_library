@@ -37,6 +37,8 @@ def single_dimension(matrix, scalar = 1):
 
     Examples
     --------
+    Import `single_dimension` function from `regressions` library
+        >>> from regressions.vectors.dimension import single_dimension
     Extract the second column from the matrix [[3, 5, 9], [1, -4, 2]]
         >>> vector_2c = single_dimension([[3, 5, 9], [1, -4, 2]], 2)
         >>> print(vector_2c)

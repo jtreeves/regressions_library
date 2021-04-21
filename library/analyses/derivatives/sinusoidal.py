@@ -53,6 +53,8 @@ def sinusoidal_derivatives(first_constant, second_constant, third_constant, four
 
     Examples
     --------
+    Import `sinusoidal_derivatives` function from `regressions` library
+        >>> from regressions.analyses.derivatives.sinusoidal import sinusoidal_derivatives
     Generate the derivatives of a sinusoidal function with coefficients 2, 3, 5, and 7, then display the coefficients of its first and second derivatives
         >>> derivatives_constants = sinusoidal_derivatives(2, 3, 5, 7)
         >>> print(derivatives_constants['first']['constants'])

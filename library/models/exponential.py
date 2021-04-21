@@ -122,6 +122,8 @@ def exponential_model(data, precision = 4):
 
     Examples
     --------
+    Import `exponential_model` function from `regressions` library
+        >>> from regressions.models.exponential import exponential_model
     Generate an exponential regression model for the data set [[1, 6], [2, 12], [3, 24], [4, 48], [5, 96], [6, 192], [7, 384], [8, 768], [9, 1536], [10, 3072]], then print its coefficients, roots, total accumulation over its interquartile range, and correlation
         >>> model_perfect = exponential_model([[1, 6], [2, 12], [3, 24], [4, 48], [5, 96], [6, 192], [7, 384], [8, 768], [9, 1536], [10, 3072]])
         >>> print(model_perfect['constants'])

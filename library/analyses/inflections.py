@@ -43,6 +43,8 @@ def inflection_points(equation_type, coefficients, precision = 4):
 
     Examples
     --------
+    Import `inflection_points` function from `regressions` library
+        >>> from regressions.analyses.inflections import inflection_points
     Calculate the inflection points of a cubic functions with coefficients 1, -15, 63, and -7
         >>> points_cubic = inflection_points('cubic', [1, -15, 63, -7])
         >>> print(points_cubic)

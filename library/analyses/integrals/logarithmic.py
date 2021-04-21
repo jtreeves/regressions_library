@@ -44,6 +44,8 @@ def logarithmic_integral(first_constant, second_constant, precision = 4):
 
     Examples
     --------
+    Import `logarithmic_integral` function from `regressions` library
+        >>> from regressions.analyses.integrals.logarithmic import logarithmic_integral
     Generate the integral of a logarithmic function with coefficients 2 and 3, then display its coefficients
         >>> integral_constants = logarithmic_integral(2, 3)
         >>> print(integral_constants['constants'])

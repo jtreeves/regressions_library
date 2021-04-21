@@ -34,6 +34,8 @@ def mean_value(data):
 
     Examples
     --------
+    Import `mean_value` function from `regressions` library
+        >>> from regressions.statistics.mean import mean_value
     Determine the mean of the set [21, 53, 3, 68, 43, 9, 72, 19, 20, 1]
         >>> mean_even = mean_value([21, 53, 3, 68, 43, 9, 72, 19, 20, 1])
         >>> print(mean_even)

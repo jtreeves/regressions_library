@@ -138,6 +138,8 @@ def cubic_model(data, precision = 4):
 
     Examples
     --------
+    Import `cubic_model` function from `regressions` library
+        >>> from regressions.models.cubic import cubic_model
     Generate a cubic regression model for the data set [[1, 42], [2, 67], [3, 74], [4, 69], [5, 58], [6, 47], [7, 42], [8, 49], [9, 74], [10, 123]], then print its coefficients, roots, total accumulation over its interquartile range, and correlation
         >>> model_perfect = cubic_model([[1, 42], [2, 67], [3, 74], [4, 69], [5, 58], [6, 47], [7, 42], [8, 49], [9, 74], [10, 123]])
         >>> print(model_perfect['constants'])

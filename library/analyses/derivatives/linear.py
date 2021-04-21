@@ -45,6 +45,8 @@ def linear_derivatives(first_constant, second_constant, precision = 4):
 
     Examples
     --------
+    Import `linear_derivatives` function from `regressions` library
+        >>> from regressions.analyses.derivatives.linear import linear_derivatives
     Generate the derivatives of a linear function with coefficients 2 and 3, then display the coefficients of its first and second derivatives
         >>> derivatives_constants = linear_derivatives(2, 3)
         >>> print(derivatives_constants['first']['constants'])

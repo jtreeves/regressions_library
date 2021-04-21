@@ -46,6 +46,8 @@ def logistic_integral(first_constant, second_constant, third_constant, precision
 
     Examples
     --------
+    Import `logistic_integral` function from `regressions` library
+        >>> from regressions.analyses.integrals.logistic import logistic_integral
     Generate the integral of a logistic function with coefficients 2, 3, and 5, then display its coefficients
         >>> integral_constants = logistic_integral(2, 3, 5)
         >>> print(integral_constants['constants'])

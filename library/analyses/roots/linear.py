@@ -39,6 +39,8 @@ def linear_roots(first_constant, second_constant, precision = 4):
 
     Examples
     --------
+    Import `linear_roots` function from `regressions` library
+        >>> from regressions.analyses.roots.linear import linear_roots
     Calculate the roots of a linear function with coefficients 2 and 3
         >>> roots_first = linear_roots(2, 3)
         >>> print(roots_first)

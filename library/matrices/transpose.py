@@ -33,6 +33,8 @@ def transposed_matrix(matrix):
 
     Examples
     --------
+    Import `transposed_matrix` function from `regressions` library
+        >>> from regressions.matrices.transpose import transposed_matrix
     Transpose [[1, 2, 3], [4, 5, 6]]
         >>> matrix_3x2 = transposed_matrix([[1, 2, 3], [4, 5, 6]])
         >>> print(matrix_3x2)

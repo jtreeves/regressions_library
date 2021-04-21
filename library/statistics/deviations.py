@@ -36,6 +36,8 @@ def single_deviation(actual, mean):
 
     Examples
     --------
+    Import `single_deviation` function from `regressions` library
+        >>> from regressions.statistics.deviations import single_deviation
     Determine the deviation for an actual value of 7.8 and a mean of 13.75
         >>> deviation_small = single_deviation(7.8, 13.75)
         >>> print(deviation_small)
@@ -90,6 +92,8 @@ def multiple_deviations(actual_array):
 
     Examples
     --------
+    Import `multiple_deviations` function from `regressions` library
+        >>> from regressions.statistics.deviations import multiple_deviations
     Generate a list of deviations from this data set [8.2, 9.41, 1.23, 34.7]
         >>> deviations_short = multiple_deviations([8.2, 9.41, 1.23, 34.7])
         >>> print(deviations_short)

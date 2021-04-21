@@ -34,6 +34,8 @@ def minimum_value(data):
 
     Examples
     --------
+    Import `minimum_value` function from `regressions` library
+        >>> from regressions.statistics.minimum import minimum_value
     Determine the minimum of the set [21, 53, 3, 68, 43, 9, 72, 19, 20, 1]
         >>> minimum_even = minimum_value([21, 53, 3, 68, 43, 9, 72, 19, 20, 1])
         >>> print(minimum_even)

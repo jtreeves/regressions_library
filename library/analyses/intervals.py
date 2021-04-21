@@ -64,6 +64,8 @@ def sign_chart(equation_type, coefficients, derivative_level, precision = 4):
 
     Examples
     --------
+    Import `sign_chart` function from `regressions` library
+        >>> from regressions.analyses.intervals import sign_chart
     Create the sign chart for the first derivative of a cubic function with coefficients 1, -15, 63, and -7
         >>> chart_cubic = sign_chart('cubic', [1, -15, 63, -7], 1)
         >>> print(chart_cubic)

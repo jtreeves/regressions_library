@@ -52,6 +52,8 @@ def correlation_coefficient(actuals, expecteds, precision = 4):
 
     Examples
     --------
+    Import `correlation_coefficient` function from `regressions` library
+        >>> from regressions.statistics.correlation import correlation_coefficient
     Calculate the correlation using the provided actual values [8.2, 9.41, 1.23, 34.7] and the predicted values [7.863, 8.9173, 2.0114, 35.8021]
         >>> correlation_short = correlation_coefficient([8.2, 9.41, 1.23, 34.7], [7.863, 8.9173, 2.0114, 35.8021])
         >>> print(correlation_short)

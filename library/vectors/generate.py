@@ -41,6 +41,8 @@ def generate_elements(initial_value, periodic_unit, precision = 4):
 
     Examples
     --------
+    Import `generate_elements` function from `regressions` library
+        >>> from regressions.vectors.generate import generate_elements
     Generate a vector of elements based off an initial value of 3 and a periodic unit of 2
         >>> generated_vector_int = generate_elements(3, 2)
         >>> print(generated_vector_int)

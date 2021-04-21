@@ -30,6 +30,8 @@ def column_conversion(vector):
 
     Examples
     --------
+    Import `column_conversion` function from `regressions` library
+        >>> from regressions.vectors.column import column_conversion
     Convert [1, 2, 3]
         >>> column_3d = column_conversion([1, 2, 3])
         >>> print(column_3d)

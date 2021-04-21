@@ -39,6 +39,8 @@ def exponential_roots(first_constant, second_constant, precision = 4):
 
     Examples
     --------
+    Import `exponential_roots` function from `regressions` library
+        >>> from regressions.analyses.roots.exponential import exponential_roots
     Calculate the roots of an exponential function with coefficients 2 and 3
         >>> roots_first = exponential_roots(2, 3)
         >>> print(roots_first)

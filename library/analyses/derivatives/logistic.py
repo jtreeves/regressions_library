@@ -51,6 +51,8 @@ def logistic_derivatives(first_constant, second_constant, third_constant, precis
 
     Examples
     --------
+    Import `logistic_derivatives` function from `regressions` library
+        >>> from regressions.analyses.derivatives.logistic import logistic_derivatives
     Generate the derivatives of a logistic function with coefficients 2, 3, and 5, then display the coefficients of its first and second derivatives
         >>> derivatives_constants = logistic_derivatives(2, 3, 5)
         >>> print(derivatives_constants['first']['constants'])

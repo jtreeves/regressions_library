@@ -40,6 +40,8 @@ def inverse_matrix(matrix):
 
     Examples
     --------
+    Import `inverse_matrix` function from `regressions` library
+        >>> from regressions.matrices.inverse import inverse_matrix
     Generate the inverse of [[1, 2], [3, 4]]
         >>> inverse_2x2 = inverse_matrix([[1, 2], [3, 4]])
         >>> print(inverse_2x2)

@@ -38,6 +38,8 @@ def hyperbolic_roots(first_constant, second_constant, precision = 4):
 
     Examples
     --------
+    Import `hyperbolic_roots` function from `regressions` library
+        >>> from regressions.analyses.roots.hyperbolic import hyperbolic_roots
     Calculate the roots of a hyperbolic function with coefficients 2 and 3
         >>> roots_first = hyperbolic_roots(2, 3)
         >>> print(roots_first)

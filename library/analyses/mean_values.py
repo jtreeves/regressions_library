@@ -68,6 +68,8 @@ def average_value_derivative(equation_type, coefficients, start, end, precision 
 
     Examples
     --------
+    Import `average_value_derivative` function from `regressions` library
+        >>> from regressions.analyses.mean_values import average_value_derivative
     Evaluate the average rate of change of a cubic function with coefficients 2, 3, 5, and 7 between end points of 10 and 20
         >>> average_cubic = average_value_derivative('cubic', [2, 3, 5, 7], 10, 20)
         >>> print(average_cubic)
@@ -162,6 +164,8 @@ def mean_values_derivative(equation_type, coefficients, start, end, precision = 
 
     Examples
     --------
+    Import `mean_values_derivative` function from `regressions` library
+        >>> from regressions.analyses.mean_values import mean_values_derivative
     Generate a list of all the x-coordinates whose instantaneous rates of change equal the function's average rate of change for a cubic function with coefficients 2, 3, 5, and 7 between end points of 10 and 20
         >>> points_cubic = mean_values_derivative('cubic', [2, 3, 5, 7], 10, 20)
         >>> print(points_cubic)
@@ -256,6 +260,8 @@ def average_value_integral(equation_type, coefficients, start, end, precision = 
 
     Examples
     --------
+    Import `average_value_integral` function from `regressions` library
+        >>> from regressions.analyses.mean_values import average_value_integral
     Evaluate the average value of a cubic function with coefficients 2, 3, 5, and 7 between end points of 10 and 20
         >>> average_cubic = average_value_integral('cubic', [2, 3, 5, 7], 10, 20)
         >>> print(average_cubic)
@@ -338,6 +344,8 @@ def mean_values_integral(equation_type, coefficients, start, end, precision = 4)
 
     Examples
     --------
+    Import `mean_values_integral` function from `regressions` library
+        >>> from regressions.analyses.mean_values import mean_values_integral
     Generate a list of all the x-coordinates of a cubic function with coefficients 2, 3, 5, and 7 at which the function's value will equal its average value between 10 and 20
         >>> points_cubic = mean_values_integral('cubic', [2, 3, 5, 7], 10, 20)
         >>> print(points_cubic)
@@ -438,6 +446,8 @@ def average_values(equation_type, coefficients, start, end, precision = 4):
 
     Examples
     --------
+    Import `average_values` function from `regressions` library
+        >>> from regressions.analyses.mean_values import average_values
     Calculate the averages of a cubic function with coefficients 2, 3, 5, and 7 between 10 and 20
         >>> averages_cubic = average_values('cubic', [2, 3, 5, 7], 10, 20)
         >>> print(averages_cubic['average_value_derivative'])

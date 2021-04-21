@@ -37,6 +37,8 @@ def separate_elements(vector):
 
     Examples
     --------
+    Import `separate_elements` function from `regressions` library
+        >>> from regressions.vectors.separate import separate_elements
     Separate [1, 'two', 3, 'four'] into two vectors based on its data types
         >>> separate_vectors_mixed = separate_elements([1, 'two', 3, 'four'])
         >>> print(separate_vectors_mixed['numerical'])

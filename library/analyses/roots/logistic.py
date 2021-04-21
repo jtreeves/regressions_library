@@ -43,6 +43,8 @@ def logistic_roots(first_constant, second_constant, third_constant, precision = 
 
     Examples
     --------
+    Import `logistic_roots` function from `regressions` library
+        >>> from regressions.analyses.roots.logistic import logistic_roots
     Calculate the roots of a logistic function with coefficients 2, 3, and 5
         >>> roots_first = logistic_roots(2, 3, 5)
         >>> print(roots_first)

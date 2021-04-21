@@ -38,6 +38,8 @@ def vector_sum(vector_one, vector_two):
 
     Examples
     --------
+    Import `vector_sum` function from `regressions` library
+        >>> from regressions.vectors.addition import vector_sum
     Add [1, 2, 3] and [4, 5, 6]
         >>> vector_3d = vector_sum([1, 2, 3], [4, 5, 6])
         >>> print(vector_3d)

@@ -64,6 +64,8 @@ def linear_determinant(matrix, result = 0):
 
     Examples
     --------
+    Import `linear_determinant` function from `regressions` library
+        >>> from regressions.matrices.determinant import linear_determinant
     Calculate the determinant of [[1, 2], [3, 4]]
         >>> determinant_2x2 = linear_determinant([[1, 2], [3, 4]])
         >>> print(determinant_2x2)

@@ -43,6 +43,8 @@ def hyperbolic_integral(first_constant, second_constant, precision = 4):
 
     Examples
     --------
+    Import `sinusoidal_hyperbolic` function from `regressions` library
+        >>> from regressions.analyses.hyperbolics.sinusoidal import sinusoidal_hyperbolic
     Generate the integral of a hyperbolic function with coefficients 2 and 3, then display its coefficients
         >>> integral_constants = hyperbolic_integral(2, 3)
         >>> print(integral_constants['constants'])

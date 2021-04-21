@@ -120,6 +120,8 @@ def quadratic_model(data, precision = 4):
 
     Examples
     --------
+    Import `quadratic_model` function from `regressions` library
+        >>> from regressions.models.quadratic import quadratic_model
     Generate a quadratic regression model for the data set [[1, 10], [2, 27], [3, 40], [4, 49], [5, 54], [6, 55], [7, 52], [8, 45], [9, 34], [10, 19]], then print its coefficients, roots, total accumulation over its interquartile range, and correlation
         >>> model_perfect = quadratic_model([[1, 10], [2, 27], [3, 40], [4, 49], [5, 54], [6, 55], [7, 52], [8, 45], [9, 34], [10, 19]])
         >>> print(model_perfect['constants'])

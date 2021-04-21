@@ -36,6 +36,8 @@ def unit_vector(vector):
 
     Examples
     --------
+    Import `unit_vector` function from `regressions` library
+        >>> from regressions.vectors.unit import unit_vector
     Determine the unit vector of the vector with components [7, 5, -1]
         >>> unit_3d = unit_vector([7, 5, -1])
         >>> print(unit_3d)

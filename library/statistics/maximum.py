@@ -34,6 +34,8 @@ def maximum_value(data):
 
     Examples
     --------
+    Import `maximum_value` function from `regressions` library
+        >>> from regressions.statistics.maximum import maximum_value
     Determine the maximum of the set [21, 53, 3, 68, 43, 9, 72, 19, 20, 1]
         >>> maximum_even = maximum_value([21, 53, 3, 68, 43, 9, 72, 19, 20, 1])
         >>> print(maximum_even)

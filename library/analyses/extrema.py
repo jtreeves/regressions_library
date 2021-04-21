@@ -48,6 +48,8 @@ def extrema_points(equation_type, coefficients, precision = 4):
 
     Examples
     --------
+    Import `extrema_points` function from `regressions` library
+        >>> from regressions.analyses.extrema import extrema_points
     Calulate the extrema of a cubic function with coefficients 1, -15, 63, and -7
         >>> points_cubic = extrema_points('cubic', [1, -15, 63, -7])
         >>> print(points_cubic['maxima'])

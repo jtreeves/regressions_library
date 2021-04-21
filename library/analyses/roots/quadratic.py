@@ -44,6 +44,8 @@ def quadratic_roots(first_constant, second_constant, third_constant, precision =
 
     Examples
     --------
+    Import `quadratic_roots` function from `regressions` library
+        >>> from regressions.analyses.roots.quadratic import quadratic_roots
     Calculate the roots of a quadratic function with coefficients 2, 7, and 5
         >>> roots_first = quadratic_roots(2, 7, 5)
         >>> print(roots_first)

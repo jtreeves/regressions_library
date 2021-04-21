@@ -39,6 +39,8 @@ def scalar_product_vector(vector, scalar):
 
     Examples
     --------
+    Import `scalar_product_vector` function from `regressions` library
+        >>> from regressions.vectors.multiplication import scalar_product_vector
     Multiply [1, 2, 3] and -2
         >>> product_3d = scalar_product_vector([1, 2, 3], -2)
         >>> print(product_3d)
@@ -101,6 +103,8 @@ def dot_product(vector_one, vector_two):
 
     Examples
     --------
+    Import `dot_product` function from `regressions` library
+        >>> from regressions.vectors.multiplication import dot_product
     Multiply [1, 2, 3] and [4, 5, 6]
         >>> product_3d = dot_product([1, 2, 3], [4, 5, 6])
         >>> print(product_3d)

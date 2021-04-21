@@ -50,6 +50,8 @@ def intercept_points(equation_type, coefficients, precision = 4):
 
     Examples
     --------
+    Import `intercept_points` function from `regressions` library
+        >>> from regressions.analyses.intercepts import intercept_points
     Calculate the roots of a cubic function with coefficients 1, -15, 66, and -80
         >>> points_cubic = intercept_points('cubic', [1, -15, 66, -80])
         >>> print(points_cubic)

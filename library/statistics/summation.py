@@ -33,6 +33,8 @@ def sum_value(data):
 
     Examples
     --------
+    Import `sum_value` function from `regressions` library
+        >>> from regressions.statistics.summation import sum_value
     Find the total sum of all values in the array [2, 3, 5, 7]
         >>> total_1 = sum_value([2, 3, 5, 7])
         >>> print(total_1)

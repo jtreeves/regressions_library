@@ -43,6 +43,8 @@ def minima_points(equation_type, coefficients, precision = 4):
 
     Examples
     --------
+    Import `minima_points` function from `regressions` library
+        >>> from regressions.analyses.minima import minima_points
     Calculate the minima of a cubic function with coefficients 1, -15, 63, and -7
         >>> points_cubic = minima_points('cubic', [1, -15, 63, -7])
         >>> print(points_cubic)

@@ -51,6 +51,8 @@ def sinusoidal_roots(first_constant, second_constant, third_constant, fourth_con
 
     Examples
     --------
+    Import `sinusoidal_roots` function from `regressions` library
+        >>> from regressions.analyses.roots.sinusoidal import sinusoidal_roots
     Calculate the roots of a sinusoidal function with coefficients 2, 3, 5, and 7
         >>> roots_first = sinusoidal_roots(2, 3, 5, 7)
         >>> print(roots_first)

@@ -42,6 +42,8 @@ def cubic_equation(first_constant, second_constant, third_constant, fourth_const
 
     Examples
     --------
+    Import `cubic_equation` function from `regressions` library
+        >>> from regressions.analyses.equations.cubic import cubic_equation
     Create a cubic function with coefficients 2, 3, 5, and 7, then evaluate it at 10
         >>> evaluation_first = cubic_equation(2, 3, 5, 7)
         >>> print(evaluation_first(10))

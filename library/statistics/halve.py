@@ -39,6 +39,8 @@ def partition(data):
 
     Examples
     --------
+    Import `partition` function from `regressions` library
+        >>> from regressions.statistics.halve import partition
     Determine the upper half of the set [5, 2, 9, 8]
         >>> sections_short = partition([5, 2, 9, 8])
         >>> print(sections_short['upper'])
@@ -120,6 +122,8 @@ def half(data):
 
     Examples
     --------
+    Import `half` function from `regressions` library
+        >>> from regressions.statistics.halve import half
     Determine the sorted upper half of the set [5, 2, 9, 8]
         >>> sections_short = half([5, 2, 9, 8])
         >>> print(sections_short['upper'])
@@ -189,6 +193,8 @@ def half_dimension(data, dimension = 1):
 
     Examples
     --------
+    Import `half_dimension` function from `regressions` library
+        >>> from regressions.statistics.halve import half_dimension
     Determine the upper half of the set [[3, 7, 1], [1, 8, 11], [6, 6, 6], [2, 15, 3], [10, 5, 9]] based on the second dimension
         >>> sections_2d = half_dimension([[3, 7, 1], [1, 8, 11], [6, 6, 6], [2, 15, 3], [10, 5, 9]], 2)
         >>> print(sections_2d['upper'])

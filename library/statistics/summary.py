@@ -72,6 +72,8 @@ def five_number_summary(data, precision = 4):
 
     Examples
     --------
+    Import `five_number_summary` function from `regressions` library
+        >>> from regressions.statistics.summary import five_number_summary
     Determine the five number summary of the set [21, 53, 3, 68, 43, 9, 72, 19, 20, 1]
         >>> summary_even = five_number_summary([21, 53, 3, 68, 43, 9, 72, 19, 20, 1])
         >>> print(summary_even['q1'])

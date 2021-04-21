@@ -41,6 +41,8 @@ def scalar_product_matrix(matrix, scalar):
 
     Examples
     --------
+    Import `scalar_product_matrix` function from `regressions` library
+        >>> from regressions.matrices.multiplication import scalar_product_matrix
     Multiply [[1, 2, 3], [4, 5, 6]] and -2
         >>> matrix_2x3 = scalar_product_matrix([[1, 2, 3], [4, 5, 6]], -2)
         >>> print(matrix_2x3)
@@ -108,6 +110,8 @@ def matrix_product(matrix_one, matrix_two):
 
     Examples
     --------
+    Import `matrix_product` function from `regressions` library
+        >>> from regressions.matrices.multiplication import matrix_product
     Multiply [[1, 2, 3], [4, 5, 6]] and [[2, 3], [5, 7], [11, 13]]
         >>> matrix_2x2 = matrix_product([[1, 2, 3], [4, 5, 6]], [[2, 3], [5, 7], [11, 13]])
         >>> print(matrix_2x2)

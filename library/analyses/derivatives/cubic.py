@@ -50,6 +50,8 @@ def cubic_derivatives(first_constant, second_constant, third_constant, fourth_co
 
     Examples
     --------
+    Import `cubic_derivatives` function from `regressions` library
+        >>> from regressions.analyses.derivatives.cubic import cubic_derivatives
     Generate the derivatives of a cubic function with coefficients 2, 3, 5, and 7, then display the coefficients of its first and second derivatives
         >>> derivatives_constants = cubic_derivatives(2, 3, 5, 7)
         >>> print(derivatives_constants['first']['constants'])

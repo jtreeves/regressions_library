@@ -59,6 +59,8 @@ def quartile_value(data, q):
 
     Examples
     --------
+    Import `quartile_value` function from `regressions` library
+        >>> from regressions.statistics.quartiles import quartile_value
     Determine the first quartile of the set [21, 53, 3, 68, 43, 9, 72, 19, 20, 1]
         >>> quartile_1 = quartile_value([21, 53, 3, 68, 43, 9, 72, 19, 20, 1], 1)
         >>> print(quartile_1)

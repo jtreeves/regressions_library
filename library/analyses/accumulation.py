@@ -58,6 +58,8 @@ def accumulated_area(equation_type, coefficients, start, end, precision = 4):
 
     Examples
     --------
+    Import `accumulated_area` function from `regressions` library
+        >>> from regressions.analyses.accumulation import accumulated_area
     Evaluate the definite integral of a linear function with coefficients 2 and 3 between the end points 10 and 20
         >>> area_linear = accumulated_area('linear', [2, 3], 10, 20)
         >>> print(area_linear)

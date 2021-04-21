@@ -44,6 +44,8 @@ def quadratic_integral(first_constant, second_constant, third_constant, precisio
 
     Examples
     --------
+    Import `quadratic_integral` function from `regressions` library
+        >>> from regressions.analyses.integrals.quadratic import quadratic_integral
     Generate the integral of a quadratic function with coefficients 2, 3, and 5, then display its coefficients
         >>> integral_constants = quadratic_integral(2, 3, 5)
         >>> print(integral_constants['constants'])

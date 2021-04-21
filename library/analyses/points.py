@@ -67,6 +67,8 @@ def coordinate_pairs(equation_type, coefficients, inputs, point_type = 'point', 
 
     Examples
     --------
+    Import `coordinate_pairs` function from `regressions` library
+        >>> from regressions.analyses.points import coordinate_pairs
     Generate a list of coordinate pairs for a cubic function with coefficients 2, 3, 5, and 7 based off x-coordinates of 1, 2, 3, and 4
         >>> points_cubic = coordinate_pairs('cubic', [2, 3, 5, 7], [1, 2, 3, 4])
         >>> print(points_cubic)
@@ -194,6 +196,8 @@ def key_coordinates(equation_type, coefficients, precision = 4):
 
     Examples
     --------
+    Import `key_coordinates` function from `regressions` library
+        >>> from regressions.analyses.points import key_coordinates
     Calculate the key points of a cubic function with coefficients 1, -15, 63, and -7
         >>> points_cubic = key_coordinates('cubic', [1, -15, 63, -7])
         >>> print(points_cubic['roots'])
@@ -288,6 +292,8 @@ def points_within_range(points, start, end):
 
     Examples
     --------
+    Import `points_within_range` function from `regressions` library
+        >>> from regressions.analyses.points import points_within_range
     Eliminate all points above 19 or below 6 in the set [1, 5, 6, 7, 18, 20, 50, 127]
         >>> selected_points_int = points_within_range([1, 5, 6, 7, 18, 20, 50, 127], 6, 19)
         >>> print(selected_points_int)

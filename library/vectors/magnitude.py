@@ -35,6 +35,8 @@ def vector_magnitude(vector):
 
     Examples
     --------
+    Import `vector_magnitude` function from `regressions` library
+        >>> from regressions.vectors.magnitude import vector_magnitude
     Determine the magnitude of the vector with components [7, 5, -1]
         >>> magnitude_3d = vector_magnitude([7, 5, -1])
         >>> print(magnitude_3d)

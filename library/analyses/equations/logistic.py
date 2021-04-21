@@ -41,6 +41,8 @@ def logistic_equation(first_constant, second_constant, third_constant, precision
 
     Examples
     --------
+    Import `logistic_equation` function from `regressions` library
+        >>> from regressions.analyses.equations.logistic import logistic_equation
     Create a logistic function with coefficients 2, 3, and 5, then evaluate it at 10
         >>> evaluation_first = logistic_equation(2, 3, 5)
         >>> print(evaluation_first(10))

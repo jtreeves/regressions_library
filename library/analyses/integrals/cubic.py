@@ -46,6 +46,8 @@ def cubic_integral(first_constant, second_constant, third_constant, fourth_const
 
     Examples
     --------
+    Import `cubic_integral` function from `regressions` library
+        >>> from regressions.analyses.integrals.cubic import cubic_integral
     Generate the integral of a cubic function with coefficients 2, 3, 5, and 7, then display its coefficients
         >>> integral_constants = cubic_integral(2, 3, 5, 7)
         >>> print(integral_constants['constants'])

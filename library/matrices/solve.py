@@ -50,6 +50,8 @@ def system_solution(matrix_one, matrix_two, precision = 4):
 
     Examples
     --------
+    Import `system_solution` function from `regressions` library
+        >>> from regressions.matrices.solve import system_solution
     Solve the system that has an independent matrix of [[2, 3], [1, -1]] and a dependent matrix of [[5], [1]]
         >>> solution_2values = system_solution([[2, 3], [1, -1]], [[5], [1]])
         >>> print(solution_2values)

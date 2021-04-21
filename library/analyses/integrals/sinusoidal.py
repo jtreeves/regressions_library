@@ -48,6 +48,8 @@ def sinusoidal_integral(first_constant, second_constant, third_constant, fourth_
 
     Examples
     --------
+    Import `sinusoidal_integral` function from `regressions` library
+        >>> from regressions.analyses.integrals.sinusoidal import sinusoidal_integral
     Generate the integral of a sinusoidal function with coefficients 2, 3, 5, and 7, then display its coefficients
         >>> integral_constants = sinusoidal_integral(2, 3, 5, 7)
         >>> print(integral_constants['constants'])

@@ -46,6 +46,8 @@ def hyperbolic_derivatives(first_constant, second_constant, precision = 4):
 
     Examples
     --------
+    Import `hyperbolic_derivatives` function from `regressions` library
+        >>> from regressions.analyses.derivatives.hyperbolic import hyperbolic_derivatives
     Generate the derivatives of a hyperbolic function with coefficients 2 and 3, then display the coefficients of its first and second derivatives
         >>> derivatives_constants = hyperbolic_derivatives(2, 3)
         >>> print(derivatives_constants['first']['constants'])

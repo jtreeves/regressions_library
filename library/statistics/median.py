@@ -36,6 +36,8 @@ def median_value(data):
 
     Examples
     --------
+    Import `median_value` function from `regressions` library
+        >>> from regressions.statistics.median import median_value
     Determine the median of the set [21, 53, 3, 68, 43, 9, 72, 19, 20, 1]
         >>> median_even = median_value([21, 53, 3, 68, 43, 9, 72, 19, 20, 1])
         >>> print(median_even)

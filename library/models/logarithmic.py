@@ -121,6 +121,8 @@ def logarithmic_model(data, precision = 4):
 
     Examples
     --------
+    Import `logarithmic_model` function from `regressions` library
+        >>> from regressions.models.logarithmic import logarithmic_model
     Generate a logarithmic regression model for the data set [[1, 2], [2, 4.0794], [3, 5.2958], [4, 6.1589], [5, 6.8283], [6, 7.3753], [7, 7.8377], [8, 8.2383], [9, 8.5917], [10, 8.9078]], then print its coefficients, roots, total accumulation over its interquartile range, and correlation
         >>> model_perfect = logarithmic_model([[1, 2], [2, 4.0794], [3, 5.2958], [4, 6.1589], [5, 6.8283], [6, 7.3753], [7, 7.8377], [8, 8.2383], [9, 8.5917], [10, 8.9078]])
         >>> print(model_perfect['constants'])

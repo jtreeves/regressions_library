@@ -47,6 +47,8 @@ def logarithmic_derivatives(first_constant, second_constant, precision = 4):
 
     Examples
     --------
+    Import `logarithmic_derivatives` function from `regressions` library
+        >>> from regressions.analyses.derivatives.logarithmic import logarithmic_derivatives
     Generate the derivatives of a logarithmic function with coefficients 2 and 3, then display the coefficients of its first and second derivatives
         >>> derivatives_constants = logarithmic_derivatives(2, 3)
         >>> print(derivatives_constants['first']['constants'])

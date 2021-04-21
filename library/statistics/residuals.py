@@ -35,6 +35,8 @@ def single_residual(actual, expected):
 
     Examples
     --------
+    Import `single_residual` function from `regressions` library
+        >>> from regressions.statistics.residuals import single_residual
     Determine the residual between an actual value of 7.8 and an expected value of 9.2
         >>> residual_small = single_residual(7.8, 9.2)
         >>> print(residual_small)
@@ -93,6 +95,8 @@ def multiple_residuals(actual_array, expected_array):
 
     Examples
     --------
+    Import `multiple_residuals` function from `regressions` library
+        >>> from regressions.statistics.residuals import multiple_residuals
     Determine the residuals between the actual values [5.6, 8.1, 6.3] and the expected values [6.03, 8.92, 6.12]
         >>> residuals_short = multiple_residuals([5.6, 8.1, 6.3], [6.03, 8.92, 6.12])
         >>> print(residuals_short)

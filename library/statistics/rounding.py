@@ -59,6 +59,8 @@ def rounded_value(number, precision = 4):
 
     Examples
     --------
+    Import `rounded_value` function from `regressions` library
+        >>> from regressions.statistics.rounding import rounded_value
     Round the number 9.2157823956916472 to six decimal places
         >>> number_normal = rounded_value(9.2157825956916472, 6)
         >>> print(number_normal)

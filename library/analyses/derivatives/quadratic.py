@@ -48,6 +48,8 @@ def quadratic_derivatives(first_constant, second_constant, third_constant, preci
 
     Examples
     --------
+    Import `quadratic_derivatives` function from `regressions` library
+        >>> from regressions.analyses.derivatives.quadratic import quadratic_derivatives
     Generate the derivatives of a quadratic function with coefficients 2, 3, and 5, then display the coefficients of its first and second derivatives
         >>> derivatives_constants = quadratic_derivatives(2, 3, 5)
         >>> print(derivatives_constants['first']['constants'])

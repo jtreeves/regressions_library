@@ -38,6 +38,8 @@ def vector_direction(vector):
 
     Examples
     --------
+    Import `vector_direction` function from `regressions` library
+        >>> from regressions.vectors.direction import vector_direction
     Determine the direction of a vector with a component form of [7, 5]
         >>> direction_positive = vector_direction([7, 5])
         >>> print(direction_positive['radian'])

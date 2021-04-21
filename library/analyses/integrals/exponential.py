@@ -43,6 +43,8 @@ def exponential_integral(first_constant, second_constant, precision = 4):
 
     Examples
     --------
+    Import `exponential_integral` function from `regressions` library
+        >>> from regressions.analyses.integrals.exponential import exponential_integral
     Generate the integral of an exponential function with coefficients 2 and 3, then display its coefficients
         >>> integral_constants = exponential_integral(2, 3)
         >>> print(integral_constants['constants'])

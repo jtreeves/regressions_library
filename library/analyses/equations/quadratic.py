@@ -40,6 +40,8 @@ def quadratic_equation(first_constant, second_constant, third_constant, precisio
 
     Examples
     --------
+    Import `quadratic_equation` function from `regressions` library
+        >>> from regressions.analyses.equations.quadratic import quadratic_equation
     Create a quadratic function with coefficients 2, 3, and 5, then evaluate it at 10
         >>> evaluation_first = quadratic_equation(2, 3, 5)
         >>> print(evaluation_first(10))

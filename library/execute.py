@@ -102,6 +102,8 @@ def run_all(data, precision = 4):
 
     Examples
     --------
+    Import `run_all` function from `regressions` library
+        >>> from regressions.execute import run_all
     Generate all eight regression models for the data set [[1, 32], [2, 25], [3, 14], [4, 23], [5, 39], [6, 45], [7, 42], [8, 49], [9, 36], [10, 33]], then print each model's coefficients, the mean of the data set, and the name of the model with the best fit
         >>> results = run_all([[1, 32], [2, 25], [3, 14], [4, 23], [5, 39], [6, 45], [7, 42], [8, 49], [9, 36], [10, 33]])
         >>> print(results['models']['linear']['constants'])

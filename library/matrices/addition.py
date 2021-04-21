@@ -40,6 +40,8 @@ def matrix_sum(matrix_one, matrix_two):
 
     Examples
     --------
+    Import `matrix_sum` function from `regressions` library
+        >>> from regressions.matrices.addition import matrix_sum
     Add [[1, 2, 3], [4, 5, 6]] and [[2, 3, 5], [7, 11, 13]]
         >>> matrix_2x3 = matrix_sum([[1, 2, 3], [4, 5, 6]], [[2, 3, 5], [7, 11, 13]])
         >>> print(matrix_2x3)

@@ -38,6 +38,8 @@ def hyperbolic_equation(first_constant, second_constant, precision = 4):
 
     Examples
     --------
+    Import `hyperbolic_equation` function from `regressions` library
+        >>> from regressions.analyses.equations.hyperbolic import hyperbolic_equation
     Create a hyperbolic function with coefficients 2 and 3, then evaluate it at 10
         >>> evaluation_first = hyperbolic_equation(2, 3)
         >>> print(evaluation_first(10))
