@@ -21,7 +21,7 @@ def quadratic_model(data, precision = 4):
     Parameters
     ----------
     data : list of lists of int or float
-        List of lists of numbers representing a collection of coordinate pairs
+        List of lists of numbers representing a collection of coordinate pairs; it must include at least 10 pairs
     precision : int, default=4
         Maximum number of digits that can appear after the decimal place of the results
 
