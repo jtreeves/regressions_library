@@ -18,7 +18,6 @@ from .statistics.median import median_value
 
 def run_all(data, precision = 4):
     """
-    TEST
     Generates all eight key regression models (linear, quadratic, cubic, hyperbolic, exponential, logarithmic, logistic, and sinusoidal) for a given data set, in addition to determining the best fit based on correlation and providing various statistical measures
 
     Parameters
