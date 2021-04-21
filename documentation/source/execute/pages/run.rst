@@ -2,5 +2,5 @@ Run All
 -------
 Some thoughts on running all functions.
 
-.. automodule:: library.execute
+.. automodule:: library.main.execute
     :members:
