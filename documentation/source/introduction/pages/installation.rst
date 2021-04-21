@@ -1,10 +1,10 @@
 Installation
 ------------
-How to install the library.
+The regressions library is publicly available on the Python Package Index (PyPI), which makes downloading it to your local computer fairly easy.
 
 Requirements
 ************
-To use this library, you must have the following:
+To use this library, you must already have the following:
 
 * Python 3.8 or higher
 * NumPy

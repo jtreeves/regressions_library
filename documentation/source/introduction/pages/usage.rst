@@ -33,8 +33,143 @@ View Results
 
     print(vector_product) # 32
 
-Specific Examples
-*****************
+Complete Practice Set
+*********************
+The following tutorial walks through all the steps for generating all the regression models for a specific data set.
+
+Import the `run_all` function:
+
+.. code-block:: python
+
+    from regressions.execute import run_all
+
+Create an agnostic data set:
+
+.. code-block:: python
+
+    agnostic_set = [[1, 32], [2, 25], [3, 14], [4, 23], [5, 39], [6, 45], [7, 42], [8, 49], [9, 36], [10, 33]]
+
+Generate all regression models for the agnostic data set:
+
+.. code-block:: python
+
+    all_models = run_all(agnostic_set)
+
+View the constants and the correlation coefficient for the set's linear model:
+
+.. code-block:: python
+
+    linear = all_models['models']['linear']
+    linear_constants = linear['constants']
+    linear_correlation = linear['correlation']
+    print(linear_constants) # [1.9636, 23.0]
+    print(linear_correlation) # 0.5516
+
+View the constants and the correlation coefficient for the set's quadratic model:
+
+.. code-block:: python
+
+    quadratic = all_models['models']['quadratic']
+    quadratic_constants = quadratic['constants']
+    quadratic_correlation = quadratic['correlation']
+    print(quadratic_constants) # [-0.3106, 5.3803, 16.1667]
+    print(quadratic_correlation) # 0.5941
+
+View the constants and the correlation coefficient for the set's cubic model:
+
+.. code-block:: python
+
+    cubic = all_models['models']['cubic']
+    cubic_constants = cubic['constants']
+    cubic_correlation = cubic['correlation']
+    print(cubic_constants) # [-0.3881, 6.0932, -24.155, 49.4667]
+    print(cubic_correlation) # 0.8933
+
+View the constants and the correlation coefficient for the set's hyperbolic model:
+
+.. code-block:: python
+
+    hyperbolic = all_models['models']['hyperbolic']
+    hyperbolic_constants = hyperbolic['constants']
+    hyperbolic_correlation = hyperbolic['correlation']
+    print(hyperbolic_constants) # [-13.5246, 37.7613]
+    print(hyperbolic_correlation) # 0.3479
+
+View the constants and the correlation coefficient for the set's exponential model:
+
+.. code-block:: python
+
+    exponential = all_models['models']['exponential']
+    exponential_constants = exponential['constants']
+    exponential_correlation = exponential['correlation']
+    print(exponential_constants) # [22.1049, 1.0692]
+    print(exponential_correlation) # 0.5069
+
+View the constants and the correlation coefficient for the set's logarithmic model:
+
+.. code-block:: python
+
+    logarithmic = all_models['models']['logarithmic']
+    logarithmic_constants = logarithmic['constants']
+    logarithmic_correlation = logarithmic['correlation']
+    print(logarithmic_constants) # [7.4791, 22.5032]
+    print(logarithmic_correlation) # 0.5086
+
+View the constants and the correlation coefficient for the set's logistic model:
+
+.. code-block:: python
+
+    logistic = all_models['models']['logistic']
+    logistic_constants = logistic['constants']
+    logistic_correlation = logistic['correlation']
+    print(logistic_constants) # [43.983, 0.3076, 0.9746]
+    print(logistic_correlation) # 0.5875
+
+View the constants and the correlation coefficient for the set's sinusoidal model:
+
+.. code-block:: python
+
+    sinusoidal = all_models['models']['sinusoidal']
+    sinusoidal_constants = sinusoidal['constants']
+    sinusoidal_correlation = sinusoidal['correlation']
+    print(sinusoidal_constants) # [14.0875, 0.7119, -3.7531, 34.2915]
+    print(sinusoidal_correlation) # 0.9264
+
+View the name of the model with the best fit (by virtue of having the highest correlation coefficient):
+
+.. code-block:: python
+
+    optimal = all_models['optimal']['option']
+    print(optimal) # 'sinusoidal'
+
+Determine the equations for all of the models based on the above results:
+
+    * **Linear equation**: :math:`lin(x) = 1.9636\cdot{x} + 23.0`
+    * **Quadratic equation**: :math:`quad(x) = -0.3106\cdot{x^2} + 5.3803\cdot{x} + 16.1667`
+    * **Cubic equation**: :math:`cub(x) = -0.3881\cdot{x^3} + 6.0932\cdot{x^2} - 24.155\cdot{x} + 49.4667`
+    * **Hyperbolic equation**: :math:`hyp(x) = -13.5246\cdot{\frac{1}{x}} + 37.7613`
+    * **Exponential equation**: :math:`exp(x) = 22.1049\cdot{1.0692^x}`
+    * **Logarithmic equation**: :math:`log(x) = 7.4791\cdot{\ln{x}} + 22.5032`
+    * **Logistic equation**: :math:`lst(x) = \frac{43.983}{1 + \text{e}^{-0.3076\cdot(x - 0.9746)}}`
+    * **Sinusoidal equation**: :math:`sin(x) = 14.0875\cdot{\sin(0.7119\cdot(x + 3.7531))} + 34.2915`
+
+Predict what the output will be when the input is 20 for each of the models based on the above equations:
+
+    * **Linear prediction**: :math:`lin(20) = 62.272`
+    * **Quadratic prediction**: :math:`quad(20) = -0.4673`
+    * **Cubic prediction**: :math:`cub(20) = -1101.1533`
+    * **Hyperbolic prediction**: :math:`hyp(20) = 37.0851`
+    * **Exponential prediction**: :math:`exp(20) = 84.2689`
+    * **Logarithmic prediction**: :math:`log(20) = 44.9086`
+    * **Logistic prediction**: :math:`lst(20) = 43.857`
+    * **Sinusoidal prediction**: :math:`sin(20) = 21.1519`
+
+Interpret the above results:
+
+    The sinusoidal model provides the best fit for the data set because it has the highest correlation coefficient of the group (0.9264). In contrast, the hyperbolic model provides the worst fit for the data set because it has the lowest correlation coefficient of the group (0.3479). The linear, exponential, and logarithmic models all predict the data set will continue increasing (albeit at different notably different rates, with exponential predicting the fastest rate and logarithmic predicting the slowest rate); whereas both the quadratic and cubic models predict the data set will decrease rapidly. The hyperbolic model and the logistic model both predict the data set will approach their horizontal asymptotes (37.7613 and 43.983, respectively); whereas the sinusoidal model predicts the data will continue oscillating between a low of 20.204 and a high of 48.379. While the sinusoidal model happens to be the best fit for the provided data set, it would be interesting to see if it remained the best if the data set were augmented with more values. In other words, maybe the hyperbolic or logistic models are correct and the data eventually do approach a single value. Or maybe the quadratic or cubic models are correct and the data do begin to decrease rapidly after this brief interlude. Or maybe the linear, exponential, or logarithmic models are correct and the data continue to increase. Without more data, it is impossible to know for sure.
+
+More Examples
+*************
 The following are some real-world examples of how regression modeling can be used to better make sense of all the data at our disposal.
 
 Weather
@@ -60,6 +195,12 @@ December  55
 
 *Source*: |noaa|
 
+Import the sinusoidal model:
+
+.. code-block:: python
+
+    from regressions.models.sinusoidal import sinusoidal_model
+
 Create a list of coordinate pairs from the data in the table:
 
 .. code-block:: python
@@ -70,7 +211,6 @@ Generate a sinusoidal model to fit the data:
 
 .. code-block:: python
 
-    from regressions.models.sinusoidal import sinusoidal_model
     sinusoidal_best_fit = sinusoidal_model(monthly_highs)
 
 View the constants of the resultant sinusoidal equation and the correlation coefficient of the model:
@@ -96,10 +236,10 @@ Determine the correlation coefficient for the sinusoidal model by using the abov
 
 Make inferences from the equation:
 
-    * **Average high temperature:** :math:`74.6609^{\circ}F`
-    * **Maximum high temperature:** :math:`91.3829^{\circ}F`
-    * **Minimum high temperature:** :math:`57.9389^{\circ}F`
-    * **Predicted high temperature in July 2021:** :math:`83.6925^{\circ}F`
+    * **Average high temperature**: :math:`74.6609^{\circ}F`
+    * **Maximum high temperature**: :math:`91.3829^{\circ}F`
+    * **Minimum high temperature**: :math:`57.9389^{\circ}F`
+    * **Predicted high temperature in July 2021**: :math:`83.6925^{\circ}F`
 
 Draw conclusions from the results:
 
@@ -128,6 +268,12 @@ December  382580
 
 *Source*: |cdc|
 
+Import the logistic model:
+
+.. code-block:: python
+
+    from regressions.models.logistic import logistic_model
+
 Create a list of coordinate pairs from the data in the table:
 
 .. code-block:: python
@@ -138,7 +284,6 @@ Generate a logistic model to fit the data:
 
 .. code-block:: python
 
-    from regressions.models.logistic import logistic_model
     logistic_best_fit = logistic_model(monthly_deaths)
 
 View the constants of the resultant logistic equation and the correlation coefficient of the model:
@@ -164,9 +309,9 @@ Determine the correlation coefficient for the logistic model by using the above 
 
 Make inferences from the equation:
 
-    * **Total deaths:** 564,205 people
-    * **Turning point:** October 2020
-    * **Predicted total deaths by July 2021:** 532,264 people
+    * **Total deaths**: 564,205 people
+    * **Turning point**: October 2020
+    * **Predicted total deaths by July 2021**: 532,264 people
 
 Draw conclusions from the results:
 
@@ -191,6 +336,12 @@ Units Profit
 258   16239.55
 ===== ========
 
+Import the quadratic model:
+
+.. code-block:: python
+
+    from regressions.models.quadratic import quadratic_model
+
 Create a list of coordinate pairs from the data in the table:
 
 .. code-block:: python
@@ -201,7 +352,6 @@ Generate a quadratic model to fit the data:
 
 .. code-block:: python
 
-    from regressions.models.quadratic import quadratic_model
     quadratic_best_fit = quadratic_model(annual_profits)
 
 View the constants of the resultant quadratic equation, the correlation coefficient of the model, and the model's maximum point:
@@ -235,9 +385,9 @@ Determine the coordinates of the absolute maximum for the quadratic model by usi
 
 Make inferences from the above information:
 
-    * **Highest possible profits:** $23,676.14
-    * **Units to produce to maximize profits:** 203 units
-    * **Predicted profits if 275 units produced:** $10,075.03
+    * **Highest possible profits**: $23,676.14
+    * **Units to produce to maximize profits**: 203 units
+    * **Predicted profits if 275 units produced**: $10,075.03
 
 Draw conclusions from the results:
 
