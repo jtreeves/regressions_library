@@ -4,11 +4,15 @@ How to install the library.
 
 Requirements
 ************
-What is required to use the library.
+To use this library, you must have the following:
+
+* Python 3.8 or higher
+* NumPy
+* SciPy
 
 Command Line
 ************
-Use the command line to install it from PyPI.
+To download this library directly from PyPI via pip, you can execute this in the command line:
 
 .. code-block::
 

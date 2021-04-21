@@ -35,11 +35,11 @@ View Results
 
 Specific Examples
 *****************
-Some specific examples of using the library.
+The following are some real-world examples of how regression modeling can be used to better make sense of all the data at our disposal.
 
 Weather
 ^^^^^^^
-Average monthly highs in Atlanta
+Use a sinusoidal model to analyze average monthly temperature highs in Atlanta. Temperatures rise and fall on a fairly predictable basis every year, so a sinusoidal model makes the most sense.
 
 ========= ===========
 Month     Temperature
@@ -107,7 +107,7 @@ Draw conclusions from the results:
 
 Disease
 ^^^^^^^
-Total deaths in the US from COVID-19 by month in 2020
+Use a logistic model to analyze total deaths in the US from COVID-19, based on total deaths by the end of each month in 2020. As with all diseases, total deaths will increase slowly, then quickly, then slowly again, until finally leveling off. (This is an oversimplication of the process, and it doesn't take into account fluctuations based on other variables, but it's a useful simplication for the purposes of this example.) As a result, total deaths should fit to a sigmoid graph (a.k.a., an S-shaped curve), so a logistic model makes the most sense.
 
 ========= ============
 Month     Total Deaths
@@ -174,7 +174,7 @@ Draw conclusions from the results:
 
 Profits
 ^^^^^^^
-Total annual profits of a fictional company based on how many units of a product it produces per year
+Use a quadratic model to analyze the total annual profits of a fictional company, based on how many units of a product it produces per year. While this is a fictional case study, it deals with something fairly common in business analysis: profit maximization based on some criteria. In this case, it appears that profit will be maximized when a certain number of units are produced. Since profits appear to initially increase as units increase only to later decrease, a quadratic model makes sense.
 
 ===== ========
 Units Profit
