@@ -10,8 +10,8 @@ Regressions Library Documentation
     :maxdepth: 4
     :caption: Guide
     
-    introduction/index
-    execute/index
+    introduction
+    execute
     models/index
     analyses/index
     statistics/index

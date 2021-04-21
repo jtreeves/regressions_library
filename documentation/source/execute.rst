@@ -1,4 +1,4 @@
-Run All
--------
+Execute
+=======
 .. automodule:: library.execute
     :members:
