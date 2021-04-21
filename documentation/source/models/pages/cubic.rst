@@ -1,5 +1,5 @@
-Cubic Models
-------------
+Cubic Model
+-----------
 .. automodule:: library.models.cubic
     :members:
 

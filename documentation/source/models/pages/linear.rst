@@ -1,5 +1,5 @@
-Linear Models
--------------
+Linear Model
+------------
 .. automodule:: library.models.linear
     :members:
 

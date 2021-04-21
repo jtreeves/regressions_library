@@ -1,5 +1,5 @@
-Exponential Models
-------------------
+Exponential Model
+-----------------
 .. automodule:: library.models.exponential
     :members:
 

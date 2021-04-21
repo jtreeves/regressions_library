@@ -1,5 +1,5 @@
-Sinusoidal Models
------------------
+Sinusoidal Model
+----------------
 .. automodule:: library.models.sinusoidal
     :members:
 

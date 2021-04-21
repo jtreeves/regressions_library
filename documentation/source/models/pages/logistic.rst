@@ -1,5 +1,5 @@
-Logistic Models
----------------
+Logistic Model
+--------------
 .. automodule:: library.models.logistic
     :members:
 

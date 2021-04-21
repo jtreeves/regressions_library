@@ -1,5 +1,5 @@
-Hyperbolic Models
------------------
+Hyperbolic Model
+----------------
 .. automodule:: library.models.hyperbolic
     :members:
 

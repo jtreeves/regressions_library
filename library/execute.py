@@ -41,21 +41,21 @@ def run_all(data, precision = 4):
     Returns
     -------
     results['models']['linear'] : dict
-        See :ref:`Linear Models`
+        See :ref:`Linear Model`
     results['models']['quadratic'] : dict
-        See :ref:`Quadratic Models`
+        See :ref:`Quadratic Model`
     results['models']['cubic'] : dict
-        See :ref:`Cubic Models`
+        See :ref:`Cubic Model`
     results['models']['hyperbolic'] : dict
-        See :ref:`Hyperbolic Models`
+        See :ref:`Hyperbolic Model`
     results['models']['exponential'] : dict
-        See :ref:`Exponential Models`
+        See :ref:`Exponential Model`
     results['models']['logarithmic'] : dict
-        See :ref:`Logarithmic Models`
+        See :ref:`Logarithmic Model`
     results['models']['logistic'] : dict
-        See :ref:`Logistic Models`
+        See :ref:`Logistic Model`
     results['models']['sinusoidal'] : dict
-        See :ref:`Sinusoidal Models`
+        See :ref:`Sinusoidal Model`
     results['statistics']['minimum'] : int or float
         Smallest value of the independent variable from the provided data set
     results['statistics']['maximum'] : int or float
@@ -98,6 +98,7 @@ def run_all(data, precision = 4):
     - Standard form for the equation of the logistic model: :math:`lst(x) = \\frac{a_{lst}}{1 + \\text{e}^{-b_{lst}\\cdot(x - c_{lst})}}`
     - Resultant values for the coefficients of the sinusoidal model: :math:`C_{sin} = \\{ a_{sin}, b_{sin}, c_{sin}, d_{sin} \\}`
     - Standard form for the equation of the sinusoidal model: :math:`sin(x) = a_{sin}\\cdot{\\sin(b_{sin}\\cdot(x - c_{sin}))} + d_{sin}`
+    - |regression_analysis|
 
     Examples
     --------

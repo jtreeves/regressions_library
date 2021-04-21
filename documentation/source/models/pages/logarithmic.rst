@@ -1,5 +1,5 @@
-Logarithmic Models
-------------------
+Logarithmic Model
+-----------------
 .. automodule:: library.models.logarithmic
     :members:
 

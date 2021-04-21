@@ -1,5 +1,5 @@
-Quadratic Models
-----------------
+Quadratic Model
+---------------
 .. automodule:: library.models.quadratic
     :members:
 
