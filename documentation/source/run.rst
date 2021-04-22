@@ -1,4 +1,3 @@
 Run All
 -------
-.. automodule:: library.execute
-    :members:
+About the run_all function
