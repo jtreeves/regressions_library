@@ -13,3 +13,4 @@ These are the top-level, model-generating functions. As a result, they're the mo
     pages/logarithmic
     pages/logistic
     pages/sinusoidal
+    pages/run
