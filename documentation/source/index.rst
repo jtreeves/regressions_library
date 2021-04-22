@@ -8,6 +8,7 @@ The regressions library is a collection of algorithms for fitting data to differ
     :caption: Guide
     
     introduction/index
+    run
     models/index
     analyses/index
     statistics/index

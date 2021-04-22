@@ -98,7 +98,6 @@ def run_all(data, precision = 4):
     - Standard form for the equation of the logistic model: :math:`lst(x) = \\frac{a_{lst}}{1 + \\text{e}^{-b_{lst}\\cdot(x - c_{lst})}}`
     - Resultant values for the coefficients of the sinusoidal model: :math:`C_{sin} = \\{ a_{sin}, b_{sin}, c_{sin}, d_{sin} \\}`
     - Standard form for the equation of the sinusoidal model: :math:`sin(x) = a_{sin}\\cdot{\\sin(b_{sin}\\cdot(x - c_{sin}))} + d_{sin}`
-    - |regression_analysis|
 
     Examples
     --------
