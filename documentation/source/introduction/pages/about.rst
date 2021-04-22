@@ -1,6 +1,6 @@
 About
 -----
-The regressions library is a collection of algorithms for fitting data to different functional models by using linear algebra and machine learning. It can generate the following eight key regression models based on any data set: linear, quadratic, cubic, hyperbolic, exponential, logarithmic, logistic, and sinusoidal. For each model, it outputs the constants of the equation, notable graphical points, and the correlation coefficient, among other useful details.
+The regressions library is a collection of algorithms for fitting data to different functional models by using linear algebra and machine learning. It can generate the following eight key regression models based on any data set: linear, quadratic, cubic, hyperbolic, exponential, logarithmic, logistic, and sinusoidal. For each model, it outputs the constants of the equation, notable graphical points, and the correlation coefficient, among other useful details. To better understand how the library's many functions work, view its full |github| on GitHub.
 
 Purpose
 *******
@@ -40,3 +40,7 @@ Many sites on the web offer free generations of various regression models. Howev
 Value
 *****
 So why should you use this library? If you've ever been overwhelmed by too much data and just want to make sense of it, then this library is for you.
+
+.. |github| raw:: html
+
+    <a href="https://github.com/jtreeves/regressions_library" target="_blank">code base</a>
