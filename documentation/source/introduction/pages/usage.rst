@@ -1,40 +1,91 @@
 Usage
 -----
-Notes on general usage of the library.
+Whenever you use a new library, it's important to know how to import its functions, what arguments to pass to its functions, and any unusual quirks of the library. Specific usage notes are provided with each individual function in this documentation, but here are some useful overviews to help acquaint you with the library. Plus a few fully worked out examples to show you just what you can achieve by using this library.
+
+General Guidelines
+******************
+
+* **Arguments**: Most functions take lists or numbers as their arguments
+* **Precision**: Most functions include an optional `precision` parameter to determine the maximum number of digits that will appear after the decimal place; if no value is provided, it will default to 4
+* **Coordinate pairs**: List notation is used to indicate the coordinate pairs of points (e.g., [2, 3] for a point with an x-coordinate of 2 and a y-coordinate of 3); a list of lists is used to indicate a set of coordinate pairs (e.g., [[1, 2], [3, 4], [5, 6]] for a set containing three points); the latter nested list notation is necessary for providing arguments for top-level, model-generating functions (e.g., `linear_model`, `quadratic_model`)
+* **Sufficient length for data sets**: A set of at least 10 coordinate pairs must be provided to any top-level, model-generating function; otherwise, an error will be raised
+
+If you want to generate a linear model, the following options will fail:
+
+.. code-block:: python
+
+    linear_model([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) # Argument must be list of lists
+    linear_model([1, 2], [3, 4]) # Argument's outer list must contain at least 10 lists
+
+In constast, this will work:
+
+.. code-block:: python
+
+    linear_model([[1, 2], [3, 4], [5, 6], [7, 8], [9, 10], [11, 12], [13, 14], [15, 16], [17, 18], [19, 20]])
+
+Specific Instructions
+*********************
+The following are specific examples of how to use the library. They provide examples of what was discussed above.
 
 Import
-******
+^^^^^^
+In order to use any of the functions in the library, you must first import them.
+
+Here are some imports of the most popular functions:
 
 .. code-block:: python
 
+    from regressions.execute import run_all
     from regressions.models.linear import linear_model
-    from regressions.vectors.multiplication import dot_product
+    from regressions.models.quadratic import quadratic_model
+    from regressions.models.cubic import cubic_model
+    from regressions.models.hyperbolic import hyperbolic_model
+    from regressions.models.exponential import exponential_model
+    from regressions.models.logarithmic import logarithmic_model
+    from regressions.models.logistic import logistic_model
+    from regressions.models.sinusoidal import sinusoidal_model
+
+To find out how to import any other function, view its specific page in this documentation. The first example provided within its documentation will explain how to import the specific function.
 
 Create Variables
-****************
+^^^^^^^^^^^^^^^^
+While not strictly necessary, it is often useful to store lists and numbers in variables.
+
+Here are some examples of variables to contain data sets:
 
 .. code-block:: python
 
-    data_set = [[1, 2], [3, 4]]
-    vector_one = [1, 2, 3]
-    vector_two = [4, 5, 6]
+    linear_set = [[1, 30], [2, 27], [3, 24], [4, 21], [5, 18], [6, 15], [7, 12], [8, 9], [9, 6], [10, 3]]
+    quadratic_set = [[1, 10], [2, 27], [3, 40], [4, 49], [5, 54], [6, 55], [7, 52], [8, 45], [9, 34], [10, 19]]
 
 Use Functions
-*************
+^^^^^^^^^^^^^
+As long as the function has been imported, you are free to use it on any data set.
+
+Here are some examples of using some of the above functions on the above data sets:
 
 .. code-block:: python
 
-    vector_product = dot_product(vector_one, vector_two)
+    linear_results = linear_model(linear_set)
+    quadratic_results = quadratic_model(quadratic_set)
 
 View Results
-************
+^^^^^^^^^^^^
+Often, you will want to view the results of calling a function on a particular data set. Especiallly since many of the top-level functions (e.g., `linear_model`, `quadratic_model`) provide data-rich dictionaries as their results, it is usually useful to specify which aspect of the dictionary you want to view.
+
+Here are some examples of accessing specific aspects of the above results:
 
 .. code-block:: python
 
-    print(vector_product) # 32
+    print(linear_results['constants']) # [-3.0, 33.0]
+    print(linear_results['points']['roots']) # [[11.0, 0]]
+    print(linear_results['accumulations']['range']) # 148.5
+    print(quadratic_results['constants']) # [-2.0, 23.0, -11.0]
+    print(quadratic_results['points']['maxima']) # [[5.75, 55.125]]
+    print(quadratic_results['averages']['iqr']['mean_values_derivative']) # [5.5]
 
-Complete Practice Set
-*********************
+Complete Tutorial
+*****************
 The following tutorial walks through all the steps for generating all the regression models for a specific data set.
 
 Import the `run_all` function:
