@@ -1,7 +1,5 @@
 # Regressions
 
-> Generates Multiple Statistical Regression Models for Data Sets
-
 The regressions library is a collection of algorithms for fitting data to different functional models by using linear algebra and machine learning. It can generate the following eight key regression models based on any data set: linear, quadratic, cubic, hyperbolic, exponential, logarithmic, logistic, and sinusoidal. For each model, it outputs the constants of the equation, notable graphical points, and the correlation coefficient, among other useful details. For more information, view the library's full [code base](https://github.com/jtreeves/regressions_library) to understand how it works or its [documentation](https://regressions.readthedocs.io/en/latest/) to master the nuances of its usage.
 
 ## Requirements
