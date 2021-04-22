@@ -1,47 +1,47 @@
 import unittest
 
-from library.analyses.equations.linear import linear_equation
-from library.analyses.equations.quadratic import quadratic_equation
-from library.analyses.equations.cubic import cubic_equation
-from library.analyses.equations.hyperbolic import hyperbolic_equation
-from library.analyses.equations.exponential import exponential_equation
-from library.analyses.equations.logarithmic import logarithmic_equation
-from library.analyses.equations.logistic import logistic_equation
-from library.analyses.equations.sinusoidal import sinusoidal_equation
-from library.analyses.roots.linear import linear_roots, linear_roots_first_derivative, linear_roots_second_derivative, linear_roots_initial_value, linear_roots_derivative_initial_value
-from library.analyses.roots.quadratic import quadratic_roots, quadratic_roots_first_derivative, quadratic_roots_second_derivative, quadratic_roots_initial_value, quadratic_roots_derivative_initial_value
-from library.analyses.roots.cubic import cubic_roots, cubic_roots_first_derivative, cubic_roots_second_derivative, cubic_roots_initial_value, cubic_roots_derivative_initial_value
-from library.analyses.roots.hyperbolic import hyperbolic_roots, hyperbolic_roots_first_derivative, hyperbolic_roots_second_derivative, hyperbolic_roots_initial_value, hyperbolic_roots_derivative_initial_value
-from library.analyses.roots.exponential import exponential_roots, exponential_roots_first_derivative, exponential_roots_second_derivative, exponential_roots_initial_value, exponential_roots_derivative_initial_value
-from library.analyses.roots.logarithmic import logarithmic_roots, logarithmic_roots_first_derivative, logarithmic_roots_second_derivative, logarithmic_roots_initial_value, logarithmic_roots_derivative_initial_value
-from library.analyses.roots.logistic import logistic_roots, logistic_roots_first_derivative, logistic_roots_second_derivative, logistic_roots_initial_value, logistic_roots_derivative_initial_value
-from library.analyses.roots.sinusoidal import sinusoidal_roots, sinusoidal_roots_first_derivative, sinusoidal_roots_second_derivative, sinusoidal_roots_initial_value, sinusoidal_roots_derivative_initial_value
-from library.analyses.derivatives.linear import linear_derivatives
-from library.analyses.derivatives.quadratic import quadratic_derivatives
-from library.analyses.derivatives.cubic import cubic_derivatives
-from library.analyses.derivatives.hyperbolic import hyperbolic_derivatives
-from library.analyses.derivatives.exponential import exponential_derivatives
-from library.analyses.derivatives.logarithmic import logarithmic_derivatives
-from library.analyses.derivatives.logistic import logistic_derivatives
-from library.analyses.derivatives.sinusoidal import sinusoidal_derivatives
-from library.analyses.integrals.linear import linear_integral
-from library.analyses.integrals.quadratic import quadratic_integral
-from library.analyses.integrals.cubic import cubic_integral
-from library.analyses.integrals.hyperbolic import hyperbolic_integral
-from library.analyses.integrals.exponential import exponential_integral
-from library.analyses.integrals.logarithmic import logarithmic_integral
-from library.analyses.integrals.logistic import logistic_integral
-from library.analyses.integrals.sinusoidal import sinusoidal_integral
-from library.analyses.criticals import critical_points
-from library.analyses.intervals import sign_chart
-from library.analyses.intercepts import intercept_points
-from library.analyses.maxima import maxima_points
-from library.analyses.minima import minima_points
-from library.analyses.extrema import extrema_points
-from library.analyses.inflections import inflection_points
-from library.analyses.points import coordinate_pairs, key_coordinates, points_within_range, shifted_points_within_range, shifted_coordinates_within_range
-from library.analyses.accumulation import accumulated_area
-from library.analyses.mean_values import average_values
+from regressions.analyses.equations.linear import linear_equation
+from regressions.analyses.equations.quadratic import quadratic_equation
+from regressions.analyses.equations.cubic import cubic_equation
+from regressions.analyses.equations.hyperbolic import hyperbolic_equation
+from regressions.analyses.equations.exponential import exponential_equation
+from regressions.analyses.equations.logarithmic import logarithmic_equation
+from regressions.analyses.equations.logistic import logistic_equation
+from regressions.analyses.equations.sinusoidal import sinusoidal_equation
+from regressions.analyses.roots.linear import linear_roots, linear_roots_first_derivative, linear_roots_second_derivative, linear_roots_initial_value, linear_roots_derivative_initial_value
+from regressions.analyses.roots.quadratic import quadratic_roots, quadratic_roots_first_derivative, quadratic_roots_second_derivative, quadratic_roots_initial_value, quadratic_roots_derivative_initial_value
+from regressions.analyses.roots.cubic import cubic_roots, cubic_roots_first_derivative, cubic_roots_second_derivative, cubic_roots_initial_value, cubic_roots_derivative_initial_value
+from regressions.analyses.roots.hyperbolic import hyperbolic_roots, hyperbolic_roots_first_derivative, hyperbolic_roots_second_derivative, hyperbolic_roots_initial_value, hyperbolic_roots_derivative_initial_value
+from regressions.analyses.roots.exponential import exponential_roots, exponential_roots_first_derivative, exponential_roots_second_derivative, exponential_roots_initial_value, exponential_roots_derivative_initial_value
+from regressions.analyses.roots.logarithmic import logarithmic_roots, logarithmic_roots_first_derivative, logarithmic_roots_second_derivative, logarithmic_roots_initial_value, logarithmic_roots_derivative_initial_value
+from regressions.analyses.roots.logistic import logistic_roots, logistic_roots_first_derivative, logistic_roots_second_derivative, logistic_roots_initial_value, logistic_roots_derivative_initial_value
+from regressions.analyses.roots.sinusoidal import sinusoidal_roots, sinusoidal_roots_first_derivative, sinusoidal_roots_second_derivative, sinusoidal_roots_initial_value, sinusoidal_roots_derivative_initial_value
+from regressions.analyses.derivatives.linear import linear_derivatives
+from regressions.analyses.derivatives.quadratic import quadratic_derivatives
+from regressions.analyses.derivatives.cubic import cubic_derivatives
+from regressions.analyses.derivatives.hyperbolic import hyperbolic_derivatives
+from regressions.analyses.derivatives.exponential import exponential_derivatives
+from regressions.analyses.derivatives.logarithmic import logarithmic_derivatives
+from regressions.analyses.derivatives.logistic import logistic_derivatives
+from regressions.analyses.derivatives.sinusoidal import sinusoidal_derivatives
+from regressions.analyses.integrals.linear import linear_integral
+from regressions.analyses.integrals.quadratic import quadratic_integral
+from regressions.analyses.integrals.cubic import cubic_integral
+from regressions.analyses.integrals.hyperbolic import hyperbolic_integral
+from regressions.analyses.integrals.exponential import exponential_integral
+from regressions.analyses.integrals.logarithmic import logarithmic_integral
+from regressions.analyses.integrals.logistic import logistic_integral
+from regressions.analyses.integrals.sinusoidal import sinusoidal_integral
+from regressions.analyses.criticals import critical_points
+from regressions.analyses.intervals import sign_chart
+from regressions.analyses.intercepts import intercept_points
+from regressions.analyses.maxima import maxima_points
+from regressions.analyses.minima import minima_points
+from regressions.analyses.extrema import extrema_points
+from regressions.analyses.inflections import inflection_points
+from regressions.analyses.points import coordinate_pairs, key_coordinates, points_within_range, shifted_points_within_range, shifted_coordinates_within_range
+from regressions.analyses.accumulation import accumulated_area
+from regressions.analyses.mean_values import average_values
 
 coefficients = [2, 3, 5, 7]
 

@@ -1,6 +1,6 @@
 Addition with Vectors
 ---------------------
-.. automodule:: library.vectors.addition
+.. automodule:: regressions.vectors.addition
     :members:
 
 .. |vector_addition| raw:: html

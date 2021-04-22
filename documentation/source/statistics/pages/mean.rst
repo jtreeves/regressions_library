@@ -1,6 +1,6 @@
 Mean of Data Set
 ----------------
-.. automodule:: library.statistics.mean
+.. automodule:: regressions.statistics.mean
     :members:
 
 .. |mean| raw:: html

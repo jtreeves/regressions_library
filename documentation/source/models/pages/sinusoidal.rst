@@ -1,6 +1,6 @@
 Sinusoidal Model
 ----------------
-.. automodule:: library.models.sinusoidal
+.. automodule:: regressions.models.sinusoidal
     :members:
 
 .. |regression_analysis| raw:: html

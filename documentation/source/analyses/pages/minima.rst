@@ -1,6 +1,6 @@
 Minima of Graph
 ---------------
-.. automodule:: library.analyses.minima
+.. automodule:: regressions.analyses.minima
     :members:
 
 .. |minima_values| raw:: html

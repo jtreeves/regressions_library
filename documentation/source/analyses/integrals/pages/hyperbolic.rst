@@ -1,6 +1,6 @@
 Hyperbolic Integral
 -------------------
-.. automodule:: library.analyses.integrals.hyperbolic
+.. automodule:: regressions.analyses.integrals.hyperbolic
     :members:
 
 .. |indefinite_integral| raw:: html

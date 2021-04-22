@@ -1,6 +1,6 @@
 Addition with Matrices
 ----------------------
-.. automodule:: library.matrices.addition
+.. automodule:: regressions.matrices.addition
     :members:
 
 .. |matrix_addition| raw:: html

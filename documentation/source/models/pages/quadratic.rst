@@ -1,6 +1,6 @@
 Quadratic Model
 ---------------
-.. automodule:: library.models.quadratic
+.. automodule:: regressions.models.quadratic
     :members:
 
 .. |regression_analysis| raw:: html

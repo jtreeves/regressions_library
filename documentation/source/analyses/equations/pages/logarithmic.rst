@@ -1,6 +1,6 @@
 Logarithmic Equation
 --------------------
-.. automodule:: library.analyses.equations.logarithmic
+.. automodule:: regressions.analyses.equations.logarithmic
     :members:
 
 .. |logarithmic_functions| raw:: html

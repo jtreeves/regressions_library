@@ -1,4 +1,4 @@
 Vector from Dimension of Matrix
 -------------------------------
-.. automodule:: library.vectors.dimension
+.. automodule:: regressions.vectors.dimension
     :members:

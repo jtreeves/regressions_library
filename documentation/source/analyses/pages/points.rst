@@ -1,6 +1,6 @@
 Points on Graph
 ---------------
-.. automodule:: library.analyses.points
+.. automodule:: regressions.analyses.points
     :members:
 
 .. |intercepts| raw:: html

@@ -1,4 +1,4 @@
 Unite Two Vectors
 -----------------
-.. automodule:: library.vectors.unify
+.. automodule:: regressions.vectors.unify
     :members:

@@ -1,6 +1,6 @@
 Exponential Model
 -----------------
-.. automodule:: library.models.exponential
+.. automodule:: regressions.models.exponential
     :members:
 
 .. |regression_analysis| raw:: html

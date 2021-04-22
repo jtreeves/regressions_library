@@ -1,6 +1,6 @@
 import unittest
 
-from library.execute import run_all
+from regressions.execute import run_all
 
 agnostic_set = [
     [1, 32],

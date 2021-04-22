@@ -1,6 +1,6 @@
 Generate All Models
 -------------------
-.. automodule:: library.execute
+.. automodule:: regressions.execute
     :members:
 
 .. |regression_analysis| raw:: html

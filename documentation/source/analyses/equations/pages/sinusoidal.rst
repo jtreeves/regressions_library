@@ -1,6 +1,6 @@
 Sinusoidal Equation
 -------------------
-.. automodule:: library.analyses.equations.sinusoidal
+.. automodule:: regressions.analyses.equations.sinusoidal
     :members:
 
 .. |sine_functions| raw:: html

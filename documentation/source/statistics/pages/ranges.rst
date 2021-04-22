@@ -1,6 +1,6 @@
 Range of Data Set
 -----------------
-.. automodule:: library.statistics.ranges
+.. automodule:: regressions.statistics.ranges
     :members:
 
 .. |range| raw:: html

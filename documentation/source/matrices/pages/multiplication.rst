@@ -1,6 +1,6 @@
 Multiplication with Matrices
 ----------------------------
-.. automodule:: library.matrices.multiplication
+.. automodule:: regressions.matrices.multiplication
     :members:
 
 .. |matrix_scalar_multiplication| raw:: html

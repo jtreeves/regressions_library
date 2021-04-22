@@ -1,4 +1,4 @@
 Separate a Vector
 -----------------
-.. automodule:: library.vectors.separate
+.. automodule:: regressions.vectors.separate
     :members:

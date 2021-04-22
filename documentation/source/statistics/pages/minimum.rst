@@ -1,6 +1,6 @@
 Minimum of Data Set
 -------------------
-.. automodule:: library.statistics.minimum
+.. automodule:: regressions.statistics.minimum
     :members:
 
 .. |minimum| raw:: html

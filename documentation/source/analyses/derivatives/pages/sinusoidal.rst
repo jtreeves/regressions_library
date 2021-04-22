@@ -1,6 +1,6 @@
 Sinusoidal Derivatives
 ----------------------
-.. automodule:: library.analyses.derivatives.sinusoidal
+.. automodule:: regressions.analyses.derivatives.sinusoidal
     :members:
 
 .. |differentiation_formulas| raw:: html

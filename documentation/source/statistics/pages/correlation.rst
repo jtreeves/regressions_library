@@ -1,6 +1,6 @@
 Correlation Coefficient of Model
 --------------------------------
-.. automodule:: library.statistics.correlation
+.. automodule:: regressions.statistics.correlation
     :members:
 
 .. |determination| raw:: html

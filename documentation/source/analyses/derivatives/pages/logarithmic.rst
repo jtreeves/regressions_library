@@ -1,6 +1,6 @@
 Logarithmic Derivatives
 -----------------------
-.. automodule:: library.analyses.derivatives.logarithmic
+.. automodule:: regressions.analyses.derivatives.logarithmic
     :members:
 
 .. |differentiation_formulas| raw:: html

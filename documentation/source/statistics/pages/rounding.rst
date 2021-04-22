@@ -1,6 +1,6 @@
 Round a Number
 --------------
-.. automodule:: library.statistics.rounding
+.. automodule:: regressions.statistics.rounding
     :members:
 
 .. |rounding| raw:: html

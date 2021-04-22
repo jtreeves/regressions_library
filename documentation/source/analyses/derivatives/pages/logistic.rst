@@ -1,6 +1,6 @@
 Logistic Derivatives
 --------------------
-.. automodule:: library.analyses.derivatives.logistic
+.. automodule:: regressions.analyses.derivatives.logistic
     :members:
 
 .. |differentiation_formulas| raw:: html

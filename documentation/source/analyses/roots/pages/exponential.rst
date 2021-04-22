@@ -1,4 +1,4 @@
 Exponential Roots
 -----------------
-.. automodule:: library.analyses.roots.exponential
+.. automodule:: regressions.analyses.roots.exponential
     :members:

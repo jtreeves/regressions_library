@@ -1,6 +1,6 @@
 Inverse of Matrix
 -----------------
-.. automodule:: library.matrices.inverse
+.. automodule:: regressions.matrices.inverse
     :members:
 
 .. |inverse| raw:: html

@@ -1,6 +1,6 @@
 Linear Derivatives
 ------------------
-.. automodule:: library.analyses.derivatives.linear
+.. automodule:: regressions.analyses.derivatives.linear
     :members:
 
 .. |differentiation_formulas| raw:: html

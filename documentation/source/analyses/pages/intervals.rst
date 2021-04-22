@@ -1,6 +1,6 @@
 Sign Charts of Derivatives
 --------------------------
-.. automodule:: library.analyses.intervals
+.. automodule:: regressions.analyses.intervals
     :members:
 
 .. |intervals| raw:: html

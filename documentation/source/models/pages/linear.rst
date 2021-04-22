@@ -1,6 +1,6 @@
 Linear Model
 ------------
-.. automodule:: library.models.linear
+.. automodule:: regressions.models.linear
     :members:
 
 .. |regression_analysis| raw:: html

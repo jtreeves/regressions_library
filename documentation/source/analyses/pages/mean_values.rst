@@ -1,6 +1,6 @@
 Mean Values of Function
 -----------------------
-.. automodule:: library.analyses.mean_values
+.. automodule:: regressions.analyses.mean_values
     :members:
 
 .. |mean_derivatives| raw:: html

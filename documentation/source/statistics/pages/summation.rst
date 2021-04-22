@@ -1,6 +1,6 @@
 Summation of All Numbers
 ------------------------
-.. automodule:: library.statistics.summation
+.. automodule:: regressions.statistics.summation
     :members:
 
 .. |summation_notation| raw:: html

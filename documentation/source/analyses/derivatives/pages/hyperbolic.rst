@@ -1,6 +1,6 @@
 Hyperbolic Derivatives
 ----------------------
-.. automodule:: library.analyses.derivatives.hyperbolic
+.. automodule:: regressions.analyses.derivatives.hyperbolic
     :members:
 
 .. |differentiation_formulas| raw:: html

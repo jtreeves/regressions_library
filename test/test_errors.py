@@ -1,11 +1,11 @@
 import unittest
 
-from library.errors.positions import argument_position
-from library.errors.adjustments import no_zeroes
-from library.errors.scalars import scalar_value, two_scalars, three_scalars, four_scalars, five_scalars, compare_scalars, positive_integer, whole_number, select_integers, allow_none_scalar
-from library.errors.vectors import confirm_vector, vector_of_scalars, vector_of_strings, compare_vectors, allow_none_vector, length, long_vector
-from library.errors.matrices import confirm_matrix, matrix_of_scalars, square_matrix, compare_rows, compare_columns, compare_matrices, columns_rows, allow_none_matrix, allow_vector_matrix, level
-from library.errors.analyses import select_equations, select_points
+from regressions.errors.positions import argument_position
+from regressions.errors.adjustments import no_zeroes
+from regressions.errors.scalars import scalar_value, two_scalars, three_scalars, four_scalars, five_scalars, compare_scalars, positive_integer, whole_number, select_integers, allow_none_scalar
+from regressions.errors.vectors import confirm_vector, vector_of_scalars, vector_of_strings, compare_vectors, allow_none_vector, length, long_vector
+from regressions.errors.matrices import confirm_matrix, matrix_of_scalars, square_matrix, compare_rows, compare_columns, compare_matrices, columns_rows, allow_none_matrix, allow_vector_matrix, level
+from regressions.errors.analyses import select_equations, select_points
 
 class TestPosition(unittest.TestCase):
     def test_position_none(self):

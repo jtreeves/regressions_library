@@ -1,6 +1,6 @@
 Quadratic Derivatives
 ---------------------
-.. automodule:: library.analyses.derivatives.quadratic
+.. automodule:: regressions.analyses.derivatives.quadratic
     :members:
 
 .. |differentiation_formulas| raw:: html

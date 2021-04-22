@@ -1,6 +1,6 @@
 Quartiles of Data Set
 ---------------------
-.. automodule:: library.statistics.quartiles
+.. automodule:: regressions.statistics.quartiles
     :members:
 
 .. |quartiles| raw:: html

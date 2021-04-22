@@ -1,6 +1,6 @@
 Quadratic Integral
 ------------------
-.. automodule:: library.analyses.integrals.quadratic
+.. automodule:: regressions.analyses.integrals.quadratic
     :members:
 
 .. |indefinite_integral| raw:: html

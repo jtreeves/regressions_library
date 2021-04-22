@@ -1,6 +1,6 @@
 Extrema of Graph
 ----------------
-.. automodule:: library.analyses.extrema
+.. automodule:: regressions.analyses.extrema
     :members:
 
 .. |extrema_values| raw:: html

@@ -1,6 +1,6 @@
 Sort a Data Set
 ---------------
-.. automodule:: library.statistics.sort
+.. automodule:: regressions.statistics.sort
     :members:
 
 .. |monotonic_function| raw:: html

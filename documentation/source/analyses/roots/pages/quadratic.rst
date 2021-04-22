@@ -1,6 +1,6 @@
 Quadratic Roots
 ---------------
-.. automodule:: library.analyses.roots.quadratic
+.. automodule:: regressions.analyses.roots.quadratic
     :members:
 
 .. |quadratic_formula| raw:: html

@@ -1,4 +1,4 @@
 Column Vector
 -------------
-.. automodule:: library.vectors.column
+.. automodule:: regressions.vectors.column
     :members:

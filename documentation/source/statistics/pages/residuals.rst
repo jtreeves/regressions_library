@@ -1,6 +1,6 @@
 Residuals of Data Set
 ---------------------
-.. automodule:: library.statistics.residuals
+.. automodule:: regressions.statistics.residuals
     :members:
 
 .. |residual| raw:: html

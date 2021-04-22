@@ -1,6 +1,6 @@
 Matrix of Cofactors
 -------------------
-.. automodule:: library.matrices.cofactors
+.. automodule:: regressions.matrices.cofactors
     :members:
 
 .. |cofactors| raw:: html

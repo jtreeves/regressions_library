@@ -1,6 +1,6 @@
 Inflection Points of Graph
 --------------------------
-.. automodule:: library.analyses.inflections
+.. automodule:: regressions.analyses.inflections
     :members:
 
 .. |inflection_points| raw:: html

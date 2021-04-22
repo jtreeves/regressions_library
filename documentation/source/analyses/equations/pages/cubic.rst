@@ -1,6 +1,6 @@
 Cubic Equation
 --------------
-.. automodule:: library.analyses.equations.cubic
+.. automodule:: regressions.analyses.equations.cubic
     :members:
 
 .. |cubic_functions| raw:: html

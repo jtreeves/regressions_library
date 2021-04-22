@@ -1,6 +1,6 @@
 Five-Number Summary
 -------------------
-.. automodule:: library.statistics.summary
+.. automodule:: regressions.statistics.summary
     :members:
 
 .. |five_number_summary| raw:: html

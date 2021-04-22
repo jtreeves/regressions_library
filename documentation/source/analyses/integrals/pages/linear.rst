@@ -1,6 +1,6 @@
 Linear Integral
 ---------------
-.. automodule:: library.analyses.integrals.linear
+.. automodule:: regressions.analyses.integrals.linear
     :members:
 
 .. |indefinite_integral| raw:: html

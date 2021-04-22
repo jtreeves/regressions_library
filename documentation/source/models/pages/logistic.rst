@@ -1,6 +1,6 @@
 Logistic Model
 --------------
-.. automodule:: library.models.logistic
+.. automodule:: regressions.models.logistic
     :members:
 
 .. |regression_analysis| raw:: html

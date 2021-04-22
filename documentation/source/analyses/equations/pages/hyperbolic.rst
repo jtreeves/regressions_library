@@ -1,6 +1,6 @@
 Hyperbolic Equation
 -------------------
-.. automodule:: library.analyses.equations.hyperbolic
+.. automodule:: regressions.analyses.equations.hyperbolic
     :members:
 
 .. |rational_functions| raw:: html

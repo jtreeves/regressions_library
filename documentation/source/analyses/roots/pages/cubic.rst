@@ -1,6 +1,6 @@
 Cubic Roots
 -----------
-.. automodule:: library.analyses.roots.cubic
+.. automodule:: regressions.analyses.roots.cubic
     :members:
 
 .. |cubic_formula| raw:: html

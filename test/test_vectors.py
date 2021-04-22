@@ -1,16 +1,16 @@
 import unittest
 
-from library.vectors.components import component_form
-from library.vectors.direction import vector_direction
-from library.vectors.magnitude import vector_magnitude
-from library.vectors.unit import unit_vector
-from library.vectors.column import column_conversion
-from library.vectors.dimension import single_dimension
-from library.vectors.separate import separate_elements
-from library.vectors.generate import generate_elements
-from library.vectors.unify import unite_vectors
-from library.vectors.addition import vector_sum
-from library.vectors.multiplication import scalar_product_vector, dot_product
+from regressions.vectors.components import component_form
+from regressions.vectors.direction import vector_direction
+from regressions.vectors.magnitude import vector_magnitude
+from regressions.vectors.unit import unit_vector
+from regressions.vectors.column import column_conversion
+from regressions.vectors.dimension import single_dimension
+from regressions.vectors.separate import separate_elements
+from regressions.vectors.generate import generate_elements
+from regressions.vectors.unify import unite_vectors
+from regressions.vectors.addition import vector_sum
+from regressions.vectors.multiplication import scalar_product_vector, dot_product
 
 first_point = [2, -3]
 second_point = [5, 7]

@@ -1,6 +1,6 @@
 Quadratic Equation
 ------------------
-.. automodule:: library.analyses.equations.quadratic
+.. automodule:: regressions.analyses.equations.quadratic
     :members:
 
 .. |quadratic_functions| raw:: html

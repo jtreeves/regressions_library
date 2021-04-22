@@ -1,6 +1,6 @@
 Logarithmic Model
 -----------------
-.. automodule:: library.models.logarithmic
+.. automodule:: regressions.models.logarithmic
     :members:
 
 .. |regression_analysis| raw:: html

@@ -1,6 +1,6 @@
 Logistic Equation
 -----------------
-.. automodule:: library.analyses.equations.logistic
+.. automodule:: regressions.analyses.equations.logistic
     :members:
 
 .. |logistic_functions| raw:: html

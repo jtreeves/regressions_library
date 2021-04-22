@@ -1,6 +1,6 @@
 Cubic Model
 -----------
-.. automodule:: library.models.cubic
+.. automodule:: regressions.models.cubic
     :members:
 
 .. |regression_analysis| raw:: html

@@ -1,6 +1,6 @@
 Intercepts of Graph
 -------------------
-.. automodule:: library.analyses.intercepts
+.. automodule:: regressions.analyses.intercepts
     :members:
 
 .. |intercepts| raw:: html

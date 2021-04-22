@@ -1,4 +1,4 @@
 Halve a Data Set
 ----------------
-.. automodule:: library.statistics.halve
+.. automodule:: regressions.statistics.halve
     :members:

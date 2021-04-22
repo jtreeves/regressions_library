@@ -1,6 +1,6 @@
 Sinusoidal Integral
 -------------------
-.. automodule:: library.analyses.integrals.sinusoidal
+.. automodule:: regressions.analyses.integrals.sinusoidal
     :members:
 
 .. |indefinite_integral| raw:: html

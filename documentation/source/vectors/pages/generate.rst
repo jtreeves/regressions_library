@@ -1,4 +1,4 @@
 Generate a Vector
 -----------------
-.. automodule:: library.vectors.generate
+.. automodule:: regressions.vectors.generate
     :members:

@@ -1,6 +1,6 @@
 Logarithmic Integral
 --------------------
-.. automodule:: library.analyses.integrals.logarithmic
+.. automodule:: regressions.analyses.integrals.logarithmic
     :members:
 
 .. |indefinite_integral| raw:: html

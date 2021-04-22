@@ -1,6 +1,6 @@
 Maximum of Data Set
 -------------------
-.. automodule:: library.statistics.maximum
+.. automodule:: regressions.statistics.maximum
     :members:
 
 .. |maximum| raw:: html

@@ -1,6 +1,6 @@
 Transpose a Matrix
 ------------------
-.. automodule:: library.matrices.transpose
+.. automodule:: regressions.matrices.transpose
     :members:
 
 .. |adjugate| raw:: html

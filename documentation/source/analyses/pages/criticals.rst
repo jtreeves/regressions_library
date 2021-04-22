@@ -1,6 +1,6 @@
 Critical Values of Derivatives
 ------------------------------
-.. automodule:: library.analyses.criticals
+.. automodule:: regressions.analyses.criticals
     :members:
 
 .. |critical_points| raw:: html

@@ -1,6 +1,6 @@
 Linear Roots
 ------------
-.. automodule:: library.analyses.roots.linear
+.. automodule:: regressions.analyses.roots.linear
     :members:
 
 .. |linear_formula| raw:: html

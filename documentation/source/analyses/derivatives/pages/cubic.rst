@@ -1,6 +1,6 @@
 Cubic Derivatives
 -----------------
-.. automodule:: library.analyses.derivatives.cubic
+.. automodule:: regressions.analyses.derivatives.cubic
     :members:
 
 .. |differentiation_formulas| raw:: html

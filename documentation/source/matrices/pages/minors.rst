@@ -1,6 +1,6 @@
 Matrix of Minors
 ----------------
-.. automodule:: library.matrices.minors
+.. automodule:: regressions.matrices.minors
     :members:
 
 .. |minors| raw:: html

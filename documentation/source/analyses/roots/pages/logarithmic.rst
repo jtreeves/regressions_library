@@ -1,4 +1,4 @@
 Logarithmic Roots
 -----------------
-.. automodule:: library.analyses.roots.logarithmic
+.. automodule:: regressions.analyses.roots.logarithmic
     :members:

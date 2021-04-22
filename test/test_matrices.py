@@ -1,13 +1,13 @@
 import unittest
 
-from library.matrices.addition import matrix_sum
-from library.matrices.multiplication import scalar_product_matrix, matrix_product
-from library.matrices.transpose import transposed_matrix
-from library.matrices.cofactors import matrix_of_cofactors
-from library.matrices.determinant import linear_determinant
-from library.matrices.minors import matrix_of_minors
-from library.matrices.inverse import inverse_matrix
-from library.matrices.solve import system_solution
+from regressions.matrices.addition import matrix_sum
+from regressions.matrices.multiplication import scalar_product_matrix, matrix_product
+from regressions.matrices.transpose import transposed_matrix
+from regressions.matrices.cofactors import matrix_of_cofactors
+from regressions.matrices.determinant import linear_determinant
+from regressions.matrices.minors import matrix_of_minors
+from regressions.matrices.inverse import inverse_matrix
+from regressions.matrices.solve import system_solution
 
 first_2d = [
     [5, 8],

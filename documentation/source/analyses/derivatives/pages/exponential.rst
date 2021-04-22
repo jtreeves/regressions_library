@@ -1,6 +1,6 @@
 Exponential Derivatives
 -----------------------
-.. automodule:: library.analyses.derivatives.exponential
+.. automodule:: regressions.analyses.derivatives.exponential
     :members:
 
 .. |differentiation_formulas| raw:: html

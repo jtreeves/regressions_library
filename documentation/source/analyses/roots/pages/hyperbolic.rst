@@ -1,4 +1,4 @@
 Hyperbolic Roots
 ----------------
-.. automodule:: library.analyses.roots.hyperbolic
+.. automodule:: regressions.analyses.roots.hyperbolic
     :members:

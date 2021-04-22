@@ -1,6 +1,6 @@
 Exponential Equation
 --------------------
-.. automodule:: library.analyses.equations.exponential
+.. automodule:: regressions.analyses.equations.exponential
     :members:
 
 .. |exponential_functions| raw:: html

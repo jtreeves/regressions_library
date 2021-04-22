@@ -1,6 +1,6 @@
 Unit Vector
 -----------
-.. automodule:: library.vectors.unit
+.. automodule:: regressions.vectors.unit
     :members:
 
 .. |unit_vector| raw:: html

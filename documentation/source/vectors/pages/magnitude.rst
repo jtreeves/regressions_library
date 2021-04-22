@@ -1,6 +1,6 @@
 Magnitude of Vector
 -------------------
-.. automodule:: library.vectors.magnitude
+.. automodule:: regressions.vectors.magnitude
     :members:
 
 .. |magnitude| raw:: html

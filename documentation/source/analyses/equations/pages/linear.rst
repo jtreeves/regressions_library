@@ -1,6 +1,6 @@
 Linear Equation
 ---------------
-.. automodule:: library.analyses.equations.linear
+.. automodule:: regressions.analyses.equations.linear
     :members:
 
 .. |linear_functions| raw:: html

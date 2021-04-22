@@ -1,13 +1,13 @@
 import unittest
 
-from library.models.linear import linear_model
-from library.models.quadratic import quadratic_model
-from library.models.cubic import cubic_model
-from library.models.hyperbolic import hyperbolic_model
-from library.models.exponential import exponential_model
-from library.models.logarithmic import logarithmic_model
-from library.models.logistic import logistic_model
-from library.models.sinusoidal import sinusoidal_model
+from regressions.models.linear import linear_model
+from regressions.models.quadratic import quadratic_model
+from regressions.models.cubic import cubic_model
+from regressions.models.hyperbolic import hyperbolic_model
+from regressions.models.exponential import exponential_model
+from regressions.models.logarithmic import logarithmic_model
+from regressions.models.logistic import logistic_model
+from regressions.models.sinusoidal import sinusoidal_model
 
 linear_set = [
     [1, 30],

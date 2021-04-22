@@ -1,6 +1,6 @@
 Deviations of Data Set
 ----------------------
-.. automodule:: library.statistics.deviations
+.. automodule:: regressions.statistics.deviations
     :members:
 
 .. |deviation| raw:: html

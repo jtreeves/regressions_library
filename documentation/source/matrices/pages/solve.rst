@@ -1,6 +1,6 @@
 Solve Systems with Matrices
 ---------------------------
-.. automodule:: library.matrices.solve
+.. automodule:: regressions.matrices.solve
     :members:
 
 .. |solve| raw:: html

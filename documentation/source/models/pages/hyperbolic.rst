@@ -1,6 +1,6 @@
 Hyperbolic Model
 ----------------
-.. automodule:: library.models.hyperbolic
+.. automodule:: regressions.models.hyperbolic
     :members:
 
 .. |regression_analysis| raw:: html

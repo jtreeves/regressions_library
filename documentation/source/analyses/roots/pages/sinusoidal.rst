@@ -1,4 +1,4 @@
 Sinusoidal Roots
 ----------------
-.. automodule:: library.analyses.roots.sinusoidal
+.. automodule:: regressions.analyses.roots.sinusoidal
     :members:

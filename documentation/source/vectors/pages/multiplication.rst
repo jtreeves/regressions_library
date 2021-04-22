@@ -1,6 +1,6 @@
 Multiplication with Vectors
 ---------------------------
-.. automodule:: library.vectors.multiplication
+.. automodule:: regressions.vectors.multiplication
     :members:
 
 .. |scalar_multiplication| raw:: html

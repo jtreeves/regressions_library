@@ -1,4 +1,4 @@
 Logistic Roots
 --------------
-.. automodule:: library.analyses.roots.logistic
+.. automodule:: regressions.analyses.roots.logistic
     :members:

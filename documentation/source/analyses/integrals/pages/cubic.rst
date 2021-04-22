@@ -1,6 +1,6 @@
 Cubic Integral
 --------------
-.. automodule:: library.analyses.integrals.cubic
+.. automodule:: regressions.analyses.integrals.cubic
     :members:
 
 .. |indefinite_integral| raw:: html

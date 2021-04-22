@@ -1,6 +1,6 @@
 Direction of Vector
 -------------------
-.. automodule:: library.vectors.direction
+.. automodule:: regressions.vectors.direction
     :members:
 
 .. |direction| raw:: html

@@ -1,6 +1,6 @@
 Component Form of Vector
 ------------------------
-.. automodule:: library.vectors.components
+.. automodule:: regressions.vectors.components
     :members:
 
 .. |component_form| raw:: html

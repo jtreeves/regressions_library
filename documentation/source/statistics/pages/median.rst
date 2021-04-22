@@ -1,6 +1,6 @@
 Median of Data Set
 ------------------
-.. automodule:: library.statistics.median
+.. automodule:: regressions.statistics.median
     :members:
 
 .. |median| raw:: html

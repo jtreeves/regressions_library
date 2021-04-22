@@ -1,6 +1,6 @@
 Maxima of Graph
 ---------------
-.. automodule:: library.analyses.maxima
+.. automodule:: regressions.analyses.maxima
     :members:
 
 .. |maxima_values| raw:: html

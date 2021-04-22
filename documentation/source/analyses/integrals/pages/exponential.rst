@@ -1,6 +1,6 @@
 Exponential Integral
 --------------------
-.. automodule:: library.analyses.integrals.exponential
+.. automodule:: regressions.analyses.integrals.exponential
     :members:
 
 .. |indefinite_integral| raw:: html

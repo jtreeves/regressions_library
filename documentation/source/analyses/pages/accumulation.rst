@@ -1,6 +1,6 @@
 Accumulation of Function
 ------------------------
-.. automodule:: library.analyses.accumulation
+.. automodule:: regressions.analyses.accumulation
     :members:
 
 .. |definite_integral| raw:: html

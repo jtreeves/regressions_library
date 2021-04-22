@@ -1,19 +1,19 @@
 import unittest
 
-from library.statistics.rounding import rounded_value, rounded_list
-from library.statistics.summation import sum_value
-from library.statistics.sort import sorted_list, sorted_dimension, sorted_strings
-from library.statistics.halve import half, half_dimension
-from library.statistics.minimum import minimum_value
-from library.statistics.maximum import maximum_value
-from library.statistics.quartiles import quartile_value
-from library.statistics.median import median_value
-from library.statistics.mean import mean_value
-from library.statistics.summary import five_number_summary
-from library.statistics.ranges import range_value, shift_into_range
-from library.statistics.deviations import multiple_deviations
-from library.statistics.residuals import multiple_residuals
-from library.statistics.correlation import correlation_coefficient
+from regressions.statistics.rounding import rounded_value, rounded_list
+from regressions.statistics.summation import sum_value
+from regressions.statistics.sort import sorted_list, sorted_dimension, sorted_strings
+from regressions.statistics.halve import half, half_dimension
+from regressions.statistics.minimum import minimum_value
+from regressions.statistics.maximum import maximum_value
+from regressions.statistics.quartiles import quartile_value
+from regressions.statistics.median import median_value
+from regressions.statistics.mean import mean_value
+from regressions.statistics.summary import five_number_summary
+from regressions.statistics.ranges import range_value, shift_into_range
+from regressions.statistics.deviations import multiple_deviations
+from regressions.statistics.residuals import multiple_residuals
+from regressions.statistics.correlation import correlation_coefficient
 
 even_set = [8, 2, 5, 9, 1, 3, 22, 11, 9, 13]
 odd_set = [7, 4, 6, 8, 2, 5, 25, 14, 8]

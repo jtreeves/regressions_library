@@ -1,6 +1,6 @@
 Logistic Integral
 -----------------
-.. automodule:: library.analyses.integrals.logistic
+.. automodule:: regressions.analyses.integrals.logistic
     :members:
 
 .. |indefinite_integral| raw:: html

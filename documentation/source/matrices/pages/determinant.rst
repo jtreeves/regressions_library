@@ -1,6 +1,6 @@
 Determinant of Matrix
 ---------------------
-.. automodule:: library.matrices.determinant
+.. automodule:: regressions.matrices.determinant
     :members:
 
 .. |determinant| raw:: html
