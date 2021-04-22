@@ -18,8 +18,14 @@ setup(
     },
     classifiers=[
         'License :: OSI Approved :: MIT License',
+        'Programming Language :: Python',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.9',
+        'Topic :: Scientific/Engineering',
+        'Topic :: Scientific/Engineering :: Mathematics',
+        'Topic :: Software Development',
+        'Topic :: Software Development :: Libraries',
+        'Topic :: Software Development :: Libraries :: Python Modules'
     ],
     install_requires=['numpy', 'scipy']
 )
