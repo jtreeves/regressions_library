@@ -51,6 +51,10 @@ def linear_determinant(matrix, result = 0):
     determinant : float
         Determinant of a matrix
 
+    Warning
+    -------
+    Function has factorial time complexity; not recommended for matrices larger than 5-by-5
+
     See Also
     --------
     :func:`~library.matrices.minors.matrix_of_minors`, :func:`~library.matrices.inverse.inverse_matrix`

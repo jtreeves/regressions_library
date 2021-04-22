@@ -8,9 +8,9 @@ Analyses
     derivatives/index
     integrals/index
     roots/index
-    pages/intercepts
     pages/criticals
     pages/intervals
+    pages/intercepts
     pages/maxima
     pages/minima
     pages/extrema

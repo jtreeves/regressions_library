@@ -6,6 +6,8 @@ General Guidelines
 ******************
 
 * **Arguments**: Most functions take lists or numbers as their arguments
+* **Verbosity**: Most functions have long, verbose names involving two or more words joined by underscores; as a result, the functionality associated with each function should be clear, but using it can be cumbersome to type; feel free to import functions as some shorter alias (e.g., `linmod` instead of `linear_model`)
+* **Imports**: Most functions are nested in file structures that coincide with their final names (e.g., `linear_model` is found at `regressions.models.linear`); as a result, import statements are rarely ever short (e.g., `from regressions import linear_model` will not work)
 * **Precision**: Most functions include an optional `precision` parameter to determine the maximum number of digits that will appear after the decimal place; if no value is provided, it will default to 4
 * **Coordinate pairs**: List notation is used to indicate the coordinate pairs of points (e.g., [2, 3] for a point with an x-coordinate of 2 and a y-coordinate of 3); a list of lists is used to indicate a set of coordinate pairs (e.g., [[1, 2], [3, 4], [5, 6]] for a set containing three points); the latter nested list notation is necessary for providing arguments for top-level, model-generating functions (e.g., `linear_model`, `quadratic_model`)
 * **Sufficient length for data sets**: A set of at least 10 coordinate pairs must be provided to any top-level, model-generating function; otherwise, an error will be raised
