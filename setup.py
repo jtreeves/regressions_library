@@ -2,13 +2,25 @@ from setuptools import setup, find_packages
 
 setup(
     name='regressions',
-    version='2.0.0',
+    version='2.0.4',
     url='https://github.com/jtreeves/regressions_library',
     license='MIT',
     author='Jackson Reeves',
     author_email='jr@jacksonreeves.com',
     description='Generate regression models from data',
-    packages=['library'],
+    packages=[
+        'regressions',
+        'regressions.models',
+        'regressions.analyses',
+        'regressions.analyses.equations',
+        'regressions.analyses.derivatives',
+        'regressions.analyses.integrals',
+        'regressions.analyses.roots',
+        'regressions.statistics',
+        'regressions.matrices',
+        'regressions.vectors',
+        'regressions.errors'
+    ],
     include_package_data=True,
     long_description=open('PYPI.md').read(),
     long_description_content_type='text/markdown',
