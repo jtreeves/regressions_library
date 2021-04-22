@@ -9,3 +9,7 @@ A description of the library.
 Inspiration
 ***********
 The inspiration for the library.
+
+Value
+*****
+So why should you use this library?

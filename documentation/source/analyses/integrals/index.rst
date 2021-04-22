@@ -1,5 +1,6 @@
 Integrals of Functions
 ======================
+These functions generate the integrals of the eight key functions: linear, quadratic, cubic, hyperbolic, exponential, logarithmic, logistic, and sinusoidal. They provide both the coefficients of the integrals as well as the evaluations of them.
 
 .. toctree::
     :maxdepth: 3
