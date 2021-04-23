@@ -18,6 +18,12 @@ To download this library directly from PyPI via pip, you can execute this in the
 
     pip3 install regressions
 
+If you already have an older version of this library installed on your computer and you want to upgrade to the latest version, you can execute this in the command line:
+
+.. code-block::
+
+    pip3 install --ugrade regressions
+
 .. |pypi| raw:: html
 
     <a href="https://pypi.org/project/regressions/" target="_blank">PyPI page</a>
