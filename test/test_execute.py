@@ -119,6 +119,12 @@ sinusoidal_set = [
     [10, 8]
 ]
 
+weather_set = [[1, 53], [2, 58], [3, 66], [4, 73], [5, 80], [6, 87], [7, 89], [8, 88], [9, 83], [10, 74], [11, 64], [12, 55]]
+
+disease_set = [[1, 4], [2, 20], [3, 7117], [4, 72390], [5, 110593], [6, 128525], [7, 159539], [8, 189293], [9, 208337], [10, 232942], [11, 285620], [12, 382580]]
+
+profits_set = [[152, 17892.35], [167, 18672.32], [178, 21321.67], [193, 24178.92], [201, 25761.21], [214, 23111.43], [229, 21245.87], [236, 19678.25], [247, 18721.17], [258, 16239.55]]
+
 large_set = [[169, 423], [122, 391], [178, 555], [131, 284], [120, 520], [179, 558], [164, 265], [167, 338], [198, 445], [139, 402], [183, 725], [133, 470], [156, 573], [159, 325], [121, 653], [118, 358], [122, 633], [167, 487], [161, 453], [194, 488], [170, 517], [124, 377], [191, 310], [194, 398], [173, 744], [166, 389], [113, 583], [109, 380], [126, 668], [144, 491], [107, 533], [188, 355], [147, 553], [169, 497], [121, 606], [132, 373], [111, 554], [173, 669], [177, 483], [122, 340], [171, 286], [108, 681], [139, 502], [115, 339], [174, 396], [134, 625], [147, 435], [146, 555], [147, 656], [126, 354], [155, 679], [181, 629], [149, 417], [119, 374], [102, 422], [112, 292], [108, 464], [109, 559], [112, 635], [159, 518], [180, 304], [185, 567], [165, 299], [160, 337], [133, 730], [193, 374], [164, 537], [172, 592], [173, 660], [186, 290], [170, 670], [192, 687], [154, 596], [154, 464], [125, 383], [193, 559], [155, 586], [149, 406], [131, 590], [127, 339], [163, 378], [145, 254], [156, 395], [166, 355], [189, 661], [133, 685], [168, 685], [190, 736], [145, 564], [125, 470], [129, 541], [133, 439], [162, 486], [125, 387], [183, 596], [135, 733], [106, 329], [100, 279], [102, 439], [162, 454]]
 
 bad_set_string = 'data'
@@ -1387,6 +1393,426 @@ class TestSinusoidalModels(unittest.TestCase):
     
     def test_sinusoidal_optimal(self):
         self.assertEqual(sinusoidal_models['optimal']['option'], 'sinusoidal')
+
+weather_models = run_all(weather_set)
+
+class TestWeatherModels(unittest.TestCase):
+    maxDiff = None
+
+    # LINEAR MODEL
+    def test_weather_models_linear_constants(self):
+        self.assertEqual(weather_models['models']['linear']['constants'], [0.7273, 67.7727])
+    
+    def test_weather_models_linear_points(self):
+        self.assertEqual(weather_models['models']['linear']['points'], {'roots': [[-93.184, 0]], 'maxima': [None], 'minima': [None], 'inflections': [None]})
+    
+    def test_weather_models_linear_accumulations(self):
+        self.assertEqual(weather_models['models']['linear']['accumulations'], {'range': 797.4945, 'iqr': 434.9969})
+    
+    def test_weather_models_linear_averages(self):
+        self.assertEqual(weather_models['models']['linear']['averages'], {'range': {'average_value_derivative': 0.7273, 'mean_values_derivative': ['All'], 'average_value_integral': 72.4995, 'mean_values_integral': [6.4991]}, 'iqr': {'average_value_derivative': 0.7273, 'mean_values_derivative': ['All'], 'average_value_integral': 72.4995, 'mean_values_integral': [6.4991]}})
+    
+    def test_weather_models_linear_correlation(self):
+        self.assertEqual(weather_models['models']['linear']['correlation'], 0.1994)
+    
+    # QUADRATIC MODEL
+    def test_weather_models_quadratic_constants(self):
+        self.assertEqual(weather_models['models']['quadratic']['constants'], [-1.1374, 15.513, 33.2727])
+    
+    def test_weather_models_quadratic_points(self):
+        self.assertEqual(weather_models['models']['quadratic']['points'], {'roots': [[-1.8845, 0.0], [15.5235, 0.0]], 'maxima': [[6.8195, 86.1682]], 'minima': [None], 'inflections': [None]})
+    
+    def test_weather_models_quadratic_accumulations(self):
+        self.assertEqual(weather_models['models']['quadratic']['accumulations'], {'range': 820.4735, 'iqr': 495.8662})
+    
+    def test_weather_models_quadratic_averages(self):
+        self.assertEqual(weather_models['models']['quadratic']['averages'], {'range': {'average_value_derivative': 0.7268, 'mean_values_derivative': [6.5], 'average_value_integral': 74.5885, 'mean_values_integral': [3.6288, 10.0102]}, 'iqr': {'average_value_derivative': 0.7268, 'mean_values_derivative': [6.5], 'average_value_integral': 82.6444, 'mean_values_integral': [5.0594, 8.5796]}})
+    
+    def test_weather_models_quadratic_correlation(self):
+        self.assertEqual(weather_models['models']['quadratic']['correlation'], 0.9731)
+    
+    # CUBIC MODEL
+    def test_weather_models_cubic_constants(self):
+        self.assertEqual(weather_models['models']['cubic']['constants'], [-0.0694, 0.2162, 8.19, 42.7475])
+    
+    def test_weather_models_cubic_points(self):
+        self.assertEqual(weather_models['models']['cubic']['points'], {'roots': [[14.3401, 0]], 'maxima': [[7.3957, 87.0701]], 'minima': [[-5.3189, 15.7451]], 'inflections': [[1.0384, 51.4074]]})
+    
+    def test_weather_models_cubic_accumulations(self):
+        self.assertEqual(weather_models['models']['cubic']['accumulations'], {'range': 819.5352, 'iqr': 495.5075})
+    
+    def test_weather_models_cubic_averages(self):
+        self.assertEqual(weather_models['models']['cubic']['averages'], {'range': {'average_value_derivative': 0.1048, 'mean_values_derivative': [7.356], 'average_value_integral': 74.5032, 'mean_values_integral': [3.9967, 10.2683]}, 'iqr': {'average_value_derivative': 1.5796, 'mean_values_derivative': [6.768], 'average_value_integral': 82.5846, 'mean_values_integral': [5.4533, 9.1571]}})
+    
+    def test_weather_models_cubic_correlation(self):
+        self.assertEqual(weather_models['models']['cubic']['correlation'], 0.9881)
+    
+    # HYPERBOLIC MODEL
+    def test_weather_models_hyperbolic_constants(self):
+        self.assertEqual(weather_models['models']['hyperbolic']['constants'], [-28.1904, 79.7901])
+    
+    def test_weather_models_hyperbolic_points(self):
+        self.assertEqual(weather_models['models']['hyperbolic']['points'], {'roots': [[0.3533, 0.0]], 'maxima': [None], 'minima': [None], 'inflections': [None]})
+    
+    def test_weather_models_hyperbolic_accumulations(self):
+        self.assertEqual(weather_models['models']['hyperbolic']['accumulations'], {'range': 807.6406, 'iqr': 450.5916})
+    
+    def test_weather_models_hyperbolic_averages(self):
+        self.assertEqual(weather_models['models']['hyperbolic']['averages'], {'range': {'average_value_derivative': 2.3492, 'mean_values_derivative': [3.4641], 'average_value_integral': 73.4219, 'mean_values_integral': [4.4267]}, 'iqr': {'average_value_derivative': 0.8478, 'mean_values_derivative': [5.7664], 'average_value_integral': 75.0986, 'mean_values_integral': [6.0088]}})
+    
+    def test_weather_models_hyperbolic_correlation(self):
+        self.assertEqual(weather_models['models']['hyperbolic']['correlation'], 0.5643)
+    
+    # EXPONENTIAL MODEL
+    def test_weather_models_exponential_constants(self):
+        self.assertEqual(weather_models['models']['exponential']['constants'], [66.593, 1.0107])
+    
+    def test_weather_models_exponential_points(self):
+        self.assertEqual(weather_models['models']['exponential']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [None]})
+    
+    def test_weather_models_exponential_accumulations(self):
+        self.assertEqual(weather_models['models']['exponential']['accumulations'], {'range': 785.4418, 'iqr': 428.2509})
+    
+    def test_weather_models_exponential_averages(self):
+        self.assertEqual(weather_models['models']['exponential']['averages'], {'range': {'average_value_derivative': 0.76, 'mean_values_derivative': [6.5583], 'average_value_integral': 71.4038, 'mean_values_integral': [6.5537]}, 'iqr': {'average_value_derivative': 0.7597, 'mean_values_derivative': [6.5213], 'average_value_integral': 71.3752, 'mean_values_integral': [6.516]}})
+    
+    def test_weather_models_exponential_correlation(self):
+        self.assertEqual(weather_models['models']['exponential']['correlation'], 0.1604)
+    
+    # LOGARITHMIC MODEL
+    def test_weather_models_logarithmic_constants(self):
+        self.assertEqual(weather_models['models']['logarithmic']['constants'], [7.7255, 59.6324])
+    
+    def test_weather_models_logarithmic_points(self):
+        self.assertEqual(weather_models['models']['logarithmic']['points'], {'roots': [[0.0004, 0.0]], 'maxima': [None], 'minima': [None], 'inflections': [None]})
+    
+    def test_weather_models_logarithmic_accumulations(self):
+        self.assertEqual(weather_models['models']['logarithmic']['accumulations'], {'range': 801.3417, 'iqr': 442.795})
+    
+    def test_weather_models_logarithmic_averages(self):
+        self.assertEqual(weather_models['models']['logarithmic']['averages'], {'range': {'average_value_derivative': 1.7452, 'mean_values_derivative': [4.4267], 'average_value_integral': 72.8492, 'mean_values_integral': [5.5334]}, 'iqr': {'average_value_derivative': 1.2857, 'mean_values_derivative': [6.0088], 'average_value_integral': 73.7992, 'mean_values_integral': [6.2574]}})
+    
+    def test_weather_models_logarithmic_correlation(self):
+        self.assertEqual(weather_models['models']['logarithmic']['correlation'], 0.4439)
+    
+    # LOGISTIC MODEL
+    def test_weather_models_logistic_constants(self):
+        self.assertEqual(weather_models['models']['logistic']['constants'], [77.2229, 0.8019, 0.2483])
+    
+    def test_weather_models_logistic_points(self):
+        self.assertEqual(weather_models['models']['logistic']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [[0.2483, 38.6114]]})
+    
+    def test_weather_models_logistic_accumulations(self):
+        self.assertEqual(weather_models['models']['logistic']['accumulations'], {'range': 807.4246, 'iqr': 456.5458})
+    
+    def test_weather_models_logistic_averages(self):
+        self.assertEqual(weather_models['models']['logistic']['averages'], {'range': {'average_value_derivative': 2.4825, 'mean_values_derivative': [4.152], 'average_value_integral': 73.4022, 'mean_values_integral': [3.9339]}, 'iqr': {'average_value_derivative': 0.8759, 'mean_values_derivative': [5.5192], 'average_value_integral': 76.091, 'mean_values_integral': [5.4959]}})
+    
+    def test_weather_models_logistic_correlation(self):
+        self.assertEqual(weather_models['models']['logistic']['correlation'], 0.6298)
+    
+    # SINUSOIDAL MODEL
+    def test_weather_models_sinusoidal_constants(self):
+        self.assertEqual(weather_models['models']['sinusoidal']['constants'], [16.722, -0.6093, -11.0, 74.6609])
+    
+    def test_weather_models_sinusoidal_points(self):
+        self.assertEqual(weather_models['models']['sinusoidal']['points'], {'roots': [None], 'maxima': [[7.0465, 91.3829], ['7.0465 + -10.3122k', 91.3829]], 'minima': [[1.8904, 57.9389], ['1.8904 + -10.3122k', 57.9389]], 'inflections': [[4.4683, 74.6612], ['4.4683 + -5.1561k', 74.6612]]})
+    
+    def test_weather_models_sinusoidal_accumulations(self):
+        self.assertEqual(weather_models['models']['sinusoidal']['accumulations'], {'range': 810.4781, 'iqr': 498.1373})
+    
+    def test_weather_models_sinusoidal_averages(self):
+        self.assertEqual(weather_models['models']['sinusoidal']['averages'], {'range': {'average_value_derivative': -0.2066, 'mean_values_derivative': [1.8568, 7.0794, '1.8568 + -10.3121k', '7.0794 + -10.3121k'], 'average_value_integral': 73.6798, 'mean_values_integral': [4.3718, 9.7205, '4.3718 + -10.3121k', '9.7205 + -10.3121k']}, 'iqr': {'average_value_derivative': 1.7612, 'mean_values_derivative': [6.761, '6.761 + -10.3121k', '12.4873 + -10.3121k'], 'average_value_integral': 83.0229, 'mean_values_integral': [5.3276, 8.7647, '5.3276 + -10.3121k', '8.7647 + -10.3121k']}})
+    
+    def test_weather_models_sinusoidal_correlation(self):
+        self.assertEqual(weather_models['models']['sinusoidal']['correlation'], 0.9689)
+    
+    # COMPARATIVE ANALYSIS
+    def test_weather_statistics(self):
+        self.assertEqual(weather_models['statistics'], {'minimum': 1, 'maximum': 12, 'q1': 3.5, 'q3': 9.5, 'mean': 6.5, 'median': 6.5})
+    
+    def test_weather_optimal(self):
+        self.assertEqual(weather_models['optimal']['option'], 'cubic')
+
+disease_models = run_all(disease_set)
+
+class TestDiseaseModels(unittest.TestCase):
+    maxDiff = None
+
+    # LINEAR MODEL
+    def test_disease_models_linear_constants(self):
+        self.assertEqual(disease_models['models']['linear']['constants'], [32539.7203, -63428.1818])
+    
+    def test_disease_models_linear_points(self):
+        self.assertEqual(disease_models['models']['linear']['points'], {'roots': [[1.9493, 0]], 'maxima': [None], 'minima': [None], 'inflections': [None]})
+    
+    def test_disease_models_linear_accumulations(self):
+        self.assertEqual(disease_models['models']['linear']['accumulations'], {'range': 1628880.0088, 'iqr': 888480.0047})
+    
+    def test_disease_models_linear_averages(self):
+        self.assertEqual(disease_models['models']['linear']['averages'], {'range': {'average_value_derivative': 32539.7203, 'mean_values_derivative': ['All'], 'average_value_integral': 148080.0008, 'mean_values_integral': [6.5]}, 'iqr': {'average_value_derivative': 32539.7203, 'mean_values_derivative': ['All'], 'average_value_integral': 148080.0008, 'mean_values_integral': [6.5]}})
+    
+    def test_disease_models_linear_correlation(self):
+        self.assertEqual(disease_models['models']['linear']['correlation'], 0.9795)
+    
+    # QUADRATIC MODEL
+    def test_disease_models_quadratic_constants(self):
+        self.assertEqual(disease_models['models']['quadratic']['constants'], [1216.7547, 16721.9086, -26519.9545])
+    
+    def test_disease_models_quadratic_points(self):
+        self.assertEqual(disease_models['models']['quadratic']['points'], {'roots': [[-15.179, 0.0], [1.4359, 0.0]], 'maxima': [None], 'minima': [[-6.8715, -83972.4195]], 'inflections': [None]})
+    
+    def test_disease_models_quadratic_accumulations(self):
+        self.assertEqual(disease_models['models']['quadratic']['accumulations'], {'range': 1604342.0877, 'iqr': 823383.6095})
+    
+    def test_disease_models_quadratic_averages(self):
+        self.assertEqual(disease_models['models']['quadratic']['averages'], {'range': {'average_value_derivative': 32539.7197, 'mean_values_derivative': [6.5], 'average_value_integral': 145849.2807, 'mean_values_integral': [6.8719]}, 'iqr': {'average_value_derivative': 32539.7197, 'mean_values_derivative': [6.5], 'average_value_integral': 137230.6016, 'mean_values_integral': [6.6117]}})
+    
+    def test_disease_models_quadratic_correlation(self):
+        self.assertEqual(disease_models['models']['quadratic']['correlation'], 0.9859)
+    
+    # CUBIC MODEL
+    def test_disease_models_cubic_constants(self):
+        self.assertEqual(disease_models['models']['cubic']['constants'], [247.9681, -3618.624, 42882.5477, -60367.6061])
+    
+    def test_disease_models_cubic_points(self):
+        self.assertEqual(disease_models['models']['cubic']['points'], {'roots': [[1.6001, 0]], 'maxima': [None], 'minima': [None], 'inflections': [[4.8644, 91146.927]]})
+    
+    def test_disease_models_cubic_accumulations(self):
+        self.assertEqual(disease_models['models']['cubic']['accumulations'], {'range': 1604341.4046, 'iqr': 823383.3516})
+    
+    def test_disease_models_cubic_averages(self):
+        self.assertEqual(disease_models['models']['cubic']['averages'], {'range': {'average_value_derivative': 34771.4274, 'mean_values_derivative': [1.2924, 8.4363], 'average_value_integral': 145849.2186, 'mean_values_integral': [6.9405]}, 'iqr': {'average_value_derivative': 29502.1053, 'mean_values_derivative': [7.2467], 'average_value_integral': 137230.5586, 'mean_values_integral': [6.633]}})
+    
+    def test_disease_models_cubic_correlation(self):
+        self.assertEqual(disease_models['models']['cubic']['correlation'], 0.9882)
+    
+    # HYPERBOLIC MODEL
+    def test_disease_models_hyperbolic_constants(self):
+        self.assertEqual(disease_models['models']['hyperbolic']['constants'], [-321000.1953, 231090.9361])
+    
+    def test_disease_models_hyperbolic_points(self):
+        self.assertEqual(disease_models['models']['hyperbolic']['points'], {'roots': [[1.3891, 0.0]], 'maxima': [None], 'minima': [None], 'inflections': [None]})
+    
+    def test_disease_models_hyperbolic_accumulations(self):
+        self.assertEqual(disease_models['models']['hyperbolic']['accumulations'], {'range': 1744344.7772, 'iqr': 1066017.6671})
+    
+    def test_disease_models_hyperbolic_averages(self):
+        self.assertEqual(disease_models['models']['hyperbolic']['averages'], {'range': {'average_value_derivative': 26750.0163, 'mean_values_derivative': [3.4641], 'average_value_integral': 158576.7979, 'mean_values_integral': [4.4267]}, 'iqr': {'average_value_derivative': 9654.1412, 'mean_values_derivative': [5.7663], 'average_value_integral': 177669.6112, 'mean_values_integral': [6.0088]}})
+    
+    def test_disease_models_hyperbolic_correlation(self):
+        self.assertEqual(disease_models['models']['hyperbolic']['correlation'], 0.7056)
+    
+    # EXPONENTIAL MODEL
+    def test_disease_models_exponential_constants(self):
+        self.assertEqual(disease_models['models']['exponential']['constants'], [101.8906, 2.3453])
+    
+    def test_disease_models_exponential_points(self):
+        self.assertEqual(disease_models['models']['exponential']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [None]})
+    
+    def test_disease_models_exponential_accumulations(self):
+        self.assertEqual(disease_models['models']['exponential']['accumulations'], {'range': 3309999.1694, 'iqr': 390616.9316})
+    
+    def test_disease_models_exponential_averages(self):
+        self.assertEqual(disease_models['models']['exponential']['averages'], {'range': {'average_value_derivative': 256498.8938, 'mean_values_derivative': [9.3742], 'average_value_integral': 300909.0154, 'mean_values_integral': [9.3742]}, 'iqr': {'average_value_derivative': 55494.5215, 'mean_values_derivative': [7.5783], 'average_value_integral': 65102.8219, 'mean_values_integral': [7.5783]}})
+    
+    def test_disease_models_exponential_correlation(self):
+        self.assertEqual(disease_models['models']['exponential']['correlation'], 0.0)
+    
+    # LOGARITHMIC MODEL
+    def test_disease_models_logarithmic_constants(self):
+        self.assertEqual(disease_models['models']['logarithmic']['constants'], [141709.0574, -87950.7771])
+    
+    def test_disease_models_logarithmic_points(self):
+        self.assertEqual(disease_models['models']['logarithmic']['points'], {'roots': [[1.8601, 0.0]], 'maxima': [None], 'minima': [None], 'inflections': [None]})
+    
+    def test_disease_models_logarithmic_accumulations(self):
+        self.assertEqual(disease_models['models']['logarithmic']['accumulations'], {'range': 1699347.1693, 'iqr': 1031463.6528})
+    
+    def test_disease_models_logarithmic_averages(self):
+        self.assertEqual(disease_models['models']['logarithmic']['averages'], {'range': {'average_value_derivative': 32012.1617, 'mean_values_derivative': [4.4267], 'average_value_integral': 154486.1063, 'mean_values_integral': [5.5334]}, 'iqr': {'average_value_derivative': 23583.4299, 'mean_values_derivative': [6.0088], 'average_value_integral': 171910.6088, 'mean_values_integral': [6.2574]}})
+    
+    def test_disease_models_logarithmic_correlation(self):
+        self.assertEqual(disease_models['models']['logarithmic']['correlation'], 0.8943)
+    
+    # LOGISTIC MODEL
+    def test_disease_models_logistic_constants(self):
+        self.assertEqual(disease_models['models']['logistic']['constants'], [564205.3166, 0.3277, 10.4152])
+    
+    def test_disease_models_logistic_points(self):
+        self.assertEqual(disease_models['models']['logistic']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [[10.4152, 282102.6583]]})
+    
+    def test_disease_models_logistic_accumulations(self):
+        self.assertEqual(disease_models['models']['logistic']['accumulations'], {'range': 1620922.3141, 'iqr': 784604.4996})
+    
+    def test_disease_models_logistic_averages(self):
+        self.assertEqual(disease_models['models']['logistic']['averages'], {'range': {'average_value_derivative': 29917.1422, 'mean_values_derivative': [6.2424], 'average_value_integral': 147356.574, 'mean_values_integral': [7.242]}, 'iqr': {'average_value_derivative': 31182.7288, 'mean_values_derivative': [6.4595], 'average_value_integral': 130767.4166, 'mean_values_integral': [6.7584]}})
+    
+    def test_disease_models_logistic_correlation(self):
+        self.assertEqual(disease_models['models']['logistic']['correlation'], 0.9756)
+    
+    # SINUSOIDAL MODEL
+    def test_disease_models_sinusoidal_constants(self):
+        self.assertEqual(disease_models['models']['sinusoidal']['constants'], [382575.0, 0.098, 11.0, 302192.3729])
+    
+    def test_disease_models_sinusoidal_points(self):
+        self.assertEqual(disease_models['models']['sinusoidal']['points'], {'roots': [[1.7079, 0.0], ['1.7079 + 64.1141k', 0.0], ['52.3492 + 64.1141k', 0.0]], 'maxima': [['27.0285 + 64.1142k', 684767.3729]], 'minima': [['59.0856 + 64.1142k', -80382.6271]], 'inflections': [[11.0, 302192.3729], ['11.0 + 32.0571k', 302192.3729]]})
+    
+    def test_disease_models_sinusoidal_accumulations(self):
+        self.assertEqual(disease_models['models']['sinusoidal']['accumulations'], {'range': 1613540.1441, 'iqr': 847409.2779})
+    
+    def test_disease_models_sinusoidal_averages(self):
+        self.assertEqual(disease_models['models']['sinusoidal']['averages'], {'range': {'average_value_derivative': 32287.2634, 'mean_values_derivative': [5.5589, '5.5589 + 64.1141k', '16.4411 + 64.1141k'], 'average_value_integral': 146685.4676, 'mean_values_integral': [6.7287, '6.7287 + 64.1141k', '47.3284 + 64.1141k']}, 'iqr': {'average_value_derivative': 33418.9467, 'mean_values_derivative': [6.1993, '6.1993 + 64.1141k', '15.8007 + 64.1141k'], 'average_value_integral': 141234.8796, 'mean_values_integral': [6.569, '6.569 + 64.1141k', '47.4881 + 64.1141k']}})
+    
+    def test_disease_models_sinusoidal_correlation(self):
+        self.assertEqual(disease_models['models']['sinusoidal']['correlation'], 0.9839)
+    
+    # COMPARATIVE ANALYSIS
+    def test_disease_statistics(self):
+        self.assertEqual(disease_models['statistics'], {'minimum': 1, 'maximum': 12, 'q1': 3.5, 'q3': 9.5, 'mean': 6.5, 'median': 6.5})
+    
+    def test_disease_optimal(self):
+        self.assertEqual(disease_models['optimal']['option'], 'cubic')
+
+profits_models = run_all(profits_set)
+
+class TestProfitsModels(unittest.TestCase):
+    maxDiff = None
+
+    # LINEAR MODEL
+    def test_profits_models_linear_constants(self):
+        self.assertEqual(profits_models['models']['linear']['constants'], [-14.9826, 23791.1699])
+    
+    def test_profits_models_linear_points(self):
+        self.assertEqual(profits_models['models']['linear']['points'], {'roots': [[1587.92, 0]], 'maxima': [None], 'minima': [None], 'inflections': [None]})
+    
+    def test_profits_models_linear_accumulations(self):
+        self.assertEqual(profits_models['models']['linear']['accumulations'], {'range': 2196292.1114, 'iqr': 1200006.7586})
+    
+    def test_profits_models_linear_averages(self):
+        self.assertEqual(profits_models['models']['linear']['averages'], {'range': {'average_value_derivative': -14.9826, 'mean_values_derivative': ['All'], 'average_value_integral': 20719.7369, 'mean_values_integral': [205.0]}, 'iqr': {'average_value_derivative': -14.9826, 'mean_values_derivative': ['All'], 'average_value_integral': 20689.7717, 'mean_values_integral': [207.0]}})
+    
+    def test_profits_models_linear_correlation(self):
+        self.assertEqual(profits_models['models']['linear']['correlation'], 0.1767)
+    
+    # QUADRATIC MODEL
+    def test_profits_models_quadratic_constants(self):
+        self.assertEqual(profits_models['models']['quadratic']['constants'], [-2.6043, 1055.9536, -83362.0271])
+    
+    def test_profits_models_quadratic_points(self):
+        self.assertEqual(profits_models['models']['quadratic']['points'], {'roots': [[107.3851, 0.0], [298.0804, 0.0]], 'maxima': [[202.7327, 23676.1411]], 'minima': [None], 'inflections': [None]})
+    
+    def test_profits_models_quadratic_accumulations(self):
+        self.assertEqual(profits_models['models']['quadratic']['accumulations'], {'range': 2249771.613, 'iqr': 1328121.4274})
+    
+    def test_profits_models_quadratic_averages(self):
+        self.assertEqual(profits_models['models']['quadratic']['averages'], {'range': {'average_value_derivative': -11.8094, 'mean_values_derivative': [205.0], 'average_value_integral': 21224.2605, 'mean_values_integral': [172.0493, 233.4162]}, 'iqr': {'average_value_derivative': -22.2266, 'mean_values_derivative': [207.0], 'average_value_integral': 22898.6453, 'mean_values_integral': [185.4543, 220.0111]}})
+    
+    def test_profits_models_quadratic_correlation(self):
+        self.assertEqual(profits_models['models']['quadratic']['correlation'], 0.9285)
+    
+    # CUBIC MODEL
+    def test_profits_models_cubic_constants(self):
+        self.assertEqual(profits_models['models']['cubic']['constants'], [0.0017, -3.6712, 1271.1194, -97581.8495])
+    
+    def test_profits_models_cubic_points(self):
+        self.assertEqual(profits_models['models']['cubic']['points'], {'roots': [[109.8431, 0.0], [298.3928, 0.0], [1751.2935, 0.0]], 'maxima': [[201.2537, 23398.1906]], 'minima': [[1238.4326, -924976.6175]], 'inflections': [[719.8431, -450789.1624]]})
+    
+    def test_profits_models_cubic_accumulations(self):
+        self.assertEqual(profits_models['models']['cubic']['accumulations'], {'range': 2118709.8422, 'iqr': 1257318.1246})
+    
+    def test_profits_models_cubic_averages(self):
+        self.assertEqual(profits_models['models']['cubic']['averages'], {'range': {'average_value_derivative': -14.9698, 'mean_values_derivative': [204.0915], 'average_value_integral': 19987.8287, 'mean_values_integral': [165.7475, 237.5895]}, 'iqr': {'average_value_derivative': -28.7978, 'mean_values_derivative': [206.7268], 'average_value_integral': 21677.8987, 'mean_values_integral': [226.9709]}})
+    
+    def test_profits_models_cubic_correlation(self):
+        self.assertEqual(profits_models['models']['cubic']['correlation'], 0.9194)
+    
+    # HYPERBOLIC MODEL
+    def test_profits_models_hyperbolic_constants(self):
+        self.assertEqual(profits_models['models']['hyperbolic']['constants'], [138413.9218, 19996.5303])
+    
+    def test_profits_models_hyperbolic_points(self):
+        self.assertEqual(profits_models['models']['hyperbolic']['points'], {'roots': [[-6.9219, 0.0]], 'maxima': [None], 'minima': [None], 'inflections': [None]})
+    
+    def test_profits_models_hyperbolic_accumulations(self):
+        self.assertEqual(profits_models['models']['hyperbolic']['accumulations'], {'range': 2192864.12, 'iqr': 1198838.1625})
+    
+    def test_profits_models_hyperbolic_averages(self):
+        self.assertEqual(profits_models['models']['hyperbolic']['averages'], {'range': {'average_value_derivative': -3.5295, 'mean_values_derivative': [198.0311], 'average_value_integral': 20687.3974, 'mean_values_integral': [200.3481]}, 'iqr': {'average_value_derivative': -3.2949, 'mean_values_derivative': [204.9598], 'average_value_integral':  20669.6235, 'mean_values_integral': [205.6386]}})
+    
+    def test_profits_models_hyperbolic_correlation(self):
+        self.assertEqual(profits_models['models']['hyperbolic']['correlation'], 0.041)
+    
+    # EXPONENTIAL MODEL
+    def test_profits_models_exponential_constants(self):
+        self.assertEqual(profits_models['models']['exponential']['constants'], [24035.8081, 0.9992])
+    
+    def test_profits_models_exponential_points(self):
+        self.assertEqual(profits_models['models']['exponential']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [None]})
+    
+    def test_profits_models_exponential_accumulations(self):
+        self.assertEqual(profits_models['models']['exponential']['accumulations'], {'range': 2162927.7663, 'iqr': 1181347.7594})
+    
+    def test_profits_models_exponential_averages(self):
+        self.assertEqual(profits_models['models']['exponential']['averages'], {'range': {'average_value_derivative': -16.3305, 'mean_values_derivative': [204.6266], 'average_value_integral': 20404.9789, 'mean_values_integral': [204.6253]}, 'iqr': {'average_value_derivative': -16.301, 'mean_values_derivative': [206.8858], 'average_value_integral': 20368.0648, 'mean_values_integral': [206.8878]}})
+    
+    def test_profits_models_exponential_correlation(self):
+        self.assertEqual(profits_models['models']['exponential']['correlation'], 0.12)
+    
+    # LOGARITHMIC MODEL
+    def test_profits_models_logarithmic_constants(self):
+        self.assertEqual(profits_models['models']['logarithmic']['constants'], [-1864.227, 30602.8572])
+    
+    def test_profits_models_logarithmic_points(self):
+        self.assertEqual(profits_models['models']['logarithmic']['points'], {'roots': [[13468210.7299, 0.0]], 'maxima': [None], 'minima': [None], 'inflections': [None]})
+    
+    def test_profits_models_logarithmic_accumulations(self):
+        self.assertEqual(profits_models['models']['logarithmic']['accumulations'], {'range': 2194280.1749, 'iqr': 1198720.4117})
+    
+    def test_profits_models_logarithmic_averages(self):
+        self.assertEqual(profits_models['models']['logarithmic']['averages'], {'range': {'average_value_derivative': -9.3049, 'mean_values_derivative': [200.349], 'average_value_integral': 20700.7564, 'mean_values_integral': [202.6821]}, 'iqr': {'average_value_derivative': -9.0656, 'mean_values_derivative': [205.6375], 'average_value_integral': 20667.5933, 'mean_values_integral': [206.32]}})
+    
+    def test_profits_models_logarithmic_correlation(self):
+        self.assertEqual(profits_models['models']['logarithmic']['correlation'], 0.109)
+    
+    # LOGISTIC MODEL
+    def test_profits_models_logistic_constants(self):
+        self.assertEqual(profits_models['models']['logistic']['constants'], [25761.21, -1.0, 1.0])
+    
+    def test_profits_models_logistic_points(self):
+        self.assertEqual(profits_models['models']['logistic']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [[1.0, 12880.605]]})
+    
+    def test_profits_models_logistic_accumulations(self):
+        self.assertEqual(profits_models['models']['logistic']['accumulations'], {'range': 0.0, 'iqr': 0.0})
+    
+    def test_profits_models_logistic_averages(self):
+        self.assertEqual(profits_models['models']['logistic']['averages'], {'range': {'average_value_derivative': 0.0, 'mean_values_derivative': [None], 'average_value_integral': 0.0, 'mean_values_integral': [None]}, 'iqr': {'average_value_derivative': 0.0, 'mean_values_derivative': [None], 'average_value_integral': 0.0, 'mean_values_integral': [None]}})
+    
+    def test_profits_models_logistic_correlation(self):
+        self.assertEqual(profits_models['models']['logistic']['correlation'], 0.0)
+    
+    # SINUSOIDAL MODEL
+    def test_profits_models_sinusoidal_constants(self):
+        self.assertEqual(profits_models['models']['sinusoidal']['constants'], [-2317.8178, 1.0496, 10.9914, 20658.4641])
+    
+    def test_profits_models_sinusoidal_points(self):
+        self.assertEqual(profits_models['models']['sinusoidal']['points'], {'roots': [None], 'maxima': [[153.1637, 22976.2819], [159.1499, 22976.2819], [165.1361, 22976.2819], [171.1223, 22976.2819], [177.1085, 22976.2819], ['153.1637 + 5.9862k', 22976.2819]], 'minima': [[156.1568, 18340.6463], [162.143, 18340.6463], [168.1292, 18340.6463], [174.1154, 18340.6463], [180.1016, 18340.6463], ['156.1568 + 5.9862k', 18340.6463]], 'inflections': [[154.6602, 20658.4641], [157.6533, 20658.4641], [160.6464, 20658.4641], [163.6395, 20658.4641], [166.6326, 20658.4641], ['154.6602 + 2.9931k', 20658.4641]]})
+    
+    def test_profits_models_sinusoidal_accumulations(self):
+        self.assertEqual(profits_models['models']['sinusoidal']['accumulations'], {'range': 2191699.3762, 'iqr': 1194532.556})
+    
+    def test_profits_models_sinusoidal_averages(self):
+        self.assertEqual(profits_models['models']['sinusoidal']['averages'], {'range': {'average_value_derivative': -29.2504, 'mean_values_derivative': [153.1775, 156.1477, 159.1638, 162.134, 165.1501, 168.1203, 171.1364, 174.1066, 177.1227, 180.0929, '153.1775 + 5.9863k', '156.1477 + 5.9863k'], 'average_value_integral': 20676.4092, 'mean_values_integral': [154.6552, 157.6631, 160.6415, 163.6494, 166.6278, 169.6357, 172.6141, 175.622, 178.6004, 181.6083, '154.6552 + 5.9863k', '157.6631 + 5.9863k']}, 'iqr': {'average_value_derivative': -2.8944, 'mean_values_derivative': [180.1032, 183.0986, 186.0895, 189.0849, 192.0758, 195.0712, 198.0621, 201.0575, 204.0484, 207.0438, '180.1032 + 5.9863k', '183.0986 + 5.9863k'], 'average_value_integral': 20595.3889, 'mean_values_integral': [178.6337, 181.575, 184.62, 187.5613, 190.6063, 193.5476, 196.5926, 199.5339, 202.5789, 205.5202, '178.6337 + 5.9863k', '181.575 + 5.9863k']}})
+    
+    def test_profits_models_sinusoidal_correlation(self):
+        self.assertEqual(profits_models['models']['sinusoidal']['correlation'], 0.5088)
+    
+    # COMPARATIVE ANALYSIS
+    def test_profits_statistics(self):
+        self.assertEqual(profits_models['statistics'], {'minimum': 152, 'maximum': 258, 'q1': 178, 'q3': 236, 'mean': 207.5, 'median': 207.5})
+    
+    def test_profits_optimal(self):
+        self.assertEqual(profits_models['optimal']['option'], 'quadratic')
 
 large_models = run_all(large_set)
 

@@ -152,6 +152,8 @@ def logistic_roots_derivative_initial_value(first_constant, second_constant, thi
     # Convert quadratic roots using logarithms
     else:
         for intermediary in intermediary_roots:
+            if intermediary == 0:
+                intermediary = 10**(-precision)
             root = third_constant - log(abs(intermediary)) / second_constant
             rounded_root = rounded_value(root, precision)
             roots.append(rounded_root)
