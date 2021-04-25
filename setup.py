@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='regressions',
-    version='2.0.7',
+    version='2.0.8',
     url='https://github.com/jtreeves/regressions_library',
     license='MIT',
     author='Jackson Reeves',

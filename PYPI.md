@@ -76,7 +76,7 @@ print(optimal) # 'sinusoidal'
 
 ## Testing
 
-There are currently 1276 tests for this library. To run all of them:
+There are currently 1402 tests for this library. To run all of them:
 
 1. Clone this repository: `git clone https://github.com/jtreeves/regressions_library.git`
 2. Enter the directory: `cd regressons_library`
