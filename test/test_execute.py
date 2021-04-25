@@ -1992,4 +1992,4 @@ class TestEdgeCases(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 426 tests in 0.067s ---------- OK ---------- #
+# ---------- Ran 552 tests in 0.082s ---------- OK ---------- #
