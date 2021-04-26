@@ -1,7 +1,7 @@
 from regressions.errors.matrices import square_matrix
 from regressions.errors.scalars import whole_number
 
-def inner_determinant(matrix, row, column):
+def minor_at_element(matrix, row, column):
     # Handle input errors
     square_matrix(matrix)
     whole_number(row, 'second')
@@ -53,7 +53,7 @@ def linear_determinant(matrix, result = 0):
 
     Warning
     -------
-    Function has factorial time complexity; not recommended for matrices larger than 5-by-5
+    Function has factorial time complexity; not recommended for matrices larger than 7-by-7
 
     See Also
     --------
@@ -97,7 +97,7 @@ def linear_determinant(matrix, result = 0):
 
         # Iterate over first inner list of input
         for i in range(len(leads)):
-            minors.append(inner_determinant(matrix, 0, i))
+            minors.append(minor_at_element(matrix, 0, i))
             if i % 2 == 0:
                 alternating.append(leads[i])
             else:

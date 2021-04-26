@@ -1,5 +1,5 @@
 from regressions.errors.matrices import square_matrix
-from .determinant import linear_determinant, inner_determinant
+from .determinant import linear_determinant, minor_at_element
 
 def matrix_of_minors(matrix):
     """
@@ -62,7 +62,7 @@ def matrix_of_minors(matrix):
         # Iterate over inner lists of input
         for n in range(len(matrix[0])):
             # Store determinants in inner lists of return
-            result[m].append(linear_determinant(inner_determinant(matrix, m, n)))
+            result[m].append(linear_determinant(minor_at_element(matrix, m, n)))
     
     # Return result
     return result

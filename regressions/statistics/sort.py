@@ -2,7 +2,7 @@ from regressions.errors.vectors import vector_of_strings
 
 def sorted_list(data):
     """
-    Sorts all elements in a data set in increasing order
+    Sorts all elements in a data set in increasing order via quicksort
 
     Parameters
     ----------
