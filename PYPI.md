@@ -60,7 +60,7 @@ print(logarithmic_correlation) # 0.5086
 
 logistic = results['models']['logistic'] # Grab specifics for logistic model
 logistic_constants = logistic['constants'] # Grab constants of equation for logistic model
-print(logistic_constants) # [43.983, 0.3076, 0.9746]
+print(logistic_constants) # [43.9838, 0.3076, 0.9747]
 logistic_correlation = logistic['correlation'] # Grab correlation coefficient for logistic model
 print(logistic_correlation) # 0.5875
 

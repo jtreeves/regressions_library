@@ -119,7 +119,7 @@ def run_all(data, precision = 4):
         >>> print(results['models']['logarithmic']['constants'])
         [7.4791, 22.5032]
         >>> print(results['models']['logistic']['constants'])
-        [43.983, 0.3076, 0.9746]
+        [43.9838, 0.3076, 0.9747]
         >>> print(results['models']['sinusoidal']['constants'])
         [14.0875, 0.7119, -3.7531, 34.2915]
         >>> print(results['statistics']['mean'])
@@ -141,7 +141,7 @@ def run_all(data, precision = 4):
         >>> print(results_large['models']['logarithmic']['constants'])
         [74.0076, 118.997]
         >>> print(results_large['models']['logistic']['constants'])
-        [488.2, 1.0, 1.0]
+        [878.3475, 0.0023, 51.0002]
         >>> print(results_large['models']['sinusoidal']['constants'])
         [32.3199, 1.0085, 1.8848, 488.9635]
         >>> print(results_large['statistics']['mean'])

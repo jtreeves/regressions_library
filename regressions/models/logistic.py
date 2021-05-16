@@ -138,11 +138,11 @@ def logistic_model(data, precision = 4):
     Generate a logistic regression model for the data set [[1, 32], [2, 25], [3, 14], [4, 23], [5, 39], [6, 45], [7, 42], [8, 49], [9, 36], [10, 33]], then print its coefficients, inflections, total accumulation over its range, and correlation
         >>> model_agnostic = logistic_model([[1, 32], [2, 25], [3, 14], [4, 23], [5, 39], [6, 45], [7, 42], [8, 49], [9, 36], [10, 33]])
         >>> print(model_agnostic['constants'])
-        [43.983, 0.3076, 0.9746]
+        [43.9838, 0.3076, 0.9747]
         >>> print(model_agnostic['points']['inflections'])
-        [[0.9746, 21.9915]]
+        [[0.9747, 21.9919]]
         >>> print(model_agnostic['accumulations']['range'])
-        305.9311
+        305.9347
         >>> print(model_agnostic['correlation'])
         0.5875
     """

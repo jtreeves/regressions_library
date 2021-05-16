@@ -345,14 +345,14 @@ View the constants of the resultant logistic equation and the correlation coeffi
 
     logistic_constants = logistic_best_fit['constants']
     logistic_correlation = logistic_best_fit['correlation']
-    print(logistic_constants) # [564205.3166, 0.3277, 10.4152]
+    print(logistic_constants) # [564204.8773, 0.3277, 10.4152]
     print(logistic_correlation) # 0.9756
 
 Determine the logistic equation that best fits the data by using the above results:
 
 .. math::
     
-    d(m) = \frac{564205.3166}{1 + \text{e}^{-0.3277\cdot(m - 10.4152)}}
+    d(m) = \frac{564204.8773}{1 + \text{e}^{-0.3277\cdot(m - 10.4152)}}
 
 Determine the correlation coefficient for the logistic model by using the above results:
 
