@@ -4,7 +4,7 @@ from regressions.statistics.rounding import rounded_value, rounded_list
 
 def generate_elements(initial_value, periodic_unit, precision = 4):
     """
-    Generates a vector containing an initial numerical value, four additional numerical values created by incrementing the initial value by a periodic unit four times, and a string value for the general form of all values in the vector, made up of a multiple of the periodic unit added to the initial value
+    Generates a vector containing an initial numerical value, four additional numerical values created by incrementing the initial value by a periodic unit four times, and a string value for the general form of all values in the vector, made up of a multiple of the periodic unit added to the initial value; any negative periodic units will be converted their absolute values before any other evaluations occur
 
     Parameters
     ----------
@@ -46,6 +46,10 @@ def generate_elements(initial_value, periodic_unit, precision = 4):
     Generate a vector of elements based off an initial value of 3 and a periodic unit of 2
         >>> generated_vector_int = generate_elements(3, 2)
         >>> print(generated_vector_int)
+        [3.0, 5.0, 7.0, 9.0, 11.0, '3.0 + 2.0k']
+    Generate a vector of elements based off an initial value of 3 and a periodic unit of -2
+        >>> generated_vector_neg = generate_elements(3, -2)
+        >>> print(generated_vector_neg)
         [3.0, 5.0, 7.0, 9.0, 11.0, '3.0 + 2.0k']
     Generate a vector of elements based off an initial value of 17.23 and a periodic unit of 5.89
         >>> generated_vector_float = generate_elements(17.23, 5.89)

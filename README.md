@@ -45,7 +45,7 @@ git clone https://github.com/jtreeves/regressions_library.git
     - Inflection points
 - Systems solved using linear algebra and machine learning
 - Extensive documentation for various use cases
-- 1402 test cases to ensure accuracy of results
+- 1403 test cases to ensure accuracy of results
 - Error handling to stop users from inputting improper argument types and circumvent issues like division by zero
 
 ## Code Examples
