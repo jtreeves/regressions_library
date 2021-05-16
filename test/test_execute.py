@@ -237,16 +237,16 @@ class TestAgnosticModels(unittest.TestCase):
     
     # LOGISTIC MODEL
     def test_agnostic_models_logistic_constants(self):
-        self.assertEqual(agnostic_models['models']['logistic']['constants'], [43.983, 0.3076, 0.9746])
+        self.assertEqual(agnostic_models['models']['logistic']['constants'], [43.9838, 0.3076, 0.9747])
     
     def test_agnostic_models_logistic_points(self):
-        self.assertEqual(agnostic_models['models']['logistic']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [[0.9746, 21.9915]]})
+        self.assertEqual(agnostic_models['models']['logistic']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [[0.9747, 21.9919]]})
     
     def test_agnostic_models_logistic_accumulations(self):
-        self.assertEqual(agnostic_models['models']['logistic']['accumulations'], {'range': 305.9311, 'iqr': 174.1085})
+        self.assertEqual(agnostic_models['models']['logistic']['accumulations'], {'range': 305.9347, 'iqr': 174.1106})
     
     def test_agnostic_models_logistic_averages(self):
-        self.assertEqual(agnostic_models['models']['logistic']['averages'], {'range': {'average_value_derivative': 2.1475, 'mean_values_derivative': [5.5246], 'average_value_integral': 33.9923, 'mean_values_integral': [4.9554]}, 'iqr': {'average_value_derivative': 2.1621, 'mean_values_derivative': [5.4879], 'average_value_integral': 34.8217, 'mean_values_integral': [5.3155]}})
+        self.assertEqual(agnostic_models['models']['logistic']['averages'], {'range': {'average_value_derivative': 2.1475, 'mean_values_derivative': [5.5247], 'average_value_integral': 33.9927, 'mean_values_integral': [4.9554]}, 'iqr': {'average_value_derivative': 2.1622, 'mean_values_derivative': [5.488], 'average_value_integral': 34.8221, 'mean_values_integral': [5.3155]}})
     
     def test_agnostic_models_logistic_correlation(self):
         self.assertEqual(agnostic_models['models']['logistic']['correlation'], 0.5875)
@@ -377,16 +377,16 @@ class TestLinearModels(unittest.TestCase):
     
     # LOGISTIC MODEL
     def test_linear_models_logistic_constants(self):
-        self.assertEqual(linear_models['models']['logistic']['constants'], [34.8519, -0.402, 5.1708])
+        self.assertEqual(linear_models['models']['logistic']['constants'], [34.8519, -0.402, 5.1709])
     
     def test_linear_models_logistic_points(self):
-        self.assertEqual(linear_models['models']['logistic']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [[5.1708, 17.426]]})
+        self.assertEqual(linear_models['models']['logistic']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [[5.1709, 17.426]]})
     
     def test_linear_models_logistic_accumulations(self):
-        self.assertEqual(linear_models['models']['logistic']['accumulations'], {'range': 148.5961, 'iqr': 81.8114})
+        self.assertEqual(linear_models['models']['logistic']['accumulations'], {'range': 148.5986, 'iqr': 81.8129})
     
     def test_linear_models_logistic_averages(self):
-        self.assertEqual(linear_models['models']['logistic']['averages'], {'range': {'average_value_derivative': -2.7764, 'mean_values_derivative': [2.7256, 7.6156], 'average_value_integral': 16.5107, 'mean_values_integral': [5.4323]}, 'iqr': {'average_value_derivative': -3.2237, 'mean_values_derivative': [3.7276, 6.614], 'average_value_integral': 16.3623, 'mean_values_integral': [5.4749]}})
+        self.assertEqual(linear_models['models']['logistic']['averages'], {'range': {'average_value_derivative': -2.7764, 'mean_values_derivative': [2.7257, 7.6157], 'average_value_integral': 16.511, 'mean_values_integral': [5.4324]}, 'iqr': {'average_value_derivative': -3.2237, 'mean_values_derivative': [3.7277, 6.6141], 'average_value_integral': 16.3626, 'mean_values_integral': [5.4749]}})
     
     def test_linear_models_logistic_correlation(self):
         self.assertEqual(linear_models['models']['logistic']['correlation'], 0.9974)
@@ -657,19 +657,19 @@ class TestCubicModels(unittest.TestCase):
     
     # LOGISTIC MODEL
     def test_cubic_models_logistic_constants(self):
-        self.assertEqual(cubic_models['models']['logistic']['constants'], [204.0, 0.0836, 14.9001])
+        self.assertEqual(cubic_models['models']['logistic']['constants'], [202.5728, 0.0861, 14.5])
     
     def test_cubic_models_logistic_points(self):
-        self.assertEqual(cubic_models['models']['logistic']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [[14.9001, 102.0]]})
+        self.assertEqual(cubic_models['models']['logistic']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [[14.5, 101.2864]]})
     
     def test_cubic_models_logistic_accumulations(self):
-        self.assertEqual(cubic_models['models']['logistic']['accumulations'], {'range': 578.2231, 'iqr': 319.917})
+        self.assertEqual(cubic_models['models']['logistic']['accumulations'], {'range': 578.6529, 'iqr': 320.0988})
     
     def test_cubic_models_logistic_averages(self):
-        self.assertEqual(cubic_models['models']['logistic']['averages'], {'range': {'average_value_derivative': 3.6426, 'mean_values_derivative': [5.2832], 'average_value_integral': 64.247, 'mean_values_integral': [5.6041]}, 'iqr': {'average_value_derivative': 3.6599, 'mean_values_derivative': [5.433], 'average_value_integral': 63.9834, 'mean_values_integral': [5.5324]}})
+        self.assertEqual(cubic_models['models']['logistic']['averages'], {'range': {'average_value_derivative': 3.7384, 'mean_values_derivative': [5.2699], 'average_value_integral': 64.2948, 'mean_values_integral': [5.6058]}, 'iqr': {'average_value_derivative': 3.7576, 'mean_values_derivative': [5.4289], 'average_value_integral': 64.0198, 'mean_values_integral': [5.533]}})
     
     def test_cubic_models_logistic_correlation(self):
-        self.assertEqual(cubic_models['models']['logistic']['correlation'], 0.4433)
+        self.assertEqual(cubic_models['models']['logistic']['correlation'], 0.443)
     
     # SINUSOIDAL MODEL
     def test_cubic_models_sinusoidal_constants(self):
@@ -1077,16 +1077,16 @@ class TestLogarithmicModels(unittest.TestCase):
     
     # LOGISTIC MODEL
     def test_logarithmic_models_logistic_constants(self):
-        self.assertEqual(logarithmic_models['models']['logistic']['constants'], [8.6892, 0.5704, 2.5092])
+        self.assertEqual(logarithmic_models['models']['logistic']['constants'], [8.6893, 0.5704, 2.5092])
     
     def test_logarithmic_models_logistic_points(self):
         self.assertEqual(logarithmic_models['models']['logistic']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [[2.5092, 4.3446]]})
     
     def test_logarithmic_models_logistic_accumulations(self):
-        self.assertEqual(logarithmic_models['models']['logistic']['accumulations'], {'range': 59.9281, 'iqr': 35.5211})
+        self.assertEqual(logarithmic_models['models']['logistic']['accumulations'], {'range': 59.929, 'iqr': 35.5215})
     
     def test_logarithmic_models_logistic_averages(self):
-        self.assertEqual(logarithmic_models['models']['logistic']['averages'], {'range': {'average_value_derivative': 0.6653, 'mean_values_derivative': [5.4198], 'average_value_integral': 6.6587, 'mean_values_integral': [4.5913]}, 'iqr': {'average_value_derivative': 0.6754, 'mean_values_derivative': [5.3806], 'average_value_integral': 7.1042, 'mean_values_integral': [5.1391]}})
+        self.assertEqual(logarithmic_models['models']['logistic']['averages'], {'range': {'average_value_derivative': 0.6653, 'mean_values_derivative': [5.4198], 'average_value_integral': 6.6588, 'mean_values_integral': [4.5913]}, 'iqr': {'average_value_derivative': 0.6754, 'mean_values_derivative': [5.3806], 'average_value_integral': 7.1043, 'mean_values_integral': [5.1391]}})
     
     def test_logarithmic_models_logistic_correlation(self):
         self.assertEqual(logarithmic_models['models']['logistic']['correlation'], 0.9898)
@@ -1357,19 +1357,19 @@ class TestSinusoidalModels(unittest.TestCase):
     
     # LOGISTIC MODEL
     def test_sinusoidal_models_logistic_constants(self):
-        self.assertEqual(sinusoidal_models['models']['logistic']['constants'], [3.5, 6.2649, -14.3299])
+        self.assertEqual(sinusoidal_models['models']['logistic']['constants'], [7.5777, 0.017, 14.5])
     
     def test_sinusoidal_models_logistic_points(self):
-        self.assertEqual(sinusoidal_models['models']['logistic']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [[-14.3299, 1.75]]})
+        self.assertEqual(sinusoidal_models['models']['logistic']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [[14.5, 3.7889]]})
     
     def test_sinusoidal_models_logistic_accumulations(self):
-        self.assertEqual(sinusoidal_models['models']['logistic']['accumulations'], {'range': 31.5018, 'iqr': 17.501})
+        self.assertEqual(sinusoidal_models['models']['logistic']['accumulations'], {'range': 31.4974, 'iqr': 17.498})
     
     def test_sinusoidal_models_logistic_averages(self):
-        self.assertEqual(sinusoidal_models['models']['logistic']['averages'], {'range': {'average_value_derivative': 0.0, 'mean_values_derivative': [None], 'average_value_integral': 3.5002, 'mean_values_integral': [None]}, 'iqr': {'average_value_derivative': 0.0, 'mean_values_derivative': [None], 'average_value_integral': 3.5002, 'mean_values_integral': [None]}})
+        self.assertEqual(sinusoidal_models['models']['logistic']['averages'], {'range': {'average_value_derivative': 0.032, 'mean_values_derivative': [5.2092], 'average_value_integral': 3.4997, 'mean_values_integral': [5.5042]}, 'iqr': {'average_value_derivative': 0.032, 'mean_values_derivative': [5.2092], 'average_value_integral': 3.4996, 'mean_values_integral': [5.501]}})
     
     def test_sinusoidal_models_logistic_correlation(self):
-        self.assertEqual(sinusoidal_models['models']['logistic']['correlation'], 0.0)
+        self.assertEqual(sinusoidal_models['models']['logistic']['correlation'], 0.0254)
     
     # SINUSOIDAL MODEL
     def test_sinusoidal_models_sinusoidal_constants(self):
@@ -1497,16 +1497,16 @@ class TestWeatherModels(unittest.TestCase):
     
     # LOGISTIC MODEL
     def test_weather_models_logistic_constants(self):
-        self.assertEqual(weather_models['models']['logistic']['constants'], [77.2229, 0.8019, 0.2483])
+        self.assertEqual(weather_models['models']['logistic']['constants'], [77.223, 0.8019, 0.2482])
     
     def test_weather_models_logistic_points(self):
-        self.assertEqual(weather_models['models']['logistic']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [[0.2483, 38.6114]]})
+        self.assertEqual(weather_models['models']['logistic']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [[0.2482, 38.6115]]})
     
     def test_weather_models_logistic_accumulations(self):
-        self.assertEqual(weather_models['models']['logistic']['accumulations'], {'range': 807.4246, 'iqr': 456.5458})
+        self.assertEqual(weather_models['models']['logistic']['accumulations'], {'range': 807.4282, 'iqr': 456.5467})
     
     def test_weather_models_logistic_averages(self):
-        self.assertEqual(weather_models['models']['logistic']['averages'], {'range': {'average_value_derivative': 2.4825, 'mean_values_derivative': [4.152], 'average_value_integral': 73.4022, 'mean_values_integral': [3.9339]}, 'iqr': {'average_value_derivative': 0.8759, 'mean_values_derivative': [5.5192], 'average_value_integral': 76.091, 'mean_values_integral': [5.4959]}})
+        self.assertEqual(weather_models['models']['logistic']['averages'], {'range': {'average_value_derivative': 2.4824, 'mean_values_derivative': [4.1519], 'average_value_integral': 73.4026, 'mean_values_integral': [3.934]}, 'iqr': {'average_value_derivative': 0.8758, 'mean_values_derivative': [5.5191], 'average_value_integral': 76.0911, 'mean_values_integral': [5.4958]}})
     
     def test_weather_models_logistic_correlation(self):
         self.assertEqual(weather_models['models']['logistic']['correlation'], 0.6298)
@@ -1637,16 +1637,16 @@ class TestDiseaseModels(unittest.TestCase):
     
     # LOGISTIC MODEL
     def test_disease_models_logistic_constants(self):
-        self.assertEqual(disease_models['models']['logistic']['constants'], [564205.3166, 0.3277, 10.4152])
+        self.assertEqual(disease_models['models']['logistic']['constants'], [564204.8773, 0.3277, 10.4152])
     
     def test_disease_models_logistic_points(self):
-        self.assertEqual(disease_models['models']['logistic']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [[10.4152, 282102.6583]]})
+        self.assertEqual(disease_models['models']['logistic']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [[10.4152, 282102.4387]]})
     
     def test_disease_models_logistic_accumulations(self):
-        self.assertEqual(disease_models['models']['logistic']['accumulations'], {'range': 1620922.3141, 'iqr': 784604.4996})
+        self.assertEqual(disease_models['models']['logistic']['accumulations'], {'range': 1620921.052, 'iqr': 784603.8887})
     
     def test_disease_models_logistic_averages(self):
-        self.assertEqual(disease_models['models']['logistic']['averages'], {'range': {'average_value_derivative': 29917.1422, 'mean_values_derivative': [6.2424], 'average_value_integral': 147356.574, 'mean_values_integral': [7.242]}, 'iqr': {'average_value_derivative': 31182.7288, 'mean_values_derivative': [6.4595], 'average_value_integral': 130767.4166, 'mean_values_integral': [6.7584]}})
+        self.assertEqual(disease_models['models']['logistic']['averages'], {'range': {'average_value_derivative': 29917.1189, 'mean_values_derivative': [6.2424], 'average_value_integral': 147356.4593, 'mean_values_integral': [7.242]}, 'iqr': {'average_value_derivative': 31182.7046, 'mean_values_derivative': [6.4595], 'average_value_integral': 130767.3148, 'mean_values_integral': [6.7584]}})
     
     def test_disease_models_logistic_correlation(self):
         self.assertEqual(disease_models['models']['logistic']['correlation'], 0.9756)
@@ -1777,19 +1777,19 @@ class TestProfitsModels(unittest.TestCase):
     
     # LOGISTIC MODEL
     def test_profits_models_logistic_constants(self):
-        self.assertEqual(profits_models['models']['logistic']['constants'], [25761.21, -1.0, 1.0])
+        self.assertEqual(profits_models['models']['logistic']['constants'], [21721.3181, -0.0865, 269.7954])
     
     def test_profits_models_logistic_points(self):
-        self.assertEqual(profits_models['models']['logistic']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [[1.0, 12880.605]]})
+        self.assertEqual(profits_models['models']['logistic']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [[269.7954, 10860.6591]]})
     
     def test_profits_models_logistic_accumulations(self):
-        self.assertEqual(profits_models['models']['logistic']['accumulations'], {'range': 0.0, 'iqr': 0.0})
+        self.assertEqual(profits_models['models']['logistic']['accumulations'], {'range': 2225165.868, 'iqr': 1246777.3468})
     
     def test_profits_models_logistic_averages(self):
-        self.assertEqual(profits_models['models']['logistic']['averages'], {'range': {'average_value_derivative': 0.0, 'mean_values_derivative': [None], 'average_value_integral': 0.0, 'mean_values_integral': [None]}, 'iqr': {'average_value_derivative': 0.0, 'mean_values_derivative': [None], 'average_value_integral': 0.0, 'mean_values_integral': [None]}})
+        self.assertEqual(profits_models['models']['logistic']['averages'], {'range': {'average_value_derivative': -54.2892, 'mean_values_derivative': [229.5238], 'average_value_integral': 20992.1308, 'mean_values_integral': [230.9518]}, 'iqr': {'average_value_derivative': -18.9716, 'mean_values_derivative': [216.8982], 'average_value_integral': 21496.1612, 'mean_values_integral': [217.0921]}})
     
     def test_profits_models_logistic_correlation(self):
-        self.assertEqual(profits_models['models']['logistic']['correlation'], 0.0)
+        self.assertEqual(profits_models['models']['logistic']['correlation'], 0.6133)
     
     # SINUSOIDAL MODEL
     def test_profits_models_sinusoidal_constants(self):
@@ -1917,19 +1917,19 @@ class TestLargeModels(unittest.TestCase):
     
     # LOGISTIC MODEL
     def test_large_models_logistic_constants(self):
-        self.assertEqual(large_models['models']['logistic']['constants'], [488.2, 1.0, 1.0])
+        self.assertEqual(large_models['models']['logistic']['constants'], [878.3475, 0.0023, 51.0002])
     
     def test_large_models_logistic_points(self):
-        self.assertEqual(large_models['models']['logistic']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [[1.0, 244.1]]})
+        self.assertEqual(large_models['models']['logistic']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [[51.0002, 439.1737]]})
     
     def test_large_models_logistic_accumulations(self):
-        self.assertEqual(large_models['models']['logistic']['accumulations'], {'range': 47843.6, 'iqr': 22213.1})
+        self.assertEqual(large_models['models']['logistic']['accumulations'], {'range': 47864.0424, 'iqr': 22196.0656})
     
     def test_large_models_logistic_averages(self):
-        self.assertEqual(large_models['models']['logistic']['averages'], {'range': {'average_value_derivative': 0.0, 'mean_values_derivative': [None], 'average_value_integral': 488.2, 'mean_values_integral': [None]}, 'iqr': {'average_value_derivative': 0.0, 'mean_values_derivative': [None], 'average_value_integral': 488.2, 'mean_values_integral': [None]}})
+        self.assertEqual(large_models['models']['logistic']['averages'], {'range': {'average_value_derivative': 0.4982, 'mean_values_derivative': [152.7184], 'average_value_integral': 488.4086, 'mean_values_integral': [148.8968]}, 'iqr': {'average_value_derivative': 0.4987, 'mean_values_derivative': [148.8896], 'average_value_integral': 487.8256, 'mean_values_integral': [147.728]}})
     
     def test_large_models_logistic_correlation(self):
-        self.assertEqual(large_models['models']['logistic']['correlation'], 0.0)
+        self.assertEqual(large_models['models']['logistic']['correlation'], 0.1013)
     
     # SINUSOIDAL MODEL
     def test_large_models_sinusoidal_constants(self):
@@ -1992,4 +1992,4 @@ class TestEdgeCases(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 552 tests in 0.077s ---------- OK ---------- #
+# ---------- Ran 552 tests in 0.175s ---------- OK ---------- #

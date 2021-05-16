@@ -1050,7 +1050,7 @@ class TestLogisticModel(unittest.TestCase):
     # EDGE CASES
     def test_logistic_model_zeroes(self):
         logistic_model_zeroes = logistic_model(bad_set_zeroes)
-        self.assertEqual(logistic_model_zeroes['constants'], [0.0001, 1.0, 1.0])
+        self.assertEqual(logistic_model_zeroes['constants'], [0.0001, 1.0, 0.0001])
 
     def test_logistic_model_string_raises(self):
         with self.assertRaises(Exception) as context:
@@ -1222,4 +1222,4 @@ class TestSinusoidalModel(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 304 tests in 0.067s ---------- OK ---------- #
+# ---------- Ran 304 tests in 0.064s ---------- OK ---------- #

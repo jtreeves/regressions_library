@@ -164,10 +164,16 @@ def logistic_model(data, precision = 4):
     dependent_max = max(dependent_variable)
     dependent_min = min(dependent_variable)
     dependent_range = dependent_max - dependent_min
+    independent_max = max(independent_variable)
+    independent_min = min(independent_variable)
+    independent_range = independent_max - independent_min
+    independent_avg = (independent_max + independent_min) / 2
 
     # Circumvent error with bounds
     if dependent_range == 0:
         dependent_range = 1
+    if independent_range == 0:
+        independent_range = 1
     
     # Create function to guide model generation
     def logistic_fit(variable, first_constant, second_constant, third_constant):
@@ -180,13 +186,13 @@ def logistic_model(data, precision = 4):
     # Handle normal case where values appear to increase in the set
     if mean_upper >= mean_lower:
         # Generate model
-        parameters, covariance = curve_fit(logistic_fit, independent_variable, dependent_variable, bounds=[(dependent_max - dependent_range, 0, -inf), (dependent_max + dependent_range, inf, inf)])
+        parameters, covariance = curve_fit(logistic_fit, independent_variable, dependent_variable, bounds=[(dependent_max - dependent_range, 0, independent_avg - independent_range), (dependent_max + dependent_range, inf, independent_avg + independent_range)])
         solution = list(parameters)
     
     # Handle case where values do not appear to increase in the set
     else:
         # Generate model with inverted negative infinity and zero values
-        parameters, covariance = curve_fit(logistic_fit, independent_variable, dependent_variable, bounds=[(dependent_max - dependent_range, -inf, -inf), (dependent_max + dependent_range, 0, inf)])
+        parameters, covariance = curve_fit(logistic_fit, independent_variable, dependent_variable, bounds=[(dependent_max - dependent_range, -inf, independent_avg - independent_range), (dependent_max + dependent_range, 0, independent_avg + independent_range)])
         solution = list(parameters)
     
     # Eliminate zeroes from solution

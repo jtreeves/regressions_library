@@ -60,7 +60,7 @@ def sinusoidal_roots(first_constant, second_constant, third_constant, fourth_con
     Calculate the roots of a sinusoidal function with coefficients 7, -5, -3, and 2
         >>> roots_second = sinusoidal_roots(7, -5, -3, 2)
         >>> print(roots_second)
-        [-8.7128, -7.9686, -7.4562, -6.712, -6.1995, -5.4553, -4.9429, -4.1987, -3.6863, -2.942, '-3.6863 + -1.2566k', '-2.942 + -1.2566k']
+        [-8.7128, -7.9686, -7.4562, -6.712, -6.1995, -5.4553, -4.9429, -4.1987, -3.6863, -2.942, '-3.6863 + 1.2566k', '-2.942 + 1.2566k']
     Calculate the roots of a sinusoidal function with all inputs set to 0
         >>> roots_zeroes = sinusoidal_roots(0, 0, 0, 0)
         >>> print(roots_zeroes)
