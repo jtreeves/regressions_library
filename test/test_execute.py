@@ -1516,13 +1516,13 @@ class TestWeatherModels(unittest.TestCase):
         self.assertEqual(weather_models['models']['sinusoidal']['constants'], [16.722, -0.6093, -11.0, 74.6609])
     
     def test_weather_models_sinusoidal_points(self):
-        self.assertEqual(weather_models['models']['sinusoidal']['points'], {'roots': [None], 'maxima': [[7.0465, 91.3829], ['7.0465 + -10.3122k', 91.3829]], 'minima': [[1.8904, 57.9389], ['1.8904 + -10.3122k', 57.9389]], 'inflections': [[4.4683, 74.6612], ['4.4683 + -5.1561k', 74.6612]]})
+        self.assertEqual(weather_models['models']['sinusoidal']['points'], {'roots': [None], 'maxima': [[7.0464, 91.3829], ['7.0464 + 10.3122k', 91.3829]], 'minima': [[1.8902, 57.9389], ['1.8902 + 10.3122k', 57.9389]], 'inflections': [[4.4683, 74.6609], [9.6244, 74.6609], ['4.4683 + 5.1561k', 74.6609]]})
     
     def test_weather_models_sinusoidal_accumulations(self):
         self.assertEqual(weather_models['models']['sinusoidal']['accumulations'], {'range': 810.4781, 'iqr': 498.1373})
     
     def test_weather_models_sinusoidal_averages(self):
-        self.assertEqual(weather_models['models']['sinusoidal']['averages'], {'range': {'average_value_derivative': -0.2066, 'mean_values_derivative': [1.8568, 7.0794, '1.8568 + -10.3121k', '7.0794 + -10.3121k'], 'average_value_integral': 73.6798, 'mean_values_integral': [4.3718, 9.7205, '4.3718 + -10.3121k', '9.7205 + -10.3121k']}, 'iqr': {'average_value_derivative': 1.7612, 'mean_values_derivative': [6.761, '6.761 + -10.3121k', '12.4873 + -10.3121k'], 'average_value_integral': 83.0229, 'mean_values_integral': [5.3276, 8.7647, '5.3276 + -10.3121k', '8.7647 + -10.3121k']}})
+        self.assertEqual(weather_models['models']['sinusoidal']['averages'], {'range': {'average_value_derivative': -0.2066, 'mean_values_derivative': [1.8568, 7.0794, '1.8568 + 10.3121k', '7.0794 + 10.3121k'], 'average_value_integral': 73.6798, 'mean_values_integral': [4.3718, 9.7205, '4.3718 + 10.3121k', '9.7205 + 10.3121k']}, 'iqr': {'average_value_derivative': 1.7612, 'mean_values_derivative': [6.761, '6.761 + 10.3121k', '12.4873 + 10.3121k'], 'average_value_integral': 83.0229, 'mean_values_integral': [5.3276, 8.7647, '5.3276 + 10.3121k', '8.7647 + 10.3121k']}})
     
     def test_weather_models_sinusoidal_correlation(self):
         self.assertEqual(weather_models['models']['sinusoidal']['correlation'], 0.9689)
@@ -1992,4 +1992,4 @@ class TestEdgeCases(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 552 tests in 0.082s ---------- OK ---------- #
+# ---------- Ran 552 tests in 0.077s ---------- OK ---------- #

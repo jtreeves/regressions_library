@@ -110,6 +110,10 @@ class TestGenerate(unittest.TestCase):
     def test_generate_floats(self):
         generate_floats = generate_elements(7.81259217, 3.12748261)
         self.assertEqual(generate_floats, [7.8126, 10.9401, 14.0676, 17.195, 20.3225, '7.8126 + 3.1275k'])
+    
+    def test_generate_negative_periodic(self):
+        generate_negative_periodic = generate_elements(5, -3)
+        self.assertEqual(generate_negative_periodic, [5.0, 8.0, 11.0, 14.0, 17.0, '5.0 + 3.0k'])
 
 class TestUnify(unittest.TestCase):
     def test_unify_first(self):
@@ -150,4 +154,4 @@ class TestDotProduct(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 26 tests in 0.002s ---------- OK ---------- #
+# ---------- Ran 27 tests in 0.004s ---------- OK ---------- #

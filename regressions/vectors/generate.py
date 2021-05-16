@@ -56,6 +56,9 @@ def generate_elements(initial_value, periodic_unit, precision = 4):
     two_scalars(initial_value, periodic_unit)
     positive_integer(precision)
 
+    if periodic_unit < 0:
+        periodic_unit = -1 * periodic_unit
+
     # Generate values from inputs
     first_value = initial_value + 1 * periodic_unit
     second_value = initial_value + 2 * periodic_unit
