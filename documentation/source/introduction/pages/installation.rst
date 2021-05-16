@@ -22,7 +22,7 @@ If you already have an older version of this library installed on your computer 
 
 .. code-block::
 
-    pip3 install --ugrade regressions
+    pip3 install --upgrade regressions
 
 .. |pypi| raw:: html
 
