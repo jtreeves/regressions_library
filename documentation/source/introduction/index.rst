@@ -8,4 +8,4 @@ The regressions library is a collection of algorithms for fitting data to differ
     pages/about
     pages/installation
     pages/usage
-    pages/updates
+    pages/releases

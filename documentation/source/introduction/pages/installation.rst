@@ -1,6 +1,6 @@
 Installation
 ------------
-The regressions library is publicly available on the Python Package Index (PyPI), which makes downloading it to your local computer fairly easy. To learn more about the current version of the library available for download, view its |pypi|.
+The regressions library is publicly available on the Python Package Index (PyPI), which makes downloading it to your local computer fairly easy. To learn more about the current version of the library available for download, view its |pypi|. To learn more about past versions of the library, view the :doc:`releases` section.
 
 Requirements
 ************

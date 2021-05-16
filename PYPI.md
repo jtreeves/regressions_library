@@ -81,7 +81,7 @@ print(optimal) # 'sinusoidal'
 - Logistic models with higher correlation coeffients on average
 - Sinusoidal models with notes about their key graphical features iin which their general forms include only a plus sign before the periodic unit as opposed to both plus and minus signs in some cases
 
-To see all updates by version number, view the [Updates section](https://regressions.readthedocs.io/en/latest/introduction/pages/updates.html) of its documentation.
+To see all updates by version number, view the [Release Notes section](https://regressions.readthedocs.io/en/latest/introduction/pages/releases.html) of its documentation.
 
 To see all logs for the library, view its [commit history](https://github.com/jtreeves/regressions_library/commits/main) on GitHub.
 
