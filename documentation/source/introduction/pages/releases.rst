@@ -20,7 +20,7 @@ Version 2.1.0
 
 **IMPROVED**
 
-* :func:`~regressions.models.logistic.logistic_model` now produces models with higher correlation coeffients on average, allowing it to better provide models for less logistically inclined data sets
+* :func:`~regressions.models.logistic.logistic_model` now produces models with higher correlation coefficients on average, allowing it to better provide models for less logistically inclined data sets
 
 **FIXED**
 
