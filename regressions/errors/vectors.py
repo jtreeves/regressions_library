@@ -28,7 +28,7 @@ def vector_of_strings(vector, position = 'only'):
 def compare_vectors(vector_one, vector_two):
     confirm_vector(vector_one, 'first')
     confirm_vector(vector_two, 'second')
-    if len(vector_one) is not len(vector_two):
+    if len(vector_one) != len(vector_two):
         raise ValueError('Both arguments must contain the same number of elements')
     else:
         return 'Both arguments contain the same number of elements'

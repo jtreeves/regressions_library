@@ -160,7 +160,7 @@ def linear_model(data, precision = 4):
     for element in independent_variable:
         # Store linear and constant evaluations of original independent elements together as lists within independent matrix
         independent_matrix.append([element, 1])
-    
+
     # Solve system of equations
     solution = system_solution(independent_matrix, dependent_matrix, precision)
 
