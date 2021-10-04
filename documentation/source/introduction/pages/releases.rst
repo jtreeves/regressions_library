@@ -14,6 +14,14 @@ Versions above 2.0
 ******************
 The most recent versions of the library involve both logistic and sinusoidal models, and many of the function names and file structures have changed.
 
+Version 2.1.1
+^^^^^^^^^^^^^
+*10/03/21*
+
+**FIXED**
+
+* Change syntax in error handling functions to avoid throwing errors with large data sets; library now comfortably handles data sets containing as many as 1,000 coordinate pairs
+
 Version 2.1.0
 ^^^^^^^^^^^^^
 *05/16/21*

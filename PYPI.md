@@ -87,7 +87,7 @@ To see all logs for the library, view its [commit history](https://github.com/jt
 
 ## Testing
 
-There are currently 1403 tests for this library. To run all of them:
+There are currently 1445 tests for this library. To run all of them:
 
 1. Clone this repository: `git clone https://github.com/jtreeves/regressions_library.git`
 2. Enter the directory: `cd regressons_library`
