@@ -8,117 +8,15 @@ from regressions.models.exponential import exponential_model
 from regressions.models.logarithmic import logarithmic_model
 from regressions.models.logistic import logistic_model
 from regressions.models.sinusoidal import sinusoidal_model
-
-linear_set = [
-    [1, 30],
-    [2, 27],
-    [3, 24],
-    [4, 21],
-    [5, 18],
-    [6, 15],
-    [7, 12],
-    [8, 9],
-    [9, 6],
-    [10, 3]
-]
-
-quadratic_set = [
-    [1, 10],
-    [2, 27],
-    [3, 40],
-    [4, 49],
-    [5, 54],
-    [6, 55],
-    [7, 52],
-    [8, 45],
-    [9, 34],
-    [10, 19]
-]
-
-cubic_set = [
-    [1, 42],
-    [2, 67],
-    [3, 74],
-    [4, 69],
-    [5, 58],
-    [6, 47],
-    [7, 42],
-    [8, 49],
-    [9, 74],
-    [10, 123]
-]
-
-hyperbolic_set = [
-    [1, 2519],
-    [2, 1259],
-    [3, 839],
-    [4, 629],
-    [5, 503],
-    [6, 419],
-    [7, 359],
-    [8, 314],
-    [9, 279],
-    [10, 251]
-]
-
-exponential_set = [
-    [1, 6],
-    [2, 12],
-    [3, 24],
-    [4, 48],
-    [5, 96],
-    [6, 192],
-    [7, 384],
-    [8, 768],
-    [9, 1536],
-    [10, 3072]
-]
-
-logarithmic_set = [
-    [1, 2],
-    [2, 4.0794],
-    [3, 5.2958],
-    [4, 6.1589],
-    [5, 6.8283],
-    [6, 7.3753],
-    [7, 7.8377],
-    [8, 8.2383],
-    [9, 8.5917],
-    [10, 8.9078]
-]
-
-logistic_set = [
-    [1, 0.0000122],
-    [2, 0.000247],
-    [3, 0.004945],
-    [4, 0.094852],
-    [5, 1.0],
-    [6, 1.905148],
-    [7, 1.995055],
-    [8, 1.999753],
-    [9, 1.999988],
-    [10, 1.999999],
-]
-
-sinusoidal_set = [
-    [1, 3], 
-    [2, 8], 
-    [3, 3], 
-    [4, -2], 
-    [5, 3], 
-    [6, 8], 
-    [7, 3], 
-    [8, -2], 
-    [9, 3], 
-    [10, 8]
-]
-
-bad_set_string = 'data'
-bad_set_vector = [1]
-bad_set_buried_not_list = [[1], [2], 3]
-bad_set_buried_string = [[1], [2], ['three']]
-bad_set_short = [[1], [2], [3]]
-bad_set_zeroes = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
+from .data.sets.linear import linear_set
+from .data.sets.quadratic import quadratic_set
+from .data.sets.cubic import cubic_set
+from .data.sets.hyperbolic import hyperbolic_set
+from .data.sets.exponential import exponential_set
+from .data.sets.logarithmic import logarithmic_set
+from .data.sets.logistic import logistic_set
+from .data.sets.sinusoidal import sinusoidal_set
+from .data.sets.bad import bad_set_string, bad_set_vector, bad_set_buried_not_list, bad_set_buried_string, bad_set_short, bad_set_zeroes
 
 low_precision = 2
 high_precision = 6

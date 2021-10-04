@@ -1,140 +1,21 @@
 import unittest
 
 from regressions.execute import run_all
-
-agnostic_set = [
-    [1, 32],
-    [2, 25],
-    [3, 14],
-    [4, 23],
-    [5, 39],
-    [6, 45],
-    [7, 42],
-    [8, 49],
-    [9, 36],
-    [10, 33]
-]
-
-linear_set = [
-    [1, 30],
-    [2, 27],
-    [3, 24],
-    [4, 21],
-    [5, 18],
-    [6, 15],
-    [7, 12],
-    [8, 9],
-    [9, 6],
-    [10, 3]
-]
-
-quadratic_set = [
-    [1, 10],
-    [2, 27],
-    [3, 40],
-    [4, 49],
-    [5, 54],
-    [6, 55],
-    [7, 52],
-    [8, 45],
-    [9, 34],
-    [10, 19]
-]
-
-cubic_set = [
-    [1, 42],
-    [2, 67],
-    [3, 74],
-    [4, 69],
-    [5, 58],
-    [6, 47],
-    [7, 42],
-    [8, 49],
-    [9, 74],
-    [10, 123]
-]
-
-hyperbolic_set = [
-    [1, 2519],
-    [2, 1259],
-    [3, 839],
-    [4, 629],
-    [5, 503],
-    [6, 419],
-    [7, 359],
-    [8, 314],
-    [9, 279],
-    [10, 251]
-]
-
-exponential_set = [
-    [1, 6],
-    [2, 12],
-    [3, 24],
-    [4, 48],
-    [5, 96],
-    [6, 192],
-    [7, 384],
-    [8, 768],
-    [9, 1536],
-    [10, 3072]
-]
-
-logarithmic_set = [
-    [1, 2],
-    [2, 4.0794],
-    [3, 5.2958],
-    [4, 6.1589],
-    [5, 6.8283],
-    [6, 7.3753],
-    [7, 7.8377],
-    [8, 8.2383],
-    [9, 8.5917],
-    [10, 8.9078]
-]
-
-logistic_set = [
-    [1, 0.0000122],
-    [2, 0.000247],
-    [3, 0.004945],
-    [4, 0.094852],
-    [5, 1.0],
-    [6, 1.905148],
-    [7, 1.995055],
-    [8, 1.999753],
-    [9, 1.999988],
-    [10, 1.999999]
-]
-
-sinusoidal_set = [
-    [1, 3], 
-    [2, 8], 
-    [3, 3], 
-    [4, -2], 
-    [5, 3], 
-    [6, 8], 
-    [7, 3], 
-    [8, -2], 
-    [9, 3], 
-    [10, 8]
-]
-
-weather_set = [[1, 53], [2, 58], [3, 66], [4, 73], [5, 80], [6, 87], [7, 89], [8, 88], [9, 83], [10, 74], [11, 64], [12, 55]]
-
-disease_set = [[1, 4], [2, 20], [3, 7117], [4, 72390], [5, 110593], [6, 128525], [7, 159539], [8, 189293], [9, 208337], [10, 232942], [11, 285620], [12, 382580]]
-
-profits_set = [[152, 17892.35], [167, 18672.32], [178, 21321.67], [193, 24178.92], [201, 25761.21], [214, 23111.43], [229, 21245.87], [236, 19678.25], [247, 18721.17], [258, 16239.55]]
-
-large_set = [[169, 423], [122, 391], [178, 555], [131, 284], [120, 520], [179, 558], [164, 265], [167, 338], [198, 445], [139, 402], [183, 725], [133, 470], [156, 573], [159, 325], [121, 653], [118, 358], [122, 633], [167, 487], [161, 453], [194, 488], [170, 517], [124, 377], [191, 310], [194, 398], [173, 744], [166, 389], [113, 583], [109, 380], [126, 668], [144, 491], [107, 533], [188, 355], [147, 553], [169, 497], [121, 606], [132, 373], [111, 554], [173, 669], [177, 483], [122, 340], [171, 286], [108, 681], [139, 502], [115, 339], [174, 396], [134, 625], [147, 435], [146, 555], [147, 656], [126, 354], [155, 679], [181, 629], [149, 417], [119, 374], [102, 422], [112, 292], [108, 464], [109, 559], [112, 635], [159, 518], [180, 304], [185, 567], [165, 299], [160, 337], [133, 730], [193, 374], [164, 537], [172, 592], [173, 660], [186, 290], [170, 670], [192, 687], [154, 596], [154, 464], [125, 383], [193, 559], [155, 586], [149, 406], [131, 590], [127, 339], [163, 378], [145, 254], [156, 395], [166, 355], [189, 661], [133, 685], [168, 685], [190, 736], [145, 564], [125, 470], [129, 541], [133, 439], [162, 486], [125, 387], [183, 596], [135, 733], [106, 329], [100, 279], [102, 439], [162, 454]]
-
-thousand_set = [[382, 148], [484, 430], [18, 301], [8, 266], [116, 389], [473, 201], [476, 492], [273, 101], [243, 280], [203, 83], [285, 389], [289, 38], [243, 37], [335, 430], [271, 55], [13, 410], [444, 370], [70, 355], [313, 224], [429, 79], [143, 289], [369, 85], [225, 191], [93, 387], [323, 288], [195, 103], [348, 11], [480, 466], [254, 378], [219, 302], [155, 7], [197, 231], [54, 285], [185, 43], [383, 352], [306, 251], [38, 173], [391, 406], [343, 355], [400, 209], [423, 186], [412, 478], [128, 96], [159, 390], [33, 479], [145, 107], [392, 354], [236, 154], [128, 329], [7, 494], [481, 380], [223, 269], [354, 311], [49, 352], [319, 174], [1, 196], [236, 315], [195, 280], [498, 105], [51, 336], [209, 177], [440, 53], [447, 432], [499, 304], [376, 114], [415, 428], [288, 1], [387, 122], [476, 332], [11, 225], [236, 199], [240, 39], [496, 422], [339, 469], [472, 1], [32, 274], [397, 462], [176, 321], [342, 259], [225, 106], [40, 68], [120, 204], [399, 76], [133, 336], [72, 250], [490, 182], [73, 282], [147, 132], [41, 23], [158, 379], [178, 413], [447, 424], [243, 232], [111, 317], [116, 107], [494, 275], [358, 274], [16, 430], [221, 420], [26, 365], [333, 427], [113, 16], [273, 271], [87, 425], [136, 211], [4, 153], [90, 489], [339, 447], [219, 449], [490, 84], [319, 397], [251, 364], [28, 285], [443, 355], [472, 19], [157, 210], [178, 181], [89, 423], [408, 5], [38, 429], [417, 248], [153, 331], [256, 312], [488, 479], [67, 86], [216, 250], [90, 280], [435, 26], [408, 179], [455, 101], [308, 90], [479, 292], [6, 54], [6, 418], [330, 438], [105, 416], [349, 215], [483, 457], [232, 252], [29, 444], [150, 270], [216, 267], [350, 101], [282, 487], [173, 209], [440, 149], [172, 28], [346, 1], [163, 277], [297, 441], [291, 8], [237, 473], [390, 169], [343, 410], [2, 166], [87, 74], [93, 330], [164, 29], [367, 431], [354, 18], [159, 33], [47, 429], [240, 368], [430, 310], [484, 22], [220, 397], [288, 149], [75, 42], [198, 455], [6, 399], [293, 491], [348, 484], [423, 387], [29, 114], [279, 334], [307, 146], [75, 257], [85, 440], [285, 437], [433, 117], [65, 251], [429, 467], [135, 325], [190, 18], [10, 352], [295, 206], [148, 293], [372, 476], [140, 50], [139, 459], [130, 248], [28, 248], [424, 466], [271, 124], [138, 442], [259, 113], [191, 298], [211, 500], [229, 30], [195, 488], [171, 435], [306, 60], [400, 404], [200, 32], [84, 254], [17, 401], [397, 102], [1, 258], [485, 13], [67, 395], [461, 27], [485, 126], [275, 290], [89, 340], [99, 490], [150, 154], [277, 14], [11, 246], [39, 263], [379, 108], [163, 228], [466, 232], [265, 189], [50, 94], [452, 478], [64, 475], [455, 167], [250, 205], [203, 466], [100, 405], [284, 71], [153, 158], [192, 392], [182, 461], [440, 353], [406, 485], [184, 99], [469, 235], [111, 302], [481, 400], [354, 248], [15, 353], [148, 379], [279, 257], [164, 195], [183, 131], [426, 434], [21, 193], [67, 418], [169, 77], [355, 22], [362, 14], [366, 246], [431, 335], [261, 308], [145, 399], [234, 433], [103, 147], [411, 420], [22, 115], [264, 274], [186, 465], [73, 68], [185, 303], [408, 145], [215, 374], [380, 278], [310, 322], [481, 398], [390, 366], [148, 218], [477, 408], [489, 260], [378, 60], [105, 366], [82, 118], [225, 12], [448, 298], [36, 112], [100, 333], [394, 366], [387, 335], [345, 419], [435, 224], [73, 223], [293, 348], [425, 362], [176, 312], [328, 436], [171, 405], [462, 382], [57, 303], [195, 211], [402, 39], [206, 389], [283, 92], [86, 360], [416, 217], [190, 147], [1, 463], [400, 153], [287, 228], [161, 174], [200, 203], [455, 123], [449, 324], [225, 272], [368, 65], [493, 147], [331, 298], [9, 122], [269, 175], [80, 198], [245, 463], [197, 291], [218, 359], [394, 23], [87, 8], [468, 68], [477, 147], [386, 157], [236, 102], [471, 99], [494, 140], [11, 228], [120, 358], [355, 319], [474, 196], [302, 372], [339, 18], [109, 229], [197, 184], [56, 182], [407, 288], [35, 380], [314, 278], [499, 162], [486, 392], [211, 85], [54, 71], [108, 333], [488, 351], [176, 47], [444, 69], [175, 297], [108, 497], [406, 489], [183, 431], [342, 324], [23, 422], [474, 145], [52, 107], [313, 434], [440, 113], [79, 203], [384, 362], [489, 68], [460, 354], [471, 123], [82, 498], [445, 167], [118, 23], [225, 180], [88, 169], [258, 231], [393, 117], [469, 140], [4, 111], [158, 365], [245, 144], [208, 241], [390, 146], [229, 108], [145, 186], [161, 497], [369, 430], [362, 241], [19, 332], [70, 138], [245, 409], [409, 122], [169, 205], [127, 192], [150, 25], [234, 169], [378, 426], [432, 90], [408, 8], [427, 94], [39, 438], [394, 382], [65, 153], [455, 166], [21, 289], [312, 107], [490, 317], [347, 248], [135, 447], [362, 98], [183, 289], [76, 445], [391, 213], [456, 358], [207, 38], [224, 354], [263, 339], [202, 360], [48, 495], [127, 492], [272, 192], [233, 249], [435, 91], [456, 136], [286, 207], [56, 233], [72, 33], [132, 402], [260, 498], [348, 444], [140, 134], [314, 292], [316, 295], [455, 192], [238, 318], [164, 105], [191, 398], [394, 121], [135, 254], [282, 153], [171, 161], [56, 396], [113, 500], [367, 53], [96, 408], [463, 184], [457, 318], [236, 300], [229, 374], [187, 199], [463, 143], [36, 341], [83, 175], [151, 407], [311, 488], [223, 135], [331, 107], [142, 178], [34, 409], [293, 101], [401, 117], [406, 398], [396, 415], [260, 27], [22, 426], [106, 350], [378, 233], [496, 26], [37, 176], [126, 411], [174, 31], [289, 366], [403, 67], [138, 354], [273, 172], [272, 151], [408, 485], [227, 284], [367, 178], [384, 6], [200, 433], [14, 439], [9, 284], [276, 164], [449, 393], [298, 155], [91, 222], [323, 84], [397, 477], [165, 273], [312, 414], [242, 422], [465, 14], [268, 164], [464, 66], [335, 424], [136, 438], [466, 94], [353, 282], [35, 139], [414, 274], [257, 384], [16, 265], [352, 464], [204, 316], [489, 118], [294, 318], [297, 100], [202, 310], [43, 127], [283, 204], [151, 308], [300, 419], [60, 294], [275, 381], [308, 427], [262, 181], [378, 174], [143, 193], [62, 336], [74, 294], [314, 329], [282, 455], [290, 490], [258, 394], [191, 67], [265, 286], [174, 163], [285, 7], [251, 407], [328, 428], [281, 217], [341, 380], [11, 239], [25, 383], [226, 108], [125, 438], [376, 319], [154, 403], [356, 132], [309, 26], [7, 31], [140, 9], [213, 57], [212, 463], [167, 428], [233, 87], [141, 301], [63, 404], [386, 64], [90, 430], [231, 328], [327, 369], [332, 192], [473, 176], [290, 484], [79, 236], [494, 452], [108, 447], [259, 290], [11, 355], [238, 203], [45, 159], [209, 232], [277, 38], [265, 24], [379, 236], [142, 254], [459, 113], [243, 250], [176, 145], [277, 204], [485, 362], [366, 480], [18, 312], [401, 48], [395, 204], [176, 245], [33, 335], [461, 382], [360, 33], [332, 108], [457, 369], [10, 434], [290, 172], [193, 117], [28, 362], [388, 132], [125, 367], [107, 398], [472, 431], [153, 411], [153, 356], [112, 352], [187, 77], [232, 160], [48, 175], [246, 64], [376, 58], [2, 310], [486, 233], [3, 206], [54, 242], [272, 226], [414, 334], [56, 451], [165, 342], [11, 37], [371, 464], [330, 112], [28, 257], [124, 477], [489, 59], [408, 470], [77, 148], [407, 64], [137, 485], [151, 384], [155, 274], [102, 359], [93, 178], [91, 366], [427, 16], [413, 445], [223, 203], [368, 440], [54, 411], [127, 492], [245, 405], [429, 389], [406, 30], [25, 44], [310, 58], [18, 5], [298, 8], [337, 297], [414, 311], [317, 203], [482, 247], [412, 7], [398, 120], [213, 330], [348, 155], [248, 122], [284, 301], [186, 161], [266, 244], [146, 79], [457, 295], [234, 64], [73, 80], [312, 351], [406, 17], [38, 114], [233, 233], [360, 313], [321, 332], [320, 228], [366, 66], [138, 123], [419, 80], [326, 341], [472, 263], [229, 15], [271, 89], [43, 251], [66, 307], [9, 280], [40, 270], [253, 454], [394, 444], [46, 454], [86, 425], [415, 337], [28, 280], [159, 357], [227, 182], [79, 472], [216, 203], [1, 239], [121, 220], [172, 299], [144, 391], [476, 131], [313, 99], [500, 238], [469, 158], [350, 240], [346, 349], [339, 420], [313, 439], [112, 423], [454, 179], [243, 59], [326, 31], [88, 450], [374, 294], [191, 121], [300, 466], [259, 371], [231, 77], [121, 271], [329, 479], [160, 25], [399, 120], [98, 299], [432, 124], [191, 50], [443, 459], [92, 324], [43, 100], [283, 334], [113, 460], [453, 247], [483, 305], [221, 354], [20, 165], [241, 249], [343, 283], [164, 97], [364, 16], [268, 359], [51, 131], [73, 233], [244, 444], [426, 400], [236, 446], [500, 125], [187, 416], [476, 308], [362, 27], [387, 480], [476, 81], [148, 488], [319, 142], [116, 397], [76, 319], [26, 304], [261, 453], [131, 302], [2, 22], [408, 56], [343, 129], [2, 12], [297, 63], [362, 462], [484, 284], [306, 256], [139, 318], [142, 357], [230, 465], [485, 312], [397, 154], [262, 22], [212, 375], [199, 186], [219, 1], [489, 487], [408, 378], [372, 151], [498, 164], [213, 136], [385, 158], [493, 440], [384, 497], [188, 111], [366, 66], [356, 392], [269, 393], [211, 198], [318, 21], [499, 213], [419, 445], [282, 390], [261, 87], [132, 490], [362, 379], [287, 376], [394, 71], [466, 481], [322, 163], [228, 319], [466, 59], [87, 11], [185, 361], [214, 475], [376, 196], [66, 492], [487, 270], [119, 77], [379, 416], [243, 14], [1, 268], [261, 132], [223, 422], [302, 190], [67, 192], [74, 195], [115, 191], [190, 410], [41, 201], [144, 1], [302, 352], [464, 38], [12, 337], [21, 323], [480, 253], [354, 372], [470, 144], [365, 174], [332, 84], [154, 93], [276, 337], [16, 455], [98, 326], [30, 441], [357, 415], [489, 405], [439, 321], [407, 418], [393, 437], [150, 440], [238, 186], [405, 281], [278, 381], [265, 342], [249, 220], [47, 324], [117, 496], [416, 396], [335, 52], [226, 466], [453, 202], [412, 422], [356, 229], [4, 20], [256, 361], [74, 8], [396, 198], [189, 153], [117, 149], [440, 205], [271, 155], [25, 319], [90, 117], [328, 108], [262, 492], [231, 16], [56, 444], [137, 351], [444, 175], [77, 359], [304, 363], [454, 252], [272, 241], [279, 195], [361, 109], [244, 115], [133, 185], [253, 288], [1, 5], [110, 31], [225, 42], [203, 492], [50, 356], [339, 161], [478, 460], [95, 280], [466, 468], [134, 349], [278, 283], [443, 466], [14, 245], [329, 387], [251, 1], [169, 252], [465, 145], [169, 393], [126, 3], [483, 225], [307, 434], [438, 479], [54, 355], [421, 152], [494, 383], [93, 83], [347, 94], [437, 300], [229, 307], [163, 211], [495, 226], [416, 317], [474, 47], [386, 76], [401, 119], [153, 33], [177, 286], [123, 411], [454, 47], [278, 458], [174, 319], [50, 209], [341, 119], [149, 37], [298, 407], [83, 91], [73, 88], [425, 20], [157, 468], [46, 321], [246, 334], [70, 364], [279, 52], [54, 323], [95, 402], [428, 474], [203, 460], [395, 444], [79, 351], [282, 308], [3, 403], [412, 70], [12, 45], [171, 84], [209, 493], [252, 426], [414, 374], [404, 199], [307, 62], [364, 71], [447, 144], [292, 368], [292, 472], [465, 131], [362, 110], [276, 289], [351, 1], [389, 291], [55, 341], [66, 356], [261, 464], [299, 371], [139, 371], [235, 464], [212, 328], [307, 43], [394, 406], [129, 484], [55, 238], [321, 97], [147, 464], [457, 161], [398, 429], [380, 121], [96, 236], [204, 128], [235, 465], [420, 245], [1, 279], [190, 395], [375, 277], [417, 388], [388, 287], [109, 113], [186, 370], [404, 446], [248, 345], [68, 124], [220, 401], [237, 106], [252, 312], [312, 430], [103, 229], [129, 35], [429, 93], [176, 91], [21, 413], [37, 96], [429, 122], [313, 483], [398, 448], [295, 150], [235, 276], [3, 340], [211, 173], [231, 85], [54, 390], [181, 273], [122, 214], [166, 186], [190, 456], [95, 192], [383, 212], [188, 475], [341, 30], [99, 261], [298, 259], [108, 132], [427, 2], [213, 424], [490, 399], [89, 394], [45, 427], [264, 430], [120, 217], [386, 454], [399, 136], [499, 96], [315, 359], [117, 81], [290, 132]]
-
-bad_set_string = 'data'
-bad_set_vector = [1]
-bad_set_buried_not_list = [[1], [2], 3]
-bad_set_buried_string = [[1], [2], ['three']]
-bad_set_short = [[1], [2], [3]]
-bad_set_zeroes = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
+from .data.sets.agnostic import agnostic_set
+from .data.sets.linear import linear_set
+from .data.sets.quadratic import quadratic_set
+from .data.sets.cubic import cubic_set
+from .data.sets.hyperbolic import hyperbolic_set
+from .data.sets.exponential import exponential_set
+from .data.sets.logarithmic import logarithmic_set
+from .data.sets.logistic import logistic_set
+from .data.sets.sinusoidal import sinusoidal_set
+from .data.sets.weather import weather_set
+from .data.sets.disease import disease_set
+from .data.sets.profits import profits_set
+from .data.sets.hundred import hundred_set
+from .data.sets.thousand import thousand_set
+from .data.sets.bad import bad_set_string, bad_set_vector, bad_set_buried_not_list, bad_set_buried_string, bad_set_short, bad_set_zeroes
 
 agnostic_models = run_all(agnostic_set)
 
@@ -1816,145 +1697,285 @@ class TestProfitsModels(unittest.TestCase):
     def test_profits_optimal(self):
         self.assertEqual(profits_models['optimal']['option'], 'quadratic')
 
-large_models = run_all(large_set)
+hundred_models = run_all(hundred_set)
 
-class TestLargeModels(unittest.TestCase):
+class TestHundredModels(unittest.TestCase):
     maxDiff = None
 
     # LINEAR MODEL
-    def test_large_models_linear_constants(self):
-        self.assertEqual(large_models['models']['linear']['constants'], [0.4934, 414.5401])
+    def test_hundred_models_linear_constants(self):
+        self.assertEqual(hundred_models['models']['linear']['constants'], [0.4934, 414.5401])
     
-    def test_large_models_linear_points(self):
-        self.assertEqual(large_models['models']['linear']['points'], {'roots': [[-840.1704, 0]], 'maxima': [None], 'minima': [None], 'inflections': [None]})
+    def test_hundred_models_linear_points(self):
+        self.assertEqual(hundred_models['models']['linear']['points'], {'roots': [[-840.1704, 0]], 'maxima': [None], 'minima': [None], 'inflections': [None]})
     
-    def test_large_models_linear_accumulations(self):
-        self.assertEqual(large_models['models']['linear']['accumulations'], {'range': 47829.5566, 'iqr': 22178.5177})
+    def test_hundred_models_linear_accumulations(self):
+        self.assertEqual(hundred_models['models']['linear']['accumulations'], {'range': 47829.5566, 'iqr': 22178.5177})
     
-    def test_large_models_linear_averages(self):
-        self.assertEqual(large_models['models']['linear']['averages'], {'range': {'average_value_derivative': 0.4934, 'mean_values_derivative': ['All'], 'average_value_integral': 488.0567, 'mean_values_integral': [149.0]}, 'iqr': {'average_value_derivative': 0.4934, 'mean_values_derivative': ['All'], 'average_value_integral': 487.4399, 'mean_values_integral': [147.7499]}})
+    def test_hundred_models_linear_averages(self):
+        self.assertEqual(hundred_models['models']['linear']['averages'], {'range': {'average_value_derivative': 0.4934, 'mean_values_derivative': ['All'], 'average_value_integral': 488.0567, 'mean_values_integral': [149.0]}, 'iqr': {'average_value_derivative': 0.4934, 'mean_values_derivative': ['All'], 'average_value_integral': 487.4399, 'mean_values_integral': [147.7499]}})
     
-    def test_large_models_linear_correlation(self):
-        self.assertEqual(large_models['models']['linear']['correlation'], 0.1013)
+    def test_hundred_models_linear_correlation(self):
+        self.assertEqual(hundred_models['models']['linear']['correlation'], 0.1013)
     
     # QUADRATIC MODEL
-    def test_large_models_quadratic_constants(self):
-        self.assertEqual(large_models['models']['quadratic']['constants'], [-0.007, 2.5668, 265.4919])
+    def test_hundred_models_quadratic_constants(self):
+        self.assertEqual(hundred_models['models']['quadratic']['constants'], [-0.007, 2.5668, 265.4919])
     
-    def test_large_models_quadratic_points(self):
-        self.assertEqual(large_models['models']['quadratic']['points'], {'roots': [[-84.1305, 0], [450.8163, 0]], 'maxima': [[183.3429, 500.7941]], 'minima': [None], 'inflections': [None]})
+    def test_hundred_models_quadratic_points(self):
+        self.assertEqual(hundred_models['models']['quadratic']['points'], {'roots': [[-84.1305, 0], [450.8163, 0]], 'maxima': [[183.3429, 500.7941]], 'minima': [None], 'inflections': [None]})
     
-    def test_large_models_quadratic_accumulations(self):
-        self.assertEqual(large_models['models']['quadratic']['accumulations'], {'range': 47945.1182, 'iqr': 22427.8043})
+    def test_hundred_models_quadratic_accumulations(self):
+        self.assertEqual(hundred_models['models']['quadratic']['accumulations'], {'range': 47945.1182, 'iqr': 22427.8043})
     
-    def test_large_models_quadratic_averages(self):
-        self.assertEqual(large_models['models']['quadratic']['averages'], {'range': {'average_value_derivative': 0.4808, 'mean_values_derivative': [149.0], 'average_value_integral': 489.2359, 'mean_values_integral': [142.7082]}, 'iqr': {'average_value_derivative': 0.4983, 'mean_values_derivative': [147.75], 'average_value_integral': 492.9188, 'mean_values_integral': [149.8011]}})
+    def test_hundred_models_quadratic_averages(self):
+        self.assertEqual(hundred_models['models']['quadratic']['averages'], {'range': {'average_value_derivative': 0.4808, 'mean_values_derivative': [149.0], 'average_value_integral': 489.2359, 'mean_values_integral': [142.7082]}, 'iqr': {'average_value_derivative': 0.4983, 'mean_values_derivative': [147.75], 'average_value_integral': 492.9188, 'mean_values_integral': [149.8011]}})
     
-    def test_large_models_quadratic_correlation(self):
-        self.assertEqual(large_models['models']['quadratic']['correlation'], 0.1071)
+    def test_hundred_models_quadratic_correlation(self):
+        self.assertEqual(hundred_models['models']['quadratic']['correlation'], 0.1071)
     
     # CUBIC MODEL
-    def test_large_models_cubic_constants(self):
-        self.assertEqual(large_models['models']['cubic']['constants'], [0.0005, -0.2204, 33.8099, -1226.1398])
+    def test_hundred_models_cubic_constants(self):
+        self.assertEqual(hundred_models['models']['cubic']['constants'], [0.0005, -0.2204, 33.8099, -1226.1398])
     
-    def test_large_models_cubic_points(self):
-        self.assertEqual(large_models['models']['cubic']['points'], {'roots': [[51.579, 0]], 'maxima': [None], 'minima': [None], 'inflections': [[146.9333, 569.4583]]})
+    def test_hundred_models_cubic_points(self):
+        self.assertEqual(hundred_models['models']['cubic']['points'], {'roots': [[51.579, 0]], 'maxima': [None], 'minima': [None], 'inflections': [[146.9333, 569.4583]]})
     
-    def test_large_models_cubic_accumulations(self):
-        self.assertEqual(large_models['models']['cubic']['accumulations'], {'range': 20188.5488, 'iqr': 10848.7089})
+    def test_hundred_models_cubic_accumulations(self):
+        self.assertEqual(hundred_models['models']['cubic']['accumulations'], {'range': 20188.5488, 'iqr': 10848.7089})
     
-    def test_large_models_cubic_averages(self):
-        self.assertEqual(large_models['models']['cubic']['averages'], {'range': {'average_value_derivative': 2.6327, 'mean_values_derivative': [118.5678, 175.2989], 'average_value_integral': 206.0056, 'mean_values_integral': [None]}, 'iqr': {'average_value_derivative': 1.6856, 'mean_values_derivative': [133.7726, 160.094], 'average_value_integral': 238.4332, 'mean_values_integral': [None]}})
+    def test_hundred_models_cubic_averages(self):
+        self.assertEqual(hundred_models['models']['cubic']['averages'], {'range': {'average_value_derivative': 2.6327, 'mean_values_derivative': [118.5678, 175.2989], 'average_value_integral': 206.0056, 'mean_values_integral': [None]}, 'iqr': {'average_value_derivative': 1.6856, 'mean_values_derivative': [133.7726, 160.094], 'average_value_integral': 238.4332, 'mean_values_integral': [None]}})
     
-    def test_large_models_cubic_correlation(self):
-        self.assertEqual(large_models['models']['cubic']['correlation'], 0.0)
+    def test_hundred_models_cubic_correlation(self):
+        self.assertEqual(hundred_models['models']['cubic']['correlation'], 0.0)
     
     # HYPERBOLIC MODEL
-    def test_large_models_hyperbolic_constants(self):
-        self.assertEqual(large_models['models']['hyperbolic']['constants'], [-10786.2465, 563.019])
+    def test_hundred_models_hyperbolic_constants(self):
+        self.assertEqual(hundred_models['models']['hyperbolic']['constants'], [-10786.2465, 563.019])
     
-    def test_large_models_hyperbolic_points(self):
-        self.assertEqual(large_models['models']['hyperbolic']['points'], {'roots': [[19.1579, 0]], 'maxima': [None], 'minima': [None], 'inflections': [None]})
+    def test_hundred_models_hyperbolic_points(self):
+        self.assertEqual(hundred_models['models']['hyperbolic']['points'], {'roots': [[19.1579, 0]], 'maxima': [None], 'minima': [None], 'inflections': [None]})
     
-    def test_large_models_hyperbolic_accumulations(self):
-        self.assertEqual(large_models['models']['hyperbolic']['accumulations'], {'range': 47807.811, 'iqr': 22269.081})
+    def test_hundred_models_hyperbolic_accumulations(self):
+        self.assertEqual(hundred_models['models']['hyperbolic']['accumulations'], {'range': 47807.811, 'iqr': 22269.081})
     
-    def test_large_models_hyperbolic_averages(self):
-        self.assertEqual(large_models['models']['hyperbolic']['averages'], {'range': {'average_value_derivative': 0.5448, 'mean_values_derivative': [140.7073], 'average_value_integral': 487.8348, 'mean_values_integral': [143.4643]}, 'iqr': {'average_value_derivative': 0.5061, 'mean_values_derivative': [145.9879], 'average_value_integral': 489.4304, 'mean_values_integral': [146.575]}})
+    def test_hundred_models_hyperbolic_averages(self):
+        self.assertEqual(hundred_models['models']['hyperbolic']['averages'], {'range': {'average_value_derivative': 0.5448, 'mean_values_derivative': [140.7073], 'average_value_integral': 487.8348, 'mean_values_integral': [143.4643]}, 'iqr': {'average_value_derivative': 0.5061, 'mean_values_derivative': [145.9879], 'average_value_integral': 489.4304, 'mean_values_integral': [146.575]}})
     
-    def test_large_models_hyperbolic_correlation(self):
-        self.assertEqual(large_models['models']['hyperbolic']['correlation'], 0.1082)
+    def test_hundred_models_hyperbolic_correlation(self):
+        self.assertEqual(hundred_models['models']['hyperbolic']['correlation'], 0.1082)
     
     # EXPONENTIAL MODEL
-    def test_large_models_exponential_constants(self):
-        self.assertEqual(large_models['models']['exponential']['constants'], [407.8094, 1.0009])
+    def test_hundred_models_exponential_constants(self):
+        self.assertEqual(hundred_models['models']['exponential']['constants'], [407.8094, 1.0009])
     
-    def test_large_models_exponential_points(self):
-        self.assertEqual(large_models['models']['exponential']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [None]})
+    def test_hundred_models_exponential_points(self):
+        self.assertEqual(hundred_models['models']['exponential']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [None]})
     
-    def test_large_models_exponential_accumulations(self):
-        self.assertEqual(large_models['models']['exponential']['accumulations'], {'range': 45712.6755, 'iqr': 21194.5052})
+    def test_hundred_models_exponential_accumulations(self):
+        self.assertEqual(hundred_models['models']['exponential']['accumulations'], {'range': 45712.6755, 'iqr': 21194.5052})
     
-    def test_large_models_exponential_averages(self):
-        self.assertEqual(large_models['models']['exponential']['averages'], {'range': {'average_value_derivative': 0.4196, 'mean_values_derivative': [149.3031], 'average_value_integral': 466.4559, 'mean_values_integral': [149.36]}, 'iqr': {'average_value_derivative': 0.419, 'mean_values_derivative': [147.7124], 'average_value_integral': 465.8133, 'mean_values_integral': [147.8276]}})
+    def test_hundred_models_exponential_averages(self):
+        self.assertEqual(hundred_models['models']['exponential']['averages'], {'range': {'average_value_derivative': 0.4196, 'mean_values_derivative': [149.3031], 'average_value_integral': 466.4559, 'mean_values_integral': [149.36]}, 'iqr': {'average_value_derivative': 0.419, 'mean_values_derivative': [147.7124], 'average_value_integral': 465.8133, 'mean_values_integral': [147.8276]}})
     
-    def test_large_models_exponential_correlation(self):
-        self.assertEqual(large_models['models']['exponential']['correlation'], 0.0)
+    def test_hundred_models_exponential_correlation(self):
+        self.assertEqual(hundred_models['models']['exponential']['correlation'], 0.0)
     
     # LOGARITHMIC MODEL
-    def test_large_models_logarithmic_constants(self):
-        self.assertEqual(large_models['models']['logarithmic']['constants'], [74.0076, 118.997])
+    def test_hundred_models_logarithmic_constants(self):
+        self.assertEqual(hundred_models['models']['logarithmic']['constants'], [74.0076, 118.997])
     
-    def test_large_models_logarithmic_points(self):
-        self.assertEqual(large_models['models']['logarithmic']['points'], {'roots': [[0.2003, 0]], 'maxima': [None], 'minima': [None], 'inflections': [None]})
+    def test_hundred_models_logarithmic_points(self):
+        self.assertEqual(hundred_models['models']['logarithmic']['points'], {'roots': [[0.2003, 0]], 'maxima': [None], 'minima': [None], 'inflections': [None]})
     
-    def test_large_models_logarithmic_accumulations(self):
-        self.assertEqual(large_models['models']['logarithmic']['accumulations'], {'range': 47818.8482, 'iqr': 22222.6107})
+    def test_hundred_models_logarithmic_accumulations(self):
+        self.assertEqual(hundred_models['models']['logarithmic']['accumulations'], {'range': 47818.8482, 'iqr': 22222.6107})
     
-    def test_large_models_logarithmic_averages(self):
-        self.assertEqual(large_models['models']['logarithmic']['averages'], {'range': {'average_value_derivative': 0.5159, 'mean_values_derivative': [143.4534], 'average_value_integral': 487.9474, 'mean_values_integral': [146.2481]}, 'iqr': {'average_value_derivative': 0.5049, 'mean_values_derivative': [146.5787], 'average_value_integral': 488.409, 'mean_values_integral': [147.1631]}})
+    def test_hundred_models_logarithmic_averages(self):
+        self.assertEqual(hundred_models['models']['logarithmic']['averages'], {'range': {'average_value_derivative': 0.5159, 'mean_values_derivative': [143.4534], 'average_value_integral': 487.9474, 'mean_values_integral': [146.2481]}, 'iqr': {'average_value_derivative': 0.5049, 'mean_values_derivative': [146.5787], 'average_value_integral': 488.409, 'mean_values_integral': [147.1631]}})
     
-    def test_large_models_logarithmic_correlation(self):
-        self.assertEqual(large_models['models']['logarithmic']['correlation'], 0.1047)
+    def test_hundred_models_logarithmic_correlation(self):
+        self.assertEqual(hundred_models['models']['logarithmic']['correlation'], 0.1047)
     
     # LOGISTIC MODEL
-    def test_large_models_logistic_constants(self):
-        self.assertEqual(large_models['models']['logistic']['constants'], [878.3475, 0.0023, 51.0002])
+    def test_hundred_models_logistic_constants(self):
+        self.assertEqual(hundred_models['models']['logistic']['constants'], [878.3475, 0.0023, 51.0002])
     
-    def test_large_models_logistic_points(self):
-        self.assertEqual(large_models['models']['logistic']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [[51.0002, 439.1737]]})
+    def test_hundred_models_logistic_points(self):
+        self.assertEqual(hundred_models['models']['logistic']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [[51.0002, 439.1737]]})
     
-    def test_large_models_logistic_accumulations(self):
-        self.assertEqual(large_models['models']['logistic']['accumulations'], {'range': 47864.0424, 'iqr': 22196.0656})
+    def test_hundred_models_logistic_accumulations(self):
+        self.assertEqual(hundred_models['models']['logistic']['accumulations'], {'range': 47864.0424, 'iqr': 22196.0656})
     
-    def test_large_models_logistic_averages(self):
-        self.assertEqual(large_models['models']['logistic']['averages'], {'range': {'average_value_derivative': 0.4982, 'mean_values_derivative': [152.7184], 'average_value_integral': 488.4086, 'mean_values_integral': [148.8968]}, 'iqr': {'average_value_derivative': 0.4987, 'mean_values_derivative': [148.8896], 'average_value_integral': 487.8256, 'mean_values_integral': [147.728]}})
+    def test_hundred_models_logistic_averages(self):
+        self.assertEqual(hundred_models['models']['logistic']['averages'], {'range': {'average_value_derivative': 0.4982, 'mean_values_derivative': [152.7184], 'average_value_integral': 488.4086, 'mean_values_integral': [148.8968]}, 'iqr': {'average_value_derivative': 0.4987, 'mean_values_derivative': [148.8896], 'average_value_integral': 487.8256, 'mean_values_integral': [147.728]}})
     
-    def test_large_models_logistic_correlation(self):
-        self.assertEqual(large_models['models']['logistic']['correlation'], 0.1013)
+    def test_hundred_models_logistic_correlation(self):
+        self.assertEqual(hundred_models['models']['logistic']['correlation'], 0.1013)
     
     # SINUSOIDAL MODEL
-    def test_large_models_sinusoidal_constants(self):
-        self.assertEqual(large_models['models']['sinusoidal']['constants'], [32.3199, 1.0085, 1.8848, 488.9635])
+    def test_hundred_models_sinusoidal_constants(self):
+        self.assertEqual(hundred_models['models']['sinusoidal']['constants'], [32.3199, 1.0085, 1.8848, 488.9635])
     
-    def test_large_models_sinusoidal_points(self):
-        self.assertEqual(large_models['models']['sinusoidal']['points'], {'roots': [None], 'maxima': [[103.1256, 521.2834], [109.3558, 521.2834], [115.586, 521.2834], [121.8162, 521.2834], [128.0464, 521.2834], ['103.1256 + 6.2302k', 521.2834]], 'minima': [[100.0105, 456.6436], [106.2407, 456.6436], [112.4709, 456.6436], [118.7011, 456.6436], [124.9313, 456.6436], ['100.0105 + 6.2302k', 456.6436]], 'inflections': [[101.568, 488.9635], [104.6831, 488.9635], [107.7982, 488.9635], [110.9133, 488.9635], [114.0284, 488.9635], ['101.568 + 3.1151k', 488.9635]]})
+    def test_hundred_models_sinusoidal_points(self):
+        self.assertEqual(hundred_models['models']['sinusoidal']['points'], {'roots': [None], 'maxima': [[103.1256, 521.2834], [109.3558, 521.2834], [115.586, 521.2834], [121.8162, 521.2834], [128.0464, 521.2834], ['103.1256 + 6.2302k', 521.2834]], 'minima': [[100.0105, 456.6436], [106.2407, 456.6436], [112.4709, 456.6436], [118.7011, 456.6436], [124.9313, 456.6436], ['100.0105 + 6.2302k', 456.6436]], 'inflections': [[101.568, 488.9635], [104.6831, 488.9635], [107.7982, 488.9635], [110.9133, 488.9635], [114.0284, 488.9635], ['101.568 + 3.1151k', 488.9635]]})
     
-    def test_large_models_sinusoidal_accumulations(self):
-        self.assertEqual(large_models['models']['sinusoidal']['accumulations'], {'range': 47949.8129, 'iqr': 22220.5541})
+    def test_hundred_models_sinusoidal_accumulations(self):
+        self.assertEqual(hundred_models['models']['sinusoidal']['accumulations'], {'range': 47949.8129, 'iqr': 22220.5541})
     
-    def test_large_models_sinusoidal_averages(self):
-        self.assertEqual(large_models['models']['sinusoidal']['averages'], {'range': {'average_value_derivative': 0.3752, 'mean_values_derivative': [100.0219, 103.1141, 106.2521, 109.3443, 112.4823, 115.5745, 118.7125, 121.8047, 124.9427, 128.0349, '100.0219 + 6.2302k', '103.1141 + 6.2302k'], 'average_value_integral': 489.2838, 'mean_values_integral': [101.5778, 104.6733, 107.808, 110.9035, 114.0382, 117.1337, 120.2684, 123.3639, 126.4986, 129.5941, '101.5778 + 6.2302k', '104.6733 + 6.2302k']}, 'iqr': {'average_value_derivative': 0.9868, 'mean_values_derivative': [128.0163, 131.1915, 134.2465, 137.4217, 140.4767, 143.6519, 146.7069, 149.8821, 152.9371, 156.1123, '128.0163 + 6.2302k', '131.1915 + 6.2302k'], 'average_value_integral': 488.3638, 'mean_values_integral': [126.4704, 129.6223, 132.7006, 135.8525, 138.9308, 142.0827, 145.161, 148.3129, 151.3912, 154.5431, '126.4704 + 6.2302k', '129.6223 + 6.2302k']}})
+    def test_hundred_models_sinusoidal_averages(self):
+        self.assertEqual(hundred_models['models']['sinusoidal']['averages'], {'range': {'average_value_derivative': 0.3752, 'mean_values_derivative': [100.0219, 103.1141, 106.2521, 109.3443, 112.4823, 115.5745, 118.7125, 121.8047, 124.9427, 128.0349, '100.0219 + 6.2302k', '103.1141 + 6.2302k'], 'average_value_integral': 489.2838, 'mean_values_integral': [101.5778, 104.6733, 107.808, 110.9035, 114.0382, 117.1337, 120.2684, 123.3639, 126.4986, 129.5941, '101.5778 + 6.2302k', '104.6733 + 6.2302k']}, 'iqr': {'average_value_derivative': 0.9868, 'mean_values_derivative': [128.0163, 131.1915, 134.2465, 137.4217, 140.4767, 143.6519, 146.7069, 149.8821, 152.9371, 156.1123, '128.0163 + 6.2302k', '131.1915 + 6.2302k'], 'average_value_integral': 488.3638, 'mean_values_integral': [126.4704, 129.6223, 132.7006, 135.8525, 138.9308, 142.0827, 145.161, 148.3129, 151.3912, 154.5431, '126.4704 + 6.2302k', '129.6223 + 6.2302k']}})
     
-    def test_large_models_sinusoidal_correlation(self):
-        self.assertEqual(large_models['models']['sinusoidal']['correlation'], 0.1727)
+    def test_hundred_models_sinusoidal_correlation(self):
+        self.assertEqual(hundred_models['models']['sinusoidal']['correlation'], 0.1727)
     
     # COMPARATIVE ANALYSIS
-    def test_large_statistics(self):
-        self.assertEqual(large_models['statistics'], {'minimum': 100, 'maximum': 198, 'q1': 125.0, 'q3': 170.5, 'mean': 149.29, 'median': 151.5})
+    def test_hundred_statistics(self):
+        self.assertEqual(hundred_models['statistics'], {'minimum': 100, 'maximum': 198, 'q1': 125.0, 'q3': 170.5, 'mean': 149.29, 'median': 151.5})
     
-    def test_large_optimal(self):
-        self.assertEqual(large_models['optimal']['option'], 'sinusoidal')
+    def test_hundred_optimal(self):
+        self.assertEqual(hundred_models['optimal']['option'], 'sinusoidal')
+
+thousand_models = run_all(thousand_set)
+
+class TestThousandModels(unittest.TestCase):
+    maxDiff = None
+
+    # LINEAR MODEL
+    def test_thousand_models_linear_constants(self):
+        self.assertEqual(thousand_models['models']['linear']['constants'], [0.4934, 414.5401])
+    
+    def test_thousand_models_linear_points(self):
+        self.assertEqual(thousand_models['models']['linear']['points'], {'roots': [[-840.1704, 0]], 'maxima': [None], 'minima': [None], 'inflections': [None]})
+    
+    def test_thousand_models_linear_accumulations(self):
+        self.assertEqual(thousand_models['models']['linear']['accumulations'], {'range': 47829.5566, 'iqr': 22178.5177})
+    
+    def test_thousand_models_linear_averages(self):
+        self.assertEqual(thousand_models['models']['linear']['averages'], {'range': {'average_value_derivative': 0.4934, 'mean_values_derivative': ['All'], 'average_value_integral': 488.0567, 'mean_values_integral': [149.0]}, 'iqr': {'average_value_derivative': 0.4934, 'mean_values_derivative': ['All'], 'average_value_integral': 487.4399, 'mean_values_integral': [147.7499]}})
+    
+    def test_thousand_models_linear_correlation(self):
+        self.assertEqual(thousand_models['models']['linear']['correlation'], 0.1013)
+    
+    # QUADRATIC MODEL
+    def test_thousand_models_quadratic_constants(self):
+        self.assertEqual(thousand_models['models']['quadratic']['constants'], [-0.007, 2.5668, 265.4919])
+    
+    def test_thousand_models_quadratic_points(self):
+        self.assertEqual(thousand_models['models']['quadratic']['points'], {'roots': [[-84.1305, 0], [450.8163, 0]], 'maxima': [[183.3429, 500.7941]], 'minima': [None], 'inflections': [None]})
+    
+    def test_thousand_models_quadratic_accumulations(self):
+        self.assertEqual(thousand_models['models']['quadratic']['accumulations'], {'range': 47945.1182, 'iqr': 22427.8043})
+    
+    def test_thousand_models_quadratic_averages(self):
+        self.assertEqual(thousand_models['models']['quadratic']['averages'], {'range': {'average_value_derivative': 0.4808, 'mean_values_derivative': [149.0], 'average_value_integral': 489.2359, 'mean_values_integral': [142.7082]}, 'iqr': {'average_value_derivative': 0.4983, 'mean_values_derivative': [147.75], 'average_value_integral': 492.9188, 'mean_values_integral': [149.8011]}})
+    
+    def test_thousand_models_quadratic_correlation(self):
+        self.assertEqual(thousand_models['models']['quadratic']['correlation'], 0.1071)
+    
+    # CUBIC MODEL
+    def test_thousand_models_cubic_constants(self):
+        self.assertEqual(thousand_models['models']['cubic']['constants'], [0.0005, -0.2204, 33.8099, -1226.1398])
+    
+    def test_thousand_models_cubic_points(self):
+        self.assertEqual(thousand_models['models']['cubic']['points'], {'roots': [[51.579, 0]], 'maxima': [None], 'minima': [None], 'inflections': [[146.9333, 569.4583]]})
+    
+    def test_thousand_models_cubic_accumulations(self):
+        self.assertEqual(thousand_models['models']['cubic']['accumulations'], {'range': 20188.5488, 'iqr': 10848.7089})
+    
+    def test_thousand_models_cubic_averages(self):
+        self.assertEqual(thousand_models['models']['cubic']['averages'], {'range': {'average_value_derivative': 2.6327, 'mean_values_derivative': [118.5678, 175.2989], 'average_value_integral': 206.0056, 'mean_values_integral': [None]}, 'iqr': {'average_value_derivative': 1.6856, 'mean_values_derivative': [133.7726, 160.094], 'average_value_integral': 238.4332, 'mean_values_integral': [None]}})
+    
+    def test_thousand_models_cubic_correlation(self):
+        self.assertEqual(thousand_models['models']['cubic']['correlation'], 0.0)
+    
+    # HYPERBOLIC MODEL
+    def test_thousand_models_hyperbolic_constants(self):
+        self.assertEqual(thousand_models['models']['hyperbolic']['constants'], [-10786.2465, 563.019])
+    
+    def test_thousand_models_hyperbolic_points(self):
+        self.assertEqual(thousand_models['models']['hyperbolic']['points'], {'roots': [[19.1579, 0]], 'maxima': [None], 'minima': [None], 'inflections': [None]})
+    
+    def test_thousand_models_hyperbolic_accumulations(self):
+        self.assertEqual(thousand_models['models']['hyperbolic']['accumulations'], {'range': 47807.811, 'iqr': 22269.081})
+    
+    def test_thousand_models_hyperbolic_averages(self):
+        self.assertEqual(thousand_models['models']['hyperbolic']['averages'], {'range': {'average_value_derivative': 0.5448, 'mean_values_derivative': [140.7073], 'average_value_integral': 487.8348, 'mean_values_integral': [143.4643]}, 'iqr': {'average_value_derivative': 0.5061, 'mean_values_derivative': [145.9879], 'average_value_integral': 489.4304, 'mean_values_integral': [146.575]}})
+    
+    def test_thousand_models_hyperbolic_correlation(self):
+        self.assertEqual(thousand_models['models']['hyperbolic']['correlation'], 0.1082)
+    
+    # EXPONENTIAL MODEL
+    def test_thousand_models_exponential_constants(self):
+        self.assertEqual(thousand_models['models']['exponential']['constants'], [407.8094, 1.0009])
+    
+    def test_thousand_models_exponential_points(self):
+        self.assertEqual(thousand_models['models']['exponential']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [None]})
+    
+    def test_thousand_models_exponential_accumulations(self):
+        self.assertEqual(thousand_models['models']['exponential']['accumulations'], {'range': 45712.6755, 'iqr': 21194.5052})
+    
+    def test_thousand_models_exponential_averages(self):
+        self.assertEqual(thousand_models['models']['exponential']['averages'], {'range': {'average_value_derivative': 0.4196, 'mean_values_derivative': [149.3031], 'average_value_integral': 466.4559, 'mean_values_integral': [149.36]}, 'iqr': {'average_value_derivative': 0.419, 'mean_values_derivative': [147.7124], 'average_value_integral': 465.8133, 'mean_values_integral': [147.8276]}})
+    
+    def test_thousand_models_exponential_correlation(self):
+        self.assertEqual(thousand_models['models']['exponential']['correlation'], 0.0)
+    
+    # LOGARITHMIC MODEL
+    def test_thousand_models_logarithmic_constants(self):
+        self.assertEqual(thousand_models['models']['logarithmic']['constants'], [74.0076, 118.997])
+    
+    def test_thousand_models_logarithmic_points(self):
+        self.assertEqual(thousand_models['models']['logarithmic']['points'], {'roots': [[0.2003, 0]], 'maxima': [None], 'minima': [None], 'inflections': [None]})
+    
+    def test_thousand_models_logarithmic_accumulations(self):
+        self.assertEqual(thousand_models['models']['logarithmic']['accumulations'], {'range': 47818.8482, 'iqr': 22222.6107})
+    
+    def test_thousand_models_logarithmic_averages(self):
+        self.assertEqual(thousand_models['models']['logarithmic']['averages'], {'range': {'average_value_derivative': 0.5159, 'mean_values_derivative': [143.4534], 'average_value_integral': 487.9474, 'mean_values_integral': [146.2481]}, 'iqr': {'average_value_derivative': 0.5049, 'mean_values_derivative': [146.5787], 'average_value_integral': 488.409, 'mean_values_integral': [147.1631]}})
+    
+    def test_thousand_models_logarithmic_correlation(self):
+        self.assertEqual(thousand_models['models']['logarithmic']['correlation'], 0.1047)
+    
+    # LOGISTIC MODEL
+    def test_thousand_models_logistic_constants(self):
+        self.assertEqual(thousand_models['models']['logistic']['constants'], [878.3475, 0.0023, 51.0002])
+    
+    def test_thousand_models_logistic_points(self):
+        self.assertEqual(thousand_models['models']['logistic']['points'], {'roots': [None], 'maxima': [None], 'minima': [None], 'inflections': [[51.0002, 439.1737]]})
+    
+    def test_thousand_models_logistic_accumulations(self):
+        self.assertEqual(thousand_models['models']['logistic']['accumulations'], {'range': 47864.0424, 'iqr': 22196.0656})
+    
+    def test_thousand_models_logistic_averages(self):
+        self.assertEqual(thousand_models['models']['logistic']['averages'], {'range': {'average_value_derivative': 0.4982, 'mean_values_derivative': [152.7184], 'average_value_integral': 488.4086, 'mean_values_integral': [148.8968]}, 'iqr': {'average_value_derivative': 0.4987, 'mean_values_derivative': [148.8896], 'average_value_integral': 487.8256, 'mean_values_integral': [147.728]}})
+    
+    def test_thousand_models_logistic_correlation(self):
+        self.assertEqual(thousand_models['models']['logistic']['correlation'], 0.1013)
+    
+    # SINUSOIDAL MODEL
+    def test_thousand_models_sinusoidal_constants(self):
+        self.assertEqual(thousand_models['models']['sinusoidal']['constants'], [32.3199, 1.0085, 1.8848, 488.9635])
+    
+    def test_thousand_models_sinusoidal_points(self):
+        self.assertEqual(thousand_models['models']['sinusoidal']['points'], {'roots': [None], 'maxima': [[103.1256, 521.2834], [109.3558, 521.2834], [115.586, 521.2834], [121.8162, 521.2834], [128.0464, 521.2834], ['103.1256 + 6.2302k', 521.2834]], 'minima': [[100.0105, 456.6436], [106.2407, 456.6436], [112.4709, 456.6436], [118.7011, 456.6436], [124.9313, 456.6436], ['100.0105 + 6.2302k', 456.6436]], 'inflections': [[101.568, 488.9635], [104.6831, 488.9635], [107.7982, 488.9635], [110.9133, 488.9635], [114.0284, 488.9635], ['101.568 + 3.1151k', 488.9635]]})
+    
+    def test_thousand_models_sinusoidal_accumulations(self):
+        self.assertEqual(thousand_models['models']['sinusoidal']['accumulations'], {'range': 47949.8129, 'iqr': 22220.5541})
+    
+    def test_thousand_models_sinusoidal_averages(self):
+        self.assertEqual(thousand_models['models']['sinusoidal']['averages'], {'range': {'average_value_derivative': 0.3752, 'mean_values_derivative': [100.0219, 103.1141, 106.2521, 109.3443, 112.4823, 115.5745, 118.7125, 121.8047, 124.9427, 128.0349, '100.0219 + 6.2302k', '103.1141 + 6.2302k'], 'average_value_integral': 489.2838, 'mean_values_integral': [101.5778, 104.6733, 107.808, 110.9035, 114.0382, 117.1337, 120.2684, 123.3639, 126.4986, 129.5941, '101.5778 + 6.2302k', '104.6733 + 6.2302k']}, 'iqr': {'average_value_derivative': 0.9868, 'mean_values_derivative': [128.0163, 131.1915, 134.2465, 137.4217, 140.4767, 143.6519, 146.7069, 149.8821, 152.9371, 156.1123, '128.0163 + 6.2302k', '131.1915 + 6.2302k'], 'average_value_integral': 488.3638, 'mean_values_integral': [126.4704, 129.6223, 132.7006, 135.8525, 138.9308, 142.0827, 145.161, 148.3129, 151.3912, 154.5431, '126.4704 + 6.2302k', '129.6223 + 6.2302k']}})
+    
+    def test_thousand_models_sinusoidal_correlation(self):
+        self.assertEqual(thousand_models['models']['sinusoidal']['correlation'], 0.1727)
+    
+    # COMPARATIVE ANALYSIS
+    def test_thousand_statistics(self):
+        self.assertEqual(thousand_models['statistics'], {'minimum': 100, 'maximum': 198, 'q1': 125.0, 'q3': 170.5, 'mean': 149.29, 'median': 151.5})
+    
+    def test_thousand_optimal(self):
+        self.assertEqual(thousand_models['optimal']['option'], 'sinusoidal')
 
 class TestEdgeCases(unittest.TestCase):
     def test_run_all_zeroes(self):

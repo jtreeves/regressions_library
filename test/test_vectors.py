@@ -11,24 +11,7 @@ from regressions.vectors.generate import generate_elements
 from regressions.vectors.unify import unite_vectors
 from regressions.vectors.addition import vector_sum
 from regressions.vectors.multiplication import scalar_product_vector, dot_product
-
-first_point = [2, -3]
-second_point = [5, 7]
-
-first_vector = [2, 5, 9, 13]
-second_vector = [1, -7, 23, -2]
-
-nested_vector = [
-    [3, 4], 
-    [5, 9], 
-    [2, 8]
-]
-
-string_vector = ['one', 'two', 'three']
-
-mixed_vector = [1, 'two', 3, 'four', 5]
-
-scalar_number = -3
+from .data.vectors import first_point, second_point, first_vector, second_vector, nested_vector, string_vector, mixed_vector, scalar_number
 
 component_vector = component_form(first_point, second_point)
 

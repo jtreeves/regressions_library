@@ -8,70 +8,7 @@ from regressions.matrices.determinant import linear_determinant
 from regressions.matrices.minors import matrix_of_minors
 from regressions.matrices.inverse import inverse_matrix
 from regressions.matrices.solve import system_solution
-
-first_2d = [
-    [5, 8],
-    [2, 3]
-]
-
-second_2d = [
-    [4, 1],
-    [7, 3]
-]
-
-zero_2d = [
-    [0, 0],
-    [0, 0]
-]
-
-first_3d = [
-    [6, 1, 1],
-    [4, -2, 5],
-    [2, 8, 7]
-]
-
-second_3d = [
-    [3, 0, 2],
-    [2, 0, -2],
-    [0, 1, 1]
-]
-
-first_4d = [
-    [5, 2, -6, 2],
-    [3, 4, 1, -5],
-    [9, -8, 7, 1],
-    [-2, 5, 0, 11]
-]
-
-second_4d = [
-    [13, -7, 1, -12],
-    [5, -16, 14, 5],
-    [-8, 6, 2, 11],
-    [3, 0, 8, -2]
-]
-
-first_2x3 = [
-    [2, 6, -9],
-    [4, 5, 1]
-]
-
-second_2x3 = [
-    [7, 1, 3],
-    [-8, 2, 5]
-]
-
-column_2d = [
-    [3],
-    [-4]
-]
-
-column_3d = [
-    [5],
-    [-1],
-    [7]
-]
-
-scalar_number = -7
+from .data.matrices import first_2d, second_2d, zero_2d, first_3d, second_3d, first_4d, second_4d, first_2x3, second_2x3, column_2d, column_3d, scalar_number
 
 class TestAddition(unittest.TestCase):
     def test_addition_2d(self):
