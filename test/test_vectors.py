@@ -137,4 +137,4 @@ class TestDotProduct(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
-# ---------- Ran 27 tests in 0.004s ---------- OK ---------- #
+# ----- Ran 27 tests in 0.004s ----- OK ----- #
