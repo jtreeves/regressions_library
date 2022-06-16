@@ -1,4 +1,4 @@
-sphinx==3.5.3
+sphinx==4.0.2
 sphinx_rtd_theme==0.5.1
 sphinxcontrib-napoleon==0.7
 numpy==1.20.2
