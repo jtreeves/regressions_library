@@ -18,12 +18,11 @@ sys.path.insert(0, os.path.abspath('../..'))
 # -- Project information -----------------------------------------------------
 
 project = 'Regressions'
-copyright = '2021, Jackson Reeves'
+copyright = '2022, Jackson Reeves'
 author = 'Jackson Reeves'
 
 # The full version, including alpha/beta/rc tags
-release = '2021'
-
+release = '2022'
 
 # -- General configuration ---------------------------------------------------
 
